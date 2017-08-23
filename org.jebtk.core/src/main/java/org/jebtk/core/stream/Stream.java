@@ -15,7 +15,6 @@
  */
 package org.jebtk.core.stream;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -34,7 +33,7 @@ import org.jebtk.core.collections.UniqueArrayList;
  * @author Antony Holmes Holmes
  * @param <T> the generic type
  */
-public abstract class Stream<T> implements StreamIterator<T> {
+public abstract class Stream<T> implements StreamIterator<T>, Iterable<T> {
 
 	
 	
@@ -113,20 +112,14 @@ public abstract class Stream<T> implements StreamIterator<T> {
 	 *
 	 * @param <T> the generic type
 	 */
-	private static class ToListFunction<T> implements ReduceFunction<T, List<T>> {
+	private static class ToListFunction<T> extends ListReduceFunction<T, T> {
 		
 		/* (non-Javadoc)
 		 * @see org.abh.common.Function#apply(java.lang.Object)
 		 */
 		@Override
-		public List<T> apply(Stream<T> stream) {
-			List<T> ret = new ArrayList<T>(1000);
-			
-			while (stream.hasNext()) {
-				ret.add(stream.next());
-			}
-			
-			return ret;
+		public void apply(T item, List<T> ret) {
+			ret.add(item);
 		}
 	}
 	
@@ -169,6 +162,18 @@ public abstract class Stream<T> implements StreamIterator<T> {
 			} else {
 				return item.toString();
 			}
+		}
+	}
+	
+	private static class CastFunction<T, V> implements Function<T, V> {
+
+		/* (non-Javadoc)
+		 * @see org.abh.common.Function#apply(java.lang.Object)
+		 */
+		@SuppressWarnings("unchecked")
+		@Override
+		public V apply(T item) {
+			return (V)item;
 		}
 	}
 	
@@ -263,6 +268,17 @@ public abstract class Stream<T> implements StreamIterator<T> {
 	 */
 	public StringStream mapToString() {
 		return new StringStream(map(new ToStringFunction<T>()));
+	}
+	
+	/**
+	 * Cast items from one type to another. This has minimal type checking
+	 * and expects all items to be of the same type. It will throw errors
+	 * if imcompatible types are mixed.
+	 * 
+	 * @return
+	 */
+	public <V> Stream<V> cast() {
+		return map(new CastFunction<T, V>());
 	}
 	
 	/**
@@ -437,6 +453,7 @@ public abstract class Stream<T> implements StreamIterator<T> {
 	 *
 	 * @return the iterator
 	 */
+	@Override
 	public Iterator<T> iterator() {
 		return toList().iterator();
 	}
@@ -517,5 +534,13 @@ public abstract class Stream<T> implements StreamIterator<T> {
 	 */
 	public static StringStream stringStream(List<String> values) {
 		return stream(values).mapToString();
+	}
+	
+	public static <TT, VV> Stream<VV> cast(List<TT> values) {
+		return stream(values).cast();
+	}
+	
+	public static <TT, VV> Stream<VV> cast(Iterable<TT> values) {
+		return stream(values).cast();
 	}
 }

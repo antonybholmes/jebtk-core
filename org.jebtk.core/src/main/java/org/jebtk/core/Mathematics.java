@@ -1072,7 +1072,28 @@ public class Mathematics {
 	 * @return the double
 	 */
 	public static double round(double value, int places) {
-		return new BigDecimal(value).setScale(places, RoundingMode.HALF_UP).doubleValue();
+		return new BigDecimal(value)
+				.setScale(places, RoundingMode.HALF_UP)
+				.doubleValue();
+	}
+	
+	/**
+	 * Set the precision of a number.
+	 * 
+	 * @param x		A numner.
+	 * @param dp	The number of decimal places to truncate the number to.
+	 * @return
+	 */
+	public static double dp(double x, int dp) {
+	    if (x > 0) {
+	        return new BigDecimal(x)
+	        		.setScale(dp, BigDecimal.ROUND_FLOOR)
+	        		.doubleValue();
+	    } else {
+	        return new BigDecimal(x)
+	        		.setScale(dp, BigDecimal.ROUND_CEILING)
+	        		.doubleValue();
+	    }
 	}
 
 	/**

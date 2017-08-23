@@ -3068,7 +3068,7 @@ public class CollectionUtils {
 	 * @param values the values
 	 * @return true, if successful
 	 */
-	public static <V> boolean inBounds(int index, List<V> values) {
+	public static boolean inBounds(int index, List<?> values) {
 		return Mathematics.inBound(index, 0, values.size());
 	}
 

@@ -307,11 +307,20 @@ public class Join {
 	}
 
 	/**
-	 * On space.
+	 * Join strings with a space.
 	 *
 	 * @return the join
 	 */
 	public static Join onSpace() {
 		return on(TextUtils.SPACE_DELIMITER);
+	}
+
+	/**
+	 * Join on the colon ':' character.
+	 * 
+	 * @return
+	 */
+	public static Join onColon() {
+		return on(TextUtils.COLON_DELIMITER);
 	}
 }
