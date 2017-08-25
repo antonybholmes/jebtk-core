@@ -22,17 +22,17 @@ package org.jebtk.core.geom;
  * @author Antony Holmes Holmes
  *
  */
-public class Point2DDouble implements Comparable<Point2DDouble> {
+public class DoublePos2D implements Comparable<DoublePos2D> {
 	
 	/**
 	 * The member x.
 	 */
-	private double mX;
+	protected double mX;
 	
 	/**
 	 * The member y.
 	 */
-	private double mY;
+	protected double mY;
 
 	/**
 	 * Instantiates a new point2 d double.
@@ -40,7 +40,7 @@ public class Point2DDouble implements Comparable<Point2DDouble> {
 	 * @param x the x
 	 * @param y the y
 	 */
-	public Point2DDouble(double x, double y) {
+	public DoublePos2D(double x, double y) {
 		mX = x;
 		mY = y;
 	}
@@ -75,13 +75,29 @@ public class Point2DDouble implements Comparable<Point2DDouble> {
 	 * @see java.lang.Comparable#compareTo(java.lang.Object)
 	 */
 	@Override
-	public int compareTo(Point2DDouble o) {
-		if (mX > o.mX || mY > o.mY) {
-			return 1;
-		} else if (mX < o.mX || mY < o.mY) {
-			return -1;
+	public int compareTo(DoublePos2D p) {
+		if (mX > p.mX) {
+			if (mY > p.mY) {
+				return 1;
+			} else {
+				return -1;
+			}
+		} else if (mX < p.mX) {
+			if (mY > p.mY) {
+				return 1;
+			} else {
+				return -1;
+			}
 		} else {
-			return 0;
+			// Same x so just consider vertical position
+			
+			if (mY > p.mY) {
+				return 1;
+			} else if (mY < p.mY) {
+				return -1;
+			} else {
+				return 0;
+			}
 		}
 	}
 	
@@ -90,10 +106,10 @@ public class Point2DDouble implements Comparable<Point2DDouble> {
 	 */
 	@Override
 	public boolean equals(Object o) {
-		if (!(o instanceof Point2DDouble)) {
+		if (!(o instanceof DoublePos2D)) {
 			return false;
 		}
 		
-		return compareTo((Point2DDouble)o) == 0;
+		return compareTo((DoublePos2D)o) == 0;
 	}
 }

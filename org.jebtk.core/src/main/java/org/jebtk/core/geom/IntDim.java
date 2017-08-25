@@ -112,11 +112,33 @@ public class IntDim implements Comparable<IntDim> {
 	 */
 	@Override
 	public int compareTo(IntDim d) {
-		return (mW - d.mW) + (mH - d.mH);
+		if (mW > d.mW) {
+			if (mH > d.mH) {
+				return 1;
+			} else {
+				return -1;
+			}
+		} else if (mW < d.mW) {
+			if (mH > d.mH) {
+				return 1;
+			} else {
+				return -1;
+			}
+		} else {
+			// Same width so just consider height
+			
+			if (mH > d.mH) {
+				return 1;
+			} else if (mH < d.mH) {
+				return -1;
+			} else {
+				return 0;
+			}
+		}
 	}
 
 	/**
-	 * Creates the.
+	 * Creates a new IntDim.
 	 *
 	 * @param x the x
 	 * @param y the y

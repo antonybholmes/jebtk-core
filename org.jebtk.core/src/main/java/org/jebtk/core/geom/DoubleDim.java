@@ -109,14 +109,28 @@ public class DoubleDim implements Comparable<DoubleDim> {
 	 */
 	@Override
 	public int compareTo(DoubleDim d) {
-		double v = (mW - d.mW) + (mH - d.mH);
-		
-		if (v > 0) {
-			return 1;
-		} else if (v < 0) {
-			return -1;
+		if (mW > d.mW) {
+			if (mH > d.mH) {
+				return 1;
+			} else {
+				return -1;
+			}
+		} else if (mW < d.mW) {
+			if (mH > d.mH) {
+				return 1;
+			} else {
+				return -1;
+			}
 		} else {
-			return 0;
+			// Same width so just consider height
+			
+			if (mH > d.mH) {
+				return 1;
+			} else if (mH < d.mH) {
+				return -1;
+			} else {
+				return 0;
+			}
 		}
 	}
 }

@@ -20,13 +20,13 @@ package org.jebtk.core.geom;
  * The Class IntPos provides an immutable x y position in contrast
  * to the java.awt.Point.
  */
-public class IntPos2D {
-	
+public class IntPos2D implements Comparable<IntPos2D> {
+
 	/**
 	 * The member x.
 	 */
 	protected int mX;
-	
+
 	/**
 	 * The member y.
 	 */
@@ -42,7 +42,7 @@ public class IntPos2D {
 		mX = x;
 		mY = y;
 	}
-	
+
 	/**
 	 * Gets the x.
 	 *
@@ -51,7 +51,7 @@ public class IntPos2D {
 	public int getX() {
 		return mX;
 	}
-	
+
 	/**
 	 * Gets the y.
 	 *
@@ -60,13 +60,55 @@ public class IntPos2D {
 	public int getY() {
 		return mY;
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
 		return "[" + mX + ", " + mY +"]";
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object o) {
+		if (o instanceof IntPos2D) {
+			return compareTo((IntPos2D)o) == 0;
+		} else {
+			return false;
+		}
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Comparable#compareTo(java.lang.Object)
+	 */
+	@Override
+	public int compareTo(IntPos2D p) {
+		if (mX > p.mX) {
+			if (mY > p.mY) {
+				return 1;
+			} else {
+				return -1;
+			}
+		} else if (mX < p.mX) {
+			if (mY > p.mY) {
+				return 1;
+			} else {
+				return -1;
+			}
+		} else {
+			// Same x so just consider vertical position
+			
+			if (mY > p.mY) {
+				return 1;
+			} else if (mY < p.mY) {
+				return -1;
+			} else {
+				return 0;
+			}
+		}
 	}
 
 	/**
@@ -79,7 +121,7 @@ public class IntPos2D {
 	public static IntPos2D create(int x, int y) {
 		return new IntPos2D(x, y);
 	}
-	
+
 	/**
 	 * Creates the.
 	 *
@@ -90,7 +132,7 @@ public class IntPos2D {
 	public static IntPos2D create(long x, long y) {
 		return new IntPos2D((int)x, (int)y);
 	}
-	
+
 	/**
 	 * Creates the.
 	 *

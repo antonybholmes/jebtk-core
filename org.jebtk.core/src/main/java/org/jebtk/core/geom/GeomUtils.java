@@ -29,6 +29,8 @@ public class GeomUtils {
 	/** The Constant INT_POINT_ZERO. */
 	public static final IntPos2D INT_POINT_ZERO = new IntPos2D(0, 0);
 	
+	public static final DoublePos2D DOUBLE_POINT_ZERO = new DoublePos2D(0, 0);
+	
 	/**
 	 * Instantiates a new geom utils.
 	 */

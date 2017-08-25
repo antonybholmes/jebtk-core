@@ -1530,4 +1530,23 @@ public class Mathematics {
 			return 0;
 		}
 	}
+
+	/**
+	 * Returns the maximum of a list of doubles.
+	 * 
+	 * @param x
+	 * @param values
+	 * @return
+	 */
+	public static double max(double x, double... values) {
+		double max = x;
+		
+		for (double v : values) {
+			if (v > max) {
+				max = v;
+			}
+		}
+		
+		return max;
+	}
 }

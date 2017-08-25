@@ -24,7 +24,7 @@ import java.awt.Point;
  * @author Antony Holmes Holmes
  *
  */
-public class DoubleRect extends DoublePos {
+public class DoubleRect extends DoublePos2D {
 
 	/**
 	 * The member w.
