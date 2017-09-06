@@ -60,6 +60,8 @@ public class ChangeListeners extends EventProducer<ChangeListener> implements Ch
 	 * Fire changed.
 	 */
 	public void fireChanged() {
+		//System.err.println("fire changed " + this);
+		
 		fireChanged(new ChangeEvent(this));
 	}
 }

@@ -323,4 +323,13 @@ public class Join {
 	public static Join onColon() {
 		return on(TextUtils.COLON_DELIMITER);
 	}
+
+	/**
+	 * Join on the dash '-' character.
+	 * 
+	 * @return
+	 */
+	public static Join onDash() {
+		return on(TextUtils.DASH_DELIMITER);
+	}
 }

@@ -414,10 +414,14 @@ public class TextUtils {
 	 * @return the string
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
-	public static String squareBrackets(String text) throws IOException {
+	public static String squareBrackets(String text) {
 		StringBuilder buffer = new StringBuilder();
 
-		squareBracket(text, buffer);
+		try {
+			squareBracket(text, buffer);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
 		return buffer.toString();
 	}
@@ -901,13 +905,7 @@ public class TextUtils {
 	 * @return the int
 	 */
 	public static final int scanInt(String field, int defaultValue) {
-		int v;
-		
-		try {
-			v = parseInt(field);
-		} catch (ParseException e) {
-			v = defaultValue;
-		}
+		int v = parseInt(field);
 		
 		return v;
 	}
@@ -956,8 +954,8 @@ public class TextUtils {
 	 * @return the int
 	 * @throws ParseException the parse exception
 	 */
-	public static final int parseInt(String field) throws ParseException {
-		return (int)parseDouble(field);
+	public static final int parseInt(String field) {
+		return Integer.parseInt(field.replace(",", EMPTY_STRING)); //(int)parseDouble(field);
 	}
 
 	/**
@@ -981,13 +979,13 @@ public class TextUtils {
 		String f = extractNumber(field);
 
 		if (isNullOrEmpty(f)) {
-			throw new ParseException(f + " does not contain a number", 0);
+			throw new ParseException(f + " does not contain a number.", 0);
 		}
 
 		try {
 			return Double.parseDouble(f);
 		} catch (Exception e) {
-			throw new ParseException(f + " is not a valid number", 0);
+			throw new ParseException(f + " is not a valid number.", 0);
 		}
 	}
 	
@@ -2639,5 +2637,28 @@ public class TextUtils {
 	 */
 	public static String nonNull(String ret) {
 		return ret != null ? ret : EMPTY_STRING;
+	}
+
+	/**
+	 * Find the first whitespace character in a string and returns the 
+	 * substring before it.
+	 * 
+	 * @param location
+	 * @return
+	 */
+	public static String firstWhiteSpaceToken(String location) {
+		int p = location.indexOf(' ');
+		
+		if (p != -1) {
+			return location.substring(0, p);
+		}
+		
+		p = location.indexOf('\t');
+		
+		if (p != -1) {
+			return location.substring(0, p);
+		}
+		
+		return location;
 	}
 }

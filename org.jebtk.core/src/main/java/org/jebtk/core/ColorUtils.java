@@ -388,6 +388,24 @@ public class ColorUtils {
 		
 		return new Color(Color.HSBtoRGB(v[0], v[1], v[2]));
 	}
+	
+	/**
+	 * Tint a color by adding white to it.
+	 * 
+	 * @param color
+	 * @param d
+	 * @return
+	 */
+	public static Color tint(Color color, double d) {
+		int r = color.getRed();
+		r = Mathematics.bound(r + (int)((255 - r) * d), 0, 255);
+		int g = color.getGreen();
+		g = Mathematics.bound(g + (int)((255 - g) * d), 0, 255);
+		int b = color.getBlue();
+		b = Mathematics.bound(b + (int)((255 - b) * d), 0, 255);
+		
+		return new Color(r, g, b);
+	}
 
 	/**
 	 * Red.

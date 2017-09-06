@@ -450,7 +450,7 @@ public class FileUtils {
 	}
 
 	/**
-	 * New input stream.
+	 * Creates a new buffered input stream.
 	 *
 	 * @param file the file
 	 * @return the input stream
@@ -472,7 +472,8 @@ public class FileUtils {
 	}
 	
 	/**
-	 * New input stream.
+	 * Creates a new input stream. If the file name ends with the gz ext,
+	 * The stream will be automatically wrapped into a GZInputStream.
 	 *
 	 * @param file the file
 	 * @return the input stream
