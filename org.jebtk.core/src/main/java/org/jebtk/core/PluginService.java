@@ -15,18 +15,22 @@
  */
 package org.jebtk.core;
 
-import java.io.File;
-import java.net.MalformedURLException;
+import java.io.IOException;
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.nio.file.Path;
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
-import java.util.Stack;
 
-import org.jebtk.core.collections.UniqueArrayList;
-import org.jebtk.core.io.DirectoryFileFilter;
+import org.jebtk.core.collections.DefaultHashMap;
+import org.jebtk.core.collections.UniqueArrayListCreator;
+import org.jebtk.core.io.FileUtils;
+import org.jebtk.core.io.PathUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -45,6 +49,20 @@ import org.slf4j.LoggerFactory;
  */
 public class PluginService implements Iterable<Plugin> {
 	
+	private static class PluginServiceLoader {
+		private static final PluginService INSTANCE = new PluginService();
+	}
+
+	/**
+	 * Gets the single instance of SettingsService.
+	 *
+	 * @return single instance of SettingsService
+	 */
+	public static PluginService getInstance() {
+		return PluginServiceLoader.INSTANCE;
+	}
+	
+	
 	/** The Constant LOG. */
 	private static final Logger LOG = 
 			LoggerFactory.getLogger(PluginService.class);
@@ -52,27 +70,17 @@ public class PluginService implements Iterable<Plugin> {
 	/**
 	 * Default directory where to find plugins.
 	 */
-	public static final File DEFAULT_PLUGIN_DIRECTORY = 
-			new File("res" + File.separator + "plugins");
-
-	/**
-	 * The constant INSTANCE.
-	 */
-	private static final PluginService INSTANCE = new PluginService();
-
+	public static final Path DEFAULT_PLUGIN_DIRECTORY = 
+			PathUtils.getPath("res", "plugins");
+	
+	public static final String DEFAULT_GROUP = "default";
 	/**
 	 * The member plugins.
 	 */
-	private List<Plugin> mPlugins = new UniqueArrayList<Plugin>();
-
-	/**
-	 * Gets the single instance of PluginService.
-	 *
-	 * @return single instance of PluginService
-	 */
-	public static final PluginService getInstance() {
-		return INSTANCE;
-	}
+	//private List<Plugin> mPlugins = new UniqueArrayList<Plugin>();
+	
+	private Map<String, List<Plugin>> mPluginMap =
+			DefaultHashMap.create(new UniqueArrayListCreator<Plugin>());
 
 	/**
 	 * Instantiates a new plugin service.
@@ -87,7 +95,11 @@ public class PluginService implements Iterable<Plugin> {
 	 * @param c the c
 	 */
 	public void addPlugin(Class<?> c) {
-		addPlugin(new Plugin(c));
+		addPlugin(DEFAULT_GROUP, c);
+	}
+	
+	public void addPlugin(String group, Class<?> c) {
+		addPlugin(group, new Plugin(c));
 	}
 
 	/**
@@ -96,7 +108,11 @@ public class PluginService implements Iterable<Plugin> {
 	 * @param plugin the plugin
 	 */
 	public void addPlugin(Plugin plugin) {
-		mPlugins.add(plugin);
+		addPlugin(DEFAULT_GROUP, plugin);
+	}
+	
+	public void addPlugin(String group, Plugin plugin) {
+		mPluginMap.get(group).add(plugin);
 	}
 
 
@@ -105,7 +121,11 @@ public class PluginService implements Iterable<Plugin> {
 	 */
 	@Override
 	public Iterator<Plugin> iterator() {
-		return mPlugins.iterator();
+		return mPluginMap.get(DEFAULT_GROUP).iterator();
+	}
+	
+	public Iterable<Plugin> iterator(String group) {
+		return mPluginMap.get(group);
 	}
 
 
@@ -113,9 +133,9 @@ public class PluginService implements Iterable<Plugin> {
 	 * Scans the default plugin directory for plugins.
 	 *
 	 * @throws ClassNotFoundException the class not found exception
-	 * @throws MalformedURLException the malformed URL exception
+	 * @throws IOException 
 	 */
-	public final void scan() throws ClassNotFoundException, MalformedURLException {
+	public final void scan() throws ClassNotFoundException, IOException {
 		scan(DEFAULT_PLUGIN_DIRECTORY);
 	}
 
@@ -125,10 +145,10 @@ public class PluginService implements Iterable<Plugin> {
 	 *
 	 * @param filename the filename
 	 * @throws ClassNotFoundException the class not found exception
-	 * @throws MalformedURLException the malformed URL exception
+	 * @throws IOException 
 	 */
-	public final void scanDirectory(String filename) throws ClassNotFoundException, MalformedURLException {
-		scan(new File(filename));
+	public final void scanDirectory(String filename) throws ClassNotFoundException, IOException {
+		scan(PathUtils.getPath(filename));
 	}
 
 	/**
@@ -136,74 +156,76 @@ public class PluginService implements Iterable<Plugin> {
 	 *
 	 * @param pluginDir the plugin dir
 	 * @throws ClassNotFoundException the class not found exception
-	 * @throws MalformedURLException the malformed URL exception
+	 * @throws IOException 
 	 */
-	public final void scan(File pluginDir) throws ClassNotFoundException, MalformedURLException {
-		DirectoryFileFilter directoryFilter = new DirectoryFileFilter();
-
+	public final void scan(Path pluginDir) throws ClassNotFoundException, IOException {
+		if (!FileUtils.exists(pluginDir)) {
+			return;
+		}
+		
 		URLClassLoader ucl;
 
-		File[] dirs = pluginDir.listFiles(directoryFilter);
+		List<Path> dirs = FileUtils.lsdir(pluginDir); //pluginDir.listFiles(directoryFilter);
 
 		Class<?> pluginClass;
 
-		Stack<File> scanDirs = new Stack<File>();
-		Stack<String> packages = new Stack<String>();
+		Deque<Path> dirStack = new ArrayDeque<Path>();
+		Deque<String> packageNameStack = new ArrayDeque<String>();
 
 		//StringBuilder packageName = new StringBuilder();
 
-		for (File dir : dirs) {
+		for (Path dir : dirs) {
 			// each plugin dir represents a type of plugin
 
-			scanDirs.clear();
-			packages.clear();
+			dirStack.clear();
+			packageNameStack.clear();
 
-			scanDirs.push(dir);
-			packages.push("");
+			dirStack.push(dir);
+			packageNameStack.push("");
 
 			//packageName = new StringBuilder();
 
-			URL classUrl = dir.toURI().toURL();
+			URL classUrl = dir.toUri().toURL();
 			URL[] classUrls = {classUrl};
 			ucl = new URLClassLoader(classUrls);
 
-			Set<String> visited = new HashSet<String>();
+			Set<Path> visited = new HashSet<Path>();
 
-			while (!scanDirs.empty()) {
-				File currentDirectory = scanDirs.pop();
+			while (!dirStack.isEmpty()) {
+				Path currentDirectory = dirStack.pop();
 
-				File[] files = currentDirectory.listFiles();
+				List<Path> files = FileUtils.ls(currentDirectory); //currentDirectory.listFiles();
 
-				String currentPackage = packages.pop();
+				String currentPackage = packageNameStack.pop();
 
 				LOG.info("Scanning {} [{}] for plugins.", 
-						currentDirectory.getAbsolutePath(), 
+						currentDirectory.toAbsolutePath(), 
 						currentPackage);
 
-				for (File file : files) {
-					if (!file.isDirectory()) {
+				for (Path file : files) {
+					if (!FileUtils.isDirectory(file)) {
 						continue;
 					}
 
-					if (visited.contains(file.getAbsolutePath())) {
+					if (visited.contains(file)) {
 						continue;
 					}
 
-					scanDirs.push(file);
+					dirStack.push(file);
 
-					packages.push(currentPackage + file.getName() + ".");
+					packageNameStack.push(currentPackage + file.getFileName().toString() + ".");
 				}
 
-				for (File file : files) {
-					if (file.isDirectory()) {
+				for (Path file : files) {
+					if (FileUtils.isDirectory(file)) {
 						continue;
 					}
 
-					if (!file.getName().endsWith(".class")) {
+					if (!file.getFileName().endsWith(".class")) {
 						continue;
 					}
 
-					String plugin = currentPackage + file.getName().replaceFirst("\\.class$", "");
+					String plugin = currentPackage + file.getFileName().toString().replaceFirst("\\.class$", "");
 
 					LOG.info("Loading plugin {}.", plugin);
 
@@ -211,22 +233,11 @@ public class PluginService implements Iterable<Plugin> {
 
 					//System.err.println(pluginClass.getSimpleName() + " " +pluginClass.getCanonicalName() + " " + pluginClass.getName());
 
-					addPlugin(new Plugin(pluginClass));
+					addPlugin(dir.getFileName().toString().toLowerCase(), new Plugin(pluginClass));
 				}
 
-				visited.add(currentDirectory.getAbsolutePath());
+				visited.add(currentDirectory);
 			}
 		}
 	}
-
-	/**
-	 * Gets the count.
-	 *
-	 * @return the count
-	 */
-	public int getCount() {
-		return mPlugins.size();
-	}
-
-
 }

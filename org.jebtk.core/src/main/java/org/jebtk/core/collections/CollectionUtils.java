@@ -1437,6 +1437,10 @@ public class CollectionUtils {
 		return ret;
 		 */
 	}
+	
+	public static <T> List<T> asList(T item) {
+		return Collections.singletonList(item);
+	}
 
 	/**
 	 * Convert a map to a list of strings formatted as "key=value".

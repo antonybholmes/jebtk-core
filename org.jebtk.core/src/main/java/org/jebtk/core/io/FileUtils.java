@@ -725,7 +725,8 @@ public class FileUtils {
 	}
 	
 	/**
-	 * Count the number of header lines in a file.
+	 * Count the number of header lines in a file where a header line begins
+	 * with a given string. Common examples are # or %.
 	 *
 	 * @param file the file
 	 * @param matches the matches
