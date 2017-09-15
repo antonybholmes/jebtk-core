@@ -28,15 +28,14 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
+import java.util.TreeSet;
 
 import org.jebtk.core.Function;
 import org.jebtk.core.Indexed;
 import org.jebtk.core.Mathematics;
 import org.jebtk.core.NumConvertable;
 import org.jebtk.core.text.TextUtils;
-
-import java.util.Set;
-import java.util.TreeSet;
 
 
 // TODO: Auto-generated Javadoc
@@ -1860,11 +1859,12 @@ public class CollectionUtils {
 
 	/**
 	 * Converts a double object list into a primitive array.
+	 * @param <T>
 	 *
 	 * @param values the values
 	 * @return the double[]
 	 */
-	public static double[] toDoublePrimitive(List<Double> values) {
+	public static <T extends Number> double[] toDoublePrimitive(List<T> values) {
 		if (isNullOrEmpty(values)) {
 			return EMPTY_DOUBLE_ARRAY;
 		}
@@ -1872,7 +1872,7 @@ public class CollectionUtils {
 		double[] ret = new double[values.size()];
 
 		for (int i = 0; i < values.size(); ++i) {
-			ret[i] = values.get(i);
+			ret[i] = values.get(i).doubleValue();
 		}
 
 		return ret;

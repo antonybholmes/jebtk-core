@@ -1549,4 +1549,31 @@ public class Mathematics {
 		
 		return max;
 	}
+
+	/**
+	 * Returns the multiplication of all values.
+	 * 
+	 * @param values
+	 * @return
+	 */
+	public static double multiply(double[] values) {
+		double ret = 1;
+		
+		for (double v: values) {
+			ret *= v;
+		}
+		
+		return ret;
+	}
+
+	/**
+	 * Returns the nth root of a value.
+	 * 
+	 * @param v
+	 * @param n
+	 * @return
+	 */
+	public static double nthRoot(double v, int n) {
+		return Math.pow(v, 1.0 / n);
+	}
 }
