@@ -529,7 +529,19 @@ public class CollectionUtils {
 	 * @return the list
 	 */
 	public static final <T> List<T> tail(List<T> list) {
-		return subList(list, 1);
+		if (isNullOrEmpty(list)) {
+			return Collections.emptyList();
+		}
+		
+		return tail(list, 1);
+	}
+	
+	public static <T> List<T> tail(List<T> list, int start) {
+		if (isNullOrEmpty(list)) {
+			return Collections.emptyList();
+		}
+		
+		return subList(list, start);
 	}
 
 	/**
@@ -541,6 +553,10 @@ public class CollectionUtils {
 	 * @return the list
 	 */
 	public static final <T> List<T> end(List<T> list, int n) {
+		if (isNullOrEmpty(list)) {
+			return Collections.emptyList();
+		}
+		
 		return subList(list, list.size() - n, n);
 	}
 
@@ -553,6 +569,10 @@ public class CollectionUtils {
 	 * @return the list
 	 */
 	public static <T> List<T> subList(List<T> list, int start) {
+		if (isNullOrEmpty(list)) {
+			return Collections.emptyList();
+		}
+		
 		return subList(list, start, list.size() - start);
 	}
 
@@ -585,6 +605,26 @@ public class CollectionUtils {
 
 			++s;
 		}
+
+		return ret;
+	}
+	
+	public static final <T> Object[] subList(Object[] list, 
+			int start, 
+			int length) {
+		if (isNullOrEmpty(list) || 
+				start < 0 ||
+				start >= list.length ||
+				length < 1) {
+			return null;
+		}
+
+		int s = start;
+		int l = Math.min(s + length, list.length);
+
+		Object[] ret = new Object[l];
+		
+		System.arraycopy(list, s, ret, 0, l);
 
 		return ret;
 	}

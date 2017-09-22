@@ -17,6 +17,11 @@ package org.jebtk.core.io;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.Collection;
+
+import org.jebtk.core.text.TextUtils;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -24,11 +29,65 @@ import java.io.IOException;
  */
 public class ReaderUtils {
 	
+	/** The Constant COMMON_FILE_HEADERS. */
+	public static final Collection<String> COMMON_FILE_HEADERS = 
+			new ArrayList<String>();
+	
+	static {
+		COMMON_FILE_HEADERS.add("#");
+		COMMON_FILE_HEADERS.add("%");
+		COMMON_FILE_HEADERS.add("@");
+	}
+	
 	/**
 	 * Instantiates a new reader utils.
 	 */
 	private ReaderUtils() {
 		// Do nothing
+	}
+	
+	
+	/**
+	 * Count header lines.
+	 *
+	 * @param file the file
+	 * @return the int
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
+	public static int countHeaderLines(Path file) throws IOException {
+		return countHeaderLines(file, COMMON_FILE_HEADERS);
+	}
+	
+	/**
+	 * Count the number of header lines in a file where a header line begins
+	 * with a given string. Common examples are # or %.
+	 *
+	 * @param file the file
+	 * @param matches the matches
+	 * @return the int
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
+	public static int countHeaderLines(Path file, Collection<String> matches) throws IOException {
+		int ret = 0;
+
+		BufferedReader reader = FileUtils.newBufferedReader(file);
+		
+		try {
+			String line;
+			
+			while ((line = reader.readLine()) != null) {
+				// Assuming heading lines at beginning of file
+				if (!TextUtils.startsWith(line, matches)) {
+					break;
+				}
+
+				++ret;
+			}
+		} finally {
+			reader.close();
+		}
+		
+		return ret;
 	}
 	
 	/**

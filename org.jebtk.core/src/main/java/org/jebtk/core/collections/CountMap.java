@@ -28,6 +28,8 @@ public class CountMap<K> extends DefaultHashMap<K, Integer> {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
+	private int mMaxC = Integer.MIN_VALUE;
+	private K mMaxK = null;
 	
 	/**
 	 * Instantiates a new count map to keep track of integer counts.
@@ -109,7 +111,22 @@ public class CountMap<K> extends DefaultHashMap<K, Integer> {
 	 * @param inc the inc
 	 */
 	public void inc(K key, int inc) {
-		put(key, (int)get(key) + inc);
+		int c = (int)get(key) + inc;
+		
+		put(key, c);
+		
+		if (c > mMaxC) {
+			mMaxC = c;
+			mMaxK = key;
+		}
+	}
+	
+	public int getMaxC() {
+		return mMaxC;
+	}
+	
+	public K getMaxK() {
+		return mMaxK;
 	}
 	
 	/**
@@ -120,7 +137,7 @@ public class CountMap<K> extends DefaultHashMap<K, Integer> {
 	 * 					to reduce the count of the key by
 	 */
 	public void dec(K key, int dec) {
-		put(key, (int)get(key) - dec);
+		inc(key, -dec);
 	}
 	
 	/**

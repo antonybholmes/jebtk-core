@@ -38,7 +38,6 @@ import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Deque;
 import java.util.List;
@@ -46,7 +45,6 @@ import java.util.zip.GZIPInputStream;
 import java.util.zip.ZipOutputStream;
 
 import org.jebtk.core.collections.CollectionUtils;
-import org.jebtk.core.text.TextUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -63,15 +61,7 @@ public class FileUtils {
 	protected final static Logger LOG = 
 			LoggerFactory.getLogger(FileUtils.class);
 	
-	/** The Constant COMMON_FILE_HEADERS. */
-	public static final Collection<String> COMMON_FILE_HEADERS = 
-			new ArrayList<String>();
-	
-	static {
-		COMMON_FILE_HEADERS.add("#");
-		COMMON_FILE_HEADERS.add("%");
-		COMMON_FILE_HEADERS.add("@");
-	}
+
 	
 	/**
 	 * Instantiates a new file utils.
@@ -712,49 +702,8 @@ public class FileUtils {
 		return new RandomAccessFile(file.toFile(), "r");
 	}
 	
-	
-	/**
-	 * Count header lines.
-	 *
-	 * @param file the file
-	 * @return the int
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 */
-	public static int countHeaderLines(Path file) throws IOException {
-		return countHeaderLines(file, COMMON_FILE_HEADERS);
-	}
-	
-	/**
-	 * Count the number of header lines in a file where a header line begins
-	 * with a given string. Common examples are # or %.
-	 *
-	 * @param file the file
-	 * @param matches the matches
-	 * @return the int
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 */
-	public static int countHeaderLines(Path file, Collection<String> matches) throws IOException {
-		int ret = 0;
 
-		BufferedReader reader = FileUtils.newBufferedReader(file);
-		
-		try {
-			String line;
-			
-			while ((line = reader.readLine()) != null) {
-				// Assuming heading lines at beginning of file
-				if (!TextUtils.startsWith(line, matches)) {
-					break;
-				}
 
-				++ret;
-			}
-		} finally {
-			reader.close();
-		}
-		
-		return ret;
-	}
 
 	/**
 	 * Wrap an output stream into a zip stream.

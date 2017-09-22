@@ -16,6 +16,7 @@
 package org.jebtk.core.text;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -157,5 +158,27 @@ public class RegexUtils {
 	 */
 	public static String replaceAll(String s, Pattern p, String rep) {
 		return p.matcher(s).replaceAll(rep);
+	}
+	
+	public static boolean matches(String p, Collection<String> values) {
+		return matches(compile(p), values);
+	}
+	
+	/**
+	 * Returns true if all values match the given patten.
+	 * 
+	 * @param p
+	 * @param values
+	 * @return
+	 */
+	public static boolean matches(Pattern p, Collection<String> values) {
+		
+		for (String v : values) {
+			if (!p.matcher(v).matches()) {
+				return false;
+			}
+		}
+		
+		return true;
 	}
 }

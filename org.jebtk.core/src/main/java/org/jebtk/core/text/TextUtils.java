@@ -178,13 +178,7 @@ public class TextUtils {
 	public static final Pattern STRICT_INT_PATTERN = 
 			Pattern.compile("^([-+]?[0-9]+([eE][-+]?[0-9]+)?)$");
 	
-	/**
-	 * Defines a number pattern that a string can begin with to be
-	 * classified as a number.
-	 */
-	public static final Pattern STRICT_NUMBER_PATTERN = 
-			Pattern.compile("^([-+]?[0-9]*\\.?[0-9]+([eE][-+]?[0-9]+)?)$");
-	
+
 	/** The Constant NUMBER_PATTERN. */
 	public static final Pattern NUMBER_PATTERN = 
 			Pattern.compile("([-+]?[0-9]*\\.?[0-9]+([eE][-+]?[0-9]+)?)");
@@ -2106,10 +2100,17 @@ public class TextUtils {
 			return false;
 		}
 		
-		Matcher matcher = STRICT_NUMBER_PATTERN.matcher(value);
-
-		return matcher.find();
+		return NUMBER_PATTERN.matcher(value).matches();
 	}
+	
+	public static boolean areNumbers(Collection<String> values) {
+		if (CollectionUtils.isNullOrEmpty(values)) {
+			return false;
+		}
+		
+		return RegexUtils.matches(TextUtils.NUMBER_PATTERN, values);
+	}
+	
 	
 	/**
 	 * Returns true if text appears to be an integer.
