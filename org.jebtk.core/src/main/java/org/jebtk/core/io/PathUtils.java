@@ -93,8 +93,14 @@ public class PathUtils {
 	 * @param file the file
 	 * @return the name
 	 */
-	public static String getName(final Path file) {
-		return file.getFileName().toString();
+	public static String getName(Path file) {
+		file = file.getFileName();
+		
+		if (file != null) {
+			return file.toString();
+		} else {
+			return TextUtils.EMPTY_STRING;
+		}
 	}
 	
 	/**

@@ -44,7 +44,6 @@ import java.util.List;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.ZipOutputStream;
 
-import org.jebtk.core.collections.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -98,23 +97,37 @@ public class FileUtils {
 	 * @return the list
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
-	public static List<Path> ls(Path root, 
-			boolean includeDirs) throws IOException {
+	public static List<Path> ls(Path root, boolean includeDirs) throws IOException {
 		return ls(root, includeDirs, false);
 	}
 	
 	/**
-	 * List all files in a directory, optionally recursively going through
-	 * all sub directories.
-	 *
-	 * @param root 		The starting directory.
-	 * @param includeDirs Whether to include directories in search results.
-	 * @param recursive 	Whether to list files in sub directories.
-	 * @return the list
-	 * @throws IOException Signals that an I/O exception has occurred.
+	 * 
+	 * @param root				Path to iterate over.
+	 * @param includeDirs		Whether to include directories.
+	 * @param includeHidden		Whether to include hidden files.
+	 * @return
+	 * @throws IOException
+	 */
+	public static List<Path> ls(Path root, 
+			boolean includeDirs, 
+			boolean includeHidden) throws IOException {
+		return ls(root, includeDirs, includeHidden, false);
+	}
+	
+	/**
+	 * List all files in a directory.
+	 * 
+	 * @param root
+	 * @param includeDirs
+	 * @param includeHidden
+	 * @param recursive
+	 * @return
+	 * @throws IOException
 	 */
 	public static List<Path> ls(Path root, 
 			boolean includeDirs,
+			boolean includeHidden,
 			boolean recursive) throws IOException {
 		if (isFile(root)) {
 			return Collections.emptyList();
@@ -130,21 +143,27 @@ public class FileUtils {
 			Path dir = dirStack.pop();
 			
 			for (Path file : Files.newDirectoryStream(dir)) {
-				if (FileUtils.isDirectory(file)) {
+				if (isDirectory(file)) {
 					if (recursive) {
 						dirStack.push(file);
 					}
 					
 					if (includeDirs) {
-						ret.add(file);
+						if (includeHidden || !isHidden(file)) {
+							ret.add(file);
+						}
 					}
 				} else {
-					ret.add(file);
+					if (includeHidden || !isHidden(file)) {
+						ret.add(file);
+					}
 				}
 			}
 		}
 		
-		return CollectionUtils.sort(ret);
+		Collections.sort(ret);
+		
+		return ret;
 	}
 	
 	/**
@@ -158,6 +177,11 @@ public class FileUtils {
 		return lsdir(root, false);
 	}
 	
+	public static List<Path> lsdir(Path root,
+			boolean includeHidden) throws IOException {
+		return lsdir(root, includeHidden, false);
+	}
+	
 	/**
 	 * List just the directories in a directory.
 	 *
@@ -167,6 +191,7 @@ public class FileUtils {
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	public static List<Path> lsdir(Path root,
+			boolean includeHidden,
 			boolean recursive) throws IOException {
 		List<Path> ret = new ArrayList<Path>();
 		
@@ -183,12 +208,16 @@ public class FileUtils {
 						dirStack.push(file);
 					}
 					
-					ret.add(file);
+					if (includeHidden || !isHidden(file)) {
+						ret.add(file);
+					}
 				}
 			}
 		}
 		
-		return CollectionUtils.sort(ret);
+		Collections.sort(ret);
+		
+		return ret;
 	}
 	
 	/**
@@ -499,6 +528,9 @@ public class FileUtils {
 	 */
 	public static boolean isDirectory(Path file) {
 		return exists(file) && Files.isDirectory(file);
+	}
+	public static boolean isHidden(Path file) throws IOException {
+		return exists(file) && Files.isHidden(file);
 	}
 	
 	/**

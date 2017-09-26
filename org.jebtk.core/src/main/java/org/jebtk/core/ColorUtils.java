@@ -38,6 +38,9 @@ public class ColorUtils {
 	public static final Pattern COLOR_PATTERN = 
 			Pattern.compile("#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})");
 
+	/** Constant representing a transparent color */
+	public static final Color TRANS_COLOR = new Color(0, 0, 0, 0);
+
 	/**
 	 * Instantiates a new color utils.
 	 */
