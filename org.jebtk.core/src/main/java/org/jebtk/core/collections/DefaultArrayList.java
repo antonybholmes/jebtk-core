@@ -23,9 +23,9 @@ import java.util.List;
  * ArrayList that auto fills with default values so that it is initialized
  * to a given size.
  *
- * @param <V> the value type
+ * @param <T> the value type
  */
-public class DefaultArrayList<V> extends ArrayList<V> {
+public class DefaultArrayList<T> extends ArrayList<T> {
 	
 	/**
 	 * The constant serialVersionUID.
@@ -33,21 +33,25 @@ public class DefaultArrayList<V> extends ArrayList<V> {
 	private static final long serialVersionUID = 1L;
 
 	/** The Constant DEFAULT_SIZE. */
-	private static final int DEFAULT_SIZE = 32;
+	private static final int DEFAULT_SIZE = 100;
 
 	/**
 	 * The member default value.
 	 */
-	private EntryCreator<V> mDefaultValue;
+	private EntryCreator<T> mDefaultValue;
 
+	
+	public DefaultArrayList() {
+		this(DEFAULT_SIZE, new NullCreator<T>());
+	}
 	
 	/**
 	 * Instantiates a new default array list.
 	 *
 	 * @param defaultValue the default value
 	 */
-	public DefaultArrayList(V defaultValue) {
-		this(DEFAULT_SIZE, new ValueCreator<V>(defaultValue));
+	public DefaultArrayList(T defaultValue) {
+		this(DEFAULT_SIZE, new ValueCreator<T>(defaultValue));
 	}
 	
 	/**
@@ -56,8 +60,8 @@ public class DefaultArrayList<V> extends ArrayList<V> {
 	 * @param size the size
 	 * @param defaultValue the default value
 	 */
-	public DefaultArrayList(int size, V defaultValue) {
-		this(size, new ValueCreator<V>(defaultValue));
+	public DefaultArrayList(int size, T defaultValue) {
+		this(size, new ValueCreator<T>(defaultValue));
 	}
 	
 	/**
@@ -66,22 +70,29 @@ public class DefaultArrayList<V> extends ArrayList<V> {
 	 * @param size the size
 	 * @param defaultValue the default value
 	 */
-	public DefaultArrayList(int size, EntryCreator<V> defaultValue) {
+	public DefaultArrayList(int size, EntryCreator<T> defaultValue) {
 		super(size);
 		
 		mDefaultValue = defaultValue;
 		
-		autoCreate(size);
+		//autoCreate(size);
 	}
 	
 	/* (non-Javadoc)
 	 * @see java.util.ArrayList#get(int)
 	 */
 	@Override
-	public V get(int index) {
+	public T get(int index) {
 		autoCreate(index + 1);
 
 		return super.get(index);
+	}
+	
+	@Override
+	public T set(int index, T v) {
+		autoCreate(index + 1);
+
+		return super.set(index, v);
 	}
 	
 	/**
@@ -89,56 +100,60 @@ public class DefaultArrayList<V> extends ArrayList<V> {
 	 *
 	 * @param size the size
 	 */
-	public void autoCreate(int size) {
+	private void autoCreate(int size) {
 		while (size() < size) {
 			add(mDefaultValue.newEntry());	
 		}
 	}
 	
+	//
+	// Static methods
+	//
+	
 	/**
 	 * Creates the.
 	 *
-	 * @param <V1> the generic type
+	 * @param <T1> the generic type
 	 * @param defaultValue the default value
 	 * @return the list
 	 */
-	public static <V1> List<V1> create(V1 defaultValue) {
-		return create(DEFAULT_SIZE, new ValueCreator<V1>(defaultValue));
+	public static <T1> List<T1> create(T1 defaultValue) {
+		return create(DEFAULT_SIZE, new ValueCreator<T1>(defaultValue));
 	}
 	
 	/**
 	 * Creates the.
 	 *
-	 * @param <V1> the generic type
+	 * @param <T1> the generic type
 	 * @param size the size
 	 * @param defaultValue the default value
 	 * @return the list
 	 */
-	public static <V1> List<V1> create(int size, V1 defaultValue) {
-		return create(size, new ValueCreator<V1>(defaultValue));
+	public static <T1> List<T1> create(int size, T1 defaultValue) {
+		return create(size, new ValueCreator<T1>(defaultValue));
 	}
 
 	/**
 	 * Creates a new {@code DefaultArrayList}.
 	 *
-	 * @param <V1> the generic type
+	 * @param <T1> the generic type
 	 * @param defaultValue the default value
 	 * @return the list
 	 */
-	public static <V1> List<V1> create(EntryCreator<V1> defaultValue) {
+	public static <T1> List<T1> create(EntryCreator<T1> defaultValue) {
 		return create(DEFAULT_SIZE, defaultValue);
 	}
 	
 	/**
 	 * Creates a new {@code DefaultArrayList}.
 	 *
-	 * @param <V1> the generic type
+	 * @param <T1> the generic type
 	 * @param size the size
 	 * @param defaultValue the default value
 	 * @return the list
 	 */
-	public static <V1> List<V1> create(int size, 
-			EntryCreator<V1> defaultValue) {
-		return new DefaultArrayList<V1>(size, defaultValue);
+	public static <T1> List<T1> create(int size, 
+			EntryCreator<T1> defaultValue) {
+		return new DefaultArrayList<T1>(size, defaultValue);
 	}
 }

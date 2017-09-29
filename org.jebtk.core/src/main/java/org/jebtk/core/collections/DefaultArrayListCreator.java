@@ -26,11 +26,6 @@ import java.util.List;
 public class DefaultArrayListCreator<V> implements ListCreator<V> {
 	
 	/**
-	 * The member list size.
-	 */
-	private int mListSize;
-	
-	/**
 	 * The member default value.
 	 */
 	private EntryCreator<V> mDefaultValue;
@@ -41,8 +36,8 @@ public class DefaultArrayListCreator<V> implements ListCreator<V> {
 	 * @param listSize the list size
 	 * @param defaultValue the default value
 	 */
-	public DefaultArrayListCreator(int listSize, V defaultValue) {
-		this(listSize, new ValueCreator<V>(defaultValue));
+	public DefaultArrayListCreator(V defaultValue) {
+		this(new ValueCreator<V>(defaultValue));
 	}
 	
 	/**
@@ -51,8 +46,7 @@ public class DefaultArrayListCreator<V> implements ListCreator<V> {
 	 * @param listSize the list size
 	 * @param defaultValue the default value
 	 */
-	public DefaultArrayListCreator(int listSize, EntryCreator<V> defaultValue) {
-		mListSize = listSize;
+	public DefaultArrayListCreator(EntryCreator<V> defaultValue) {
 		mDefaultValue = defaultValue;
 	}
 
@@ -61,6 +55,6 @@ public class DefaultArrayListCreator<V> implements ListCreator<V> {
 	 */
 	@Override
 	public List<V> newEntry() {
-		return DefaultArrayList.create(mListSize, mDefaultValue);
+		return DefaultArrayList.create(mDefaultValue);
 	}
 }
