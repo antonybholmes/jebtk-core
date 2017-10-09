@@ -1619,6 +1619,23 @@ public class CollectionUtils {
 
 		return list;
 	}
+	
+	@SafeVarargs
+	public static <T> List<T> cat(List<T> l1, List<T>... lists) {
+		if (isNullOrEmpty(l1)) {
+			return Collections.emptyList();
+		}
+		
+		List<T> ret = new ArrayList<T>(l1.size());
+		
+		ret.addAll(l1);
+		
+		for (List<T> l : lists) {
+			ret.addAll(l);
+		}
+
+		return ret;
+	}
 
 	/**
 	 * Returns the unique items in a set.

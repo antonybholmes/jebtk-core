@@ -34,9 +34,6 @@ import org.jebtk.core.collections.UniqueArrayList;
  * @param <T> the generic type
  */
 public abstract class Stream<T> implements StreamIterator<T>, Iterable<T> {
-
-	
-	
 	/**
 	 * The Class CountFunction.
 	 *

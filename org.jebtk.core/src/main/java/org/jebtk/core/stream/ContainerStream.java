@@ -16,6 +16,7 @@
 package org.jebtk.core.stream;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * Holds a reference to an existing stream.
  *
