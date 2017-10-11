@@ -1576,4 +1576,21 @@ public class Mathematics {
 	public static double nthRoot(double v, int n) {
 		return Math.pow(v, 1.0 / n);
 	}
+
+	/**
+	 * Signum functions for integers. Returns 1 if v > 0, -1 if v < 0 or
+	 * 0 if v == 0.
+	 * 
+	 * @param v
+	 * @return
+	 */
+	public static int signum(int v) {
+		if (v > 0) {
+			return 1;
+		} else if (v < 0) {
+			return -1;
+		} else {
+			return v;
+		}
+	}
 }
