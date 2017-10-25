@@ -13,71 +13,51 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jebtk.core.geom;
-
-import java.awt.Dimension;
+package org.jebtk.core;
 
 // TODO: Auto-generated Javadoc
 /**
- * Immutable doubleeger dimension.
+ * Immutable integer dimension.
  * 
  * @author Antony Holmes Holmes
  *
  */
-public class DoubleDim implements Comparable<DoubleDim> {
-
+public class MinMax implements Comparable<MinMax> {
 	/**
 	 * The member w.
 	 */
-	public final double mW;
+	private double mMax;
 	
 	/**
 	 * The member h.
 	 */
-	public final double mH;
+	private double mMin;
 
-	public DoubleDim(double w) {
-		this(w, w);
-	}
-	
 	/**
-	 * Instantiates a new double dim.
+	 * Instantiates a new int dim.
 	 *
 	 * @param w the w
 	 * @param h the h
 	 */
-	public DoubleDim(double w, double h) {
-		mW = w;
-		mH = h;
+	public MinMax(double min, double max) {
+		mMin = min;
+		mMax = max;
 	}
 	
-	/**
-	 * Instantiates a new double dim.
-	 *
-	 * @param dim the dim
-	 */
-	public DoubleDim(Dimension dim) {
-		this(dim.width, dim.height);
-	}
-
-	
-
-	/**
-	 * Gets the w.
-	 *
-	 * @return the w
-	 */
-	public double getW() {
-		return mW;
+	public double getMax() {
+		return mMax;
 	}
 	
-	/**
-	 * Gets the h.
-	 *
-	 * @return the h
-	 */
-	public double getH() {
-		return mH;
+	public double getMin() {
+		return mMin;
+	}
+	
+	public void setMin(double min) {
+		mMin = min;
+	}
+	
+	public void setMax(double max) {
+		mMax = max;
 	}
 	
 	/* (non-Javadoc)
@@ -85,17 +65,7 @@ public class DoubleDim implements Comparable<DoubleDim> {
 	 */
 	@Override
 	public String toString() {
-		return mW + " " + mH;
-	}
-
-	/**
-	 * To dimension.
-	 *
-	 * @param size the size
-	 * @return the dimension
-	 */
-	public static Dimension toDimension(DoubleDim size) {
-		return new Dimension((int)size.getW(), (int)size.getH());
+		return mMin + " " + mMax;
 	}
 
 	/* (non-Javadoc)
@@ -103,8 +73,8 @@ public class DoubleDim implements Comparable<DoubleDim> {
 	 */
 	@Override
 	public boolean equals(Object o) {
-		if (o instanceof DoubleDim) {
-			return compareTo((DoubleDim)o) == 0;
+		if (o instanceof MinMax) {
+			return compareTo((MinMax)o) == 0;
 		} else {
 			return false;
 		}
@@ -114,15 +84,15 @@ public class DoubleDim implements Comparable<DoubleDim> {
 	 * @see java.lang.Comparable#compareTo(java.lang.Object)
 	 */
 	@Override
-	public int compareTo(DoubleDim d) {
-		if (mW > d.mW) {
-			if (mH > d.mH) {
+	public int compareTo(MinMax d) {
+		if (mMin > d.mMin) {
+			if (mMax > d.mMax) {
 				return 1;
 			} else {
 				return -1;
 			}
-		} else if (mW < d.mW) {
-			if (mH > d.mH) {
+		} else if (mMin < d.mMin) {
+			if (mMax > d.mMax) {
 				return 1;
 			} else {
 				return -1;
@@ -130,13 +100,48 @@ public class DoubleDim implements Comparable<DoubleDim> {
 		} else {
 			// Same width so just consider height
 			
-			if (mH > d.mH) {
+			if (mMax > d.mMax) {
 				return 1;
-			} else if (mH < d.mH) {
+			} else if (mMax < d.mMax) {
 				return -1;
 			} else {
 				return 0;
 			}
 		}
 	}
+
+	/**
+	 * Creates a new IntDim.
+	 *
+	 * @param x the x
+	 * @param y the y
+	 * @return the int dim
+	 */
+	public static MinMax create(int x, int y) {
+		return new MinMax(x, y);
+	}
+	
+	/**
+	 * Creates the.
+	 *
+	 * @param x the x
+	 * @param y the y
+	 * @return the int dim
+	 */
+	public static MinMax create(long x, long y) {
+		return new MinMax(x, y);
+	}
+	
+	/**
+	 * Creates the.
+	 *
+	 * @param x the x
+	 * @param y the y
+	 * @return the int dim
+	 */
+	public static MinMax create(double x, double y) {
+		return new MinMax(x, y);
+	}
+
+	
 }

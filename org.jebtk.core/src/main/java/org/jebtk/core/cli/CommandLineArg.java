@@ -132,4 +132,8 @@ public class CommandLineArg {
 
 		return ret;
 	}
+
+	public int getIntValue() {
+		return Integer.parseInt(getValue());
+	}
 }

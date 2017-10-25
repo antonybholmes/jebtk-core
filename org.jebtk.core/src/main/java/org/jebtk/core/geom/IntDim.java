@@ -32,12 +32,12 @@ public class IntDim implements Comparable<IntDim> {
 	/**
 	 * The member w.
 	 */
-	protected int mW;
+	public final int mW;
 	
 	/**
 	 * The member h.
 	 */
-	protected int mH;
+	public final int mH;
 
 	/**
 	 * Instantiates a new int dim.

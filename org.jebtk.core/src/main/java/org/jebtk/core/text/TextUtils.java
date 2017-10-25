@@ -2662,4 +2662,8 @@ public class TextUtils {
 		
 		return location;
 	}
+
+	public static String prefix(String text, String prefix) {
+		return prefix + text;
+	}
 }
