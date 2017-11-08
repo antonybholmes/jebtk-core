@@ -34,4 +34,14 @@ public class HashSetCreator<V> implements SetCreator<V> {
 	public Set<V> newEntry() {
 		return new HashSet<V>();
 	}
+
+	/**
+	 * Creates the.
+	 *
+	 * @param <V1> the generic type
+	 * @return the collection creator
+	 */
+	public static <V1> SetCreator<V1> create() {
+		return new HashSetCreator<V1>();
+	}
 }

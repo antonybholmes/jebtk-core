@@ -1689,7 +1689,7 @@ public class CollectionUtils {
 	 * @return the list
 	 */
 	public static <T> List<T> uniquePreserveOrder(Collection<T> items) {
-		return new UniqueArrayList<T>(items);
+		return UniqueArrayList.create(items);
 	}
 
 	/**

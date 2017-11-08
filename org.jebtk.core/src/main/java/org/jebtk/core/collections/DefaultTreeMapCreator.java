@@ -24,7 +24,7 @@ import java.util.Map;
  * @param <K> the key type
  * @param <V> the value type
  */
-public class DefaultTreeMapCreator<K, V> implements MapCreator<K, V> {
+public class DefaultTreeMapCreator<K, V> implements IterMapCreator<K, V> {
 
 	/** The m default value. */
 	private EntryCreator<V> mDefaultValue;
@@ -51,7 +51,31 @@ public class DefaultTreeMapCreator<K, V> implements MapCreator<K, V> {
 	 * @see org.abh.common.collections.EntryCreator#newEntry()
 	 */
 	@Override
-	public Map<K, V> newEntry() {
+	public IterMap<K, V> newEntry() {
 		return new DefaultTreeMap<K, V>(mDefaultValue);
+	}
+	
+	/**
+	 * Creates a new Default Tree Map.
+	 *
+	 * @param <KK> the generic type
+	 * @param <VV> the generic type
+	 * @param defaultValue the default value
+	 * @return the map
+	 */
+	public static <KK, VV> IterMapCreator<KK, VV> create(VV defaultValue) {
+		return create(new ValueCreator<VV>(defaultValue));
+	}
+	
+	/**
+	 * Creates the.
+	 *
+	 * @param <KK> the generic type
+	 * @param <VV> the generic type
+	 * @param defaultValue the default value
+	 * @return the map
+	 */
+	public static <KK, VV> IterMapCreator<KK, VV> create(EntryCreator<VV> defaultValue) {
+		return new DefaultTreeMapCreator<KK, VV>(defaultValue);
 	}
 }

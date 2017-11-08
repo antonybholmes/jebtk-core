@@ -149,6 +149,9 @@ public class TextUtils {
 	 */
 	public static final char COLON_DELIMITER_CHAR = ':';
 	
+	public static final char SEMI_COLON_DELIMITER_CHAR = ';';
+	
+	
 	/**
 	 * The constant SPACE_DELIMITER_CHAR.
 	 */
@@ -1744,11 +1747,9 @@ public class TextUtils {
 		List<String> ret = new ArrayList<String>();
 
 		for (String item : iter) {
-			if (item == null || caseInsensitiveMatch(item, NA)) {
-				continue;
+			if (item != null && !caseInsensitiveMatch(item, NA)) {
+				ret.add(item);
 			}
-
-			ret.add(item);
 		}
 
 		return ret;

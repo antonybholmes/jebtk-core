@@ -15,10 +15,6 @@
  */
 package org.jebtk.core.collections;
 
-import java.util.HashMap;
-import java.util.Map;
-
-
 // TODO: Auto-generated Javadoc
 /**
  * The Class HashMapCreator.
@@ -26,7 +22,7 @@ import java.util.Map;
  * @param <K> the key type
  * @param <V> the value type
  */
-public class HashMapCreator<K, V> implements MapCreator<K, V> {
+public class HashMapCreator<K, V> implements IterMapCreator<K, V> {
 
 	/** The Constant INITIAL_CAPACITY. */
 	public static final int INITIAL_CAPACITY = 32;
@@ -54,7 +50,7 @@ public class HashMapCreator<K, V> implements MapCreator<K, V> {
 	 * @see org.abh.lib.collections.EntryCreator#create()
 	 */
 	@Override
-	public Map<K, V> newEntry() {
-		return new HashMap<K, V>(mInitCap);
+	public IterMap<K, V> newEntry() {
+		return new IterHashMap<K, V>(mInitCap);
 	}
 }

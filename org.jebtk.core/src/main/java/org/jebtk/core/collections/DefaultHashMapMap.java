@@ -26,7 +26,7 @@ import java.util.Map;
  * @param <K2> the generic type
  * @param <V> the value type
  */
-public class DefaultHashMapMap<K1, K2, V> extends DefaultHashMap<K1, Map<K2, V>> implements MapMap<K1, K2, V> {
+public class DefaultHashMapMap<K1, K2, V> extends DefaultHashMap<K1, IterMap<K2, V>> implements MapMap<K1, K2, V> {
 	
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
@@ -53,7 +53,7 @@ public class DefaultHashMapMap<K1, K2, V> extends DefaultHashMap<K1, Map<K2, V>>
 	 * @param capacity1 		the capacity1
 	 * @param mapCreator 		Create a map
 	 */
-	public DefaultHashMapMap(int capacity1, MapCreator<K2, V> mapCreator) {
+	public DefaultHashMapMap(int capacity1, IterMapCreator<K2, V> mapCreator) {
 		super(capacity1, mapCreator);
 	}
 	
@@ -188,7 +188,7 @@ public class DefaultHashMapMap<K1, K2, V> extends DefaultHashMap<K1, Map<K2, V>>
 	 * @return the multi map
 	 */
 	public static <KK1, KK2, VV> MapMap<KK1, KK2, VV> create(int capacity1,  
-			MapCreator<KK2, VV> defaultValue) {
+			IterMapCreator<KK2, VV> defaultValue) {
 		return new DefaultHashMapMap<KK1, KK2, VV>(capacity1, defaultValue);
 	}
 }

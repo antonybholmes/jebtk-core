@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Antony Holmes
+toString * Copyright 2016 Antony Holmes
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,30 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jebtk.core.test;
+package org.jebtk.test;
 
-import org.jebtk.core.path.Path;
+import static org.junit.Assert.assertEquals;
+
+import org.jebtk.core.text.TextUtils;
 import org.junit.Test;
 
-public class PathTest {
+public class TextTest {
 
 	@Test
-	public void pathTest() {
-		
-		System.out.println("Path test");
-		
-		Path path = new Path("a/b/c.d");
-		
-		System.err.println(path.toString());
-	}
-	
-	@Test
-	public void rootPathTest() {
-		
-		System.out.println("root test");
-		
-		Path path = Path.createRootPath("a", "b", "c");
-		
-		System.err.println(path.toString());
+	public void titleCaseTest() {
+		System.err.println(TextUtils.titleCase("title case"));
+		assertEquals("Title case", TextUtils.titleCase("title case"), "Title Case");
 	}
 }

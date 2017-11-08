@@ -13,7 +13,7 @@ toString * Copyright 2016 Antony Holmes
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jebtk.core.test;
+package org.jebtk.test;
 
 import static org.junit.Assert.*;
 

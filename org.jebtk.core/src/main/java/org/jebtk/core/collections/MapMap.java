@@ -25,7 +25,7 @@ import java.util.Map;
  * @param <K2> the generic type
  * @param <V> the value type
  */
-public interface MapMap<K1, K2, V> extends Map<K1, Map<K2, V>> {
+public interface MapMap<K1, K2, V> extends IterMap<K1, IterMap<K2, V>> {
 	
 	/** The Constant INITIAL_CAPACITY. */
 	public static final int INITIAL_CAPACITY = 32;

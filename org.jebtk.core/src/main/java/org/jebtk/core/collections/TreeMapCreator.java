@@ -15,10 +15,6 @@
  */
 package org.jebtk.core.collections;
 
-import java.util.Map;
-import java.util.TreeMap;
-
-
 // TODO: Auto-generated Javadoc
 /**
  * The Class TreeMapCreator.
@@ -26,13 +22,17 @@ import java.util.TreeMap;
  * @param <K> the key type
  * @param <V> the value type
  */
-public class TreeMapCreator<K, V> implements MapCreator<K, V> {
+public class TreeMapCreator<K, V> implements IterMapCreator<K, V> {
 
 	/* (non-Javadoc)
 	 * @see org.abh.lib.collections.EntryCreator#create()
 	 */
 	@Override
-	public Map<K, V> newEntry() {
-		return new TreeMap<K, V>();
+	public IterMap<K, V> newEntry() {
+		return new IterTreeMap<K, V>();
+	}
+	
+	public static <KK, VV> IterMapCreator<KK, VV> create() {
+		return new TreeMapCreator<KK, VV>();
 	}
 }

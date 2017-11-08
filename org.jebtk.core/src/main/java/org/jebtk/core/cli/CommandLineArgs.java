@@ -15,9 +15,13 @@
  */
 package org.jebtk.core.cli;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
+
+import org.jebtk.core.collections.ArrayListCreator;
+import org.jebtk.core.collections.DefaultHashMap;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -28,8 +32,10 @@ public class CommandLineArgs implements Iterable<CommandLineArg> {
 	/**
 	 * The member args.
 	 */
-	private Map<String, CommandLineArg> mArgs = 
-			new TreeMap<String, CommandLineArg>();
+	private Map<String, List<CommandLineArg>> mArgMap = 
+			DefaultHashMap.create(new ArrayListCreator<CommandLineArg>());
+	
+	private List<CommandLineArg> mArgs = new ArrayList<CommandLineArg>();
 	
 	/**
 	 * Adds the arg.
@@ -37,7 +43,9 @@ public class CommandLineArgs implements Iterable<CommandLineArg> {
 	 * @param arg the arg
 	 */
 	public void add(CommandLineArg arg) {
-		mArgs.put(arg.getLongName(), arg);
+		mArgs.add(arg);
+		
+		mArgMap.get(arg.getLongName()).add(arg);
 	}
 	
 	/**
@@ -46,8 +54,8 @@ public class CommandLineArgs implements Iterable<CommandLineArg> {
 	 * @param name the name
 	 * @return the arg
 	 */
-	public CommandLineArg get(String name) {
-		return mArgs.get(name);
+	public Iterable<CommandLineArg> get(String name) {
+		return mArgMap.get(name);
 	}
 	
 	/* (non-Javadoc)
@@ -55,7 +63,7 @@ public class CommandLineArgs implements Iterable<CommandLineArg> {
 	 */
 	@Override
 	public Iterator<CommandLineArg> iterator() {
-		return mArgs.values().iterator();
+		return mArgs.iterator();
 	}
 
 	/**

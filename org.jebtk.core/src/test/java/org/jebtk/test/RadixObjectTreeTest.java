@@ -1,4 +1,4 @@
-package org.jebtk.core.test;
+package org.jebtk.test;
 
 import java.util.Set;
 
