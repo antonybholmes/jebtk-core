@@ -2667,4 +2667,23 @@ public class TextUtils {
 	public static String prefix(String text, String prefix) {
 		return prefix + text;
 	}
+
+	/**
+	 * Returns the first n characters of a string.
+	 * 
+	 * @param name
+	 * @param l
+	 * @return
+	 */
+	public static String head(String name, int n) {
+		if (name == null) {
+			return TextUtils.EMPTY_STRING;
+		}
+		
+		if (name.length() > n) {
+			return name.substring(0, n);
+		} else {
+			return name;
+		}
+	}
 }
