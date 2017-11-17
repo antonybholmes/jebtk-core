@@ -336,6 +336,15 @@ public class TextUtils {
 	public static boolean isNullOrEmpty(final String s) {
 		return s == null || s.isEmpty();
 	}
+	
+	/**
+	 * Returns true if the string is null, empty or 'n/a'.
+	 * @param s
+	 * @return
+	 */
+	public static boolean isNullEmptyNA(final String s) {
+		return isNullOrEmpty(s) || s.toLowerCase().equals(NA);
+	}
 
 	/*
 	public static final String format4DP(double value) {

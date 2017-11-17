@@ -42,8 +42,12 @@ import java.util.Collections;
 import java.util.Deque;
 import java.util.List;
 import java.util.zip.GZIPInputStream;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipException;
+import java.util.zip.ZipFile;
 import java.util.zip.ZipOutputStream;
 
+import org.jebtk.core.text.TextUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -52,23 +56,23 @@ import org.slf4j.LoggerFactory;
  * The Class FileUtils.
  */
 public class FileUtils {
-	
+
 	/** The default charset. */
 	public static Charset DEFAULT_CHARSET = StandardCharsets.UTF_8;
-	
+
 	/** The Constant LOG. */
 	protected final static Logger LOG = 
 			LoggerFactory.getLogger(FileUtils.class);
-	
 
-	
+
+
 	/**
 	 * Instantiates a new file utils.
 	 */
 	private FileUtils() {
 		// Do nothing
 	}
-	
+
 	/**
 	 * Return the user's home directory.
 	 *
@@ -77,7 +81,7 @@ public class FileUtils {
 	public static Path home() {
 		return PathUtils.getPath(System.getProperty("user.home"));
 	}
-	
+
 	/**
 	 * Ls.
 	 *
@@ -88,7 +92,7 @@ public class FileUtils {
 	public static List<Path> ls(Path dir) throws IOException {
 		return ls(dir, true);
 	}
-	
+
 	/**
 	 * Ls.
 	 *
@@ -100,7 +104,7 @@ public class FileUtils {
 	public static List<Path> ls(Path root, boolean includeDirs) throws IOException {
 		return ls(root, includeDirs, false);
 	}
-	
+
 	/**
 	 * 
 	 * @param root				Path to iterate over.
@@ -114,7 +118,7 @@ public class FileUtils {
 			boolean includeHidden) throws IOException {
 		return ls(root, includeDirs, includeHidden, false);
 	}
-	
+
 	/**
 	 * List all files in a directory.
 	 * 
@@ -132,22 +136,22 @@ public class FileUtils {
 		if (isFile(root)) {
 			return Collections.emptyList();
 		}
-		
+
 		List<Path> ret = new ArrayList<Path>();
-		
+
 		Deque<Path> dirStack = new ArrayDeque<Path>();
-		
+
 		dirStack.push(root);
-		
+
 		while (!dirStack.isEmpty()) {
 			Path dir = dirStack.pop();
-			
+
 			for (Path file : Files.newDirectoryStream(dir)) {
 				if (isDirectory(file)) {
 					if (recursive) {
 						dirStack.push(file);
 					}
-					
+
 					if (includeDirs) {
 						if (includeHidden || !isHidden(file)) {
 							ret.add(file);
@@ -160,12 +164,12 @@ public class FileUtils {
 				}
 			}
 		}
-		
+
 		Collections.sort(ret);
-		
+
 		return ret;
 	}
-	
+
 	/**
 	 * List just the directories in a directory.
 	 *
@@ -176,12 +180,12 @@ public class FileUtils {
 	public static List<Path> lsdir(Path root) throws IOException {
 		return lsdir(root, false);
 	}
-	
+
 	public static List<Path> lsdir(Path root,
 			boolean includeHidden) throws IOException {
 		return lsdir(root, includeHidden, false);
 	}
-	
+
 	/**
 	 * List just the directories in a directory.
 	 *
@@ -194,32 +198,32 @@ public class FileUtils {
 			boolean includeHidden,
 			boolean recursive) throws IOException {
 		List<Path> ret = new ArrayList<Path>();
-		
+
 		Deque<Path> dirStack = new ArrayDeque<Path>();
-		
+
 		dirStack.push(root);
-		
+
 		while (!dirStack.isEmpty()) {
 			Path dir = dirStack.pop();
-			
+
 			for (Path file : Files.newDirectoryStream(dir)) {
 				if (FileUtils.isDirectory(file)) {
 					if (recursive) {
 						dirStack.push(file);
 					}
-					
+
 					if (includeHidden || !isHidden(file)) {
 						ret.add(file);
 					}
 				}
 			}
 		}
-		
+
 		Collections.sort(ret);
-		
+
 		return ret;
 	}
-	
+
 	/**
 	 * Ls.
 	 *
@@ -230,7 +234,7 @@ public class FileUtils {
 	 */
 	public static List<Path> ls(Path dir, FileFilter filter) throws IOException {
 		List<Path> ret = new ArrayList<Path>();
-		
+
 		for (Path path : Files.newDirectoryStream(dir)) {
 			if (filter.accept(path.toFile())) {
 				ret.add(path);
@@ -239,7 +243,7 @@ public class FileUtils {
 
 		return ret;
 	}
-	
+
 	/**
 	 * Finds the first file matching a pattern in a directory and returns
 	 * it, or null otherwise. This method is non-recursive.
@@ -258,7 +262,7 @@ public class FileUtils {
 
 		return null;
 	}
-	
+
 	/**
 	 * Find the first file whose name ends with a given suffix.
 	 * 
@@ -270,7 +274,7 @@ public class FileUtils {
 	public static Path endsWith(Path dir, String pattern) throws IOException {
 		return endsWith(dir, false, pattern);
 	}
-	
+
 	/**
 	 * Find the first file whose name ends with a given suffix.
 	 * 
@@ -286,7 +290,7 @@ public class FileUtils {
 			String pattern) throws IOException {
 		return endsWith(dir, false, false, pattern);
 	}
-	
+
 	/**
 	 * Find the first file whose name ends with a given suffix.
 	 * 
@@ -310,7 +314,7 @@ public class FileUtils {
 
 		return null;
 	}
-	
+
 	/**
 	 * Find all.
 	 *
@@ -322,7 +326,7 @@ public class FileUtils {
 	public static List<Path> findAll(Path dir, String... patterns) throws IOException {
 		return findAll(dir, false, patterns);
 	}
-	
+
 	/**
 	 * Find all.
 	 *
@@ -337,7 +341,7 @@ public class FileUtils {
 			String... patterns) throws IOException {
 		return findAll(dir, false, recursive, patterns);
 	}
-	
+
 	/**
 	 * Find all.
 	 *
@@ -353,7 +357,7 @@ public class FileUtils {
 			boolean recursive,
 			String... patterns) throws IOException {
 		List<Path> ret = new ArrayList<Path>();
-		
+
 		for (Path path : ls(dir, includeDirs, recursive)) {
 			for (String pattern : patterns) {
 				if (path.toString().contains(pattern)) {
@@ -365,7 +369,7 @@ public class FileUtils {
 
 		return ret;
 	}
-	
+
 	/**
 	 * Find file matches that match all the patterns.
 	 *
@@ -376,17 +380,17 @@ public class FileUtils {
 	 */
 	public static List<Path> findMatch(Path dir, String... patterns) throws IOException {
 		List<Path> ret = new ArrayList<Path>();
-		
+
 		for (Path path : Files.newDirectoryStream(dir)) {
 			boolean found = true;
-			
+
 			for (String pattern : patterns) {
 				if (!path.toString().contains(pattern)) {
 					found = false;
 					break;
 				}
 			}
-			
+
 			if (found) {
 				ret.add(path);
 			}
@@ -405,7 +409,7 @@ public class FileUtils {
 	public static BufferedWriter newBufferedWriter(Path file) throws IOException {
 		return Files.newBufferedWriter(file, DEFAULT_CHARSET);
 	}
-	
+
 	/**
 	 * New buffered table writer.
 	 *
@@ -416,7 +420,7 @@ public class FileUtils {
 	public static BufferedTableWriter newBufferedTableWriter(Path file) throws IOException {
 		return new BufferedTableWriter(newFileWriter(file));
 	}
-	
+
 	/**
 	 * New file writer.
 	 *
@@ -445,7 +449,7 @@ public class FileUtils {
 			return Files.newBufferedReader(file, DEFAULT_CHARSET);
 		}
 	}
-	
+
 	/**
 	 * New buffered reader.
 	 *
@@ -456,7 +460,7 @@ public class FileUtils {
 	public static BufferedReader newBufferedReader(InputStream stream) throws IOException {
 		return new BufferedReader(newInputReader(stream));
 	}
-	
+
 	/**
 	 * New input reader.
 	 *
@@ -478,7 +482,7 @@ public class FileUtils {
 	public static InputStream newBufferedInputStream(Path file) throws IOException {
 		return newBufferedInputStream(newInputStream(file));
 	}
-	
+
 	/**
 	 * Returns a buffered input stream.
 	 *
@@ -489,7 +493,7 @@ public class FileUtils {
 	public static InputStream newBufferedInputStream(InputStream stream) throws IOException {
 		return new BufferedInputStream(stream);
 	}
-	
+
 	/**
 	 * Creates a new input stream. If the file name ends with the gz ext,
 	 * The stream will be automatically wrapped into a GZInputStream.
@@ -500,15 +504,15 @@ public class FileUtils {
 	 */
 	public static InputStream newInputStream(Path file) throws IOException {
 		InputStream inputStream = Files.newInputStream(file);
-		
+
 		if (file.getFileName().toString().toLowerCase().endsWith("gz")) {
 			// Cope with gzipped files
 			inputStream = new GZIPInputStream(inputStream);
 		}
-		
+
 		return inputStream;
 	}
-	
+
 	/**
 	 * New output stream.
 	 *
@@ -532,7 +536,7 @@ public class FileUtils {
 	public static boolean isHidden(Path file) throws IOException {
 		return exists(file) && Files.isHidden(file);
 	}
-	
+
 	/**
 	 * Checks if is file.
 	 *
@@ -567,10 +571,10 @@ public class FileUtils {
 	 */
 	public static boolean copy(Path source, Path dest) throws IOException {
 		Files.copy(source, dest);
-		
+
 		return true;
 	}
-	
+
 	/**
 	 * Mv.
 	 *
@@ -593,15 +597,15 @@ public class FileUtils {
 	public static boolean mkdir(Path dir) throws IOException {
 		if (!exists(dir)) {
 			LOG.info("Creating directory {}...", dir);
-			
+
 			Files.createDirectories(dir);
-			
+
 			return true;
 		} else {
 			return false;
 		}
 	}
-	
+
 	/**
 	 * Rm.
 	 *
@@ -612,14 +616,14 @@ public class FileUtils {
 		if (!exists(dir) || !isDirectory(dir)) {
 			return;
 		}
-		
+
 		Deque<Path> stack = new ArrayDeque<Path>();
 
 		stack.push(dir);
-		
+
 		rm(stack);
 	}
-	
+
 	/**
 	 * Recursively empty a directory, but doesn't delete the directory
 	 * itself.
@@ -631,18 +635,18 @@ public class FileUtils {
 		if (!exists(dir) || !isDirectory(dir)) {
 			return;
 		}
-		
+
 		Deque<Path> stack = new ArrayDeque<Path>();
 
 		List<Path> files = ls(dir);
-		
+
 		for (Path file : files) {
 			stack.push(file);
 		}
-		
+
 		rm(stack);
 	}
-	
+
 	/**
 	 * Rm.
 	 *
@@ -651,16 +655,16 @@ public class FileUtils {
 	 */
 	private static void rm(Deque<Path> stack) throws IOException {
 		Path path;
-		
+
 		while (!stack.isEmpty()) {
 			path = stack.pop();
-			
+
 			if (isDirectory(path)) {
 				List<Path> files = ls(path);
-				
+
 				if (files.size() > 0) {
 					stack.push(path);
-					
+
 					for (Path file : files) {
 						stack.push(file);
 					}
@@ -672,7 +676,7 @@ public class FileUtils {
 			}
 		}
 	}
-	
+
 	/**
 	 * New gzip input stream.
 	 *
@@ -693,11 +697,11 @@ public class FileUtils {
 	 */
 	public static void write(Path path, byte[] bytes) throws IOException {
 		FileOutputStream stream = new FileOutputStream(path.toFile());
-		
+
 		try {
-		    stream.write(bytes);
+			stream.write(bytes);
 		} finally {
-		    stream.close();
+			stream.close();
 		}
 	}
 
@@ -733,7 +737,7 @@ public class FileUtils {
 	public static RandomAccessFile newRandomAccess(Path file) throws FileNotFoundException {
 		return new RandomAccessFile(file.toFile(), "r");
 	}
-	
+
 
 
 
@@ -745,5 +749,139 @@ public class FileUtils {
 	 */
 	public static ZipOutputStream zip(OutputStream output) {
 		return new ZipOutputStream(output);
+	}
+
+	public static BufferedReader newBufferedReader(ZipFile file, ZipEntry entry) throws IOException {
+		return newBufferedReader(newBufferedInputStream(file, entry));
+	}
+
+	public static InputStream newBufferedInputStream(ZipFile file, ZipEntry entry) throws IOException {
+		return newBufferedInputStream(newInputStream(file, entry));
+	}
+
+	public static InputStream newInputStream(ZipFile file, ZipEntry entry) throws IOException {
+		return file.getInputStream(entry);
+	}
+
+	/**
+	 * Open a zip file.
+	 * 
+	 * @param file
+	 * @return
+	 * @throws ZipException
+	 * @throws IOException
+	 */
+	public static ZipFile newZipFile(Path file) throws ZipException, IOException {
+		return new ZipFile(file.toFile());
+	}
+	
+	public static void tokenize(Path file, 
+			TokenFunction tf) throws IOException {
+		tokenize(file, true, tf);
+	}
+	
+	public static void tokenize(Path file,
+			boolean skipHeader,
+			TokenFunction tf) throws IOException {
+		BufferedReader reader = FileUtils.newBufferedReader(file);
+		
+		try {
+			tokenize(reader, skipHeader, tf);
+		} finally {
+			reader.close();
+		}
+	}
+
+	
+	public static void tokenize(BufferedReader reader, 
+			TokenFunction tf) throws IOException {
+		tokenize(reader, true, tf);
+	}
+	
+	/**
+	 * Run through reader tokenizing each line for processing. Reader is
+	 * closed after function has been applied.
+	 * 
+	 * @param reader
+	 * @param tf
+	 * @throws IOException 
+	 */
+	public static void tokenize(BufferedReader reader, 
+			boolean skipHeader,
+			TokenFunction tf) throws IOException {
+		//try {
+		// Skip header
+		if (skipHeader) {
+			reader.readLine();
+		}
+		
+		String line;
+		List<String> tokens;
+
+		while ((line = reader.readLine()) != null) {
+			if (Io.isEmptyLine(line)) {
+				continue;
+			}
+			
+			tokens = TextUtils.tabSplit(line);
+
+			tf.parse(tokens);
+		}
+		//} finally {
+		//	reader.close();
+		//}
+	}
+	
+	public static void lines(Path file, 
+			LineFunction lf) throws IOException {
+		lines(file, true, lf);
+	}
+	
+	public static void lines(Path file,
+			boolean skipHeader,
+			LineFunction lf) throws IOException {
+		BufferedReader reader = FileUtils.newBufferedReader(file);
+		
+		try {
+			lines(reader, skipHeader, lf);
+		} finally {
+			reader.close();
+		}
+	}
+	
+	public static void lines(BufferedReader reader, 
+			LineFunction lf) throws IOException {
+		lines(reader, true, lf);
+	}
+	
+	/**
+	 * Run through reader tokenizing each line for processing. Reader is
+	 * closed after function has been applied.
+	 * 
+	 * @param reader
+	 * @param tf
+	 * @throws IOException 
+	 */
+	public static void lines(BufferedReader reader, 
+			boolean skipHeader,
+			LineFunction lf) throws IOException {
+		//try {
+		// Skip header
+		if (skipHeader) {
+			reader.readLine();
+		}
+		
+		String line;
+
+		while ((line = reader.readLine()) != null) {
+			if (Io.isEmptyLine(line)) {
+				continue;
+			}
+			
+			lf.parse(line);
+		}
+		//} finally {
+		//	reader.close();
+		//}
 	}
 }
