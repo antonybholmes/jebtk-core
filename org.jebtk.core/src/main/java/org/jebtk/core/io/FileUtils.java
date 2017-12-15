@@ -775,9 +775,8 @@ public class FileUtils {
 		return new ZipFile(file.toFile());
 	}
 	
-	public static void tokenize(Path file, 
-			TokenFunction tf) throws IOException {
-		tokenize(file, true, tf);
+	public static void tokenize(Path file, TokenFunction tf) throws IOException {
+		tokenize(file, false, tf);
 	}
 	
 	public static void tokenize(Path file,
@@ -795,7 +794,7 @@ public class FileUtils {
 	
 	public static void tokenize(BufferedReader reader, 
 			TokenFunction tf) throws IOException {
-		tokenize(reader, true, tf);
+		tokenize(reader, false, tf);
 	}
 	
 	/**
@@ -834,7 +833,7 @@ public class FileUtils {
 	
 	public static void lines(Path file, 
 			LineFunction lf) throws IOException {
-		lines(file, true, lf);
+		lines(file, false, lf);
 	}
 	
 	public static void lines(Path file,
@@ -851,7 +850,7 @@ public class FileUtils {
 	
 	public static void lines(BufferedReader reader, 
 			LineFunction lf) throws IOException {
-		lines(reader, true, lf);
+		lines(reader, false, lf);
 	}
 	
 	/**
@@ -874,14 +873,39 @@ public class FileUtils {
 		String line;
 
 		while ((line = reader.readLine()) != null) {
-			if (Io.isEmptyLine(line)) {
-				continue;
+			if (!Io.isEmptyLine(line)) {
+				lf.parse(line);
 			}
-			
-			lf.parse(line);
 		}
 		//} finally {
 		//	reader.close();
 		//}
+	}
+	
+	public static final List<String> readLines(Path file, boolean skipHeader) throws IOException {
+		LOG.info("Load list from {}, {}...", file, skipHeader);
+
+		BufferedReader reader = newBufferedReader(file);
+
+		String line;
+
+		List<String> rows = new ArrayList<String>();
+
+		try {
+
+			if (skipHeader) {
+				reader.readLine();
+			}
+
+			while ((line = reader.readLine()) != null) {
+				List<String> tokens = TextUtils.tabSplit(line);
+
+				rows.add(tokens.get(0));
+			}
+		} finally {
+			reader.close();
+		}
+
+		return rows;
 	}
 }

@@ -17,29 +17,22 @@ package org.jebtk.core.collections;
 
 // TODO: Auto-generated Javadoc
 /**
- * Hashmap that automatically adds a default value if a key does not exist.
+ * The Class DefaultTreeMapCreator.
  *
  * @param <K> the key type
  * @param <V> the value type
  */
-public class DefaultTreeMap<K, V> extends IterTreeMap<K, V> {
-	
-	/**
-	 * The constant serialVersionUID.
-	 */
-	private static final long serialVersionUID = 1L;
+public class DefaultIntObjMapCreator<V> implements IterMapCreator<Integer, V> {
 
-	/**
-	 * The member default value.
-	 */
+	/** The m default value. */
 	private EntryCreator<V> mDefaultValue;
 
 	/**
-	 * Instantiates a new auto hash map.
+	 * Instantiates a new default tree map creator.
 	 *
 	 * @param defaultValue the default value
 	 */
-	public DefaultTreeMap(V defaultValue) {
+	public DefaultIntObjMapCreator(V defaultValue) {
 		this(new ValueCreator<V>(defaultValue));
 	}
 	
@@ -48,33 +41,18 @@ public class DefaultTreeMap<K, V> extends IterTreeMap<K, V> {
 	 *
 	 * @param defaultValue the default value
 	 */
-	public DefaultTreeMap(EntryCreator<V> defaultValue) {
+	public DefaultIntObjMapCreator(EntryCreator<V> defaultValue) {
 		mDefaultValue = defaultValue;
 	}
-	
+
 	/* (non-Javadoc)
-	 * @see java.util.HashMap#get(java.lang.Object)
+	 * @see org.abh.common.collections.EntryCreator#newEntry()
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
-	public V get(Object key) {
-		return getValue((K)key);
+	public IterMap<Integer, V> newEntry() {
+		return new DefaultIntObjMap<V>(mDefaultValue);
 	}
 	
-	/**
-	 * Gets the value.
-	 *
-	 * @param key the key
-	 * @return the value
-	 */
-	public V getValue(K key) {
-		if (!containsKey(key)) {
-			put(key, mDefaultValue.newEntry());
-		}
-
-		return super.get(key);
-	}
-
 	/**
 	 * Creates a new Default Tree Map.
 	 *
@@ -83,7 +61,7 @@ public class DefaultTreeMap<K, V> extends IterTreeMap<K, V> {
 	 * @param defaultValue the default value
 	 * @return the map
 	 */
-	public static <KK, VV> IterMap<KK, VV> create(VV defaultValue) {
+	public static <VV> IterMapCreator<Integer, VV> create(VV defaultValue) {
 		return create(new ValueCreator<VV>(defaultValue));
 	}
 	
@@ -95,7 +73,7 @@ public class DefaultTreeMap<K, V> extends IterTreeMap<K, V> {
 	 * @param defaultValue the default value
 	 * @return the map
 	 */
-	public static <KK, VV> IterMap<KK, VV> create(EntryCreator<VV> defaultValue) {
-		return new DefaultTreeMap<KK, VV>(defaultValue);
+	public static <VV> IterMapCreator<Integer, VV> create(EntryCreator<VV> defaultValue) {
+		return new DefaultIntObjMapCreator<VV>(defaultValue);
 	}
 }

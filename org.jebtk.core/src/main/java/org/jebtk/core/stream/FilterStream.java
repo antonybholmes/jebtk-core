@@ -25,12 +25,6 @@ public class FilterStream<T> extends ContainerStream<T> {
 
 	/** The m filter. */
 	private Filter<T> mFilter;
-	
-	/** The m current. */
-	private T mCurrent;
-	
-	/** The m next. */
-	private T mNext;
 
 	/**
 	 * Instantiates a new filter stream.
@@ -42,35 +36,6 @@ public class FilterStream<T> extends ContainerStream<T> {
 		super(stream);
 
 		mFilter = filter;
-
-		// Set the lookahead to the first item.
-		mNext = getNext();
-	}
-
-	/* (non-Javadoc)
-	 * @see org.abh.common.stream.StreamIterator#peek()
-	 */
-	@Override
-	public T peek() {
-		if (mCurrent != null) {
-			// We are sitting on a valid item
-			return mCurrent;
-		} else if (mNext != null) {
-			// We are at the start of the iterator so only mNext is populated
-			// so we use that as the current peek
-			return mNext;
-		} else {
-			// There is nothing to peek at.
-			return null;
-		}
-	}
-
-	/* (non-Javadoc)
-	 * @see java.util.Iterator#hasNext()
-	 */
-	@Override
-	public boolean hasNext() {
-		return mNext != null;
 	}
 
 	/* (non-Javadoc)
@@ -78,13 +43,7 @@ public class FilterStream<T> extends ContainerStream<T> {
 	 */
 	@Override
 	public T next() {
-		// We set the current to what we have already read
-		mCurrent = mNext;
-
-		// Move the pointer to the next item
-		mNext = getNext();
-
-		return mCurrent;
+		return getNext();
 	}
 
 	/**
@@ -93,18 +52,16 @@ public class FilterStream<T> extends ContainerStream<T> {
 	 * @return the next
 	 */
 	private T getNext() {
-		T next = null;
-
-		while (mStream.hasNext()) {
-			T item = mStream.next();
-
-			if (item != null) {
-				if (mFilter.keep(item)) {
-					return item;
-				}
+		T next = super.next();
+		
+		while (!mFilter.keep(next)) {
+			next = super.next();
+			
+			if (next == null) {
+				break;
 			}
 		}
 
-		return next;
+		 return next;
 	}
 }

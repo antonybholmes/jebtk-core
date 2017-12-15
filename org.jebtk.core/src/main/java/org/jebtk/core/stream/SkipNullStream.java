@@ -13,24 +13,36 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jebtk.core.collections;
+package org.jebtk.core.stream;
 
-import java.io.Serializable;
-import java.util.Map;
-
+// TODO: Auto-generated Javadoc
 /**
- * Iter maps allow the keys to be iterated over to reduce coding.
- * 
+ * Remove nulls
  *
- * @param <K> the key type
- * @param <V> the value type
+ * @param <T> the generic type
  */
-public interface IterMap<K, V> extends Map<K, V>, Iterable<K>, Serializable {
+public class SkipNullStream<T> extends ContainerStream<T> {
+
 	/**
-	 * Returns the first key in the map. The notion of first depends on the
-	 * map implementation.
-	 * 
-	 * @return
+	 * Instantiates a new filter stream.
+	 *
+	 * @param stream the stream
+	 * @param n the n
 	 */
-	public K first();
+	public SkipNullStream(Stream<T> stream) {
+		super(stream);
+	}
+
+	/* (non-Javadoc)
+	 * @see java.util.Iterator#next()
+	 */
+	@Override
+	public T next() {
+		T next = null;
+		
+		//
+		while ((next = super.next()) != null);
+
+		return next;
+	}
 }

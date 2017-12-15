@@ -30,5 +30,5 @@ public interface StreamIterator<T> extends Iterator<T> {
 	 *
 	 * @return the t
 	 */
-	public T peek();
+	//public T peek();
 }

@@ -38,14 +38,6 @@ public class ContainerStream<T> extends Stream<T> {
 	}
 
 	/* (non-Javadoc)
-	 * @see org.abh.common.stream.StreamIterator#peek()
-	 */
-	@Override
-	public T peek() {
-		return mStream.peek();
-	}
-
-	/* (non-Javadoc)
 	 * @see java.util.Iterator#hasNext()
 	 */
 	@Override

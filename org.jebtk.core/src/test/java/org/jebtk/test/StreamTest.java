@@ -35,8 +35,8 @@ public class StreamTest {
 		values.add(3);
 		values.add(4);
 		
-		Stream<Integer> stream = Stream.stream(values);
-		
+		Stream<Integer> stream = Stream.of(values);
+
 		assertTrue("Stream list: " + stream.toList().toString(), 
 				stream.toList().toString().equals("[1, 2, 3, 4]"));
 	}
@@ -51,9 +51,7 @@ public class StreamTest {
 		values.add(4);
 		values.add(4);
 		
-		IntStream stream = Stream.intStream(values);
-		
-		double s = stream.mapToDouble().mean();
+		double s = Stream.of(values).asDouble().mean();
 		
 		assertEquals("Stream mean: " + s, 2.8, s, 0.001);
 	}
@@ -68,10 +66,10 @@ public class StreamTest {
 		values.add("4");
 		
 		Stream<Integer> stream = Stream
-				.stream(values)
-				.mapToString()
+				.of(values)
+				.asString()
 				.emptyFilter()
-				.mapToInt();
+				.asInt();
 		
 		List<Integer> s = stream.toList();
 		
@@ -89,9 +87,9 @@ public class StreamTest {
 		values.add("4");
 		
 		IntStream stream = Stream
-				.stream(values)
-				.mapToInt()
-				.mapToInt();
+				.of(values)
+				.asInt()
+				.asInt();
 		
 		int s = stream.min();
 		
@@ -108,8 +106,8 @@ public class StreamTest {
 		values.add("4");
 		
 		IntStream stream = Stream
-				.stream(values)
-				.mapToInt();
+				.of(values)
+				.asInt();
 		
 		int s = stream.max();
 		
@@ -132,9 +130,9 @@ public class StreamTest {
 		l2.add("8");
 		
 		Stream<Integer> stream = Stream
-				.stream(l1)
+				.of(l1)
 				.cat(l2)
-				.mapToInt();
+				.asInt();
 		
 		List<Integer> s = stream.toList();
 		

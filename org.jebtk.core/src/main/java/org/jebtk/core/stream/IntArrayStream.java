@@ -15,79 +15,49 @@
  */
 package org.jebtk.core.stream;
 
-import java.util.List;
-
-import org.jebtk.core.collections.CollectionUtils;
-
 // TODO: Auto-generated Javadoc
+
 /**
- * Can be used to encapsulate a single item in a stream.
+ * Holds a reference to an existing stream.
  *
  * @author Antony Holmes Holmes
  * @param <T> the generic type
  */
-public class ItemStream<T> extends Stream<T> {
-	
-	/** The m item. */
-	private T mItem;
-	
+public class IntArrayStream extends Stream<Integer> {
+
+	private final int[] mArray;
+	private int mPc = 0;
+
 	/**
-	 * Instantiates a new base stream.
+	 * Instantiates a new container stream.
 	 *
-	 * @param item the item
+	 * @param stream the stream
 	 */
-	public ItemStream(T item) {
-		mItem = item;
+	public IntArrayStream(int... array) {
+		mArray = array;
 	}
-	
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.stream.Stream#toList()
-	 */
-	@Override
-	public List<T> toList() {
-		return CollectionUtils.asList(mItem);
-	}
-
-	/* (non-Javadoc)
-	 * @see org.abh.common.stream.Stream#size()
-	 */
-	@Override
-	public int size() {
-		return 1;
-	}
-
-	/* (non-Javadoc)
-	 * @see org.abh.common.stream.StreamIterator#peek()
-	 */
-	@Override
-	public T peek() {
-		return mItem;
-	}
-
 
 	/* (non-Javadoc)
 	 * @see java.util.Iterator#hasNext()
 	 */
 	@Override
 	public boolean hasNext() {
-		return true;
+		return mPc < mArray.length - 1;
 	}
-
 
 	/* (non-Javadoc)
 	 * @see java.util.Iterator#next()
 	 */
 	@Override
-	public T next() {
-		return mItem;
+	public Integer next() {
+		return mArray[mPc++];
 	}
 	
 	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
+	 * @see org.abh.common.stream.Stream#size()
 	 */
 	@Override
-	public String toString() {
-		return mItem.toString();
+	public int size() {
+		return mArray.length;
 	}
 }

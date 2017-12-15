@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Antony Holmes
+ * Copyright 2017 Antony Holmes
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,22 +15,24 @@
  */
 package org.jebtk.core.collections;
 
-import java.io.Serializable;
-import java.util.Map;
+import java.util.TreeMap;
 
+// TODO: Auto-generated Javadoc
 /**
- * Iter maps allow the keys to be iterated over to reduce coding.
- * 
+ * The Class OrderedTreeMap.
  *
  * @param <K> the key type
  * @param <V> the value type
  */
-public interface IterMap<K, V> extends Map<K, V>, Iterable<K>, Serializable {
+public class UnorderedTreeMap<K, V> extends MapContainer<K, V> {
+	
+	/** The Constant serialVersionUID. */
+	private static final long serialVersionUID = 1L;
+	
 	/**
-	 * Returns the first key in the map. The notion of first depends on the
-	 * map implementation.
-	 * 
-	 * @return
+	 * Instantiates a new ordered tree map.
 	 */
-	public K first();
+	public UnorderedTreeMap() {
+		super(new TreeMap<K, V>());
+	}
 }

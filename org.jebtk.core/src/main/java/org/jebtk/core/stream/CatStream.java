@@ -44,18 +44,6 @@ public class CatStream<T> extends Stream<T> {
 	}
 
 	/* (non-Javadoc)
-	 * @see org.abh.common.stream.StreamIterator#peek()
-	 */
-	@Override
-	public T peek() {
-		if (first) {
-			return mS1.peek();
-		} else {
-			return mS2.peek();
-		}
-	}
-
-	/* (non-Javadoc)
 	 * @see java.util.Iterator#hasNext()
 	 */
 	@Override

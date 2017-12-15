@@ -70,12 +70,12 @@ public abstract class Stream<T> implements StreamIterator<T>, Iterable<T> {
 		public Integer apply(T item) {
 			if (item instanceof Integer) {
 				return (Integer)item;
+			} else if (item instanceof Long) {
+				return ((Long)item).intValue();
 			} else if (item instanceof Double) {
 				return ((Double)item).intValue();
-			} else if (item instanceof String) {
-				return (int)Double.parseDouble((String)item);
 			} else {
-				return (int)Double.parseDouble(item.toString());
+				return (int)Integer.parseInt(item.toString());
 			}
 		}
 	}
@@ -94,10 +94,10 @@ public abstract class Stream<T> implements StreamIterator<T>, Iterable<T> {
 		public Double apply(T item) {
 			if (item instanceof Double) {
 				return (Double)item;
+			} else if (item instanceof Long) {
+				return ((Long)item).doubleValue();
 			} else if (item instanceof Integer) {
 				return ((Integer)item).doubleValue();
-			} else if (item instanceof String) {
-				return Double.parseDouble((String)item);
 			} else {
 				return Double.parseDouble(item.toString());
 			}
@@ -147,7 +147,7 @@ public abstract class Stream<T> implements StreamIterator<T>, Iterable<T> {
 	 *
 	 * @param <T> the generic type
 	 */
-	private static class ToStringFunction<T> implements StringMapFunction<T> {
+	private static class AsStringFunction<T> implements StringMapFunction<T> {
 
 		/* (non-Javadoc)
 		 * @see org.abh.common.Function#apply(java.lang.Object)
@@ -173,6 +173,7 @@ public abstract class Stream<T> implements StreamIterator<T>, Iterable<T> {
 			return (V)item;
 		}
 	}
+
 	
 	/**
 	 * Filter the stream to remove values. Streams cannot contain nulls.
@@ -205,6 +206,10 @@ public abstract class Stream<T> implements StreamIterator<T>, Iterable<T> {
 		return new JumpStream<T>(this, n);
 	}
 	
+	public Stream<T> skipNulls() {
+		return new SkipNullStream<T>(this);
+	}
+	
 	/**
 	 * Map the values in a stream to a different type.
 	 *
@@ -224,8 +229,8 @@ public abstract class Stream<T> implements StreamIterator<T>, Iterable<T> {
 	 * @param f the f
 	 * @return the int stream
 	 */
-	public IntStream mapToInt(Function<T, Integer> f) {
-		return map(f).mapToInt();
+	public IntStream asInt(Function<T, Integer> f) {
+		return map(f).asInt();
 	}
 	
 	/**
@@ -233,16 +238,16 @@ public abstract class Stream<T> implements StreamIterator<T>, Iterable<T> {
 	 *
 	 * @return the int stream
 	 */
-	public IntStream mapToInt() {
+	public IntStream asInt() {
 		return new IntStream(map(new IntMapFunction<T>()));
 	}
 	
 	/**
-	 * Convert a stream to a double stream.
+	 * Map stream to a double stream.
 	 *
 	 * @return the double stream
 	 */
-	public DoubleStream mapToDouble() {
+	public DoubleStream asDouble() {
 		return new DoubleStream(map(new DoubleMapFunction<T>()));
 	}
 	
@@ -254,8 +259,8 @@ public abstract class Stream<T> implements StreamIterator<T>, Iterable<T> {
 	 * @param f the f
 	 * @return the string stream
 	 */
-	public StringStream mapToString(Function<T, String> f) {
-		return map(f).mapToString();
+	public StringStream asString(Function<T, String> f) {
+		return map(f).asString();
 	}
 	
 	/**
@@ -263,8 +268,8 @@ public abstract class Stream<T> implements StreamIterator<T>, Iterable<T> {
 	 *
 	 * @return the string stream
 	 */
-	public StringStream mapToString() {
-		return new StringStream(map(new ToStringFunction<T>()));
+	public StringStream asString() {
+		return new StringStream(map(new AsStringFunction<T>()));
 	}
 	
 	/**
@@ -309,8 +314,8 @@ public abstract class Stream<T> implements StreamIterator<T>, Iterable<T> {
 	 * @param values the values
 	 * @return the stream
 	 */
-	public Stream<T> cat(Collection<T> values) {
-		return cat(stream(values));
+	public Stream<T> cat(Iterable<T> values) {
+		return cat(of(values));
 	}
 	
 	/**
@@ -379,7 +384,7 @@ public abstract class Stream<T> implements StreamIterator<T>, Iterable<T> {
 	 * 						by {@code delimiter}.
 	 */
 	public String join(String delimiter) {
-		return mapToString().join(delimiter);
+		return asString().join(delimiter);
 	}
 	
 	/**
@@ -432,7 +437,7 @@ public abstract class Stream<T> implements StreamIterator<T>, Iterable<T> {
 	 */
 	@Override
 	public void remove() {
-		// Do nothing
+		throw new UnsupportedOperationException("Items cannot be removed from streams.");
 	}
 	
 	/**
@@ -452,7 +457,7 @@ public abstract class Stream<T> implements StreamIterator<T>, Iterable<T> {
 	 */
 	@Override
 	public Iterator<T> iterator() {
-		return toList().iterator();
+		return this; //toList().iterator();
 	}
 	
 	//
@@ -466,30 +471,12 @@ public abstract class Stream<T> implements StreamIterator<T>, Iterable<T> {
 	 * @param iter the iter
 	 * @return the stream
 	 */
-	public static <T> Stream<T> stream(Iterable<T> iter) {
+	public static <T> Stream<T> of(Iterable<T> iter) {
 		return new IterableStream<T>(iter);
 	}
 	
-	/**
-	 * Stream.
-	 *
-	 * @param <T> the generic type
-	 * @param iter the iter
-	 * @return the stream
-	 */
-	public static <T> Stream<T> stream(Iterator<T> iter) {
-		return new IteratorStream<T>(iter);
-	}
-	
-	/**
-	 * Stream.
-	 *
-	 * @param <T> the generic type
-	 * @param items the items
-	 * @return the stream
-	 */
-	public static <T> Stream<T> stream(Collection<T> items) {
-		return new CollectionStream<T>(items);
+	public static <T> Stream<T> of(Collection<T> iter) {
+		return new CollectionStream<T>(iter);
 	}
 	
 	/**
@@ -499,8 +486,16 @@ public abstract class Stream<T> implements StreamIterator<T>, Iterable<T> {
 	 * @param items the items
 	 * @return the stream
 	 */
-	public static <T> Stream<T> stream(T items) {
-		return new ItemStream<T>(items);
+	public static <T> Stream<T> of(T item) {
+		return new SingletonStream<T>(item);
+	}
+	
+	public static Stream<Integer> of(int... values) {
+		return new IntArrayStream(values);
+	}
+	
+	public static Stream<Double> of(double... values) {
+		return new DoubleArrayStream(values);
 	}
 
 	/**
@@ -509,8 +504,16 @@ public abstract class Stream<T> implements StreamIterator<T>, Iterable<T> {
 	 * @param values the values
 	 * @return the int stream
 	 */
-	public static IntStream intStream(List<Integer> values) {
-		return stream(values).mapToInt();
+	public static IntStream asInt(Iterable<Integer> values) {
+		return of(values).asInt();
+	}
+	
+	public static IntStream asInt(Collection<Integer> values) {
+		return of(values).asInt();
+	}
+	
+	public static IntStream asInt(int... values) {
+		return of(values).asInt();
 	}
 	
 	/**
@@ -519,8 +522,16 @@ public abstract class Stream<T> implements StreamIterator<T>, Iterable<T> {
 	 * @param values the values
 	 * @return the double stream
 	 */
-	public static DoubleStream doubleStream(List<Double> values) {
-		return stream(values).mapToDouble();
+	public static DoubleStream asDouble(Iterable<Double> values) {
+		return of(values).asDouble();
+	}
+	
+	public static DoubleStream asDouble(Collection<Double> values) {
+		return of(values).asDouble();
+	}
+	
+	public static DoubleStream asDouble(double... values) {
+		return of(values).asDouble();
 	}
 	
 	/**
@@ -529,15 +540,15 @@ public abstract class Stream<T> implements StreamIterator<T>, Iterable<T> {
 	 * @param values the values
 	 * @return the string stream
 	 */
-	public static StringStream stringStream(List<String> values) {
-		return stream(values).mapToString();
+	public static StringStream asString(Iterable<String> values) {
+		return of(values).asString();
 	}
 	
-	public static <TT, VV> Stream<VV> cast(List<TT> values) {
-		return stream(values).cast();
+	public static StringStream asString(Collection<String> values) {
+		return of(values).asString();
 	}
 	
 	public static <TT, VV> Stream<VV> cast(Iterable<TT> values) {
-		return stream(values).cast();
+		return of(values).cast();
 	}
 }

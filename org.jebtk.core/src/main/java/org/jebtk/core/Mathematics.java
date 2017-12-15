@@ -1319,6 +1319,12 @@ public class Mathematics {
 
 		return ret;
 	}
+	
+	public static int rand(int max) {
+		Random rand = new Random();
+
+		return rand.nextInt(max);
+	}
 
 	/**
 	 * Rand subset without replacement.

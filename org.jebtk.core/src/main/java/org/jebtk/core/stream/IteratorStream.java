@@ -54,35 +54,12 @@ public class IteratorStream<T> extends Stream<T> {
 	}
 
 	/* (non-Javadoc)
-	 * @see org.abh.common.stream.Stream#size()
-	 */
-	@Override
-	public int size() {
-		return -1;
-	}
-
-
-	/* (non-Javadoc)
-	 * @see org.abh.common.stream.StreamIterator#peek()
-	 */
-	@Override
-	public T peek() {
-		if (mCurrent == null) {
-			next();
-		}
-		
-		return mCurrent;
-	}
-
-
-	/* (non-Javadoc)
 	 * @see java.util.Iterator#hasNext()
 	 */
 	@Override
 	public boolean hasNext() {
 		return mIter.hasNext();
 	}
-
 
 	/* (non-Javadoc)
 	 * @see java.util.Iterator#next()

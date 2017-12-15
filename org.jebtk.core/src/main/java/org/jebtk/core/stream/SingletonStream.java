@@ -15,39 +15,40 @@
  */
 package org.jebtk.core.stream;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
+
+import org.jebtk.core.collections.CollectionUtils;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class BaseStream encapulates an initial collection with the intent
- * of apply further streams to process the list.
+ * Can be used to encapsulate a single item in a stream.
  *
+ * @author Antony Holmes Holmes
  * @param <T> the generic type
  */
-public class CollectionStream<T> extends IteratorStream<T> {
+public class SingletonStream<T> extends Stream<T> {
 	
-	/** The m items. */
-	private Collection<T> mItems;
+	/** The m item. */
+	private T mItem;
+	
+	private boolean mNext = true;
 	
 	/**
 	 * Instantiates a new base stream.
 	 *
-	 * @param items the items
+	 * @param item the item
 	 */
-	public CollectionStream(Collection<T> items) {
-		super(items.iterator());
-		
-		mItems = items;
+	public SingletonStream(T item) {
+		mItem = item;
 	}
+	
 	
 	/* (non-Javadoc)
 	 * @see org.abh.common.stream.Stream#toList()
 	 */
 	@Override
 	public List<T> toList() {
-		return new ArrayList<T>(mItems);
+		return CollectionUtils.asList(mItem);
 	}
 
 	/* (non-Javadoc)
@@ -55,6 +56,32 @@ public class CollectionStream<T> extends IteratorStream<T> {
 	 */
 	@Override
 	public int size() {
-		return mItems.size();
+		return 1;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.util.Iterator#hasNext()
+	 */
+	@Override
+	public boolean hasNext() {
+		return mNext;
+	}
+
+
+	/* (non-Javadoc)
+	 * @see java.util.Iterator#next()
+	 */
+	@Override
+	public T next() {
+		mNext = false;
+		return mItem;
+	}
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return mItem.toString();
 	}
 }

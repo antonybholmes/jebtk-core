@@ -20,7 +20,8 @@ import org.jebtk.core.Mathematics;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class DoubleStream.
+ * The Class DoubleStream is a wrapper for a generic Stream<Double> providing
+ * extra numerical functions.
  */
 public class DoubleStream extends NumberStream<Double> {
 
@@ -121,7 +122,7 @@ public class DoubleStream extends NumberStream<Double> {
 	/**
 	 * The Class MultiplyFunction.
 	 */
-	private static class MultiplyFunction implements Function<Double, Double>  {
+	private static class MultiplyFunction implements Function<Double, Double> {
 
 		/** The m places. */
 		private double mV;

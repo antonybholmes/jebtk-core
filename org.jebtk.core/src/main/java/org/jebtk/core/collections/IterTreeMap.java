@@ -31,6 +31,11 @@ public class IterTreeMap<K, V> extends TreeMap<K, V> implements IterMap<K, V> {
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 	
+	@Override
+	public K first() {
+		return iterator().next();
+	}
+	
 	/* (non-Javadoc)
 	 * @see java.lang.Iterable#iterator()
 	 */
@@ -44,7 +49,7 @@ public class IterTreeMap<K, V> extends TreeMap<K, V> implements IterMap<K, V> {
 	 * 
 	 * @return		A new IterTreeMap.
 	 */
-	//public static <KK, VV> IterTreeMap<KK, VV> create() {
-	//	return new IterTreeMap<KK, VV>();
-	//}
+	public static <KK, VV> IterTreeMap<KK, VV> newIterTreeMap() {
+		return new IterTreeMap<KK, VV>();
+	}
 }

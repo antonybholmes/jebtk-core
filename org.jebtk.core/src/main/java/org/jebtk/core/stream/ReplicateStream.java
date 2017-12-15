@@ -17,7 +17,8 @@ package org.jebtk.core.stream;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class FilterStream.
+ * The Class ReplicateStream replicates each value in a given stream n times
+ * so that the length of a stream can be expanded.
  *
  * @param <T> the generic type
  */
@@ -27,10 +28,10 @@ public class ReplicateStream<T> extends ContainerStream<T> {
 	private T mNext;
 
 	/** The m N. */
-	private int mN;
+	private final int mN;
 
 	/** The m C. */
-	private int mC;
+	private int mC = 0;
 
 	/**
 	 * Instantiates a new filter stream.
@@ -42,19 +43,6 @@ public class ReplicateStream<T> extends ContainerStream<T> {
 		super(stream);
 
 		mN = n;
-		mC = 0;
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.stream.ContainerStream#peek()
-	 */
-	@Override
-	public T peek() {
-		if (mC % mN != 0) {
-			return mNext;
-		} else {
-			return super.peek();
-		}
 	}
 	
 	/* (non-Javadoc)

@@ -25,6 +25,7 @@ import java.util.HashMap;
  * @param <V> the value type
  */
 public class OrderedHashMap<K, V> extends OrderedMap<K, V> {
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * Instantiates a new ordered hash map.

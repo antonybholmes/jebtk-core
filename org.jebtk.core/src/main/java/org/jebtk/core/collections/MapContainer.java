@@ -37,7 +37,7 @@ public class MapContainer<K, V> implements IterMap<K, V> {
 	/**
 	 * The member map.
 	 */
-	protected Map<K, V> mMap;
+	protected final Map<K, V> mMap;
 	
 	
 	/**
@@ -153,6 +153,11 @@ public class MapContainer<K, V> implements IterMap<K, V> {
 	@Override
 	public Iterator<K> iterator() {
 		return mMap.keySet().iterator();
+	}
+	
+	@Override
+	public K first() {
+		return iterator().next();
 	}
 	
 	/* (non-Javadoc)

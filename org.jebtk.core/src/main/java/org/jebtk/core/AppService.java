@@ -48,6 +48,13 @@ public class AppService implements NameProperty {
 	
 	/** The Constant APP_HOME. */
 	public static final String APP_HOME = "app_home";
+	
+	public static final Path APP_ROOT = FileUtils.home().resolve(APP_HOME);
+	
+	public static final Path RES_DIR = APP_ROOT.resolve("res");
+	
+	/** Returns the shared module directory */
+	public static final Path MOD_DIR = RES_DIR.resolve("modules");
 
 	/** The m directory. */
 	private Path mDirectory;

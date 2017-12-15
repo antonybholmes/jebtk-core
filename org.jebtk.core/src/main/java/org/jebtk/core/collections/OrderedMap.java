@@ -83,8 +83,8 @@ public class OrderedMap<K, V> extends MapContainer<K, V> {
 	 * @param <VV> the generic type
 	 * @return the ordered map
 	 */
-	public static <KK, VV> OrderedMap<KK, VV> createKeyOrderedMap() {
-		return createKeyOrderedMap(new HashMap<KK, VV>());
+	public static <KK, VV> OrderedMap<KK, VV> newOrderedMap() {
+		return newOrderedMap(new HashMap<KK, VV>());
 	}
 	
 	/**
@@ -95,7 +95,7 @@ public class OrderedMap<K, V> extends MapContainer<K, V> {
 	 * @param map the map
 	 * @return the ordered map
 	 */
-	public static <KK, VV> OrderedMap<KK, VV> createKeyOrderedMap(Map<KK, VV> map) {
+	public static <KK, VV> OrderedMap<KK, VV> newOrderedMap(Map<KK, VV> map) {
 		return new OrderedMap<KK, VV>(map);
 	}
 }

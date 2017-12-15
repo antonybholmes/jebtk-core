@@ -486,8 +486,8 @@ public class Io {
 
 			try {
 				if (table.columnHeadings != null) {
-					writer.write(Stream.stream(table.columnHeadings)
-							.mapToString()
+					writer.write(Stream.of(table.columnHeadings)
+							.asString()
 							.join(delimiter));
 					writer.newLine();
 				}

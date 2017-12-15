@@ -55,12 +55,17 @@ public class IterHashMap<K, V> extends HashMap<K, V> implements IterMap<K, V> {
 		return keySet().iterator();
 	}
 	
+	@Override
+	public K first() {
+		return iterator().next();
+	}
+	
 	/**
 	 * Create a new IterHashMap.
 	 * 
 	 * @return		A new IterHashMap.
 	 */
-	//public static <KK, VV> IterHashMap<KK, VV> create() {
-	//	return new IterHashMap<KK, VV>();
-	//}
+	public static <KK, VV> IterHashMap<KK, VV> newIterHashMap() {
+		return new IterHashMap<KK, VV>();
+	}
 }

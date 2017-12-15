@@ -15,46 +15,49 @@
  */
 package org.jebtk.core.stream;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
 // TODO: Auto-generated Javadoc
+
 /**
- * The Class BaseStream encapulates an initial collection with the intent
- * of apply further streams to process the list.
+ * Holds a reference to an existing stream.
  *
+ * @author Antony Holmes Holmes
  * @param <T> the generic type
  */
-public class CollectionStream<T> extends IteratorStream<T> {
-	
-	/** The m items. */
-	private Collection<T> mItems;
-	
+public class DoubleArrayStream extends Stream<Double> {
+
+	private final double[] mArray;
+	private int mPc = 0;
+
 	/**
-	 * Instantiates a new base stream.
+	 * Instantiates a new container stream.
 	 *
-	 * @param items the items
+	 * @param stream the stream
 	 */
-	public CollectionStream(Collection<T> items) {
-		super(items.iterator());
-		
-		mItems = items;
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.stream.Stream#toList()
-	 */
-	@Override
-	public List<T> toList() {
-		return new ArrayList<T>(mItems);
+	public DoubleArrayStream(double... array) {
+		mArray = array;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.Iterator#hasNext()
+	 */
+	@Override
+	public boolean hasNext() {
+		return mPc < mArray.length - 1;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.util.Iterator#next()
+	 */
+	@Override
+	public Double next() {
+		return mArray[mPc++];
+	}
+	
 	/* (non-Javadoc)
 	 * @see org.abh.common.stream.Stream#size()
 	 */
 	@Override
 	public int size() {
-		return mItems.size();
+		return mArray.length;
 	}
 }

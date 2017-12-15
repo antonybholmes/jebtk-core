@@ -15,22 +15,24 @@
  */
 package org.jebtk.core.collections;
 
-import java.io.Serializable;
-import java.util.Map;
-
+// TODO: Auto-generated Javadoc
 /**
- * Iter maps allow the keys to be iterated over to reduce coding.
- * 
+ * The Class TreeMapCreator.
  *
  * @param <K> the key type
  * @param <V> the value type
  */
-public interface IterMap<K, V> extends Map<K, V>, Iterable<K>, Serializable {
-	/**
-	 * Returns the first key in the map. The notion of first depends on the
-	 * map implementation.
-	 * 
-	 * @return
+public class IntObjMapCreator<V> implements IterMapCreator<Integer, V> {
+
+	/* (non-Javadoc)
+	 * @see org.abh.lib.collections.EntryCreator#create()
 	 */
-	public K first();
+	@Override
+	public IterMap<Integer, V> newEntry() {
+		return new IntObjHashMap<V>();
+	}
+	
+	public static <VV> IterMapCreator<Integer, VV> create() {
+		return new IntObjMapCreator<VV>();
+	}
 }

@@ -15,6 +15,10 @@
  */
 package org.jebtk.core.text;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.io.Writer;
 import java.util.Collection;
 import java.util.List;
 
@@ -219,6 +223,32 @@ public class Join {
 	}
 	
 	/**
+	 * Write the string produced by the join to the writer and add a newline.
+	 * 
+	 * @param writer
+	 * @throws IOException
+	 */
+	public void println(BufferedWriter writer) throws IOException {
+		println(writer);
+		writer.newLine();
+	}
+	
+	public void println(Writer writer) throws IOException {
+		writer.write(toString());
+	}
+	
+	/**
+	 * Print to System.out.
+	 */
+	public void println() {
+		println(System.out);
+	}
+	
+	public void println(PrintStream out) {
+		out.println(toString());
+	}
+	
+	/**
 	 * Ignore empty strings.
 	 *
 	 * @return the join
@@ -301,8 +331,8 @@ public class Join {
 	 * @return the string
 	 */
 	public static <T extends Comparable<T>> String onTab(List<T> values) {
-		return Stream.stream(values)
-				.mapToString()
+		return Stream.of(values)
+				.asString()
 				.join(TextUtils.TAB_DELIMITER);
 	}
 
@@ -332,4 +362,8 @@ public class Join {
 	public static Join onDash() {
 		return on(TextUtils.DASH_DELIMITER);
 	}
+
+	
+
+	
 }

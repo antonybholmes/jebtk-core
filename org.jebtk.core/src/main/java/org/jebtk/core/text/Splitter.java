@@ -23,6 +23,7 @@ import java.util.regex.Pattern;
 import org.jebtk.core.collections.IterHashMap;
 import org.jebtk.core.collections.IterMap;
 import org.jebtk.core.collections.MaxSizeArrayList;
+import org.jebtk.core.stream.Stream;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -392,6 +393,10 @@ public class Splitter {
 	public List<String> text(final String text) {
 		return mTrimmer.trim(mSplitMode, text, mIgoreEmptyStrings, mLimit);
 	}
+	
+	public Stream<String> stream(String text) {
+		return Stream.asString(text(text));
+	}
 
 	/**
 	 * Ignore empty strings.
@@ -527,6 +532,14 @@ public class Splitter {
 	public static Splitter onSpace() {
 		return on(TextUtils.SPACE_DELIMITER);
 	}
+	
+	/**
+	 * Return a splitter that splits on semi-colons.
+	 * @return
+	 */
+	public static Splitter onSC() {
+		return on(TextUtils.SEMI_COLON_DELIMITER);
+	}
 
 	/**
 	 * On comma.
@@ -539,6 +552,8 @@ public class Splitter {
 				false,
 				-1);
 	}
+	
+	
 
 	/**
 	 * Assumes each string in values is of the form key<delimiter>value
@@ -560,4 +575,8 @@ public class Splitter {
 
 		return ret;
 	}
+
+
+
+	
 }

@@ -23,7 +23,8 @@ import org.jebtk.core.Function;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class MapStream.
+ * The Class MapStream allows values in a stream to be mapped to something
+ * else on a one to one basis.
  *
  * @param <T> the generic type
  * @param <V> the value type
@@ -48,20 +49,6 @@ public class MapStream<T, V> extends Stream<V> {
 	}
 
 	/* (non-Javadoc)
-	 * @see org.abh.common.stream.StreamIterator#peek()
-	 */
-	@Override
-	public V peek() {
-		T item = mStream.peek();
-		
-		if (item != null) {
-			return mF.apply(item);
-		} else {
-			return null;
-		}
-	}
-
-	/* (non-Javadoc)
 	 * @see java.util.Iterator#hasNext()
 	 */
 	@Override
@@ -74,13 +61,7 @@ public class MapStream<T, V> extends Stream<V> {
 	 */
 	@Override
 	public V next() {
-		T item = mStream.next();
-		
-		if (item != null) {
-			return mF.apply(item);
-		} else {
-			return null;
-		}
+		return mF.apply(mStream.next());
 	}
 
 	//

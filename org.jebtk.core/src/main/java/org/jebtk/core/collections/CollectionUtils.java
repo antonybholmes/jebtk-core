@@ -35,6 +35,7 @@ import org.jebtk.core.Function;
 import org.jebtk.core.Indexed;
 import org.jebtk.core.Mathematics;
 import org.jebtk.core.NumConvertable;
+import org.jebtk.core.sys.SysUtils;
 import org.jebtk.core.text.TextUtils;
 
 
@@ -624,7 +625,7 @@ public class CollectionUtils {
 
 		Object[] ret = new Object[l];
 		
-		System.arraycopy(list, s, ret, 0, l);
+		SysUtils.arraycopy(list, s, ret, l);
 
 		return ret;
 	}
