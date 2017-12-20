@@ -1005,6 +1005,14 @@ public class Io {
 		return dir.resolve(file);
 	}
 	
+	/**
+	 * Creates the file.
+	 *
+	 * @param dir the dir
+	 * @param file the file
+	 * @return the path
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public static final Path createFile(Path dir, String file) throws IOException {
 		return dir.resolve(file);
 	}
@@ -1124,6 +1132,14 @@ public class Io {
 		 */
 	}
 	
+	/**
+	 * Copy file.
+	 *
+	 * @param source the source
+	 * @param dest the dest
+	 * @return true, if successful
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public static final boolean copyFile(Path source, Path dest) throws IOException {
 		return FileUtils.copy(source, dest);
 	}
@@ -1280,6 +1296,13 @@ public class Io {
 		return dir.mkdirs();
 	}
 	
+	/**
+	 * Make directory.
+	 *
+	 * @param dir the dir
+	 * @return true, if successful
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public static final boolean makeDirectory(Path dir) throws IOException {
 		return FileUtils.mkdir(dir);
 	}
@@ -1343,6 +1366,14 @@ public class Io {
 		return new File(s);
 	}
 	
+	/**
+	 * Adds the extension.
+	 *
+	 * @param file the file
+	 * @param extension the extension
+	 * @return the path
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public static final Path addExtension(final Path file, 
 			final String extension) throws IOException {
 		return PathUtils.addExtension(file, extension);
@@ -1515,6 +1546,12 @@ public class Io {
 		}
 	}
 
+	/**
+	 * Gets the file ext.
+	 *
+	 * @param file the file
+	 * @return the file ext
+	 */
 	public static String getFileExt(Path file) {
 		return PathUtils.getFileExt(file);
 	}

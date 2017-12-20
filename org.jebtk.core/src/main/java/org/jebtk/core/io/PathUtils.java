@@ -185,6 +185,12 @@ public class PathUtils {
 		}
 	}
 	
+	/**
+	 * Gets the path.
+	 *
+	 * @param first the first
+	 * @return the path
+	 */
 	public static Path getPath(String first) {
 		if (first != null) {
 			return Paths.get(first);

@@ -2695,4 +2695,29 @@ public class TextUtils {
 			return name;
 		}
 	}
+
+	/**
+	 * Case insensitive search of some text for a selection of keywords. 
+	 * Returns true if any one is found.
+	 * 
+	 * @param text
+	 * @param search
+	 * @param searches
+	 * @return
+	 */
+	public static boolean find(String text, String search, String... searches) {
+		String lt = text.toLowerCase();
+		
+		if (lt.contains(search.toLowerCase())) {
+			return true;
+		}
+		
+		for (String s : searches) {
+			if (lt.contains(s.toLowerCase())) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
 }
