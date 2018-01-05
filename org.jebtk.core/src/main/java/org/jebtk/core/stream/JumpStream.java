@@ -19,37 +19,42 @@ package org.jebtk.core.stream;
 /**
  * Jump items (i.e skip)
  *
- * @param <T> the generic type
+ * @param <T>
+ *          the generic type
  */
 public class JumpStream<T> extends ContainerStream<T> {
 
-	/** The m N. */
-	private int mN;
+  /** The m N. */
+  private int mN;
 
-	/**
-	 * Instantiates a new filter stream.
-	 *
-	 * @param stream the stream
-	 * @param n the n
-	 */
-	public JumpStream(Stream<T> stream, int n) {
-		super(stream);
+  /**
+   * Instantiates a new filter stream.
+   *
+   * @param stream
+   *          the stream
+   * @param n
+   *          the n
+   */
+  public JumpStream(Stream<T> stream, int n) {
+    super(stream);
 
-		mN = Math.max(n, 1) - 1;
-	}
+    mN = Math.max(n, 1) - 1;
+  }
 
-	/* (non-Javadoc)
-	 * @see java.util.Iterator#next()
-	 */
-	@Override
-	public T next() {
-		T next = super.next();
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.util.Iterator#next()
+   */
+  @Override
+  public T next() {
+    T next = super.next();
 
-		// skip items
-		for (int i = 0; i < mN; ++i) {
-			super.next();
-		}
-		
-		return next;
-	}
+    // skip items
+    for (int i = 0; i < mN; ++i) {
+      super.next();
+    }
+
+    return next;
+  }
 }

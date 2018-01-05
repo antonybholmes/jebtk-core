@@ -19,47 +19,55 @@ import static org.jebtk.core.collections.MultiMap.DEFAULT_INITIAL_CAPACITY;
 
 // TODO: Auto-generated Javadoc
 /**
- * Creates a map of lists where the each list is initialized with an
- * default value to a given size.
+ * Creates a map of lists where the each list is initialized with an default
+ * value to a given size.
  * 
  *
- * @param <K> the key type
- * @param <V> the value type
+ * @param <K>
+ *          the key type
+ * @param <V>
+ *          the value type
  */
 public class HashSetMultiMap<K, V> extends SetMultiMap<K, V> {
-	
-	/** The Constant serialVersionUID. */
-	private static final long serialVersionUID = 1L;
 
-	/**
-	 * Instantiates a new default list multi map.
-	 *
-	 * @param initialCapacity the initial capacity
-	 */
-	public HashSetMultiMap(int initialCapacity) {
-		super(initialCapacity, new HashSetCreator<V>());
-	}
-	
-	/**
-	 * Creates the.
-	 *
-	 * @param <V1> the generic type
-	 * @param <K1> the generic type
-	 * @return the multi map
-	 */
-	public static <V1, K1> SetMultiMap<K1, V1> create() {
-		return create(DEFAULT_INITIAL_CAPACITY);
-	}
-	
-	/**
-	 * Creates the.
-	 *
-	 * @param <V1> the generic type
-	 * @param <K1> the generic type
-	 * @param initialCapacity the initial capacity
-	 * @return the multi map
-	 */
-	public static <V1, K1> SetMultiMap<K1, V1> create(int initialCapacity) {
-		return new HashSetMultiMap<K1, V1>(initialCapacity);
-	}
+  /** The Constant serialVersionUID. */
+  private static final long serialVersionUID = 1L;
+
+  /**
+   * Instantiates a new default list multi map.
+   *
+   * @param initialCapacity
+   *          the initial capacity
+   */
+  public HashSetMultiMap(int initialCapacity) {
+    super(initialCapacity, new HashSetCreator<V>());
+  }
+
+  /**
+   * Creates the.
+   *
+   * @param <V1>
+   *          the generic type
+   * @param <K1>
+   *          the generic type
+   * @return the multi map
+   */
+  public static <V1, K1> SetMultiMap<K1, V1> create() {
+    return create(DEFAULT_INITIAL_CAPACITY);
+  }
+
+  /**
+   * Creates the.
+   *
+   * @param <V1>
+   *          the generic type
+   * @param <K1>
+   *          the generic type
+   * @param initialCapacity
+   *          the initial capacity
+   * @return the multi map
+   */
+  public static <V1, K1> SetMultiMap<K1, V1> create(int initialCapacity) {
+    return new HashSetMultiMap<K1, V1>(initialCapacity);
+  }
 }

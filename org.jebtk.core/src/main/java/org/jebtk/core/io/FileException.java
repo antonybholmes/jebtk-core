@@ -23,16 +23,17 @@ import org.jebtk.core.MessageException;
  */
 public class FileException extends MessageException {
 
-	/** The Constant serialVersionUID. */
-	private static final long serialVersionUID = 1L;
+  /** The Constant serialVersionUID. */
+  private static final long serialVersionUID = 1L;
 
-	/**
-	 * Instantiates a new file exception.
-	 *
-	 * @param message the message
-	 */
-	public FileException(String message) {
-		super(message);
-	}
+  /**
+   * Instantiates a new file exception.
+   *
+   * @param message
+   *          the message
+   */
+  public FileException(String message) {
+    super(message);
+  }
 
 }

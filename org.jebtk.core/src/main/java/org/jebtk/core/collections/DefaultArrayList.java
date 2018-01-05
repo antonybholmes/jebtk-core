@@ -20,140 +20,157 @@ import java.util.List;
 
 // TODO: Auto-generated Javadoc
 /**
- * ArrayList that auto fills with default values so that it is initialized
- * to a given size.
+ * ArrayList that auto fills with default values so that it is initialized to a
+ * given size.
  *
- * @param <T> the value type
+ * @param <T>
+ *          the value type
  */
 public class DefaultArrayList<T> extends ArrayList<T> {
-	
-	/**
-	 * The constant serialVersionUID.
-	 */
-	private static final long serialVersionUID = 1L;
 
-	/** The Constant DEFAULT_SIZE. */
-	private static final int DEFAULT_SIZE = 100;
+  /**
+   * The constant serialVersionUID.
+   */
+  private static final long serialVersionUID = 1L;
 
-	/**
-	 * The member default value.
-	 */
-	private EntryCreator<T> mDefaultValue;
+  /** The Constant DEFAULT_SIZE. */
+  private static final int DEFAULT_SIZE = 100;
 
-	
-	public DefaultArrayList() {
-		this(DEFAULT_SIZE, new NullCreator<T>());
-	}
-	
-	/**
-	 * Instantiates a new default array list.
-	 *
-	 * @param defaultValue the default value
-	 */
-	public DefaultArrayList(T defaultValue) {
-		this(DEFAULT_SIZE, new ValueCreator<T>(defaultValue));
-	}
-	
-	/**
-	 * Instantiates a new auto hash map.
-	 *
-	 * @param size the size
-	 * @param defaultValue the default value
-	 */
-	public DefaultArrayList(int size, T defaultValue) {
-		this(size, new ValueCreator<T>(defaultValue));
-	}
-	
-	/**
-	 * Instantiates a new default list.
-	 *
-	 * @param size the size
-	 * @param defaultValue the default value
-	 */
-	public DefaultArrayList(int size, EntryCreator<T> defaultValue) {
-		super(size);
-		
-		mDefaultValue = defaultValue;
-		
-		//autoCreate(size);
-	}
-	
-	/* (non-Javadoc)
-	 * @see java.util.ArrayList#get(int)
-	 */
-	@Override
-	public T get(int index) {
-		autoCreate(index + 1);
+  /**
+   * The member default value.
+   */
+  private EntryCreator<T> mDefaultValue;
 
-		return super.get(index);
-	}
-	
-	@Override
-	public T set(int index, T v) {
-		autoCreate(index + 1);
+  public DefaultArrayList() {
+    this(DEFAULT_SIZE, new NullCreator<T>());
+  }
 
-		return super.set(index, v);
-	}
-	
-	/**
-	 * Auto create.
-	 *
-	 * @param size the size
-	 */
-	private void autoCreate(int size) {
-		while (size() < size) {
-			add(mDefaultValue.newEntry());	
-		}
-	}
-	
-	//
-	// Static methods
-	//
-	
-	/**
-	 * Creates the.
-	 *
-	 * @param <T1> the generic type
-	 * @param defaultValue the default value
-	 * @return the list
-	 */
-	public static <T1> List<T1> create(T1 defaultValue) {
-		return create(DEFAULT_SIZE, new ValueCreator<T1>(defaultValue));
-	}
-	
-	/**
-	 * Creates the.
-	 *
-	 * @param <T1> the generic type
-	 * @param size the size
-	 * @param defaultValue the default value
-	 * @return the list
-	 */
-	public static <T1> List<T1> create(int size, T1 defaultValue) {
-		return create(size, new ValueCreator<T1>(defaultValue));
-	}
+  /**
+   * Instantiates a new default array list.
+   *
+   * @param defaultValue
+   *          the default value
+   */
+  public DefaultArrayList(T defaultValue) {
+    this(DEFAULT_SIZE, new ValueCreator<T>(defaultValue));
+  }
 
-	/**
-	 * Creates a new {@code DefaultArrayList}.
-	 *
-	 * @param <T1> the generic type
-	 * @param defaultValue the default value
-	 * @return the list
-	 */
-	public static <T1> List<T1> create(EntryCreator<T1> defaultValue) {
-		return create(DEFAULT_SIZE, defaultValue);
-	}
-	
-	/**
-	 * Creates a new {@code DefaultArrayList}.
-	 *
-	 * @param <T1> the generic type
-	 * @param size the size
-	 * @param defaultValue the default value
-	 * @return the list
-	 */
-	public static <T1> List<T1> create(int size, 
-			EntryCreator<T1> defaultValue) {
-		return new DefaultArrayList<T1>(size, defaultValue);
-	}
+  /**
+   * Instantiates a new auto hash map.
+   *
+   * @param size
+   *          the size
+   * @param defaultValue
+   *          the default value
+   */
+  public DefaultArrayList(int size, T defaultValue) {
+    this(size, new ValueCreator<T>(defaultValue));
+  }
+
+  /**
+   * Instantiates a new default list.
+   *
+   * @param size
+   *          the size
+   * @param defaultValue
+   *          the default value
+   */
+  public DefaultArrayList(int size, EntryCreator<T> defaultValue) {
+    super(size);
+
+    mDefaultValue = defaultValue;
+
+    // autoCreate(size);
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.util.ArrayList#get(int)
+   */
+  @Override
+  public T get(int index) {
+    autoCreate(index + 1);
+
+    return super.get(index);
+  }
+
+  @Override
+  public T set(int index, T v) {
+    autoCreate(index + 1);
+
+    return super.set(index, v);
+  }
+
+  /**
+   * Auto create.
+   *
+   * @param size
+   *          the size
+   */
+  private void autoCreate(int size) {
+    while (size() < size) {
+      add(mDefaultValue.newEntry());
+    }
+  }
+
+  //
+  // Static methods
+  //
+
+  /**
+   * Creates the.
+   *
+   * @param <T1>
+   *          the generic type
+   * @param defaultValue
+   *          the default value
+   * @return the list
+   */
+  public static <T1> List<T1> create(T1 defaultValue) {
+    return create(DEFAULT_SIZE, new ValueCreator<T1>(defaultValue));
+  }
+
+  /**
+   * Creates the.
+   *
+   * @param <T1>
+   *          the generic type
+   * @param size
+   *          the size
+   * @param defaultValue
+   *          the default value
+   * @return the list
+   */
+  public static <T1> List<T1> create(int size, T1 defaultValue) {
+    return create(size, new ValueCreator<T1>(defaultValue));
+  }
+
+  /**
+   * Creates a new {@code DefaultArrayList}.
+   *
+   * @param <T1>
+   *          the generic type
+   * @param defaultValue
+   *          the default value
+   * @return the list
+   */
+  public static <T1> List<T1> create(EntryCreator<T1> defaultValue) {
+    return create(DEFAULT_SIZE, defaultValue);
+  }
+
+  /**
+   * Creates a new {@code DefaultArrayList}.
+   *
+   * @param <T1>
+   *          the generic type
+   * @param size
+   *          the size
+   * @param defaultValue
+   *          the default value
+   * @return the list
+   */
+  public static <T1> List<T1> create(int size, EntryCreator<T1> defaultValue) {
+    return new DefaultArrayList<T1>(size, defaultValue);
+  }
 }

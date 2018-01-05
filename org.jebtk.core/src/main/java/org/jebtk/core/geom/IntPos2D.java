@@ -17,130 +17,144 @@ package org.jebtk.core.geom;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class IntPos provides an immutable x y position in contrast
- * to the java.awt.Point.
+ * The Class IntPos provides an immutable x y position in contrast to the
+ * java.awt.Point.
  */
 public class IntPos2D implements Comparable<IntPos2D> {
 
-	/**
-	 * The member x.
-	 */
-	protected int mX;
+  /**
+   * The member x.
+   */
+  protected int mX;
 
-	/**
-	 * The member y.
-	 */
-	protected int mY;
+  /**
+   * The member y.
+   */
+  protected int mY;
 
-	/**
-	 * Instantiates a new int position.
-	 *
-	 * @param x the x
-	 * @param y the y
-	 */
-	public IntPos2D(int x, int y) {
-		mX = x;
-		mY = y;
-	}
+  /**
+   * Instantiates a new int position.
+   *
+   * @param x
+   *          the x
+   * @param y
+   *          the y
+   */
+  public IntPos2D(int x, int y) {
+    mX = x;
+    mY = y;
+  }
 
-	/**
-	 * Gets the x.
-	 *
-	 * @return the x
-	 */
-	public int getX() {
-		return mX;
-	}
+  /**
+   * Gets the x.
+   *
+   * @return the x
+   */
+  public int getX() {
+    return mX;
+  }
 
-	/**
-	 * Gets the y.
-	 *
-	 * @return the y
-	 */
-	public int getY() {
-		return mY;
-	}
+  /**
+   * Gets the y.
+   *
+   * @return the y
+   */
+  public int getY() {
+    return mY;
+  }
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "[" + mX + ", " + mY +"]";
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Object#toString()
+   */
+  @Override
+  public String toString() {
+    return "[" + mX + ", " + mY + "]";
+  }
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
-	@Override
-	public boolean equals(Object o) {
-		if (o instanceof IntPos2D) {
-			return compareTo((IntPos2D)o) == 0;
-		} else {
-			return false;
-		}
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Object#equals(java.lang.Object)
+   */
+  @Override
+  public boolean equals(Object o) {
+    if (o instanceof IntPos2D) {
+      return compareTo((IntPos2D) o) == 0;
+    } else {
+      return false;
+    }
+  }
 
-	/* (non-Javadoc)
-	 * @see java.lang.Comparable#compareTo(java.lang.Object)
-	 */
-	@Override
-	public int compareTo(IntPos2D p) {
-		if (mX > p.mX) {
-			if (mY > p.mY) {
-				return 1;
-			} else {
-				return -1;
-			}
-		} else if (mX < p.mX) {
-			if (mY > p.mY) {
-				return 1;
-			} else {
-				return -1;
-			}
-		} else {
-			// Same x so just consider vertical position
-			
-			if (mY > p.mY) {
-				return 1;
-			} else if (mY < p.mY) {
-				return -1;
-			} else {
-				return 0;
-			}
-		}
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Comparable#compareTo(java.lang.Object)
+   */
+  @Override
+  public int compareTo(IntPos2D p) {
+    if (mX > p.mX) {
+      if (mY > p.mY) {
+        return 1;
+      } else {
+        return -1;
+      }
+    } else if (mX < p.mX) {
+      if (mY > p.mY) {
+        return 1;
+      } else {
+        return -1;
+      }
+    } else {
+      // Same x so just consider vertical position
 
-	/**
-	 * Creates the.
-	 *
-	 * @param x the x
-	 * @param y the y
-	 * @return the int pos
-	 */
-	public static IntPos2D create(int x, int y) {
-		return new IntPos2D(x, y);
-	}
+      if (mY > p.mY) {
+        return 1;
+      } else if (mY < p.mY) {
+        return -1;
+      } else {
+        return 0;
+      }
+    }
+  }
 
-	/**
-	 * Creates the.
-	 *
-	 * @param x the x
-	 * @param y the y
-	 * @return the int pos
-	 */
-	public static IntPos2D create(long x, long y) {
-		return new IntPos2D((int)x, (int)y);
-	}
+  /**
+   * Creates the.
+   *
+   * @param x
+   *          the x
+   * @param y
+   *          the y
+   * @return the int pos
+   */
+  public static IntPos2D create(int x, int y) {
+    return new IntPos2D(x, y);
+  }
 
-	/**
-	 * Creates the.
-	 *
-	 * @param x the x
-	 * @param y the y
-	 * @return the int pos
-	 */
-	public static IntPos2D create(double x, double y) {
-		return new IntPos2D((int)x, (int)y);
-	}
+  /**
+   * Creates the.
+   *
+   * @param x
+   *          the x
+   * @param y
+   *          the y
+   * @return the int pos
+   */
+  public static IntPos2D create(long x, long y) {
+    return new IntPos2D((int) x, (int) y);
+  }
+
+  /**
+   * Creates the.
+   *
+   * @param x
+   *          the x
+   * @param y
+   *          the y
+   * @return the int pos
+   */
+  public static IntPos2D create(double x, double y) {
+    return new IntPos2D((int) x, (int) y);
+  }
 }

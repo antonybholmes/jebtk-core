@@ -22,25 +22,28 @@ package org.jebtk.core.event;
  * @author Antony Holmes Holmes
  */
 public interface ChangeEventProducer {
-	
-	/**
-	 * Add a change listener.
-	 *
-	 * @param l the l
-	 */
-	public void addChangeListener(ChangeListener l);
-	
-	/**
-	 * Remove a change listener.
-	 *
-	 * @param l the l
-	 */
-	public void removeChangeListener(ChangeListener l);
-	
-	/**
-	 * Fire to all listeners that a change has occurred.
-	 *
-	 * @param e the e
-	 */
-	public void fireChanged(ChangeEvent e);
+
+  /**
+   * Add a change listener.
+   *
+   * @param l
+   *          the l
+   */
+  public void addChangeListener(ChangeListener l);
+
+  /**
+   * Remove a change listener.
+   *
+   * @param l
+   *          the l
+   */
+  public void removeChangeListener(ChangeListener l);
+
+  /**
+   * Fire to all listeners that a change has occurred.
+   *
+   * @param e
+   *          the e
+   */
+  public void fireChanged(ChangeEvent e);
 }

@@ -23,15 +23,17 @@ package org.jebtk.core.log;
  *
  */
 public class StdErrLog implements LogEventListener {
-	
-	/* (non-Javadoc)
-	 * @see org.abh.lib.log.LogEventListener#logEvent(org.abh.lib.log.LogEvent)
-	 */
-	@Override
-	public void logEvent(LogEvent e) {
-		System.err.print("[");
-		System.err.print(e.getFormattedDate());
-		System.err.print("] ");
-		System.err.println(e.getMessage());
-	}
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.log.LogEventListener#logEvent(org.abh.lib.log.LogEvent)
+   */
+  @Override
+  public void logEvent(LogEvent e) {
+    System.err.print("[");
+    System.err.print(e.getFormattedDate());
+    System.err.print("] ");
+    System.err.println(e.getMessage());
+  }
 }

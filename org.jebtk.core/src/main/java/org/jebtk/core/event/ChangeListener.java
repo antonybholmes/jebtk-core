@@ -25,11 +25,12 @@ import java.util.EventListener;
  *
  */
 public interface ChangeListener extends EventListener {
-	
-	/**
-	 * Changed.
-	 *
-	 * @param e the e
-	 */
-	public void changed(ChangeEvent e);
+
+  /**
+   * Changed.
+   *
+   * @param e
+   *          the e
+   */
+  public void changed(ChangeEvent e);
 }

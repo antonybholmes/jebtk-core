@@ -21,30 +21,34 @@ import java.util.List;
 
 // TODO: Auto-generated Javadoc
 /**
- * Provides an iterable wrapper around a list that only allows items to be
- * added and iterated over.
+ * Provides an iterable wrapper around a list that only allows items to be added
+ * and iterated over.
  *
- * @param <T> the generic type
+ * @param <T>
+ *          the generic type
  */
 public class ListIterator<T> implements Iterable<T> {
-	
-	/** The m values. */
-	private List<T> mValues = new ArrayList<T>();
 
-	/**
-	 * Adds an item to the iterator.
-	 *
-	 * @param v the v
-	 */
-	public void add(T v) {
-		mValues.add(v);
-	}
-	
-	/* (non-Javadoc)
-	 * @see java.lang.Iterable#iterator()
-	 */
-	@Override
-	public Iterator<T> iterator() {
-		return mValues.iterator();
-	}
+  /** The m values. */
+  private List<T> mValues = new ArrayList<T>();
+
+  /**
+   * Adds an item to the iterator.
+   *
+   * @param v
+   *          the v
+   */
+  public void add(T v) {
+    mValues.add(v);
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Iterable#iterator()
+   */
+  @Override
+  public Iterator<T> iterator() {
+    return mValues.iterator();
+  }
 }

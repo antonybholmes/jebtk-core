@@ -20,51 +20,53 @@ package org.jebtk.core;
  * The Class PrimitiveUtils.
  */
 public class PrimitiveUtils {
-	
-	/** The Constant LONG_SIZE_BYTES. */
-	private static final int LONG_SIZE_BYTES = Long.SIZE / Byte.SIZE;
-	
-	/** The Constant LONG_SIZE_BYTES_LAST_INDEX. */
-	private static final int LONG_SIZE_BYTES_LAST_INDEX = LONG_SIZE_BYTES - 1;
-	
-	/**
-	 * Instantiates a new primitive utils.
-	 */
-	private PrimitiveUtils() {
-		// Do nothing
-	}
-	
-	/**
-	 * Convert a long to a byte array.
-	 *
-	 * @param l the l
-	 * @return the byte[]
-	 */
-	public static byte[] toByteArray(long l) {
-	    byte[] result = new byte[LONG_SIZE_BYTES];
-	    
-	    for (int i = LONG_SIZE_BYTES_LAST_INDEX; i >= 0; --i) {
-	        result[i] = (byte)(l & 0xFF);
-	        l >>= Byte.SIZE;
-	    }
-	    
-	    return result;
-	}
 
-	/**
-	 * Converts a byte array to a long value.
-	 *
-	 * @param b the b
-	 * @return the long
-	 */
-	public static long toLong(final byte[] b) {
-	    long result = 0;
-	    
-	    for (int i = 0; i < LONG_SIZE_BYTES; ++i) {
-	        result <<= Byte.SIZE;
-	        result |= (b[i] & 0xFF);
-	    }
-	    
-	    return result;
-	}
+  /** The Constant LONG_SIZE_BYTES. */
+  private static final int LONG_SIZE_BYTES = Long.SIZE / Byte.SIZE;
+
+  /** The Constant LONG_SIZE_BYTES_LAST_INDEX. */
+  private static final int LONG_SIZE_BYTES_LAST_INDEX = LONG_SIZE_BYTES - 1;
+
+  /**
+   * Instantiates a new primitive utils.
+   */
+  private PrimitiveUtils() {
+    // Do nothing
+  }
+
+  /**
+   * Convert a long to a byte array.
+   *
+   * @param l
+   *          the l
+   * @return the byte[]
+   */
+  public static byte[] toByteArray(long l) {
+    byte[] result = new byte[LONG_SIZE_BYTES];
+
+    for (int i = LONG_SIZE_BYTES_LAST_INDEX; i >= 0; --i) {
+      result[i] = (byte) (l & 0xFF);
+      l >>= Byte.SIZE;
+    }
+
+    return result;
+  }
+
+  /**
+   * Converts a byte array to a long value.
+   *
+   * @param b
+   *          the b
+   * @return the long
+   */
+  public static long toLong(final byte[] b) {
+    long result = 0;
+
+    for (int i = 0; i < LONG_SIZE_BYTES; ++i) {
+      result <<= Byte.SIZE;
+      result |= (b[i] & 0xFF);
+    }
+
+    return result;
+  }
 }

@@ -21,61 +21,73 @@ import java.util.Map;
 /**
  * The Class DefaultTreeMapCreator.
  *
- * @param <K> the key type
- * @param <V> the value type
+ * @param <K>
+ *          the key type
+ * @param <V>
+ *          the value type
  */
 public class DefaultTreeMapCreator<K, V> implements IterMapCreator<K, V> {
 
-	/** The m default value. */
-	private EntryCreator<V> mDefaultValue;
+  /** The m default value. */
+  private EntryCreator<V> mDefaultValue;
 
-	/**
-	 * Instantiates a new default tree map creator.
-	 *
-	 * @param defaultValue the default value
-	 */
-	public DefaultTreeMapCreator(V defaultValue) {
-		this(new ValueCreator<V>(defaultValue));
-	}
-	
-	/**
-	 * Instantiates a new default map.
-	 *
-	 * @param defaultValue the default value
-	 */
-	public DefaultTreeMapCreator(EntryCreator<V> defaultValue) {
-		mDefaultValue = defaultValue;
-	}
+  /**
+   * Instantiates a new default tree map creator.
+   *
+   * @param defaultValue
+   *          the default value
+   */
+  public DefaultTreeMapCreator(V defaultValue) {
+    this(new ValueCreator<V>(defaultValue));
+  }
 
-	/* (non-Javadoc)
-	 * @see org.abh.common.collections.EntryCreator#newEntry()
-	 */
-	@Override
-	public IterMap<K, V> newEntry() {
-		return new DefaultTreeMap<K, V>(mDefaultValue);
-	}
-	
-	/**
-	 * Creates a new Default Tree Map.
-	 *
-	 * @param <KK> the generic type
-	 * @param <VV> the generic type
-	 * @param defaultValue the default value
-	 * @return the map
-	 */
-	public static <KK, VV> IterMapCreator<KK, VV> create(VV defaultValue) {
-		return create(new ValueCreator<VV>(defaultValue));
-	}
-	
-	/**
-	 * Creates the.
-	 *
-	 * @param <KK> the generic type
-	 * @param <VV> the generic type
-	 * @param defaultValue the default value
-	 * @return the map
-	 */
-	public static <KK, VV> IterMapCreator<KK, VV> create(EntryCreator<VV> defaultValue) {
-		return new DefaultTreeMapCreator<KK, VV>(defaultValue);
-	}
+  /**
+   * Instantiates a new default map.
+   *
+   * @param defaultValue
+   *          the default value
+   */
+  public DefaultTreeMapCreator(EntryCreator<V> defaultValue) {
+    mDefaultValue = defaultValue;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.collections.EntryCreator#newEntry()
+   */
+  @Override
+  public IterMap<K, V> newEntry() {
+    return new DefaultTreeMap<K, V>(mDefaultValue);
+  }
+
+  /**
+   * Creates a new Default Tree Map.
+   *
+   * @param <KK>
+   *          the generic type
+   * @param <VV>
+   *          the generic type
+   * @param defaultValue
+   *          the default value
+   * @return the map
+   */
+  public static <KK, VV> IterMapCreator<KK, VV> create(VV defaultValue) {
+    return create(new ValueCreator<VV>(defaultValue));
+  }
+
+  /**
+   * Creates the.
+   *
+   * @param <KK>
+   *          the generic type
+   * @param <VV>
+   *          the generic type
+   * @param defaultValue
+   *          the default value
+   * @return the map
+   */
+  public static <KK, VV> IterMapCreator<KK, VV> create(EntryCreator<VV> defaultValue) {
+    return new DefaultTreeMapCreator<KK, VV>(defaultValue);
+  }
 }

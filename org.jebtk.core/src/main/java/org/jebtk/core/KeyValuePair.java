@@ -17,69 +17,76 @@ package org.jebtk.core;
 
 // TODO: Auto-generated Javadoc
 /**
- * A simple mapping between a key and a value which can be used in place of
- * two separate variables.
+ * A simple mapping between a key and a value which can be used in place of two
+ * separate variables.
  *
- * @param <K> the key type
- * @param <V> the value type
+ * @param <K>
+ *          the key type
+ * @param <V>
+ *          the value type
  */
 public class KeyValuePair<K extends Comparable<? super K>, V> implements Comparable<KeyValuePair<K, V>> {
 
-	/**
-	 * The member key.
-	 */
-	private K mKey;
-	
-	/**
-	 * The member value.
-	 */
-	private V mValue;
+  /**
+   * The member key.
+   */
+  private K mKey;
 
-	/**
-	 * Instantiates a new key value pair.
-	 *
-	 * @param key the key
-	 * @param value the value
-	 */
-	public KeyValuePair(K key, V value) {
-		mKey = key;
-		
-		setValue(value);
-	}
-	
-	/**
-	 * Gets the key.
-	 *
-	 * @return the key
-	 */
-	public K getKey() {
-		return mKey;
-	}
+  /**
+   * The member value.
+   */
+  private V mValue;
 
-	/**
-	 * Gets the value.
-	 *
-	 * @return the value
-	 */
-	public V getValue() {
-		return mValue;
-	}
+  /**
+   * Instantiates a new key value pair.
+   *
+   * @param key
+   *          the key
+   * @param value
+   *          the value
+   */
+  public KeyValuePair(K key, V value) {
+    mKey = key;
 
-	/**
-	 * Sets the value.
-	 *
-	 * @param value the new value
-	 */
-	public void setValue(V value) {
-		mValue = value;
-	}
+    setValue(value);
+  }
 
-	/* (non-Javadoc)
-	 * @see java.lang.Comparable#compareTo(java.lang.Object)
-	 */
-	@Override
-	public int compareTo(KeyValuePair<K, V> k) {
-		return mKey.compareTo(k.mKey);
-	}
+  /**
+   * Gets the key.
+   *
+   * @return the key
+   */
+  public K getKey() {
+    return mKey;
+  }
+
+  /**
+   * Gets the value.
+   *
+   * @return the value
+   */
+  public V getValue() {
+    return mValue;
+  }
+
+  /**
+   * Sets the value.
+   *
+   * @param value
+   *          the new value
+   */
+  public void setValue(V value) {
+    mValue = value;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Comparable#compareTo(java.lang.Object)
+   */
+  @Override
+  public int compareTo(KeyValuePair<K, V> k) {
+    return mKey.compareTo(k.mKey);
+  }
 
 }

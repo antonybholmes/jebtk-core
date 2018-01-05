@@ -19,28 +19,33 @@ import java.io.IOException;
 
 // TODO: Auto-generated Javadoc
 /**
- * Elements that can return a xml text representation
- * of themselves should implement this.
+ * Elements that can return a xml text representation of themselves should
+ * implement this.
  * 
  * @author Antony Holmes Holmes
  *
  */
 public interface FormattedXml {
-	
-	/**
-	 * Formatted xml.
-	 *
-	 * @param buffer the buffer
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 */
-	public void formattedXml(Appendable buffer) throws IOException;
-	
-	/**
-	 * Formatted xml.
-	 *
-	 * @param buffer the buffer
-	 * @param level the level
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 */
-	public void formattedXml(Appendable buffer, int level) throws IOException;
+
+  /**
+   * Formatted xml.
+   *
+   * @param buffer
+   *          the buffer
+   * @throws IOException
+   *           Signals that an I/O exception has occurred.
+   */
+  public void formattedXml(Appendable buffer) throws IOException;
+
+  /**
+   * Formatted xml.
+   *
+   * @param buffer
+   *          the buffer
+   * @param level
+   *          the level
+   * @throws IOException
+   *           Signals that an I/O exception has occurred.
+   */
+  public void formattedXml(Appendable buffer, int level) throws IOException;
 }

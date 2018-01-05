@@ -23,24 +23,26 @@ package org.jebtk.core.path;
  *
  */
 public class RootPath extends Path {
-	
-	/** The Constant serialVersionUID. */
-	private static final long serialVersionUID = 1L;
 
-	/**
-	 * Instantiates a new root path.
-	 */
-	public RootPath() {
-		super(true);
-	}
-	
-	/**
-	 * Instantiates a new root path.
-	 *
-	 * @param level the level
-	 * @param levels the levels
-	 */
-	public RootPath(Object level, Object... levels) {
-		super(true, level, levels);
-	}
+  /** The Constant serialVersionUID. */
+  private static final long serialVersionUID = 1L;
+
+  /**
+   * Instantiates a new root path.
+   */
+  public RootPath() {
+    super(true);
+  }
+
+  /**
+   * Instantiates a new root path.
+   *
+   * @param level
+   *          the level
+   * @param levels
+   *          the levels
+   */
+  public RootPath(Object level, Object... levels) {
+    super(true, level, levels);
+  }
 }

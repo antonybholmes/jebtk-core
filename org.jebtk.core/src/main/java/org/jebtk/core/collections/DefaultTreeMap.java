@@ -19,83 +19,96 @@ package org.jebtk.core.collections;
 /**
  * Hashmap that automatically adds a default value if a key does not exist.
  *
- * @param <K> the key type
- * @param <V> the value type
+ * @param <K>
+ *          the key type
+ * @param <V>
+ *          the value type
  */
 public class DefaultTreeMap<K, V> extends IterTreeMap<K, V> {
-	
-	/**
-	 * The constant serialVersionUID.
-	 */
-	private static final long serialVersionUID = 1L;
 
-	/**
-	 * The member default value.
-	 */
-	private EntryCreator<V> mDefaultValue;
+  /**
+   * The constant serialVersionUID.
+   */
+  private static final long serialVersionUID = 1L;
 
-	/**
-	 * Instantiates a new auto hash map.
-	 *
-	 * @param defaultValue the default value
-	 */
-	public DefaultTreeMap(V defaultValue) {
-		this(new ValueCreator<V>(defaultValue));
-	}
-	
-	/**
-	 * Instantiates a new default map.
-	 *
-	 * @param defaultValue the default value
-	 */
-	public DefaultTreeMap(EntryCreator<V> defaultValue) {
-		mDefaultValue = defaultValue;
-	}
-	
-	/* (non-Javadoc)
-	 * @see java.util.HashMap#get(java.lang.Object)
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public V get(Object key) {
-		return getValue((K)key);
-	}
-	
-	/**
-	 * Gets the value.
-	 *
-	 * @param key the key
-	 * @return the value
-	 */
-	public V getValue(K key) {
-		if (!containsKey(key)) {
-			put(key, mDefaultValue.newEntry());
-		}
+  /**
+   * The member default value.
+   */
+  private EntryCreator<V> mDefaultValue;
 
-		return super.get(key);
-	}
+  /**
+   * Instantiates a new auto hash map.
+   *
+   * @param defaultValue
+   *          the default value
+   */
+  public DefaultTreeMap(V defaultValue) {
+    this(new ValueCreator<V>(defaultValue));
+  }
 
-	/**
-	 * Creates a new Default Tree Map.
-	 *
-	 * @param <KK> the generic type
-	 * @param <VV> the generic type
-	 * @param defaultValue the default value
-	 * @return the map
-	 */
-	public static <KK, VV> IterMap<KK, VV> create(VV defaultValue) {
-		return create(new ValueCreator<VV>(defaultValue));
-	}
-	
-	/**
-	 * Creates the.
-	 *
-	 * @param <KK> the generic type
-	 * @param <VV> the generic type
-	 * @param defaultValue the default value
-	 * @return the map
-	 */
-	public static <KK, VV> IterMap<KK, VV> create(EntryCreator<VV> defaultValue) {
-		return new DefaultTreeMap<KK, VV>(defaultValue);
-	}
+  /**
+   * Instantiates a new default map.
+   *
+   * @param defaultValue
+   *          the default value
+   */
+  public DefaultTreeMap(EntryCreator<V> defaultValue) {
+    mDefaultValue = defaultValue;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.util.HashMap#get(java.lang.Object)
+   */
+  @SuppressWarnings("unchecked")
+  @Override
+  public V get(Object key) {
+    return getValue((K) key);
+  }
+
+  /**
+   * Gets the value.
+   *
+   * @param key
+   *          the key
+   * @return the value
+   */
+  public V getValue(K key) {
+    if (!containsKey(key)) {
+      put(key, mDefaultValue.newEntry());
+    }
+
+    return super.get(key);
+  }
+
+  /**
+   * Creates a new Default Tree Map.
+   *
+   * @param <KK>
+   *          the generic type
+   * @param <VV>
+   *          the generic type
+   * @param defaultValue
+   *          the default value
+   * @return the map
+   */
+  public static <KK, VV> IterMap<KK, VV> create(VV defaultValue) {
+    return create(new ValueCreator<VV>(defaultValue));
+  }
+
+  /**
+   * Creates the.
+   *
+   * @param <KK>
+   *          the generic type
+   * @param <VV>
+   *          the generic type
+   * @param defaultValue
+   *          the default value
+   * @return the map
+   */
+  public static <KK, VV> IterMap<KK, VV> create(EntryCreator<VV> defaultValue) {
+    return new DefaultTreeMap<KK, VV>(defaultValue);
+  }
 }

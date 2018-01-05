@@ -23,18 +23,19 @@ import org.jebtk.core.MessageException;
  */
 public class CommandLineArgException extends MessageException {
 
-	/**
-	 * The constant serialVersionUID.
-	 */
-	private static final long serialVersionUID = 1L;
+  /**
+   * The constant serialVersionUID.
+   */
+  private static final long serialVersionUID = 1L;
 
-	/**
-	 * Instantiates a new command line arg exception.
-	 *
-	 * @param message the message
-	 */
-	public CommandLineArgException(String message) {
-		super(message);
-	}
+  /**
+   * Instantiates a new command line arg exception.
+   *
+   * @param message
+   *          the message
+   */
+  public CommandLineArgException(String message) {
+    super(message);
+  }
 
 }

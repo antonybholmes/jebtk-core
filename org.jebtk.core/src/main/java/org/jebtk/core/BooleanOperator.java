@@ -23,88 +23,90 @@ package org.jebtk.core;
  *
  */
 public enum BooleanOperator {
-	
-	/**
-	 * The and.
-	 */
-	AND,
-	
-	/**
-	 * The or.
-	 */
-	OR,
-	
-	/**
-	 * The nor.
-	 */
-	NOR,
-	
-	/**
-	 * The xor.
-	 */
-	XOR,
-	
-	/**
-	 * The nand.
-	 */
-	NAND,
-	
-	/**
-	 * The not.
-	 */
-	NOT,
-	
-	/**
-	 * The invalid.
-	 */
-	INVALID;
 
-	/**
-	 * From string.
-	 *
-	 * @param value the value
-	 * @return the boolean operator
-	 */
-	public static final BooleanOperator fromString(String value) {
-		if (value.toLowerCase().equals("and")) {
-			return AND;
-		} else if (value.toLowerCase().equals("or")) {
-			return OR;
-		} else if (value.toLowerCase().equals("nor")) {
-			return NOR;
-		} else if (value.toLowerCase().equals("xor")) {
-			return XOR;
-		} else if (value.toLowerCase().equals("nand")) {
-			return NAND;
-		} else if (value.toLowerCase().equals("not")) {
-			return NOT;
-		} else {
-			return INVALID;
-		}
-	}
-	
-	/**
-	 * To string.
-	 *
-	 * @param operator the operator
-	 * @return the string
-	 */
-	public static String toString(BooleanOperator operator) {
-		switch (operator) {
-		case AND:
-			return "and";
-		case OR:
-			return "or";
-		case XOR:
-			return "xor";
-		case NOR:
-			return "nor";
-		case NOT:
-			return "not";
-		case NAND:
-			return "nand";
-		default:
-			return "invalid";
-		}
-	}
+  /**
+   * The and.
+   */
+  AND,
+
+  /**
+   * The or.
+   */
+  OR,
+
+  /**
+   * The nor.
+   */
+  NOR,
+
+  /**
+   * The xor.
+   */
+  XOR,
+
+  /**
+   * The nand.
+   */
+  NAND,
+
+  /**
+   * The not.
+   */
+  NOT,
+
+  /**
+   * The invalid.
+   */
+  INVALID;
+
+  /**
+   * From string.
+   *
+   * @param value
+   *          the value
+   * @return the boolean operator
+   */
+  public static final BooleanOperator fromString(String value) {
+    if (value.toLowerCase().equals("and")) {
+      return AND;
+    } else if (value.toLowerCase().equals("or")) {
+      return OR;
+    } else if (value.toLowerCase().equals("nor")) {
+      return NOR;
+    } else if (value.toLowerCase().equals("xor")) {
+      return XOR;
+    } else if (value.toLowerCase().equals("nand")) {
+      return NAND;
+    } else if (value.toLowerCase().equals("not")) {
+      return NOT;
+    } else {
+      return INVALID;
+    }
+  }
+
+  /**
+   * To string.
+   *
+   * @param operator
+   *          the operator
+   * @return the string
+   */
+  public static String toString(BooleanOperator operator) {
+    switch (operator) {
+    case AND:
+      return "and";
+    case OR:
+      return "or";
+    case XOR:
+      return "xor";
+    case NOR:
+      return "nor";
+    case NOT:
+      return "not";
+    case NAND:
+      return "nand";
+    default:
+      return "invalid";
+    }
+  }
 }

@@ -19,24 +19,23 @@ import java.util.EventListener;
 
 // TODO: Auto-generated Javadoc
 /**
- * The listener interface for receiving logEvent events.
- * The class that is interested in processing a logEvent
- * event implements this interface, and the object created
- * with that class is registered with a component using the
- * component's <code>addLogEventListener<code> method. When
- * the logEvent event occurs, that object's appropriate
- * method is invoked.
+ * The listener interface for receiving logEvent events. The class that is
+ * interested in processing a logEvent event implements this interface, and the
+ * object created with that class is registered with a component using the
+ * component's <code>addLogEventListener<code> method. When the logEvent event
+ * occurs, that object's appropriate method is invoked.
  *
  * @see LogEventEvent
  */
 public interface LogEventListener extends EventListener {
 
-	/**
-	 * Log event.
-	 *
-	 * @param e the e
-	 */
-	public void logEvent(LogEvent e);
-	
-	//public void logErrorEvent(LogEvent e);
+  /**
+   * Log event.
+   *
+   * @param e
+   *          the e
+   */
+  public void logEvent(LogEvent e);
+
+  // public void logErrorEvent(LogEvent e);
 }

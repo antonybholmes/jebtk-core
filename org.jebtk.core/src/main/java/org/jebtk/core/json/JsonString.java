@@ -26,103 +26,95 @@ import org.jebtk.core.text.TextUtils;
  * @author Antony Holmes Holmes
  */
 public class JsonString extends JsonRaw {
-	//private static final Pattern REGEX_DOUBLE_SLASH =
-	//		Pattern.compile("\\\\");
-	
-	/** The Constant DOUBLE_SLASH_REP. */
-	private static final String DOUBLE_SLASH_REP = "\\\\";
-	
-	//private static final Pattern REGEX_QUOTE =
-	//		Pattern.compile("\"");
-	
-	/** The Constant QUOTE_REP. */
-	private static final String QUOTE_REP = "\\\"";
-	
-	//private static final Pattern REGEX_FORWARD =
-	//		Pattern.compile("/");
-	
-	/** The Constant FORWARD_REP. */
-	private static final String FORWARD_REP = "\\/";
-	
-	//private static final Pattern REGEX_BACKSPACE =
-	//		Pattern.compile("[\b]");
-	
-	/** The Constant BACKSPACE_REP. */
-	private static final String BACKSPACE_REP = "\\\\b";
-	
-	//private static final Pattern REGEX_TAB =
-	//		Pattern.compile("\\t");
-	
-	/** The Constant TAB_REP. */
-	private static final String TAB_REP = "\\t";
-	
-	//private static final Pattern REGEX_NEWLINE =
-	//		Pattern.compile("\\n");
-	
-	/** The Constant NEWLINE_REP. */
-	private static final String NEWLINE_REP = "\\n";
-	
-	//private static final Pattern REGEX_RETURN =
-	//		Pattern.compile("\\r");
-	
-	/** The Constant RETURN_REP. */
-	private static final String RETURN_REP = "\\r";
-	
-	/**
-	 * Instantiates a new json string.
-	 *
-	 * @param value the value
-	 */
-	public JsonString(String value) {
-		super(value);
-	}
+  // private static final Pattern REGEX_DOUBLE_SLASH =
+  // Pattern.compile("\\\\");
 
-	/* (non-Javadoc)
-	 * @see org.abh.lib.json.JsonValue#formattedTxt(java.lang.StringBuilder)
-	 */
-	@Override
-	public void toJson(Appendable buffer) throws IOException {
-		buffer.append(TextUtils.quote(escape(mValue)));
-	}
-	
+  /** The Constant DOUBLE_SLASH_REP. */
+  private static final String DOUBLE_SLASH_REP = "\\\\";
 
-	
-	/**
-	 * Escape characters to make the string JSON compliant.
-	 *
-	 * @param value the value
-	 * @return the string
-	 */
-	public static String escape(String value) {
-		/*
-		value = REGEX_DOUBLE_SLASH.matcher(value).replaceAll(DOUBLE_SLASH_REP);
-		value = REGEX_QUOTE.matcher(value).replaceAll(QUOTE_REP);
-		value = REGEX_FORWARD.matcher(value).replaceAll(FORWARD_REP);
-		value = REGEX_BACKSPACE.matcher(value).replaceAll(BACKSPACE_REP);
-		value = REGEX_TAB.matcher(value).replaceAll(TAB_REP);
-		value = REGEX_NEWLINE.matcher(value).replaceAll(NEWLINE_REP);
-		value = REGEX_RETURN.matcher(value).replaceAll(RETURN_REP);
+  // private static final Pattern REGEX_QUOTE =
+  // Pattern.compile("\"");
 
-		return value;
-		*/
-		
-		return value.replace("\\", DOUBLE_SLASH_REP)
-				.replace("\"", QUOTE_REP)
-				.replace("/", FORWARD_REP)
-				.replace("\b", BACKSPACE_REP)
-				.replace("\t", TAB_REP)
-				.replace("\n", NEWLINE_REP)
-				.replace("\r", RETURN_REP);
-		
-		/*
-		return value
-				.replaceAll("\\\\", "\\\\\\\\")
-				.replaceAll("\"", "\\\\\"")
-				.replaceAll("/", "\\\\/")
-				.replaceAll("[\b]", "\\\\b")
-				.replaceAll("\\n", "\\\\n")
-				.replaceAll("\\r", "\\\\r")
-				.replaceAll("\\t", "\\\\t");
-				*/
-	}
+  /** The Constant QUOTE_REP. */
+  private static final String QUOTE_REP = "\\\"";
+
+  // private static final Pattern REGEX_FORWARD =
+  // Pattern.compile("/");
+
+  /** The Constant FORWARD_REP. */
+  private static final String FORWARD_REP = "\\/";
+
+  // private static final Pattern REGEX_BACKSPACE =
+  // Pattern.compile("[\b]");
+
+  /** The Constant BACKSPACE_REP. */
+  private static final String BACKSPACE_REP = "\\\\b";
+
+  // private static final Pattern REGEX_TAB =
+  // Pattern.compile("\\t");
+
+  /** The Constant TAB_REP. */
+  private static final String TAB_REP = "\\t";
+
+  // private static final Pattern REGEX_NEWLINE =
+  // Pattern.compile("\\n");
+
+  /** The Constant NEWLINE_REP. */
+  private static final String NEWLINE_REP = "\\n";
+
+  // private static final Pattern REGEX_RETURN =
+  // Pattern.compile("\\r");
+
+  /** The Constant RETURN_REP. */
+  private static final String RETURN_REP = "\\r";
+
+  /**
+   * Instantiates a new json string.
+   *
+   * @param value
+   *          the value
+   */
+  public JsonString(String value) {
+    super(value);
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.json.JsonValue#formattedTxt(java.lang.StringBuilder)
+   */
+  @Override
+  public void toJson(Appendable buffer) throws IOException {
+    buffer.append(TextUtils.quote(escape(mValue)));
+  }
+
+  /**
+   * Escape characters to make the string JSON compliant.
+   *
+   * @param value
+   *          the value
+   * @return the string
+   */
+  public static String escape(String value) {
+    /*
+     * value = REGEX_DOUBLE_SLASH.matcher(value).replaceAll(DOUBLE_SLASH_REP); value
+     * = REGEX_QUOTE.matcher(value).replaceAll(QUOTE_REP); value =
+     * REGEX_FORWARD.matcher(value).replaceAll(FORWARD_REP); value =
+     * REGEX_BACKSPACE.matcher(value).replaceAll(BACKSPACE_REP); value =
+     * REGEX_TAB.matcher(value).replaceAll(TAB_REP); value =
+     * REGEX_NEWLINE.matcher(value).replaceAll(NEWLINE_REP); value =
+     * REGEX_RETURN.matcher(value).replaceAll(RETURN_REP);
+     * 
+     * return value;
+     */
+
+    return value.replace("\\", DOUBLE_SLASH_REP).replace("\"", QUOTE_REP).replace("/", FORWARD_REP)
+        .replace("\b", BACKSPACE_REP).replace("\t", TAB_REP).replace("\n", NEWLINE_REP).replace("\r", RETURN_REP);
+
+    /*
+     * return value .replaceAll("\\\\", "\\\\\\\\") .replaceAll("\"", "\\\\\"")
+     * .replaceAll("/", "\\\\/") .replaceAll("[\b]", "\\\\b") .replaceAll("\\n",
+     * "\\\\n") .replaceAll("\\r", "\\\\r") .replaceAll("\\t", "\\\\t");
+     */
+  }
 }

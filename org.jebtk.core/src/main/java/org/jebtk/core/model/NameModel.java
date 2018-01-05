@@ -20,89 +20,96 @@ import java.util.List;
 
 import org.jebtk.core.event.ChangeListeners;
 
-
 // TODO: Auto-generated Javadoc
 /**
  * Generic model for sharing named items.
  *
  * @author Antony Holmes Holmes
- * @param <T> the generic type
+ * @param <T>
+ *          the generic type
  */
 public abstract class NameModel<T> extends ChangeListeners implements Iterable<String> {
-	
-	/**
-	 * The constant serialVersionUID.
-	 */
-	private static final long serialVersionUID = 1L;
 
-	/**
-	 * Adds the.
-	 *
-	 * @param name the name
-	 * @param item the item
-	 */
-	public void add(String name, T item) {
-		update(name, item);
+  /**
+   * The constant serialVersionUID.
+   */
+  private static final long serialVersionUID = 1L;
 
-		fireChanged();
-	}
-	
-	/**
-	 * Update.
-	 *
-	 * @param name the name
-	 * @param item the item
-	 */
-	public abstract void update(String name, T item);
-	
-	/**
-	 * Removes the.
-	 *
-	 * @param name the name
-	 */
-	public abstract void remove(String name);
-	
-	/**
-	 * Gets the.
-	 *
-	 * @param name the name
-	 * @return the t
-	 */
-	public abstract T get(String name);
-	
-	/**
-	 * Contains.
-	 *
-	 * @param name the name
-	 * @return true, if successful
-	 */
-	public abstract boolean contains(String name);
-	
-	/**
-	 * Clear.
-	 */
-	public abstract void clear();
-	
-	/**
-	 * Size.
-	 *
-	 * @return the int
-	 */
-	public abstract int size();
+  /**
+   * Adds the.
+   *
+   * @param name
+   *          the name
+   * @param item
+   *          the item
+   */
+  public void add(String name, T item) {
+    update(name, item);
 
-	/**
-	 * Returns the items in the model as a list. This list is a copy of
-	 * items in the model so altering the list will not alter the model.
-	 *
-	 * @return the list
-	 */
-	public List<T> toList() {
-		List<T> ret = new ArrayList<T>();
-		
-		for (String name : this) {
-			ret.add(get(name));
-		}
-		
-		return ret;
-	}
+    fireChanged();
+  }
+
+  /**
+   * Update.
+   *
+   * @param name
+   *          the name
+   * @param item
+   *          the item
+   */
+  public abstract void update(String name, T item);
+
+  /**
+   * Removes the.
+   *
+   * @param name
+   *          the name
+   */
+  public abstract void remove(String name);
+
+  /**
+   * Gets the.
+   *
+   * @param name
+   *          the name
+   * @return the t
+   */
+  public abstract T get(String name);
+
+  /**
+   * Contains.
+   *
+   * @param name
+   *          the name
+   * @return true, if successful
+   */
+  public abstract boolean contains(String name);
+
+  /**
+   * Clear.
+   */
+  public abstract void clear();
+
+  /**
+   * Size.
+   *
+   * @return the int
+   */
+  public abstract int size();
+
+  /**
+   * Returns the items in the model as a list. This list is a copy of items in the
+   * model so altering the list will not alter the model.
+   *
+   * @return the list
+   */
+  public List<T> toList() {
+    List<T> ret = new ArrayList<T>();
+
+    for (String name : this) {
+      ret.add(get(name));
+    }
+
+    return ret;
+  }
 }

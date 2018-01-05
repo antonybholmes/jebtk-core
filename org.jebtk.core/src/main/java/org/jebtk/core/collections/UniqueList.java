@@ -22,87 +22,101 @@ import java.util.Set;
 
 // TODO: Auto-generated Javadoc
 /**
- * The class UniqueList provides a wrapper on a list to ensure items are
- * added uniquely so that the order is preserved, but only one of a given
- * item may appear in the list.
+ * The class UniqueList provides a wrapper on a list to ensure items are added
+ * uniquely so that the order is preserved, but only one of a given item may
+ * appear in the list.
  *
- * @param <T> the generic type
+ * @param <T>
+ *          the generic type
  */
 public class UniqueList<T> extends ListContainer<T> {
-	
-	/** The m used. */
-	private Set<T> mUsed = new HashSet<T>();
-	
-	/**
-	 * Instantiates a new unique array list. A unique array list is an
-	 * array list that preserves the order of items as they are added, but
-	 * discards subsequent duplicates.
-	 */
-	public UniqueList(List<T> list) {
-		super(list);
-	}
 
-	/* (non-Javadoc)
-	 * @see java.util.ArrayList#add(java.lang.Object)
-	 */
-	@Override
-	public boolean add(T item) {
-		if (!mUsed.contains(item)) {
-			mUsed.add(item);
-			
-			super.add(item);
-		}
-		
-		return true;
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.collections.ReadOnlyListContainer#contains(java.lang.Object)
-	 */
-	@Override
-	public boolean contains(Object item) {
-		return mUsed.contains(item);
-	}
-	
-	/* (non-Javadoc)
-	 * @see java.util.ArrayList#addAll(java.util.Collection)
-	 */
-	@Override
-	public boolean addAll(Collection<? extends T> items) {
-		for (T item : items) {
-			add(item);
-		}
-		
-		return true;
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.collections.ListContainer#clear()
-	 */
-	@Override
-	public void clear() {
-		mUsed.clear();
-		
-		super.clear();
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.collections.ListContainer#remove(int)
-	 */
-	@Override
-	public T remove(int i) {
-		mUsed.remove(get(i));
-		
-		return super.remove(i);
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.collections.ListContainer#remove(java.lang.Object)
-	 */
-	@Override
-	public boolean remove(Object o) {
-		mUsed.remove(o);
-		
-		return super.remove(o);
-	}
+  /** The m used. */
+  private Set<T> mUsed = new HashSet<T>();
+
+  /**
+   * Instantiates a new unique array list. A unique array list is an array list
+   * that preserves the order of items as they are added, but discards subsequent
+   * duplicates.
+   */
+  public UniqueList(List<T> list) {
+    super(list);
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.util.ArrayList#add(java.lang.Object)
+   */
+  @Override
+  public boolean add(T item) {
+    if (!mUsed.contains(item)) {
+      mUsed.add(item);
+
+      super.add(item);
+    }
+
+    return true;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.abh.common.collections.ReadOnlyListContainer#contains(java.lang.Object)
+   */
+  @Override
+  public boolean contains(Object item) {
+    return mUsed.contains(item);
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.util.ArrayList#addAll(java.util.Collection)
+   */
+  @Override
+  public boolean addAll(Collection<? extends T> items) {
+    for (T item : items) {
+      add(item);
+    }
+
+    return true;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.collections.ListContainer#clear()
+   */
+  @Override
+  public void clear() {
+    mUsed.clear();
+
+    super.clear();
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.collections.ListContainer#remove(int)
+   */
+  @Override
+  public T remove(int i) {
+    mUsed.remove(get(i));
+
+    return super.remove(i);
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.collections.ListContainer#remove(java.lang.Object)
+   */
+  @Override
+  public boolean remove(Object o) {
+    mUsed.remove(o);
+
+    return super.remove(o);
+  }
 }

@@ -26,284 +26,288 @@ import org.jebtk.core.text.TextUtils;
 
 // TODO: Auto-generated Javadoc
 /**
- * Describes a search operation for determining if an experiment
- * matches some criteria or other.
+ * Describes a search operation for determining if an experiment matches some
+ * criteria or other.
  *
  * @author Antony Holmes Holmes
- * @param <T> the generic type
+ * @param <T>
+ *          the generic type
  */
 public class SearchStackElement<T> {
 
-	/**
-	 * Valid characters in a search.
-	 */
-	private static final Pattern Q_REGEX = 
-			Pattern.compile("[a-zA-Z0-9\\-\\_\\(\\)\\\" ]+");
+  /**
+   * Valid characters in a search.
+   */
+  private static final Pattern Q_REGEX = Pattern.compile("[a-zA-Z0-9\\-\\_\\(\\)\\\" ]+");
 
-	//private static final Pattern MULT_AND_REGEX = 
-	//		Pattern.compile("AND( AND)+");
+  // private static final Pattern MULT_AND_REGEX =
+  // Pattern.compile("AND( AND)+");
 
-	//private static final Pattern AND_OR_AND_REGEX = 
-	//		Pattern.compile("AND OR AND");
+  // private static final Pattern AND_OR_AND_REGEX =
+  // Pattern.compile("AND OR AND");
 
-	/**
-	 * The member op.
-	 */
-	public SearchStackOperator mOp;
+  /**
+   * The member op.
+   */
+  public SearchStackOperator mOp;
 
-	/**
-	 * The member text.
-	 */
-	public String mText = null;
+  /**
+   * The member text.
+   */
+  public String mText = null;
 
+  /**
+   * Instantiates a new search stack element.
+   *
+   * @param type
+   *          the type
+   */
+  public SearchStackElement(SearchStackOperator type) {
+    mOp = type;
+  }
 
-	/**
-	 * Instantiates a new search stack element.
-	 *
-	 * @param type the type
-	 */
-	public SearchStackElement(SearchStackOperator type) {
-		mOp = type;
-	}
+  /**
+   * Creates a match element for matching a string.
+   *
+   * @param value
+   *          the value
+   */
+  public SearchStackElement(String value) {
+    mText = value;
+    mOp = SearchStackOperator.MATCH;
+  }
 
-	/**
-	 * Creates a match element for matching a string.
-	 *
-	 * @param value the value
-	 */
-	public SearchStackElement(String value) {
-		mText = value;
-		mOp = SearchStackOperator.MATCH;
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Object#toString()
+   */
+  public final String toString() {
+    return "[" + mOp + " " + mText + "]";
+  }
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	public final String toString() {
-		return "[" + mOp + " " + mText + "]";
-	}
+  /**
+   * Gets the text.
+   *
+   * @return the text
+   */
+  public String getText() {
+    return mText;
+  }
 
-	/**
-	 * Gets the text.
-	 *
-	 * @return the text
-	 */
-	public String getText() {
-		return mText;
-	}
+  /**
+   * Gets the operator.
+   *
+   * @return the operator
+   */
+  public SearchStackOperator getOperator() {
+    return mOp;
+  }
 
-	/**
-	 * Gets the operator.
-	 *
-	 * @return the operator
-	 */
-	public SearchStackOperator getOperator() {
-		return mOp;
-	}
+  /**
+   * Returns a stack representation of a text query.
+   *
+   * @param <TT>
+   *          the generic type
+   * @param q
+   *          the q
+   * @return the deque
+   */
+  public static <TT> List<SearchStackElement<TT>> parseQuery(String q) {
+    // Deque<SearchStackElement<T>> searchStack =
+    // new ArrayDeque<SearchStackElement<T>>();
 
-	/**
-	 * Returns a stack representation of a text query.
-	 *
-	 * @param <TT> the generic type
-	 * @param q the q
-	 * @return the deque
-	 */
-	public static <TT> List<SearchStackElement<TT>> parseQuery(String q) {
-		//Deque<SearchStackElement<T>> searchStack =
-		//		new ArrayDeque<SearchStackElement<T>>();
+    // Check that the search query seems ok
+    if (!Q_REGEX.matcher(q).matches()) {
+      return Collections.emptyList();
+    }
 
-		// Check that the search query seems ok
-		if (!Q_REGEX.matcher(q).matches()) {
-			return Collections.emptyList();
-		}
+    // Remove any non word chars from the search string, trim and replace
+    // runs of whitespace chars with a single char to clean up the input
+    // and sanitize it
+    StringBuilder qs = new StringBuilder(q.length() * 2).append(q);
+    // TextUtils.replace("(", " ( ", qs);
+    // TextUtils.replace(")", " ) ", qs);
+    TextUtils.replace(" ", " AND ", qs);
+    // TextUtils.replace("AND ( AND", "(", qs);
+    // TextUtils.replace("AND ) AND", ")", qs);
+    TextUtils.replace("AND OR AND", "OR", qs); // AND_OR_AND_REGEX.matcher(qs).replaceAll("OR"); //qs.replace("AND OR
+                                               // AND", "OR");
+    TextUtils.replace("AND AND AND", "AND", qs); // MULT_AND_REGEX.matcher(qs).replaceAll("AND"); //qs.replace("AND AND
+                                                 // AND", "AND");
+    TextUtils.replace("  ", " ", qs);
 
-		// Remove any non word chars from the search string, trim and replace
-		// runs of whitespace chars with a single char to clean up the input
-		// and sanitize it
-		StringBuilder qs = new StringBuilder(q.length() * 2).append(q);
-		//TextUtils.replace("(", " ( ", qs);
-		//TextUtils.replace(")", " ) ", qs);
-		TextUtils.replace(" ", " AND ", qs);
-		//TextUtils.replace("AND ( AND", "(", qs);
-		//TextUtils.replace("AND ) AND", ")", qs);
-		TextUtils.replace("AND OR AND", "OR", qs); //AND_OR_AND_REGEX.matcher(qs).replaceAll("OR"); //qs.replace("AND OR AND", "OR");
-		TextUtils.replace("AND AND AND", "AND", qs); //MULT_AND_REGEX.matcher(qs).replaceAll("AND"); //qs.replace("AND AND AND", "AND");
-		TextUtils.replace("  ", " ", qs);
+    // System.err.println("q:" + qs);
 
-		//System.err.println("q:" + qs);
+    // List<String> terms = Splitter
+    // .onSpace()
+    // .ignoreEmptyStrings()
+    // .text(qs.toString());
 
-		//List<String> terms = Splitter
-		//		.onSpace()
-		//		.ignoreEmptyStrings()
-		//		.text(qs.toString());
+    List<SearchStackElement<TT>> outputQueue = new ArrayList<SearchStackElement<TT>>(10);
 
-		List<SearchStackElement<TT>> outputQueue =
-				new ArrayList<SearchStackElement<TT>>(10);
+    Deque<SearchStackOperator> opStack = new ArrayDeque<SearchStackOperator>(10);
 
-		Deque<SearchStackOperator> opStack =
-				new ArrayDeque<SearchStackOperator>(10);
+    StringBuilder buffer = new StringBuilder(qs.length());
 
-		StringBuilder buffer = new StringBuilder(qs.length());
+    char[] chars = new char[qs.length()];
 
-		char[] chars = new char[qs.length()];
-		
-		// Convert buffer to char array
-		qs.getChars(0, qs.length(), chars, 0);
-		
-		for (char c : chars) {
-			switch (c) {
-			case '(':
-				addTerm(buffer, outputQueue);
-				opStack.push(SearchStackOperator.LEFT_PAREN);
-				break;
-			case ')':
-				addTerm(buffer, outputQueue);
-				rightParens(outputQueue, opStack);
-				break;
-			case ' ':
-				addTerm(buffer, outputQueue);
-				break;
-			default:
-				buffer.append(c);
+    // Convert buffer to char array
+    qs.getChars(0, qs.length(), chars, 0);
 
-				if (c == 'D') {
-					// We must encounter a 'D' before checking if the buffer
-					// contains AND
-					if (buffer.toString().equals("AND")) {
-						addLowerPrecedenceOps(SearchStackOperator.AND, outputQueue, opStack);
-						buffer.setLength(0);
-					}
-				} else if (c == 'R') {
-					if (buffer.toString().equals("OR")) {
-						addLowerPrecedenceOps(SearchStackOperator.OR, outputQueue, opStack);
-						buffer.setLength(0);
-					}
-				} else {
-					// Do nothing
-				}
+    for (char c : chars) {
+      switch (c) {
+      case '(':
+        addTerm(buffer, outputQueue);
+        opStack.push(SearchStackOperator.LEFT_PAREN);
+        break;
+      case ')':
+        addTerm(buffer, outputQueue);
+        rightParens(outputQueue, opStack);
+        break;
+      case ' ':
+        addTerm(buffer, outputQueue);
+        break;
+      default:
+        buffer.append(c);
 
-				break;
-			}
-		}
+        if (c == 'D') {
+          // We must encounter a 'D' before checking if the buffer
+          // contains AND
+          if (buffer.toString().equals("AND")) {
+            addLowerPrecedenceOps(SearchStackOperator.AND, outputQueue, opStack);
+            buffer.setLength(0);
+          }
+        } else if (c == 'R') {
+          if (buffer.toString().equals("OR")) {
+            addLowerPrecedenceOps(SearchStackOperator.OR, outputQueue, opStack);
+            buffer.setLength(0);
+          }
+        } else {
+          // Do nothing
+        }
 
-		/*
-		// Convert to reverse polish
+        break;
+      }
+    }
 
-		for (String term : terms) {
-			if (term.equals("AND")) {
-				addLowerPrecedenceOps(SearchStackOperator.AND, outputQueue, opStack);
-			} else if (term.equals("OR")) {
-				addLowerPrecedenceOps(SearchStackOperator.OR, outputQueue, opStack);
-			} else if (term.equals("(")) {
-				opStack.push(SearchStackOperator.LEFT_PAREN);
-			} else if (term.equals(")")) {
-				rightParens(outputQueue, opStack);
-			} else {
-				outputQueue.add(new SearchStackElement<T>(term.toLowerCase()));
-			}
-		}
-		*/
+    /*
+     * // Convert to reverse polish
+     * 
+     * for (String term : terms) { if (term.equals("AND")) {
+     * addLowerPrecedenceOps(SearchStackOperator.AND, outputQueue, opStack); } else
+     * if (term.equals("OR")) { addLowerPrecedenceOps(SearchStackOperator.OR,
+     * outputQueue, opStack); } else if (term.equals("(")) {
+     * opStack.push(SearchStackOperator.LEFT_PAREN); } else if (term.equals(")")) {
+     * rightParens(outputQueue, opStack); } else { outputQueue.add(new
+     * SearchStackElement<T>(term.toLowerCase())); } }
+     */
 
-		// add any remaining operators onto the queue
-		addTerm(buffer, outputQueue);
-		
-		while (opStack.size() > 0) {
-			outputQueue.add(new SearchStackElement<TT>(opStack.pop()));
-		}
+    // add any remaining operators onto the queue
+    addTerm(buffer, outputQueue);
 
-		// Reverse the list since we want to put elements on the
-		// stack in reverse order
-		//Collections.reverse(outputQueue);
+    while (opStack.size() > 0) {
+      outputQueue.add(new SearchStackElement<TT>(opStack.pop()));
+    }
 
+    // Reverse the list since we want to put elements on the
+    // stack in reverse order
+    // Collections.reverse(outputQueue);
 
+    // Now the stack can be evaluated correctly
+    // The first elements will be terms to match to
+    // for (SearchStackElement<T> item : outputQueue) {
+    //// searchStack.push(item);
+    // }
 
-		// Now the stack can be evaluated correctly
-		// The first elements will be terms to match to
-		//for (SearchStackElement<T> item : outputQueue) {
-		////	searchStack.push(item);
-		//}
+    return outputQueue;
+  }
 
-		return outputQueue;
-	}
+  /**
+   * Adds the term.
+   *
+   * @param <TT>
+   *          the generic type
+   * @param buffer
+   *          the buffer
+   * @param outputQueue
+   *          the output queue
+   */
+  private static <TT> void addTerm(StringBuilder buffer, List<SearchStackElement<TT>> outputQueue) {
+    String s = buffer.toString().toLowerCase();
 
-	/**
-	 * Adds the term.
-	 *
-	 * @param <TT> the generic type
-	 * @param buffer the buffer
-	 * @param outputQueue the output queue
-	 */
-	private static <TT> void addTerm(StringBuilder buffer,
-			List<SearchStackElement<TT>> outputQueue) {
-		String s = buffer.toString().toLowerCase();
+    if (s.length() > 0) {
+      outputQueue.add(new SearchStackElement<TT>(s));
+      buffer.setLength(0);
+    }
+  }
 
-		if (s.length() > 0) {
-			outputQueue.add(new SearchStackElement<TT>(s));
-			buffer.setLength(0);
-		}
-	}
+  //
+  // Static functions
+  //
 
-	//
-	// Static functions
-	//
+  /**
+   * Adds the lower precedence ops.
+   *
+   * @param <TT>
+   *          the generic type
+   * @param op1
+   *          the operator
+   * @param outputQueue
+   *          the search stack
+   * @param operatorStack
+   *          the operator stack
+   */
+  private static <TT> void addLowerPrecedenceOps(SearchStackOperator op1, List<SearchStackElement<TT>> outputQueue,
+      Deque<SearchStackOperator> operatorStack) {
+    int p1 = SearchStackOperator.precedence(op1);
 
-	/**
-	 * Adds the lower precedence ops.
-	 *
-	 * @param <TT> the generic type
-	 * @param op1 the operator
-	 * @param outputQueue the search stack
-	 * @param operatorStack the operator stack
-	 */
-	private static <TT> void addLowerPrecedenceOps(SearchStackOperator op1,
-			List<SearchStackElement<TT>> outputQueue,
-			Deque<SearchStackOperator> operatorStack) {
-		int p1 = SearchStackOperator.precedence(op1);
+    SearchStackOperator op2;
 
-		SearchStackOperator op2;
+    // Look for ops with greater presedence since we want to evaluate
+    // AND before OR
 
-		// Look for ops with greater presedence since we want to evaluate
-		// AND before OR
+    while (operatorStack.size() > 0) {
+      op2 = operatorStack.peek();
 
-		while (operatorStack.size() > 0) {
-			op2 = operatorStack.peek();
+      if (p1 > SearchStackOperator.precedence(op2)) {
+        break;
+      }
 
-			if (p1 > SearchStackOperator.precedence(op2)) {
-				break;
-			}
+      // We have encountered two and statements for example
+      outputQueue.add(new SearchStackElement<TT>(op2));
 
-			// We have encountered two and statements for example
-			outputQueue.add(new SearchStackElement<TT>(op2));
+      // remove the operator as we have dealt with it
+      operatorStack.pop();
+    }
 
-			// remove the operator as we have dealt with it
-			operatorStack.pop();
-		}
+    // Add the new operator to the op stack
+    operatorStack.push(op1);
+  }
 
-		// Add the new operator to the op stack
-		operatorStack.push(op1);
-	}
+  /**
+   * Pop expressions until a left parenthesis is encountered.
+   *
+   * @param <TT>
+   *          the generic type
+   * @param outputQueue
+   *          the output queue
+   * @param opStack
+   *          the op stack
+   */
+  private static <TT> void rightParens(List<SearchStackElement<TT>> outputQueue, Deque<SearchStackOperator> opStack) {
+    SearchStackOperator op2;
 
-	/**
-	 * Pop expressions until a left parenthesis is encountered.
-	 *
-	 * @param <TT> the generic type
-	 * @param outputQueue the output queue
-	 * @param opStack the op stack
-	 */
-	private static <TT> void rightParens(List<SearchStackElement<TT>> outputQueue,
-			Deque<SearchStackOperator> opStack) {
-		SearchStackOperator op2;
+    // deal with existing operatorStack
 
-		// deal with existing operatorStack
+    while (opStack.size() > 0) {
+      op2 = opStack.pop();
 
-		while (opStack.size() > 0) {
-			op2 = opStack.pop();
+      if (op2 == SearchStackOperator.LEFT_PAREN) {
+        break;
+      }
 
-			if (op2 == SearchStackOperator.LEFT_PAREN) {
-				break;
-			}
-
-			outputQueue.add(new SearchStackElement<TT>(op2));
-		}
-	}
+      outputQueue.add(new SearchStackElement<TT>(op2));
+    }
+  }
 }

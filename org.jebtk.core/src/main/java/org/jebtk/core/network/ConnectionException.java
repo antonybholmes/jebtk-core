@@ -19,25 +19,25 @@ import org.jebtk.core.MessageException;
 
 // TODO: Auto-generated Javadoc
 /**
- * To be thrown when experiment search cannot connect
- * to a server.
+ * To be thrown when experiment search cannot connect to a server.
  *
  * @author Antony Holmes Holmes
  *
  */
 public class ConnectionException extends MessageException {
-	
-	/**
-	 * The constant serialVersionUID.
-	 */
-	private static final long serialVersionUID = 1L;
 
-	/**
-	 * Instantiates a new connection exception.
-	 *
-	 * @param message the message
-	 */
-	public ConnectionException(String message) {
-		super(message);
-	}
+  /**
+   * The constant serialVersionUID.
+   */
+  private static final long serialVersionUID = 1L;
+
+  /**
+   * Instantiates a new connection exception.
+   *
+   * @param message
+   *          the message
+   */
+  public ConnectionException(String message) {
+    super(message);
+  }
 }

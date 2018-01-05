@@ -32,90 +32,108 @@ import org.jebtk.core.text.TextUtils;
  */
 public class SettingString extends Setting {
 
-	/** The Constant serialVersionUID. */
-	private static final long serialVersionUID = 1L;
-	
-	/** The m value. */
-	private String mValue;
+  /** The Constant serialVersionUID. */
+  private static final long serialVersionUID = 1L;
 
-	/**
-	 * Instantiates a new setting string.
-	 *
-	 * @param path the path
-	 * @param value the value
-	 * @param description the description
-	 * @param locked the locked
-	 */
-	public SettingString(Path path, 
-			String value, 
-			String description, 
-			boolean locked) {
-		super(path, description, locked);
-		
-		mValue = value;
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.settings.Setting#getAsString()
-	 */
-	@Override
-	public String getAsString() {
-		return mValue;
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.settings.Setting#getAsInt()
-	 */
-	@Override
-	public int getAsInt() {
-		return TextUtils.scanInt(mValue);
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.settings.Setting#getAsDouble()
-	 */
-	@Override
-	public double getAsDouble() {
-		return TextUtils.scanDouble(mValue);
-	}
+  /** The m value. */
+  private String mValue;
 
-	/* (non-Javadoc)
-	 * @see org.abh.common.settings.Setting#getAsBool()
-	 */
-	@Override
-	public boolean getAsBool() {
-		return mValue.toLowerCase().equals(TextUtils.TRUE);
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.settings.Setting#getAsColor()
-	 */
-	@Override
-	public Color getAsColor() {
-		return ColorUtils.decodeHtmlColor(mValue);
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.settings.Setting#getAsFile()
-	 */
-	@Override
-	public java.nio.file.Path getAsFile() {
-		return PathUtils.getPath(mValue);
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.settings.Setting#getAsUrlBuilder()
-	 */
-	@Override
-	public UrlBuilder getAsUrlBuilder() {
-		return new UrlBuilder(mValue);
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.settings.Setting#toString()
-	 */
-	@Override
-	public String toString() {
-		return new StringBuilder("string_setting:").append(mPath.toString()).append(TextUtils.EQUALS_DELIMITER).append(mValue).toString();
-	}
+  /**
+   * Instantiates a new setting string.
+   *
+   * @param path
+   *          the path
+   * @param value
+   *          the value
+   * @param description
+   *          the description
+   * @param locked
+   *          the locked
+   */
+  public SettingString(Path path, String value, String description, boolean locked) {
+    super(path, description, locked);
+
+    mValue = value;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.settings.Setting#getAsString()
+   */
+  @Override
+  public String getAsString() {
+    return mValue;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.settings.Setting#getAsInt()
+   */
+  @Override
+  public int getAsInt() {
+    return TextUtils.scanInt(mValue);
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.settings.Setting#getAsDouble()
+   */
+  @Override
+  public double getAsDouble() {
+    return TextUtils.scanDouble(mValue);
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.settings.Setting#getAsBool()
+   */
+  @Override
+  public boolean getAsBool() {
+    return mValue.toLowerCase().equals(TextUtils.TRUE);
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.settings.Setting#getAsColor()
+   */
+  @Override
+  public Color getAsColor() {
+    return ColorUtils.decodeHtmlColor(mValue);
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.settings.Setting#getAsFile()
+   */
+  @Override
+  public java.nio.file.Path getAsFile() {
+    return PathUtils.getPath(mValue);
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.settings.Setting#getAsUrlBuilder()
+   */
+  @Override
+  public UrlBuilder getAsUrlBuilder() {
+    return new UrlBuilder(mValue);
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.settings.Setting#toString()
+   */
+  @Override
+  public String toString() {
+    return new StringBuilder("string_setting:").append(mPath.toString()).append(TextUtils.EQUALS_DELIMITER)
+        .append(mValue).toString();
+  }
 }

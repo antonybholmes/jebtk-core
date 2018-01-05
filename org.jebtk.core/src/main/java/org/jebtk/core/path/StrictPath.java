@@ -29,110 +29,117 @@ import org.jebtk.core.text.TextUtils;
  *
  */
 public class StrictPath extends Path {
-	
-	/**
-	 * The constant serialVersionUID.
-	 */
-	private static final long serialVersionUID = 1L;
-	
-	/** The Constant SLASH_REGEX. */
-	private static final Pattern SLASH_REGEX = Pattern.compile("[\\/\\\\]");
-	
-	/** The Constant BRACKET_REGEX. */
-	private static final Pattern BRACKET_REGEX =
-			Pattern.compile("[\\[\\]\\(\\)\\{\\}]");
-	
-	/** The Constant ILLEGAL_REGEX. */
-	private static final Pattern ILLEGAL_REGEX =
-			Pattern.compile("[^a-zA-Z0-9\\-_\\.]");
-	
 
-	/**
-	 * Instantiates a new strict path.
-	 *
-	 * @param <T> the generic type
-	 * @param path the path
-	 */
-	public <T> StrictPath(String path) {
-		super(path);
-	}
+  /**
+   * The constant serialVersionUID.
+   */
+  private static final long serialVersionUID = 1L;
 
-	/**
-	 * Instantiates a new strict path.
-	 *
-	 * @param path the path
-	 */
-	public StrictPath(Path path) {
-		super(path);
-	}
+  /** The Constant SLASH_REGEX. */
+  private static final Pattern SLASH_REGEX = Pattern.compile("[\\/\\\\]");
 
-	/**
-	 * Instantiates a new strict path.
-	 *
-	 * @param path the path
-	 * @param levels the levels
-	 */
-	public StrictPath(Path path, Object... levels) {
-		super(path, levels);
-	}
+  /** The Constant BRACKET_REGEX. */
+  private static final Pattern BRACKET_REGEX = Pattern.compile("[\\[\\]\\(\\)\\{\\}]");
 
-	/**
-	 * Instantiates a new strict path.
-	 *
-	 * @param levels the levels
-	 */
-	public StrictPath(List<?> levels) {
-		super(levels);
-	}
+  /** The Constant ILLEGAL_REGEX. */
+  private static final Pattern ILLEGAL_REGEX = Pattern.compile("[^a-zA-Z0-9\\-_\\.]");
 
-	/**
-	 * Instantiates a new strict path.
-	 *
-	 * @param levels the levels
-	 */
-	public StrictPath(Object... levels) {
-		super(levels);
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.path.Path#clone()
-	 */
-	@Override
-	protected Path clone() {
-		return new StrictPath(this);
-	}
+  /**
+   * Instantiates a new strict path.
+   *
+   * @param <T>
+   *          the generic type
+   * @param path
+   *          the path
+   */
+  public <T> StrictPath(String path) {
+    super(path);
+  }
 
-	/* (non-Javadoc)
-	 * @see org.abh.common.path.Path#sanitize(java.lang.String)
-	 */
-	@Override
-	protected String sanitize(String level) {
-		String s = level; //level.toLowerCase();
-		
-		
-		s = SLASH_REGEX.matcher(s).replaceAll(TextUtils.EMPTY_STRING);
-		
-		// Brackets become spaces
-		s = BRACKET_REGEX.matcher(s).replaceAll(" ");
+  /**
+   * Instantiates a new strict path.
+   *
+   * @param path
+   *          the path
+   */
+  public StrictPath(Path path) {
+    super(path);
+  }
 
-		//System.err.println("s1 " + s);
+  /**
+   * Instantiates a new strict path.
+   *
+   * @param path
+   *          the path
+   * @param levels
+   *          the levels
+   */
+  public StrictPath(Path path, Object... levels) {
+    super(path, levels);
+  }
 
-		// Convert spaces to underscores
-		s = RegexUtils.replaceAll(s, RegexUtils.SPACES_PATTERN, "_");
+  /**
+   * Instantiates a new strict path.
+   *
+   * @param levels
+   *          the levels
+   */
+  public StrictPath(List<?> levels) {
+    super(levels);
+  }
 
-		//s = RegexUtils.replaceAll(s, RegexUtils.UNDERSCORES_PATTERN, "_");
-		
-		// Strip leading and trailing underscores
-		s = RegexUtils.replaceAll(s, RegexUtils.LEADING_UNDERSCORES_PATTERN, "");
-		s = RegexUtils.replaceAll(s, RegexUtils.TRAILING_UNDERSCORES_PATTERN, "");
+  /**
+   * Instantiates a new strict path.
+   *
+   * @param levels
+   *          the levels
+   */
+  public StrictPath(Object... levels) {
+    super(levels);
+  }
 
-		// Remove all other illegal characters
-		s = RegexUtils.replaceAll(s, ILLEGAL_REGEX, "");
-		
-		// Remove underscore repeats
-		//s = s.replaceAll("_+", "_");
-		s = RegexUtils.replaceAll(s, RegexUtils.UNDERSCORES_PATTERN, "_");
-		
-		return s;
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.path.Path#clone()
+   */
+  @Override
+  protected Path clone() {
+    return new StrictPath(this);
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.path.Path#sanitize(java.lang.String)
+   */
+  @Override
+  protected String sanitize(String level) {
+    String s = level; // level.toLowerCase();
+
+    s = SLASH_REGEX.matcher(s).replaceAll(TextUtils.EMPTY_STRING);
+
+    // Brackets become spaces
+    s = BRACKET_REGEX.matcher(s).replaceAll(" ");
+
+    // System.err.println("s1 " + s);
+
+    // Convert spaces to underscores
+    s = RegexUtils.replaceAll(s, RegexUtils.SPACES_PATTERN, "_");
+
+    // s = RegexUtils.replaceAll(s, RegexUtils.UNDERSCORES_PATTERN, "_");
+
+    // Strip leading and trailing underscores
+    s = RegexUtils.replaceAll(s, RegexUtils.LEADING_UNDERSCORES_PATTERN, "");
+    s = RegexUtils.replaceAll(s, RegexUtils.TRAILING_UNDERSCORES_PATTERN, "");
+
+    // Remove all other illegal characters
+    s = RegexUtils.replaceAll(s, ILLEGAL_REGEX, "");
+
+    // Remove underscore repeats
+    // s = s.replaceAll("_+", "_");
+    s = RegexUtils.replaceAll(s, RegexUtils.UNDERSCORES_PATTERN, "_");
+
+    return s;
+  }
 }

@@ -19,33 +19,37 @@ import java.util.List;
 
 // TODO: Auto-generated Javadoc
 /**
- * Allows positive or negative indices and cycles around the list if the
- * index is outside the list boundaries. Thus for example, -1 will give
- * you the last element in the list since in a cycle, the list end is
- * joined to the list start so the element before the start, would be the
- * last element in the list. Unlike a {@code CircularArray}, the size of the
- * cyclic list can change.
+ * Allows positive or negative indices and cycles around the list if the index
+ * is outside the list boundaries. Thus for example, -1 will give you the last
+ * element in the list since in a cycle, the list end is joined to the list
+ * start so the element before the start, would be the last element in the list.
+ * Unlike a {@code CircularArray}, the size of the cyclic list can change.
  *
- * @param <T> the generic type
+ * @param <T>
+ *          the generic type
  */
 public class CyclicList<T> extends ListContainer<T> {
-	
-	/**
-	 * Instantiates a new cyclic list.
-	 *
-	 * @param list the list
-	 */
-	public CyclicList(List<T> list) {
-		super(list);
-	}
 
-	/* (non-Javadoc)
-	 * @see org.abh.common.collections.ReadOnlyListContainer#get(int)
-	 */
-	@Override
-	public T get(int index) {
-		//System.err.println("cyclic " + index + " " + size() + " " + CollectionUtils.cyclicIndex(index, size())); 
-		
-		return super.get(CollectionUtils.cyclicIndex(index, size()));
-	}
+  /**
+   * Instantiates a new cyclic list.
+   *
+   * @param list
+   *          the list
+   */
+  public CyclicList(List<T> list) {
+    super(list);
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.collections.ReadOnlyListContainer#get(int)
+   */
+  @Override
+  public T get(int index) {
+    // System.err.println("cyclic " + index + " " + size() + " " +
+    // CollectionUtils.cyclicIndex(index, size()));
+
+    return super.get(CollectionUtils.cyclicIndex(index, size()));
+  }
 }

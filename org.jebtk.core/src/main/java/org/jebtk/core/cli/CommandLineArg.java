@@ -28,112 +28,121 @@ import org.jebtk.core.text.TextUtils;
  */
 public class CommandLineArg {
 
-	/**
-	 * The member value.
-	 */
-	private String mValue = null;
+  /**
+   * The member value.
+   */
+  private String mValue = null;
 
-	/**
-	 * The member name.
-	 */
-	private String mLongName = null;
+  /**
+   * The member name.
+   */
+  private String mLongName = null;
 
-	/** The m short name. */
-	private char mShortName;
+  /** The m short name. */
+  private char mShortName;
 
-	/**
-	 * Instantiates a new command line arg.
-	 *
-	 * @param option the option
-	 */
-	public CommandLineArg(CommandLineOption option) {
-		this(option, null);
-	}
-	
-	/**
-	 * Instantiates a new command line arg.
-	 *
-	 * @param option the option
-	 * @param value the value
-	 */
-	public CommandLineArg(CommandLineOption option, String value) {
-		this(option.getShortName(), option.getLongName(), value);
-	}
-	
-	/**
-	 * Instantiates a new command line arg.
-	 *
-	 * @param shortName the short name
-	 * @param longName the long name
-	 */
-	public CommandLineArg(char shortName, String longName) {
-		this(shortName, longName, null);
-	}
+  /**
+   * Instantiates a new command line arg.
+   *
+   * @param option
+   *          the option
+   */
+  public CommandLineArg(CommandLineOption option) {
+    this(option, null);
+  }
 
-	/**
-	 * Instantiates a new command line arg.
-	 *
-	 * @param shortName the short name
-	 * @param longName the long name
-	 * @param value the value
-	 */
-	public CommandLineArg(char shortName, String longName, String value) {
-		mShortName = shortName;
-		mLongName = longName;
-		mValue = value;
-	}
+  /**
+   * Instantiates a new command line arg.
+   *
+   * @param option
+   *          the option
+   * @param value
+   *          the value
+   */
+  public CommandLineArg(CommandLineOption option, String value) {
+    this(option.getShortName(), option.getLongName(), value);
+  }
 
-	/**
-	 * Gets the name.
-	 *
-	 * @return the name
-	 */
-	public String getLongName() {
-		return mLongName;
-	}
+  /**
+   * Instantiates a new command line arg.
+   *
+   * @param shortName
+   *          the short name
+   * @param longName
+   *          the long name
+   */
+  public CommandLineArg(char shortName, String longName) {
+    this(shortName, longName, null);
+  }
 
-	/**
-	 * Gets the short name.
-	 *
-	 * @return the short name
-	 */
-	public char getShortName() {
-		return mShortName;
-	}
+  /**
+   * Instantiates a new command line arg.
+   *
+   * @param shortName
+   *          the short name
+   * @param longName
+   *          the long name
+   * @param value
+   *          the value
+   */
+  public CommandLineArg(char shortName, String longName, String value) {
+    mShortName = shortName;
+    mLongName = longName;
+    mValue = value;
+  }
 
-	/**
-	 * Gets the value.
-	 *
-	 * @return the value
-	 */
-	public String getValue() {
-		return mValue;
-	}
+  /**
+   * Gets the name.
+   *
+   * @return the name
+   */
+  public String getLongName() {
+    return mLongName;
+  }
 
-	/**
-	 * Parses the posix arg.
-	 *
-	 * @param arg the arg
-	 * @return the command line arg
-	 */
-	public static CommandLineArg parsePosixArg(String arg) {
+  /**
+   * Gets the short name.
+   *
+   * @return the short name
+   */
+  public char getShortName() {
+    return mShortName;
+  }
 
-		arg = arg.replaceFirst("--", TextUtils.EMPTY_STRING);
+  /**
+   * Gets the value.
+   *
+   * @return the value
+   */
+  public String getValue() {
+    return mValue;
+  }
 
-		CommandLineArg ret;
-		
-		if (arg.contains("=")) {
-			List<String> tokens = TextUtils.fastSplit(arg, TextUtils.EQUALS_DELIMITER);
+  /**
+   * Parses the posix arg.
+   *
+   * @param arg
+   *          the arg
+   * @return the command line arg
+   */
+  public static CommandLineArg parsePosixArg(String arg) {
 
-			ret = new CommandLineArg((char)0, tokens.get(0), tokens.get(1));
-		} else {
-			ret = new CommandLineArg((char)0, arg);
-		}
+    arg = arg.replaceFirst("--", TextUtils.EMPTY_STRING);
 
-		return ret;
-	}
+    CommandLineArg ret;
 
-	public int getIntValue() {
-		return Integer.parseInt(getValue());
-	}
+    if (arg.contains("=")) {
+      List<String> tokens = TextUtils.fastSplit(arg, TextUtils.EQUALS_DELIMITER);
+
+      ret = new CommandLineArg((char) 0, tokens.get(0), tokens.get(1));
+    } else {
+      ret = new CommandLineArg((char) 0, arg);
+    }
+
+    return ret;
+  }
+
+  public int getIntValue() {
+    return Integer.parseInt(getValue());
+  }
 }

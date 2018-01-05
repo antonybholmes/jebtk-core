@@ -31,16 +31,14 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
 
-
 // TODO: Auto-generated Javadoc
 /**
- * Settings factory for providing global settings to an application.
- * Can load settings from an XML Path or a text Path.
+ * Settings factory for providing global settings to an application. Can load
+ * settings from an XML Path or a text Path.
  * 
- * Settings will auto load setting from xml files ending 
- * settings.xml located in res folders in the class path. It will
- * then attempt to load user.settings.xml from the res folder
- * in the application directory. This allows users to alter
+ * Settings will auto load setting from xml files ending settings.xml located in
+ * res folders in the class path. It will then attempt to load user.settings.xml
+ * from the res folder in the application directory. This allows users to alter
  * settings if they need to.
  *
  * @author Antony Holmes Holmes
@@ -48,291 +46,303 @@ import org.xml.sax.SAXException;
  */
 public class SettingsService extends Settings {
 
-	/** The Constant serialVersionUID. */
-	private static final long serialVersionUID = 1L;
+  /** The Constant serialVersionUID. */
+  private static final long serialVersionUID = 1L;
 
-	/**
-	 * The Class SettingsServiceLoader.
-	 */
-	private static class SettingsServiceLoader {
-		
-		/** The Constant INSTANCE. */
-		private static final SettingsService INSTANCE = new SettingsService();
-	}
+  /**
+   * The Class SettingsServiceLoader.
+   */
+  private static class SettingsServiceLoader {
 
-	/**
-	 * Gets the single instance of SettingsService.
-	 *
-	 * @return single instance of SettingsService
-	 */
-	public static SettingsService getInstance() {
-		return SettingsServiceLoader.INSTANCE;
-	}
+    /** The Constant INSTANCE. */
+    private static final SettingsService INSTANCE = new SettingsService();
+  }
 
+  /**
+   * Gets the single instance of SettingsService.
+   *
+   * @return single instance of SettingsService
+   */
+  public static SettingsService getInstance() {
+    return SettingsServiceLoader.INSTANCE;
+  }
 
-	/**
-	 * The member auto loaded.
-	 */
-	private boolean mAutoLoad = true;
+  /**
+   * The member auto loaded.
+   */
+  private boolean mAutoLoad = true;
 
-	/** The m auto save. */
-	private boolean mAutoSave = true;
-	
-	/** The m loaders. */
-	private SettingsReaders mLoaders = new SettingsReaders();
-	
-	/** The m savers. */
-	private SettingsWriters mSavers = new SettingsWriters();
-	
-	/**
-	 * Instantiates a new settings service.
-	 */
-	private SettingsService() {
-		// do nothing
-		
-		// Load settings from the packages
-		mLoaders.add(new SettingsReaderPackageXml());
-		mLoaders.add(new SettingsReaderPackageJson());
-		
-		// Overwrite with app defaults
-		mLoaders.add(new SettingsReaderDefaultXml());
-		mLoaders.add(new SettingsReaderDefaultJson());
-		
-		// Overwrite with user defaults
-		mLoaders.add(new SettingsReaderUserXml());
-		mLoaders.add(new SettingsReaderUserJson());
-		
-		//mSavers.add(new PackageJsonSettingsSaver());
-		
-		mSavers.add(new SettingsWriterUserHomeJson());
-		
-		// Ability to read settings to home directory
-		mLoaders.add(new SettingsReaderUserHomeJson());
-	}
+  /** The m auto save. */
+  private boolean mAutoSave = true;
 
-	/**
-	 * Gets the setting.
-	 *
-	 * @param path the path
-	 * @return the setting
-	 */
-	@Override
-	public synchronized Setting getSetting(Path path) {
-		try {
-			autoLoad();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+  /** The m loaders. */
+  private SettingsReaders mLoaders = new SettingsReaders();
 
-		return super.getSetting(path);
-	}
+  /** The m savers. */
+  private SettingsWriters mSavers = new SettingsWriters();
 
-	/* (non-Javadoc)
-	 * @see java.lang.Iterable#iterator()
-	 */
-	@Override
-	public Iterator<Path> iterator() {
-		autoLoad();
+  /**
+   * Instantiates a new settings service.
+   */
+  private SettingsService() {
+    // do nothing
 
-		return super.iterator();
-	}
+    // Load settings from the packages
+    mLoaders.add(new SettingsReaderPackageXml());
+    mLoaders.add(new SettingsReaderPackageJson());
 
-	/**
-	 * Attempt to find all settings files and load them.
-	 */
-	private synchronized void autoLoad() {
-		if (mAutoLoad) {
-			// Set this here to stop recursive infinite calling
-			// of this method.
-			mAutoLoad = false;
+    // Overwrite with app defaults
+    mLoaders.add(new SettingsReaderDefaultXml());
+    mLoaders.add(new SettingsReaderDefaultJson());
 
-			//autoLoadXml();
-			//autoLoadJson();
-			
-			load();
-		}
-	}
-	
-	/**
-	 * Load.
-	 */
-	private synchronized void load() {
-		for (SettingsReader loader : mLoaders) {
-			loader.load(this);
-		}
-	}
+    // Overwrite with user defaults
+    mLoaders.add(new SettingsReaderUserXml());
+    mLoaders.add(new SettingsReaderUserJson());
 
-	/**
-	 * Auto load xml.
-	 *
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 * @throws URISyntaxException the URI syntax exception
-	 * @throws SAXException the SAX exception
-	 * @throws ParserConfigurationException the parser configuration exception
-	 */
-	private synchronized void autoLoadXml() throws IOException, URISyntaxException, SAXException, ParserConfigurationException {
-		LOG.info("Auto loading XML settings...");
+    // mSavers.add(new PackageJsonSettingsSaver());
 
-		for (String res : Resources.getInstance()) {
-			if (!res.contains("settings.xml")) {
-				continue;
-			}
+    mSavers.add(new SettingsWriterUserHomeJson());
 
-			LOG.info("Loading settings from {}...", res);
+    // Ability to read settings to home directory
+    mLoaders.add(new SettingsReaderUserHomeJson());
+  }
 
-			loadXml(Resources.getResInputStream(res), false);
-		}
+  /**
+   * Gets the setting.
+   *
+   * @param path
+   *          the path
+   * @return the setting
+   */
+  @Override
+  public synchronized Setting getSetting(Path path) {
+    try {
+      autoLoad();
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
 
-		// Load local settings that may overwrite internal settings.
-		loadXml(SettingsReaderPackageXml.DEFAULT_XML_FILE, false);
+    return super.getSetting(path);
+  }
 
-		// Load any per user settings. We flag these as being updated so
-		// that on the next write cycle, they will be written back to the
-		// settings file.
-		loadXml(SettingsReaderUserXml.USER_XML_FILE, true);
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Iterable#iterator()
+   */
+  @Override
+  public Iterator<Path> iterator() {
+    autoLoad();
 
-		LOG.info("Finished loading settings...");
-	}
+    return super.iterator();
+  }
 
-	/**
-	 * Auto load json.
-	 *
-	 * @throws ParseException the parse exception
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 */
-	private synchronized void autoLoadJson() throws ParseException, IOException {
-		LOG.info("Auto loading JSON settings...");
+  /**
+   * Attempt to find all settings files and load them.
+   */
+  private synchronized void autoLoad() {
+    if (mAutoLoad) {
+      // Set this here to stop recursive infinite calling
+      // of this method.
+      mAutoLoad = false;
 
-		for (String res : Resources.getInstance()) {
-			if (!res.contains("settings.json")) {
-				continue;
-			}
+      // autoLoadXml();
+      // autoLoadJson();
 
-			LOG.info("Loading settings from {}...", res);
+      load();
+    }
+  }
 
-			loadJson(Resources.getResInputStream(res), false);
-		}
+  /**
+   * Load.
+   */
+  private synchronized void load() {
+    for (SettingsReader loader : mLoaders) {
+      loader.load(this);
+    }
+  }
 
-		// Load local settings that may overwrite internal settings.
-		loadJson(SettingsReaderPackageJson.DEFAULT_JSON_FILE, false);
+  /**
+   * Auto load xml.
+   *
+   * @throws IOException
+   *           Signals that an I/O exception has occurred.
+   * @throws URISyntaxException
+   *           the URI syntax exception
+   * @throws SAXException
+   *           the SAX exception
+   * @throws ParserConfigurationException
+   *           the parser configuration exception
+   */
+  private synchronized void autoLoadXml()
+      throws IOException, URISyntaxException, SAXException, ParserConfigurationException {
+    LOG.info("Auto loading XML settings...");
 
-		// Load any per user settings setting them to update mode, so that
-		// they will be written to file. Only settings marked as updated
-		// will be saved in the user file
-		loadJson(SettingsReaderUserJson.USER_JSON_FILE, true);
+    for (String res : Resources.getInstance()) {
+      if (!res.contains("settings.xml")) {
+        continue;
+      }
 
-		LOG.info("Finished loading settings...");
-	}
+      LOG.info("Loading settings from {}...", res);
 
-	
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.settings.Settings#update(org.abh.common.settings.Setting)
-	 */
-	@Override
-	protected synchronized void update(Setting setting, boolean updated) {
-		// Update has the same effect as add plus an autosave of the settings
-		// to disk.
-		super.update(setting, updated);
+      loadXml(Resources.getResInputStream(res), false);
+    }
 
-		// Save a local copy of the settings if the setting is flagged as
-		// updated
-		if (updated) {
-			autoSave();
-		}
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.settings.Settings#toXml(org.w3c.dom.Document)
-	 */
-	@Override
-	public Element toXml(Document doc) {
-		Element element = doc.createElement("settings");
+    // Load local settings that may overwrite internal settings.
+    loadXml(SettingsReaderPackageXml.DEFAULT_XML_FILE, false);
 
-		for (Path path : this) {
-			if (isUpdated(path)) {
-				element.appendChild(getSetting(path).toXml(doc));
-			}
-		}
+    // Load any per user settings. We flag these as being updated so
+    // that on the next write cycle, they will be written back to the
+    // settings file.
+    loadXml(SettingsReaderUserXml.USER_XML_FILE, true);
 
-		return element;
-	}
+    LOG.info("Finished loading settings...");
+  }
 
-	/* (non-Javadoc)
-	 * @see org.abh.common.settings.Settings#toJson()
-	 */
-	@Override
-	public Json toJson() {
-		Json a = new JsonArray();
+  /**
+   * Auto load json.
+   *
+   * @throws ParseException
+   *           the parse exception
+   * @throws IOException
+   *           Signals that an I/O exception has occurred.
+   */
+  private synchronized void autoLoadJson() throws ParseException, IOException {
+    LOG.info("Auto loading JSON settings...");
 
-		for (Path path : this) {
-			//System.err.println("js " + path);
-			
-			if (isUpdated(path)) {
-				a.add(getSetting(path).toJson());
-			}
-		}
+    for (String res : Resources.getInstance()) {
+      if (!res.contains("settings.json")) {
+        continue;
+      }
 
-		return a;
-	}
-	
-	/**
-	 * Gets the savers.
-	 *
-	 * @return the savers
-	 */
-	public SettingsWriters getSavers() {
-		return mSavers;
-	}
-	
-	/**
-	 * Gets the loaders.
-	 *
-	 * @return the loaders
-	 */
-	public SettingsReaders getLoaders() {
-		return mLoaders;
-	}
+      LOG.info("Loading settings from {}...", res);
 
-	/**
-	 * Auto save.
-	 */
-	public void autoSave() {
-		if (mAutoSave) {
-			save();
-		}
-	}
+      loadJson(Resources.getResInputStream(res), false);
+    }
 
-	/**
-	 * Save the settings as user settings.
-	 */
-	public void save() {
-		// Create the res directory if it does not exist
-		//Resources.makeResDir();
+    // Load local settings that may overwrite internal settings.
+    loadJson(SettingsReaderPackageJson.DEFAULT_JSON_FILE, false);
 
-		//writeXml(USER_XML_FILE);
-		
-		// Make the home folder if it doesn't exist
-		//FileUtils.mkhome();
-		
-		//writeJson(USER_JSON_FILE);
-		
-		for (SettingsWriter saver : mSavers) {
-			saver.save(this);
-		}
-	}
+    // Load any per user settings setting them to update mode, so that
+    // they will be written to file. Only settings marked as updated
+    // will be saved in the user file
+    loadJson(SettingsReaderUserJson.USER_JSON_FILE, true);
 
-	/**
-	 * Sets whether settings are automatically saved to disk when they
-	 * are updated.
-	 *
-	 * @param autoSave the new auto save
-	 */
-	public void setAutoSave(boolean autoSave) {
-		mAutoSave = autoSave;
+    LOG.info("Finished loading settings...");
+  }
 
-		autoSave();
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.settings.Settings#update(org.abh.common.settings.Setting)
+   */
+  @Override
+  protected synchronized void update(Setting setting, boolean updated) {
+    // Update has the same effect as add plus an autosave of the settings
+    // to disk.
+    super.update(setting, updated);
 
-	
+    // Save a local copy of the settings if the setting is flagged as
+    // updated
+    if (updated) {
+      autoSave();
+    }
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.settings.Settings#toXml(org.w3c.dom.Document)
+   */
+  @Override
+  public Element toXml(Document doc) {
+    Element element = doc.createElement("settings");
+
+    for (Path path : this) {
+      if (isUpdated(path)) {
+        element.appendChild(getSetting(path).toXml(doc));
+      }
+    }
+
+    return element;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.settings.Settings#toJson()
+   */
+  @Override
+  public Json toJson() {
+    Json a = new JsonArray();
+
+    for (Path path : this) {
+      // System.err.println("js " + path);
+
+      if (isUpdated(path)) {
+        a.add(getSetting(path).toJson());
+      }
+    }
+
+    return a;
+  }
+
+  /**
+   * Gets the savers.
+   *
+   * @return the savers
+   */
+  public SettingsWriters getSavers() {
+    return mSavers;
+  }
+
+  /**
+   * Gets the loaders.
+   *
+   * @return the loaders
+   */
+  public SettingsReaders getLoaders() {
+    return mLoaders;
+  }
+
+  /**
+   * Auto save.
+   */
+  public void autoSave() {
+    if (mAutoSave) {
+      save();
+    }
+  }
+
+  /**
+   * Save the settings as user settings.
+   */
+  public void save() {
+    // Create the res directory if it does not exist
+    // Resources.makeResDir();
+
+    // writeXml(USER_XML_FILE);
+
+    // Make the home folder if it doesn't exist
+    // FileUtils.mkhome();
+
+    // writeJson(USER_JSON_FILE);
+
+    for (SettingsWriter saver : mSavers) {
+      saver.save(this);
+    }
+  }
+
+  /**
+   * Sets whether settings are automatically saved to disk when they are updated.
+   *
+   * @param autoSave
+   *          the new auto save
+   */
+  public void setAutoSave(boolean autoSave) {
+    mAutoSave = autoSave;
+
+    autoSave();
+  }
+
 }

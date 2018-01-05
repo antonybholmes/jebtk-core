@@ -23,70 +23,81 @@ import org.jebtk.core.Function;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class MapStream allows values in a stream to be mapped to something
- * else on a one to one basis.
+ * The Class MapStream allows values in a stream to be mapped to something else
+ * on a one to one basis.
  *
- * @param <T> the generic type
- * @param <V> the value type
+ * @param <T>
+ *          the generic type
+ * @param <V>
+ *          the value type
  */
 public class MapStream<T, V> extends Stream<V> {
 
-	/** The m stream. */
-	private Stream<T> mStream;
-	
-	/** The m F. */
-	private Function<T, V> mF;
-	
-	/**
-	 * Instantiates a new map stream.
-	 *
-	 * @param stream the stream
-	 * @param f the f
-	 */
-	public MapStream(Stream<T> stream, Function<T, V> f) {
-		mStream = stream;
-		mF = f;
-	}
+  /** The m stream. */
+  private Stream<T> mStream;
 
-	/* (non-Javadoc)
-	 * @see java.util.Iterator#hasNext()
-	 */
-	@Override
-	public boolean hasNext() {
-		return mStream.hasNext();
-	}
+  /** The m F. */
+  private Function<T, V> mF;
 
-	/* (non-Javadoc)
-	 * @see java.util.Iterator#next()
-	 */
-	@Override
-	public V next() {
-		return mF.apply(mStream.next());
-	}
+  /**
+   * Instantiates a new map stream.
+   *
+   * @param stream
+   *          the stream
+   * @param f
+   *          the f
+   */
+  public MapStream(Stream<T> stream, Function<T, V> f) {
+    mStream = stream;
+    mF = f;
+  }
 
-	//
-	// Static methods
-	//
-	
-	/**
-	 * Apply a function to a collection and return a list of the function
-	 * outputs of the same size as the input collection. This is a functional
-	 * way of running a for loop over a list.
-	 *
-	 * @param <VV> the generic type
-	 * @param <TT> the generic type
-	 * @param values the values
-	 * @param f the f
-	 * @return the list
-	 */
-	public static <VV, TT> List<TT> lapply(Collection<VV> values, 
-			Function<VV, TT> f) {
-		List<TT> ret = new ArrayList<TT>(values.size());
-		
-		for (VV v : values) {
-			ret.add(f.apply(v));
-		}
-		
-		return ret;
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.util.Iterator#hasNext()
+   */
+  @Override
+  public boolean hasNext() {
+    return mStream.hasNext();
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.util.Iterator#next()
+   */
+  @Override
+  public V next() {
+    return mF.apply(mStream.next());
+  }
+
+  //
+  // Static methods
+  //
+
+  /**
+   * Apply a function to a collection and return a list of the function outputs of
+   * the same size as the input collection. This is a functional way of running a
+   * for loop over a list.
+   *
+   * @param <VV>
+   *          the generic type
+   * @param <TT>
+   *          the generic type
+   * @param values
+   *          the values
+   * @param f
+   *          the f
+   * @return the list
+   */
+  public static <VV, TT> List<TT> lapply(Collection<VV> values, Function<VV, TT> f) {
+    List<TT> ret = new ArrayList<TT>(values.size());
+
+    for (VV v : values) {
+      ret.add(f.apply(v));
+    }
+
+    return ret;
+  }
 }

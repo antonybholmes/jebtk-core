@@ -19,56 +19,62 @@ import java.util.Collection;
 
 // TODO: Auto-generated Javadoc
 /**
- * The class DefaultMultiMap creates a multi-map with keys of type K and
- * values being a collection of V. This is the generic form of the multi-map.
+ * The class DefaultMultiMap creates a multi-map with keys of type K and values
+ * being a collection of V. This is the generic form of the multi-map.
  * ArrayListMultiMap allows you to create a map of array lists for example, if
- * you need specific types. This is to provide more versatility than the
- * Guava MultiMap since this is a drop in replacement for a Map and allows
- * for specific types in the values rather than having to deal with a
- * generic collection (and possibly having to cast it to a concrete collection
- * type).
+ * you need specific types. This is to provide more versatility than the Guava
+ * MultiMap since this is a drop in replacement for a Map and allows for
+ * specific types in the values rather than having to deal with a generic
+ * collection (and possibly having to cast it to a concrete collection type).
  *
- * @param <K> the key type
- * @param <V> the value type
- * @param <T> the generic type
+ * @param <K>
+ *          the key type
+ * @param <V>
+ *          the value type
+ * @param <T>
+ *          the generic type
  */
-public abstract class DefaultMultiMap<K, V, T extends Collection<V>> extends DefaultHashMap<K, T> implements MultiMap<K, V, T> {
-	
-	/** The Constant serialVersionUID. */
-	private static final long serialVersionUID = 1L;
+public abstract class DefaultMultiMap<K, V, T extends Collection<V>> extends DefaultHashMap<K, T>
+    implements MultiMap<K, V, T> {
 
-	
-	/**
-	 * Instantiates a new multi map.
-	 *
-	 * @param defaultValue the default value
-	 */
-	public DefaultMultiMap(CollectionCreator<V, T> defaultValue) {
-		this(DEFAULT_INITIAL_CAPACITY, defaultValue);
-	}
-	
-	/**
-	 * Instantiates a new abstract multi map.
-	 *
-	 * @param initialCapacity the initial capacity
-	 * @param defaultValue the default value
-	 */
-	public DefaultMultiMap(int initialCapacity, 
-			CollectionCreator<V, T> defaultValue) {
-		super(initialCapacity, defaultValue);
-	}
+  /** The Constant serialVersionUID. */
+  private static final long serialVersionUID = 1L;
 
-	/* (non-Javadoc)
-	 * @see java.util.Map#containsValue(java.lang.Object)
-	 */
-	@Override
-	public boolean containsValue(Object value) {
-		for (K key : keySet()) {
-			if (get(key).contains(value)) {
-				return true;
-			}
-		}
-		
-		return false;
-	}
+  /**
+   * Instantiates a new multi map.
+   *
+   * @param defaultValue
+   *          the default value
+   */
+  public DefaultMultiMap(CollectionCreator<V, T> defaultValue) {
+    this(DEFAULT_INITIAL_CAPACITY, defaultValue);
+  }
+
+  /**
+   * Instantiates a new abstract multi map.
+   *
+   * @param initialCapacity
+   *          the initial capacity
+   * @param defaultValue
+   *          the default value
+   */
+  public DefaultMultiMap(int initialCapacity, CollectionCreator<V, T> defaultValue) {
+    super(initialCapacity, defaultValue);
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.util.Map#containsValue(java.lang.Object)
+   */
+  @Override
+  public boolean containsValue(Object value) {
+    for (K key : keySet()) {
+      if (get(key).contains(value)) {
+        return true;
+      }
+    }
+
+    return false;
+  }
 }

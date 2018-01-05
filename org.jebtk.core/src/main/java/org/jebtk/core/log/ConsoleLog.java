@@ -23,15 +23,17 @@ package org.jebtk.core.log;
  *
  */
 public class ConsoleLog implements LogEventListener {
-	
-	/* (non-Javadoc)
-	 * @see org.abh.lib.log.LogEventListener#logEvent(org.abh.lib.log.LogEvent)
-	 */
-	@Override
-	public void logEvent(LogEvent e) {
-		System.out.print("[");
-		System.out.print(e.getFormattedDate());
-		System.out.print("] ");
-		System.out.println(e.getMessage());
-	}
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.log.LogEventListener#logEvent(org.abh.lib.log.LogEvent)
+   */
+  @Override
+  public void logEvent(LogEvent e) {
+    System.out.print("[");
+    System.out.print(e.getFormattedDate());
+    System.out.print("] ");
+    System.out.println(e.getMessage());
+  }
 }

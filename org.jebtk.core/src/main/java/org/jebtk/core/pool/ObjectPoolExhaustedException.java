@@ -22,19 +22,20 @@ import org.jebtk.core.MessageException;
  * The class ObjectPoolExhaustedException.
  */
 public class ObjectPoolExhaustedException extends MessageException {
-	
-	/**
-	 * The constant serialVersionUID.
-	 */
-	private static final long serialVersionUID = 1L;
 
-	/**
-	 * Instantiates a new object pool exhausted exception.
-	 *
-	 * @param pool the pool
-	 */
-	public ObjectPoolExhaustedException(ObjectPool<?> pool) {
-		super(pool.getName() + " exhausted.");
-	}
+  /**
+   * The constant serialVersionUID.
+   */
+  private static final long serialVersionUID = 1L;
+
+  /**
+   * Instantiates a new object pool exhausted exception.
+   *
+   * @param pool
+   *          the pool
+   */
+  public ObjectPoolExhaustedException(ObjectPool<?> pool) {
+    super(pool.getName() + " exhausted.");
+  }
 
 }

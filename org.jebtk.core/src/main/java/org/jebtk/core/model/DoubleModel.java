@@ -17,7 +17,6 @@ package org.jebtk.core.model;
 
 import org.jebtk.core.event.ChangeListeners;
 
-
 // TODO: Auto-generated Javadoc
 /**
  * Generic model for sharing a changable item of fixed type.
@@ -25,73 +24,75 @@ import org.jebtk.core.event.ChangeListeners;
  * @author Antony Holmes Holmes
  */
 public class DoubleModel extends ChangeListeners {
-	
-	/**
-	 * The constant serialVersionUID.
-	 */
-	private static final long serialVersionUID = 1L;
-	
-	/**
-	 * The member item.
-	 */
-	protected double mItem = Double.NaN;
-	
-	/** The m previous item. */
-	private double mPreviousItem = Double.NaN;
-	
-	/**
-	 * Instantiates a new double model.
-	 */
-	public DoubleModel() {
-		clear();
-	}
-	
-	/**
-	 * Sets the.
-	 *
-	 * @param item the item
-	 */
-	public void set(double item) {
-		update(item);
 
-		fireChanged();
-	}
-	
-	/**
-	 * Update.
-	 *
-	 * @param item the item
-	 */
-	public void update(double item) {
-		mPreviousItem = mItem;
-		mItem = item;
-	}
-	
-	/**
-	 * Gets the.
-	 *
-	 * @return the t
-	 */
-	public double get() {
-		return mItem;
-	}
-	
-	/**
-	 * Gets the previous.
-	 *
-	 * @return the previous
-	 */
-	public double getPrevious() {
-		return mPreviousItem;
-	}
-	
-	/**
-	 * Clear.
-	 */
-	public void clear() {
-		mItem  = Double.NaN;
-		mPreviousItem = Double.NaN;
+  /**
+   * The constant serialVersionUID.
+   */
+  private static final long serialVersionUID = 1L;
 
-		fireChanged();
-	}
+  /**
+   * The member item.
+   */
+  protected double mItem = Double.NaN;
+
+  /** The m previous item. */
+  private double mPreviousItem = Double.NaN;
+
+  /**
+   * Instantiates a new double model.
+   */
+  public DoubleModel() {
+    clear();
+  }
+
+  /**
+   * Sets the.
+   *
+   * @param item
+   *          the item
+   */
+  public void set(double item) {
+    update(item);
+
+    fireChanged();
+  }
+
+  /**
+   * Update.
+   *
+   * @param item
+   *          the item
+   */
+  public void update(double item) {
+    mPreviousItem = mItem;
+    mItem = item;
+  }
+
+  /**
+   * Gets the.
+   *
+   * @return the t
+   */
+  public double get() {
+    return mItem;
+  }
+
+  /**
+   * Gets the previous.
+   *
+   * @return the previous
+   */
+  public double getPrevious() {
+    return mPreviousItem;
+  }
+
+  /**
+   * Clear.
+   */
+  public void clear() {
+    mItem = Double.NaN;
+    mPreviousItem = Double.NaN;
+
+    fireChanged();
+  }
 }

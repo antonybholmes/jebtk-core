@@ -22,52 +22,59 @@ import org.jebtk.core.collections.CollectionUtils;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class BaseStream encapulates an initial collection with the intent
- * of apply further streams to process the list.
+ * The Class BaseStream encapulates an initial collection with the intent of
+ * apply further streams to process the list.
  *
- * @param <T> the generic type
+ * @param <T>
+ *          the generic type
  */
 public class IteratorStream<T> extends Stream<T> {
-	
-	/** The m iter. */
-	private Iterator<T> mIter;
-	
-	/** The m current. */
-	private T mCurrent = null;
 
-	/**
-	 * Instantiates a new base stream.
-	 *
-	 * @param iter the iter
-	 */
-	public IteratorStream(Iterator<T> iter) {
-		mIter = iter;
-	}
-	
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.stream.Stream#toList()
-	 */
-	@Override
-	public List<T> toList() {
-		return CollectionUtils.toList(mIter);
-	}
+  /** The m iter. */
+  private Iterator<T> mIter;
 
-	/* (non-Javadoc)
-	 * @see java.util.Iterator#hasNext()
-	 */
-	@Override
-	public boolean hasNext() {
-		return mIter.hasNext();
-	}
+  /** The m current. */
+  private T mCurrent = null;
 
-	/* (non-Javadoc)
-	 * @see java.util.Iterator#next()
-	 */
-	@Override
-	public T next() {
-		mCurrent = mIter.next();
-		
-		return mCurrent;
-	}
+  /**
+   * Instantiates a new base stream.
+   *
+   * @param iter
+   *          the iter
+   */
+  public IteratorStream(Iterator<T> iter) {
+    mIter = iter;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.stream.Stream#toList()
+   */
+  @Override
+  public List<T> toList() {
+    return CollectionUtils.toList(mIter);
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.util.Iterator#hasNext()
+   */
+  @Override
+  public boolean hasNext() {
+    return mIter.hasNext();
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.util.Iterator#next()
+   */
+  @Override
+  public T next() {
+    mCurrent = mIter.next();
+
+    return mCurrent;
+  }
 }

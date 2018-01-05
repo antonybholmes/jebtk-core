@@ -23,13 +23,13 @@ package org.jebtk.core;
  *
  */
 public interface NameProperty {
-	
-	/**
-	 * Gets the name.
-	 *
-	 * @return the name
-	 */
-	public String getName();
-	
-	//public void setName(String name);
+
+  /**
+   * Gets the name.
+   *
+   * @return the name
+   */
+  public String getName();
+
+  // public void setName(String name);
 }

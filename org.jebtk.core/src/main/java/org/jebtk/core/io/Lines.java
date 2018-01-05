@@ -24,95 +24,102 @@ import java.nio.file.Path;
 // TODO: Auto-generated Javadoc
 /**
  * The Class Lines will read a file and return lines of text for processing.
- * This can be used to reduce boilerplate code that simply reads lines in
- * a for loop.
+ * This can be used to reduce boilerplate code that simply reads lines in a for
+ * loop.
  */
 public class Lines {
-	
-	/** The m tf. */
-	private LineFunction mTf;
-	
-	/** The m skip. */
-	private boolean mSkip = false;
 
-	/**
-	 * Instantiates a new lines.
-	 *
-	 * @param tf the tf
-	 */
-	public Lines(LineFunction tf) {
-		mTf = tf;
-	}
-	
-	/**
-	 * Instantiates a new lines.
-	 *
-	 * @param t the t
-	 */
-	private Lines(Lines t) {
-		mTf = t.mTf;
-		mSkip = t.mSkip;
-	}
-	
-	/**
-	 * Skip header.
-	 *
-	 * @param skip the skip
-	 * @return the lines
-	 */
-	public Lines skipHeader(boolean skip) {
-		Lines tf = new Lines(this);
-		tf.mSkip = skip;
-		
-		return tf;
-	}
-	
-	/**
-	 * Lines.
-	 *
-	 * @param file the file
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 */
-	public void lines(Path file) throws IOException {
-		BufferedReader reader = FileUtils.newBufferedReader(file);
-		
-		try {
-			lines(reader);
-		} finally {
-			reader.close();
-		}
-	}
-	
-	public void lines(Reader reader) throws IOException {
-		lines(FileUtils.newBufferedReader(reader));
-	}
-	
-	public void lines(InputStream s) throws IOException {
-		lines(FileUtils.newBufferedReader(s));
-	}
-	
-	/**
-	 * Run through reader tokenizing each line for processing. Reader is
-	 * closed after function has been applied.
-	 *
-	 * @param reader the reader
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 */
-	public void lines(BufferedReader reader) throws IOException {
-		//try {
-		// Skip header
-		if (mSkip) {
-			reader.readLine();
-		}
-		
-		String line;
+  /** The m tf. */
+  private LineFunction mTf;
 
-		while ((line = reader.readLine()) != null) {
-			mTf.parse(line);
-		}
-	}
+  /** The m skip. */
+  private boolean mSkip = false;
 
-	public static Lines lines(LineFunction f) {
-		return new Lines(f);
-	}
+  /**
+   * Instantiates a new lines.
+   *
+   * @param tf
+   *          the tf
+   */
+  public Lines(LineFunction tf) {
+    mTf = tf;
+  }
+
+  /**
+   * Instantiates a new lines.
+   *
+   * @param t
+   *          the t
+   */
+  private Lines(Lines t) {
+    mTf = t.mTf;
+    mSkip = t.mSkip;
+  }
+
+  /**
+   * Skip header.
+   *
+   * @param skip
+   *          the skip
+   * @return the lines
+   */
+  public Lines skipHeader(boolean skip) {
+    Lines tf = new Lines(this);
+    tf.mSkip = skip;
+
+    return tf;
+  }
+
+  /**
+   * Lines.
+   *
+   * @param file
+   *          the file
+   * @throws IOException
+   *           Signals that an I/O exception has occurred.
+   */
+  public void lines(Path file) throws IOException {
+    BufferedReader reader = FileUtils.newBufferedReader(file);
+
+    try {
+      lines(reader);
+    } finally {
+      reader.close();
+    }
+  }
+
+  public void lines(Reader reader) throws IOException {
+    lines(FileUtils.newBufferedReader(reader));
+  }
+
+  public void lines(InputStream s) throws IOException {
+    lines(FileUtils.newBufferedReader(s));
+  }
+
+  /**
+   * Run through reader tokenizing each line for processing. Reader is closed
+   * after function has been applied.
+   *
+   * @param reader
+   *          the reader
+   * @throws IOException
+   *           Signals that an I/O exception has occurred.
+   */
+  public void lines(BufferedReader reader) throws IOException {
+    // try {
+    // Skip header
+    if (mSkip) {
+      reader.readLine();
+    }
+
+    String line;
+
+    while ((line = reader.readLine()) != null) {
+      mTf.parse(line);
+    }
+  }
+
+  public static Lines lines(LineFunction f) {
+    return new Lines(f);
+  }
 }

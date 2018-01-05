@@ -19,59 +19,65 @@ package org.jebtk.core.stream;
 /**
  * Skip the first n items in a stream.
  *
- * @param <T> the generic type
+ * @param <T>
+ *          the generic type
  */
 public class SkipStream<T> extends ContainerStream<T> {
 
-	/** The m N. */
-	private int mN;
-	
-	/** The m skip mode. */
-	private boolean mSkipMode = true;
+  /** The m N. */
+  private int mN;
 
-	/**
-	 * Instantiates a new filter stream.
-	 *
-	 * @param stream the stream
-	 * @param n the n
-	 */
-	public SkipStream(Stream<T> stream, int n) {
-		super(stream);
+  /** The m skip mode. */
+  private boolean mSkipMode = true;
 
-		mN = n;
-	}
+  /**
+   * Instantiates a new filter stream.
+   *
+   * @param stream
+   *          the stream
+   * @param n
+   *          the n
+   */
+  public SkipStream(Stream<T> stream, int n) {
+    super(stream);
 
-	/**
-	 * Ignore the first n items.
-	 */
-	private void skip() {
-		if (mSkipMode) {
-			for (int i = 0; i < mN; ++i) {
-				mStream.next();
-			}
-			
-			mSkipMode = false;
-		}
-	}
-	
+    mN = n;
+  }
 
-	/* (non-Javadoc)
-	 * @see java.util.Iterator#hasNext()
-	 */
-	@Override
-	public boolean hasNext() {
-		skip();
-		
-		return super.hasNext();
-	}
+  /**
+   * Ignore the first n items.
+   */
+  private void skip() {
+    if (mSkipMode) {
+      for (int i = 0; i < mN; ++i) {
+        mStream.next();
+      }
 
-	/* (non-Javadoc)
-	 * @see java.util.Iterator#next()
-	 */
-	@Override
-	public T next() {
-		skip();
-		
-		return super.next();
-	}
+      mSkipMode = false;
+    }
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.util.Iterator#hasNext()
+   */
+  @Override
+  public boolean hasNext() {
+    skip();
+
+    return super.hasNext();
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.util.Iterator#next()
+   */
+  @Override
+  public T next() {
+    skip();
+
+    return super.next();
+  }
 }

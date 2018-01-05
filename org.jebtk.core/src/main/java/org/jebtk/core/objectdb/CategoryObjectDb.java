@@ -27,96 +27,99 @@ import org.jebtk.core.path.Path;
  * Stores objects by categories in a searchable radix tree.
  *
  * @author Antony Holmes Holmes
- * @param <T> the generic type
+ * @param <T>
+ *          the generic type
  */
 public class CategoryObjectDb<T> implements Iterable<CategoryObjectNode<T>>, Serializable {
 
-	/**
-	 * The constant serialVersionUID.
-	 */
-	private static final long serialVersionUID = 1L;
+  /**
+   * The constant serialVersionUID.
+   */
+  private static final long serialVersionUID = 1L;
 
-	/**
-	 * The constant ALL_CATEGORIES.
-	 */
-	public static final Path ALL_CATEGORIES = new Path("all_categories");
-	
-	/**
-	 * The member root.
-	 */
-	private CategoryObjectNode<T> mRoot = new CategoryObjectNode<T>("root");
-	
-	//private PrefixObjectDb<T> global = new PrefixObjectDb<T>();
-	
-	/**
-	 * The member path map.
-	 */
-	private Map<Path, CategoryObjectNode<T>> mPathMap = 
-			new HashMap<Path, CategoryObjectNode<T>>();
-	
-	/**
-	 * Gets the child by path.
-	 *
-	 * @param path the path
-	 * @return the child by path
-	 */
-	public CategoryObjectNode<T> getChildByPath(String path) {
-		return getChildByPath(new Path(path));
-	}
-	
-	/**
-	 * Gets the child by path.
-	 *
-	 * @param path the path
-	 * @return the child by path
-	 */
-	public CategoryObjectNode<T> getChildByPath(Path path) {
-		CategoryObjectNode<T> child = mPathMap.get(path);
-		
-		if (child != null) {
-			return child;
-		}
-		
-		child = (CategoryObjectNode<T>)mRoot.getChildByPath(path);
-		
-		mPathMap.put(path, child);
-		
-		return child;
-	}
-	
-	/**
-	 * Clear.
-	 */
-	public void clear() {
-		mRoot.clear();
-		//global.clear();
-	}
+  /**
+   * The constant ALL_CATEGORIES.
+   */
+  public static final Path ALL_CATEGORIES = new Path("all_categories");
 
-	/**
-	 * Returns a global category that can be used for
-	 * storing all categories. This can be used to
-	 * easily search all fields for example.
-	 *
-	 * @return the all categories
-	 */
-	public RadixObjectDb<T> getAllCategories() {
-		return getChildByPath(ALL_CATEGORIES).getPrefixTree();
-	}
-	
-	/**
-	 * Gets the root.
-	 *
-	 * @return the root
-	 */
-	public CategoryObjectNode<T> getRoot() {
-		return mRoot;
-	}
+  /**
+   * The member root.
+   */
+  private CategoryObjectNode<T> mRoot = new CategoryObjectNode<T>("root");
 
-	/* (non-Javadoc)
-	 * @see java.lang.Iterable#iterator()
-	 */
-	@Override
-	public Iterator<CategoryObjectNode<T>> iterator() {
-		return getRoot().iterator();
-	}
+  // private PrefixObjectDb<T> global = new PrefixObjectDb<T>();
+
+  /**
+   * The member path map.
+   */
+  private Map<Path, CategoryObjectNode<T>> mPathMap = new HashMap<Path, CategoryObjectNode<T>>();
+
+  /**
+   * Gets the child by path.
+   *
+   * @param path
+   *          the path
+   * @return the child by path
+   */
+  public CategoryObjectNode<T> getChildByPath(String path) {
+    return getChildByPath(new Path(path));
+  }
+
+  /**
+   * Gets the child by path.
+   *
+   * @param path
+   *          the path
+   * @return the child by path
+   */
+  public CategoryObjectNode<T> getChildByPath(Path path) {
+    CategoryObjectNode<T> child = mPathMap.get(path);
+
+    if (child != null) {
+      return child;
+    }
+
+    child = (CategoryObjectNode<T>) mRoot.getChildByPath(path);
+
+    mPathMap.put(path, child);
+
+    return child;
+  }
+
+  /**
+   * Clear.
+   */
+  public void clear() {
+    mRoot.clear();
+    // global.clear();
+  }
+
+  /**
+   * Returns a global category that can be used for storing all categories. This
+   * can be used to easily search all fields for example.
+   *
+   * @return the all categories
+   */
+  public RadixObjectDb<T> getAllCategories() {
+    return getChildByPath(ALL_CATEGORIES).getPrefixTree();
+  }
+
+  /**
+   * Gets the root.
+   *
+   * @return the root
+   */
+  public CategoryObjectNode<T> getRoot() {
+    return mRoot;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Iterable#iterator()
+   */
+  @Override
+  public Iterator<CategoryObjectNode<T>> iterator() {
+    return getRoot().iterator();
+  }
 }

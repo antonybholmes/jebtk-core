@@ -25,7 +25,6 @@ import java.util.Map;
 import org.jebtk.core.collections.UniqueArrayList;
 import org.jebtk.core.text.TextUtils;
 
-
 // TODO: Auto-generated Javadoc
 /**
  * Represents a json object containing key value pairs.
@@ -34,216 +33,239 @@ import org.jebtk.core.text.TextUtils;
  *
  */
 public class JsonObject extends JsonContainer {
-	// Keep the members sorted alphabetically
+  // Keep the members sorted alphabetically
 
-	/**
-	 * The member member names.
-	 */
-	private List<String> mMemberNames = new UniqueArrayList<String>();
+  /**
+   * The member member names.
+   */
+  private List<String> mMemberNames = new UniqueArrayList<String>();
 
-	/**
-	 * The member member map.
-	 */
-	private Map<String, Json> mMemberMap = 
-			new HashMap<String, Json>();
+  /**
+   * The member member map.
+   */
+  private Map<String, Json> mMemberMap = new HashMap<String, Json>();
 
-	/**
-	 * Instantiates a new json object.
-	 */
-	public JsonObject() {
-		// Do nothing
-	}
-	
-	/**
-	 * Instantiates a new json object.
-	 *
-	 * @param name the name
-	 */
-	public JsonObject(String name) {
-		add("name", name);
-	}
+  /**
+   * Instantiates a new json object.
+   */
+  public JsonObject() {
+    // Do nothing
+  }
 
-	/* (non-Javadoc)
-	 * @see org.abh.lib.json.JsonValue#get(int)
-	 */
-	@Override
-	public Json get(int i) {
-		return get(mMemberNames.get(i));
-	}
+  /**
+   * Instantiates a new json object.
+   *
+   * @param name
+   *          the name
+   */
+  public JsonObject(String name) {
+    add("name", name);
+  }
 
-	/* (non-Javadoc)
-	 * @see org.abh.lib.json.JsonValue#get(java.lang.String)
-	 */
-	@Override
-	public Json get(String name)  {
-		return mMemberMap.get(name);
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.json.Json#get(java.lang.String, boolean)
-	 */
-	@Override
-	public Json get(String name, boolean defaultValue) {
-		if (!containsKey(name)) {
-			add(name, defaultValue);
-		}
-		
-		return get(name);
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.json.JsonValue#get(int)
+   */
+  @Override
+  public Json get(int i) {
+    return get(mMemberNames.get(i));
+  }
 
-	/* (non-Javadoc)
-	 * @see org.abh.lib.json.JsonValue#add(java.lang.String, org.abh.lib.json.JsonValue)
-	 */
-	@Override
-	public Json add(String name, Json value) {
-		mMemberNames.add(name);
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.json.JsonValue#get(java.lang.String)
+   */
+  @Override
+  public Json get(String name) {
+    return mMemberMap.get(name);
+  }
 
-		mMemberMap.put(name, value);
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.json.Json#get(java.lang.String, boolean)
+   */
+  @Override
+  public Json get(String name, boolean defaultValue) {
+    if (!containsKey(name)) {
+      add(name, defaultValue);
+    }
 
-		mJson = null;
-			
-		return this;
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.json.JsonContainer#insert(java.lang.String, org.abh.common.json.JsonRaw)
-	 */
-	@Override
-	public Json insert(String name, JsonRaw json) {
-		add(name, json);
-		
-		return this;
-	}
+    return get(name);
+  }
 
-	/* (non-Javadoc)
-	 * @see org.abh.common.json.Json#containsKey(java.lang.String)
-	 */
-	@Override
-	public boolean containsKey(String key) {
-		return mMemberMap.containsKey(key);
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.json.JsonValue#add(java.lang.String,
+   * org.abh.lib.json.JsonValue)
+   */
+  @Override
+  public Json add(String name, Json value) {
+    mMemberNames.add(name);
 
-	/* (non-Javadoc)
-	 * @see org.abh.common.json.Json#getKeys()
-	 */
-	@Override
-	public Collection<String> getKeys() {
-		return Collections.unmodifiableList(mMemberNames);
-	}
+    mMemberMap.put(name, value);
 
-	/* (non-Javadoc)
-	 * @see org.abh.lib.json.JsonValue#size()
-	 */
-	@Override
-	public int size() {
-		return mMemberMap.size();
-	}
+    mJson = null;
 
+    return this;
+  }
 
-	/* (non-Javadoc)
-	 * @see org.abh.lib.json.JsonValue#formattedTxt(java.lang.StringBuilder)
-	 */
-	@Override
-	public void toJson(Appendable buffer) throws IOException {
-		buffer.append(JsonBuilder.JSON_OBJECT_START);
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.json.JsonContainer#insert(java.lang.String,
+   * org.abh.common.json.JsonRaw)
+   */
+  @Override
+  public Json insert(String name, JsonRaw json) {
+    add(name, json);
 
-		int c = 0;
+    return this;
+  }
 
-		Json v = null;
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.json.Json#containsKey(java.lang.String)
+   */
+  @Override
+  public boolean containsKey(String key) {
+    return mMemberMap.containsKey(key);
+  }
 
-		for (String name :mMemberNames) {
-			v = mMemberMap.get(name);
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.json.Json#getKeys()
+   */
+  @Override
+  public Collection<String> getKeys() {
+    return Collections.unmodifiableList(mMemberNames);
+  }
 
-			buffer.append(TextUtils.quote(JsonString.escape(name))).append(JsonBuilder.JSON_VALUE_DELIMITER);
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.json.JsonValue#size()
+   */
+  @Override
+  public int size() {
+    return mMemberMap.size();
+  }
 
-			if (v == null) {
-				buffer.append(JsonBuilder.JSON_NULL);
-			} else {
-				v.toJson(buffer);
-			}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.json.JsonValue#formattedTxt(java.lang.StringBuilder)
+   */
+  @Override
+  public void toJson(Appendable buffer) throws IOException {
+    buffer.append(JsonBuilder.JSON_OBJECT_START);
 
-			if (c < mMemberNames.size() - 1) {
-				buffer.append(JsonBuilder.JSON_ARRAY_DELIMITER);
-			}
+    int c = 0;
 
-			c += 1;
-		}
+    Json v = null;
 
-		buffer.append(JsonBuilder.JSON_OBJECT_END);
-	}
+    for (String name : mMemberNames) {
+      v = mMemberMap.get(name);
 
-	/* (non-Javadoc)
-	 * @see org.abh.common.json.Json#formattedJson(java.lang.Appendable, int)
-	 */
-	@Override
-	public void prettyJson(Appendable buffer, int level) throws IOException {
-		if (mJson != null) {
-			buffer.append(mJson);
-			
-			return;
-		}
-		
-		String indentation = indentation(level);
-		String indentation2 = indentation(level + 1);
+      buffer.append(TextUtils.quote(JsonString.escape(name))).append(JsonBuilder.JSON_VALUE_DELIMITER);
 
-		//buffer.append(indentation);
-		buffer.append(JsonBuilder.JSON_OBJECT_START);
-		buffer.append(TextUtils.NEW_LINE);
+      if (v == null) {
+        buffer.append(JsonBuilder.JSON_NULL);
+      } else {
+        v.toJson(buffer);
+      }
 
-		int c = 0;
+      if (c < mMemberNames.size() - 1) {
+        buffer.append(JsonBuilder.JSON_ARRAY_DELIMITER);
+      }
 
-		Json v = null;
+      c += 1;
+    }
 
-		for (String name :mMemberNames) {
-			v = mMemberMap.get(name);
+    buffer.append(JsonBuilder.JSON_OBJECT_END);
+  }
 
-			buffer.append(indentation2);
-			JsonBuilder.quote(JsonString.escape(name), buffer);
-			//buffer.append(JsonBuilder.quote(JsonString.escape(name)));
-			buffer.append(JsonBuilder.JSON_VALUE_DELIMITER);
-			//buffer.append(TextUtils.SPACE_DELIMITER);
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.json.Json#formattedJson(java.lang.Appendable, int)
+   */
+  @Override
+  public void prettyJson(Appendable buffer, int level) throws IOException {
+    if (mJson != null) {
+      buffer.append(mJson);
 
-			if (v == null) {
-				buffer.append(JsonBuilder.JSON_NULL);
-			} else {
-				v.prettyJson(buffer, level + 1);
-			}
+      return;
+    }
 
-			if (c < mMemberNames.size() - 1) {
-				buffer.append(TextUtils.FORMATTED_COMMA_DELIMITER);
-			}
+    String indentation = indentation(level);
+    String indentation2 = indentation(level + 1);
 
-			buffer.append(TextUtils.NEW_LINE);
+    // buffer.append(indentation);
+    buffer.append(JsonBuilder.JSON_OBJECT_START);
+    buffer.append(TextUtils.NEW_LINE);
 
-			c += 1;
-		}
+    int c = 0;
 
-		buffer.append(indentation);
-		buffer.append(JsonBuilder.JSON_OBJECT_END);
-		//buffer.append(TextUtils.NEW_LINE);
-	}
+    Json v = null;
 
-	/**
-	 * Creates the.
-	 *
-	 * @param key the key
-	 * @param value the value
-	 * @return the json
-	 */
-	public static Json create(String key, String value) {
-		JsonObject json = create();
+    for (String name : mMemberNames) {
+      v = mMemberMap.get(name);
 
-		json.add(key, value);
+      buffer.append(indentation2);
+      JsonBuilder.quote(JsonString.escape(name), buffer);
+      // buffer.append(JsonBuilder.quote(JsonString.escape(name)));
+      buffer.append(JsonBuilder.JSON_VALUE_DELIMITER);
+      // buffer.append(TextUtils.SPACE_DELIMITER);
 
-		return json;
-	}
+      if (v == null) {
+        buffer.append(JsonBuilder.JSON_NULL);
+      } else {
+        v.prettyJson(buffer, level + 1);
+      }
 
-	/**
-	 * Create a new JSONObject for storing key value pairs.
-	 *
-	 * @return the json object
-	 */
-	public static JsonObject create() {
-		return new JsonObject();
-	}
+      if (c < mMemberNames.size() - 1) {
+        buffer.append(TextUtils.FORMATTED_COMMA_DELIMITER);
+      }
+
+      buffer.append(TextUtils.NEW_LINE);
+
+      c += 1;
+    }
+
+    buffer.append(indentation);
+    buffer.append(JsonBuilder.JSON_OBJECT_END);
+    // buffer.append(TextUtils.NEW_LINE);
+  }
+
+  /**
+   * Creates the.
+   *
+   * @param key
+   *          the key
+   * @param value
+   *          the value
+   * @return the json
+   */
+  public static Json create(String key, String value) {
+    JsonObject json = create();
+
+    json.add(key, value);
+
+    return json;
+  }
+
+  /**
+   * Create a new JSONObject for storing key value pairs.
+   *
+   * @return the json object
+   */
+  public static JsonObject create() {
+    return new JsonObject();
+  }
 }

@@ -33,231 +33,288 @@ import java.util.Iterator;
  */
 public class PathContainer implements Path {
 
-	/** The m path. */
-	private Path mPath;
+  /** The m path. */
+  private Path mPath;
 
-	/**
-	 * Instantiates a new path container.
-	 *
-	 * @param path the path
-	 */
-	public PathContainer(Path path) {
-		mPath = path;
-	}
+  /**
+   * Instantiates a new path container.
+   *
+   * @param path
+   *          the path
+   */
+  public PathContainer(Path path) {
+    mPath = path;
+  }
 
-	/* (non-Javadoc)
-	 * @see java.nio.file.Path#compareTo(java.nio.file.Path)
-	 */
-	@Override
-	public int compareTo(Path other) {
-		return mPath.compareTo(other);
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.nio.file.Path#compareTo(java.nio.file.Path)
+   */
+  @Override
+  public int compareTo(Path other) {
+    return mPath.compareTo(other);
+  }
 
-	/* (non-Javadoc)
-	 * @see java.nio.file.Path#endsWith(java.nio.file.Path)
-	 */
-	@Override
-	public boolean endsWith(Path other) {
-		return mPath.endsWith(other);
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.nio.file.Path#endsWith(java.nio.file.Path)
+   */
+  @Override
+  public boolean endsWith(Path other) {
+    return mPath.endsWith(other);
+  }
 
-	/* (non-Javadoc)
-	 * @see java.nio.file.Path#endsWith(java.lang.String)
-	 */
-	@Override
-	public boolean endsWith(String other) {
-		return mPath.endsWith(other);
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.nio.file.Path#endsWith(java.lang.String)
+   */
+  @Override
+  public boolean endsWith(String other) {
+    return mPath.endsWith(other);
+  }
 
-	/* (non-Javadoc)
-	 * @see java.nio.file.Path#getFileName()
-	 */
-	@Override
-	public Path getFileName() {
-		return mPath.getFileName();
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.nio.file.Path#getFileName()
+   */
+  @Override
+  public Path getFileName() {
+    return mPath.getFileName();
+  }
 
-	/* (non-Javadoc)
-	 * @see java.nio.file.Path#getFileSystem()
-	 */
-	@Override
-	public FileSystem getFileSystem() {
-		return mPath.getFileSystem();
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.nio.file.Path#getFileSystem()
+   */
+  @Override
+  public FileSystem getFileSystem() {
+    return mPath.getFileSystem();
+  }
 
-	/* (non-Javadoc)
-	 * @see java.nio.file.Path#getName(int)
-	 */
-	@Override
-	public Path getName(int index) {
-		return mPath.getName(index);
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.nio.file.Path#getName(int)
+   */
+  @Override
+  public Path getName(int index) {
+    return mPath.getName(index);
+  }
 
-	/* (non-Javadoc)
-	 * @see java.nio.file.Path#getNameCount()
-	 */
-	@Override
-	public int getNameCount() {
-		return mPath.getNameCount();
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.nio.file.Path#getNameCount()
+   */
+  @Override
+  public int getNameCount() {
+    return mPath.getNameCount();
+  }
 
-	/* (non-Javadoc)
-	 * @see java.nio.file.Path#getParent()
-	 */
-	@Override
-	public Path getParent() {
-		return mPath.getParent();
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.nio.file.Path#getParent()
+   */
+  @Override
+  public Path getParent() {
+    return mPath.getParent();
+  }
 
-	/* (non-Javadoc)
-	 * @see java.nio.file.Path#getRoot()
-	 */
-	@Override
-	public Path getRoot() {
-		return mPath.getRoot();
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.nio.file.Path#getRoot()
+   */
+  @Override
+  public Path getRoot() {
+    return mPath.getRoot();
+  }
 
-	/* (non-Javadoc)
-	 * @see java.nio.file.Path#isAbsolute()
-	 */
-	@Override
-	public boolean isAbsolute() {
-		return mPath.isAbsolute();
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.nio.file.Path#isAbsolute()
+   */
+  @Override
+  public boolean isAbsolute() {
+    return mPath.isAbsolute();
+  }
 
-	/* (non-Javadoc)
-	 * @see java.nio.file.Path#iterator()
-	 */
-	@Override
-	public Iterator<Path> iterator() {
-		return mPath.iterator();
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.nio.file.Path#iterator()
+   */
+  @Override
+  public Iterator<Path> iterator() {
+    return mPath.iterator();
+  }
 
-	/* (non-Javadoc)
-	 * @see java.nio.file.Path#normalize()
-	 */
-	@Override
-	public Path normalize() {
-		return mPath.normalize();
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.nio.file.Path#normalize()
+   */
+  @Override
+  public Path normalize() {
+    return mPath.normalize();
+  }
 
-	/* (non-Javadoc)
-	 * @see java.nio.file.Path#register(java.nio.file.WatchService, java.nio.file.WatchEvent.Kind[])
-	 */
-	@Override
-	public WatchKey register(WatchService watcher, Kind<?>... events) throws IOException {
-		return mPath.register(watcher, events);
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.nio.file.Path#register(java.nio.file.WatchService,
+   * java.nio.file.WatchEvent.Kind[])
+   */
+  @Override
+  public WatchKey register(WatchService watcher, Kind<?>... events) throws IOException {
+    return mPath.register(watcher, events);
+  }
 
-	/* (non-Javadoc)
-	 * @see java.nio.file.Path#register(java.nio.file.WatchService, java.nio.file.WatchEvent.Kind[], java.nio.file.WatchEvent.Modifier[])
-	 */
-	@Override
-	public WatchKey register(WatchService watcher, Kind<?>[] events, Modifier... modifiers) throws IOException {
-		return mPath.register(watcher, events, modifiers);
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.nio.file.Path#register(java.nio.file.WatchService,
+   * java.nio.file.WatchEvent.Kind[], java.nio.file.WatchEvent.Modifier[])
+   */
+  @Override
+  public WatchKey register(WatchService watcher, Kind<?>[] events, Modifier... modifiers) throws IOException {
+    return mPath.register(watcher, events, modifiers);
+  }
 
-	/* (non-Javadoc)
-	 * @see java.nio.file.Path#relativize(java.nio.file.Path)
-	 */
-	@Override
-	public Path relativize(Path other) {
-		return mPath.relativize(other);
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.nio.file.Path#relativize(java.nio.file.Path)
+   */
+  @Override
+  public Path relativize(Path other) {
+    return mPath.relativize(other);
+  }
 
-	/* (non-Javadoc)
-	 * @see java.nio.file.Path#resolve(java.nio.file.Path)
-	 */
-	@Override
-	public Path resolve(Path other) {
-		return mPath.resolve(other);
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.nio.file.Path#resolve(java.nio.file.Path)
+   */
+  @Override
+  public Path resolve(Path other) {
+    return mPath.resolve(other);
+  }
 
-	/* (non-Javadoc)
-	 * @see java.nio.file.Path#resolve(java.lang.String)
-	 */
-	@Override
-	public Path resolve(String other) {
-		return mPath.resolve(other);
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.nio.file.Path#resolve(java.lang.String)
+   */
+  @Override
+  public Path resolve(String other) {
+    return mPath.resolve(other);
+  }
 
-	/* (non-Javadoc)
-	 * @see java.nio.file.Path#resolveSibling(java.nio.file.Path)
-	 */
-	@Override
-	public Path resolveSibling(Path other) {
-		return mPath.resolveSibling(other);
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.nio.file.Path#resolveSibling(java.nio.file.Path)
+   */
+  @Override
+  public Path resolveSibling(Path other) {
+    return mPath.resolveSibling(other);
+  }
 
-	/* (non-Javadoc)
-	 * @see java.nio.file.Path#resolveSibling(java.lang.String)
-	 */
-	@Override
-	public Path resolveSibling(String other) {
-		return mPath.resolveSibling(other);
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.nio.file.Path#resolveSibling(java.lang.String)
+   */
+  @Override
+  public Path resolveSibling(String other) {
+    return mPath.resolveSibling(other);
+  }
 
-	/* (non-Javadoc)
-	 * @see java.nio.file.Path#startsWith(java.nio.file.Path)
-	 */
-	@Override
-	public boolean startsWith(Path other) {
-		return mPath.startsWith(other);
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.nio.file.Path#startsWith(java.nio.file.Path)
+   */
+  @Override
+  public boolean startsWith(Path other) {
+    return mPath.startsWith(other);
+  }
 
-	/* (non-Javadoc)
-	 * @see java.nio.file.Path#startsWith(java.lang.String)
-	 */
-	@Override
-	public boolean startsWith(String other) {
-		return mPath.startsWith(other);
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.nio.file.Path#startsWith(java.lang.String)
+   */
+  @Override
+  public boolean startsWith(String other) {
+    return mPath.startsWith(other);
+  }
 
-	/* (non-Javadoc)
-	 * @see java.nio.file.Path#subpath(int, int)
-	 */
-	@Override
-	public Path subpath(int beginIndex, int endIndex) {
-		return mPath.subpath(beginIndex, endIndex);
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.nio.file.Path#subpath(int, int)
+   */
+  @Override
+  public Path subpath(int beginIndex, int endIndex) {
+    return mPath.subpath(beginIndex, endIndex);
+  }
 
-	/* (non-Javadoc)
-	 * @see java.nio.file.Path#toAbsolutePath()
-	 */
-	@Override
-	public Path toAbsolutePath() {
-		return mPath.toAbsolutePath();
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.nio.file.Path#toAbsolutePath()
+   */
+  @Override
+  public Path toAbsolutePath() {
+    return mPath.toAbsolutePath();
+  }
 
-	/* (non-Javadoc)
-	 * @see java.nio.file.Path#toFile()
-	 */
-	@Override
-	public File toFile() {
-		return mPath.toFile();
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.nio.file.Path#toFile()
+   */
+  @Override
+  public File toFile() {
+    return mPath.toFile();
+  }
 
-	/* (non-Javadoc)
-	 * @see java.nio.file.Path#toRealPath(java.nio.file.LinkOption[])
-	 */
-	@Override
-	public Path toRealPath(LinkOption... options) throws IOException {
-		return mPath.toRealPath(options);
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.nio.file.Path#toRealPath(java.nio.file.LinkOption[])
+   */
+  @Override
+  public Path toRealPath(LinkOption... options) throws IOException {
+    return mPath.toRealPath(options);
+  }
 
-	/* (non-Javadoc)
-	 * @see java.nio.file.Path#toUri()
-	 */
-	@Override
-	public URI toUri() {
-		return mPath.toUri();
-	}
-	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return mPath.toString();
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.nio.file.Path#toUri()
+   */
+  @Override
+  public URI toUri() {
+    return mPath.toUri();
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Object#toString()
+   */
+  @Override
+  public String toString() {
+    return mPath.toString();
+  }
 }

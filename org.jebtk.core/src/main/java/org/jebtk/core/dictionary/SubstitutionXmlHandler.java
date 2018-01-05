@@ -15,58 +15,57 @@
  */
 package org.jebtk.core.dictionary;
 
-
-
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 // TODO: Auto-generated Javadoc
 /**
- * Parses a dictionary xml file. A dictionary file consists of
- * the <dictionary> tag within which are nested <word> tags
- * within which are nested <synonym> tags. The <word> and
- * <synonym> tags must contain a name attribute to indicate
+ * Parses a dictionary xml file. A dictionary file consists of the <dictionary>
+ * tag within which are nested <word> tags within which are nested <synonym>
+ * tags. The <word> and <synonym> tags must contain a name attribute to indicate
  * their values.
  * 
  * @author Antony Holmes Holmes
  *
  */
 public class SubstitutionXmlHandler extends DefaultHandler {
-	
-	/**
-	 * The service.
-	 */
-	public SubstitutionService service;
 
-	/**
-	 * Instantiates a new substitution xml handler.
-	 *
-	 * @param service the service
-	 */
-	public SubstitutionXmlHandler (SubstitutionService service) {
-		this.service = service;
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.xml.sax.helpers.DefaultHandler#startElement(java.lang.String, java.lang.String, java.lang.String, org.xml.sax.Attributes)
-	 */
-	public void startElement(String uri, 
-			String localName,
-			String qName, 
-            Attributes attributes) throws SAXException {
-		
-		if (qName.equals("word")) {
-			service.addSubstitution(attributes.getValue("name"), attributes.getValue("substitute"));
-		}
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.xml.sax.helpers.DefaultHandler#endElement(java.lang.String, java.lang.String, java.lang.String)
-	 */
-	public void endElement(String uri, 
-			String localName,
-			String qName) throws SAXException {
-		// do nothing
-	}
+  /**
+   * The service.
+   */
+  public SubstitutionService service;
+
+  /**
+   * Instantiates a new substitution xml handler.
+   *
+   * @param service
+   *          the service
+   */
+  public SubstitutionXmlHandler(SubstitutionService service) {
+    this.service = service;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.xml.sax.helpers.DefaultHandler#startElement(java.lang.String,
+   * java.lang.String, java.lang.String, org.xml.sax.Attributes)
+   */
+  public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
+
+    if (qName.equals("word")) {
+      service.addSubstitution(attributes.getValue("name"), attributes.getValue("substitute"));
+    }
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.xml.sax.helpers.DefaultHandler#endElement(java.lang.String,
+   * java.lang.String, java.lang.String)
+   */
+  public void endElement(String uri, String localName, String qName) throws SAXException {
+    // do nothing
+  }
 }

@@ -20,54 +20,59 @@ package org.jebtk.core.geom;
  * An immutable point.
  *
  * @author Antony Holmes Holmes
- * @param <T> the generic type
+ * @param <T>
+ *          the generic type
  */
 public class Position<T extends Number> {
-	
-	/**
-	 * The member x.
-	 */
-	protected T mX;
-	
-	/**
-	 * The member y.
-	 */
-	protected T mY;
 
-	/**
-	 * Instantiates a new position.
-	 *
-	 * @param x the x
-	 * @param y the y
-	 */
-	public Position(T x, T y) {
-		mX = x;
-		mY = y;
-	}
-	
-	/**
-	 * Gets the x.
-	 *
-	 * @return the x
-	 */
-	public T getX() {
-		return mX;
-	}
-	
-	/**
-	 * Gets the y.
-	 *
-	 * @return the y
-	 */
-	public T getY() {
-		return mY;
-	}
-	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return mX + " " + mY;
-	}
+  /**
+   * The member x.
+   */
+  protected T mX;
+
+  /**
+   * The member y.
+   */
+  protected T mY;
+
+  /**
+   * Instantiates a new position.
+   *
+   * @param x
+   *          the x
+   * @param y
+   *          the y
+   */
+  public Position(T x, T y) {
+    mX = x;
+    mY = y;
+  }
+
+  /**
+   * Gets the x.
+   *
+   * @return the x
+   */
+  public T getX() {
+    return mX;
+  }
+
+  /**
+   * Gets the y.
+   *
+   * @return the y
+   */
+  public T getY() {
+    return mY;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Object#toString()
+   */
+  @Override
+  public String toString() {
+    return mX + " " + mY;
+  }
 }

@@ -20,11 +20,13 @@ package org.jebtk.core.collections;
  * Creates null elements.
  */
 public class NullCreator<T> implements EntryCreator<T> {
-	/* (non-Javadoc)
-	 * @see org.abh.lib.collections.EntryCreator#create()
-	 */
-	@Override
-	public T newEntry() {
-		return null;
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.collections.EntryCreator#create()
+   */
+  @Override
+  public T newEntry() {
+    return null;
+  }
 }

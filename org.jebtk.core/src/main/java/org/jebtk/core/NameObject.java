@@ -23,24 +23,27 @@ package org.jebtk.core;
  *
  */
 public class NameObject implements NameProperty {
-	
-	/** The m name. */
-	private String mName;
 
-	/**
-	 * Instantiates a new name object.
-	 *
-	 * @param name the name
-	 */
-	public NameObject(String name) {
-		mName = name;
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.NameProperty#getName()
-	 */
-	@Override
-	public String getName() {
-		return mName;
-	}
+  /** The m name. */
+  private String mName;
+
+  /**
+   * Instantiates a new name object.
+   *
+   * @param name
+   *          the name
+   */
+  public NameObject(String name) {
+    mName = name;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.NameProperty#getName()
+   */
+  @Override
+  public String getName() {
+    return mName;
+  }
 }

@@ -25,18 +25,18 @@ import java.util.concurrent.atomic.AtomicInteger;
  *
  */
 public class IntId {
-	
-	/**
-	 * The next id.
-	 */
-	private final AtomicInteger mNextId = new AtomicInteger(1);
-	
-	/**
-	 * Returns a new id using the given prefix.
-	 *
-	 * @return the next id
-	 */
-	public synchronized int getNextId() {
-		return mNextId.getAndIncrement();
-	}
+
+  /**
+   * The next id.
+   */
+  private final AtomicInteger mNextId = new AtomicInteger(1);
+
+  /**
+   * Returns a new id using the given prefix.
+   *
+   * @return the next id
+   */
+  public synchronized int getNextId() {
+    return mNextId.getAndIncrement();
+  }
 }

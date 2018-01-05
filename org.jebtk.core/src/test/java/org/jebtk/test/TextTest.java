@@ -22,9 +22,9 @@ import org.junit.Test;
 
 public class TextTest {
 
-	@Test
-	public void titleCaseTest() {
-		System.err.println(TextUtils.titleCase("title case"));
-		assertEquals("Title case", TextUtils.titleCase("title case"), "Title Case");
-	}
+  @Test
+  public void titleCaseTest() {
+    System.err.println(TextUtils.titleCase("title case"));
+    assertEquals("Title case", TextUtils.titleCase("title case"), "Title Case");
+  }
 }

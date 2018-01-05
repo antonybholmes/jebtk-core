@@ -18,17 +18,18 @@ package org.jebtk.core.io;
 import java.io.File;
 import java.io.FileFilter;
 
-
 // TODO: Auto-generated Javadoc
 /**
  * The class DirectoryFileFilter.
  */
 public class DirectoryFileFilter implements FileFilter {
-	
-	/* (non-Javadoc)
-	 * @see java.io.FileFilter#accept(java.io.File)
-	 */
-	public final boolean accept(File f) {
-		return f.isDirectory();
-	}
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.io.FileFilter#accept(java.io.File)
+   */
+  public final boolean accept(File f) {
+    return f.isDirectory();
+  }
 }

@@ -19,54 +19,58 @@ import java.io.IOException;
 
 import org.jebtk.core.text.TextUtils;
 
-
 // TODO: Auto-generated Javadoc
 /**
  * The class XmlDataElement.
  */
 public class XmlDataElement extends XmlElement {
-	
-	/**
-	 * The member data.
-	 */
-	private String mData;
 
-	/**
-	 * Instantiates a new xml data element.
-	 *
-	 * @param data the data
-	 */
-	public XmlDataElement(int data) {
-		this(Integer.toString(data));
-	}
-	
-	/**
-	 * Instantiates a new xml data element.
-	 *
-	 * @param data the data
-	 */
-	public XmlDataElement(double data) {
-		this(Double.toString(data));
-	}
-	
-	/**
-	 * Instantiates a new xml data element.
-	 *
-	 * @param data the data
-	 */
-	public XmlDataElement(String data) {
-		super(null);
-		
-		mData = data;
-	}
+  /**
+   * The member data.
+   */
+  private String mData;
 
-	/* (non-Javadoc)
-	 * @see org.abh.lib.xml.XmlElement#formattedXml(java.lang.Appendable, int)
-	 */
-	@Override
-	public void formattedXml(Appendable buffer, int level) throws IOException {
-		buffer.append(Xml.indentation(level));
-		buffer.append(Xml.cdata(mData));
-		buffer.append(TextUtils.UNIX_NEW_LINE);
-	}
+  /**
+   * Instantiates a new xml data element.
+   *
+   * @param data
+   *          the data
+   */
+  public XmlDataElement(int data) {
+    this(Integer.toString(data));
+  }
+
+  /**
+   * Instantiates a new xml data element.
+   *
+   * @param data
+   *          the data
+   */
+  public XmlDataElement(double data) {
+    this(Double.toString(data));
+  }
+
+  /**
+   * Instantiates a new xml data element.
+   *
+   * @param data
+   *          the data
+   */
+  public XmlDataElement(String data) {
+    super(null);
+
+    mData = data;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.xml.XmlElement#formattedXml(java.lang.Appendable, int)
+   */
+  @Override
+  public void formattedXml(Appendable buffer, int level) throws IOException {
+    buffer.append(Xml.indentation(level));
+    buffer.append(Xml.cdata(mData));
+    buffer.append(TextUtils.UNIX_NEW_LINE);
+  }
 }

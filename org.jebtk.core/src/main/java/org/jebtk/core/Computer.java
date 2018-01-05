@@ -23,46 +23,46 @@ package org.jebtk.core;
  *
  */
 public class Computer {
-	
-	/**
-	 * The constant INSTANCE.
-	 */
-	private static final Computer INSTANCE = new Computer();
-	
-	/**
-	 * Gets the single instance of Computer.
-	 *
-	 * @return single instance of Computer
-	 */
-	public static final Computer getInstance() {
-		return INSTANCE;
-	}
 
-	/**
-	 * The os.
-	 */
-	private OperatingSystem os;
-	
-	/**
-	 * Instantiates a new computer.
-	 */
-	private Computer() {
-		if (System.getProperty("os.name").startsWith("Windows")) {
-			os = OperatingSystem.WINDOWS;
-		} else if (System.getProperty("os.name").startsWith("Mac")) {
-			os = OperatingSystem.OSX;
-		} else {
-			os = OperatingSystem.LINUX;
-		}
-	}
-	
-	/**
-	 * Gets the operating system.
-	 *
-	 * @return the operating system
-	 */
-	public OperatingSystem getOperatingSystem() {
-		return os;
-	}
-	
+  /**
+   * The constant INSTANCE.
+   */
+  private static final Computer INSTANCE = new Computer();
+
+  /**
+   * Gets the single instance of Computer.
+   *
+   * @return single instance of Computer
+   */
+  public static final Computer getInstance() {
+    return INSTANCE;
+  }
+
+  /**
+   * The os.
+   */
+  private OperatingSystem os;
+
+  /**
+   * Instantiates a new computer.
+   */
+  private Computer() {
+    if (System.getProperty("os.name").startsWith("Windows")) {
+      os = OperatingSystem.WINDOWS;
+    } else if (System.getProperty("os.name").startsWith("Mac")) {
+      os = OperatingSystem.OSX;
+    } else {
+      os = OperatingSystem.LINUX;
+    }
+  }
+
+  /**
+   * Gets the operating system.
+   *
+   * @return the operating system
+   */
+  public OperatingSystem getOperatingSystem() {
+    return os;
+  }
+
 }

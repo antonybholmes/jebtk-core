@@ -35,102 +35,110 @@ package org.jebtk.core;
  *
  */
 public class AppVersion {
-	
-	/**
-	 * The member version.
-	 */
-	private String mVersion;
-	
-	/**
-	 * The member major.
-	 */
-	private int mMajor = 0;
-	
-	/**
-	 * The member minor.
-	 */
-	private int mMinor = 0;
-	
-	/**
-	 * The member revion.
-	 */
-	private int mRevion = 0;
-	
-	/**
-	 * Instantiates a new application version.
-	 *
-	 * @param major the major
-	 */
-	public AppVersion(int major) {
-		this(major, 0, 0);
-	}
-	
-	/**
-	 * Instantiates a new application version.
-	 *
-	 * @param major the major
-	 * @param minor the minor
-	 */
-	public AppVersion(int major, int minor) {
-		this(major, minor, 0);
-	}
-	
-	/**
-	 * Instantiates a new application version.
-	 *
-	 * @param major the major
-	 * @param minor the minor
-	 * @param revision the revision
-	 */
-	public AppVersion(int major, int minor, int revision) {
-		mMajor = major;
-		mMinor = minor;
-		mRevion = revision;
-		
-		mVersion = major + "." + minor + "." + revision;
-	}
-	
-	/**
-	 * Gets the major.
-	 *
-	 * @return the major
-	 */
-	public int getMajor() {
-		return mMajor;
-	}
-	
-	/**
-	 * Gets the minor.
-	 *
-	 * @return the minor
-	 */
-	public int getMinor() {
-		return mMinor;
-	}
-	
-	/**
-	 * Gets the revision.
-	 *
-	 * @return the revision
-	 */
-	public int getRevision() {
-		return mRevion;
-	}
-	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return getVersion();
-	}
 
-	/**
-	 * Gets the version.
-	 *
-	 * @return the version
-	 */
-	public String getVersion() {
-		return mVersion;
-	}
+  /**
+   * The member version.
+   */
+  private String mVersion;
+
+  /**
+   * The member major.
+   */
+  private int mMajor = 0;
+
+  /**
+   * The member minor.
+   */
+  private int mMinor = 0;
+
+  /**
+   * The member revion.
+   */
+  private int mRevion = 0;
+
+  /**
+   * Instantiates a new application version.
+   *
+   * @param major
+   *          the major
+   */
+  public AppVersion(int major) {
+    this(major, 0, 0);
+  }
+
+  /**
+   * Instantiates a new application version.
+   *
+   * @param major
+   *          the major
+   * @param minor
+   *          the minor
+   */
+  public AppVersion(int major, int minor) {
+    this(major, minor, 0);
+  }
+
+  /**
+   * Instantiates a new application version.
+   *
+   * @param major
+   *          the major
+   * @param minor
+   *          the minor
+   * @param revision
+   *          the revision
+   */
+  public AppVersion(int major, int minor, int revision) {
+    mMajor = major;
+    mMinor = minor;
+    mRevion = revision;
+
+    mVersion = major + "." + minor + "." + revision;
+  }
+
+  /**
+   * Gets the major.
+   *
+   * @return the major
+   */
+  public int getMajor() {
+    return mMajor;
+  }
+
+  /**
+   * Gets the minor.
+   *
+   * @return the minor
+   */
+  public int getMinor() {
+    return mMinor;
+  }
+
+  /**
+   * Gets the revision.
+   *
+   * @return the revision
+   */
+  public int getRevision() {
+    return mRevion;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Object#toString()
+   */
+  @Override
+  public String toString() {
+    return getVersion();
+  }
+
+  /**
+   * Gets the version.
+   *
+   * @return the version
+   */
+  public String getVersion() {
+    return mVersion;
+  }
 }

@@ -27,36 +27,40 @@ import org.jebtk.core.text.TextUtils;
  */
 public class BufferedTableWriter extends BufferedWriter {
 
-	/** The m sep. */
-	private String mSep;
+  /** The m sep. */
+  private String mSep;
 
-	/**
-	 * Instantiates a new buffered table writer.
-	 *
-	 * @param out the out
-	 */
-	public BufferedTableWriter(Writer out) {
-		this(out, TextUtils.TAB_DELIMITER);
-	}
-	
-	/**
-	 * Instantiates a new buffered table writer using the given separator.
-	 *
-	 * @param out the out
-	 * @param sep the sep
-	 */
-	public BufferedTableWriter(Writer out, String sep) {
-		super(out);
-		
-		mSep = sep;
-	}
+  /**
+   * Instantiates a new buffered table writer.
+   *
+   * @param out
+   *          the out
+   */
+  public BufferedTableWriter(Writer out) {
+    this(out, TextUtils.TAB_DELIMITER);
+  }
 
-	/**
-	 * Write the table separator.
-	 *
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 */
-	public void sep() throws IOException {
-		write(mSep);
-	}
+  /**
+   * Instantiates a new buffered table writer using the given separator.
+   *
+   * @param out
+   *          the out
+   * @param sep
+   *          the sep
+   */
+  public BufferedTableWriter(Writer out, String sep) {
+    super(out);
+
+    mSep = sep;
+  }
+
+  /**
+   * Write the table separator.
+   *
+   * @throws IOException
+   *           Signals that an I/O exception has occurred.
+   */
+  public void sep() throws IOException {
+    write(mSep);
+  }
 }

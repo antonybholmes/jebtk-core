@@ -35,643 +35,682 @@ import org.jebtk.core.xml.XmlRepresentation;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-
 // TODO: Auto-generated Javadoc
 /**
- * Describes a setting. The name must be of the form
- * part1.part2.part3...name. The period separated
- * parts of the name are treated as being part of
- * a hierarchy.
+ * Describes a setting. The name must be of the form part1.part2.part3...name.
+ * The period separated parts of the name are treated as being part of a
+ * hierarchy.
  * 
  * @author Antony Holmes Holmes
  *
  */
 public class Setting extends ChangeListeners implements Comparable<Setting>, XmlRepresentation, JsonRepresentation {
-	
-	/**
-	 * The constant serialVersionUID.
-	 */
-	private static final long serialVersionUID = 1L;
-	
-	/**
-	 * The member path.
-	 */
-	protected Path mPath;
-	
-	/**
-	 * The member description.
-	 */
-	private String mDescription;
 
-	/** The m locked. */
-	private boolean mLocked;
-	
-	
-	/**
-	 * Instantiates a new setting.
-	 *
-	 * @param path the path
-	 * @param locked the locked
-	 */
-	public Setting(String path, boolean locked) {
-		this(new StrictPath(path), locked);
-	}
-	
+  /**
+   * The constant serialVersionUID.
+   */
+  private static final long serialVersionUID = 1L;
 
-	/**
-	 * Instantiates a new setting.
-	 *
-	 * @param path the path
-	 * @param locked the locked
-	 */
-	public Setting(Path path, boolean locked) {
-		this(path, null, locked);
-	}
+  /**
+   * The member path.
+   */
+  protected Path mPath;
 
-	/**
-	 * Instantiates a new setting.
-	 *
-	 * @param path the path
-	 * @param description the description
-	 * @param locked the locked
-	 */
-	public Setting(String path, 
-			String description, 
-			boolean locked) {
-		this(new StrictPath(path), description, locked);
-	}
-	
-	/**
-	 * Instantiates a new setting.
-	 *
-	 * @param path the path
-	 * @param description the description
-	 * @param locked the locked
-	 */
-	public Setting(Path path, 
-			String description, 
-			boolean locked) {
-		
-		if (path != null) {
-			mPath = path;
-		}
-		
-		if (description != null) {
-			mDescription = description;
-		}
-		
-		mLocked = locked;
-	}
-	
-	/**
-	 * Gets the path.
-	 *
-	 * @return the path
-	 */
-	public Path getPath() {
-		return mPath;
-	}
-	
-	/**
-	 * Gets the as string.
-	 *
-	 * @return the as string
-	 */
-	public String getAsString() {
-		return mPath.toString();
-	}
-	
-	/**
-	 * Returns the value of the setting as an integer or Integer.MIN_VALUE
-	 * if the setting does not parse as an int.
-	 *
-	 * @return the as int
-	 */
-	public int getAsInt() {
-		return Integer.MIN_VALUE;
-	}
-	
-	/**
-	 * Returns the value of the setting as an double or Double.MIN_VALUE
-	 * if the setting does not parse as an double.
-	 *
-	 * @return the as double
-	 */
-	public double getAsDouble() {
-		return Integer.MIN_VALUE;
-	}
-	
-	/**
-	 * Gets the as long.
-	 *
-	 * @return the as long
-	 */
-	public long getAsLong() {
-		return Long.MIN_VALUE;
-	}
+  /**
+   * The member description.
+   */
+  private String mDescription;
 
-	/**
-	 * Gets the as bool.
-	 *
-	 * @return the as bool
-	 */
-	public boolean getAsBool() {
-		return false;
-	}
-	
-	/**
-	 * Gets the as color.
-	 *
-	 * @return the as color
-	 */
-	public Color getAsColor() {
-		return null;
-	}
-	
-	/**
-	 * Gets the as file.
-	 *
-	 * @return the as file
-	 */
-	public java.nio.file.Path getAsFile() {
-		return null;
-	}
-	
-	/**
-	 * Creates a URL from a setting or returns null if the URL is malformed.
-	 *
-	 * @return the as url
-	 */
-	public URL getAsUrl() {
-		UrlBuilder builder = getAsUrlBuilder();
-		
-		URL url = null;
-		
-		if (builder != null) {
-			try {
-				url = builder.toUrl();
-			} catch (MalformedURLException e) {
-				e.printStackTrace();
-			}
-		}
-		
-		return url;
-	}
-	
-	/**
-	 * Gets the as url builder.
-	 *
-	 * @return the as url builder
-	 */
-	public UrlBuilder getAsUrlBuilder() {
-		return null;
-	}
-	
-	/**
-	 * Gets the description.
-	 *
-	 * @return the description
-	 */
-	public String getDescription() {
-		return mDescription;
-	}
-	
-	
-	/**
-	 * Gets the locked.
-	 *
-	 * @return the locked
-	 */
-	public boolean getLocked() {
-		return mLocked;
-	}
-	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return mPath.toString();
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.lib.xml.XmlRepresentation#toXml()
-	 */
-	@Override
-	public Element toXml(Document doc) {
-		Element element = doc.createElement("setting");
-		
-		element.setAttribute("name", mPath.toString());
-		
-		element.setAttribute("value", getAsString());
-		
-		//element.setAttribute("locked", Boolean.toString(mLocked));
-		
-		if (mDescription != null) {
-			element.setAttribute("description", mDescription);
-		}
-		
-		return element;
-	}
+  /** The m locked. */
+  private boolean mLocked;
 
+  /**
+   * Instantiates a new setting.
+   *
+   * @param path
+   *          the path
+   * @param locked
+   *          the locked
+   */
+  public Setting(String path, boolean locked) {
+    this(new StrictPath(path), locked);
+  }
 
-	/* (non-Javadoc)
-	 * @see java.lang.Comparable#compareTo(java.lang.Object)
-	 */
-	@Override
-	public int compareTo(Setting s) {
-		return mPath.compareTo(s.mPath);
-	}
-	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
-	@Override
-	public boolean equals(Object o) {
-		if (!(o instanceof Setting)) {
-			return false;
-		}
-		
-		return compareTo((Setting)o) == 0;
-	}
+  /**
+   * Instantiates a new setting.
+   *
+   * @param path
+   *          the path
+   * @param locked
+   *          the locked
+   */
+  public Setting(Path path, boolean locked) {
+    this(path, null, locked);
+  }
 
-	/**
-	 * Gets the lib name.
-	 *
-	 * @param path the path
-	 * @return the lib name
-	 */
-	public static String getLibName(StrictPath path) {
-		return path.level(0).toString();
-	}
-	
-	/**
-	 * Parses the.
-	 *
-	 * @param path the path
-	 * @param value the value
-	 * @param description the description
-	 * @param locked the locked
-	 * @return the setting
-	 */
-	public static Setting parse(String path, 
-			String value, 
-			String description, 
-			boolean locked) {
-		return parse(new StrictPath(path), value, description, locked);
-	}
-	
-	/**
-	 * Parses the.
-	 *
-	 * @param path the path
-	 * @param value the value
-	 * @return the setting
-	 */
-	public static Setting parse(Path path, 
-			String value) {
-		return parse(path, value, TextUtils.EMPTY_STRING, false);
-	}
-	
-	/**
-	 * Parses the.
-	 *
-	 * @param path the path
-	 * @param value the value
-	 * @param description the description
-	 * @param locked the locked
-	 * @return the setting
-	 */
-	public static Setting parse(Path path, 
-			String value, 
-			String description, 
-			boolean locked) {
-		if (TextUtils.isNumber(value)){
-			double v = Double.parseDouble(value); //Parser.toDouble(s);
+  /**
+   * Instantiates a new setting.
+   *
+   * @param path
+   *          the path
+   * @param description
+   *          the description
+   * @param locked
+   *          the locked
+   */
+  public Setting(String path, String description, boolean locked) {
+    this(new StrictPath(path), description, locked);
+  }
 
-			if (Mathematics.isInt(v)) {
-				return new SettingInt(path, (int)v, description, locked);
-			} else {
-				return new SettingDouble(path, v, description, locked);
-			}
-		} else if (ColorUtils.isHtmlColor(value)) {
-			return new SettingColor(path, ColorUtils.decodeHtmlColor(value), description, locked);
-		} else if (UrlUtils.isUrl(value)) {
-			return new SettingUrl(path, new UrlBuilder(value), description, locked);
-		} else if (value.toLowerCase().equals(TextUtils.TRUE)) {
-			return new SettingBool(path, true, description, locked);
-		} else if (value.toLowerCase().equals(TextUtils.FALSE)) {
-			return new SettingBool(path, false, description, locked);
-		} else {
-			return new SettingString(path, value, description, locked);
-		}
-	}
-	
-	/**
-	 * Parses the.
-	 *
-	 * @param path the path
-	 * @param value the value
-	 * @return the setting
-	 */
-	public static Setting parse(String path, double value) {
-		return parse(new StrictPath(path), value);
-	}
-	
-	/**
-	 * Parses the.
-	 *
-	 * @param path the path
-	 * @param value the value
-	 * @return the setting
-	 */
-	public static Setting parse(Path path, double value) {
-		return parse(path, value, TextUtils.EMPTY_STRING, false);
-	}
-	
-	/**
-	 * Parses the.
-	 *
-	 * @param path the path
-	 * @param value the value
-	 * @param description the description
-	 * @param locked the locked
-	 * @return the setting
-	 */
-	public static Setting parse(String path, 
-			double value, 
-			String description, 
-			boolean locked) {
-		return parse(new StrictPath(path), value, description, locked);
-	}
-	
-	/**
-	 * Parses the.
-	 *
-	 * @param path the path
-	 * @param value the value
-	 * @param description the description
-	 * @param locked the locked
-	 * @return the setting
-	 */
-	public static Setting parse(Path path, 
-			double value, 
-			String description, 
-			boolean locked) {
-		return new SettingDouble(path, value, description, locked);
-	}
-	
-	/**
-	 * Parses the.
-	 *
-	 * @param path the path
-	 * @param value the value
-	 * @return the setting
-	 */
-	public static Setting parse(String path, int value) {
-		return parse(new StrictPath(path), value);
-	}
-	
-	/**
-	 * Parses the.
-	 *
-	 * @param path the path
-	 * @param value the value
-	 * @return the setting
-	 */
-	public static Setting parse(Path path, int value) {
-		return parse(path, value, TextUtils.EMPTY_STRING, false);
-	}
-	
-	/**
-	 * Parses the.
-	 *
-	 * @param path the path
-	 * @param value the value
-	 * @param description the description
-	 * @param locked the locked
-	 * @return the setting
-	 */
-	public static Setting parse(String path, 
-			int value, 
-			String description, 
-			boolean locked) {
-		return parse(new StrictPath(path), value, description, locked);
-	}
-	
-	/**
-	 * Parses the.
-	 *
-	 * @param path the path
-	 * @param value the value
-	 * @param description the description
-	 * @param locked the locked
-	 * @return the setting
-	 */
-	public static Setting parse(Path path, 
-			int value, 
-			String description, 
-			boolean locked) {
-		return new SettingInt(path, value, description, locked);
-	}
-	
-	
-	/**
-	 * Parses the.
-	 *
-	 * @param path the path
-	 * @param value the value
-	 * @return the setting
-	 */
-	public static Setting parse(String path, long value) {
-		return parse(new StrictPath(path), value);
-	}
-	
-	/**
-	 * Parses the.
-	 *
-	 * @param path the path
-	 * @param value the value
-	 * @return the setting
-	 */
-	public static Setting parse(Path path, long value) {
-		return parse(path, value, TextUtils.EMPTY_STRING, false);
-	}
-	
-	/**
-	 * Parses the.
-	 *
-	 * @param path the path
-	 * @param value the value
-	 * @param description the description
-	 * @param locked the locked
-	 * @return the setting
-	 */
-	public static Setting parse(String path, 
-			long value, 
-			String description, 
-			boolean locked) {
-		return parse(new StrictPath(path), value, description, locked);
-	}
-	
-	/**
-	 * Parses the.
-	 *
-	 * @param path the path
-	 * @param value the value
-	 * @param description the description
-	 * @param locked the locked
-	 * @return the setting
-	 */
-	public static Setting parse(Path path, 
-			long value, 
-			String description, 
-			boolean locked) {
-		return new SettingLong(path, value, description, locked);
-	}
-	
-	
-	/**
-	 * Parses the.
-	 *
-	 * @param path the path
-	 * @param value the value
-	 * @return the setting
-	 */
-	public static Setting parse(String path, Color value) {
-		return parse(new StrictPath(path), value);
-	}
-	
-	/**
-	 * Parses the.
-	 *
-	 * @param path the path
-	 * @param value the value
-	 * @return the setting
-	 */
-	public static Setting parse(Path path, Color value) {
-		return parse(path, value, TextUtils.EMPTY_STRING, false);
-	}
-	
-	/**
-	 * Parses the.
-	 *
-	 * @param path the path
-	 * @param value the value
-	 * @param description the description
-	 * @param locked the locked
-	 * @return the setting
-	 */
-	public static Setting parse(String path, 
-			Color value, 
-			String description, 
-			boolean locked) {
-		return parse(new StrictPath(path), value, description, locked);
-	}
-	
-	/**
-	 * Parses the.
-	 *
-	 * @param path the path
-	 * @param value the value
-	 * @param description the description
-	 * @param locked the locked
-	 * @return the setting
-	 */
-	public static Setting parse(Path path, 
-			Color value, 
-			String description, 
-			boolean locked) {
-		return new SettingColor(path, value, description, locked);
-	}
-	
-	/**
-	 * Parses the.
-	 *
-	 * @param path the path
-	 * @param value the value
-	 * @return the setting
-	 */
-	public static Setting parse(String path, boolean value) {
-		return parse(new StrictPath(path), value);
-	}
-	
-	/**
-	 * Parses the.
-	 *
-	 * @param path the path
-	 * @param value the value
-	 * @return the setting
-	 */
-	public static Setting parse(Path path, boolean value) {
-		return parse(path, value, TextUtils.EMPTY_STRING, false);
-	}
-	
-	/**
-	 * Parses the.
-	 *
-	 * @param path the path
-	 * @param value the value
-	 * @param description the description
-	 * @param locked the locked
-	 * @return the setting
-	 */
-	public static Setting parse(String path, 
-			boolean value, 
-			String description, 
-			boolean locked) {
-		return parse(new StrictPath(path), value, description, locked);
-	}
-	
-	/**
-	 * Parses the.
-	 *
-	 * @param path the path
-	 * @param value the value
-	 * @param description the description
-	 * @param locked the locked
-	 * @return the setting
-	 */
-	public static Setting parse(Path path, 
-			boolean value, 
-			String description, 
-			boolean locked) {
-		return new SettingBool(path, value, description, locked);
-	}
-	
-	
+  /**
+   * Instantiates a new setting.
+   *
+   * @param path
+   *          the path
+   * @param description
+   *          the description
+   * @param locked
+   *          the locked
+   */
+  public Setting(Path path, String description, boolean locked) {
 
-	/* (non-Javadoc)
-	 * @see org.abh.common.json.JsonRepresentation#toJson()
-	 */
-	@Override
-	public Json toJson() {
-		Json o = new JsonObject();
-		
-		o.add("name", mPath);
+    if (path != null) {
+      mPath = path;
+    }
 
-		formatJsonValue(o);
+    if (description != null) {
+      mDescription = description;
+    }
 
-		if (getDescription() != null) {
-			o.add("description", getDescription());
-		}
-		
-		return o;
-	}
-	
-	/**
-	 * Should add the value attribute to the json object. This is separate
-	 * from {@code toJson()} to allow sub-classes to override it for
-	 * specialized types such as bools and numbers.
-	 *
-	 * @param o the o
-	 */
-	protected void formatJsonValue(Json o) {
-		if (getAsString() != null) {
-			o.add("value", getAsString());
-		}
-	}
+    mLocked = locked;
+  }
 
+  /**
+   * Gets the path.
+   *
+   * @return the path
+   */
+  public Path getPath() {
+    return mPath;
+  }
 
-	
+  /**
+   * Gets the as string.
+   *
+   * @return the as string
+   */
+  public String getAsString() {
+    return mPath.toString();
+  }
+
+  /**
+   * Returns the value of the setting as an integer or Integer.MIN_VALUE if the
+   * setting does not parse as an int.
+   *
+   * @return the as int
+   */
+  public int getAsInt() {
+    return Integer.MIN_VALUE;
+  }
+
+  /**
+   * Returns the value of the setting as an double or Double.MIN_VALUE if the
+   * setting does not parse as an double.
+   *
+   * @return the as double
+   */
+  public double getAsDouble() {
+    return Integer.MIN_VALUE;
+  }
+
+  /**
+   * Gets the as long.
+   *
+   * @return the as long
+   */
+  public long getAsLong() {
+    return Long.MIN_VALUE;
+  }
+
+  /**
+   * Gets the as bool.
+   *
+   * @return the as bool
+   */
+  public boolean getAsBool() {
+    return false;
+  }
+
+  /**
+   * Gets the as color.
+   *
+   * @return the as color
+   */
+  public Color getAsColor() {
+    return null;
+  }
+
+  /**
+   * Gets the as file.
+   *
+   * @return the as file
+   */
+  public java.nio.file.Path getAsFile() {
+    return null;
+  }
+
+  /**
+   * Creates a URL from a setting or returns null if the URL is malformed.
+   *
+   * @return the as url
+   */
+  public URL getAsUrl() {
+    UrlBuilder builder = getAsUrlBuilder();
+
+    URL url = null;
+
+    if (builder != null) {
+      try {
+        url = builder.toUrl();
+      } catch (MalformedURLException e) {
+        e.printStackTrace();
+      }
+    }
+
+    return url;
+  }
+
+  /**
+   * Gets the as url builder.
+   *
+   * @return the as url builder
+   */
+  public UrlBuilder getAsUrlBuilder() {
+    return null;
+  }
+
+  /**
+   * Gets the description.
+   *
+   * @return the description
+   */
+  public String getDescription() {
+    return mDescription;
+  }
+
+  /**
+   * Gets the locked.
+   *
+   * @return the locked
+   */
+  public boolean getLocked() {
+    return mLocked;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Object#toString()
+   */
+  @Override
+  public String toString() {
+    return mPath.toString();
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.xml.XmlRepresentation#toXml()
+   */
+  @Override
+  public Element toXml(Document doc) {
+    Element element = doc.createElement("setting");
+
+    element.setAttribute("name", mPath.toString());
+
+    element.setAttribute("value", getAsString());
+
+    // element.setAttribute("locked", Boolean.toString(mLocked));
+
+    if (mDescription != null) {
+      element.setAttribute("description", mDescription);
+    }
+
+    return element;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Comparable#compareTo(java.lang.Object)
+   */
+  @Override
+  public int compareTo(Setting s) {
+    return mPath.compareTo(s.mPath);
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Object#equals(java.lang.Object)
+   */
+  @Override
+  public boolean equals(Object o) {
+    if (!(o instanceof Setting)) {
+      return false;
+    }
+
+    return compareTo((Setting) o) == 0;
+  }
+
+  /**
+   * Gets the lib name.
+   *
+   * @param path
+   *          the path
+   * @return the lib name
+   */
+  public static String getLibName(StrictPath path) {
+    return path.level(0).toString();
+  }
+
+  /**
+   * Parses the.
+   *
+   * @param path
+   *          the path
+   * @param value
+   *          the value
+   * @param description
+   *          the description
+   * @param locked
+   *          the locked
+   * @return the setting
+   */
+  public static Setting parse(String path, String value, String description, boolean locked) {
+    return parse(new StrictPath(path), value, description, locked);
+  }
+
+  /**
+   * Parses the.
+   *
+   * @param path
+   *          the path
+   * @param value
+   *          the value
+   * @return the setting
+   */
+  public static Setting parse(Path path, String value) {
+    return parse(path, value, TextUtils.EMPTY_STRING, false);
+  }
+
+  /**
+   * Parses the.
+   *
+   * @param path
+   *          the path
+   * @param value
+   *          the value
+   * @param description
+   *          the description
+   * @param locked
+   *          the locked
+   * @return the setting
+   */
+  public static Setting parse(Path path, String value, String description, boolean locked) {
+    if (TextUtils.isNumber(value)) {
+      double v = Double.parseDouble(value); // Parser.toDouble(s);
+
+      if (Mathematics.isInt(v)) {
+        return new SettingInt(path, (int) v, description, locked);
+      } else {
+        return new SettingDouble(path, v, description, locked);
+      }
+    } else if (ColorUtils.isHtmlColor(value)) {
+      return new SettingColor(path, ColorUtils.decodeHtmlColor(value), description, locked);
+    } else if (UrlUtils.isUrl(value)) {
+      return new SettingUrl(path, new UrlBuilder(value), description, locked);
+    } else if (value.toLowerCase().equals(TextUtils.TRUE)) {
+      return new SettingBool(path, true, description, locked);
+    } else if (value.toLowerCase().equals(TextUtils.FALSE)) {
+      return new SettingBool(path, false, description, locked);
+    } else {
+      return new SettingString(path, value, description, locked);
+    }
+  }
+
+  /**
+   * Parses the.
+   *
+   * @param path
+   *          the path
+   * @param value
+   *          the value
+   * @return the setting
+   */
+  public static Setting parse(String path, double value) {
+    return parse(new StrictPath(path), value);
+  }
+
+  /**
+   * Parses the.
+   *
+   * @param path
+   *          the path
+   * @param value
+   *          the value
+   * @return the setting
+   */
+  public static Setting parse(Path path, double value) {
+    return parse(path, value, TextUtils.EMPTY_STRING, false);
+  }
+
+  /**
+   * Parses the.
+   *
+   * @param path
+   *          the path
+   * @param value
+   *          the value
+   * @param description
+   *          the description
+   * @param locked
+   *          the locked
+   * @return the setting
+   */
+  public static Setting parse(String path, double value, String description, boolean locked) {
+    return parse(new StrictPath(path), value, description, locked);
+  }
+
+  /**
+   * Parses the.
+   *
+   * @param path
+   *          the path
+   * @param value
+   *          the value
+   * @param description
+   *          the description
+   * @param locked
+   *          the locked
+   * @return the setting
+   */
+  public static Setting parse(Path path, double value, String description, boolean locked) {
+    return new SettingDouble(path, value, description, locked);
+  }
+
+  /**
+   * Parses the.
+   *
+   * @param path
+   *          the path
+   * @param value
+   *          the value
+   * @return the setting
+   */
+  public static Setting parse(String path, int value) {
+    return parse(new StrictPath(path), value);
+  }
+
+  /**
+   * Parses the.
+   *
+   * @param path
+   *          the path
+   * @param value
+   *          the value
+   * @return the setting
+   */
+  public static Setting parse(Path path, int value) {
+    return parse(path, value, TextUtils.EMPTY_STRING, false);
+  }
+
+  /**
+   * Parses the.
+   *
+   * @param path
+   *          the path
+   * @param value
+   *          the value
+   * @param description
+   *          the description
+   * @param locked
+   *          the locked
+   * @return the setting
+   */
+  public static Setting parse(String path, int value, String description, boolean locked) {
+    return parse(new StrictPath(path), value, description, locked);
+  }
+
+  /**
+   * Parses the.
+   *
+   * @param path
+   *          the path
+   * @param value
+   *          the value
+   * @param description
+   *          the description
+   * @param locked
+   *          the locked
+   * @return the setting
+   */
+  public static Setting parse(Path path, int value, String description, boolean locked) {
+    return new SettingInt(path, value, description, locked);
+  }
+
+  /**
+   * Parses the.
+   *
+   * @param path
+   *          the path
+   * @param value
+   *          the value
+   * @return the setting
+   */
+  public static Setting parse(String path, long value) {
+    return parse(new StrictPath(path), value);
+  }
+
+  /**
+   * Parses the.
+   *
+   * @param path
+   *          the path
+   * @param value
+   *          the value
+   * @return the setting
+   */
+  public static Setting parse(Path path, long value) {
+    return parse(path, value, TextUtils.EMPTY_STRING, false);
+  }
+
+  /**
+   * Parses the.
+   *
+   * @param path
+   *          the path
+   * @param value
+   *          the value
+   * @param description
+   *          the description
+   * @param locked
+   *          the locked
+   * @return the setting
+   */
+  public static Setting parse(String path, long value, String description, boolean locked) {
+    return parse(new StrictPath(path), value, description, locked);
+  }
+
+  /**
+   * Parses the.
+   *
+   * @param path
+   *          the path
+   * @param value
+   *          the value
+   * @param description
+   *          the description
+   * @param locked
+   *          the locked
+   * @return the setting
+   */
+  public static Setting parse(Path path, long value, String description, boolean locked) {
+    return new SettingLong(path, value, description, locked);
+  }
+
+  /**
+   * Parses the.
+   *
+   * @param path
+   *          the path
+   * @param value
+   *          the value
+   * @return the setting
+   */
+  public static Setting parse(String path, Color value) {
+    return parse(new StrictPath(path), value);
+  }
+
+  /**
+   * Parses the.
+   *
+   * @param path
+   *          the path
+   * @param value
+   *          the value
+   * @return the setting
+   */
+  public static Setting parse(Path path, Color value) {
+    return parse(path, value, TextUtils.EMPTY_STRING, false);
+  }
+
+  /**
+   * Parses the.
+   *
+   * @param path
+   *          the path
+   * @param value
+   *          the value
+   * @param description
+   *          the description
+   * @param locked
+   *          the locked
+   * @return the setting
+   */
+  public static Setting parse(String path, Color value, String description, boolean locked) {
+    return parse(new StrictPath(path), value, description, locked);
+  }
+
+  /**
+   * Parses the.
+   *
+   * @param path
+   *          the path
+   * @param value
+   *          the value
+   * @param description
+   *          the description
+   * @param locked
+   *          the locked
+   * @return the setting
+   */
+  public static Setting parse(Path path, Color value, String description, boolean locked) {
+    return new SettingColor(path, value, description, locked);
+  }
+
+  /**
+   * Parses the.
+   *
+   * @param path
+   *          the path
+   * @param value
+   *          the value
+   * @return the setting
+   */
+  public static Setting parse(String path, boolean value) {
+    return parse(new StrictPath(path), value);
+  }
+
+  /**
+   * Parses the.
+   *
+   * @param path
+   *          the path
+   * @param value
+   *          the value
+   * @return the setting
+   */
+  public static Setting parse(Path path, boolean value) {
+    return parse(path, value, TextUtils.EMPTY_STRING, false);
+  }
+
+  /**
+   * Parses the.
+   *
+   * @param path
+   *          the path
+   * @param value
+   *          the value
+   * @param description
+   *          the description
+   * @param locked
+   *          the locked
+   * @return the setting
+   */
+  public static Setting parse(String path, boolean value, String description, boolean locked) {
+    return parse(new StrictPath(path), value, description, locked);
+  }
+
+  /**
+   * Parses the.
+   *
+   * @param path
+   *          the path
+   * @param value
+   *          the value
+   * @param description
+   *          the description
+   * @param locked
+   *          the locked
+   * @return the setting
+   */
+  public static Setting parse(Path path, boolean value, String description, boolean locked) {
+    return new SettingBool(path, value, description, locked);
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.json.JsonRepresentation#toJson()
+   */
+  @Override
+  public Json toJson() {
+    Json o = new JsonObject();
+
+    o.add("name", mPath);
+
+    formatJsonValue(o);
+
+    if (getDescription() != null) {
+      o.add("description", getDescription());
+    }
+
+    return o;
+  }
+
+  /**
+   * Should add the value attribute to the json object. This is separate from
+   * {@code toJson()} to allow sub-classes to override it for specialized types
+   * such as bools and numbers.
+   *
+   * @param o
+   *          the o
+   */
+  protected void formatJsonValue(Json o) {
+    if (getAsString() != null) {
+      o.add("value", getAsString());
+    }
+  }
+
 }

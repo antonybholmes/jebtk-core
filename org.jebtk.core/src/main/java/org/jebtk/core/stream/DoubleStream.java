@@ -25,190 +25,205 @@ import org.jebtk.core.Mathematics;
  */
 public class DoubleStream extends NumberStream<Double> {
 
-	/**
-	 * The Class MinFunction.
-	 */
-	private static class MinFunction implements ReduceFunction<Double, Double> {
+  /**
+   * The Class MinFunction.
+   */
+  private static class MinFunction implements ReduceFunction<Double, Double> {
 
-		/* (non-Javadoc)
-		 * @see org.abh.common.Function#apply(java.lang.Object)
-		 */
-		@Override
-		public Double apply(Stream<Double> stream) {
-			double min = Double.MAX_VALUE;
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.abh.common.Function#apply(java.lang.Object)
+     */
+    @Override
+    public Double apply(Stream<Double> stream) {
+      double min = Double.MAX_VALUE;
 
-			while (stream.hasNext()) {
-				double v = stream.next().doubleValue();
+      while (stream.hasNext()) {
+        double v = stream.next().doubleValue();
 
-				if (v < min) {
-					min = v;
-				}
-			}
+        if (v < min) {
+          min = v;
+        }
+      }
 
-			return min;
-		}
-	}
+      return min;
+    }
+  }
 
-	/**
-	 * The Class MaxFunction.
-	 */
-	private static class MaxFunction implements ReduceFunction<Double, Double> {
+  /**
+   * The Class MaxFunction.
+   */
+  private static class MaxFunction implements ReduceFunction<Double, Double> {
 
-		/* (non-Javadoc)
-		 * @see org.abh.common.Function#apply(java.lang.Object)
-		 */
-		@Override
-		public Double apply(Stream<Double> stream) {
-			double max = stream.next();
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.abh.common.Function#apply(java.lang.Object)
+     */
+    @Override
+    public Double apply(Stream<Double> stream) {
+      double max = stream.next();
 
-			while (stream.hasNext()) {
-				double v = stream.next();
+      while (stream.hasNext()) {
+        double v = stream.next();
 
-				if (v > max) {
-					max = v;
-				}
-			}
+        if (v > max) {
+          max = v;
+        }
+      }
 
-			return max;
-		}
-	}
+      return max;
+    }
+  }
 
-	/**
-	 * The Class SumFunction.
-	 */
-	private static class SumFunction implements DoubleReduceFunction<Double> {
+  /**
+   * The Class SumFunction.
+   */
+  private static class SumFunction implements DoubleReduceFunction<Double> {
 
-		/* (non-Javadoc)
-		 * @see org.abh.common.Function#apply(java.lang.Object)
-		 */
-		@Override
-		public Double apply(Stream<Double> stream) {
-			double sum = 0;
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.abh.common.Function#apply(java.lang.Object)
+     */
+    @Override
+    public Double apply(Stream<Double> stream) {
+      double sum = 0;
 
-			while (stream.hasNext()) {
-				sum += stream.next();
-			}
+      while (stream.hasNext()) {
+        sum += stream.next();
+      }
 
-			return sum;
-		}
-	}
+      return sum;
+    }
+  }
 
-	/**
-	 * The Class RoundFunction.
-	 */
-	private static class RoundFunction implements Function<Double, Double>  {
+  /**
+   * The Class RoundFunction.
+   */
+  private static class RoundFunction implements Function<Double, Double> {
 
-		/** The m places. */
-		private int mPlaces;
+    /** The m places. */
+    private int mPlaces;
 
-		/**
-		 * Instantiates a new round function.
-		 *
-		 * @param places the places
-		 */
-		public RoundFunction(int places) {
-			mPlaces = places;
-		}
+    /**
+     * Instantiates a new round function.
+     *
+     * @param places
+     *          the places
+     */
+    public RoundFunction(int places) {
+      mPlaces = places;
+    }
 
-		/* (non-Javadoc)
-		 * @see org.abh.common.Function#apply(java.lang.Object)
-		 */
-		@Override
-		public Double apply(Double v) {
-			return Mathematics.round(v, mPlaces);
-		}
-	}
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.abh.common.Function#apply(java.lang.Object)
+     */
+    @Override
+    public Double apply(Double v) {
+      return Mathematics.round(v, mPlaces);
+    }
+  }
 
-	/**
-	 * The Class MultiplyFunction.
-	 */
-	private static class MultiplyFunction implements Function<Double, Double> {
+  /**
+   * The Class MultiplyFunction.
+   */
+  private static class MultiplyFunction implements Function<Double, Double> {
 
-		/** The m places. */
-		private double mV;
+    /** The m places. */
+    private double mV;
 
-		/**
-		 * Instantiates a new round function.
-		 *
-		 * @param v the v
-		 */
-		public MultiplyFunction(double v) {
-			mV = v;
-		}
+    /**
+     * Instantiates a new round function.
+     *
+     * @param v
+     *          the v
+     */
+    public MultiplyFunction(double v) {
+      mV = v;
+    }
 
-		/* (non-Javadoc)
-		 * @see org.abh.common.Function#apply(java.lang.Object)
-		 */
-		@Override
-		public Double apply(Double v) {
-			return v * mV;
-		}
-	}
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.abh.common.Function#apply(java.lang.Object)
+     */
+    @Override
+    public Double apply(Double v) {
+      return v * mV;
+    }
+  }
 
+  /**
+   * Instantiates a new double stream.
+   *
+   * @param stream
+   *          the stream
+   */
+  public DoubleStream(Stream<Double> stream) {
+    super(stream);
+  }
 
-	/**
-	 * Instantiates a new double stream.
-	 *
-	 * @param stream the stream
-	 */
-	public DoubleStream(Stream<Double> stream) {
-		super(stream);
-	}
+  /**
+   * Sum.
+   *
+   * @return the double
+   */
+  public double sum() {
+    return reduce(new SumFunction());
+  }
 
-	/**
-	 * Sum.
-	 *
-	 * @return the double
-	 */
-	public double sum() {
-		return reduce(new SumFunction());
-	}
+  /**
+   * Min.
+   *
+   * @param places
+   *          the places
+   * @return the double
+   */
+  // public double min() {
+  // return reduce(new MinFunction<Double>());
+  // }
 
-	/**
-	 * Min.
-	 *
-	 * @param places the places
-	 * @return the double
-	 */
-	//public double min() {
-	//	return reduce(new MinFunction<Double>());
-	//}
+  /**
+   * Rounds the numbers in the stream to a given number of decimal places.
+   *
+   * @param places
+   *          the places
+   * @return the stream
+   */
+  public DoubleStream round(int places) {
+    return new DoubleStream(map(new RoundFunction(places)));
+  }
 
-	/**
-	 * Rounds the numbers in the stream to a given number of decimal places.
-	 *
-	 * @param places the places
-	 * @return the stream
-	 */
-	public DoubleStream round(int places) {
-		return new DoubleStream(map(new RoundFunction(places)));
-	}
+  /**
+   * Multiply the values in the stream by a constant.
+   *
+   * @param v
+   *          the v
+   * @return the double stream
+   */
+  public DoubleStream multiply(double v) {
+    return new DoubleStream(map(new MultiplyFunction(v)));
+  }
 
-	/**
-	 * Multiply the values in the stream by a constant.
-	 *
-	 * @param v the v
-	 * @return the double stream
-	 */
-	public DoubleStream multiply(double v) {
-		return new DoubleStream(map(new MultiplyFunction(v)));
-	}
+  /**
+   * Min.
+   *
+   * @return the double
+   */
+  public double min() {
+    return reduce(new MinFunction());
+  }
 
-	/**
-	 * Min.
-	 *
-	 * @return the double
-	 */
-	public double min() {
-		return reduce(new MinFunction());
-	}
-
-	/**
-	 * Max.
-	 *
-	 * @return the double
-	 */
-	public double max() {
-		return reduce(new MaxFunction());
-	}
+  /**
+   * Max.
+   *
+   * @return the double
+   */
+  public double max() {
+    return reduce(new MaxFunction());
+  }
 }

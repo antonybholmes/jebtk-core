@@ -26,168 +26,184 @@ import org.jebtk.core.text.TextUtils;
 
 // TODO: Auto-generated Javadoc
 /**
- * Represents a path in a tree. Tree paths
- * are defined by a chain of UIDs specifying
- * the nodes.
+ * Represents a path in a tree. Tree paths are defined by a chain of UIDs
+ * specifying the nodes.
  * 
  * @author Antony Holmes Holmes
  *
  */
 public class TreePath implements Iterable<Integer>, Serializable, Comparable<TreePath> {
-	
-	/**
-	 * The constant serialVersionUID.
-	 */
-	private static final long serialVersionUID = 1L;
 
-	/**
-	 * The path.
-	 */
-	private StringBuilder path = new StringBuilder();
-	
-	/**
-	 * The tokens.
-	 */
-	private List<Integer> tokens = new ArrayList<Integer>();
+  /**
+   * The constant serialVersionUID.
+   */
+  private static final long serialVersionUID = 1L;
 
-	/**
-	 * Instantiates a new tree path.
-	 */
-	public TreePath() {
-		// do nothing
-	}
-	
-	/**
-	 * Instantiates a new tree path.
-	 *
-	 * @param <T> the generic type
-	 * @param path the path
-	 * @throws ParseException the parse exception
-	 */
-	public <T> TreePath(String path) throws ParseException {
-		//System.err.println("parse path " + path);
-		
-		List<String> t = TextUtils.fastSplit(path.toString(), StrictPath.PATH_DELIMITER);
-	
-		for (String token : t) {
-			add(token);
-		}
-	}
-	
-	/**
-	 * Clone constructor.
-	 *
-	 * @param path the path
-	 */
-	public TreePath(TreePath path) {
-		for (int i : path) {
-			add(i);
-		}
-	}
-	
-	/**
-	 * Instantiates a new tree path.
-	 *
-	 * @param <T> the generic type
-	 * @param node the node
-	 */
-	public <T> TreePath(TreeNode<T> node) {
-		add(node);
-	}
-	
-	
+  /**
+   * The path.
+   */
+  private StringBuilder path = new StringBuilder();
 
-	/**
-	 * Adds the.
-	 *
-	 * @param <T> the generic type
-	 * @param node the node
-	 * @return the tree path
-	 */
-	public <T> TreePath add(TreeNode<T> node) {
-		return add(node.getId());
-	}
-	
-	/**
-	 * Adds the.
-	 *
-	 * @param element the element
-	 * @return the tree path
-	 * @throws ParseException the parse exception
-	 */
-	private TreePath add(String element) throws ParseException {
-		return add(TextUtils.parseInt(element));
-	}
-	
-	/**
-	 * Adds the.
-	 *
-	 * @param level the level
-	 * @return the tree path
-	 */
-	private TreePath add(int level) {
-		if (tokens.size() > 0) {
-			path.append(StrictPath.PATH_DELIMITER);
-		}
-		
-		
-		path.append(level);
-		tokens.add(level);
-		
-		return this;
-	}
-	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return path.toString();
-	}
-	
+  /**
+   * The tokens.
+   */
+  private List<Integer> tokens = new ArrayList<Integer>();
 
-	/* (non-Javadoc)
-	 * @see java.lang.Iterable#iterator()
-	 */
-	@Override
-	public Iterator<Integer> iterator() {
-		return tokens.iterator();
-	}
-	
-	/* (non-Javadoc)
-	 * @see java.lang.Comparable#compareTo(java.lang.Object)
-	 */
-	@Override
-	public int compareTo(TreePath p) {
-		return toString().compareTo(p.toString());
-	}
-	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
-	@Override
-	public boolean equals(Object o) {
-		if (!(o instanceof TreePath)) {
-			return false;
-		}
-		
-		return compareTo((TreePath)o) == 0;
-	}
-	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#hashCode()
-	 */
-	@Override
-	public int hashCode() {
-		return toString().hashCode();
-	}
+  /**
+   * Instantiates a new tree path.
+   */
+  public TreePath() {
+    // do nothing
+  }
 
-	/**
-	 * Returns the number of path levels in the path.
-	 *
-	 * @return the int
-	 */
-	public int size() {
-		return tokens.size();
-	}
+  /**
+   * Instantiates a new tree path.
+   *
+   * @param <T>
+   *          the generic type
+   * @param path
+   *          the path
+   * @throws ParseException
+   *           the parse exception
+   */
+  public <T> TreePath(String path) throws ParseException {
+    // System.err.println("parse path " + path);
+
+    List<String> t = TextUtils.fastSplit(path.toString(), StrictPath.PATH_DELIMITER);
+
+    for (String token : t) {
+      add(token);
+    }
+  }
+
+  /**
+   * Clone constructor.
+   *
+   * @param path
+   *          the path
+   */
+  public TreePath(TreePath path) {
+    for (int i : path) {
+      add(i);
+    }
+  }
+
+  /**
+   * Instantiates a new tree path.
+   *
+   * @param <T>
+   *          the generic type
+   * @param node
+   *          the node
+   */
+  public <T> TreePath(TreeNode<T> node) {
+    add(node);
+  }
+
+  /**
+   * Adds the.
+   *
+   * @param <T>
+   *          the generic type
+   * @param node
+   *          the node
+   * @return the tree path
+   */
+  public <T> TreePath add(TreeNode<T> node) {
+    return add(node.getId());
+  }
+
+  /**
+   * Adds the.
+   *
+   * @param element
+   *          the element
+   * @return the tree path
+   * @throws ParseException
+   *           the parse exception
+   */
+  private TreePath add(String element) throws ParseException {
+    return add(TextUtils.parseInt(element));
+  }
+
+  /**
+   * Adds the.
+   *
+   * @param level
+   *          the level
+   * @return the tree path
+   */
+  private TreePath add(int level) {
+    if (tokens.size() > 0) {
+      path.append(StrictPath.PATH_DELIMITER);
+    }
+
+    path.append(level);
+    tokens.add(level);
+
+    return this;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Object#toString()
+   */
+  @Override
+  public String toString() {
+    return path.toString();
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Iterable#iterator()
+   */
+  @Override
+  public Iterator<Integer> iterator() {
+    return tokens.iterator();
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Comparable#compareTo(java.lang.Object)
+   */
+  @Override
+  public int compareTo(TreePath p) {
+    return toString().compareTo(p.toString());
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Object#equals(java.lang.Object)
+   */
+  @Override
+  public boolean equals(Object o) {
+    if (!(o instanceof TreePath)) {
+      return false;
+    }
+
+    return compareTo((TreePath) o) == 0;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Object#hashCode()
+   */
+  @Override
+  public int hashCode() {
+    return toString().hashCode();
+  }
+
+  /**
+   * Returns the number of path levels in the path.
+   *
+   * @return the int
+   */
+  public int size() {
+    return tokens.size();
+  }
 }

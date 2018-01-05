@@ -19,98 +19,94 @@ import java.util.Iterator;
 import java.util.ListIterator;
 import java.util.List;
 
+public class ReverseIterator<T> implements Iterator<T>, Iterable<T> {
+  private ListIterator<T> mIt;
 
+  public ReverseIterator(List<T> l) {
+    mIt = l.listIterator(l.size());
+  }
 
-public class ReverseIterator<T> implements Iterator<T>, Iterable<T>  {
-	private ListIterator<T> mIt;
+  @Override
+  public boolean hasNext() {
+    return mIt.hasPrevious();
+  }
 
-	public ReverseIterator(List<T> l) {
-		mIt = l.listIterator(l.size());
-	}
-	
-	@Override
-	public boolean hasNext() {
-		return mIt.hasPrevious();
-	}
+  @Override
+  public T next() {
+    return mIt.previous();
+  }
 
-	@Override
-	public T next() {
-		return mIt.previous();
-	}
+  @Override
+  public Iterator<T> iterator() {
+    return this;
+  }
 
-	@Override
-	public Iterator<T> iterator() {
-		return this;
-	}
+  @Override
+  public void remove() {
+    // TODO Auto-generated method stub
 
-	@Override
-	public void remove() {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	public static <TT> ReverseIterator<TT> create(List<TT> l) {
-		return new ReverseIterator<TT>(l);
-	}
+  }
+
+  public static <TT> ReverseIterator<TT> create(List<TT> l) {
+    return new ReverseIterator<TT>(l);
+  }
 }
-
-
-
 
 // TODO: Auto-generated Javadoc
 /**
- * ReverseIterator traverses a list in reverse order to negate having to
- * sort and or copy a list to reverse it.
+ * ReverseIterator traverses a list in reverse order to negate having to sort
+ * and or copy a list to reverse it.
  *
- * @param <T> the generic type
+ * @param <T>
+ *          the generic type
  */
-//public class ReverseIterator<T> implements Iterator<T>, Iterable<T>  {
+// public class ReverseIterator<T> implements Iterator<T>, Iterable<T> {
 //
-//	/** The m list. */
-//	private final List<T> mList;
+// /** The m list. */
+// private final List<T> mList;
 //
-//	/** The m P. */
-//	private int mP;
+// /** The m P. */
+// private int mP;
 //
-//	/**
-//	 * Instantiates a new reverse iterator.
-//	 *
-//	 * @param list the list
-//	 */
-//	public ReverseIterator(List<T> list) {
-//		mList = list;
-//		mP = list.size() - 1;
-//	}
+// /**
+// * Instantiates a new reverse iterator.
+// *
+// * @param list the list
+// */
+// public ReverseIterator(List<T> list) {
+// mList = list;
+// mP = list.size() - 1;
+// }
 //
-//	/* (non-Javadoc)
-//	 * @see java.util.Iterator#hasNext()
-//	 */
-//	@Override
-//	public boolean hasNext() {
-//		return mP >= 0;
-//	}
+// /* (non-Javadoc)
+// * @see java.util.Iterator#hasNext()
+// */
+// @Override
+// public boolean hasNext() {
+// return mP >= 0;
+// }
 //
-//	/* (non-Javadoc)
-//	 * @see java.util.Iterator#next()
-//	 */
-//	@Override
-//	public T next() {
-//		return mList.get(mP--);
-//	}
+// /* (non-Javadoc)
+// * @see java.util.Iterator#next()
+// */
+// @Override
+// public T next() {
+// return mList.get(mP--);
+// }
 //
-//	/* (non-Javadoc)
-//	 * @see java.util.Iterator#remove()
-//	 */
-//	@Override
-//	public void remove() {
-//		throw new UnsupportedOperationException();
-//	}
+// /* (non-Javadoc)
+// * @see java.util.Iterator#remove()
+// */
+// @Override
+// public void remove() {
+// throw new UnsupportedOperationException();
+// }
 //
-//	/* (non-Javadoc)
-//	 * @see java.lang.Iterable#iterator()
-//	 */
-//	@Override
-//	public Iterator<T> iterator() {
-//		return this;
-//	}
-//}	
+// /* (non-Javadoc)
+// * @see java.lang.Iterable#iterator()
+// */
+// @Override
+// public Iterator<T> iterator() {
+// return this;
+// }
+// }

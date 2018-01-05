@@ -19,50 +19,55 @@ package org.jebtk.core.stream;
 /**
  * Represents a stream containing numbers.
  *
- * @param <T> the generic type
+ * @param <T>
+ *          the generic type
  */
 public abstract class NumberStream<T extends Number> extends ContainerStream<T> {
-	
-	/**
-	 * The Class MeanFunction.
-	 *
-	 * @param <T> the generic type
-	 */
-	private static class MeanFunction<T extends Number> implements ReduceFunction<T, Double> {
-		
-		/* (non-Javadoc)
-		 * @see org.abh.common.Function#apply(java.lang.Object)
-		 */
-		@Override
-		public Double apply(Stream<T> stream) {
-			double sum = 0;
-			int c = 0;
-			
-			while (stream.hasNext()) {
-				sum += stream.next().doubleValue();
-				
-				++c;
-			}
-			
-			return sum / c;
-		}
-	}
-	
-	/**
-	 * Instantiates a new number stream.
-	 *
-	 * @param stream the stream
-	 */
-	public NumberStream(Stream<T> stream) {
-		super(stream);
-	}
-	
-	/**
-	 * Returns the mean of a collection of numbers in a stream.
-	 *
-	 * @return the double
-	 */
-	public double mean() {
-		return reduce(new MeanFunction<T>());
-	}
+
+  /**
+   * The Class MeanFunction.
+   *
+   * @param <T>
+   *          the generic type
+   */
+  private static class MeanFunction<T extends Number> implements ReduceFunction<T, Double> {
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.abh.common.Function#apply(java.lang.Object)
+     */
+    @Override
+    public Double apply(Stream<T> stream) {
+      double sum = 0;
+      int c = 0;
+
+      while (stream.hasNext()) {
+        sum += stream.next().doubleValue();
+
+        ++c;
+      }
+
+      return sum / c;
+    }
+  }
+
+  /**
+   * Instantiates a new number stream.
+   *
+   * @param stream
+   *          the stream
+   */
+  public NumberStream(Stream<T> stream) {
+    super(stream);
+  }
+
+  /**
+   * Returns the mean of a collection of numbers in a stream.
+   *
+   * @return the double
+   */
+  public double mean() {
+    return reduce(new MeanFunction<T>());
+  }
 }

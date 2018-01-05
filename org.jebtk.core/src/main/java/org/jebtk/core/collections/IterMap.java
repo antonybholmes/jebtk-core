@@ -22,15 +22,17 @@ import java.util.Map;
  * Iter maps allow the keys to be iterated over to reduce coding.
  * 
  *
- * @param <K> the key type
- * @param <V> the value type
+ * @param <K>
+ *          the key type
+ * @param <V>
+ *          the value type
  */
 public interface IterMap<K, V> extends Map<K, V>, Iterable<K>, Serializable {
-	/**
-	 * Returns the first key in the map. The notion of first depends on the
-	 * map implementation.
-	 * 
-	 * @return
-	 */
-	public K first();
+  /**
+   * Returns the first key in the map. The notion of first depends on the map
+   * implementation.
+   * 
+   * @return
+   */
+  public K first();
 }

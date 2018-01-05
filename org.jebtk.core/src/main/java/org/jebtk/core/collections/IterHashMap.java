@@ -17,55 +17,65 @@ package org.jebtk.core.collections;
 
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 
 // TODO: Auto-generated Javadoc
 /**
  * A hashmap where the keys can be iterated over.
  *
  * @author Antony Holmes Holmes
- * @param <K> the key type
- * @param <V> the value type
+ * @param <K>
+ *          the key type
+ * @param <V>
+ *          the value type
  */
 public class IterHashMap<K, V> extends HashMap<K, V> implements IterMap<K, V> {
 
-	/** The Constant serialVersionUID. */
-	private static final long serialVersionUID = 1L;
+  /** The Constant serialVersionUID. */
+  private static final long serialVersionUID = 1L;
 
-	/**
-	 * Instantiates a new iter hash map.
-	 */
-	public IterHashMap() {
-		this(100);
-	}
-	
-	/**
-	 * Instantiates a new iter hash map.
-	 *
-	 * @param initialCapacity the initial capacity
-	 */
-	public IterHashMap(int initialCapacity) {
-		super(initialCapacity);
-	}
-	
-	/* (non-Javadoc)
-	 * @see java.lang.Iterable#iterator()
-	 */
-	@Override
-	public Iterator<K> iterator() {
-		return keySet().iterator();
-	}
-	
-	@Override
-	public K first() {
-		return iterator().next();
-	}
-	
-	/**
-	 * Create a new IterHashMap.
-	 * 
-	 * @return		A new IterHashMap.
-	 */
-	public static <KK, VV> IterHashMap<KK, VV> newIterHashMap() {
-		return new IterHashMap<KK, VV>();
-	}
+  /**
+   * Instantiates a new iter hash map.
+   */
+  public IterHashMap() {
+    this(100);
+  }
+
+  public IterHashMap(Map<K, V> map) {
+    super(map);
+  }
+
+  /**
+   * Instantiates a new iter hash map.
+   *
+   * @param initialCapacity
+   *          the initial capacity
+   */
+  public IterHashMap(int initialCapacity) {
+    super(initialCapacity);
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Iterable#iterator()
+   */
+  @Override
+  public Iterator<K> iterator() {
+    return keySet().iterator();
+  }
+
+  @Override
+  public K first() {
+    return iterator().next();
+  }
+
+  /**
+   * Create a new IterHashMap.
+   * 
+   * @return A new IterHashMap.
+   */
+  public static <KK, VV> IterHashMap<KK, VV> newIterHashMap() {
+    return new IterHashMap<KK, VV>();
+  }
 }

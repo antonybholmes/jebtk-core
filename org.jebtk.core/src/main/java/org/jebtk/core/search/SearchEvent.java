@@ -17,7 +17,6 @@ package org.jebtk.core.search;
 
 import org.jebtk.core.event.Event;
 
-
 // TODO: Auto-generated Javadoc
 /**
  * For generating search events.
@@ -25,33 +24,36 @@ import org.jebtk.core.event.Event;
  * @author Antony Holmes Holmes
  */
 public class SearchEvent extends Event {
-	
-	/**
-	 * The constant serialVersionUID.
-	 */
-	private static final long serialVersionUID = 1L;
-	
-	/**
-	 * The constant SEARCH_MESSAGE.
-	 */
-	public static final String SEARCH_MESSAGE = "search";
 
-	/**
-	 * Instantiates a new search event.
-	 *
-	 * @param source the source
-	 */
-	public SearchEvent(Object source) {
-		this(source, SEARCH_MESSAGE);
-	}
-	
-	/**
-	 * Instantiates a new search event.
-	 *
-	 * @param source the source
-	 * @param message the message
-	 */
-	public SearchEvent(Object source, String message) {
-		super(source, message);
-	}
+  /**
+   * The constant serialVersionUID.
+   */
+  private static final long serialVersionUID = 1L;
+
+  /**
+   * The constant SEARCH_MESSAGE.
+   */
+  public static final String SEARCH_MESSAGE = "search";
+
+  /**
+   * Instantiates a new search event.
+   *
+   * @param source
+   *          the source
+   */
+  public SearchEvent(Object source) {
+    this(source, SEARCH_MESSAGE);
+  }
+
+  /**
+   * Instantiates a new search event.
+   *
+   * @param source
+   *          the source
+   * @param message
+   *          the message
+   */
+  public SearchEvent(Object source, String message) {
+    super(source, message);
+  }
 }

@@ -23,25 +23,27 @@ package org.jebtk.core;
  *
  */
 public class Limits {
-	
-	/**
-	 * The min.
-	 */
-	public double min = 0;
-	
-	/**
-	 * The max.
-	 */
-	public double max = 0;
-	
-	/**
-	 * Instantiates a new limits.
-	 *
-	 * @param min the min
-	 * @param max the max
-	 */
-	public Limits(double min, double max) {
-		this.min = min;
-		this.max = max;
-	}
+
+  /**
+   * The min.
+   */
+  public double min = 0;
+
+  /**
+   * The max.
+   */
+  public double max = 0;
+
+  /**
+   * Instantiates a new limits.
+   *
+   * @param min
+   *          the min
+   * @param max
+   *          the max
+   */
+  public Limits(double min, double max) {
+    this.min = min;
+    this.max = max;
+  }
 }

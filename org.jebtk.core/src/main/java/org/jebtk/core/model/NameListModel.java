@@ -22,116 +22,128 @@ import java.util.Map;
 
 import org.jebtk.core.collections.UniqueArrayList;
 
-
 // TODO: Auto-generated Javadoc
 /**
- * Model to store items indexed by name. Items are stored in the order
- * they are entered and are retrivable either by name or index.
+ * Model to store items indexed by name. Items are stored in the order they are
+ * entered and are retrivable either by name or index.
  *
  * @author Antony Holmes Holmes
- * @param <T> the generic type
+ * @param <T>
+ *          the generic type
  */
 public class NameListModel<T> extends NameModel<T> {
-	
-	/**
-	 * The constant serialVersionUID.
-	 */
-	private static final long serialVersionUID = 1L;
 
-	/**
-	 * The member items.
-	 */
-	protected Map<String, T> mItemMap = new HashMap<String, T>();
-	
-	/** The m items. */
-	protected List<String> mItems = new UniqueArrayList<String>();
+  /**
+   * The constant serialVersionUID.
+   */
+  private static final long serialVersionUID = 1L;
 
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.model.NameModel#add(java.lang.String, java.lang.Object)
-	 */
-	@Override
-	public void add(String name, T item) {
-		update(name, item);
+  /**
+   * The member items.
+   */
+  protected Map<String, T> mItemMap = new HashMap<String, T>();
 
-		fireChanged();
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.model.NameModel#update(java.lang.String, java.lang.Object)
-	 */
-	@Override
-	public void update(String name, T item) {
-		mItems.add(name);
-		mItemMap.put(name, item);
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.model.NameModel#remove(java.lang.String)
-	 */
-	@Override
-	public void remove(String name) {
-		mItems.remove(name);
-		mItemMap.remove(name);
+  /** The m items. */
+  protected List<String> mItems = new UniqueArrayList<String>();
 
-		fireChanged();
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.model.NameModel#get(java.lang.String)
-	 */
-	@Override
-	public T get(String name) {
-		return mItemMap.get(name);
-	}
-	
-	/**
-	 * Gets the.
-	 *
-	 * @param index the index
-	 * @return the t
-	 */
-	public T get(int index) {
-		return mItemMap.get(mItems.get(index));
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.model.NameModel#contains(java.lang.String)
-	 */
-	@Override
-	public boolean contains(String name) {
-		return mItemMap.containsKey(name);
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.model.NameModel#clear()
-	 */
-	@Override
-	public void clear() {
-		mItemMap.clear();
-		mItems.clear();
-		
-		fireChanged();
-	}
-	
-	/**
-	 * Size.
-	 *
-	 * @return the int
-	 */
-	@Override
-	public int size() {
-		return mItemMap.size();
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.model.NameModel#add(java.lang.String, java.lang.Object)
+   */
+  @Override
+  public void add(String name, T item) {
+    update(name, item);
 
-	/**
-	 * Returns a sorted iterator of the names
-	 * in this model.
-	 *
-	 * @return the iterator
-	 */
-	@Override
-	public Iterator<String> iterator() {
-		return mItems.iterator();
-	}
+    fireChanged();
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.model.NameModel#update(java.lang.String,
+   * java.lang.Object)
+   */
+  @Override
+  public void update(String name, T item) {
+    mItems.add(name);
+    mItemMap.put(name, item);
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.model.NameModel#remove(java.lang.String)
+   */
+  @Override
+  public void remove(String name) {
+    mItems.remove(name);
+    mItemMap.remove(name);
+
+    fireChanged();
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.model.NameModel#get(java.lang.String)
+   */
+  @Override
+  public T get(String name) {
+    return mItemMap.get(name);
+  }
+
+  /**
+   * Gets the.
+   *
+   * @param index
+   *          the index
+   * @return the t
+   */
+  public T get(int index) {
+    return mItemMap.get(mItems.get(index));
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.model.NameModel#contains(java.lang.String)
+   */
+  @Override
+  public boolean contains(String name) {
+    return mItemMap.containsKey(name);
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.model.NameModel#clear()
+   */
+  @Override
+  public void clear() {
+    mItemMap.clear();
+    mItems.clear();
+
+    fireChanged();
+  }
+
+  /**
+   * Size.
+   *
+   * @return the int
+   */
+  @Override
+  public int size() {
+    return mItemMap.size();
+  }
+
+  /**
+   * Returns a sorted iterator of the names in this model.
+   *
+   * @return the iterator
+   */
+  @Override
+  public Iterator<String> iterator() {
+    return mItems.iterator();
+  }
 }

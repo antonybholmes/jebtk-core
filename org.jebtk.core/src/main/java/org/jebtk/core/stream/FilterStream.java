@@ -19,49 +19,54 @@ package org.jebtk.core.stream;
 /**
  * The Class FilterStream.
  *
- * @param <T> the generic type
+ * @param <T>
+ *          the generic type
  */
 public class FilterStream<T> extends ContainerStream<T> {
 
-	/** The m filter. */
-	private Filter<T> mFilter;
+  /** The m filter. */
+  private Filter<T> mFilter;
 
-	/**
-	 * Instantiates a new filter stream.
-	 *
-	 * @param stream the stream
-	 * @param filter the filter
-	 */
-	public FilterStream(Stream<T> stream, Filter<T> filter) {
-		super(stream);
+  /**
+   * Instantiates a new filter stream.
+   *
+   * @param stream
+   *          the stream
+   * @param filter
+   *          the filter
+   */
+  public FilterStream(Stream<T> stream, Filter<T> filter) {
+    super(stream);
 
-		mFilter = filter;
-	}
+    mFilter = filter;
+  }
 
-	/* (non-Javadoc)
-	 * @see java.util.Iterator#next()
-	 */
-	@Override
-	public T next() {
-		return getNext();
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.util.Iterator#next()
+   */
+  @Override
+  public T next() {
+    return getNext();
+  }
 
-	/**
-	 * Returns the next item in the parent stream that matches the filter.
-	 *
-	 * @return the next
-	 */
-	private T getNext() {
-		T next = super.next();
-		
-		while (!mFilter.keep(next)) {
-			next = super.next();
-			
-			if (next == null) {
-				break;
-			}
-		}
+  /**
+   * Returns the next item in the parent stream that matches the filter.
+   *
+   * @return the next
+   */
+  private T getNext() {
+    T next = super.next();
 
-		 return next;
-	}
+    while (!mFilter.keep(next)) {
+      next = super.next();
+
+      if (next == null) {
+        break;
+      }
+    }
+
+    return next;
+  }
 }

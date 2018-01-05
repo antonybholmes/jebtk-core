@@ -22,20 +22,26 @@ import org.jebtk.core.event.ChangeEvent;
  * The class TreeNodeEventAdapter.
  */
 public class TreeNodeEventAdapter implements TreeNodeEventListener {
-	
-	/* (non-Javadoc)
-	 * @see org.abh.lib.tree.TreeNodeEventListener#nodeChanged(org.abh.lib.event.ChangeEvent)
-	 */
-	@Override
-	public void nodeChanged(ChangeEvent e) {
-		// Do nothing
-	}
 
-	/* (non-Javadoc)
-	 * @see org.abh.lib.tree.TreeNodeEventListener#nodeUpdated(org.abh.lib.event.ChangeEvent)
-	 */
-	@Override
-	public void nodeUpdated(ChangeEvent e) {
-		// Do nothing
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.tree.TreeNodeEventListener#nodeChanged(org.abh.lib.event.
+   * ChangeEvent)
+   */
+  @Override
+  public void nodeChanged(ChangeEvent e) {
+    // Do nothing
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.tree.TreeNodeEventListener#nodeUpdated(org.abh.lib.event.
+   * ChangeEvent)
+   */
+  @Override
+  public void nodeUpdated(ChangeEvent e) {
+    // Do nothing
+  }
 }

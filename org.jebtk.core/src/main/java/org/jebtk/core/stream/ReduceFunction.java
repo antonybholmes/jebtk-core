@@ -18,13 +18,15 @@ package org.jebtk.core.stream;
 import org.jebtk.core.Function;
 
 /**
- * A reduce function takes a stream and returns an object representing
- * a property of the stream, such as the sum of the numbers in it.
+ * A reduce function takes a stream and returns an object representing a
+ * property of the stream, such as the sum of the numbers in it.
  *
  * @author Antony Holmes Holmes
- * @param <T> the generic type
- * @param <V> the value type
+ * @param <T>
+ *          the generic type
+ * @param <V>
+ *          the value type
  */
 public interface ReduceFunction<T, V> extends Function<Stream<T>, V> {
-	// Do nothing
+  // Do nothing
 }

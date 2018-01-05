@@ -17,82 +17,90 @@ package org.jebtk.core;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-
 // TODO: Auto-generated Javadoc
 /**
- * Provides a unique id to a class (not guaranteed to persist between JVM
- * or application restarts).
+ * Provides a unique id to a class (not guaranteed to persist between JVM or
+ * application restarts).
  * 
  * @author Antony Holmes Holmes
  *
  */
 public abstract class IdObject implements IdProperty, Comparable<IdObject> {
-	
-	/**
-	 * The constant NEXT_ID.
-	 */
-	private static final AtomicInteger NEXT_ID = new AtomicInteger();
-	
-	/**
-	 * The member id.
-	 */
-	protected int mId = -1;
 
-	/**
-	 * Instantiates a new uid object.
-	 */
-	public IdObject() {
-		this(NEXT_ID.getAndIncrement());
-	}
-	
-	/**
-	 * Instantiates a new uid object.
-	 *
-	 * @param id the id
-	 */
-	public IdObject(int id) {
-		mId = id;
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.lib.UidProperty#getUid()
-	 */
-	@Override
-	public int getId() {
-		return mId;
-	}
-	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
-	@Override
-	public boolean equals(Object o) {
-		if (o instanceof IdObject) {
-			return compareTo((IdObject)o) == 0;
-		} else {
-			return false;
-		}
-	}
-	
-	/* (non-Javadoc)
-	 * @see java.lang.Comparable#compareTo(java.lang.Object)
-	 */
-	@Override
-	public int compareTo(IdObject c) {
-		if (mId > c.mId) {
-			return 1;
-		} else if (mId < c.mId) {
-			return -1;
-		} else {
-			return 0;
-		}
-	}
-	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#hashCode()
-	 */
-	@Override
-	public int hashCode() {
-		return mId;
-	}
+  /**
+   * The constant NEXT_ID.
+   */
+  private static final AtomicInteger NEXT_ID = new AtomicInteger();
+
+  /**
+   * The member id.
+   */
+  protected int mId = -1;
+
+  /**
+   * Instantiates a new uid object.
+   */
+  public IdObject() {
+    this(NEXT_ID.getAndIncrement());
+  }
+
+  /**
+   * Instantiates a new uid object.
+   *
+   * @param id
+   *          the id
+   */
+  public IdObject(int id) {
+    mId = id;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.UidProperty#getUid()
+   */
+  @Override
+  public int getId() {
+    return mId;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Object#equals(java.lang.Object)
+   */
+  @Override
+  public boolean equals(Object o) {
+    if (o instanceof IdObject) {
+      return compareTo((IdObject) o) == 0;
+    } else {
+      return false;
+    }
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Comparable#compareTo(java.lang.Object)
+   */
+  @Override
+  public int compareTo(IdObject c) {
+    if (mId > c.mId) {
+      return 1;
+    } else if (mId < c.mId) {
+      return -1;
+    } else {
+      return 0;
+    }
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Object#hashCode()
+   */
+  @Override
+  public int hashCode() {
+    return mId;
+  }
 }

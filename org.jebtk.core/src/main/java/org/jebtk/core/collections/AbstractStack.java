@@ -17,53 +17,53 @@ package org.jebtk.core.collections;
 
 // TODO: Auto-generated Javadoc
 /**
- * Fast stack implementation for Integers. Note that at the moment,
- * no bound checks are performed for speed so it will ungraciously
- * throw exceptions if misused.
+ * Fast stack implementation for Integers. Note that at the moment, no bound
+ * checks are performed for speed so it will ungraciously throw exceptions if
+ * misused.
  *
  * @author Antony Holmes Holmes
  */
 public abstract class AbstractStack {
-	
-	/**
-	 * The constant DEFAULT_SIZE.
-	 */
-	public static final int DEFAULT_SIZE = 16;
-	
-	/** The m pc. */
-	protected int mPc = -1;
-	
-	/**
-	 * Reset.
-	 */
-	public void reset() {
-		mPc = -1;
-	}
 
-	/**
-	 * Size.
-	 *
-	 * @return the int
-	 */
-	public int size() {
-		return mPc + 1;
-	}
-	
-	/**
-	 * Gets the pc.
-	 *
-	 * @return the pc
-	 */
-	public int getPc() {
-		return mPc;
-	}
-	
-	/**
-	 * Checks if is empty.
-	 *
-	 * @return true, if is empty
-	 */
-	public boolean isEmpty() {
-		return mPc == -1;
-	}
+  /**
+   * The constant DEFAULT_SIZE.
+   */
+  public static final int DEFAULT_SIZE = 16;
+
+  /** The m pc. */
+  protected int mPc = -1;
+
+  /**
+   * Reset.
+   */
+  public void reset() {
+    mPc = -1;
+  }
+
+  /**
+   * Size.
+   *
+   * @return the int
+   */
+  public int size() {
+    return mPc + 1;
+  }
+
+  /**
+   * Gets the pc.
+   *
+   * @return the pc
+   */
+  public int getPc() {
+    return mPc;
+  }
+
+  /**
+   * Checks if is empty.
+   *
+   * @return true, if is empty
+   */
+  public boolean isEmpty() {
+    return mPc == -1;
+  }
 }

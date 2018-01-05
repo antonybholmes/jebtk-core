@@ -19,66 +19,75 @@ package org.jebtk.core.collections;
 /**
  * The Class DefaultHashMapCreator.
  *
- * @param <K> the key type
- * @param <V> the value type
+ * @param <K>
+ *          the key type
+ * @param <V>
+ *          the value type
  */
 public class DefaultHashMapCreator<K, V> implements IterMapCreator<K, V> {
 
-	/** The m default value. */
-	private EntryCreator<V> mDefaultValue;
-	
-	/** The m initial capacity. */
-	private int mInitialCapacity;
+  /** The m default value. */
+  private EntryCreator<V> mDefaultValue;
 
-	/**
-	 * Instantiates a new default hash map creator.
-	 *
-	 * @param defaultValue the default value
-	 */
-	public DefaultHashMapCreator(V defaultValue) {
-		this(0, defaultValue);
-	}
-	
-	/**
-	 * Instantiates a new auto hash map.
-	 *
-	 * @param initialCapacity the initial capacity
-	 * @param defaultValue the default value
-	 */
-	public DefaultHashMapCreator(int initialCapacity, V defaultValue) {
-		this(initialCapacity, new ValueCreator<V>(defaultValue));
-	}
-	
-	/**
-	 * Instantiates a new default map.
-	 *
-	 * @param creator the creator
-	 */
-	public DefaultHashMapCreator(EntryCreator<V> creator) {
-		this(0, creator);
-	}
-	
-	/**
-	 * Instantiates a new default hash map creator.
-	 *
-	 * @param initialCapacity the initial capacity
-	 * @param creator the creator
-	 */
-	public DefaultHashMapCreator(int initialCapacity,
-			EntryCreator<V> creator) {
-		mInitialCapacity = initialCapacity;
-		mDefaultValue = creator;
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.collections.EntryCreator#newEntry()
-	 */
-	@Override
-	public IterMap<K, V> newEntry() {
-		return new DefaultHashMap<K, V>(mInitialCapacity, mDefaultValue);
-	}
-	
-	public static <KK, VV> IterMapCreator<KK, VV> create(EntryCreator<VV> defaultValue) {
-		return new DefaultHashMapCreator<KK, VV>(defaultValue);
-	}
+  /** The m initial capacity. */
+  private int mInitialCapacity;
+
+  /**
+   * Instantiates a new default hash map creator.
+   *
+   * @param defaultValue
+   *          the default value
+   */
+  public DefaultHashMapCreator(V defaultValue) {
+    this(0, defaultValue);
+  }
+
+  /**
+   * Instantiates a new auto hash map.
+   *
+   * @param initialCapacity
+   *          the initial capacity
+   * @param defaultValue
+   *          the default value
+   */
+  public DefaultHashMapCreator(int initialCapacity, V defaultValue) {
+    this(initialCapacity, new ValueCreator<V>(defaultValue));
+  }
+
+  /**
+   * Instantiates a new default map.
+   *
+   * @param creator
+   *          the creator
+   */
+  public DefaultHashMapCreator(EntryCreator<V> creator) {
+    this(0, creator);
+  }
+
+  /**
+   * Instantiates a new default hash map creator.
+   *
+   * @param initialCapacity
+   *          the initial capacity
+   * @param creator
+   *          the creator
+   */
+  public DefaultHashMapCreator(int initialCapacity, EntryCreator<V> creator) {
+    mInitialCapacity = initialCapacity;
+    mDefaultValue = creator;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.collections.EntryCreator#newEntry()
+   */
+  @Override
+  public IterMap<K, V> newEntry() {
+    return new DefaultHashMap<K, V>(mInitialCapacity, mDefaultValue);
+  }
+
+  public static <KK, VV> IterMapCreator<KK, VV> create(EntryCreator<VV> defaultValue) {
+    return new DefaultHashMapCreator<KK, VV>(defaultValue);
+  }
 }

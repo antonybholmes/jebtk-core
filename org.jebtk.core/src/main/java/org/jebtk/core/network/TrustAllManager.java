@@ -25,28 +25,34 @@ import javax.net.ssl.X509TrustManager;
  *
  */
 public class TrustAllManager implements X509TrustManager {
-	
-	/* (non-Javadoc)
-	 * @see javax.net.ssl.X509TrustManager#getAcceptedIssuers()
-	 */
-	@Override
-	public java.security.cert.X509Certificate[] getAcceptedIssuers() { 
-		return null;
-	} 
 
-	/* (non-Javadoc)
-	 * @see javax.net.ssl.X509TrustManager#checkClientTrusted(java.security.cert.X509Certificate[], java.lang.String)
-	 */
-	@Override
-	public void checkClientTrusted( 
-			java.security.cert.X509Certificate[] certs, String authType) {
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see javax.net.ssl.X509TrustManager#getAcceptedIssuers()
+   */
+  @Override
+  public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+    return null;
+  }
 
-	/* (non-Javadoc)
-	 * @see javax.net.ssl.X509TrustManager#checkServerTrusted(java.security.cert.X509Certificate[], java.lang.String)
-	 */
-	@Override
-	public void checkServerTrusted( 
-			java.security.cert.X509Certificate[] certs, String authType) {
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see javax.net.ssl.X509TrustManager#checkClientTrusted(java.security.cert.
+   * X509Certificate[], java.lang.String)
+   */
+  @Override
+  public void checkClientTrusted(java.security.cert.X509Certificate[] certs, String authType) {
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see javax.net.ssl.X509TrustManager#checkServerTrusted(java.security.cert.
+   * X509Certificate[], java.lang.String)
+   */
+  @Override
+  public void checkServerTrusted(java.security.cert.X509Certificate[] certs, String authType) {
+  }
 }

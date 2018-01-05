@@ -21,25 +21,28 @@ import java.util.HashMap;
 /**
  * The Class OrderedHashMap.
  *
- * @param <K> the key type
- * @param <V> the value type
+ * @param <K>
+ *          the key type
+ * @param <V>
+ *          the value type
  */
 public class OrderedHashMap<K, V> extends OrderedMap<K, V> {
-	private static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = 1L;
 
-	/**
-	 * Instantiates a new ordered hash map.
-	 */
-	public OrderedHashMap() {
-		this(100);
-	}
-	
-	/**
-	 * Instantiates a new ordered hash map.
-	 *
-	 * @param size the size
-	 */
-	public OrderedHashMap(int size) {
-		super(new HashMap<K, V>(size));
-	}
+  /**
+   * Instantiates a new ordered hash map.
+   */
+  public OrderedHashMap() {
+    this(100);
+  }
+
+  /**
+   * Instantiates a new ordered hash map.
+   *
+   * @param size
+   *          the size
+   */
+  public OrderedHashMap(int size) {
+    super(new HashMap<K, V>(size));
+  }
 }

@@ -21,40 +21,46 @@ import java.util.List;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class BaseStream encapulates an initial collection with the intent
- * of apply further streams to process the list.
+ * The Class BaseStream encapulates an initial collection with the intent of
+ * apply further streams to process the list.
  *
- * @param <T> the generic type
+ * @param <T>
+ *          the generic type
  */
 public class CollectionStream<T> extends IteratorStream<T> {
-	
-	/** The m items. */
-	private Collection<T> mItems;
-	
-	/**
-	 * Instantiates a new base stream.
-	 *
-	 * @param items the items
-	 */
-	public CollectionStream(Collection<T> items) {
-		super(items.iterator());
-		
-		mItems = items;
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.stream.Stream#toList()
-	 */
-	@Override
-	public List<T> toList() {
-		return new ArrayList<T>(mItems);
-	}
 
-	/* (non-Javadoc)
-	 * @see org.abh.common.stream.Stream#size()
-	 */
-	@Override
-	public int size() {
-		return mItems.size();
-	}
+  /** The m items. */
+  private Collection<T> mItems;
+
+  /**
+   * Instantiates a new base stream.
+   *
+   * @param items
+   *          the items
+   */
+  public CollectionStream(Collection<T> items) {
+    super(items.iterator());
+
+    mItems = items;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.stream.Stream#toList()
+   */
+  @Override
+  public List<T> toList() {
+    return new ArrayList<T>(mItems);
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.stream.Stream#size()
+   */
+  @Override
+  public int size() {
+    return mItems.size();
+  }
 }

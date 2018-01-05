@@ -20,21 +20,22 @@ import org.w3c.dom.Element;
 
 // TODO: Auto-generated Javadoc
 /**
- * Should be implemented by elements that can create
- * an XML representation of themselves.
+ * Should be implemented by elements that can create an XML representation of
+ * themselves.
  * 
  * @author Antony Holmes Holmes
  *
  */
 public interface XmlRepresentation {
-	
-	/**
-	 * Should return an XML element encapsulating the object's data so
-	 * that it can be streamed to a file and used to reconstruct the
-	 * object's state at a later date.
-	 *
-	 * @param doc the doc
-	 * @return the xml element
-	 */
-	public Element toXml(Document doc);
+
+  /**
+   * Should return an XML element encapsulating the object's data so that it can
+   * be streamed to a file and used to reconstruct the object's state at a later
+   * date.
+   *
+   * @param doc
+   *          the doc
+   * @return the xml element
+   */
+  public Element toXml(Document doc);
 }

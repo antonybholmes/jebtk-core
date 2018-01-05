@@ -23,12 +23,13 @@ package org.jebtk.core.json;
  */
 public class JsonChar extends JsonString {
 
-	/**
-	 * Instantiates a new json string.
-	 *
-	 * @param value the value
-	 */
-	public JsonChar(char value) {
-		super(Character.toString(value));
-	}
+  /**
+   * Instantiates a new json string.
+   *
+   * @param value
+   *          the value
+   */
+  public JsonChar(char value) {
+    super(Character.toString(value));
+  }
 }

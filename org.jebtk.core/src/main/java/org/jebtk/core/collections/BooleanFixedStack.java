@@ -17,81 +17,92 @@ package org.jebtk.core.collections;
 
 // TODO: Auto-generated Javadoc
 /**
- * Fast stack implementation for Integers. Note that at the moment,
- * no bound checks are performed for speed so it will ungraciously
- * throw exceptions if misused.
+ * Fast stack implementation for Integers. Note that at the moment, no bound
+ * checks are performed for speed so it will ungraciously throw exceptions if
+ * misused.
  *
  * @author Antony Holmes Holmes
  */
 public class BooleanFixedStack extends AbstractStack {
-	
-	/**
-	 * The elements.
-	 */
-	private boolean[] elements;
 
-	/**
-	 * Instantiates a new int fixed stack.
-	 */
-	public BooleanFixedStack() {
-		this(DEFAULT_SIZE);
-	}
+  /**
+   * The elements.
+   */
+  private boolean[] elements;
 
-	/**
-	 * Instantiates a new int fixed stack.
-	 *
-	 * @param size the size
-	 */
-	public BooleanFixedStack(int size) {
-		elements = new boolean[size];
-	}
+  /**
+   * Instantiates a new int fixed stack.
+   */
+  public BooleanFixedStack() {
+    this(DEFAULT_SIZE);
+  }
 
-	/**
-	 * Push.
-	 *
-	 * @param element the element
-	 */
-	/* (non-Javadoc)
-	 * @see org.abh.lib.AbstractFixedStack#push(java.lang.Object)
-	 */
-	public final void push(boolean element) {
-		elements[++mPc] = element;
-	}
+  /**
+   * Instantiates a new int fixed stack.
+   *
+   * @param size
+   *          the size
+   */
+  public BooleanFixedStack(int size) {
+    elements = new boolean[size];
+  }
 
-	/**
-	 * Pop.
-	 *
-	 * @return true, if successful
-	 */
-	/* (non-Javadoc)
-	 * @see org.abh.lib.AbstractFixedStack#pop()
-	 */
-	public final boolean pop() {
-		return elements[mPc--];
-	}
+  /**
+   * Push.
+   *
+   * @param element
+   *          the element
+   */
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.AbstractFixedStack#push(java.lang.Object)
+   */
+  public final void push(boolean element) {
+    elements[++mPc] = element;
+  }
 
-	/**
-	 * Peek.
-	 *
-	 * @return true, if successful
-	 */
-	/* (non-Javadoc)
-	 * @see org.abh.lib.AbstractFixedStack#peek()
-	 */
-	public final boolean peek() {
-		return elements[mPc];
-	}
+  /**
+   * Pop.
+   *
+   * @return true, if successful
+   */
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.AbstractFixedStack#pop()
+   */
+  public final boolean pop() {
+    return elements[mPc--];
+  }
 
-	/**
-	 * Gets the.
-	 *
-	 * @param i the i
-	 * @return true, if successful
-	 */
-	/* (non-Javadoc)
-	 * @see org.abh.lib.AbstractFixedStack#get(int)
-	 */
-	public boolean get(int i) {
-		return elements[i];
-	}
+  /**
+   * Peek.
+   *
+   * @return true, if successful
+   */
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.AbstractFixedStack#peek()
+   */
+  public final boolean peek() {
+    return elements[mPc];
+  }
+
+  /**
+   * Gets the.
+   *
+   * @param i
+   *          the i
+   * @return true, if successful
+   */
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.AbstractFixedStack#get(int)
+   */
+  public boolean get(int i) {
+    return elements[i];
+  }
 }

@@ -19,70 +19,80 @@ import java.io.IOException;
 
 import org.jebtk.core.text.TextUtils;
 
-
 // TODO: Auto-generated Javadoc
 /**
  * Stores a raw JSON string without modifying it.
  */
 public class JsonRaw extends Json {
 
-	/**
-	 * The member value.
-	 */
-	protected String mValue;
-	
-	/**
-	 * Instantiates a new json raw.
-	 *
-	 * @param value the value
-	 */
-	public JsonRaw(String value) {
-		if (value != null) {
-			mValue = value;
-		} else {
-			mValue = TextUtils.EMPTY_STRING;
-		}
-	}
+  /**
+   * The member value.
+   */
+  protected String mValue;
 
-	/* (non-Javadoc)
-	 * @see org.abh.lib.json.JsonValue#toString()
-	 */
-	@Override
-	public String toString() {
-		return mValue;
-	}
+  /**
+   * Instantiates a new json raw.
+   *
+   * @param value
+   *          the value
+   */
+  public JsonRaw(String value) {
+    if (value != null) {
+      mValue = value;
+    } else {
+      mValue = TextUtils.EMPTY_STRING;
+    }
+  }
 
-	/* (non-Javadoc)
-	 * @see org.abh.lib.json.JsonValue#getAsString()
-	 */
-	@Override
-	public String getAsString() {
-		return toString();
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.json.JsonValue#toString()
+   */
+  @Override
+  public String toString() {
+    return mValue;
+  }
 
-	/* (non-Javadoc)
-	 * @see org.abh.lib.json.JsonValue#getAsChar()
-	 */
-	@Override
-	public char getAsChar() {
-		return mValue.charAt(0);
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.json.JsonValue#getAsString()
+   */
+  @Override
+  public String getAsString() {
+    return toString();
+  }
 
-	/* (non-Javadoc)
-	 * @see org.abh.lib.json.JsonValue#formattedTxt(java.lang.StringBuilder)
-	 */
-	@Override
-	public void toJson(Appendable buffer) throws IOException {
-		buffer.append(mValue);
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.json.JsonValue#getAsChar()
+   */
+  @Override
+  public char getAsChar() {
+    return mValue.charAt(0);
+  }
 
-	/* (non-Javadoc)
-	 * @see org.abh.common.json.Json#formattedJson(java.lang.Appendable, int)
-	 */
-	@Override
-	public void prettyJson(Appendable buffer, int level) throws IOException {
-		//buffer.append(indentation(level));
-		
-		toJson(buffer);
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.json.JsonValue#formattedTxt(java.lang.StringBuilder)
+   */
+  @Override
+  public void toJson(Appendable buffer) throws IOException {
+    buffer.append(mValue);
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.json.Json#formattedJson(java.lang.Appendable, int)
+   */
+  @Override
+  public void prettyJson(Appendable buffer, int level) throws IOException {
+    // buffer.append(indentation(level));
+
+    toJson(buffer);
+  }
 }

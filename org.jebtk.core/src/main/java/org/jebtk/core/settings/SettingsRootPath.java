@@ -24,15 +24,15 @@ import org.jebtk.core.text.TextUtils;
  */
 public class SettingsRootPath extends StrictPath {
 
-	/**
-	 * The constant serialVersionUID.
-	 */
-	private static final long serialVersionUID = 1L;
+  /**
+   * The constant serialVersionUID.
+   */
+  private static final long serialVersionUID = 1L;
 
-	/**
-	 * Instantiates a new settings root path.
-	 */
-	public SettingsRootPath() {
-		super(TextUtils.EMPTY_STRING);
-	}
+  /**
+   * Instantiates a new settings root path.
+   */
+  public SettingsRootPath() {
+    super(TextUtils.EMPTY_STRING);
+  }
 }

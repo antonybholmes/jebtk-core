@@ -25,27 +25,29 @@ import org.jebtk.core.io.PathUtils;
  * The Class SettingsReaderDefaultJson.
  */
 public class SettingsReaderDefaultJson implements SettingsReader {
-	
-	/** The Constant JSON_FILE. */
-	public static final Path JSON_FILE = 
-			PathUtils.getPath("res/default.settings.json");
 
-	/* (non-Javadoc)
-	 * @see org.abh.common.settings.SettingsReader#load(org.abh.common.settings.Settings)
-	 */
-	@Override
-	public void load(Settings settings) {
-		LOG.info("Loading user JSON settings...");
+  /** The Constant JSON_FILE. */
+  public static final Path JSON_FILE = PathUtils.getPath("res/default.settings.json");
 
-		// Load any per user settings. We flag these as being updated so
-		// that on the next write cycle, they will be written back to the
-		// settings file.
-		try {
-			settings.loadJson(JSON_FILE, false);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.abh.common.settings.SettingsReader#load(org.abh.common.settings.Settings)
+   */
+  @Override
+  public void load(Settings settings) {
+    LOG.info("Loading user JSON settings...");
 
-		LOG.info("Finished loading settings...");
-	}
+    // Load any per user settings. We flag these as being updated so
+    // that on the next write cycle, they will be written back to the
+    // settings file.
+    try {
+      settings.loadJson(JSON_FILE, false);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+
+    LOG.info("Finished loading settings...");
+  }
 }

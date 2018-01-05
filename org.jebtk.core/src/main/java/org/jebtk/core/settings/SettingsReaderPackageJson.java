@@ -26,45 +26,47 @@ import org.jebtk.core.Resources;
  * The Class SettingsReaderPackageJson.
  */
 public class SettingsReaderPackageJson implements SettingsReader {
-	
-	/** The Constant DEFAULT_JSON_FILE. */
-	public static final Path DEFAULT_JSON_FILE = 
-			Resources.RES_DIR.resolve("default.settings.json");
 
-	/* (non-Javadoc)
-	 * @see org.abh.common.settings.SettingsReader#load(org.abh.common.settings.Settings)
-	 */
-	@Override
-	public void load(Settings settings) {
-		LOG.info("Loading JSON package settings...");
+  /** The Constant DEFAULT_JSON_FILE. */
+  public static final Path DEFAULT_JSON_FILE = Resources.RES_DIR.resolve("default.settings.json");
 
-		for (String res : Resources.getInstance()) {
-			if (!res.contains("settings.json")) {
-				continue;
-			}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.abh.common.settings.SettingsReader#load(org.abh.common.settings.Settings)
+   */
+  @Override
+  public void load(Settings settings) {
+    LOG.info("Loading JSON package settings...");
 
-			LOG.info("Loading settings from {}...", res);
+    for (String res : Resources.getInstance()) {
+      if (!res.contains("settings.json")) {
+        continue;
+      }
 
-			try {
-				InputStream is = Resources.getResInputStream(res);
+      LOG.info("Loading settings from {}...", res);
 
-				try {
-					settings.loadJson(Resources.getResInputStream(res), false);
-				} finally {
-					is.close();
-				}
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
+      try {
+        InputStream is = Resources.getResInputStream(res);
 
-		// Load local settings that may overwrite internal settings.
-		try {
-			settings.loadJson(DEFAULT_JSON_FILE, false);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+        try {
+          settings.loadJson(Resources.getResInputStream(res), false);
+        } finally {
+          is.close();
+        }
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+    }
 
-		LOG.info("Finished loading settings...");
-	}
+    // Load local settings that may overwrite internal settings.
+    try {
+      settings.loadJson(DEFAULT_JSON_FILE, false);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+
+    LOG.info("Finished loading settings...");
+  }
 }

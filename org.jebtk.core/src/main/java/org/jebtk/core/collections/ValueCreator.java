@@ -17,33 +17,37 @@ package org.jebtk.core.collections;
 
 // TODO: Auto-generated Javadoc
 /**
- * Returns a fixed object/value so that a structure will be auto-populated
- * with the same value. This is best used with immutable objects such as 
- * strings and numbers.
+ * Returns a fixed object/value so that a structure will be auto-populated with
+ * the same value. This is best used with immutable objects such as strings and
+ * numbers.
  *
- * @param <T> the generic type
+ * @param <T>
+ *          the generic type
  */
 public class ValueCreator<T> implements EntryCreator<T> {
-	
-	/**
-	 * The member value.
-	 */
-	private T mValue;
 
-	/**
-	 * Instantiates a new value creator.
-	 *
-	 * @param value the value
-	 */
-	public ValueCreator(T value) {
-		mValue = value;
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.lib.collections.EntryCreator#create()
-	 */
-	@Override
-	public T newEntry() {
-		return mValue;
-	}
+  /**
+   * The member value.
+   */
+  private T mValue;
+
+  /**
+   * Instantiates a new value creator.
+   *
+   * @param value
+   *          the value
+   */
+  public ValueCreator(T value) {
+    mValue = value;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.collections.EntryCreator#create()
+   */
+  @Override
+  public T newEntry() {
+    return mValue;
+  }
 }

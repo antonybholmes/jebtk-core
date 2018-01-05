@@ -20,20 +20,20 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class CrytographyTest {
-	@Test
-	public void hexStringsShouldBeEqual() {
-		byte[] buf = new byte[64];
-		
-		Cryptography.hashSHA512("test", buf);
-		
-		String h1 = Cryptography.hexToString(buf);
-		String h2 = Cryptography.hexToString2(buf);
-		
-		Assert.assertEquals("Hex strings should be equal", h1, h2);
-	}
-	
-	@Test
-	public void testUUID() {
-		System.err.println(Cryptography.generateUUID());
-	}
+  @Test
+  public void hexStringsShouldBeEqual() {
+    byte[] buf = new byte[64];
+
+    Cryptography.hashSHA512("test", buf);
+
+    String h1 = Cryptography.hexToString(buf);
+    String h2 = Cryptography.hexToString2(buf);
+
+    Assert.assertEquals("Hex strings should be equal", h1, h2);
+  }
+
+  @Test
+  public void testUUID() {
+    System.err.println(Cryptography.generateUUID());
+  }
 }

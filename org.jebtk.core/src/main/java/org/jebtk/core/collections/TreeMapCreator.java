@@ -19,20 +19,24 @@ package org.jebtk.core.collections;
 /**
  * The Class TreeMapCreator.
  *
- * @param <K> the key type
- * @param <V> the value type
+ * @param <K>
+ *          the key type
+ * @param <V>
+ *          the value type
  */
 public class TreeMapCreator<K, V> implements IterMapCreator<K, V> {
 
-	/* (non-Javadoc)
-	 * @see org.abh.lib.collections.EntryCreator#create()
-	 */
-	@Override
-	public IterMap<K, V> newEntry() {
-		return new IterTreeMap<K, V>();
-	}
-	
-	public static <KK, VV> IterMapCreator<KK, VV> create() {
-		return new TreeMapCreator<KK, VV>();
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.collections.EntryCreator#create()
+   */
+  @Override
+  public IterMap<K, V> newEntry() {
+    return new IterTreeMap<K, V>();
+  }
+
+  public static <KK, VV> IterMapCreator<KK, VV> create() {
+    return new TreeMapCreator<KK, VV>();
+  }
 }

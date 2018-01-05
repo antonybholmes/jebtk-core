@@ -21,5 +21,5 @@ import org.jebtk.core.collections.ListIterator;
  * The Class SettingsWriters.
  */
 public class SettingsWriters extends ListIterator<SettingsWriter> {
-	
+
 }

@@ -22,43 +22,45 @@ import java.nio.file.Path;
  * The class FileRename.
  */
 public class FileRename {
-	
-	/**
-	 * The original.
-	 */
-	private Path original;
-	
-	/**
-	 * The regulated.
-	 */
-	private Path regulated;
 
-	/**
-	 * Instantiates a new file rename.
-	 *
-	 * @param original the original
-	 * @param regulated the regulated
-	 */
-	public FileRename(Path original, Path regulated) {
-		this.original = original;
-		this.regulated = regulated;
-	}
+  /**
+   * The original.
+   */
+  private Path original;
 
-	/**
-	 * Original.
-	 *
-	 * @return the file
-	 */
-	public Path original() {
-		return original;
-	}
+  /**
+   * The regulated.
+   */
+  private Path regulated;
 
-	/**
-	 * Regulated.
-	 *
-	 * @return the file
-	 */
-	public Path regulated() {
-		return regulated;
-	}
+  /**
+   * Instantiates a new file rename.
+   *
+   * @param original
+   *          the original
+   * @param regulated
+   *          the regulated
+   */
+  public FileRename(Path original, Path regulated) {
+    this.original = original;
+    this.regulated = regulated;
+  }
+
+  /**
+   * Original.
+   *
+   * @return the file
+   */
+  public Path original() {
+    return original;
+  }
+
+  /**
+   * Regulated.
+   *
+   * @return the file
+   */
+  public Path regulated() {
+    return regulated;
+  }
 }

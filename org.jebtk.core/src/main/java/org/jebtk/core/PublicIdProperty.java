@@ -23,11 +23,11 @@ package org.jebtk.core;
  *
  */
 public interface PublicIdProperty {
-	
-	/**
-	 * Returns a unique id for this class.
-	 *
-	 * @return the public id
-	 */
-	public String getPublicId();
+
+  /**
+   * Returns a unique id for this class.
+   *
+   * @return the public id
+   */
+  public String getPublicId();
 }

@@ -23,125 +23,138 @@ package org.jebtk.core;
  *
  */
 public class MinMax implements Comparable<MinMax> {
-	/**
-	 * The member w.
-	 */
-	private double mMax;
-	
-	/**
-	 * The member h.
-	 */
-	private double mMin;
+  /**
+   * The member w.
+   */
+  private double mMax;
 
-	/**
-	 * Instantiates a new int dim.
-	 *
-	 * @param w the w
-	 * @param h the h
-	 */
-	public MinMax(double min, double max) {
-		mMin = min;
-		mMax = max;
-	}
-	
-	public double getMax() {
-		return mMax;
-	}
-	
-	public double getMin() {
-		return mMin;
-	}
-	
-	public void setMin(double min) {
-		mMin = min;
-	}
-	
-	public void setMax(double max) {
-		mMax = max;
-	}
-	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return mMin + " " + mMax;
-	}
+  /**
+   * The member h.
+   */
+  private double mMin;
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
-	@Override
-	public boolean equals(Object o) {
-		if (o instanceof MinMax) {
-			return compareTo((MinMax)o) == 0;
-		} else {
-			return false;
-		}
-	}
+  /**
+   * Instantiates a new int dim.
+   *
+   * @param w
+   *          the w
+   * @param h
+   *          the h
+   */
+  public MinMax(double min, double max) {
+    mMin = min;
+    mMax = max;
+  }
 
-	/* (non-Javadoc)
-	 * @see java.lang.Comparable#compareTo(java.lang.Object)
-	 */
-	@Override
-	public int compareTo(MinMax d) {
-		if (mMin > d.mMin) {
-			if (mMax > d.mMax) {
-				return 1;
-			} else {
-				return -1;
-			}
-		} else if (mMin < d.mMin) {
-			if (mMax > d.mMax) {
-				return 1;
-			} else {
-				return -1;
-			}
-		} else {
-			// Same width so just consider height
-			
-			if (mMax > d.mMax) {
-				return 1;
-			} else if (mMax < d.mMax) {
-				return -1;
-			} else {
-				return 0;
-			}
-		}
-	}
+  public double getMax() {
+    return mMax;
+  }
 
-	/**
-	 * Creates a new IntDim.
-	 *
-	 * @param x the x
-	 * @param y the y
-	 * @return the int dim
-	 */
-	public static MinMax create(int x, int y) {
-		return new MinMax(x, y);
-	}
-	
-	/**
-	 * Creates the.
-	 *
-	 * @param x the x
-	 * @param y the y
-	 * @return the int dim
-	 */
-	public static MinMax create(long x, long y) {
-		return new MinMax(x, y);
-	}
-	
-	/**
-	 * Creates the.
-	 *
-	 * @param x the x
-	 * @param y the y
-	 * @return the int dim
-	 */
-	public static MinMax create(double x, double y) {
-		return new MinMax(x, y);
-	}
+  public double getMin() {
+    return mMin;
+  }
 
-	
+  public void setMin(double min) {
+    mMin = min;
+  }
+
+  public void setMax(double max) {
+    mMax = max;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Object#toString()
+   */
+  @Override
+  public String toString() {
+    return mMin + " " + mMax;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Object#equals(java.lang.Object)
+   */
+  @Override
+  public boolean equals(Object o) {
+    if (o instanceof MinMax) {
+      return compareTo((MinMax) o) == 0;
+    } else {
+      return false;
+    }
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Comparable#compareTo(java.lang.Object)
+   */
+  @Override
+  public int compareTo(MinMax d) {
+    if (mMin > d.mMin) {
+      if (mMax > d.mMax) {
+        return 1;
+      } else {
+        return -1;
+      }
+    } else if (mMin < d.mMin) {
+      if (mMax > d.mMax) {
+        return 1;
+      } else {
+        return -1;
+      }
+    } else {
+      // Same width so just consider height
+
+      if (mMax > d.mMax) {
+        return 1;
+      } else if (mMax < d.mMax) {
+        return -1;
+      } else {
+        return 0;
+      }
+    }
+  }
+
+  /**
+   * Creates a new IntDim.
+   *
+   * @param x
+   *          the x
+   * @param y
+   *          the y
+   * @return the int dim
+   */
+  public static MinMax create(int x, int y) {
+    return new MinMax(x, y);
+  }
+
+  /**
+   * Creates the.
+   *
+   * @param x
+   *          the x
+   * @param y
+   *          the y
+   * @return the int dim
+   */
+  public static MinMax create(long x, long y) {
+    return new MinMax(x, y);
+  }
+
+  /**
+   * Creates the.
+   *
+   * @param x
+   *          the x
+   * @param y
+   *          the y
+   * @return the int dim
+   */
+  public static MinMax create(double x, double y) {
+    return new MinMax(x, y);
+  }
+
 }

@@ -25,7 +25,6 @@ import org.jebtk.core.text.Join;
 import org.jebtk.core.text.Splitter;
 import org.jebtk.core.text.TextUtils;
 
-
 // TODO: Auto-generated Javadoc
 /**
  * Represents a path such as file path or tree structure.
@@ -35,374 +34,408 @@ import org.jebtk.core.text.TextUtils;
  */
 public class Path implements Iterable<String>, Serializable, Comparable<Path> {
 
-	/**
-	 * The constant serialVersionUID.
-	 */
-	private static final long serialVersionUID = 1L;
+  /**
+   * The constant serialVersionUID.
+   */
+  private static final long serialVersionUID = 1L;
 
-	/** The Constant PATH_DELIMITER. */
-	public static final String PATH_DELIMITER = "/";
+  /** The Constant PATH_DELIMITER. */
+  public static final String PATH_DELIMITER = "/";
 
-	//private static final Pattern PATH_DELIM_REGEX = Pattern.compile("[\\.\\/\\\\]");
+  // private static final Pattern PATH_DELIM_REGEX =
+  // Pattern.compile("[\\.\\/\\\\]");
 
-	/** The Constant SPLITTER. */
-	private static final Splitter SPLITTER = 
-			Splitter.on('.', '/').ignoreEmptyStrings();
+  /** The Constant SPLITTER. */
+  private static final Splitter SPLITTER = Splitter.on('.', '/').ignoreEmptyStrings();
 
-	//private static final String START_PATH_DELIMITER = "^\\" + PATH_DELIMITER;
-	//private static final String END_PATH_DELIMITER = "\\" + PATH_DELIMITER + "$";
+  // private static final String START_PATH_DELIMITER = "^\\" + PATH_DELIMITER;
+  // private static final String END_PATH_DELIMITER = "\\" + PATH_DELIMITER + "$";
 
-	/**
-	 * The member levels.
-	 */
-	//private StringBuilder mPath = new StringBuilder();
-	private List<String> mLevels = new ArrayList<String>();
+  /**
+   * The member levels.
+   */
+  // private StringBuilder mPath = new StringBuilder();
+  private List<String> mLevels = new ArrayList<String>();
 
-	/**
-	 * The member path.
-	 */
-	private String mPath = null;
+  /**
+   * The member path.
+   */
+  private String mPath = null;
 
-	/** The m prefix. */
-	private String mPrefix = TextUtils.EMPTY_STRING;
+  /** The m prefix. */
+  private String mPrefix = TextUtils.EMPTY_STRING;
 
+  /**
+   * Instantiates a new path.
+   *
+   * @param <T>
+   *          the generic type
+   * @param path
+   *          the path
+   */
+  public <T> Path(String path) {
+    this(path, false);
+  }
 
-	/**
-	 * Instantiates a new path.
-	 *
-	 * @param <T> the generic type
-	 * @param path the path
-	 */
-	public <T> Path(String path) {
-		this(path, false);
-	}
-	
-	/**
-	 * Instantiates a new path.
-	 *
-	 * @param <T> the generic type
-	 * @param path the path
-	 * @param isRoot the is root
-	 */
-	public <T> Path(String path, boolean isRoot) {
-		if (isRoot || path.startsWith(PATH_DELIMITER)) {
-			mPrefix = PATH_DELIMITER;
-		}
+  /**
+   * Instantiates a new path.
+   *
+   * @param <T>
+   *          the generic type
+   * @param path
+   *          the path
+   * @param isRoot
+   *          the is root
+   */
+  public <T> Path(String path, boolean isRoot) {
+    if (isRoot || path.startsWith(PATH_DELIMITER)) {
+      mPrefix = PATH_DELIMITER;
+    }
 
-		parse(path);
-	}
+    parse(path);
+  }
 
-	/**
-	 * Create a clone of a path.
-	 *
-	 * @param path the path
-	 */
-	public Path(Path path) {
-		mPrefix = path.mPrefix;
+  /**
+   * Create a clone of a path.
+   *
+   * @param path
+   *          the path
+   */
+  public Path(Path path) {
+    mPrefix = path.mPrefix;
 
-		for (String level : path) {
-			parse(level);
-		}
-	}
+    for (String level : path) {
+      parse(level);
+    }
+  }
 
-	/**
-	 * Create a clone of a path and add some new levels to it.
-	 *
-	 * @param path the path
-	 * @param levels the levels
-	 */
-	public Path(Path path, Object... levels) {
-		this(path);
+  /**
+   * Create a clone of a path and add some new levels to it.
+   *
+   * @param path
+   *          the path
+   * @param levels
+   *          the levels
+   */
+  public Path(Path path, Object... levels) {
+    this(path);
 
-		for (Object o : levels) {
-			parse(o.toString());
-		}
-	}
+    for (Object o : levels) {
+      parse(o.toString());
+    }
+  }
 
-	/**
-	 * Instantiates a new path.
-	 *
-	 * @param levels the levels
-	 */
-	public Path(List<?> levels) {
-		for (Object s : levels) {
-			parse(s);
-		}
-	}
+  /**
+   * Instantiates a new path.
+   *
+   * @param levels
+   *          the levels
+   */
+  public Path(List<?> levels) {
+    for (Object s : levels) {
+      parse(s);
+    }
+  }
 
-	/**
-	 * Instantiates a new path.
-	 *
-	 * @param level the level
-	 * @param levels the levels
-	 */
-	public Path(Object level, Object... levels) {
-		this(false, level, levels);
-	}
-	
-	/**
-	 * Instantiates a new path.
-	 *
-	 * @param isRoot the is root
-	 * @param level the level
-	 * @param levels the levels
-	 */
-	public Path(boolean isRoot, Object level, Object... levels) {
-		if (isRoot) {
-			mPrefix = PATH_DELIMITER;
-		}
-		
-		parse(level);
-		
-		for (Object l : levels) {
-			parse(l);
-		}
-	}
+  /**
+   * Instantiates a new path.
+   *
+   * @param level
+   *          the level
+   * @param levels
+   *          the levels
+   */
+  public Path(Object level, Object... levels) {
+    this(false, level, levels);
+  }
 
-	/**
-	 * Return a copy of the path with the new path appended to it.
-	 *
-	 * @param path the path
-	 * @return the path
-	 */
-	public Path append(Path path) {
-		Path ret = clone();
+  /**
+   * Instantiates a new path.
+   *
+   * @param isRoot
+   *          the is root
+   * @param level
+   *          the level
+   * @param levels
+   *          the levels
+   */
+  public Path(boolean isRoot, Object level, Object... levels) {
+    if (isRoot) {
+      mPrefix = PATH_DELIMITER;
+    }
 
-		for (String level : path) {
-			ret.parse(level);
-		}
+    parse(level);
 
-		return path;
-	}
+    for (Object l : levels) {
+      parse(l);
+    }
+  }
 
-	/**
-	 * Append.
-	 *
-	 * @param level the level
-	 * @return the path
-	 */
-	public Path append(Object level) {
-		return append(level.toString());
-	}
+  /**
+   * Return a copy of the path with the new path appended to it.
+   *
+   * @param path
+   *          the path
+   * @return the path
+   */
+  public Path append(Path path) {
+    Path ret = clone();
 
-	/**
-	 * Append levels to a path. A new path consisting of the current
-	 * path with the new level added will be returned to preserve path
-	 * immutability.
-	 *
-	 * @param level the level
-	 * @return the path
-	 */
-	public Path append(String level) {
-		Path ret = clone();
+    for (String level : path) {
+      ret.parse(level);
+    }
 
-		ret.parse(level);
+    return path;
+  }
 
-		return ret;
-	}
+  /**
+   * Append.
+   *
+   * @param level
+   *          the level
+   * @return the path
+   */
+  public Path append(Object level) {
+    return append(level.toString());
+  }
 
-	/**
-	 * Creates a clone of this path.
-	 *
-	 * @return the path
-	 */
-	protected Path clone() {
-		return new Path(this);
-	}
+  /**
+   * Append levels to a path. A new path consisting of the current path with the
+   * new level added will be returned to preserve path immutability.
+   *
+   * @param level
+   *          the level
+   * @return the path
+   */
+  public Path append(String level) {
+    Path ret = clone();
 
-	/**
-	 * Internal method for updating the path. Since paths are
-	 * immutable, this is not publicly accessible.
-	 *
-	 * @param level the level
-	 * @return the path
-	 */
-	private void parse(Object level) {
-		parse(level.toString());
-	}
+    ret.parse(level);
 
-	/**
-	 * Internal method for updating the path. Since paths are
-	 * immutable, this is not publicly accessible.
-	 *
-	 * @param level the level
-	 * @return the path
-	 */
-	private void parse(String level) {
-		if (level == null) {
-			return;
-		}
+    return ret;
+  }
 
-		List<String> parts = SPLITTER.text(level); //PATH_DELIM_REGEX.split(level);
+  /**
+   * Creates a clone of this path.
+   *
+   * @return the path
+   */
+  protected Path clone() {
+    return new Path(this);
+  }
 
-		for (String s : parts) {
-			s = sanitize(s);
+  /**
+   * Internal method for updating the path. Since paths are immutable, this is not
+   * publicly accessible.
+   *
+   * @param level
+   *          the level
+   * @return the path
+   */
+  private void parse(Object level) {
+    parse(level.toString());
+  }
 
-			if (s.length() > 0) {
-				mLevels.add(s);
-			}
-		}
-	}
+  /**
+   * Internal method for updating the path. Since paths are immutable, this is not
+   * publicly accessible.
+   *
+   * @param level
+   *          the level
+   * @return the path
+   */
+  private void parse(String level) {
+    if (level == null) {
+      return;
+    }
 
-	/**
-	 * Return the parent path of this path.
-	 *
-	 * @return the parent
-	 */
-	public Path getParent() {
-		if (mLevels.size() == 0) {
-			return null;
-		}
+    List<String> parts = SPLITTER.text(level); // PATH_DELIM_REGEX.split(level);
 
-		return new Path(CollectionUtils.head(mLevels, mLevels.size() - 1));
-	}
+    for (String s : parts) {
+      s = sanitize(s);
 
-	/**
-	 * Gets the name of the path (the last level excluding any separators).
-	 *
-	 * @return the name
-	 */
-	public String getName() {
-		return CollectionUtils.end(mLevels).toString();
-	}
+      if (s.length() > 0) {
+        mLevels.add(s);
+      }
+    }
+  }
 
-	/**
-	 * Returns a string representation of the path.
-	 *
-	 * @return the path
-	 */
-	public String getPath() {
-		if (mPath == null) {
-			mPath = mPrefix + Join.on(PATH_DELIMITER).values(mLevels).toString();
-		}
+  /**
+   * Return the parent path of this path.
+   *
+   * @return the parent
+   */
+  public Path getParent() {
+    if (mLevels.size() == 0) {
+      return null;
+    }
 
-		return mPath;
-	}
+    return new Path(CollectionUtils.head(mLevels, mLevels.size() - 1));
+  }
 
-	/**
-	 * Gets the path with period sep.
-	 *
-	 * @return the path with period sep
-	 */
-	public String getPathWithPeriodSep() {
-		return Join.on(TextUtils.PERIOD_DELIMITER).values(mLevels).toString();
-	}
+  /**
+   * Gets the name of the path (the last level excluding any separators).
+   *
+   * @return the name
+   */
+  public String getName() {
+    return CollectionUtils.end(mLevels).toString();
+  }
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return getPath();
-	}
+  /**
+   * Returns a string representation of the path.
+   *
+   * @return the path
+   */
+  public String getPath() {
+    if (mPath == null) {
+      mPath = mPrefix + Join.on(PATH_DELIMITER).values(mLevels).toString();
+    }
 
+    return mPath;
+  }
 
-	/* (non-Javadoc)
-	 * @see java.lang.Iterable#iterator()
-	 */
-	@Override
-	public Iterator<String> iterator() {
-		return mLevels.iterator();
-	}
+  /**
+   * Gets the path with period sep.
+   *
+   * @return the path with period sep
+   */
+  public String getPathWithPeriodSep() {
+    return Join.on(TextUtils.PERIOD_DELIMITER).values(mLevels).toString();
+  }
 
-	/**
-	 * Sanitizes string.
-	 *
-	 * @param s the s
-	 * @return the string
-	 */
-	protected String sanitize(String s) {
-		return s;
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Object#toString()
+   */
+  @Override
+  public String toString() {
+    return getPath();
+  }
 
-	/* (non-Javadoc)
-	 * @see java.lang.Comparable#compareTo(java.lang.Object)
-	 */
-	@Override
-	public int compareTo(Path p) {
-		return toString().compareTo(p.toString());
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Iterable#iterator()
+   */
+  @Override
+  public Iterator<String> iterator() {
+    return mLevels.iterator();
+  }
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
-	@Override
-	public boolean equals(Object o) {
-		if (o instanceof Path) {
-			return compareTo((Path)o) == 0;
-		} else {
-			return false;
-		}
-	}
+  /**
+   * Sanitizes string.
+   *
+   * @param s
+   *          the s
+   * @return the string
+   */
+  protected String sanitize(String s) {
+    return s;
+  }
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#hashCode()
-	 */
-	@Override
-	public int hashCode() {
-		return toString().hashCode();
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Comparable#compareTo(java.lang.Object)
+   */
+  @Override
+  public int compareTo(Path p) {
+    return toString().compareTo(p.toString());
+  }
 
-	/**
-	 * Level.
-	 *
-	 * @param i the i
-	 * @return the path level
-	 */
-	public String level(int i) {
-		return mLevels.get(i);
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Object#equals(java.lang.Object)
+   */
+  @Override
+  public boolean equals(Object o) {
+    if (o instanceof Path) {
+      return compareTo((Path) o) == 0;
+    } else {
+      return false;
+    }
+  }
 
-	/**
-	 * Creates the.
-	 *
-	 * @param path the path
-	 * @return the path
-	 */
-	public static Path create(String path) {
-		return new Path(path);
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Object#hashCode()
+   */
+  @Override
+  public int hashCode() {
+    return toString().hashCode();
+  }
 
-	/**
-	 * The main method.
-	 *
-	 * @param args the arguments
-	 */
-	public static void main(String[] args) {
-		Path p = new Path("Characteristics[GEP Based Classification]");
+  /**
+   * Level.
+   *
+   * @param i
+   *          the i
+   * @return the path level
+   */
+  public String level(int i) {
+    return mLevels.get(i);
+  }
 
-		System.err.println(p.toString());
-	}
+  /**
+   * Creates the.
+   *
+   * @param path
+   *          the path
+   * @return the path
+   */
+  public static Path create(String path) {
+    return new Path(path);
+  }
 
-	/**
-	 * Checks if is valid path.
-	 *
-	 * @param path the path
-	 * @return true, if is valid path
-	 */
-	public static boolean isValidPath(String path) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+  /**
+   * The main method.
+   *
+   * @param args
+   *          the arguments
+   */
+  public static void main(String[] args) {
+    Path p = new Path("Characteristics[GEP Based Classification]");
 
-	/**
-	 * Creates a path starting from the root ('/').
-	 *
-	 * @param level the level
-	 * @param levels the levels
-	 * @return the path
-	 */
-	public static Path createRootPath(Object level, Object... levels) {
-		return new RootPath(level, levels);
-	}
-	
-	/**
-	 * Creates the root path.
-	 *
-	 * @param path the path
-	 * @return the path
-	 */
-	public static Path createRootPath(String path) {
-		return new RootPath(path);
-	}
+    System.err.println(p.toString());
+  }
+
+  /**
+   * Checks if is valid path.
+   *
+   * @param path
+   *          the path
+   * @return true, if is valid path
+   */
+  public static boolean isValidPath(String path) {
+    // TODO Auto-generated method stub
+    return false;
+  }
+
+  /**
+   * Creates a path starting from the root ('/').
+   *
+   * @param level
+   *          the level
+   * @param levels
+   *          the levels
+   * @return the path
+   */
+  public static Path createRootPath(Object level, Object... levels) {
+    return new RootPath(level, levels);
+  }
+
+  /**
+   * Creates the root path.
+   *
+   * @param path
+   *          the path
+   * @return the path
+   */
+  public static Path createRootPath(String path) {
+    return new RootPath(path);
+  }
 }

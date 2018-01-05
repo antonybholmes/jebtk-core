@@ -20,135 +20,152 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-
-
-
 // TODO: Auto-generated Javadoc
 /**
  * The class XmlWriter.
  */
 public class XmlWriter {
-	
-	/**
-	 * The constant XML_HEADER.
-	 */
-	public static final String XML_HEADER = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
 
-	/**
-	 * The writer.
-	 */
-	private BufferedWriter writer;
+  /**
+   * The constant XML_HEADER.
+   */
+  public static final String XML_HEADER = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
 
-	/**
-	 * Instantiates a new xml writer.
-	 *
-	 * @param file the file
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 */
-	public XmlWriter(File file) throws IOException {
-		writer = new BufferedWriter(new FileWriter(file));
-		Xml.writeXmlHeader(writer);
-	}
+  /**
+   * The writer.
+   */
+  private BufferedWriter writer;
 
-	/**
-	 * Write tag.
-	 *
-	 * @param tag the tag
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 */
-	public final void writeTag(String tag) throws IOException {
-		writer.write(Xml.startTag(tag));
+  /**
+   * Instantiates a new xml writer.
+   *
+   * @param file
+   *          the file
+   * @throws IOException
+   *           Signals that an I/O exception has occurred.
+   */
+  public XmlWriter(File file) throws IOException {
+    writer = new BufferedWriter(new FileWriter(file));
+    Xml.writeXmlHeader(writer);
+  }
 
-	}
+  /**
+   * Write tag.
+   *
+   * @param tag
+   *          the tag
+   * @throws IOException
+   *           Signals that an I/O exception has occurred.
+   */
+  public final void writeTag(String tag) throws IOException {
+    writer.write(Xml.startTag(tag));
 
-	/**
-	 * Write end tag.
-	 *
-	 * @param tag the tag
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 */
-	public final void writeEndTag(String tag) throws IOException {
-		writer.write(Xml.endTag(tag));
-	}
+  }
 
-	/**
-	 * Write open tag.
-	 *
-	 * @param tag the tag
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 */
-	public final void writeOpenTag(String tag) throws IOException {
-		writer.write("<" + tag);
-	}
+  /**
+   * Write end tag.
+   *
+   * @param tag
+   *          the tag
+   * @throws IOException
+   *           Signals that an I/O exception has occurred.
+   */
+  public final void writeEndTag(String tag) throws IOException {
+    writer.write(Xml.endTag(tag));
+  }
 
-	/**
-	 * Write close tag.
-	 *
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 */
-	public final void writeCloseTag() throws IOException {
-		writer.write(">");
-	}
+  /**
+   * Write open tag.
+   *
+   * @param tag
+   *          the tag
+   * @throws IOException
+   *           Signals that an I/O exception has occurred.
+   */
+  public final void writeOpenTag(String tag) throws IOException {
+    writer.write("<" + tag);
+  }
 
-	/**
-	 * End closed tag.
-	 *
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 */
-	public final void endClosedTag() throws IOException {
-		writer.write(" />");
-	}
+  /**
+   * Write close tag.
+   *
+   * @throws IOException
+   *           Signals that an I/O exception has occurred.
+   */
+  public final void writeCloseTag() throws IOException {
+    writer.write(">");
+  }
 
-	/**
-	 * Adds the parameter.
-	 *
-	 * @param name the name
-	 * @param value the value
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 */
-	public final void addParameter(String name, String value) throws IOException {
-		writer.write(" " + name + "=\"" + value + "\"");
-	}
+  /**
+   * End closed tag.
+   *
+   * @throws IOException
+   *           Signals that an I/O exception has occurred.
+   */
+  public final void endClosedTag() throws IOException {
+    writer.write(" />");
+  }
 
-	/**
-	 * Close.
-	 *
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 */
-	public final void close() throws IOException {
-		writer.close();
-	}
+  /**
+   * Adds the parameter.
+   *
+   * @param name
+   *          the name
+   * @param value
+   *          the value
+   * @throws IOException
+   *           Signals that an I/O exception has occurred.
+   */
+  public final void addParameter(String name, String value) throws IOException {
+    writer.write(" " + name + "=\"" + value + "\"");
+  }
 
-	/**
-	 * Write.
-	 *
-	 * @param text the text
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 */
-	public final void write(String text) throws IOException {
-		writer.write(text);
-	}
+  /**
+   * Close.
+   *
+   * @throws IOException
+   *           Signals that an I/O exception has occurred.
+   */
+  public final void close() throws IOException {
+    writer.close();
+  }
 
-	/**
-	 * Write tagged text.
-	 *
-	 * @param tag the tag
-	 * @param text the text
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 */
-	public final void writeTaggedText(String tag, String text) throws IOException {
-		writeTag(tag);
-		write(text);
-		writeEndTag(tag);
-		writer.newLine();
-	}
+  /**
+   * Write.
+   *
+   * @param text
+   *          the text
+   * @throws IOException
+   *           Signals that an I/O exception has occurred.
+   */
+  public final void write(String text) throws IOException {
+    writer.write(text);
+  }
 
-	/**
-	 * New line.
-	 *
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 */
-	public final void newLine() throws IOException {
-		writer.newLine();
-	}
+  /**
+   * Write tagged text.
+   *
+   * @param tag
+   *          the tag
+   * @param text
+   *          the text
+   * @throws IOException
+   *           Signals that an I/O exception has occurred.
+   */
+  public final void writeTaggedText(String tag, String text) throws IOException {
+    writeTag(tag);
+    write(text);
+    writeEndTag(tag);
+    writer.newLine();
+  }
+
+  /**
+   * New line.
+   *
+   * @throws IOException
+   *           Signals that an I/O exception has occurred.
+   */
+  public final void newLine() throws IOException {
+    writer.newLine();
+  }
 }

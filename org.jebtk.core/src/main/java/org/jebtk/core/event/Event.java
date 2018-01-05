@@ -25,53 +25,57 @@ import org.jebtk.core.IdProperty;
  * The class Event.
  */
 public class Event extends EventObject implements IdProperty {
-	
-	/**
-	 * The constant serialVersionUID.
-	 */
-	private static final long serialVersionUID = 1L;
 
-	/**
-	 * The constant NEXT_ID.
-	 */
-	private static final AtomicInteger NEXT_ID = new AtomicInteger(0);
-	
-	/**
-	 * The member message.
-	 */
-	private String mMessage = null;
-	
-	/**
-	 * The id.
-	 */
-	private final int id = NEXT_ID.getAndIncrement();
+  /**
+   * The constant serialVersionUID.
+   */
+  private static final long serialVersionUID = 1L;
 
-	/**
-	 * Instantiates a new event.
-	 *
-	 * @param source the source
-	 * @param message the message
-	 */
-	public Event(Object source, String message) {
-		super(source);
-		
-		mMessage = message;
-	}
-	
-	/**
-	 * Gets the message.
-	 *
-	 * @return the message
-	 */
-	public String getMessage() {
-		return mMessage;
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.lib.UidProperty#getUid()
-	 */
-	@Override
-	public int getId() {
-		return id;
-	}
+  /**
+   * The constant NEXT_ID.
+   */
+  private static final AtomicInteger NEXT_ID = new AtomicInteger(0);
+
+  /**
+   * The member message.
+   */
+  private String mMessage = null;
+
+  /**
+   * The id.
+   */
+  private final int id = NEXT_ID.getAndIncrement();
+
+  /**
+   * Instantiates a new event.
+   *
+   * @param source
+   *          the source
+   * @param message
+   *          the message
+   */
+  public Event(Object source, String message) {
+    super(source);
+
+    mMessage = message;
+  }
+
+  /**
+   * Gets the message.
+   *
+   * @return the message
+   */
+  public String getMessage() {
+    return mMessage;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.UidProperty#getUid()
+   */
+  @Override
+  public int getId() {
+    return id;
+  }
 }

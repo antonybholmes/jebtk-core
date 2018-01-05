@@ -20,43 +20,45 @@ package org.jebtk.core;
  * The class Attribute.
  */
 public class Attribute {
-	
-	/**
-	 * The name.
-	 */
-	private String name;
-	
-	/**
-	 * The value.
-	 */
-	private String value;
 
-	/**
-	 * Instantiates a new attribute.
-	 *
-	 * @param name the name
-	 * @param value the value
-	 */
-	public Attribute(String name, String value) {
-		this.name = name;
-		this.value = value;
-	}
+  /**
+   * The name.
+   */
+  private String name;
 
-	/**
-	 * Gets the name.
-	 *
-	 * @return the name
-	 */
-	public String getName() {
-		return name;
-	}
+  /**
+   * The value.
+   */
+  private String value;
 
-	/**
-	 * Gets the value.
-	 *
-	 * @return the value
-	 */
-	public String getValue() {
-		return value;
-	}
+  /**
+   * Instantiates a new attribute.
+   *
+   * @param name
+   *          the name
+   * @param value
+   *          the value
+   */
+  public Attribute(String name, String value) {
+    this.name = name;
+    this.value = value;
+  }
+
+  /**
+   * Gets the name.
+   *
+   * @return the name
+   */
+  public String getName() {
+    return name;
+  }
+
+  /**
+   * Gets the value.
+   *
+   * @return the value
+   */
+  public String getValue() {
+    return value;
+  }
 }

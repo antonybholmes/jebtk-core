@@ -23,44 +23,46 @@ import java.util.List;
  * List that allows continuous cycling through items.
  *
  * @author Antony Holmes Holmes
- * @param <T> the generic type
+ * @param <T>
+ *          the generic type
  */
 public class Cycle<T> {
-	
-	/**
-	 * The member items.
-	 */
-	private List<T> mItems = new ArrayList<T>();
-	
-	/**
-	 * The member p.
-	 */
-	private int mP = -1;
-	
-	/**
-	 * Adds the.
-	 *
-	 * @param item the item
-	 */
-	public void add(T item) {
-		mItems.add(item);
-	}
-	
-	/**
-	 * Next.
-	 *
-	 * @return the t
-	 */
-	public T next() {
-		mP = (mP + 1) % mItems.size();
-		
-		return mItems.get(mP);
-	}
-	
-	/**
-	 * Reset.
-	 */
-	public void reset() {
-		mP = -1;
-	}
+
+  /**
+   * The member items.
+   */
+  private List<T> mItems = new ArrayList<T>();
+
+  /**
+   * The member p.
+   */
+  private int mP = -1;
+
+  /**
+   * Adds the.
+   *
+   * @param item
+   *          the item
+   */
+  public void add(T item) {
+    mItems.add(item);
+  }
+
+  /**
+   * Next.
+   *
+   * @return the t
+   */
+  public T next() {
+    mP = (mP + 1) % mItems.size();
+
+    return mItems.get(mP);
+  }
+
+  /**
+   * Reset.
+   */
+  public void reset() {
+    mP = -1;
+  }
 }

@@ -7,18 +7,18 @@ package org.jebtk.core.json;
  *
  */
 public class JsonUtils {
-	private JsonUtils() {
-		// Do nothing
-	}
-	
-	/**
-	 * Add JSON array characters around a JSON string. Useful to convert
-	 * a list of JSON values into a JSON array.
-	 * 
-	 * @param json
-	 * @return
-	 */
-	public static String asArray(String json) {
-		return "[" + json + "]";
-	}
+  private JsonUtils() {
+    // Do nothing
+  }
+
+  /**
+   * Add JSON array characters around a JSON string. Useful to convert a list of
+   * JSON values into a JSON array.
+   * 
+   * @param json
+   * @return
+   */
+  public static String asArray(String json) {
+    return "[" + json + "]";
+  }
 }

@@ -17,81 +17,88 @@ package org.jebtk.core;
 
 // TODO: Auto-generated Javadoc
 /**
- * Container for a Class object that can be sorted {
- * and indexed.
+ * Container for a Class object that can be sorted { and indexed.
  *
  * @author Antony Holmes Holmes
  *
  */
 public class Plugin implements Comparable<Plugin> {
-	
-	/**
-	 * The member class.
-	 */
-	private Class<?> mClass;
 
-	/**
-	 * Instantiates a new plugin.
-	 *
-	 * @param c the c
-	 */
-	public Plugin(Class<?> c) {
-		mClass = c;
-	}
+  /**
+   * The member class.
+   */
+  private Class<?> mClass;
 
-	/**
-	 * Returns the plugin class object that can {
-	 * be instanciated into a new instance.
-	 *
-	 * @return the plugin class
-	 */
-	public Class<?> getPluginClass() {
-		return mClass;
-	}
-	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	public final String toString() {
-		return mClass.getCanonicalName();
-	}
+  /**
+   * Instantiates a new plugin.
+   *
+   * @param c
+   *          the c
+   */
+  public Plugin(Class<?> c) {
+    mClass = c;
+  }
 
-	/**
-	 * Returns a standardized name of the plugin
-	 * based on the class name.
-	 *
-	 * @return the name
-	 */
-	public final String getName() {
-		return mClass.getSimpleName();
-	}
+  /**
+   * Returns the plugin class object that can { be instanciated into a new
+   * instance.
+   *
+   * @return the plugin class
+   */
+  public Class<?> getPluginClass() {
+    return mClass;
+  }
 
-	/* (non-Javadoc)
-	 * @see java.lang.Comparable#compareTo(java.lang.Object)
-	 */
-	@Override
-	public int compareTo(Plugin e) {
-		return getName().compareTo(e.getName());
-	}
-	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
-	@Override
-	public boolean equals(Object o) {
-		if (o instanceof Plugin) {
-			return compareTo((Plugin)o) == 0;
-		} else {
-			return false;
-		}
-	}
-	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#hashCode()
-	 */
-	@Override
-	public int hashCode() {
-		return getName().hashCode();
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Object#toString()
+   */
+  public final String toString() {
+    return mClass.getCanonicalName();
+  }
+
+  /**
+   * Returns a standardized name of the plugin based on the class name.
+   *
+   * @return the name
+   */
+  public final String getName() {
+    return mClass.getSimpleName();
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Comparable#compareTo(java.lang.Object)
+   */
+  @Override
+  public int compareTo(Plugin e) {
+    return getName().compareTo(e.getName());
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Object#equals(java.lang.Object)
+   */
+  @Override
+  public boolean equals(Object o) {
+    if (o instanceof Plugin) {
+      return compareTo((Plugin) o) == 0;
+    } else {
+      return false;
+    }
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Object#hashCode()
+   */
+  @Override
+  public int hashCode() {
+    return getName().hashCode();
+  }
 
 }

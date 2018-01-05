@@ -18,30 +18,33 @@ package org.jebtk.core.collections;
 import java.util.Set;
 import java.util.TreeSet;
 
-
 // TODO: Auto-generated Javadoc
 /**
  * The Class TreeSetCreator.
  *
- * @param <V> the value type
+ * @param <V>
+ *          the value type
  */
 public class TreeSetCreator<V> implements SetCreator<V> {
 
-	/* (non-Javadoc)
-	 * @see org.abh.lib.collections.EntryCreator#create()
-	 */
-	@Override
-	public Set<V> newEntry() {
-		return new TreeSet<V>();
-	}
-	
-	/**
-	 * Creates the.
-	 *
-	 * @param <V1> the generic type
-	 * @return the collection creator
-	 */
-	public static <V1> SetCreator<V1> create() {
-		return new TreeSetCreator<V1>();
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.collections.EntryCreator#create()
+   */
+  @Override
+  public Set<V> newEntry() {
+    return new TreeSet<V>();
+  }
+
+  /**
+   * Creates the.
+   *
+   * @param <V1>
+   *          the generic type
+   * @return the collection creator
+   */
+  public static <V1> SetCreator<V1> create() {
+    return new TreeSetCreator<V1>();
+  }
 }

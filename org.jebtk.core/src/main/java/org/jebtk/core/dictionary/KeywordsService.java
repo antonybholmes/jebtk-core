@@ -30,105 +30,109 @@ import org.jebtk.core.text.TextUtils;
 
 // TODO: Auto-generated Javadoc
 /**
- * Provides a dictionary service so strings/words can be mapped
- * to synonyms.
+ * Provides a dictionary service so strings/words can be mapped to synonyms.
  * 
  * @author Antony Holmes Holmes
  *
  */
 public class KeywordsService implements Iterable<String>, Serializable {
-	
-	/**
-	 * The constant serialVersionUID.
-	 */
-	private static final long serialVersionUID = 1L;
 
-	/**
-	 * The words.
-	 */
-	private Set<String> words = new HashSet<String>();
-	
-	/**
-	 * The constant INSTANCE.
-	 */
-	private static final KeywordsService INSTANCE = new KeywordsService();
+  /**
+   * The constant serialVersionUID.
+   */
+  private static final long serialVersionUID = 1L;
 
-	/**
-	 * Gets the single instance of KeywordsService.
-	 *
-	 * @return single instance of KeywordsService
-	 */
-	public static final KeywordsService getInstance() {
-		return INSTANCE;
-	}
-	
-	/**
-	 * Load xml.
-	 *
-	 * @param file the file
-	 */
-	public void loadXml(File file) {
-		System.err.println("Parseing " + file);
-		
-		try {
-			SAXParserFactory factory = SAXParserFactory.newInstance();
-			SAXParser saxParser = factory.newSAXParser();
-		 
-			KeywordsXmlHandler handler = new KeywordsXmlHandler(this);
-			
-			saxParser.parse(file, handler);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
-	/**
-	 * Exists.
-	 *
-	 * @param word the word
-	 * @return true, if successful
-	 */
-	public boolean exists(String word) {
-		return words.contains(word);
-	}
-	
-	/**
-	 * Adds the word.
-	 *
-	 * @param word the word
-	 */
-	public void addWord(String word) {
-		words.add(word.toLowerCase());
-	}
+  /**
+   * The words.
+   */
+  private Set<String> words = new HashSet<String>();
 
-	/* (non-Javadoc)
-	 * @see java.lang.Iterable#iterator()
-	 */
-	@Override
-	public Iterator<String> iterator() {
-		return words.iterator();
-	}
-	
-	/**
-	 * Returns the list of keywords found in a given
-	 * sentence.
-	 *
-	 * @param sentence the sentence
-	 * @return the list
-	 */
-	public List<String> searchForKeywords(String sentence) {
-		Set<String> found = TextUtils.keywords(sentence);
-		
-		Set<String> found2 = new HashSet<String>();
-		
-		String s = sentence.toLowerCase();
-		
-		for (String word : words) {
-			if (s.contains(word)) {
-				found2.add(word);
-			}
-		}
-		
-		return CollectionUtils.union(found, found2);
-	}
+  /**
+   * The constant INSTANCE.
+   */
+  private static final KeywordsService INSTANCE = new KeywordsService();
+
+  /**
+   * Gets the single instance of KeywordsService.
+   *
+   * @return single instance of KeywordsService
+   */
+  public static final KeywordsService getInstance() {
+    return INSTANCE;
+  }
+
+  /**
+   * Load xml.
+   *
+   * @param file
+   *          the file
+   */
+  public void loadXml(File file) {
+    System.err.println("Parseing " + file);
+
+    try {
+      SAXParserFactory factory = SAXParserFactory.newInstance();
+      SAXParser saxParser = factory.newSAXParser();
+
+      KeywordsXmlHandler handler = new KeywordsXmlHandler(this);
+
+      saxParser.parse(file, handler);
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+
+  /**
+   * Exists.
+   *
+   * @param word
+   *          the word
+   * @return true, if successful
+   */
+  public boolean exists(String word) {
+    return words.contains(word);
+  }
+
+  /**
+   * Adds the word.
+   *
+   * @param word
+   *          the word
+   */
+  public void addWord(String word) {
+    words.add(word.toLowerCase());
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Iterable#iterator()
+   */
+  @Override
+  public Iterator<String> iterator() {
+    return words.iterator();
+  }
+
+  /**
+   * Returns the list of keywords found in a given sentence.
+   *
+   * @param sentence
+   *          the sentence
+   * @return the list
+   */
+  public List<String> searchForKeywords(String sentence) {
+    Set<String> found = TextUtils.keywords(sentence);
+
+    Set<String> found2 = new HashSet<String>();
+
+    String s = sentence.toLowerCase();
+
+    for (String word : words) {
+      if (s.contains(word)) {
+        found2.add(word);
+      }
+    }
+
+    return CollectionUtils.union(found, found2);
+  }
 }

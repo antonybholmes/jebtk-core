@@ -26,17 +26,18 @@ import java.io.UnsupportedEncodingException;
  */
 public class HttpUrlBuilder extends UrlBuilder {
 
-	/**
-	 * The constant serialVersionUID.
-	 */
-	private static final long serialVersionUID = 1L;
+  /**
+   * The constant serialVersionUID.
+   */
+  private static final long serialVersionUID = 1L;
 
-	/**
-	 * Instantiates a new http url builder.
-	 *
-	 * @throws UnsupportedEncodingException the unsupported encoding exception
-	 */
-	public HttpUrlBuilder() throws UnsupportedEncodingException {
-		super("http://");
-	}
+  /**
+   * Instantiates a new http url builder.
+   *
+   * @throws UnsupportedEncodingException
+   *           the unsupported encoding exception
+   */
+  public HttpUrlBuilder() throws UnsupportedEncodingException {
+    super("http://");
+  }
 }

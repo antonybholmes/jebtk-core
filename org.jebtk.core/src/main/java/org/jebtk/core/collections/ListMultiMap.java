@@ -19,26 +19,29 @@ import java.util.List;
 
 // TODO: Auto-generated Javadoc
 /**
- * Creates a simple Map of Maps where the primary and secondary maps have
- * the same key type (e.g. for mimicking a two dimensional structure).
+ * Creates a simple Map of Maps where the primary and secondary maps have the
+ * same key type (e.g. for mimicking a two dimensional structure).
  *
- * @param <K> the key type
- * @param <V> the value type
+ * @param <K>
+ *          the key type
+ * @param <V>
+ *          the value type
  */
 public abstract class ListMultiMap<K, V> extends DefaultMultiMap<K, V, List<V>> {
 
-	/** The Constant serialVersionUID. */
-	private static final long serialVersionUID = 1L;
+  /** The Constant serialVersionUID. */
+  private static final long serialVersionUID = 1L;
 
-	/**
-	 * Instantiates a new list multi map.
-	 *
-	 * @param initialCapacity the initial capacity
-	 * @param defaultValue the default value
-	 */
-	public ListMultiMap(int initialCapacity, 
-			CollectionCreator<V, List<V>> defaultValue) {
-		super(initialCapacity, defaultValue);
-	}
-	
+  /**
+   * Instantiates a new list multi map.
+   *
+   * @param initialCapacity
+   *          the initial capacity
+   * @param defaultValue
+   *          the default value
+   */
+  public ListMultiMap(int initialCapacity, CollectionCreator<V, List<V>> defaultValue) {
+    super(initialCapacity, defaultValue);
+  }
+
 }

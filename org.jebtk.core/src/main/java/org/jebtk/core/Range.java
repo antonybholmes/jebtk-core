@@ -21,129 +21,127 @@ import java.util.NoSuchElementException;
 // TODO: Auto-generated Javadoc
 /**
  * The Class Range provides an iterable range object similar to python for
- * compactly iterating a variable over a number range instead of writing
- * for (int i = 0; i < x; ++i)... etc.
+ * compactly iterating a variable over a number range instead of writing for
+ * (int i = 0; i < x; ++i)... etc.
  */
 public class Range implements Iterable<Integer> {
 
-	/** The m start. */
-	private final int mStart;
-    
-    /** The m length. */
-    private final int mEnd;
-    
-    private final int mSkip;
+  /** The m start. */
+  private final int mStart;
 
-    /**
-     * Instantiates a new range.
-     *
-     * @param length the length
-     */
-    public Range(int length) {
-    	this(0, length);
-    }
-    
-    public Range(int start, int end) {
-    	this(start, end, 1);
-    }
-    
-    /**
-     * Instantiates a new range.
-     *
-     * @param start the start
-     * @param length the length
-     */
-    public Range(int start, int end, int skip) {
-        mStart = start;
-        mEnd = end;
-    	mSkip = skip;
-        
-    }
-    
-    /*
-    @Override
-    public boolean hasNext() {
-        return mStart < mLength;
-    }
+  /** The m length. */
+  private final int mEnd;
 
-    @Override
-    public Integer next() {
+  private final int mSkip;
+
+  /**
+   * Instantiates a new range.
+   *
+   * @param length
+   *          the length
+   */
+  public Range(int length) {
+    this(0, length);
+  }
+
+  public Range(int start, int end) {
+    this(start, end, 1);
+  }
+
+  /**
+   * Instantiates a new range.
+   *
+   * @param start
+   *          the start
+   * @param length
+   *          the length
+   */
+  public Range(int start, int end, int skip) {
+    mStart = start;
+    mEnd = end;
+    mSkip = skip;
+
+  }
+
+  /*
+   * @Override public boolean hasNext() { return mStart < mLength; }
+   * 
+   * @Override public Integer next() { if (hasNext()) { return mStart++; } else {
+   * throw new NoSuchElementException("Range ended"); } }
+   * 
+   * @Override public void remove() { throw new
+   * UnsupportedOperationException("Cannot remove values from a Range"); }
+   */
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Iterable#iterator()
+   */
+  @Override
+  public Iterator<Integer> iterator() {
+    return new Iterator<Integer>() {
+      private int mCurrent = mStart;
+
+      @Override
+      public boolean hasNext() {
+        return mCurrent < mEnd;
+      }
+
+      @Override
+      public Integer next() {
         if (hasNext()) {
-            return mStart++;   
+          int ret = mCurrent;
+          mCurrent += mSkip;
+          return ret;
         } else {
-            throw new NoSuchElementException("Range ended");
+          throw new NoSuchElementException("Range ended");
         }
-    }
+      }
 
-    @Override
-    public void remove() {
+      @Override
+      public void remove() {
         throw new UnsupportedOperationException("Cannot remove values from a Range");
+      }
+    };
+  }
+
+  public void forEach(ForEach l) {
+    forEach(this, l);
+  }
+
+  public static void forEach(Range r, ForEach l) {
+    for (int i : r) {
+      l.loop(i);
     }
-    */
+  }
 
-    /* (non-Javadoc)
-     * @see java.lang.Iterable#iterator()
-     */
-    @Override
-    public Iterator<Integer> iterator() {
-        return new Iterator<Integer>() {
-            private int mCurrent = mStart;
+  /**
+   * Creates a new Range.
+   *
+   * @param length
+   *          The max value (exclusive) of the range, thus 5 will generate
+   *          0,1,2,3,4.
+   * @return A range object.
+   */
+  public static Range create(int length) {
+    return create(0, length);
+  }
 
-            @Override
-            public boolean hasNext() {
-                return mCurrent < mEnd;
-            }
+  /**
+   * Creates the.
+   *
+   * @param start
+   *          the start
+   * @param length
+   *          the length
+   * @return the range
+   */
+  public static Range create(int start, int end) {
+    return create(start, end, 1);
+  }
 
-            @Override
-            public Integer next() {
-                if (hasNext()) {
-                	int ret = mCurrent;
-                	mCurrent += mSkip;
-                	return ret;
-                } else {
-                    throw new NoSuchElementException("Range ended");
-                }
-            }
-
-            @Override
-            public void remove() {
-                throw new UnsupportedOperationException("Cannot remove values from a Range");
-            }
-        };
-    }
-    
-    public void forEach(ForEach l) {
-		forEach(this, l);
-	}
-    
-    public static void forEach(Range r, ForEach l) {
-		for (int i : r) {
-			l.loop(i);
-		}
-	}
-
-	/**
-	 * Creates the.
-	 *
-	 * @param length the length
-	 * @return the range
-	 */
-	public static Range create(int length) {
-		return create(0, length);
-	}
-	
-	/**
-	 * Creates the.
-	 *
-	 * @param start the start
-	 * @param length the length
-	 * @return the range
-	 */
-	public static Range create(int start, int end) {
-		return create(start, end, 1);
-	}
-	
-	public static Range create(int start, int end, int skip) {
-		return new Range(start, end, skip);
-	}
+  public static Range create(int start, int end, int skip) {
+    return new Range(start, end, skip);
+  }
 }

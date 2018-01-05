@@ -19,92 +19,109 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.TreeMap;
 
-
 // TODO: Auto-generated Javadoc
 /**
  * Generic model for sharing named items.
  *
  * @author Antony Holmes Holmes
- * @param <T> the generic type
+ * @param <T>
+ *          the generic type
  */
 public class NameMapModel<T> extends NameModel<T> {
-	
-	/**
-	 * The constant serialVersionUID.
-	 */
-	private static final long serialVersionUID = 1L;
 
-	/**
-	 * The member items.
-	 */
-	protected Map<String, T> mItems = new TreeMap<String, T>();
+  /**
+   * The constant serialVersionUID.
+   */
+  private static final long serialVersionUID = 1L;
 
-	/* (non-Javadoc)
-	 * @see org.abh.common.model.NameModel#add(java.lang.String, java.lang.Object)
-	 */
-	@Override
-	public void add(String name, T item) {
-		update(name, item);
+  /**
+   * The member items.
+   */
+  protected Map<String, T> mItems = new TreeMap<String, T>();
 
-		fireChanged();
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.model.NameModel#update(java.lang.String, java.lang.Object)
-	 */
-	public void update(String name, T item) {
-		mItems.put(name, item);
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.model.NameModel#remove(java.lang.String)
-	 */
-	@Override
-	public void remove(String name) {
-		mItems.remove(name);
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.model.NameModel#add(java.lang.String, java.lang.Object)
+   */
+  @Override
+  public void add(String name, T item) {
+    update(name, item);
 
-		fireChanged();
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.model.NameModel#get(java.lang.String)
-	 */
-	@Override
-	public T get(String name) {
-		return mItems.get(name);
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.model.NameModel#contains(java.lang.String)
-	 */
-	@Override
-	public boolean contains(String name) {
-		return mItems.containsKey(name);
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.model.NameModel#clear()
-	 */
-	@Override
-	public void clear() {
-		mItems.clear();
+    fireChanged();
+  }
 
-		fireChanged();
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.model.NameModel#size()
-	 */
-	@Override
-	public int size() {
-		return mItems.size();
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.model.NameModel#update(java.lang.String,
+   * java.lang.Object)
+   */
+  public void update(String name, T item) {
+    mItems.put(name, item);
+  }
 
-	/* (non-Javadoc)
-	 * @see java.lang.Iterable#iterator()
-	 */
-	@Override
-	public Iterator<String> iterator() {
-		return mItems.keySet().iterator();
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.model.NameModel#remove(java.lang.String)
+   */
+  @Override
+  public void remove(String name) {
+    mItems.remove(name);
+
+    fireChanged();
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.model.NameModel#get(java.lang.String)
+   */
+  @Override
+  public T get(String name) {
+    return mItems.get(name);
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.model.NameModel#contains(java.lang.String)
+   */
+  @Override
+  public boolean contains(String name) {
+    return mItems.containsKey(name);
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.model.NameModel#clear()
+   */
+  @Override
+  public void clear() {
+    mItems.clear();
+
+    fireChanged();
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.model.NameModel#size()
+   */
+  @Override
+  public int size() {
+    return mItems.size();
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Iterable#iterator()
+   */
+  @Override
+  public Iterator<String> iterator() {
+    return mItems.keySet().iterator();
+  }
 }

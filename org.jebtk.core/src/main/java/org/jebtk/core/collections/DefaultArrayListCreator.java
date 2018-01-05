@@ -21,40 +21,47 @@ import java.util.List;
 /**
  * The class DefaultListCreator.
  *
- * @param <V> the value type
+ * @param <V>
+ *          the value type
  */
 public class DefaultArrayListCreator<V> implements ListCreator<V> {
-	
-	/**
-	 * The member default value.
-	 */
-	private EntryCreator<V> mDefaultValue;
 
-	/**
-	 * Instantiates a new default list creator.
-	 *
-	 * @param listSize the list size
-	 * @param defaultValue the default value
-	 */
-	public DefaultArrayListCreator(V defaultValue) {
-		this(new ValueCreator<V>(defaultValue));
-	}
-	
-	/**
-	 * Instantiates a new default list creator.
-	 *
-	 * @param listSize the list size
-	 * @param defaultValue the default value
-	 */
-	public DefaultArrayListCreator(EntryCreator<V> defaultValue) {
-		mDefaultValue = defaultValue;
-	}
+  /**
+   * The member default value.
+   */
+  private EntryCreator<V> mDefaultValue;
 
-	/* (non-Javadoc)
-	 * @see org.abh.lib.collections.EntryCreator#create()
-	 */
-	@Override
-	public List<V> newEntry() {
-		return DefaultArrayList.create(mDefaultValue);
-	}
+  /**
+   * Instantiates a new default list creator.
+   *
+   * @param listSize
+   *          the list size
+   * @param defaultValue
+   *          the default value
+   */
+  public DefaultArrayListCreator(V defaultValue) {
+    this(new ValueCreator<V>(defaultValue));
+  }
+
+  /**
+   * Instantiates a new default list creator.
+   *
+   * @param listSize
+   *          the list size
+   * @param defaultValue
+   *          the default value
+   */
+  public DefaultArrayListCreator(EntryCreator<V> defaultValue) {
+    mDefaultValue = defaultValue;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.collections.EntryCreator#create()
+   */
+  @Override
+  public List<V> newEntry() {
+    return DefaultArrayList.create(mDefaultValue);
+  }
 }

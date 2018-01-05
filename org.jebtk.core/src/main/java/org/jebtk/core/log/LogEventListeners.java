@@ -17,7 +17,6 @@ package org.jebtk.core.log;
 
 import org.jebtk.core.event.EventProducer;
 
-
 // TODO: Auto-generated Javadoc
 /**
  * The basis for model controls in a model view controller setup.
@@ -26,32 +25,40 @@ import org.jebtk.core.event.EventProducer;
  *
  */
 public class LogEventListeners extends EventProducer<LogEventListener> implements LogEventProducer {
-	
-	/**
-	 * The constant serialVersionUID.
-	 */
-	private static final long serialVersionUID = 1L;
-	
-	/* (non-Javadoc)
-	 * @see org.abh.lib.log.LogEventProducer#addLogListener(org.abh.lib.log.LogEventListener)
-	 */
-	public void addLogListener(LogEventListener l) {
-		mListeners.add(l);
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.lib.log.LogEventProducer#removeLogListener(org.abh.lib.log.LogEventListener)
-	 */
-	public void removeLogListener(LogEventListener l) {
-		mListeners.remove(l);
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.lib.log.LogEventProducer#fireLogEvent(org.abh.lib.log.LogEvent)
-	 */
-	public void fireLogEvent(LogEvent e) {
-		for (LogEventListener l : mListeners) {
-			l.logEvent(e);
-		}
-	}
+
+  /**
+   * The constant serialVersionUID.
+   */
+  private static final long serialVersionUID = 1L;
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.log.LogEventProducer#addLogListener(org.abh.lib.log.
+   * LogEventListener)
+   */
+  public void addLogListener(LogEventListener l) {
+    mListeners.add(l);
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.log.LogEventProducer#removeLogListener(org.abh.lib.log.
+   * LogEventListener)
+   */
+  public void removeLogListener(LogEventListener l) {
+    mListeners.remove(l);
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.log.LogEventProducer#fireLogEvent(org.abh.lib.log.LogEvent)
+   */
+  public void fireLogEvent(LogEvent e) {
+    for (LogEventListener l : mListeners) {
+      l.logEvent(e);
+    }
+  }
 }

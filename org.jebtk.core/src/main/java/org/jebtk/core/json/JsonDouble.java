@@ -24,50 +24,59 @@ import java.io.IOException;
  * @author Antony Holmes Holmes
  */
 public class JsonDouble extends Json {
-	
-	/**
-	 * The member value.
-	 */
-	private double mValue;
 
-	/**
-	 * Instantiates a new json double.
-	 *
-	 * @param value the value
-	 */
-	public JsonDouble(double value) {
-		mValue = value;
-	}
+  /**
+   * The member value.
+   */
+  private double mValue;
 
-	/* (non-Javadoc)
-	 * @see org.abh.lib.json.JsonValue#getAsDouble()
-	 */
-	@Override
-	public double getAsDouble() {
-		return mValue;
-	}
+  /**
+   * Instantiates a new json double.
+   *
+   * @param value
+   *          the value
+   */
+  public JsonDouble(double value) {
+    mValue = value;
+  }
 
-	/* (non-Javadoc)
-	 * @see org.abh.lib.json.JsonValue#getAsInt()
-	 */
-	@Override
-	public int getAsInt() {
-		return (int)mValue;
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.json.JsonValue#getAsDouble()
+   */
+  @Override
+  public double getAsDouble() {
+    return mValue;
+  }
 
-	/* (non-Javadoc)
-	 * @see org.abh.lib.json.JsonValue#getAsString()
-	 */
-	@Override
-	public String getAsString() {
-		return Double.toString(mValue);
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.json.JsonValue#getAsInt()
+   */
+  @Override
+  public int getAsInt() {
+    return (int) mValue;
+  }
 
-	/* (non-Javadoc)
-	 * @see org.abh.lib.json.JsonValue#formattedTxt(java.lang.StringBuilder)
-	 */
-	@Override
-	public void toJson(Appendable buffer) throws IOException {
-		buffer.append(getAsString());
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.json.JsonValue#getAsString()
+   */
+  @Override
+  public String getAsString() {
+    return Double.toString(mValue);
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.json.JsonValue#formattedTxt(java.lang.StringBuilder)
+   */
+  @Override
+  public void toJson(Appendable buffer) throws IOException {
+    buffer.append(getAsString());
+  }
 }

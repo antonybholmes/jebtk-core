@@ -24,45 +24,53 @@ import java.util.HashSet;
  * benefits of a vector without the ability to modify it.
  *
  * @author Antony Holmes Holmes
- * @param <T> the generic type
+ * @param <T>
+ *          the generic type
  */
-public class ImmutableSet<T> extends HashSet<T>
-{
-	
-	/**
-	 * The constant serialVersionUID.
-	 */
-	private static final long serialVersionUID = 1L;
-	
-	/* (non-Javadoc)
-	 * @see java.util.HashSet#clear()
-	 */
-	@Override
-	public void clear() {
-		// Do nothing
-	}
-	
-	/* (non-Javadoc)
-	 * @see java.util.HashSet#remove(java.lang.Object)
-	 */
-	@Override
-	public boolean remove(Object o) {
-		return false;
-	}
-	
-	/* (non-Javadoc)
-	 * @see java.util.AbstractSet#removeAll(java.util.Collection)
-	 */
-	@Override
-	public boolean removeAll(Collection<?> items) {
-		return false;
-	}
-	
-	/* (non-Javadoc)
-	 * @see java.util.AbstractCollection#retainAll(java.util.Collection)
-	 */
-	@Override
-	public boolean retainAll(Collection<?> items) {
-		return false;
-	}
+public class ImmutableSet<T> extends HashSet<T> {
+
+  /**
+   * The constant serialVersionUID.
+   */
+  private static final long serialVersionUID = 1L;
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.util.HashSet#clear()
+   */
+  @Override
+  public void clear() {
+    // Do nothing
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.util.HashSet#remove(java.lang.Object)
+   */
+  @Override
+  public boolean remove(Object o) {
+    return false;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.util.AbstractSet#removeAll(java.util.Collection)
+   */
+  @Override
+  public boolean removeAll(Collection<?> items) {
+    return false;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.util.AbstractCollection#retainAll(java.util.Collection)
+   */
+  @Override
+  public boolean retainAll(Collection<?> items) {
+    return false;
+  }
 }

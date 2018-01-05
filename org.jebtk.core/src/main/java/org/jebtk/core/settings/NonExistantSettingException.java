@@ -23,18 +23,19 @@ import org.jebtk.core.MessageException;
  */
 public class NonExistantSettingException extends MessageException {
 
-	/**
-	 * The constant serialVersionUID.
-	 */
-	private static final long serialVersionUID = 1L;
+  /**
+   * The constant serialVersionUID.
+   */
+  private static final long serialVersionUID = 1L;
 
-	/**
-	 * Instantiates a new non existant setting exception.
-	 *
-	 * @param name the name
-	 */
-	public NonExistantSettingException(String name) {
-		super("Setting " + name + " does not exists.");	
-	}
+  /**
+   * Instantiates a new non existant setting exception.
+   *
+   * @param name
+   *          the name
+   */
+  public NonExistantSettingException(String name) {
+    super("Setting " + name + " does not exists.");
+  }
 
 }

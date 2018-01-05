@@ -28,281 +28,297 @@ import org.jebtk.core.text.TextUtils;
  * The Class PathUtils.
  */
 public class PathUtils {
-	
-	/**
-	 * Instantiates a new path utils.
-	 */
-	private PathUtils() {
-		// Do nothing
-	}
-	
-	/**
-	 * Convert.
-	 *
-	 * @param files the files
-	 * @return the list
-	 */
-	public static List<Path> toList(File[] files) {
-		List<Path> ret = new ArrayList<Path>(files.length);
-		
-		for (File file : files) {
-			ret.add(file.toPath());
-		}
-		
-		return ret;
-	}
-	
-	/**
-	 * Gets the file ext.
-	 *
-	 * @param file the file
-	 * @return the file ext
-	 */
-	public static String getFileExt(final Path file) {
-		return Io.getFileExt(getName(file));
-	}
-	
-	/**
-	 * Returns the portion of the path name after the first period is
-	 * encountered.
-	 *
-	 * @param file the file
-	 * @return the file ext long
-	 */
-	public static String getFileExtLong(final Path file) {
-		return Io.getFileExtLong(getName(file));
-	}
 
-	/**
-	 * Returns the absolute path of a file as a string.
-	 *
-	 * @param file the file
-	 * @return the string
-	 */
-	public static String toString(final Path file) {
-		if (file != null) {
-			return file.toAbsolutePath().toString();
-		} else {
-			return TextUtils.EMPTY_STRING;
-		}
-	}
+  /**
+   * Instantiates a new path utils.
+   */
+  private PathUtils() {
+    // Do nothing
+  }
 
-	/**
-	 * Gets the name.
-	 *
-	 * @param file the file
-	 * @return the name
-	 */
-	public static String getName(Path file) {
-		file = file.getFileName();
-		
-		if (file != null) {
-			return file.toString();
-		} else {
-			return TextUtils.EMPTY_STRING;
-		}
-	}
-	
-	/**
-	 * Gets the name of a file excluding the parent path and the file
-	 * extension (the last period up until the end of the file name).
-	 *
-	 * @param file the file
-	 * @return the name no ext
-	 */
-	public static String getNameNoExt(final Path file) {
-		String name = getName(file);
-		
-		int i = name.lastIndexOf(".");
-		
-		if (i != -1) {
-			return name.substring(0, i);
-		} else {
-			return name;
-		}
-	}
-	
-	/**
-	 * Name prefix.
-	 *
-	 * @param file the file
-	 * @return the string
-	 */
-	public static String namePrefix(final Path file) {
-		return namePrefix(file, ".");
-	}
-	
-	/**
-	 * Returns the name of the file removing everything after a break.
-	 *
-	 * @param file the file
-	 * @param s the s
-	 * @return the string
-	 */
-	public static String namePrefix(final Path file, String s) {
-		String name = getName(file);
-		
-		int i = name.indexOf(s);
-		
-		if (i != -1) {
-			return name.substring(0, i);
-		} else {
-			return name;
-		}
-	}
+  /**
+   * Convert.
+   *
+   * @param files
+   *          the files
+   * @return the list
+   */
+  public static List<Path> toList(File[] files) {
+    List<Path> ret = new ArrayList<Path>(files.length);
 
-	/**
-	 * Adds a file extension to a file name. This method will check
-	 * to ensure it does not create duplicate endings such as .txt.txt,
-	 * but it will allow .csv.txt for example.
-	 *
-	 * @param file the file
-	 * @param extension the extension
-	 * @return the file
-	 */
-	public static final Path addExtension(final Path file, final String extension) {
-		String s = toString(file);
+    for (File file : files) {
+      ret.add(file.toPath());
+    }
 
-		if (!s.toLowerCase().endsWith("." + extension)) {
-			s += "." + extension;
-		}
+    return ret;
+  }
 
-		return getPath(s);
-	}
-	
-	/**
-	 * Gets the path.
-	 *
-	 * @param first the first
-	 * @param rest the rest
-	 * @return the path
-	 */
-	public static Path getPath(String first, String... rest) {
-		if (first != null) {
-			return Paths.get(first, rest);
-		} else {
-			return null;
-		}
-	}
-	
-	/**
-	 * Gets the path.
-	 *
-	 * @param first the first
-	 * @return the path
-	 */
-	public static Path getPath(String first) {
-		if (first != null) {
-			return Paths.get(first);
-		} else {
-			return null;
-		}
-	}
-	
-	/**
-	 * Gets the pwd.
-	 *
-	 * @return the pwd
-	 */
-	public static Path getPwd() {
-		return Paths.get(".").toAbsolutePath().normalize();
-	}
-	
-	//
-	// Functional
-	//
-	
-	/**
-	 * The Class Ext.
-	 */
-	public static class Ext {
-		
-		/**
-		 * Txt.
-		 *
-		 * @return the ext test
-		 */
-		public ExtTest txt() {
-			return type("txt");
-		}
-		
-		/**
-		 * Csv.
-		 *
-		 * @return the ext test
-		 */
-		public ExtTest csv() {
-			return type("csv");
-		}
+  /**
+   * Gets the file ext.
+   *
+   * @param file
+   *          the file
+   * @return the file ext
+   */
+  public static String getFileExt(final Path file) {
+    return Io.getFileExt(getName(file));
+  }
 
-		/**
-		 * Gz.
-		 *
-		 * @return the ext test
-		 */
-		public ExtTest gz() {
-			return type("gz");
-		}
-		
-		/**
-		 * Json.
-		 *
-		 * @return the ext test
-		 */
-		public ExtTest json() {
-			return type("json");
-		}
-		
-		/**
-		 * Xml.
-		 *
-		 * @return the ext test
-		 */
-		public ExtTest xml() {
-			return type("xml");
-		}
-		
-		/**
-		 * Type.
-		 *
-		 * @param ext the ext
-		 * @return the ext test
-		 */
-		public ExtTest type(String ext) {
-			return new ExtTest(ext);
-		}
-	}
+  /**
+   * Returns the portion of the path name after the first period is encountered.
+   *
+   * @param file
+   *          the file
+   * @return the file ext long
+   */
+  public static String getFileExtLong(final Path file) {
+    return Io.getFileExtLong(getName(file));
+  }
 
-	/**
-	 * Ext.
-	 *
-	 * @return the ext
-	 */
-	public static Ext ext() {
-		return new Ext();
-	}
+  /**
+   * Returns the absolute path of a file as a string.
+   *
+   * @param file
+   *          the file
+   * @return the string
+   */
+  public static String toString(final Path file) {
+    if (file != null) {
+      return file.toAbsolutePath().toString();
+    } else {
+      return TextUtils.EMPTY_STRING;
+    }
+  }
 
-	/**
-	 * Ensures a path is in relative form by stripping leading slashes.
-	 *
-	 * @param path the path
-	 * @return the path
-	 */
-	public static Path relative(Path path) {
-		return relative(toString(path));
-	}
-	
-	/**
-	 * Ensures a path is in relative form by stripping leading slashes.
-	 *
-	 * @param path the path
-	 * @return the path
-	 */
-	public static Path relative(String path) {
-		if (path != null) {
-			return getPath(path.replaceFirst("^\\/", TextUtils.EMPTY_STRING));
-		} else {
-			return null;
-		}
-	}
+  /**
+   * Gets the name.
+   *
+   * @param file
+   *          the file
+   * @return the name
+   */
+  public static String getName(Path file) {
+    file = file.getFileName();
+
+    if (file != null) {
+      return file.toString();
+    } else {
+      return TextUtils.EMPTY_STRING;
+    }
+  }
+
+  /**
+   * Gets the name of a file excluding the parent path and the file extension (the
+   * last period up until the end of the file name).
+   *
+   * @param file
+   *          the file
+   * @return the name no ext
+   */
+  public static String getNameNoExt(final Path file) {
+    String name = getName(file);
+
+    int i = name.lastIndexOf(".");
+
+    if (i != -1) {
+      return name.substring(0, i);
+    } else {
+      return name;
+    }
+  }
+
+  /**
+   * Name prefix.
+   *
+   * @param file
+   *          the file
+   * @return the string
+   */
+  public static String namePrefix(final Path file) {
+    return namePrefix(file, ".");
+  }
+
+  /**
+   * Returns the name of the file removing everything after a break.
+   *
+   * @param file
+   *          the file
+   * @param s
+   *          the s
+   * @return the string
+   */
+  public static String namePrefix(final Path file, String s) {
+    String name = getName(file);
+
+    int i = name.indexOf(s);
+
+    if (i != -1) {
+      return name.substring(0, i);
+    } else {
+      return name;
+    }
+  }
+
+  /**
+   * Adds a file extension to a file name. This method will check to ensure it
+   * does not create duplicate endings such as .txt.txt, but it will allow
+   * .csv.txt for example.
+   *
+   * @param file
+   *          the file
+   * @param extension
+   *          the extension
+   * @return the file
+   */
+  public static final Path addExtension(final Path file, final String extension) {
+    String s = toString(file);
+
+    if (!s.toLowerCase().endsWith("." + extension)) {
+      s += "." + extension;
+    }
+
+    return getPath(s);
+  }
+
+  /**
+   * Gets the path.
+   *
+   * @param first
+   *          the first
+   * @param rest
+   *          the rest
+   * @return the path
+   */
+  public static Path getPath(String first, String... rest) {
+    if (first != null) {
+      return Paths.get(first, rest);
+    } else {
+      return null;
+    }
+  }
+
+  /**
+   * Gets the path.
+   *
+   * @param first
+   *          the first
+   * @return the path
+   */
+  public static Path getPath(String first) {
+    if (first != null) {
+      return Paths.get(first);
+    } else {
+      return null;
+    }
+  }
+
+  /**
+   * Gets the pwd.
+   *
+   * @return the pwd
+   */
+  public static Path getPwd() {
+    return Paths.get(".").toAbsolutePath().normalize();
+  }
+
+  //
+  // Functional
+  //
+
+  /**
+   * The Class Ext.
+   */
+  public static class Ext {
+
+    /**
+     * Txt.
+     *
+     * @return the ext test
+     */
+    public ExtTest txt() {
+      return type("txt");
+    }
+
+    /**
+     * Csv.
+     *
+     * @return the ext test
+     */
+    public ExtTest csv() {
+      return type("csv");
+    }
+
+    /**
+     * Gz.
+     *
+     * @return the ext test
+     */
+    public ExtTest gz() {
+      return type("gz");
+    }
+
+    /**
+     * Json.
+     *
+     * @return the ext test
+     */
+    public ExtTest json() {
+      return type("json");
+    }
+
+    /**
+     * Xml.
+     *
+     * @return the ext test
+     */
+    public ExtTest xml() {
+      return type("xml");
+    }
+
+    /**
+     * Type.
+     *
+     * @param ext
+     *          the ext
+     * @return the ext test
+     */
+    public ExtTest type(String ext) {
+      return new ExtTest(ext);
+    }
+  }
+
+  /**
+   * Ext.
+   *
+   * @return the ext
+   */
+  public static Ext ext() {
+    return new Ext();
+  }
+
+  /**
+   * Ensures a path is in relative form by stripping leading slashes.
+   *
+   * @param path
+   *          the path
+   * @return the path
+   */
+  public static Path relative(Path path) {
+    return relative(toString(path));
+  }
+
+  /**
+   * Ensures a path is in relative form by stripping leading slashes.
+   *
+   * @param path
+   *          the path
+   * @return the path
+   */
+  public static Path relative(String path) {
+    if (path != null) {
+      return getPath(path.replaceFirst("^\\/", TextUtils.EMPTY_STRING));
+    } else {
+      return null;
+    }
+  }
 }

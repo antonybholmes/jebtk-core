@@ -23,33 +23,37 @@ import java.util.TreeMap;
  * A Tree map where the keys can be iterated over.
  *
  * @author Antony Holmes Holmes
- * @param <K> the key type
- * @param <V> the value type
+ * @param <K>
+ *          the key type
+ * @param <V>
+ *          the value type
  */
 public class IterTreeMap<K, V> extends TreeMap<K, V> implements IterMap<K, V> {
 
-	/** The Constant serialVersionUID. */
-	private static final long serialVersionUID = 1L;
-	
-	@Override
-	public K first() {
-		return iterator().next();
-	}
-	
-	/* (non-Javadoc)
-	 * @see java.lang.Iterable#iterator()
-	 */
-	@Override
-	public Iterator<K> iterator() {
-		return keySet().iterator();
-	}
+  /** The Constant serialVersionUID. */
+  private static final long serialVersionUID = 1L;
 
-	/**
-	 * Create a new IterTreeMap.
-	 * 
-	 * @return		A new IterTreeMap.
-	 */
-	public static <KK, VV> IterTreeMap<KK, VV> newIterTreeMap() {
-		return new IterTreeMap<KK, VV>();
-	}
+  @Override
+  public K first() {
+    return iterator().next();
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Iterable#iterator()
+   */
+  @Override
+  public Iterator<K> iterator() {
+    return keySet().iterator();
+  }
+
+  /**
+   * Create a new IterTreeMap.
+   * 
+   * @return A new IterTreeMap.
+   */
+  public static <KK, VV> IterTreeMap<KK, VV> newIterTreeMap() {
+    return new IterTreeMap<KK, VV>();
+  }
 }

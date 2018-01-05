@@ -20,25 +20,25 @@ package org.jebtk.core;
  * The Interface NumConvertable.
  */
 public interface NumConvertable {
-	
-	/**
-	 * Gets the double.
-	 *
-	 * @return the double
-	 */
-	double getDouble();
-	
-	/**
-	 * Gets the float.
-	 *
-	 * @return the float
-	 */
-	float getFloat();
-	
-	/**
-	 * Gets the int.
-	 *
-	 * @return the int
-	 */
-	int getInt();
+
+  /**
+   * Gets the double.
+   *
+   * @return the double
+   */
+  double getDouble();
+
+  /**
+   * Gets the float.
+   *
+   * @return the float
+   */
+  float getFloat();
+
+  /**
+   * Gets the int.
+   *
+   * @return the int
+   */
+  int getInt();
 }

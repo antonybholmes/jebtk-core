@@ -17,28 +17,29 @@ package org.jebtk.core.collections;
 
 // TODO: Auto-generated Javadoc
 /**
- * Fast stack implementation for Integers. Note that at the moment,
- * no bound checks are performed for speed so it will ungraciously
- * throw exceptions if misused.
+ * Fast stack implementation for Integers. Note that at the moment, no bound
+ * checks are performed for speed so it will ungraciously throw exceptions if
+ * misused.
  *
  * @author Antony Holmes Holmes
  *
  */
 public class IntFixedStack extends FixedStack<Integer> {
-	
-	/**
-	 * Instantiates a new int fixed stack.
-	 */
-	public IntFixedStack() {
-		this(DEFAULT_SIZE);
-	}
 
-	/**
-	 * Instantiates a new int fixed stack.
-	 *
-	 * @param size the size
-	 */
-	public IntFixedStack(int size) {
-		super(size);
-	}
+  /**
+   * Instantiates a new int fixed stack.
+   */
+  public IntFixedStack() {
+    this(DEFAULT_SIZE);
+  }
+
+  /**
+   * Instantiates a new int fixed stack.
+   *
+   * @param size
+   *          the size
+   */
+  public IntFixedStack(int size) {
+    super(size);
+  }
 }

@@ -15,44 +15,47 @@
  */
 package org.jebtk.core.tree;
 
-
 // TODO: Auto-generated Javadoc
 /**
- * Specialized root node for a tree. This node cannot contain
- * data nor may its name be changed.
+ * Specialized root node for a tree. This node cannot contain data nor may its
+ * name be changed.
  *
  * @author Antony Holmes Holmes
- * @param <T> the generic type
+ * @param <T>
+ *          the generic type
  */
 public class TreeRootNode<T> extends TreeNode<T> {
-	
-	/**
-	 * The constant serialVersionUID.
-	 */
-	private static final long serialVersionUID = 1L;
-	
-	/**
-	 * Instantiates a new tree root node.
-	 */
-	public TreeRootNode() {
-		super("root");
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.lib.tree.TreeNode#setName(java.lang.String)
-	 */
-	@Override
-	public final void setName(String name) {
-		// do nothing
-	}
 
-	/* (non-Javadoc)
-	 * @see org.abh.lib.tree.TreeNode#setValue(java.lang.Object)
-	 */
-	@Override
-	public final void setValue(T value) {
-		// do nothing
-	}
+  /**
+   * The constant serialVersionUID.
+   */
+  private static final long serialVersionUID = 1L;
 
+  /**
+   * Instantiates a new tree root node.
+   */
+  public TreeRootNode() {
+    super("root");
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.tree.TreeNode#setName(java.lang.String)
+   */
+  @Override
+  public final void setName(String name) {
+    // do nothing
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.tree.TreeNode#setValue(java.lang.Object)
+   */
+  @Override
+  public final void setValue(T value) {
+    // do nothing
+  }
 
 }

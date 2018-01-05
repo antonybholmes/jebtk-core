@@ -19,51 +19,58 @@ package org.jebtk.core.collections;
 /**
  * Enforces that both keys must be of the same type.
  *
- * @param <K> the key type
- * @param <V> the value type
+ * @param <K>
+ *          the key type
+ * @param <V>
+ *          the value type
  */
 public class SimpleHashMapMap<K, V> extends DefaultHashMapMap<K, K, V> {
 
-	/** The Constant serialVersionUID. */
-	private static final long serialVersionUID = 1L;
+  /** The Constant serialVersionUID. */
+  private static final long serialVersionUID = 1L;
 
-	/**
-	 * Instantiates a new simple map map.
-	 */
-	public SimpleHashMapMap() {
-		this(INITIAL_CAPACITY);
-	}
-	
+  /**
+   * Instantiates a new simple map map.
+   */
+  public SimpleHashMapMap() {
+    this(INITIAL_CAPACITY);
+  }
 
-	/**
-	 * Instantiates a new simple hash map map.
-	 *
-	 * @param initialCapacity the initial capacity
-	 */
-	public SimpleHashMapMap(int initialCapacity) {
-		super(initialCapacity);
-	}
-	
-	/**
-	 * Creates the.
-	 *
-	 * @param <KK> the generic type
-	 * @param <VV> the generic type
-	 * @return the multi map
-	 */
-	public static <KK, VV> MapMap<KK, KK, VV> create() {
-		return create(INITIAL_CAPACITY);
-	}
-	
-	/**
-	 * Creates the.
-	 *
-	 * @param <KK> the generic type
-	 * @param <VV> the generic type
-	 * @param initialCapacity the initial capacity
-	 * @return the multi map
-	 */
-	public static <KK, VV> MapMap<KK, KK, VV> create(int initialCapacity) {
-		return new SimpleHashMapMap<KK, VV>(initialCapacity);
-	}
+  /**
+   * Instantiates a new simple hash map map.
+   *
+   * @param initialCapacity
+   *          the initial capacity
+   */
+  public SimpleHashMapMap(int initialCapacity) {
+    super(initialCapacity);
+  }
+
+  /**
+   * Creates the.
+   *
+   * @param <KK>
+   *          the generic type
+   * @param <VV>
+   *          the generic type
+   * @return the multi map
+   */
+  public static <KK, VV> MapMap<KK, KK, VV> create() {
+    return create(INITIAL_CAPACITY);
+  }
+
+  /**
+   * Creates the.
+   *
+   * @param <KK>
+   *          the generic type
+   * @param <VV>
+   *          the generic type
+   * @param initialCapacity
+   *          the initial capacity
+   * @return the multi map
+   */
+  public static <KK, VV> MapMap<KK, KK, VV> create(int initialCapacity) {
+    return new SimpleHashMapMap<KK, VV>(initialCapacity);
+  }
 }

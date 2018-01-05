@@ -30,45 +30,48 @@ import java.util.zip.ZipOutputStream;
  *
  */
 public class Zip {
-	
-	/**
-	 * The buffer.
-	 */
-	private static byte[] BUFFER = new byte[1024];
 
-	/**
-	 * Instantiates a new zip.
-	 */
-	private Zip() {
-		// do nothing
-	}
+  /**
+   * The buffer.
+   */
+  private static byte[] BUFFER = new byte[1024];
 
-	/**
-	 * Create a zip file from a list of files.
-	 *
-	 * @param outFile the out file
-	 * @param files the files
-	 * @throws Exception {
-	 */
-	public static void createZip(File outFile, List<File> files) throws Exception {
-		ZipOutputStream out = new ZipOutputStream(new FileOutputStream(outFile));
+  /**
+   * Instantiates a new zip.
+   */
+  private Zip() {
+    // do nothing
+  }
 
-	    for (File file : files) {
-	        FileInputStream in = new FileInputStream(file);
+  /**
+   * Create a zip file from a list of files.
+   *
+   * @param outFile
+   *          the out file
+   * @param files
+   *          the files
+   * @throws Exception
+   *           {
+   */
+  public static void createZip(File outFile, List<File> files) throws Exception {
+    ZipOutputStream out = new ZipOutputStream(new FileOutputStream(outFile));
 
-	        out.putNextEntry(new ZipEntry(file.getAbsolutePath()));
+    for (File file : files) {
+      FileInputStream in = new FileInputStream(file);
 
-	        int len;
-	
-	        while ((len = in.read(BUFFER)) > 0) {
-	            out.write(BUFFER, 0, len);
-	        }
+      out.putNextEntry(new ZipEntry(file.getAbsolutePath()));
 
-	        out.closeEntry();
-	
-	        in.close();
-	    }
+      int len;
 
-	    out.close();
-	}
+      while ((len = in.read(BUFFER)) > 0) {
+        out.write(BUFFER, 0, len);
+      }
+
+      out.closeEntry();
+
+      in.close();
+    }
+
+    out.close();
+  }
 }

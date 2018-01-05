@@ -23,18 +23,19 @@ package org.jebtk.core;
  *
  */
 public class RuntimeMessageException extends RuntimeException {
-	
-	/**
-	 * The constant serialVersionUID.
-	 */
-	private static final long serialVersionUID = 1L;
 
-	/**
-	 * Instantiates a new message exception.
-	 *
-	 * @param message the message
-	 */
-	public RuntimeMessageException(String message) {
-		super(message);
-	}
+  /**
+   * The constant serialVersionUID.
+   */
+  private static final long serialVersionUID = 1L;
+
+  /**
+   * Instantiates a new message exception.
+   *
+   * @param message
+   *          the message
+   */
+  public RuntimeMessageException(String message) {
+    super(message);
+  }
 }

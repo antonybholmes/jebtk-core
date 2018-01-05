@@ -21,34 +21,38 @@ import java.util.List;
 
 // TODO: Auto-generated Javadoc
 /**
- * Holds a list of nodes as they appear in a tree and
- * represents the nodes in a path.
+ * Holds a list of nodes as they appear in a tree and represents the nodes in a
+ * path.
  *
  * @author Antony Holmes Holmes
- * @param <T> the generic type
+ * @param <T>
+ *          the generic type
  */
 public class TreeNodeChain<T> implements Iterable<TreeNode<T>> {
-	
-	/**
-	 * The nodes.
-	 */
-	private List<TreeNode<T>> nodes = new ArrayList<TreeNode<T>>();
-	
-	/**
-	 * Adds the.
-	 *
-	 * @param node the node
-	 */
-	public void add(TreeNode<T> node) {
-		nodes.add(node);
-	}
-	
-	/* (non-Javadoc)
-	 * @see java.lang.Iterable#iterator()
-	 */
-	@Override
-	public Iterator<TreeNode<T>> iterator() {
-		return nodes.iterator();
-	}
-	
+
+  /**
+   * The nodes.
+   */
+  private List<TreeNode<T>> nodes = new ArrayList<TreeNode<T>>();
+
+  /**
+   * Adds the.
+   *
+   * @param node
+   *          the node
+   */
+  public void add(TreeNode<T> node) {
+    nodes.add(node);
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Iterable#iterator()
+   */
+  @Override
+  public Iterator<TreeNode<T>> iterator() {
+    return nodes.iterator();
+  }
+
 }

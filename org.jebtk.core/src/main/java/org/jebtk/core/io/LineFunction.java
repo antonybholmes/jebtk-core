@@ -22,11 +22,12 @@ import java.util.List;
  * The Interface LineFunction.
  */
 public interface LineFunction {
-	
-	/**
-	 * Give a list of tokens to be processed.
-	 *
-	 * @param line the line
-	 */
-	public void parse(final String line);
+
+  /**
+   * Give a list of tokens to be processed.
+   *
+   * @param line
+   *          the line
+   */
+  public void parse(final String line);
 }

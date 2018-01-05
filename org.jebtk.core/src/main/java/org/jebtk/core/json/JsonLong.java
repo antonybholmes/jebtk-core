@@ -25,57 +25,68 @@ import java.io.IOException;
  */
 public class JsonLong extends Json {
 
-	/**
-	 * The member value.
-	 */
-	private long mValue;
-	
-	/**
-	 * Instantiates a new json integer.
-	 *
-	 * @param value the value
-	 */
-	public JsonLong(long value) {
-		mValue = value;
-	}
+  /**
+   * The member value.
+   */
+  private long mValue;
 
-	/* (non-Javadoc)
-	 * @see org.abh.lib.json.JsonValue#getAsDouble()
-	 */
-	@Override
-	public double getAsDouble() {
-		return mValue;
-	}
+  /**
+   * Instantiates a new json integer.
+   *
+   * @param value
+   *          the value
+   */
+  public JsonLong(long value) {
+    mValue = value;
+  }
 
-	/* (non-Javadoc)
-	 * @see org.abh.lib.json.JsonValue#getAsInt()
-	 */
-	@Override
-	public int getAsInt() {
-		return (int)mValue;
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.json.Json#getAsLong()
-	 */
-	@Override
-	public long getAsLong() {
-		return mValue;
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.json.JsonValue#getAsDouble()
+   */
+  @Override
+  public double getAsDouble() {
+    return mValue;
+  }
 
-	/* (non-Javadoc)
-	 * @see org.abh.lib.json.JsonValue#getAsString()
-	 */
-	@Override
-	public String getAsString() {
-		return Long.toString(mValue);
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.json.JsonValue#getAsInt()
+   */
+  @Override
+  public int getAsInt() {
+    return (int) mValue;
+  }
 
-	/* (non-Javadoc)
-	 * @see org.abh.lib.json.JsonValue#formattedTxt(java.lang.StringBuilder)
-	 */
-	@Override
-	public void toJson(Appendable buffer) throws IOException {
-		buffer.append(getAsString());
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.json.Json#getAsLong()
+   */
+  @Override
+  public long getAsLong() {
+    return mValue;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.json.JsonValue#getAsString()
+   */
+  @Override
+  public String getAsString() {
+    return Long.toString(mValue);
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.json.JsonValue#formattedTxt(java.lang.StringBuilder)
+   */
+  @Override
+  public void toJson(Appendable buffer) throws IOException {
+    buffer.append(getAsString());
+  }
 }

@@ -17,99 +17,110 @@ package org.jebtk.core;
 
 // TODO: Auto-generated Javadoc
 /**
- * Generic index object that allows one object to be associated
- * with some form of index.
+ * Generic index object that allows one object to be associated with some form
+ * of index.
  *
  * @author Antony Holmes Holmes
- * @param <K> the generic type
- * @param <V> the value type
+ * @param <K>
+ *          the generic type
+ * @param <V>
+ *          the value type
  */
 public class DblIdx implements Comparable<DblIdx> {
-	
-	/**
-	 * The member index.
-	 */
-	private int mIndex;
-	
-	/**
-	 * The member value.
-	 */
-	private double mValue;
-	
-	/**
-	 * Instantiates a new indexed value.
-	 *
-	 * @param index the index
-	 * @param item the item
-	 */
-	public DblIdx(int index, double item) {
-		mValue = item;
-		mIndex = index;
-		
-		//mHash = mValue.toString() + index;
-	}
-	
-	/**
-	 * Gets the index.
-	 *
-	 * @return the index
-	 */
-	public int getIndex() {
-		return mIndex;
-	}
-	
-	/**
-	 * Gets the value.
-	 *
-	 * @return the value
-	 */
-	public double getValue() {
-		return mValue;
-	}
-	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "[" + mIndex + ", " + mValue + "]";
-	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Comparable#compareTo(java.lang.Object)
-	 */
-	@Override
-	public int compareTo(DblIdx l) {
-		return Mathematics.compareTo(mValue, l.mValue);
-	}
-	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
-	@Override
-	public boolean equals(Object o) {
-		if (o instanceof DblIdx) {
-			return compareTo((DblIdx)o) == 0;
-		} else {
-			return false;
-		}
-	}
+  /**
+   * The member index.
+   */
+  private int mIndex;
 
-	/**
-	 * Return the items indexed.
-	 *
-	 * @param items the items
-	 * @return the list
-	 */
-	public static DblIdx[] index(double[] items) {
-		DblIdx[] ret = new DblIdx[items.length];
-		
-		int c = 0;
-		
-		for (double item : items) {
-			ret[c++] = new DblIdx(c, item);
-		}
-		
-		return ret;
-	}
+  /**
+   * The member value.
+   */
+  private double mValue;
+
+  /**
+   * Instantiates a new indexed value.
+   *
+   * @param index
+   *          the index
+   * @param item
+   *          the item
+   */
+  public DblIdx(int index, double item) {
+    mValue = item;
+    mIndex = index;
+
+    // mHash = mValue.toString() + index;
+  }
+
+  /**
+   * Gets the index.
+   *
+   * @return the index
+   */
+  public int getIndex() {
+    return mIndex;
+  }
+
+  /**
+   * Gets the value.
+   *
+   * @return the value
+   */
+  public double getValue() {
+    return mValue;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Object#toString()
+   */
+  @Override
+  public String toString() {
+    return "[" + mIndex + ", " + mValue + "]";
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Comparable#compareTo(java.lang.Object)
+   */
+  @Override
+  public int compareTo(DblIdx l) {
+    return Mathematics.compareTo(mValue, l.mValue);
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Object#equals(java.lang.Object)
+   */
+  @Override
+  public boolean equals(Object o) {
+    if (o instanceof DblIdx) {
+      return compareTo((DblIdx) o) == 0;
+    } else {
+      return false;
+    }
+  }
+
+  /**
+   * Return the items indexed.
+   *
+   * @param items
+   *          the items
+   * @return the list
+   */
+  public static DblIdx[] index(double[] items) {
+    DblIdx[] ret = new DblIdx[items.length];
+
+    int c = 0;
+
+    for (double item : items) {
+      ret[c++] = new DblIdx(c, item);
+    }
+
+    return ret;
+  }
 }

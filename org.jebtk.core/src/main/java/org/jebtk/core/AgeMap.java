@@ -20,62 +20,67 @@ import java.util.Map;
 
 // TODO: Auto-generated Javadoc
 /**
- * A map of fixed size that begins to excise the oldest elements once
- * the map reaches a maximum size.
+ * A map of fixed size that begins to excise the oldest elements once the map
+ * reaches a maximum size.
  *
  * @author Antony Holmes Holmes
- * @param <T> the generic type
- * @param <X> the generic type
+ * @param <T>
+ *          the generic type
+ * @param <X>
+ *          the generic type
  */
-public class AgeMap <T, X> extends HashMap<T, X> {
-	
-	/**
-	 * The constant serialVersionUID.
-	 */
-	private static final long serialVersionUID = 1L;
+public class AgeMap<T, X> extends HashMap<T, X> {
 
-	/**
-	 * The member age map.
-	 */
-	private Map<Integer, T> mAgeMap = new HashMap<Integer, T>();
+  /**
+   * The constant serialVersionUID.
+   */
+  private static final long serialVersionUID = 1L;
 
-	/**
-	 * Track the oldest id.
-	 */
-	private int mOldest = 0;
-	
-	/**
-	 * The member max size.
-	 */
-	private int mMaxSize = 0;
+  /**
+   * The member age map.
+   */
+  private Map<Integer, T> mAgeMap = new HashMap<Integer, T>();
 
-	/**
-	 * Instantiates a new age map.
-	 *
-	 * @param maxSize the max size
-	 */
-	public AgeMap(int maxSize) {
-		mMaxSize = maxSize;
-	}
+  /**
+   * Track the oldest id.
+   */
+  private int mOldest = 0;
 
-	/* (non-Javadoc)
-	 * @see java.util.HashMap#put(java.lang.Object, java.lang.Object)
-	 */
-	@Override
-	public X put(T key, X value) {
-		// First clear the cache of junk
-		if (!containsKey(key)) {
-			if (size() == mMaxSize) {
-				remove(mAgeMap.get(mOldest));
-				mAgeMap.remove(mOldest);
-				++mOldest;
-			}
+  /**
+   * The member max size.
+   */
+  private int mMaxSize = 0;
 
-			mAgeMap.put(size(), key);
-		}
+  /**
+   * Instantiates a new age map.
+   *
+   * @param maxSize
+   *          the max size
+   */
+  public AgeMap(int maxSize) {
+    mMaxSize = maxSize;
+  }
 
-		super.put(key, value);
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.util.HashMap#put(java.lang.Object, java.lang.Object)
+   */
+  @Override
+  public X put(T key, X value) {
+    // First clear the cache of junk
+    if (!containsKey(key)) {
+      if (size() == mMaxSize) {
+        remove(mAgeMap.get(mOldest));
+        mAgeMap.remove(mOldest);
+        ++mOldest;
+      }
 
-		return value;
-	}
+      mAgeMap.put(size(), key);
+    }
+
+    super.put(key, value);
+
+    return value;
+  }
 }

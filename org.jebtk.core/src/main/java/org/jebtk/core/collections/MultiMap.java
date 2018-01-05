@@ -20,15 +20,18 @@ import java.util.Map;
 
 // TODO: Auto-generated Javadoc
 /**
- * The interface MultiMap for maps that map keys to collections of values.
- * The keys are automatically created if they do not exist.
+ * The interface MultiMap for maps that map keys to collections of values. The
+ * keys are automatically created if they do not exist.
  *
- * @param <K> the key type
- * @param <V> the value type
- * @param <T> the value type
+ * @param <K>
+ *          the key type
+ * @param <V>
+ *          the value type
+ * @param <T>
+ *          the value type
  */
 public interface MultiMap<K, V, T extends Collection<V>> extends Map<K, T> {
-	
-	/** The Constant DEFAULT_INITIAL_CAPACITY. */
-	public static final int DEFAULT_INITIAL_CAPACITY = 100;
+
+  /** The Constant DEFAULT_INITIAL_CAPACITY. */
+  public static final int DEFAULT_INITIAL_CAPACITY = 100;
 }

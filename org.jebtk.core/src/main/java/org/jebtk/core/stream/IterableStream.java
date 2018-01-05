@@ -17,19 +17,21 @@ package org.jebtk.core.stream;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class BaseStream encapulates an initial collection with the intent
- * of apply further streams to process the list.
+ * The Class BaseStream encapulates an initial collection with the intent of
+ * apply further streams to process the list.
  *
- * @param <T> the generic type
+ * @param <T>
+ *          the generic type
  */
 public class IterableStream<T> extends IteratorStream<T> {
-	
-	/**
-	 * Instantiates a new base stream.
-	 *
-	 * @param iter the iter
-	 */
-	public IterableStream(Iterable<T> iter) {
-		super(iter.iterator());
-	}
+
+  /**
+   * Instantiates a new base stream.
+   *
+   * @param iter
+   *          the iter
+   */
+  public IterableStream(Iterable<T> iter) {
+    super(iter.iterator());
+  }
 }

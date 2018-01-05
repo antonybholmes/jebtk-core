@@ -18,37 +18,42 @@ package org.jebtk.core.model;
 import org.jebtk.core.event.ChangeEvent;
 import org.jebtk.core.event.ChangeEventProducer;
 
-
 // TODO: Auto-generated Javadoc
 /**
  * Generic model for sharing named items.
  *
  * @author Antony Holmes Holmes
- * @param <T> the generic type
+ * @param <T>
+ *          the generic type
  */
-public class ChangeNameMapModel<T extends ChangeEventProducer> extends NameMapModel<T> implements org.jebtk.core.event.ChangeListener {
-	
-	/**
-	 * The constant serialVersionUID.
-	 */
-	private static final long serialVersionUID = 1L;
+public class ChangeNameMapModel<T extends ChangeEventProducer> extends NameMapModel<T>
+    implements org.jebtk.core.event.ChangeListener {
 
-	/* (non-Javadoc)
-	 * @see org.abh.lib.model.NameMapModel#add(java.lang.String, java.lang.Object)
-	 */
-	@Override
-	public void add(String name, T item) {
-		item.addChangeListener(this);
-		
-		super.add(name, item);
-	}
+  /**
+   * The constant serialVersionUID.
+   */
+  private static final long serialVersionUID = 1L;
 
-	/* (non-Javadoc)
-	 * @see org.abh.lib.event.ChangeListener#changed(org.abh.lib.event.ChangeEvent)
-	 */
-	@Override
-	public void changed(ChangeEvent e) {
-		fireChanged();
-	}
-	
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.model.NameMapModel#add(java.lang.String, java.lang.Object)
+   */
+  @Override
+  public void add(String name, T item) {
+    item.addChangeListener(this);
+
+    super.add(name, item);
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.event.ChangeListener#changed(org.abh.lib.event.ChangeEvent)
+   */
+  @Override
+  public void changed(ChangeEvent e) {
+    fireChanged();
+  }
+
 }

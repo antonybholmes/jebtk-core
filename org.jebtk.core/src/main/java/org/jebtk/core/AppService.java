@@ -22,112 +22,115 @@ import org.jebtk.core.io.FileUtils;
 
 // TODO: Auto-generated Javadoc
 /**
- * Provides global settings for an application such as the default
- * directory to save user files in. This is to allow settings etc to
- * persist even if the application changes.
+ * Provides global settings for an application such as the default directory to
+ * save user files in. This is to allow settings etc to persist even if the
+ * application changes.
  */
 public class AppService implements NameProperty {
-	
-	/**
-	 * The Class AppServiceLoader.
-	 */
-	private static class AppServiceLoader {
-		
-		/** The Constant INSTANCE. */
-		private static final AppService INSTANCE = new AppService();
-	}
 
-	/**
-	 * Gets the single instance of SettingsService.
-	 *
-	 * @return single instance of SettingsService
-	 */
-	public static AppService getInstance() {
-		return AppServiceLoader.INSTANCE;
-	}
-	
-	/** The Constant APP_HOME. */
-	public static final String APP_HOME = "app_home";
-	
-	public static final Path APP_ROOT = FileUtils.home().resolve(APP_HOME);
-	
-	public static final Path RES_DIR = APP_ROOT.resolve("res");
-	
-	/** Returns the shared module directory */
-	public static final Path MOD_DIR = RES_DIR.resolve("modules");
+  /**
+   * The Class AppServiceLoader.
+   */
+  private static class AppServiceLoader {
 
-	/** The m directory. */
-	private Path mDirectory;
+    /** The Constant INSTANCE. */
+    private static final AppService INSTANCE = new AppService();
+  }
 
-	/** The m name. */
-	private String mName;
+  /**
+   * Gets the single instance of SettingsService.
+   *
+   * @return single instance of SettingsService
+   */
+  public static AppService getInstance() {
+    return AppServiceLoader.INSTANCE;
+  }
 
-	/**
-	 * Instantiates a new app service.
-	 */
-	private AppService() {
-		setAppInfo("default");
-	}
-	
-	/**
-	 * Set the application name and create a home directory.
-	 *
-	 * @param name the new app info
-	 */
-	public void setAppInfo(String name) {
-		mName = name.toLowerCase();
-		
-		mDirectory = create(name);
-		
-		try {
-			// Make the directory if it does not exist.
-			FileUtils.mkdir(mDirectory);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.NameProperty#getName()
-	 */
-	@Override
-	public String getName() {
-		return mName;
-	}
+  /** The Constant APP_HOME. */
+  public static final String APP_HOME = "app_home";
 
-	/**
-	 * Returns the application directory for storing settings etc.
-	 *
-	 * @return the app dir
-	 */
-	public Path getAppDir() {
-		return mDirectory;
-	}
-	
-	/**
-	 * Creates a file name in the application directory by prefixing .
-	 *
-	 * @param name the name
-	 * @return the file
-	 * @{code appname.name} onto the application directory
-	 */
-	public Path getFile(String name) {
-		return getAppDir().resolve(name);
-	}
-	
-	public Path getFile(Path file) {
-		return getAppDir().resolve(file);
-	}
+  public static final Path APP_ROOT = FileUtils.home().resolve(APP_HOME);
 
-	/**
-	 * Creates the the application directory path.
-	 *
-	 * @param name the name
-	 * @return the path
-	 */
-	public static Path create(String name) {
-		return FileUtils.home()
-				.resolve(APP_HOME)
-				.resolve(name.toLowerCase());
-	}
+  public static final Path RES_DIR = APP_ROOT.resolve("res");
+
+  /** Returns the shared module directory */
+  public static final Path MOD_DIR = RES_DIR.resolve("modules");
+
+  /** The m directory. */
+  private Path mDirectory;
+
+  /** The m name. */
+  private String mName;
+
+  /**
+   * Instantiates a new app service.
+   */
+  private AppService() {
+    setAppInfo("default");
+  }
+
+  /**
+   * Set the application name and create a home directory.
+   *
+   * @param name
+   *          the new app info
+   */
+  public void setAppInfo(String name) {
+    mName = name.toLowerCase();
+
+    mDirectory = create(name);
+
+    try {
+      // Make the directory if it does not exist.
+      FileUtils.mkdir(mDirectory);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.NameProperty#getName()
+   */
+  @Override
+  public String getName() {
+    return mName;
+  }
+
+  /**
+   * Returns the application directory for storing settings etc.
+   *
+   * @return the app dir
+   */
+  public Path getAppDir() {
+    return mDirectory;
+  }
+
+  /**
+   * Creates a file name in the application directory by prefixing .
+   *
+   * @param name
+   *          the name
+   * @return the file
+   * @{code appname.name} onto the application directory
+   */
+  public Path getFile(String name) {
+    return getAppDir().resolve(name);
+  }
+
+  public Path getFile(Path file) {
+    return getAppDir().resolve(file);
+  }
+
+  /**
+   * Creates the the application directory path.
+   *
+   * @param name
+   *          the name
+   * @return the path
+   */
+  public static Path create(String name) {
+    return FileUtils.home().resolve(APP_HOME).resolve(name.toLowerCase());
+  }
 }

@@ -22,14 +22,17 @@ import java.util.TreeSet;
 /**
  * The class DefaultListCreator.
  *
- * @param <V> the value type
+ * @param <V>
+ *          the value type
  */
 public class DefaultTreeSetCreator<V> implements SetCreator<V> {
-	/* (non-Javadoc)
-	 * @see org.abh.lib.collections.EntryCreator#create()
-	 */
-	@Override
-	public Set<V> newEntry() {
-		return new TreeSet<V>();
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.collections.EntryCreator#create()
+   */
+  @Override
+  public Set<V> newEntry() {
+    return new TreeSet<V>();
+  }
 }

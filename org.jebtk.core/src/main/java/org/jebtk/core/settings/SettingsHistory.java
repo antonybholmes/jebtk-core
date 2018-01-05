@@ -25,97 +25,100 @@ import org.jebtk.core.Mathematics;
  * The Class SettingsHistory.
  */
 public class SettingsHistory {
-	
-	/** The m settings. */
-	private List<Setting> mSettings = new ArrayList<Setting>(2);
-	
-	/** The m index. */
-	private int mIndex = 0;
-	
-	/** The m size. */
-	private int mSize = 0;
-	
-	/**
-	 * Adds the.
-	 *
-	 * @param setting the setting
-	 * @param updated the updated
-	 */
-	public void add(Setting setting, boolean updated) {
-		if (!updated) {
-			// If the setting is not updated, we assume it is a default,
-			// internal setting, in which case, it should appear first in the
-			// list.
-			clear();
-		}
-		
-		if (mSettings.size() == 2) {
-			mSettings.set(1, setting);
-		} else {
-			mSettings.add(setting);
-		}
-		
-		mSize = mSettings.size();
-		
-		mIndex = mSize - 1;
-	}
-	
-	/**
-	 * Clear.
-	 */
-	public void clear() {
-		mSettings.clear();
-		
-		mIndex = -1;
-	}
 
-	/**
-	 * Size.
-	 *
-	 * @return the int
-	 */
-	public int size() {
-		return mSize;
-	}
+  /** The m settings. */
+  private List<Setting> mSettings = new ArrayList<Setting>(2);
 
-	/**
-	 * First.
-	 *
-	 * @return the setting
-	 */
-	public Setting first() {
-		return get(0);
-	}
-	
-	/**
-	 * Current.
-	 *
-	 * @return the setting
-	 */
-	public Setting current() {
-		return get(mIndex);
-	}
-	
-	/**
-	 * Gets the.
-	 *
-	 * @param index the index
-	 * @return the setting
-	 */
-	private Setting get(int index) {
-		if (Mathematics.inBound(index, 0, mSize)) {
-			return mSettings.get(index);
-		} else {
-			return null;
-		}
-	}
+  /** The m index. */
+  private int mIndex = 0;
 
-	/**
-	 * Changes the setting to its default value.
-	 */
-	public void resetToDefault() {
-		if (mSettings.size() == 2) {
-			mSettings.set(1, first());
-		}
-	}
+  /** The m size. */
+  private int mSize = 0;
+
+  /**
+   * Adds the.
+   *
+   * @param setting
+   *          the setting
+   * @param updated
+   *          the updated
+   */
+  public void add(Setting setting, boolean updated) {
+    if (!updated) {
+      // If the setting is not updated, we assume it is a default,
+      // internal setting, in which case, it should appear first in the
+      // list.
+      clear();
+    }
+
+    if (mSettings.size() == 2) {
+      mSettings.set(1, setting);
+    } else {
+      mSettings.add(setting);
+    }
+
+    mSize = mSettings.size();
+
+    mIndex = mSize - 1;
+  }
+
+  /**
+   * Clear.
+   */
+  public void clear() {
+    mSettings.clear();
+
+    mIndex = -1;
+  }
+
+  /**
+   * Size.
+   *
+   * @return the int
+   */
+  public int size() {
+    return mSize;
+  }
+
+  /**
+   * First.
+   *
+   * @return the setting
+   */
+  public Setting first() {
+    return get(0);
+  }
+
+  /**
+   * Current.
+   *
+   * @return the setting
+   */
+  public Setting current() {
+    return get(mIndex);
+  }
+
+  /**
+   * Gets the.
+   *
+   * @param index
+   *          the index
+   * @return the setting
+   */
+  private Setting get(int index) {
+    if (Mathematics.inBound(index, 0, mSize)) {
+      return mSettings.get(index);
+    } else {
+      return null;
+    }
+  }
+
+  /**
+   * Changes the setting to its default value.
+   */
+  public void resetToDefault() {
+    if (mSettings.size() == 2) {
+      mSettings.set(1, first());
+    }
+  }
 }

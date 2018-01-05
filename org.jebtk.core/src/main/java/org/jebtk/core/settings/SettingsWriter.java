@@ -23,15 +23,15 @@ import org.slf4j.LoggerFactory;
  * The Interface SettingsWriter.
  */
 public interface SettingsWriter {
-	
-	/** The log. */
-	public final Logger LOG = 
-			LoggerFactory.getLogger(SettingsWriter.class);
-	
-	/**
-	 * Save.
-	 *
-	 * @param settings the settings
-	 */
-	void save(Settings settings);
+
+  /** The log. */
+  public final Logger LOG = LoggerFactory.getLogger(SettingsWriter.class);
+
+  /**
+   * Save.
+   *
+   * @param settings
+   *          the settings
+   */
+  void save(Settings settings);
 }

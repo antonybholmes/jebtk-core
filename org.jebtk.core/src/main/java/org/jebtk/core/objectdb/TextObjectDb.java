@@ -22,73 +22,76 @@ import java.util.Map;
 
 import org.jebtk.core.path.Path;
 
-
 // TODO: Auto-generated Javadoc
 /**
  * Creates a searchable database of objects tagged by categories.
  *
  * @author Antony Holmes Holmes
- * @param <T> the generic type
+ * @param <T>
+ *          the generic type
  */
 public class TextObjectDb<T> implements Iterable<TextObjectNode<T>>, Serializable {
-	
-	/**
-	 * The constant serialVersionUID.
-	 */
-	private static final long serialVersionUID = 1L;
 
-	/**
-	 * The root.
-	 */
-	private TextObjectNode<T> root = new TextObjectNode<T>("root");
-	
-	/**
-	 * The member path map.
-	 */
-	private Map<Path, TextObjectNode<T>> mPathMap = 
-			new HashMap<Path, TextObjectNode<T>>();
-	
-	/**
-	 * Gets the child by path.
-	 *
-	 * @param path the path
-	 * @return the child by path
-	 */
-	public TextObjectNode<T> getChildByPath(String path) {
-		return getChildByPath(new Path(path));
-	}
-	
-	/**
-	 * Gets the child by path.
-	 *
-	 * @param path the path
-	 * @return the child by path
-	 */
-	public TextObjectNode<T> getChildByPath(Path path) {
-		TextObjectNode<T> child = mPathMap.get(path);
-		
-		if (child != null) {
-			return child;
-		}
-		
-		child = root.getChildByPath(path);
-		
-		mPathMap.put(path, child);
-		
-		return child;
-	}
-	
-	/**
-	 * Clear.
-	 */
-	public void clear() {
-		root.clear();
-	}
-	
-	/* (non-Javadoc)
-	 * @see java.lang.Iterable#iterator()
-	 */
-	public Iterator<TextObjectNode<T>> iterator() {
-		return root.iterator();
-	}
+  /**
+   * The constant serialVersionUID.
+   */
+  private static final long serialVersionUID = 1L;
+
+  /**
+   * The root.
+   */
+  private TextObjectNode<T> root = new TextObjectNode<T>("root");
+
+  /**
+   * The member path map.
+   */
+  private Map<Path, TextObjectNode<T>> mPathMap = new HashMap<Path, TextObjectNode<T>>();
+
+  /**
+   * Gets the child by path.
+   *
+   * @param path
+   *          the path
+   * @return the child by path
+   */
+  public TextObjectNode<T> getChildByPath(String path) {
+    return getChildByPath(new Path(path));
+  }
+
+  /**
+   * Gets the child by path.
+   *
+   * @param path
+   *          the path
+   * @return the child by path
+   */
+  public TextObjectNode<T> getChildByPath(Path path) {
+    TextObjectNode<T> child = mPathMap.get(path);
+
+    if (child != null) {
+      return child;
+    }
+
+    child = root.getChildByPath(path);
+
+    mPathMap.put(path, child);
+
+    return child;
+  }
+
+  /**
+   * Clear.
+   */
+  public void clear() {
+    root.clear();
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Iterable#iterator()
+   */
+  public Iterator<TextObjectNode<T>> iterator() {
+    return root.iterator();
+  }
 }

@@ -19,38 +19,43 @@ package org.jebtk.core.collections;
 /**
  * The Class HashMapCreator.
  *
- * @param <K> the key type
- * @param <V> the value type
+ * @param <K>
+ *          the key type
+ * @param <V>
+ *          the value type
  */
 public class HashMapCreator<K, V> implements IterMapCreator<K, V> {
 
-	/** The Constant INITIAL_CAPACITY. */
-	public static final int INITIAL_CAPACITY = 32;
-	
-	/** The m init cap. */
-	private int mInitCap = 0;
+  /** The Constant INITIAL_CAPACITY. */
+  public static final int INITIAL_CAPACITY = 32;
 
-	/**
-	 * Instantiates a new hash map creator.
-	 */
-	public HashMapCreator() {
-		this(INITIAL_CAPACITY);
-	}
-	
-	/**
-	 * Instantiates a new hash map creator.
-	 *
-	 * @param initCap the init cap
-	 */
-	public HashMapCreator(int initCap) {
-		mInitCap = initCap;
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.lib.collections.EntryCreator#create()
-	 */
-	@Override
-	public IterMap<K, V> newEntry() {
-		return new IterHashMap<K, V>(mInitCap);
-	}
+  /** The m init cap. */
+  private int mInitCap = 0;
+
+  /**
+   * Instantiates a new hash map creator.
+   */
+  public HashMapCreator() {
+    this(INITIAL_CAPACITY);
+  }
+
+  /**
+   * Instantiates a new hash map creator.
+   *
+   * @param initCap
+   *          the init cap
+   */
+  public HashMapCreator(int initCap) {
+    mInitCap = initCap;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.collections.EntryCreator#create()
+   */
+  @Override
+  public IterMap<K, V> newEntry() {
+    return new IterHashMap<K, V>(mInitCap);
+  }
 }

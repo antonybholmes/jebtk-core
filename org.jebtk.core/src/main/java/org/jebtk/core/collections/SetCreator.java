@@ -20,7 +20,8 @@ import java.util.Set;
 /**
  * The Interface SetCreator.
  *
- * @param <V> the value type
+ * @param <V>
+ *          the value type
  */
 public interface SetCreator<V> extends CollectionCreator<V, Set<V>> {
 

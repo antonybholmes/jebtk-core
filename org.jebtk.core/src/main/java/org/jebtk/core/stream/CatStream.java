@@ -19,53 +19,60 @@ package org.jebtk.core.stream;
 /**
  * Concatenate two streams.
  *
- * @param <T> the generic type
+ * @param <T>
+ *          the generic type
  */
 public class CatStream<T> extends Stream<T> {
 
-	/** The m stream. */
-	private Stream<T> mS1;
-	
-	/** The m S 2. */
-	private Stream<T> mS2;
-	
-	/** The first. */
-	private boolean first = true;
-	
-	/**
-	 * Instantiates a new map stream.
-	 *
-	 * @param s1 the s 1
-	 * @param s2 the s 2
-	 */
-	public CatStream(Stream<T> s1, Stream<T> s2) {
-		mS1 = s1;
-		mS2 = s2;
-	}
+  /** The m stream. */
+  private Stream<T> mS1;
 
-	/* (non-Javadoc)
-	 * @see java.util.Iterator#hasNext()
-	 */
-	@Override
-	public boolean hasNext() {
-		return mS2.hasNext();
-	}
+  /** The m S 2. */
+  private Stream<T> mS2;
 
-	/* (non-Javadoc)
-	 * @see java.util.Iterator#next()
-	 */
-	@Override
-	public T next() {
-		if (first) {
-			T v = mS1.next();
-			
-			if (!mS1.hasNext()) {
-				first = false;
-			}
-			
-			return v;
-		} else {
-			return mS2.next();
-		}
-	}
+  /** The first. */
+  private boolean first = true;
+
+  /**
+   * Instantiates a new map stream.
+   *
+   * @param s1
+   *          the s 1
+   * @param s2
+   *          the s 2
+   */
+  public CatStream(Stream<T> s1, Stream<T> s2) {
+    mS1 = s1;
+    mS2 = s2;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.util.Iterator#hasNext()
+   */
+  @Override
+  public boolean hasNext() {
+    return mS2.hasNext();
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.util.Iterator#next()
+   */
+  @Override
+  public T next() {
+    if (first) {
+      T v = mS1.next();
+
+      if (!mS1.hasNext()) {
+        first = false;
+      }
+
+      return v;
+    } else {
+      return mS2.next();
+    }
+  }
 }

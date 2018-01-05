@@ -18,16 +18,16 @@ package org.jebtk.core;
 // TODO: Auto-generated Javadoc
 /**
  * For objects that require a unique id.
+ * 
  * @author Antony Holmes Holmes
  *
  */
 public interface IdProperty {
-	
-	/**
-	 * Returns a unique id for this class of
-	 * objects.
-	 *
-	 * @return the uid
-	 */
-	public int getId();
+
+  /**
+   * Returns a unique id for this class of objects.
+   *
+   * @return the uid
+   */
+  public int getId();
 }

@@ -19,26 +19,29 @@ import java.util.Set;
 
 // TODO: Auto-generated Javadoc
 /**
- * Creates a simple map of sets where the primary and secondary maps have
- * the same key type (e.g. for mimicking a two dimensional structure).
+ * Creates a simple map of sets where the primary and secondary maps have the
+ * same key type (e.g. for mimicking a two dimensional structure).
  *
- * @param <K> the key type
- * @param <V> the value type
+ * @param <K>
+ *          the key type
+ * @param <V>
+ *          the value type
  */
 public abstract class SetMultiMap<K, V> extends DefaultMultiMap<K, V, Set<V>> {
 
-	/** The Constant serialVersionUID. */
-	private static final long serialVersionUID = 1L;
+  /** The Constant serialVersionUID. */
+  private static final long serialVersionUID = 1L;
 
-	/**
-	 * Instantiates a new sets the multi map.
-	 *
-	 * @param initialCapacity the initial capacity
-	 * @param defaultValue the default value
-	 */
-	public SetMultiMap(int initialCapacity, 
-			CollectionCreator<V, Set<V>> defaultValue) {
-		super(initialCapacity, defaultValue);
-	}
-	
+  /**
+   * Instantiates a new sets the multi map.
+   *
+   * @param initialCapacity
+   *          the initial capacity
+   * @param defaultValue
+   *          the default value
+   */
+  public SetMultiMap(int initialCapacity, CollectionCreator<V, Set<V>> defaultValue) {
+    super(initialCapacity, defaultValue);
+  }
+
 }

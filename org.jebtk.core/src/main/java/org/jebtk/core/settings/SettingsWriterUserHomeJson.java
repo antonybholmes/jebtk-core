@@ -26,36 +26,39 @@ import org.jebtk.core.io.FileUtils;
  */
 public class SettingsWriterUserHomeJson implements SettingsWriter {
 
-	/** The m file. */
-	private Path mFile;
+  /** The m file. */
+  private Path mFile;
 
-	/**
-	 * Instantiates a new settings writer user home json.
-	 */
-	public SettingsWriterUserHomeJson() {
-		mFile = SettingsReaderUserHomeJson.create();
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.settings.SettingsWriter#save(org.abh.common.settings.Settings)
-	 */
-	@Override
-	public void save(Settings settings) {
-		LOG.info("Writing JSON settings to {}...", mFile);
-		
-		try {
-			// Ensure directory exists.
-			FileUtils.mkdir(mFile.getParent());
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}
-		
-		try {
-			settings.writeJson(mFile);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-	}
+  /**
+   * Instantiates a new settings writer user home json.
+   */
+  public SettingsWriterUserHomeJson() {
+    mFile = SettingsReaderUserHomeJson.create();
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.abh.common.settings.SettingsWriter#save(org.abh.common.settings.Settings)
+   */
+  @Override
+  public void save(Settings settings) {
+    LOG.info("Writing JSON settings to {}...", mFile);
+
+    try {
+      // Ensure directory exists.
+      FileUtils.mkdir(mFile.getParent());
+    } catch (IOException e1) {
+      e1.printStackTrace();
+    }
+
+    try {
+      settings.writeJson(mFile);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+
+  }
 
 }

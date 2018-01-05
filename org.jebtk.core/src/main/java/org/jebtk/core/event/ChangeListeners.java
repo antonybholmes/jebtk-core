@@ -17,51 +17,62 @@ package org.jebtk.core.event;
 
 // TODO: Auto-generated Javadoc
 /**
- * Provides the ability to register and unregister ModernClickEventListeners
- * for controls and provides standard functions to interface with {
+ * Provides the ability to register and unregister ModernClickEventListeners for
+ * controls and provides standard functions to interface with {
  * EventListenerList by taking care of casting etc.
  *
  * @author Antony Holmes Holmes
  *
  */
 public class ChangeListeners extends EventProducer<ChangeListener> implements ChangeEventProducer {
-	
-	/**
-	 * The constant serialVersionUID.
-	 */
-	private static final long serialVersionUID = 1L;
 
-	/* (non-Javadoc)
-	 * @see org.abh.lib.event.ChangeEventProducer#addChangeListener(org.abh.lib.event.ChangeListener)
-	 */
-	public synchronized void addChangeListener(ChangeListener l) {
-		mListeners.add(l);
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.lib.event.ChangeEventProducer#removeChangeListener(org.abh.lib.event.ChangeListener)
-	 */
-	public synchronized void removeChangeListener(ChangeListener l) {
-		mListeners.remove(l);
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.lib.event.ChangeEventProducer#fireChanged(org.abh.lib.event.ChangeEvent)
-	 */
-	public synchronized void fireChanged(ChangeEvent e) {
-		for (ChangeListener l : mListeners) {
-			//System.err.println("change listener " + l);
-			
-			l.changed(e);
-		}
-	}
-	
-	/**
-	 * Fire changed.
-	 */
-	public void fireChanged() {
-		//System.err.println("fire changed " + this);
-		
-		fireChanged(new ChangeEvent(this));
-	}
+  /**
+   * The constant serialVersionUID.
+   */
+  private static final long serialVersionUID = 1L;
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.abh.lib.event.ChangeEventProducer#addChangeListener(org.abh.lib.event.
+   * ChangeListener)
+   */
+  public synchronized void addChangeListener(ChangeListener l) {
+    mListeners.add(l);
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.abh.lib.event.ChangeEventProducer#removeChangeListener(org.abh.lib.event.
+   * ChangeListener)
+   */
+  public synchronized void removeChangeListener(ChangeListener l) {
+    mListeners.remove(l);
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.event.ChangeEventProducer#fireChanged(org.abh.lib.event.
+   * ChangeEvent)
+   */
+  public synchronized void fireChanged(ChangeEvent e) {
+    for (ChangeListener l : mListeners) {
+      // System.err.println("change listener " + l);
+
+      l.changed(e);
+    }
+  }
+
+  /**
+   * Fire changed.
+   */
+  public void fireChanged() {
+    // System.err.println("fire changed " + this);
+
+    fireChanged(new ChangeEvent(this));
+  }
 }

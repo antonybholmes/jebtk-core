@@ -15,7 +15,6 @@
  */
 package org.jebtk.core;
 
-
 // TODO: Auto-generated Javadoc
 /**
  * Exception for failing to get network files etc.
@@ -24,20 +23,20 @@ package org.jebtk.core;
  *
  */
 public class NetworkFileException extends Exception {
-	
-	/**
-	 * The constant serialVersionUID.
-	 */
-	private static final long serialVersionUID = 1L;
 
+  /**
+   * The constant serialVersionUID.
+   */
+  private static final long serialVersionUID = 1L;
 
-	/**
-	 * Instantiates a new network file exception.
-	 *
-	 * @param message the message
-	 */
-	public NetworkFileException(String message) {
-		super(message);
-	}
+  /**
+   * Instantiates a new network file exception.
+   *
+   * @param message
+   *          the message
+   */
+  public NetworkFileException(String message) {
+    super(message);
+  }
 
 }

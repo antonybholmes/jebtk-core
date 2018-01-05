@@ -20,8 +20,9 @@ import org.jebtk.core.Function;
 /**
  * The Interface StringFunction.
  *
- * @param <T> the generic type
+ * @param <T>
+ *          the generic type
  */
 public interface StringMapFunction<T> extends Function<T, String> {
-	// Do nothing
+  // Do nothing
 }

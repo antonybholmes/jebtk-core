@@ -20,14 +20,15 @@ package org.jebtk.core.pool;
  * A pool can dynamically create objects in the pool.
  *
  * @author Antony Holmes Holmes
- * @param <T> the generic type
+ * @param <T>
+ *          the generic type
  */
 public interface ObjectCreator<T> {
-	
-	/**
-	 * Should create a new instance of an object.
-	 *
-	 * @return the t
-	 */
-	T create();
+
+  /**
+   * Should create a new instance of an object.
+   *
+   * @return the t
+   */
+  T create();
 }

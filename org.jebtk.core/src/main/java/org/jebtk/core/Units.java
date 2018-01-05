@@ -23,19 +23,19 @@ package org.jebtk.core;
  *
  */
 public class Units {
-	
-	/**
-	 * The constant KILOBYTES.
-	 */
-	public static final int KILOBYTES = 1024;
-	
-	/**
-	 * The constant MEGABYTES.
-	 */
-	public static final int MEGABYTES = KILOBYTES * KILOBYTES;
-	
-	/**
-	 * The constant GIGABYTES.
-	 */
-	public static final int GIGABYTES = MEGABYTES * MEGABYTES;
+
+  /**
+   * The constant KILOBYTES.
+   */
+  public static final int KILOBYTES = 1024;
+
+  /**
+   * The constant MEGABYTES.
+   */
+  public static final int MEGABYTES = KILOBYTES * KILOBYTES;
+
+  /**
+   * The constant GIGABYTES.
+   */
+  public static final int GIGABYTES = MEGABYTES * MEGABYTES;
 }

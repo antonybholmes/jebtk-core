@@ -27,42 +27,49 @@ import org.jebtk.core.ColorUtils;
  * @author Antony Holmes Holmes
  */
 public class JsonColor extends Json {
-	
-	/**
-	 * The member value.
-	 */
-	private Color mValue;
 
-	/**
-	 * Instantiates a new json double.
-	 *
-	 * @param value the value
-	 */
-	public JsonColor(Color value) {
-		mValue = value;
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.json.Json#getAsColor()
-	 */
-	@Override
-	public Color getAsColor() {
-		return mValue;
-	}
+  /**
+   * The member value.
+   */
+  private Color mValue;
 
-	/* (non-Javadoc)
-	 * @see org.abh.lib.json.JsonValue#getAsString()
-	 */
-	@Override
-	public String getAsString() {
-		return ColorUtils.toHtml(mValue);
-	}
+  /**
+   * Instantiates a new json double.
+   *
+   * @param value
+   *          the value
+   */
+  public JsonColor(Color value) {
+    mValue = value;
+  }
 
-	/* (non-Javadoc)
-	 * @see org.abh.lib.json.JsonValue#formattedTxt(java.lang.StringBuilder)
-	 */
-	@Override
-	public void toJson(Appendable buffer) throws IOException {
-		buffer.append(getAsString());
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.json.Json#getAsColor()
+   */
+  @Override
+  public Color getAsColor() {
+    return mValue;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.json.JsonValue#getAsString()
+   */
+  @Override
+  public String getAsString() {
+    return ColorUtils.toHtml(mValue);
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.json.JsonValue#formattedTxt(java.lang.StringBuilder)
+   */
+  @Override
+  public void toJson(Appendable buffer) throws IOException {
+    buffer.append(getAsString());
+  }
 }

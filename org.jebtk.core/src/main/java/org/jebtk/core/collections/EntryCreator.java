@@ -19,14 +19,15 @@ package org.jebtk.core.collections;
 /**
  * Interface for creators that auto populate lists and sets.
  *
- * @param <T> the generic type
+ * @param <T>
+ *          the generic type
  */
 public interface EntryCreator<T> {
-	
-	/**
-	 * Creates an entry.
-	 *
-	 * @return the entry.
-	 */
-	T newEntry();
+
+  /**
+   * Creates an entry.
+   *
+   * @return the entry.
+   */
+  T newEntry();
 }

@@ -15,7 +15,6 @@
  */
 package org.jebtk.core.log;
 
-
 // TODO: Auto-generated Javadoc
 /**
  * For classes that generate ModernClickEvents.
@@ -23,25 +22,28 @@ package org.jebtk.core.log;
  * @author Antony Holmes Holmes
  */
 public interface LogEventProducer {
-	
-	/**
-	 * Adds the log listener.
-	 *
-	 * @param l the l
-	 */
-	public void addLogListener(LogEventListener l);
-	
-	/**
-	 * Removes the log listener.
-	 *
-	 * @param l the l
-	 */
-	public void removeLogListener(LogEventListener l);
-	
-	/**
-	 * Fire log event.
-	 *
-	 * @param e the e
-	 */
-	public void fireLogEvent(LogEvent e);
+
+  /**
+   * Adds the log listener.
+   *
+   * @param l
+   *          the l
+   */
+  public void addLogListener(LogEventListener l);
+
+  /**
+   * Removes the log listener.
+   *
+   * @param l
+   *          the l
+   */
+  public void removeLogListener(LogEventListener l);
+
+  /**
+   * Fire log event.
+   *
+   * @param e
+   *          the e
+   */
+  public void fireLogEvent(LogEvent e);
 }

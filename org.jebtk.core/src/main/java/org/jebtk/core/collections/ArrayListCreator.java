@@ -22,34 +22,38 @@ import java.util.List;
 /**
  * The class ListCreator.
  *
- * @param <V> the value type
+ * @param <V>
+ *          the value type
  */
 public class ArrayListCreator<V> implements ListCreator<V> {
 
-	/** The m size. */
-	private int mSize;
+  /** The m size. */
+  private int mSize;
 
-	/**
-	 * Instantiates a new array list creator.
-	 */
-	public ArrayListCreator() {
-		this(100);
-	}
-	
-	/**
-	 * Instantiates a new array list creator.
-	 *
-	 * @param size the size
-	 */
-	public ArrayListCreator(int size) {
-		mSize = size;
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.lib.collections.EntryCreator#create()
-	 */
-	@Override
-	public List<V> newEntry() {
-		return new ArrayList<V>(mSize);
-	}
+  /**
+   * Instantiates a new array list creator.
+   */
+  public ArrayListCreator() {
+    this(100);
+  }
+
+  /**
+   * Instantiates a new array list creator.
+   *
+   * @param size
+   *          the size
+   */
+  public ArrayListCreator(int size) {
+    mSize = size;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.collections.EntryCreator#create()
+   */
+  @Override
+  public List<V> newEntry() {
+    return new ArrayList<V>(mSize);
+  }
 }

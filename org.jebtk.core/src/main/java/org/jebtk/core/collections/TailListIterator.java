@@ -22,103 +22,124 @@ import java.util.ListIterator;
 /**
  * The Class TailListIterator.
  *
- * @param <T> the generic type
+ * @param <T>
+ *          the generic type
  */
 public class TailListIterator<T> implements ListIterator<T> {
 
-	/** The m list. */
-	private List<T> mList;
-	
-	/** The m start. */
-	private int mStart;
-	
-	/** The m I. */
-	private int mI;
+  /** The m list. */
+  private List<T> mList;
 
-	/**
-	 * Instantiates a new tail list iterator.
-	 *
-	 * @param list the list
-	 * @param start the start
-	 */
-	TailListIterator(List<T> list, int start) {
-		mList = list;
-		mStart = start;
-		mI = start;
-	}
-	
-	/* (non-Javadoc)
-	 * @see java.util.ListIterator#add(java.lang.Object)
-	 */
-	@Override
-	public void add(T arg0) {
-		// Do nothing
-	}
+  /** The m start. */
+  private int mStart;
 
-	/* (non-Javadoc)
-	 * @see java.util.ListIterator#hasNext()
-	 */
-	@Override
-	public boolean hasNext() {
-		return mI < mList.size() - 1;
-	}
+  /** The m I. */
+  private int mI;
 
-	/* (non-Javadoc)
-	 * @see java.util.ListIterator#hasPrevious()
-	 */
-	@Override
-	public boolean hasPrevious() {
-		return mI > mStart;
-	}
+  /**
+   * Instantiates a new tail list iterator.
+   *
+   * @param list
+   *          the list
+   * @param start
+   *          the start
+   */
+  TailListIterator(List<T> list, int start) {
+    mList = list;
+    mStart = start;
+    mI = start;
+  }
 
-	/* (non-Javadoc)
-	 * @see java.util.ListIterator#next()
-	 */
-	@Override
-	public T next() {
-		return mList.get(mI++);
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.util.ListIterator#add(java.lang.Object)
+   */
+  @Override
+  public void add(T arg0) {
+    // Do nothing
+  }
 
-	/* (non-Javadoc)
-	 * @see java.util.ListIterator#nextIndex()
-	 */
-	@Override
-	public int nextIndex() {
-		return mI;
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.util.ListIterator#hasNext()
+   */
+  @Override
+  public boolean hasNext() {
+    return mI < mList.size() - 1;
+  }
 
-	/* (non-Javadoc)
-	 * @see java.util.ListIterator#previous()
-	 */
-	@Override
-	public T previous() {
-		return mList.get(--mI);
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.util.ListIterator#hasPrevious()
+   */
+  @Override
+  public boolean hasPrevious() {
+    return mI > mStart;
+  }
 
-	/* (non-Javadoc)
-	 * @see java.util.ListIterator#previousIndex()
-	 */
-	@Override
-	public int previousIndex() {
-		return mI - 1;
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.util.ListIterator#next()
+   */
+  @Override
+  public T next() {
+    return mList.get(mI++);
+  }
 
-	/* (non-Javadoc)
-	 * @see java.util.ListIterator#remove()
-	 */
-	@Override
-	public void remove() {
-		// TODO Auto-generated method stub
-		
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.util.ListIterator#nextIndex()
+   */
+  @Override
+  public int nextIndex() {
+    return mI;
+  }
 
-	/* (non-Javadoc)
-	 * @see java.util.ListIterator#set(java.lang.Object)
-	 */
-	@Override
-	public void set(T arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.util.ListIterator#previous()
+   */
+  @Override
+  public T previous() {
+    return mList.get(--mI);
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.util.ListIterator#previousIndex()
+   */
+  @Override
+  public int previousIndex() {
+    return mI - 1;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.util.ListIterator#remove()
+   */
+  @Override
+  public void remove() {
+    // TODO Auto-generated method stub
+
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.util.ListIterator#set(java.lang.Object)
+   */
+  @Override
+  public void set(T arg0) {
+    // TODO Auto-generated method stub
+
+  }
 
 }

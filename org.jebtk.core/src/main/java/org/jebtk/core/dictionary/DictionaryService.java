@@ -30,181 +30,189 @@ import javax.xml.parsers.SAXParserFactory;
 import org.jebtk.core.io.Io;
 import org.jebtk.core.text.TextUtils;
 
-
 // TODO: Auto-generated Javadoc
 /**
- * Provides a dictionary service so strings/words can be mapped
- * to synonyms.
+ * Provides a dictionary service so strings/words can be mapped to synonyms.
  * 
  * @author Antony Holmes Holmes
  *
  */
 public class DictionaryService {
-	
-	/**
-	 * The words.
-	 */
-	private Set<String> words = new HashSet<String>();
-	
-	/**
-	 * The definitions.
-	 */
-	private Map<String, String> definitions = new HashMap<String, String>();
-	
-	/**
-	 * The synonyms.
-	 */
-	private Map<String, Set<String>> synonyms = new HashMap<String, Set<String>>();
-	
-	/**
-	 * The constant DEFAULT_FILE.
-	 */
-	public static final File DEFAULT_FILE = new File("res/dictionary.xml");
 
-	/**
-	 * The constant INSTANCE.
-	 */
-	private static final DictionaryService INSTANCE = new DictionaryService();
+  /**
+   * The words.
+   */
+  private Set<String> words = new HashSet<String>();
 
-	/**
-	 * Gets the single instance of DictionaryService.
-	 *
-	 * @return single instance of DictionaryService
-	 */
-	public static final DictionaryService getInstance() {
-		return INSTANCE;
-	}
-	
-	/**
-	 * Load xml.
-	 *
-	 * @param file the file
-	 */
-	public void loadXml(File file) {
-		try {
-			SAXParserFactory factory = SAXParserFactory.newInstance();
-			SAXParser saxParser = factory.newSAXParser();
-		 
-			DictionaryXmlHandler handler = new DictionaryXmlHandler(this);
-			
-			saxParser.parse(file, handler);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
-	/**
-	 * Load tsv file.
-	 *
-	 * @param file the file
-	 */
-	public void loadTSVFile(File file) {
-		try {
-			BufferedReader reader = new BufferedReader(new FileReader(file));
-			
-			String line;
-			
-			try {
-				while ((line = reader.readLine()) != null) {
-					if (Io.isEmptyLine(line)) {
-						continue;
-					}
-					
-					List<String> tokens = TextUtils.fastSplit(line, TextUtils.TAB_DELIMITER);
-					
-					addWord(tokens.get(0), tokens.get(1));
-					
-					for (int i = 2; i < tokens.size(); ++i) {
-						addSynonym(tokens.get(0), tokens.get(i));
-					}
-				}
-			} finally {
-				reader.close();
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
-	/**
-	 * Exists.
-	 *
-	 * @param word the word
-	 * @return true, if successful
-	 */
-	public boolean exists(String word) {
-		return words.contains(word);
-	}
-	
-	/**
-	 * Adds the word.
-	 *
-	 * @param word the word
-	 */
-	public void addWord(String word) {
-		words.add(word.toLowerCase());
-	}
-	
-	/**
-	 * Adds the word.
-	 *
-	 * @param word the word
-	 * @param definition the definition
-	 */
-	public void addWord(String word, String definition) {
-		addWord(word);
-		
-		definitions.put(word.toLowerCase(), definition);
-	}
-	
-	/**
-	 * Gets the definition.
-	 *
-	 * @param word the word
-	 * @return the definition
-	 */
-	public String getDefinition(String word) {
-		return definitions.get(word.toLowerCase());
-	}
-	
-	/**
-	 * Adds the synonym.
-	 *
-	 * @param word the word
-	 * @param synonym the synonym
-	 */
-	public void addSynonym(String word, String synonym) {
-		String s = word.toLowerCase();
-		
-		if (!synonyms.containsKey(s)) {
-			synonyms.put(s, new HashSet<String>());
-		}
-		
-		synonyms.get(s).add(synonym);
-		
-		addWord(synonym);
-	}
-	
-	/**
-	 * Returns the synonyms of a given word. The list will always
-	 * contain the search word.
-	 *
-	 * @param word the word
-	 * @return the synonyms
-	 */
-	public Set<String> getSynonyms(String word) {
-		Set<String> words = new HashSet<String>();
-		
-		words.add(word);
-		
-		String s = word.toLowerCase();
-		
-		if (synonyms.containsKey(s)) {
-			for (String synoynm : synonyms.get(s)) {
-				words.add(synoynm);
-			}
-		}
-		
-		return words;
-	}
+  /**
+   * The definitions.
+   */
+  private Map<String, String> definitions = new HashMap<String, String>();
+
+  /**
+   * The synonyms.
+   */
+  private Map<String, Set<String>> synonyms = new HashMap<String, Set<String>>();
+
+  /**
+   * The constant DEFAULT_FILE.
+   */
+  public static final File DEFAULT_FILE = new File("res/dictionary.xml");
+
+  /**
+   * The constant INSTANCE.
+   */
+  private static final DictionaryService INSTANCE = new DictionaryService();
+
+  /**
+   * Gets the single instance of DictionaryService.
+   *
+   * @return single instance of DictionaryService
+   */
+  public static final DictionaryService getInstance() {
+    return INSTANCE;
+  }
+
+  /**
+   * Load xml.
+   *
+   * @param file
+   *          the file
+   */
+  public void loadXml(File file) {
+    try {
+      SAXParserFactory factory = SAXParserFactory.newInstance();
+      SAXParser saxParser = factory.newSAXParser();
+
+      DictionaryXmlHandler handler = new DictionaryXmlHandler(this);
+
+      saxParser.parse(file, handler);
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+
+  /**
+   * Load tsv file.
+   *
+   * @param file
+   *          the file
+   */
+  public void loadTSVFile(File file) {
+    try {
+      BufferedReader reader = new BufferedReader(new FileReader(file));
+
+      String line;
+
+      try {
+        while ((line = reader.readLine()) != null) {
+          if (Io.isEmptyLine(line)) {
+            continue;
+          }
+
+          List<String> tokens = TextUtils.fastSplit(line, TextUtils.TAB_DELIMITER);
+
+          addWord(tokens.get(0), tokens.get(1));
+
+          for (int i = 2; i < tokens.size(); ++i) {
+            addSynonym(tokens.get(0), tokens.get(i));
+          }
+        }
+      } finally {
+        reader.close();
+      }
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+
+  /**
+   * Exists.
+   *
+   * @param word
+   *          the word
+   * @return true, if successful
+   */
+  public boolean exists(String word) {
+    return words.contains(word);
+  }
+
+  /**
+   * Adds the word.
+   *
+   * @param word
+   *          the word
+   */
+  public void addWord(String word) {
+    words.add(word.toLowerCase());
+  }
+
+  /**
+   * Adds the word.
+   *
+   * @param word
+   *          the word
+   * @param definition
+   *          the definition
+   */
+  public void addWord(String word, String definition) {
+    addWord(word);
+
+    definitions.put(word.toLowerCase(), definition);
+  }
+
+  /**
+   * Gets the definition.
+   *
+   * @param word
+   *          the word
+   * @return the definition
+   */
+  public String getDefinition(String word) {
+    return definitions.get(word.toLowerCase());
+  }
+
+  /**
+   * Adds the synonym.
+   *
+   * @param word
+   *          the word
+   * @param synonym
+   *          the synonym
+   */
+  public void addSynonym(String word, String synonym) {
+    String s = word.toLowerCase();
+
+    if (!synonyms.containsKey(s)) {
+      synonyms.put(s, new HashSet<String>());
+    }
+
+    synonyms.get(s).add(synonym);
+
+    addWord(synonym);
+  }
+
+  /**
+   * Returns the synonyms of a given word. The list will always contain the search
+   * word.
+   *
+   * @param word
+   *          the word
+   * @return the synonyms
+   */
+  public Set<String> getSynonyms(String word) {
+    Set<String> words = new HashSet<String>();
+
+    words.add(word);
+
+    String s = word.toLowerCase();
+
+    if (synonyms.containsKey(s)) {
+      for (String synoynm : synonyms.get(s)) {
+        words.add(synoynm);
+      }
+    }
+
+    return words;
+  }
 }

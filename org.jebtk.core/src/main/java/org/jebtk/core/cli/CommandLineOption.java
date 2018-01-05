@@ -15,7 +15,6 @@
  */
 package org.jebtk.core.cli;
 
-
 // TODO: Auto-generated Javadoc
 /**
  * Specifies an expected argument on the command line.
@@ -24,92 +23,93 @@ package org.jebtk.core.cli;
  *
  */
 public class CommandLineOption {
-	
-	/**
-	 * The member short name.
-	 */
-	private char mShortName;
-	
-	/**
-	 * The member long name.
-	 */
-	private String mLongName;
-	
-	/**
-	 * The member has arg.
-	 */
-	private boolean mHasArg;
-	
-	/**
-	 * The member description.
-	 */
-	private String mDescription;
 
-	
-	/**
-	 * Instantiates a new command line option.
-	 *
-	 * @param shortName the short name
-	 * @param hasArg the has arg
-	 * @param description the description
-	 */
-	public CommandLineOption(char shortName, 
-			boolean hasArg,
-			String description) {
-		this(shortName, null, hasArg, description);
-	}
-	
-	/**
-	 * Instantiates a new command line option.
-	 *
-	 * @param shortName the short name
-	 * @param longName the long name
-	 * @param hasArg the has arg
-	 * @param description the description
-	 */
-	public CommandLineOption(char shortName, 
-			String longName, 
-			boolean hasArg, 
-			String description) {
-		mShortName = shortName;
-		mLongName = longName;
-		mHasArg = hasArg;
-		mDescription = description;
-	}
+  /**
+   * The member short name.
+   */
+  private char mShortName;
 
-	/**
-	 * Gets the short name.
-	 *
-	 * @return the short name
-	 */
-	public char getShortName() {
-		return mShortName;
-	}
+  /**
+   * The member long name.
+   */
+  private String mLongName;
 
-	/**
-	 * Gets the long name.
-	 *
-	 * @return the long name
-	 */
-	public String getLongName() {
-		return mLongName;
-	}
+  /**
+   * The member has arg.
+   */
+  private boolean mHasArg;
 
-	/**
-	 * Checks for arg.
-	 *
-	 * @return true, if successful
-	 */
-	public boolean hasArg() {
-		return mHasArg;
-	}
+  /**
+   * The member description.
+   */
+  private String mDescription;
 
-	/**
-	 * Gets the description.
-	 *
-	 * @return the description
-	 */
-	public String getDescription() {
-		return mDescription;
-	}
+  /**
+   * Instantiates a new command line option.
+   *
+   * @param shortName
+   *          the short name
+   * @param hasArg
+   *          the has arg
+   * @param description
+   *          the description
+   */
+  public CommandLineOption(char shortName, boolean hasArg, String description) {
+    this(shortName, null, hasArg, description);
+  }
+
+  /**
+   * Instantiates a new command line option.
+   *
+   * @param shortName
+   *          the short name
+   * @param longName
+   *          the long name
+   * @param hasArg
+   *          the has arg
+   * @param description
+   *          the description
+   */
+  public CommandLineOption(char shortName, String longName, boolean hasArg, String description) {
+    mShortName = shortName;
+    mLongName = longName;
+    mHasArg = hasArg;
+    mDescription = description;
+  }
+
+  /**
+   * Gets the short name.
+   *
+   * @return the short name
+   */
+  public char getShortName() {
+    return mShortName;
+  }
+
+  /**
+   * Gets the long name.
+   *
+   * @return the long name
+   */
+  public String getLongName() {
+    return mLongName;
+  }
+
+  /**
+   * Checks for arg.
+   *
+   * @return true, if successful
+   */
+  public boolean hasArg() {
+    return mHasArg;
+  }
+
+  /**
+   * Gets the description.
+   *
+   * @return the description
+   */
+  public String getDescription() {
+    return mDescription;
+  }
 }

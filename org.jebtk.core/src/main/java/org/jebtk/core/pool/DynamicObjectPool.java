@@ -15,74 +15,77 @@
  */
 package org.jebtk.core.pool;
 
-
-
 // TODO: Auto-generated Javadoc
 /**
- * Represents a thread safe collection of objects that can
- * be reused.
+ * Represents a thread safe collection of objects that can be reused.
  *
  * @author Antony Holmes Holmes
- * @param <T> the generic type
+ * @param <T>
+ *          the generic type
  */
 public class DynamicObjectPool<T> extends ObjectPool<T> {
-	
-	/**
-	 * The constant DEFAULT_SIZE.
-	 */
-	private static final int DEFAULT_SIZE = 100;
-	
-	/**
-	 * The creator.
-	 */
-	private ObjectCreator<T> creator = null;
 
-	/**
-	 * Instantiates a new dynamic object pool.
-	 *
-	 * @param name the name
-	 * @param creator the creator
-	 * @param maxSize the max size
-	 */
-	public DynamicObjectPool(String name, ObjectCreator<T> creator, int maxSize) {
-		super(name, maxSize);
-		
-		this.creator = creator;
-	}
-	
-	/**
-	 * Instantiates a new dynamic object pool.
-	 *
-	 * @param name the name
-	 * @param creator the creator
-	 */
-	public DynamicObjectPool(String name, ObjectCreator<T> creator) {
-		super(name, DEFAULT_SIZE);
-		
-		this.creator = creator;
-	}
+  /**
+   * The constant DEFAULT_SIZE.
+   */
+  private static final int DEFAULT_SIZE = 100;
 
-	/**
-	 * Check out one of the objects from the pool.
-	 *
-	 * @return the t
-	 */
-	public synchronized T checkOut() {
-		T object = super.checkOut();
-		
-		if (object != null) {
-			return object;
-		}
-		
-		// attempt to increase stack size
-		add(creator.create());
-		
-		object = super.checkOut();
-		
-		if (object != null) {
-			return object;
-		}
+  /**
+   * The creator.
+   */
+  private ObjectCreator<T> creator = null;
 
-		return null;
-	}
+  /**
+   * Instantiates a new dynamic object pool.
+   *
+   * @param name
+   *          the name
+   * @param creator
+   *          the creator
+   * @param maxSize
+   *          the max size
+   */
+  public DynamicObjectPool(String name, ObjectCreator<T> creator, int maxSize) {
+    super(name, maxSize);
+
+    this.creator = creator;
+  }
+
+  /**
+   * Instantiates a new dynamic object pool.
+   *
+   * @param name
+   *          the name
+   * @param creator
+   *          the creator
+   */
+  public DynamicObjectPool(String name, ObjectCreator<T> creator) {
+    super(name, DEFAULT_SIZE);
+
+    this.creator = creator;
+  }
+
+  /**
+   * Check out one of the objects from the pool.
+   *
+   * @return the t
+   */
+  public synchronized T checkOut() {
+    T object = super.checkOut();
+
+    if (object != null) {
+      return object;
+    }
+
+    // attempt to increase stack size
+    add(creator.create());
+
+    object = super.checkOut();
+
+    if (object != null) {
+      return object;
+    }
+
+    return null;
+  }
 }

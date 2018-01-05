@@ -18,7 +18,6 @@ package org.jebtk.core.tree;
 import org.jebtk.core.event.ChangeEvent;
 import org.jebtk.core.event.EventProducer;
 
-
 // TODO: Auto-generated Javadoc
 /**
  * The basis for model controls in a model view controller setup.
@@ -27,41 +26,57 @@ import org.jebtk.core.event.EventProducer;
  *
  */
 public class TreeNodeEventListeners extends EventProducer<TreeNodeEventListener> implements TreeNodeEventProducer {
-	
-	/**
-	 * The constant serialVersionUID.
-	 */
-	private static final long serialVersionUID = 1L;
-	
-	/* (non-Javadoc)
-	 * @see org.abh.lib.tree.TreeNodeEventProducer#addTreeNodeListener(org.abh.lib.tree.TreeNodeEventListener)
-	 */
-	public void addTreeNodeListener(TreeNodeEventListener l) {
-		mListeners.add(l);
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.lib.tree.TreeNodeEventProducer#removeTreeNodeListener(org.abh.lib.tree.TreeNodeEventListener)
-	 */
-	public void removeTreeNodeListener(TreeNodeEventListener l) {
-		mListeners.remove(l);
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.lib.tree.TreeNodeEventProducer#fireTreeNodeChanged(org.abh.lib.event.ChangeEvent)
-	 */
-	public void fireTreeNodeChanged(ChangeEvent e) {
-		for (TreeNodeEventListener l : mListeners) {
-			l.nodeChanged(e);
-		}
-	}
 
-	/* (non-Javadoc)
-	 * @see org.abh.lib.tree.TreeNodeEventProducer#fireTreeNodeUpdated(org.abh.lib.event.ChangeEvent)
-	 */
-	public void fireTreeNodeUpdated(ChangeEvent e) {
-		for (TreeNodeEventListener l : mListeners) {
-			l.nodeUpdated(e);
-		}
-	}
+  /**
+   * The constant serialVersionUID.
+   */
+  private static final long serialVersionUID = 1L;
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.abh.lib.tree.TreeNodeEventProducer#addTreeNodeListener(org.abh.lib.tree.
+   * TreeNodeEventListener)
+   */
+  public void addTreeNodeListener(TreeNodeEventListener l) {
+    mListeners.add(l);
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.abh.lib.tree.TreeNodeEventProducer#removeTreeNodeListener(org.abh.lib.
+   * tree.TreeNodeEventListener)
+   */
+  public void removeTreeNodeListener(TreeNodeEventListener l) {
+    mListeners.remove(l);
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.abh.lib.tree.TreeNodeEventProducer#fireTreeNodeChanged(org.abh.lib.event.
+   * ChangeEvent)
+   */
+  public void fireTreeNodeChanged(ChangeEvent e) {
+    for (TreeNodeEventListener l : mListeners) {
+      l.nodeChanged(e);
+    }
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.abh.lib.tree.TreeNodeEventProducer#fireTreeNodeUpdated(org.abh.lib.event.
+   * ChangeEvent)
+   */
+  public void fireTreeNodeUpdated(ChangeEvent e) {
+    for (TreeNodeEventListener l : mListeners) {
+      l.nodeUpdated(e);
+    }
+  }
 }

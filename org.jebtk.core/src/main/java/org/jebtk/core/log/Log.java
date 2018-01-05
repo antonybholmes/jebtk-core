@@ -22,49 +22,50 @@ import java.text.DateFormat;
  * The class Log.
  */
 public class Log extends LogEventListeners implements LogEventListener {
-	
-	/**
-	 * The constant serialVersionUID.
-	 */
-	private static final long serialVersionUID = 1L;
-	
-	/**
-	 * The constant DATE_FORMAT.
-	 */
-	public static final DateFormat DATE_FORMAT =
-			DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.MEDIUM);
-	
-	/**
-	 * The member name.
-	 */
-	private String mName;
 
+  /**
+   * The constant serialVersionUID.
+   */
+  private static final long serialVersionUID = 1L;
 
-	/**
-	 * Instantiates a new log.
-	 *
-	 * @param name the name
-	 */
-	public Log(String name) {
-		mName = name;
-		
-		addLogListener(this);
-	}
-	
-	/**
-	 * Gets the name.
-	 *
-	 * @return the name
-	 */
-	public String getName() {
-		return mName;
-	}
+  /**
+   * The constant DATE_FORMAT.
+   */
+  public static final DateFormat DATE_FORMAT = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.MEDIUM);
 
-	/* (non-Javadoc)
-	 * @see org.abh.lib.log.LogEventListener#logEvent(org.abh.lib.log.LogEvent)
-	 */
-	@Override
-	public void logEvent(LogEvent e) {
-		fireLogEvent(e);
-	}
+  /**
+   * The member name.
+   */
+  private String mName;
+
+  /**
+   * Instantiates a new log.
+   *
+   * @param name
+   *          the name
+   */
+  public Log(String name) {
+    mName = name;
+
+    addLogListener(this);
+  }
+
+  /**
+   * Gets the name.
+   *
+   * @return the name
+   */
+  public String getName() {
+    return mName;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.log.LogEventListener#logEvent(org.abh.lib.log.LogEvent)
+   */
+  @Override
+  public void logEvent(LogEvent e) {
+    fireLogEvent(e);
+  }
 }

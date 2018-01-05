@@ -21,5 +21,5 @@ import org.jebtk.core.collections.ListIterator;
  * The Class SettingsReaders.
  */
 public class SettingsReaders extends ListIterator<SettingsReader> {
-	
+
 }

@@ -26,129 +26,138 @@ import org.jebtk.core.text.TextUtils;
  *
  */
 public class Xhtml {
-	
-	/**
-	 * Instantiates a new xhtml.
-	 */
-	private Xhtml() {
-		// do nothing
-	}
 
-	/**
-	 * Returns the default XML header for writing xml files.
-	 *
-	 * @return the string
-	 */
-	public static final String header() {
-		return "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">";
-	}
+  /**
+   * Instantiates a new xhtml.
+   */
+  private Xhtml() {
+    // do nothing
+  }
 
-	/**
-	 * Start tag.
-	 *
-	 * @param text the text
-	 * @return the string
-	 */
-	public static final String startTag(String text) {
-		return openTag(text) + closeTag();
-	}
+  /**
+   * Returns the default XML header for writing xml files.
+   *
+   * @return the string
+   */
+  public static final String header() {
+    return "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">";
+  }
 
-	/**
-	 * Open tag.
-	 *
-	 * @param text the text
-	 * @return the string
-	 */
-	public static final String openTag(String text) {
-		return openTag() + text;
-	}
+  /**
+   * Start tag.
+   *
+   * @param text
+   *          the text
+   * @return the string
+   */
+  public static final String startTag(String text) {
+    return openTag(text) + closeTag();
+  }
 
-	/**
-	 * Open tag.
-	 *
-	 * @return the string
-	 */
-	public static final String openTag() {
-		return "<";
-	}
+  /**
+   * Open tag.
+   *
+   * @param text
+   *          the text
+   * @return the string
+   */
+  public static final String openTag(String text) {
+    return openTag() + text;
+  }
 
-	/**
-	 * Close tag.
-	 *
-	 * @return the string
-	 */
-	public static final String closeTag() {
-		return ">";
-	}
+  /**
+   * Open tag.
+   *
+   * @return the string
+   */
+  public static final String openTag() {
+    return "<";
+  }
 
-	/**
-	 * Closed tag.
-	 *
-	 * @return the string
-	 */
-	public static final String closedTag() {
-		return "/>";
-	}
+  /**
+   * Close tag.
+   *
+   * @return the string
+   */
+  public static final String closeTag() {
+    return ">";
+  }
 
-	/**
-	 * End tag.
-	 *
-	 * @param text the text
-	 * @return the string
-	 */
-	public static final String endTag(String text) {
-		return "</" + text + closeTag();
-	}
+  /**
+   * Closed tag.
+   *
+   * @return the string
+   */
+  public static final String closedTag() {
+    return "/>";
+  }
 
-	/**
-	 * Closed tag.
-	 *
-	 * @param text the text
-	 * @return the string
-	 */
-	public static final String closedTag(String text) {
-		return openTag() + text + closedTag();
-	}
+  /**
+   * End tag.
+   *
+   * @param text
+   *          the text
+   * @return the string
+   */
+  public static final String endTag(String text) {
+    return "</" + text + closeTag();
+  }
 
-	/**
-	 * Attribute.
-	 *
-	 * @param attribute the attribute
-	 * @return the string
-	 */
-	public static String attribute(Attribute attribute) {
-		return attribute(attribute.getName(), attribute.getValue());
-	}
+  /**
+   * Closed tag.
+   *
+   * @param text
+   *          the text
+   * @return the string
+   */
+  public static final String closedTag(String text) {
+    return openTag() + text + closedTag();
+  }
 
-	/**
-	 * Attribute.
-	 *
-	 * @param name the name
-	 * @param value the value
-	 * @return the string
-	 */
-	public static final String attribute(String name, String value) {
-		return " " + name + "=\"" + value + "\"";
-	}
+  /**
+   * Attribute.
+   *
+   * @param attribute
+   *          the attribute
+   * @return the string
+   */
+  public static String attribute(Attribute attribute) {
+    return attribute(attribute.getName(), attribute.getValue());
+  }
 
-	/**
-	 * Creates an indentation space for writing aesthetically
-	 * pleasing XML files rather than one line monoliths.
-	 *
-	 * @param level the level
-	 * @return the string
-	 */
-	public static String indentation(int level) {
-		return TextUtils.repeat(TextUtils.TAB_DELIMITER, level);
-	}
+  /**
+   * Attribute.
+   *
+   * @param name
+   *          the name
+   * @param value
+   *          the value
+   * @return the string
+   */
+  public static final String attribute(String name, String value) {
+    return " " + name + "=\"" + value + "\"";
+  }
 
-	/**
-	 * Cdata.
-	 *
-	 * @param data the data
-	 * @return the string
-	 */
-	public static String cdata(String data) {
-		return "<![CDATA[" + data + "]]>";
-	}
+  /**
+   * Creates an indentation space for writing aesthetically pleasing XML files
+   * rather than one line monoliths.
+   *
+   * @param level
+   *          the level
+   * @return the string
+   */
+  public static String indentation(int level) {
+    return TextUtils.repeat(TextUtils.TAB_DELIMITER, level);
+  }
+
+  /**
+   * Cdata.
+   *
+   * @param data
+   *          the data
+   * @return the string
+   */
+  public static String cdata(String data) {
+    return "<![CDATA[" + data + "]]>";
+  }
 }

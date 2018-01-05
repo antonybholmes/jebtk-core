@@ -23,54 +23,54 @@ package org.jebtk.core.path;
  *
  */
 public class StrictPathLevel extends PathLevel {
-	
-	/**
-	 * The constant serialVersionUID.
-	 */
-	private static final long serialVersionUID = 1L;
 
-	/**
-	 * Instantiates a new strict path level.
-	 *
-	 * @param level the level
-	 */
-	public StrictPathLevel(String level) {
-		super(sanitize(level));
-	}
-	
-	/**
-	 * Return the path level in a standardized way.
-	 * Path elements consist only of of letters, numbers
-	 * dashes and underscores. All other characters are
-	 * considered illegal and stripped out. Brackets are
-	 * converted to underscores.
-	 *
-	 * @param level the level
-	 * @return the string
-	 */
-	public static String sanitize(String level) {
-		String s = level; //level.toLowerCase();
-		
-		// Cannot contain slashes
-		s = s.replaceAll("[\\/\\\\]", "");
+  /**
+   * The constant serialVersionUID.
+   */
+  private static final long serialVersionUID = 1L;
 
-		// Brackets become spaces
-		s = s.replaceAll("[\\[\\]\\(\\)\\{\\}]", " ");
+  /**
+   * Instantiates a new strict path level.
+   *
+   * @param level
+   *          the level
+   */
+  public StrictPathLevel(String level) {
+    super(sanitize(level));
+  }
 
-		//System.err.println("s1 " + s);
+  /**
+   * Return the path level in a standardized way. Path elements consist only of of
+   * letters, numbers dashes and underscores. All other characters are considered
+   * illegal and stripped out. Brackets are converted to underscores.
+   *
+   * @param level
+   *          the level
+   * @return the string
+   */
+  public static String sanitize(String level) {
+    String s = level; // level.toLowerCase();
 
-		// Convert spaces to underscores
-		s = s.replaceAll("\\s+", "_");
+    // Cannot contain slashes
+    s = s.replaceAll("[\\/\\\\]", "");
 
-		// Strip leading and trailing underscores
-		s = s.replaceAll("^_+", "").replaceAll("_+$",  "");
+    // Brackets become spaces
+    s = s.replaceAll("[\\[\\]\\(\\)\\{\\}]", " ");
 
-		// Remove all other illegal characters
-		s = s.replaceAll("[^a-zA-Z0-9\\-_\\.]", "");
-		
-		// Remove underscore repeats
-		s = s.replaceAll("_+", "_");
+    // System.err.println("s1 " + s);
 
-		return s;
-	}
+    // Convert spaces to underscores
+    s = s.replaceAll("\\s+", "_");
+
+    // Strip leading and trailing underscores
+    s = s.replaceAll("^_+", "").replaceAll("_+$", "");
+
+    // Remove all other illegal characters
+    s = s.replaceAll("[^a-zA-Z0-9\\-_\\.]", "");
+
+    // Remove underscore repeats
+    s = s.replaceAll("_+", "_");
+
+    return s;
+  }
 }

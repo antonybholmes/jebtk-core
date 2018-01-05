@@ -20,23 +20,23 @@ import org.junit.Test;
 
 public class PathTest {
 
-	@Test
-	public void pathTest() {
-		
-		System.out.println("Path test");
-		
-		Path path = new Path("a/b/c.d");
-		
-		System.err.println(path.toString());
-	}
-	
-	@Test
-	public void rootPathTest() {
-		
-		System.out.println("root test");
-		
-		Path path = Path.createRootPath("a", "b", "c");
-		
-		System.err.println(path.toString());
-	}
+  @Test
+  public void pathTest() {
+
+    System.out.println("Path test");
+
+    Path path = new Path("a/b/c.d");
+
+    System.err.println(path.toString());
+  }
+
+  @Test
+  public void rootPathTest() {
+
+    System.out.println("root test");
+
+    Path path = Path.createRootPath("a", "b", "c");
+
+    System.err.println(path.toString());
+  }
 }

@@ -34,210 +34,209 @@ import org.jebtk.core.io.PathUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
 // TODO: Auto-generated Javadoc
 /**
- * Loads plugin class definitions from file so they can be instantiated.
- * Plugins must be in there own directory, for example annotations, within
- * the main plugin directory. Within each individual plugin folder, the
- * classes must be in the same package hierarchy as they were designed.
- * The plugin loader will scan the directories and build the packages
- * from this.
+ * Loads plugin class definitions from file so they can be instantiated. Plugins
+ * must be in there own directory, for example annotations, within the main
+ * plugin directory. Within each individual plugin folder, the classes must be
+ * in the same package hierarchy as they were designed. The plugin loader will
+ * scan the directories and build the packages from this.
  *
  * @author Antony Holmes Holmes
  *
  */
 public class PluginService implements Iterable<Plugin> {
-	
-	private static class PluginServiceLoader {
-		private static final PluginService INSTANCE = new PluginService();
-	}
 
-	/**
-	 * Gets the single instance of SettingsService.
-	 *
-	 * @return single instance of SettingsService
-	 */
-	public static PluginService getInstance() {
-		return PluginServiceLoader.INSTANCE;
-	}
-	
-	
-	/** The Constant LOG. */
-	private static final Logger LOG = 
-			LoggerFactory.getLogger(PluginService.class);
+  private static class PluginServiceLoader {
+    private static final PluginService INSTANCE = new PluginService();
+  }
 
-	/**
-	 * Default directory where to find plugins.
-	 */
-	public static final Path DEFAULT_PLUGIN_DIRECTORY = 
-			PathUtils.getPath("res", "plugins");
-	
-	public static final String DEFAULT_GROUP = "default";
-	/**
-	 * The member plugins.
-	 */
-	//private List<Plugin> mPlugins = new UniqueArrayList<Plugin>();
-	
-	private Map<String, List<Plugin>> mPluginMap =
-			DefaultHashMap.create(new UniqueArrayListCreator<Plugin>());
+  /**
+   * Gets the single instance of SettingsService.
+   *
+   * @return single instance of SettingsService
+   */
+  public static PluginService getInstance() {
+    return PluginServiceLoader.INSTANCE;
+  }
 
-	/**
-	 * Instantiates a new plugin service.
-	 */
-	private PluginService() {
-		// do nothing
-	}
+  /** The Constant LOG. */
+  private static final Logger LOG = LoggerFactory.getLogger(PluginService.class);
 
-	/**
-	 * Adds the plugin.
-	 *
-	 * @param c the c
-	 */
-	public void addPlugin(Class<?> c) {
-		addPlugin(DEFAULT_GROUP, c);
-	}
-	
-	public void addPlugin(String group, Class<?> c) {
-		addPlugin(group, new Plugin(c));
-	}
+  /**
+   * Default directory where to find plugins.
+   */
+  public static final Path DEFAULT_PLUGIN_DIRECTORY = PathUtils.getPath("res", "plugins");
 
-	/**
-	 * Adds the plugin.
-	 *
-	 * @param plugin the plugin
-	 */
-	public void addPlugin(Plugin plugin) {
-		addPlugin(DEFAULT_GROUP, plugin);
-	}
-	
-	public void addPlugin(String group, Plugin plugin) {
-		mPluginMap.get(group).add(plugin);
-	}
+  public static final String DEFAULT_GROUP = "default";
+  /**
+   * The member plugins.
+   */
+  // private List<Plugin> mPlugins = new UniqueArrayList<Plugin>();
 
+  private Map<String, List<Plugin>> mPluginMap = DefaultHashMap.create(new UniqueArrayListCreator<Plugin>());
 
-	/* (non-Javadoc)
-	 * @see java.lang.Iterable#iterator()
-	 */
-	@Override
-	public Iterator<Plugin> iterator() {
-		return mPluginMap.get(DEFAULT_GROUP).iterator();
-	}
-	
-	public Iterable<Plugin> iterator(String group) {
-		return mPluginMap.get(group);
-	}
+  /**
+   * Instantiates a new plugin service.
+   */
+  private PluginService() {
+    // do nothing
+  }
 
+  /**
+   * Adds the plugin.
+   *
+   * @param c
+   *          the c
+   */
+  public void addPlugin(Class<?> c) {
+    addPlugin(DEFAULT_GROUP, c);
+  }
 
-	/**
-	 * Scans the default plugin directory for plugins.
-	 *
-	 * @throws ClassNotFoundException the class not found exception
-	 * @throws IOException 
-	 */
-	public final void scan() throws ClassNotFoundException, IOException {
-		scan(DEFAULT_PLUGIN_DIRECTORY);
-	}
+  public void addPlugin(String group, Class<?> c) {
+    addPlugin(group, new Plugin(c));
+  }
 
-	/**
-	 * Scans a directory within the main plugin directory for
-	 * class files.
-	 *
-	 * @param filename the filename
-	 * @throws ClassNotFoundException the class not found exception
-	 * @throws IOException 
-	 */
-	public final void scanDirectory(String filename) throws ClassNotFoundException, IOException {
-		scan(PathUtils.getPath(filename));
-	}
+  /**
+   * Adds the plugin.
+   *
+   * @param plugin
+   *          the plugin
+   */
+  public void addPlugin(Plugin plugin) {
+    addPlugin(DEFAULT_GROUP, plugin);
+  }
 
-	/**
-	 * Scans a specific directory for plugins.
-	 *
-	 * @param pluginDir the plugin dir
-	 * @throws ClassNotFoundException the class not found exception
-	 * @throws IOException 
-	 */
-	public final void scan(Path pluginDir) throws ClassNotFoundException, IOException {
-		if (!FileUtils.exists(pluginDir)) {
-			return;
-		}
-		
-		URLClassLoader ucl;
+  public void addPlugin(String group, Plugin plugin) {
+    mPluginMap.get(group).add(plugin);
+  }
 
-		List<Path> dirs = FileUtils.lsdir(pluginDir); //pluginDir.listFiles(directoryFilter);
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Iterable#iterator()
+   */
+  @Override
+  public Iterator<Plugin> iterator() {
+    return mPluginMap.get(DEFAULT_GROUP).iterator();
+  }
 
-		Class<?> pluginClass;
+  public Iterable<Plugin> iterator(String group) {
+    return mPluginMap.get(group);
+  }
 
-		Deque<Path> dirStack = new ArrayDeque<Path>();
-		Deque<String> packageNameStack = new ArrayDeque<String>();
+  /**
+   * Scans the default plugin directory for plugins.
+   *
+   * @throws ClassNotFoundException
+   *           the class not found exception
+   * @throws IOException
+   */
+  public final void scan() throws ClassNotFoundException, IOException {
+    scan(DEFAULT_PLUGIN_DIRECTORY);
+  }
 
-		//StringBuilder packageName = new StringBuilder();
+  /**
+   * Scans a directory within the main plugin directory for class files.
+   *
+   * @param filename
+   *          the filename
+   * @throws ClassNotFoundException
+   *           the class not found exception
+   * @throws IOException
+   */
+  public final void scanDirectory(String filename) throws ClassNotFoundException, IOException {
+    scan(PathUtils.getPath(filename));
+  }
 
-		for (Path dir : dirs) {
-			// each plugin dir represents a type of plugin
+  /**
+   * Scans a specific directory for plugins.
+   *
+   * @param pluginDir
+   *          the plugin dir
+   * @throws ClassNotFoundException
+   *           the class not found exception
+   * @throws IOException
+   */
+  public final void scan(Path pluginDir) throws ClassNotFoundException, IOException {
+    if (!FileUtils.exists(pluginDir)) {
+      return;
+    }
 
-			dirStack.clear();
-			packageNameStack.clear();
+    URLClassLoader ucl;
 
-			dirStack.push(dir);
-			packageNameStack.push("");
+    List<Path> dirs = FileUtils.lsdir(pluginDir); // pluginDir.listFiles(directoryFilter);
 
-			//packageName = new StringBuilder();
+    Class<?> pluginClass;
 
-			URL classUrl = dir.toUri().toURL();
-			URL[] classUrls = {classUrl};
-			ucl = new URLClassLoader(classUrls);
+    Deque<Path> dirStack = new ArrayDeque<Path>();
+    Deque<String> packageNameStack = new ArrayDeque<String>();
 
-			Set<Path> visited = new HashSet<Path>();
+    // StringBuilder packageName = new StringBuilder();
 
-			while (!dirStack.isEmpty()) {
-				Path currentDirectory = dirStack.pop();
+    for (Path dir : dirs) {
+      // each plugin dir represents a type of plugin
 
-				List<Path> files = FileUtils.ls(currentDirectory); //currentDirectory.listFiles();
+      dirStack.clear();
+      packageNameStack.clear();
 
-				String currentPackage = packageNameStack.pop();
+      dirStack.push(dir);
+      packageNameStack.push("");
 
-				LOG.info("Scanning {} [{}] for plugins.", 
-						currentDirectory.toAbsolutePath(), 
-						currentPackage);
+      // packageName = new StringBuilder();
 
-				for (Path file : files) {
-					if (!FileUtils.isDirectory(file)) {
-						continue;
-					}
+      URL classUrl = dir.toUri().toURL();
+      URL[] classUrls = { classUrl };
+      ucl = new URLClassLoader(classUrls);
 
-					if (visited.contains(file)) {
-						continue;
-					}
+      Set<Path> visited = new HashSet<Path>();
 
-					dirStack.push(file);
+      while (!dirStack.isEmpty()) {
+        Path currentDirectory = dirStack.pop();
 
-					packageNameStack.push(currentPackage + file.getFileName().toString() + ".");
-				}
+        List<Path> files = FileUtils.ls(currentDirectory); // currentDirectory.listFiles();
 
-				for (Path file : files) {
-					if (FileUtils.isDirectory(file)) {
-						continue;
-					}
+        String currentPackage = packageNameStack.pop();
 
-					if (!file.getFileName().endsWith(".class")) {
-						continue;
-					}
+        LOG.info("Scanning {} [{}] for plugins.", currentDirectory.toAbsolutePath(), currentPackage);
 
-					String plugin = currentPackage + file.getFileName().toString().replaceFirst("\\.class$", "");
+        for (Path file : files) {
+          if (!FileUtils.isDirectory(file)) {
+            continue;
+          }
 
-					LOG.info("Loading plugin {}.", plugin);
+          if (visited.contains(file)) {
+            continue;
+          }
 
-					pluginClass = ucl.loadClass(plugin);
+          dirStack.push(file);
 
-					//System.err.println(pluginClass.getSimpleName() + " " +pluginClass.getCanonicalName() + " " + pluginClass.getName());
+          packageNameStack.push(currentPackage + file.getFileName().toString() + ".");
+        }
 
-					addPlugin(dir.getFileName().toString().toLowerCase(), new Plugin(pluginClass));
-				}
+        for (Path file : files) {
+          if (FileUtils.isDirectory(file)) {
+            continue;
+          }
 
-				visited.add(currentDirectory);
-			}
-		}
-	}
+          if (!file.getFileName().endsWith(".class")) {
+            continue;
+          }
+
+          String plugin = currentPackage + file.getFileName().toString().replaceFirst("\\.class$", "");
+
+          LOG.info("Loading plugin {}.", plugin);
+
+          pluginClass = ucl.loadClass(plugin);
+
+          // System.err.println(pluginClass.getSimpleName() + " "
+          // +pluginClass.getCanonicalName() + " " + pluginClass.getName());
+
+          addPlugin(dir.getFileName().toString().toLowerCase(), new Plugin(pluginClass));
+        }
+
+        visited.add(currentDirectory);
+      }
+    }
+  }
 }

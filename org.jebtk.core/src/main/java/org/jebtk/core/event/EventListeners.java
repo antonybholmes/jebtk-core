@@ -21,53 +21,53 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
-
 // TODO: Auto-generated Javadoc
 /**
- * Provides the ability to register and unregister ModernClickEventListeners
- * for controls and provides standard functions to interface with {
+ * Provides the ability to register and unregister ModernClickEventListeners for
+ * controls and provides standard functions to interface with {
  * EventListenerList by taking care of casting etc.
  *
  * @author Antony Holmes Holmes
- * @param <T> the generic type
+ * @param <T>
+ *          the generic type
  */
 public class EventListeners<T extends EventListener> implements Iterable<T> {
-	
-	private Set<T> mListeners = 
-			Collections.newSetFromMap(new ConcurrentHashMap<T, Boolean>());
-	
-	/**
-	 * Instantiates a new event listeners.
-	 */
-	public EventListeners() {
-		
-	}
-	
-	/**
-	 * Instantiates a new event listeners.
-	 *
-	 * @param l the l
-	 */
-	public EventListeners(EventListeners<T> l) {
-		addAll(l);
-	}
 
-	public void add(T listener) {
-		mListeners.add(listener);
-	}
-	
-	public void remove(T listener) {
-		mListeners.remove(listener);
-	}
-	
-	public void addAll(EventListeners<T> listeners) {
-		for (T l : listeners) {
-			add(l);
-		}
-	}
+  private Set<T> mListeners = Collections.newSetFromMap(new ConcurrentHashMap<T, Boolean>());
 
-	@Override
-	public Iterator<T> iterator() {
-		return mListeners.iterator();
-	}
+  /**
+   * Instantiates a new event listeners.
+   */
+  public EventListeners() {
+
+  }
+
+  /**
+   * Instantiates a new event listeners.
+   *
+   * @param l
+   *          the l
+   */
+  public EventListeners(EventListeners<T> l) {
+    addAll(l);
+  }
+
+  public void add(T listener) {
+    mListeners.add(listener);
+  }
+
+  public void remove(T listener) {
+    mListeners.remove(listener);
+  }
+
+  public void addAll(EventListeners<T> listeners) {
+    for (T l : listeners) {
+      add(l);
+    }
+  }
+
+  @Override
+  public Iterator<T> iterator() {
+    return mListeners.iterator();
+  }
 }

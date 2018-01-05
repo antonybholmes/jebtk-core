@@ -19,86 +19,89 @@ import org.jebtk.core.model.NameMapModel;
 
 // TODO: Auto-generated Javadoc
 /**
- * Allows multiple logs to be agglomerated so a message can be
- * fire to multiple logs.
+ * Allows multiple logs to be agglomerated so a message can be fire to multiple
+ * logs.
  *
  * @author Antony Holmes Holmes
  *
  */
 public class LogService extends NameMapModel<Log> {
-	
-	/**
-	 * The constant serialVersionUID.
-	 */
-	private static final long serialVersionUID = 1L;
-	
-	/**
-	 * The Class LogServiceLoader.
-	 */
-	private static class LogServiceLoader {
-		
-		/** The Constant INSTANCE. */
-		private static final LogService INSTANCE = new LogService();
-	}
 
-	/**
-	 * Gets the single instance of SettingsService.
-	 *
-	 * @return single instance of SettingsService
-	 */
-	public static LogService getInstance() {
-		return LogServiceLoader.INSTANCE;
-	}
+  /**
+   * The constant serialVersionUID.
+   */
+  private static final long serialVersionUID = 1L;
 
-	/**
-	 * Instantiates a new log service.
-	 */
-	private LogService() {
-		// Do nothing
-	}
+  /**
+   * The Class LogServiceLoader.
+   */
+  private static class LogServiceLoader {
 
+    /** The Constant INSTANCE. */
+    private static final LogService INSTANCE = new LogService();
+  }
 
-	/**
-	 * Returns a logger with a specific name. If the log does not
-	 * exist, it is created.
-	 *
-	 * @param name the name
-	 * @return the log
-	 */
-	public final Log getLog(String name) {
-		if (contains(name)) {
-			return get(name);
-		}
+  /**
+   * Gets the single instance of SettingsService.
+   *
+   * @return single instance of SettingsService
+   */
+  public static LogService getInstance() {
+    return LogServiceLoader.INSTANCE;
+  }
 
-		add(name, new Log(name));
-		
-		return get(name);
-	}
-	
-	/**
-	 * Adds the file log.
-	 *
-	 * @param name the name
-	 */
-	public void addFileLog(String name) {
-		getLog(name).addLogListener(new FileLog());
-	}
-	
-	/**
-	 * Adds the console log.
-	 *
-	 * @param name the name
-	 */
-	public void addConsoleLog(String name) {
-		getLog(name).addLogListener(new ConsoleLog());
-	}
-	
-	/**
-	 * Adds the std err log.
-	 *
-	 * @param name the name
-	 */
-	public void addStdErrLog(String name) {
-		getLog(name).addLogListener(new StdErrLog());
-	}
+  /**
+   * Instantiates a new log service.
+   */
+  private LogService() {
+    // Do nothing
+  }
+
+  /**
+   * Returns a logger with a specific name. If the log does not exist, it is
+   * created.
+   *
+   * @param name
+   *          the name
+   * @return the log
+   */
+  public final Log getLog(String name) {
+    if (contains(name)) {
+      return get(name);
+    }
+
+    add(name, new Log(name));
+
+    return get(name);
+  }
+
+  /**
+   * Adds the file log.
+   *
+   * @param name
+   *          the name
+   */
+  public void addFileLog(String name) {
+    getLog(name).addLogListener(new FileLog());
+  }
+
+  /**
+   * Adds the console log.
+   *
+   * @param name
+   *          the name
+   */
+  public void addConsoleLog(String name) {
+    getLog(name).addLogListener(new ConsoleLog());
+  }
+
+  /**
+   * Adds the std err log.
+   *
+   * @param name
+   *          the name
+   */
+  public void addStdErrLog(String name) {
+    getLog(name).addLogListener(new StdErrLog());
+  }
 }

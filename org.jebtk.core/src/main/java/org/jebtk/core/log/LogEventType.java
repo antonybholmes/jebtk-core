@@ -20,14 +20,14 @@ package org.jebtk.core.log;
  * The enum LogEventType.
  */
 public enum LogEventType {
-	
-	/**
-	 * The information.
-	 */
-	INFORMATION,
-	
-	/**
-	 * The error.
-	 */
-	ERROR
+
+  /**
+   * The information.
+   */
+  INFORMATION,
+
+  /**
+   * The error.
+   */
+  ERROR
 }

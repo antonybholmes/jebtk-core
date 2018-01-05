@@ -22,11 +22,12 @@ import java.util.List;
  * The Interface TokenFunction.
  */
 public interface TokenFunction {
-	
-	/**
-	 * Give a list of tokens to be processed.
-	 *
-	 * @param tokens the tokens
-	 */
-	public void parse(final List<String> tokens);
+
+  /**
+   * Give a list of tokens to be processed.
+   *
+   * @param tokens
+   *          the tokens
+   */
+  public void parse(final List<String> tokens);
 }

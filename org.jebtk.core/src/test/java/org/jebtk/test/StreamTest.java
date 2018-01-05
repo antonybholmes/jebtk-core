@@ -26,117 +26,102 @@ import org.junit.Test;
 
 public class StreamTest {
 
-	@Test
-	public void streamToListTest() {
-		
-		List<Integer> values = new ArrayList<Integer>();
-		values.add(1);
-		values.add(2);
-		values.add(3);
-		values.add(4);
-		
-		Stream<Integer> stream = Stream.of(values);
+  @Test
+  public void streamToListTest() {
 
-		assertTrue("Stream list: " + stream.toList().toString(), 
-				stream.toList().toString().equals("[1, 2, 3, 4]"));
-	}
-	
-	@Test
-	public void streamMeanTest() {
-		
-		List<Integer> values = new ArrayList<Integer>();
-		values.add(1);
-		values.add(2);
-		values.add(3);
-		values.add(4);
-		values.add(4);
-		
-		double s = Stream.of(values).asDouble().mean();
-		
-		assertEquals("Stream mean: " + s, 2.8, s, 0.001);
-	}
-	
-	@Test
-	public void emptyFilterTest() {
-		
-		List<String> values = new ArrayList<String>();
-		values.add("1");
-		values.add("2");
-		values.add("");
-		values.add("4");
-		
-		Stream<Integer> stream = Stream
-				.of(values)
-				.asString()
-				.emptyFilter()
-				.asInt();
-		
-		List<Integer> s = stream.toList();
-		
-		assertTrue("Stream list: " + s.toString(), 
-				s.toString().equals("[1, 2, 4]"));
-	}
-	
-	@Test
-	public void minTest() {
-		
-		List<String> values = new ArrayList<String>();
-		values.add("8");
-		values.add("2");
-		values.add("1");
-		values.add("4");
-		
-		IntStream stream = Stream
-				.of(values)
-				.asInt()
-				.asInt();
-		
-		int s = stream.min();
-		
-		assertEquals("Stream min: " + s, 1, s);
-	}
-	
-	@Test
-	public void maxTest() {
-		
-		List<String> values = new ArrayList<String>();
-		values.add("8");
-		values.add("2");
-		values.add("1");
-		values.add("4");
-		
-		IntStream stream = Stream
-				.of(values)
-				.asInt();
-		
-		int s = stream.max();
-		
-		assertEquals("Stream max: " + s, 8, s);
-	}
-	
-	@Test
-	public void catTest() {
-		
-		List<String> l1 = new ArrayList<String>();
-		l1.add("1");
-		l1.add("2");
-		l1.add("3");
-		l1.add("4");
-		
-		List<String> l2 = new ArrayList<String>();
-		l2.add("5");
-		l2.add("6");
-		l2.add("7");
-		l2.add("8");
-		
-		Stream<Integer> stream = Stream
-				.of(l1)
-				.cat(l2)
-				.asInt();
-		
-		List<Integer> s = stream.toList();
-		
-		assertTrue("Stream list: " + s.toString(), 
-				s.toString().equals("[1, 2, 3, 4, 5, 6, 7, 8]"));
-	}
+    List<Integer> values = new ArrayList<Integer>();
+    values.add(1);
+    values.add(2);
+    values.add(3);
+    values.add(4);
+
+    Stream<Integer> stream = Stream.of(values);
+
+    assertTrue("Stream list: " + stream.toList().toString(), stream.toList().toString().equals("[1, 2, 3, 4]"));
+  }
+
+  @Test
+  public void streamMeanTest() {
+
+    List<Integer> values = new ArrayList<Integer>();
+    values.add(1);
+    values.add(2);
+    values.add(3);
+    values.add(4);
+    values.add(4);
+
+    double s = Stream.of(values).asDouble().mean();
+
+    assertEquals("Stream mean: " + s, 2.8, s, 0.001);
+  }
+
+  @Test
+  public void emptyFilterTest() {
+
+    List<String> values = new ArrayList<String>();
+    values.add("1");
+    values.add("2");
+    values.add("");
+    values.add("4");
+
+    Stream<Integer> stream = Stream.of(values).asString().emptyFilter().asInt();
+
+    List<Integer> s = stream.toList();
+
+    assertTrue("Stream list: " + s.toString(), s.toString().equals("[1, 2, 4]"));
+  }
+
+  @Test
+  public void minTest() {
+
+    List<String> values = new ArrayList<String>();
+    values.add("8");
+    values.add("2");
+    values.add("1");
+    values.add("4");
+
+    IntStream stream = Stream.of(values).asInt().asInt();
+
+    int s = stream.min();
+
+    assertEquals("Stream min: " + s, 1, s);
+  }
+
+  @Test
+  public void maxTest() {
+
+    List<String> values = new ArrayList<String>();
+    values.add("8");
+    values.add("2");
+    values.add("1");
+    values.add("4");
+
+    IntStream stream = Stream.of(values).asInt();
+
+    int s = stream.max();
+
+    assertEquals("Stream max: " + s, 8, s);
+  }
+
+  @Test
+  public void catTest() {
+
+    List<String> l1 = new ArrayList<String>();
+    l1.add("1");
+    l1.add("2");
+    l1.add("3");
+    l1.add("4");
+
+    List<String> l2 = new ArrayList<String>();
+    l2.add("5");
+    l2.add("6");
+    l2.add("7");
+    l2.add("8");
+
+    Stream<Integer> stream = Stream.of(l1).cat(l2).asInt();
+
+    List<Integer> s = stream.toList();
+
+    assertTrue("Stream list: " + s.toString(), s.toString().equals("[1, 2, 3, 4, 5, 6, 7, 8]"));
+  }
 }

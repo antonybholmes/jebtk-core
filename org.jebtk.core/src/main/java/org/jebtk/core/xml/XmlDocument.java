@@ -31,56 +31,62 @@ import org.jebtk.core.text.TextUtils;
  *
  */
 public class XmlDocument extends XmlElement {
-	
-	/**
-	 * Instantiates a new xml document.
-	 */
-	public XmlDocument() {
-		super("document");
-	}
 
-	/**
-	 * Instantiates a new xml document.
-	 *
-	 * @param element the element
-	 */
-	public XmlDocument(XmlElement element) {
-		super("document");
-		
-		appendChild(element);
-	}
+  /**
+   * Instantiates a new xml document.
+   */
+  public XmlDocument() {
+    super("document");
+  }
 
-	/**
-	 * Write the document to the file in a nicely formatted,
-	 * tab indented fashion.
-	 *
-	 * @param doc the doc
-	 * @param file the file
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 */
-	public static void writeXml(XmlDocument doc, File file) throws IOException {
-		writeXml(doc, file.toPath());
-	}
-	
-	/**
-	 * Write xml.
-	 *
-	 * @param doc the doc
-	 * @param file the file
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 */
-	public static void writeXml(XmlDocument doc, Path file) throws IOException {
-		BufferedWriter writer = FileUtils.newBufferedWriter(file);
+  /**
+   * Instantiates a new xml document.
+   *
+   * @param element
+   *          the element
+   */
+  public XmlDocument(XmlElement element) {
+    super("document");
 
-		try {
-			writer.append(Xml.xmlHeader());
-			writer.append(TextUtils.NEW_LINE);
-			
-			for (XmlElement children : doc) {
-				children.formattedXml(writer, 0);
-			}
-		} finally {
-			writer.close();
-		}
-	}
+    appendChild(element);
+  }
+
+  /**
+   * Write the document to the file in a nicely formatted, tab indented fashion.
+   *
+   * @param doc
+   *          the doc
+   * @param file
+   *          the file
+   * @throws IOException
+   *           Signals that an I/O exception has occurred.
+   */
+  public static void writeXml(XmlDocument doc, File file) throws IOException {
+    writeXml(doc, file.toPath());
+  }
+
+  /**
+   * Write xml.
+   *
+   * @param doc
+   *          the doc
+   * @param file
+   *          the file
+   * @throws IOException
+   *           Signals that an I/O exception has occurred.
+   */
+  public static void writeXml(XmlDocument doc, Path file) throws IOException {
+    BufferedWriter writer = FileUtils.newBufferedWriter(file);
+
+    try {
+      writer.append(Xml.xmlHeader());
+      writer.append(TextUtils.NEW_LINE);
+
+      for (XmlElement children : doc) {
+        children.formattedXml(writer, 0);
+      }
+    } finally {
+      writer.close();
+    }
+  }
 }

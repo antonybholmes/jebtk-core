@@ -26,55 +26,68 @@ import org.jebtk.core.text.TextUtils;
  */
 public class SettingUrl extends Setting {
 
-	/** The Constant serialVersionUID. */
-	private static final long serialVersionUID = 1L;
-	
-	/** The m value. */
-	private UrlBuilder mValue;
+  /** The Constant serialVersionUID. */
+  private static final long serialVersionUID = 1L;
 
-	/**
-	 * Instantiates a new setting url.
-	 *
-	 * @param path the path
-	 * @param value the value
-	 * @param description the description
-	 * @param locked the locked
-	 */
-	public SettingUrl(Path path, UrlBuilder value, String description, boolean locked) {
-		super(path, description, locked);
-		
-		mValue = value;
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.settings.Setting#getAsString()
-	 */
-	@Override
-	public String getAsString() {
-		return mValue.toString();
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.settings.Setting#getAsFile()
-	 */
-	@Override
-	public java.nio.file.Path getAsFile() {
-		return PathUtils.getPath(getAsString());
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.settings.Setting#getAsUrlBuilder()
-	 */
-	@Override
-	public UrlBuilder getAsUrlBuilder() {
-		return mValue;
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.settings.Setting#toString()
-	 */
-	@Override
-	public String toString() {
-		return new StringBuilder("url_setting:").append(mPath.toString()).append(TextUtils.EQUALS_DELIMITER).append(mValue).toString();
-	}
+  /** The m value. */
+  private UrlBuilder mValue;
+
+  /**
+   * Instantiates a new setting url.
+   *
+   * @param path
+   *          the path
+   * @param value
+   *          the value
+   * @param description
+   *          the description
+   * @param locked
+   *          the locked
+   */
+  public SettingUrl(Path path, UrlBuilder value, String description, boolean locked) {
+    super(path, description, locked);
+
+    mValue = value;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.settings.Setting#getAsString()
+   */
+  @Override
+  public String getAsString() {
+    return mValue.toString();
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.settings.Setting#getAsFile()
+   */
+  @Override
+  public java.nio.file.Path getAsFile() {
+    return PathUtils.getPath(getAsString());
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.settings.Setting#getAsUrlBuilder()
+   */
+  @Override
+  public UrlBuilder getAsUrlBuilder() {
+    return mValue;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.settings.Setting#toString()
+   */
+  @Override
+  public String toString() {
+    return new StringBuilder("url_setting:").append(mPath.toString()).append(TextUtils.EQUALS_DELIMITER).append(mValue)
+        .toString();
+  }
 }

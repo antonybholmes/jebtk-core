@@ -20,30 +20,30 @@ package org.jebtk.core.settings;
  * The class StyleService.
  */
 public class StyleService extends KeyService {
-	
-	/**
-	 * The constant serialVersionUID.
-	 */
-	private static final long serialVersionUID = 1L;
-	
-	/**
-	 * The constant INSTANCE.
-	 */
-	private static final StyleService INSTANCE = new StyleService();
-	
-	/**
-	 * Gets the single instance of StyleService.
-	 *
-	 * @return single instance of StyleService
-	 */
-	public static final StyleService getInstance() {
-		return INSTANCE;
-	}
-	
-	/**
-	 * Instantiates a new style service.
-	 */
-	private StyleService() {
-		super("styles");
-	}
+
+  /**
+   * The constant serialVersionUID.
+   */
+  private static final long serialVersionUID = 1L;
+
+  /**
+   * The constant INSTANCE.
+   */
+  private static final StyleService INSTANCE = new StyleService();
+
+  /**
+   * Gets the single instance of StyleService.
+   *
+   * @return single instance of StyleService
+   */
+  public static final StyleService getInstance() {
+    return INSTANCE;
+  }
+
+  /**
+   * Instantiates a new style service.
+   */
+  private StyleService() {
+    super("styles");
+  }
 }

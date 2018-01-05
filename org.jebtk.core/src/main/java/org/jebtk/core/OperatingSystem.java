@@ -20,19 +20,19 @@ package org.jebtk.core;
  * The enum OperatingSystem.
  */
 public enum OperatingSystem {
-	
-	/**
-	 * The windows.
-	 */
-	WINDOWS,
-	
-	/**
-	 * The osx.
-	 */
-	OSX,
-	
-	/**
-	 * The linux.
-	 */
-	LINUX
+
+  /**
+   * The windows.
+   */
+  WINDOWS,
+
+  /**
+   * The osx.
+   */
+  OSX,
+
+  /**
+   * The linux.
+   */
+  LINUX
 }

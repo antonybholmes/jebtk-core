@@ -29,45 +29,47 @@ import org.xml.sax.SAXException;
  * The Class SettingsReaderPackageXml.
  */
 public class SettingsReaderPackageXml implements SettingsReader {
-	
-	/** The Constant DEFAULT_XML_FILE. */
-	public static final Path DEFAULT_XML_FILE = 
-			Resources.RES_DIR.resolve("default.settings.xml");
 
-	/* (non-Javadoc)
-	 * @see org.abh.common.settings.SettingsReader#load(org.abh.common.settings.Settings)
-	 */
-	@Override
-	public void load(Settings settings) {
-		LOG.info("Loading package XML settings...");
+  /** The Constant DEFAULT_XML_FILE. */
+  public static final Path DEFAULT_XML_FILE = Resources.RES_DIR.resolve("default.settings.xml");
 
-		for (String res : Resources.getInstance()) {
-			if (!res.contains("settings.xml")) {
-				continue;
-			}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.abh.common.settings.SettingsReader#load(org.abh.common.settings.Settings)
+   */
+  @Override
+  public void load(Settings settings) {
+    LOG.info("Loading package XML settings...");
 
-			LOG.info("Loading settings from {}...", res);
+    for (String res : Resources.getInstance()) {
+      if (!res.contains("settings.xml")) {
+        continue;
+      }
 
-			try {
-				InputStream is = Resources.getResInputStream(res);
+      LOG.info("Loading settings from {}...", res);
 
-				try {
-					settings.loadXml(Resources.getResInputStream(res), false);
-				} finally {
-					is.close();
-				}
-			} catch (SAXException | IOException | ParserConfigurationException e) {
-				e.printStackTrace();
-			}
-		}
+      try {
+        InputStream is = Resources.getResInputStream(res);
 
-		// Load local settings that may overwrite internal settings.
-		try {
-			settings.loadXml(DEFAULT_XML_FILE, false);
-		} catch (SAXException | IOException | ParserConfigurationException e) {
-			e.printStackTrace();
-		}
+        try {
+          settings.loadXml(Resources.getResInputStream(res), false);
+        } finally {
+          is.close();
+        }
+      } catch (SAXException | IOException | ParserConfigurationException e) {
+        e.printStackTrace();
+      }
+    }
 
-		LOG.info("Finished loading settings...");
-	}
+    // Load local settings that may overwrite internal settings.
+    try {
+      settings.loadXml(DEFAULT_XML_FILE, false);
+    } catch (SAXException | IOException | ParserConfigurationException e) {
+      e.printStackTrace();
+    }
+
+    LOG.info("Finished loading settings...");
+  }
 }

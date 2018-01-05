@@ -17,74 +17,76 @@ package org.jebtk.core.model;
 
 import org.jebtk.core.event.ChangeListeners;
 
-
 // TODO: Auto-generated Javadoc
 /**
  * Generic model for sharing a changable item of fixed type.
  *
  * @author Antony Holmes Holmes
- * @param <T> the generic type
+ * @param <T>
+ *          the generic type
  */
 public class ItemModel<T> extends ChangeListeners {
-	
-	/**
-	 * The constant serialVersionUID.
-	 */
-	private static final long serialVersionUID = 1L;
-	
-	/**
-	 * The member item.
-	 */
-	private T mItem = null;
-	
-	/** The m previous item. */
-	private T mPreviousItem = null;
-	
-	/**
-	 * Sets the.
-	 *
-	 * @param item the item
-	 */
-	public void set(T item) {
-		update(item);
 
-		fireChanged();
-	}
-	
-	/**
-	 * Update.
-	 *
-	 * @param item the item
-	 */
-	public void update(T item) {
-		mPreviousItem = mItem;
-		mItem = item;
-	}
-	
-	/**
-	 * Gets the.
-	 *
-	 * @return the t
-	 */
-	public T get() {
-		return mItem;
-	}
-	
-	/**
-	 * Gets the previous.
-	 *
-	 * @return the previous
-	 */
-	public T getPrevious() {
-		return mPreviousItem;
-	}
-	
-	/**
-	 * Clear.
-	 */
-	public void clear() {
-		mItem = null;
+  /**
+   * The constant serialVersionUID.
+   */
+  private static final long serialVersionUID = 1L;
 
-		fireChanged();
-	}
+  /**
+   * The member item.
+   */
+  private T mItem = null;
+
+  /** The m previous item. */
+  private T mPreviousItem = null;
+
+  /**
+   * Sets the.
+   *
+   * @param item
+   *          the item
+   */
+  public void set(T item) {
+    update(item);
+
+    fireChanged();
+  }
+
+  /**
+   * Update.
+   *
+   * @param item
+   *          the item
+   */
+  public void update(T item) {
+    mPreviousItem = mItem;
+    mItem = item;
+  }
+
+  /**
+   * Gets the.
+   *
+   * @return the t
+   */
+  public T get() {
+    return mItem;
+  }
+
+  /**
+   * Gets the previous.
+   *
+   * @return the previous
+   */
+  public T getPrevious() {
+    return mPreviousItem;
+  }
+
+  /**
+   * Clear.
+   */
+  public void clear() {
+    mItem = null;
+
+    fireChanged();
+  }
 }

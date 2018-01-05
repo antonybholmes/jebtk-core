@@ -25,59 +25,69 @@ import java.util.Map.Entry;
  * benefits of a vector without the ability to modify it.
  *
  * @author Antony Holmes Holmes
- * @param <T1> the generic type
- * @param <T2> the generic type
+ * @param <T1>
+ *          the generic type
+ * @param <T2>
+ *          the generic type
  */
 public class ImmutableMap<T1, T2> extends HashMap<T1, T2> implements Iterable<Entry<T1, T2>> {
-	
-	/**
-	 * The constant serialVersionUID.
-	 */
-	private static final long serialVersionUID = 1L;
-	
-	/**
-	 * The locked.
-	 */
-	private boolean locked = false;
 
-	/**
-	 * Lock the map to prevent futher entries being added.
-	 */
-	public final void lock() {
-		locked  = true;
-	}
-	
-	/* (non-Javadoc)
-	 * @see java.util.HashMap#put(java.lang.Object, java.lang.Object)
-	 */
-	public T2 put(T1 key, T2 value) {
-		if (locked ) {
-			return null;
-		}
-		
-		return super.put(key, value);
-	}
-	
-	/* (non-Javadoc)
-	 * @see java.util.HashMap#clear()
-	 */
-	public void clear() {
-		// Do nothing
-	}
-	
-	/* (non-Javadoc)
-	 * @see java.util.HashMap#remove(java.lang.Object)
-	 */
-	public T2 remove(Object o) {
-		// Prevent items from being removed.
+  /**
+   * The constant serialVersionUID.
+   */
+  private static final long serialVersionUID = 1L;
 
-		return null;
-	}
-	
-	/* (non-Javadoc)
-	 * @see java.lang.Iterable#iterator()
-	 */
-	public Iterator<Entry<T1, T2>> iterator() {
-		return entrySet().iterator();
-	}
+  /**
+   * The locked.
+   */
+  private boolean locked = false;
+
+  /**
+   * Lock the map to prevent futher entries being added.
+   */
+  public final void lock() {
+    locked = true;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.util.HashMap#put(java.lang.Object, java.lang.Object)
+   */
+  public T2 put(T1 key, T2 value) {
+    if (locked) {
+      return null;
+    }
+
+    return super.put(key, value);
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.util.HashMap#clear()
+   */
+  public void clear() {
+    // Do nothing
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.util.HashMap#remove(java.lang.Object)
+   */
+  public T2 remove(Object o) {
+    // Prevent items from being removed.
+
+    return null;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Iterable#iterator()
+   */
+  public Iterator<Entry<T1, T2>> iterator() {
+    return entrySet().iterator();
+  }
 }

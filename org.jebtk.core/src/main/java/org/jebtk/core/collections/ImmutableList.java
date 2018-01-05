@@ -23,51 +23,58 @@ import java.util.ArrayList;
  * benefits of a vector without the ability to modify it.
  *
  * @author Antony Holmes Holmes
- * @param <T> the generic type
+ * @param <T>
+ *          the generic type
  */
 public class ImmutableList<T> extends ArrayList<T> {
-	
-	/**
-	 * The constant serialVersionUID.
-	 */
-	private static final long serialVersionUID = 1L;
-	
-	/**
-	 * The locked.
-	 */
-	private boolean locked = false;
-	
-	/**
-	 * Lock the list to prevent futher entries being added.
-	 */
-	public final void lock() {
-		locked = true;
-	}
-	
-	/* (non-Javadoc)
-	 * @see java.util.ArrayList#add(java.lang.Object)
-	 */
-	public boolean add(T item) {
-		if (locked) {
-			return false;
-		}
-		
-		return super.add(item);
-	}
-	
-	/* (non-Javadoc)
-	 * @see java.util.ArrayList#clear()
-	 */
-	public void clear() {
-		// Prevent items from being removed.
-	}
-	
-	/* (non-Javadoc)
-	 * @see java.util.ArrayList#remove(int)
-	 */
-	public T remove(int i) {
-		// Prevent items from being removed.
-		
-		return null;
-	}
+
+  /**
+   * The constant serialVersionUID.
+   */
+  private static final long serialVersionUID = 1L;
+
+  /**
+   * The locked.
+   */
+  private boolean locked = false;
+
+  /**
+   * Lock the list to prevent futher entries being added.
+   */
+  public final void lock() {
+    locked = true;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.util.ArrayList#add(java.lang.Object)
+   */
+  public boolean add(T item) {
+    if (locked) {
+      return false;
+    }
+
+    return super.add(item);
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.util.ArrayList#clear()
+   */
+  public void clear() {
+    // Prevent items from being removed.
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.util.ArrayList#remove(int)
+   */
+  public T remove(int i) {
+    // Prevent items from being removed.
+
+    return null;
+  }
 }

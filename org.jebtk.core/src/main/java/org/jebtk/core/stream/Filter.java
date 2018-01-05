@@ -19,15 +19,17 @@ package org.jebtk.core.stream;
 /**
  * The Interface Filter.
  *
- * @param <T> the generic type
+ * @param <T>
+ *          the generic type
  */
 public interface Filter<T> {
-	
-	/**
-	 * Keep.
-	 *
-	 * @param item the item
-	 * @return true, if successful
-	 */
-	public boolean keep(T item);
+
+  /**
+   * Keep.
+   *
+   * @param item
+   *          the item
+   * @return true, if successful
+   */
+  public boolean keep(T item);
 }

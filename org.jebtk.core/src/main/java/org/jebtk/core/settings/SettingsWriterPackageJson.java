@@ -23,17 +23,20 @@ import java.io.IOException;
  */
 public class SettingsWriterPackageJson implements SettingsWriter {
 
-	/* (non-Javadoc)
-	 * @see org.abh.common.settings.SettingsWriter#save(org.abh.common.settings.Settings)
-	 */
-	@Override
-	public void save(Settings settings) {
-		try {
-			settings.writeJson(SettingsReaderUserJson.USER_JSON_FILE);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.abh.common.settings.SettingsWriter#save(org.abh.common.settings.Settings)
+   */
+  @Override
+  public void save(Settings settings) {
+    try {
+      settings.writeJson(SettingsReaderUserJson.USER_JSON_FILE);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+
+  }
 
 }

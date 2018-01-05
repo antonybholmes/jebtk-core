@@ -23,28 +23,31 @@ import java.io.FileFilter;
  * The class FilePatternFilter.
  */
 public class FilePatternFilter implements FileFilter {
-	
-	/**
-	 * The pattern.
-	 */
-	private String pattern;
 
-	/**
-	 * Instantiates a new file pattern filter.
-	 *
-	 * @param pattern the pattern
-	 */
-	public FilePatternFilter(String pattern) {
-		//System.out.println("filter:" + filter);
+  /**
+   * The pattern.
+   */
+  private String pattern;
 
-		this.pattern = pattern;
-	}
+  /**
+   * Instantiates a new file pattern filter.
+   *
+   * @param pattern
+   *          the pattern
+   */
+  public FilePatternFilter(String pattern) {
+    // System.out.println("filter:" + filter);
 
-	/* (non-Javadoc)
-	 * @see java.io.FileFilter#accept(java.io.File)
-	 */
-	public boolean accept(File f) {
-		// files should not begin with a period as this indicates hidden files
-		return !f.isDirectory() && !f.getName().startsWith(".") && f.getName().matches(pattern);
-	}
+    this.pattern = pattern;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.io.FileFilter#accept(java.io.File)
+   */
+  public boolean accept(File f) {
+    // files should not begin with a period as this indicates hidden files
+    return !f.isDirectory() && !f.getName().startsWith(".") && f.getName().matches(pattern);
+  }
 }

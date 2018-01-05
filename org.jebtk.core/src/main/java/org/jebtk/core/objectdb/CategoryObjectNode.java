@@ -27,172 +27,184 @@ import org.jebtk.core.settings.KeyNode;
 
 // TODO: Auto-generated Javadoc
 /**
- * Category Object nodes store data in radix trees for
- * fast searching.
+ * Category Object nodes store data in radix trees for fast searching.
  *
  * @author Antony Holmes Holmes
- * @param <T> the generic type
+ * @param <T>
+ *          the generic type
  */
-public class CategoryObjectNode<T> implements Iterable<CategoryObjectNode<T>>, Comparable<CategoryObjectNode<T>>, Serializable {
-	
-	/**
-	 * The constant serialVersionUID.
-	 */
-	private static final long serialVersionUID = 1L;
+public class CategoryObjectNode<T>
+    implements Iterable<CategoryObjectNode<T>>, Comparable<CategoryObjectNode<T>>, Serializable {
 
-	/**
-	 * The member tree.
-	 */
-	protected RadixObjectDb<T> mTree = new RadixObjectDb<T>();
-	
-	/**
-	 * The member children.
-	 */
-	protected Map<String, CategoryObjectNode<T>> mChildren = 
-			new HashMap<String, CategoryObjectNode<T>>();
+  /**
+   * The constant serialVersionUID.
+   */
+  private static final long serialVersionUID = 1L;
 
-	/**
-	 * The member name.
-	 */
-	private String mName;
+  /**
+   * The member tree.
+   */
+  protected RadixObjectDb<T> mTree = new RadixObjectDb<T>();
 
-	/**
-	 * Instantiates a new category object node.
-	 *
-	 * @param name the name
-	 */
-	public CategoryObjectNode(String name) {
-		mName = KeyNode.standardize(name);
-	}
+  /**
+   * The member children.
+   */
+  protected Map<String, CategoryObjectNode<T>> mChildren = new HashMap<String, CategoryObjectNode<T>>();
 
-	/**
-	 * Gets the name.
-	 *
-	 * @return the name
-	 */
-	public String getName() {
-		return mName;
-	}
-	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	public String toString() {
-		return mName;
-	}
-	
-	/**
-	 * Gets the prefix tree.
-	 *
-	 * @return the prefix tree
-	 */
-	public RadixObjectDb<T> getPrefixTree() {
-		return mTree;
-	}
+  /**
+   * The member name.
+   */
+  private String mName;
 
-	/**
-	 * Gets the child.
-	 *
-	 * @param level the level
-	 * @return the child
-	 */
-	public CategoryObjectNode<T> getChild(PathLevel level) {
-		return getChild(level.toString());
-	}
-	
-	/**
-	 * Gets the child.
-	 *
-	 * @param name the name
-	 * @return the child
-	 */
-	public CategoryObjectNode<T> getChild(String name) {
-		if (mChildren.containsKey(name)) {
-			return mChildren.get(name);
-		}
-		
-		// Create the category if it does not exist.
-		
-		CategoryObjectNode<T> node = new CategoryObjectNode<T>(name);
-		
-		mChildren.put(name, node);
-		
-		return node;
-	}
-	
-	/**
-	 * Gets the child by path.
-	 *
-	 * @param path the path
-	 * @return the child by path
-	 */
-	public CategoryObjectNode<T> getChildByPath(String path) {
-		return getChildByPath(new StrictPath(path));
-	}
+  /**
+   * Instantiates a new category object node.
+   *
+   * @param name
+   *          the name
+   */
+  public CategoryObjectNode(String name) {
+    mName = KeyNode.standardize(name);
+  }
 
-	/**
-	 * Traverse a properties tree using a path expression to
-	 * find a particular property. Returns null if the
-	 * property is not found.
-	 *
-	 * @param path the path
-	 * @return the child by path
-	 */
-	public CategoryObjectNode<T> getChildByPath(Path path) {
-		//System.err.println("Category path " + path);
-		
-		CategoryObjectNode<T> node = this;
-		
-		for (String level : path) {
-			//System.err.println("level " + level);
-			//System.err.println("keyword "  + s);
-			
-			node = node.getChild(level);
-		}
-		
-		return node;
-	}
-	
-	/**
-	 * Gets the child count.
-	 *
-	 * @return the child count
-	 */
-	public int getChildCount() {
-		return mChildren.size();
-	}
+  /**
+   * Gets the name.
+   *
+   * @return the name
+   */
+  public String getName() {
+    return mName;
+  }
 
-	/* (non-Javadoc)
-	 * @see java.lang.Iterable#iterator()
-	 */
-	public Iterator<CategoryObjectNode<T>> iterator() {
-		return mChildren.values().iterator();
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Object#toString()
+   */
+  public String toString() {
+    return mName;
+  }
 
-	/* (non-Javadoc)
-	 * @see java.lang.Comparable#compareTo(java.lang.Object)
-	 */
-	public int compareTo(CategoryObjectNode<T> n) {
-		return mName.compareTo(n.mName);
-	}
-	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
-	public boolean equals(Object o) {
-		if (!(o instanceof CategoryObjectNode)) {
-			return false;
-		}
-		
-		return compareTo((CategoryObjectNode<T>)o) == 0;
-	}
+  /**
+   * Gets the prefix tree.
+   *
+   * @return the prefix tree
+   */
+  public RadixObjectDb<T> getPrefixTree() {
+    return mTree;
+  }
 
-	/**
-	 * Clear.
-	 */
-	public void clear() {
-		mChildren.clear();
-		
-		mTree.clear();
-	}
+  /**
+   * Gets the child.
+   *
+   * @param level
+   *          the level
+   * @return the child
+   */
+  public CategoryObjectNode<T> getChild(PathLevel level) {
+    return getChild(level.toString());
+  }
+
+  /**
+   * Gets the child.
+   *
+   * @param name
+   *          the name
+   * @return the child
+   */
+  public CategoryObjectNode<T> getChild(String name) {
+    if (mChildren.containsKey(name)) {
+      return mChildren.get(name);
+    }
+
+    // Create the category if it does not exist.
+
+    CategoryObjectNode<T> node = new CategoryObjectNode<T>(name);
+
+    mChildren.put(name, node);
+
+    return node;
+  }
+
+  /**
+   * Gets the child by path.
+   *
+   * @param path
+   *          the path
+   * @return the child by path
+   */
+  public CategoryObjectNode<T> getChildByPath(String path) {
+    return getChildByPath(new StrictPath(path));
+  }
+
+  /**
+   * Traverse a properties tree using a path expression to find a particular
+   * property. Returns null if the property is not found.
+   *
+   * @param path
+   *          the path
+   * @return the child by path
+   */
+  public CategoryObjectNode<T> getChildByPath(Path path) {
+    // System.err.println("Category path " + path);
+
+    CategoryObjectNode<T> node = this;
+
+    for (String level : path) {
+      // System.err.println("level " + level);
+      // System.err.println("keyword " + s);
+
+      node = node.getChild(level);
+    }
+
+    return node;
+  }
+
+  /**
+   * Gets the child count.
+   *
+   * @return the child count
+   */
+  public int getChildCount() {
+    return mChildren.size();
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Iterable#iterator()
+   */
+  public Iterator<CategoryObjectNode<T>> iterator() {
+    return mChildren.values().iterator();
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Comparable#compareTo(java.lang.Object)
+   */
+  public int compareTo(CategoryObjectNode<T> n) {
+    return mName.compareTo(n.mName);
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Object#equals(java.lang.Object)
+   */
+  public boolean equals(Object o) {
+    if (!(o instanceof CategoryObjectNode)) {
+      return false;
+    }
+
+    return compareTo((CategoryObjectNode<T>) o) == 0;
+  }
+
+  /**
+   * Clear.
+   */
+  public void clear() {
+    mChildren.clear();
+
+    mTree.clear();
+  }
 }

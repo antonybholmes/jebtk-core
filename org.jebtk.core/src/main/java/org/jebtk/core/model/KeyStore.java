@@ -25,99 +25,117 @@ import org.jebtk.core.event.ChangeListeners;
 
 // TODO: Auto-generated Javadoc
 /**
- * Generic model for sharing items and receiving
- * notification when the items change.
+ * Generic model for sharing items and receiving notification when the items
+ * change.
  *
  * @author Antony Holmes Holmes
- * @param <T> the generic type
- * @param <X> the generic type
+ * @param <T>
+ *          the generic type
+ * @param <X>
+ *          the generic type
  */
 public class KeyStore<T, X> implements ChangeEventProducer {
-	
-	private Map<T, X> mMap = new HashMap<T, X>();
-	
-	/**
-	 * The listeners.
-	 */
-	private ChangeListeners listeners = new ChangeListeners();
-	
-	/**
-	 * Adds the.
-	 *
-	 * @param key the key
-	 * @param item the item
-	 * @return the x
-	 */
-	public X put(T key, X item) {
-		X ret = update(key, item);
-		
-		fireChanged();
-		
-		return ret;
-	}
-	
-	/**
-	 * Update.
-	 *
-	 * @param key the key
-	 * @param item the item
-	 * @return the x
-	 */
-	public X update(T key, X item) {
-		return mMap.put(key, item);
-	}
-	
-	public X get(T key) {
-		return mMap.get(key);
-	}
-	
-	
-	/* (non-Javadoc)
-	 * @see java.util.HashMap#clear()
-	 */
-	public void clear() {
-		mMap.clear();
 
-		fireChanged();
-	}
-	
-	/**
-	 * Gets the item count.
-	 *
-	 * @return the item count
-	 */
-	public int size() {
-		return mMap.size();
-	}
+  private Map<T, X> mMap = new HashMap<T, X>();
 
-	/* (non-Javadoc)
-	 * @see org.abh.lib.event.ChangeEventProducer#addChangeListener(org.abh.lib.event.ChangeListener)
-	 */
-	@Override
-	public void addChangeListener(ChangeListener l) {
-		listeners.addChangeListener(l);
-	}
+  /**
+   * The listeners.
+   */
+  private ChangeListeners listeners = new ChangeListeners();
 
-	/* (non-Javadoc)
-	 * @see org.abh.lib.event.ChangeEventProducer#removeChangeListener(org.abh.lib.event.ChangeListener)
-	 */
-	@Override
-	public void removeChangeListener(ChangeListener l) {
-		listeners.removeChangeListener(l);
-	}
+  /**
+   * Adds the.
+   *
+   * @param key
+   *          the key
+   * @param item
+   *          the item
+   * @return the x
+   */
+  public X put(T key, X item) {
+    X ret = update(key, item);
 
-	/* (non-Javadoc)
-	 * @see org.abh.lib.event.ChangeEventProducer#fireChanged(org.abh.lib.event.ChangeEvent)
-	 */
-	@Override
-	public void fireChanged(ChangeEvent e) {
-		listeners.fireChanged(e);
-	}
-	
-	/**
-	 * Fire changed.
-	 */
-	public void fireChanged() {
-		listeners.fireChanged();
-	}
+    fireChanged();
+
+    return ret;
+  }
+
+  /**
+   * Update.
+   *
+   * @param key
+   *          the key
+   * @param item
+   *          the item
+   * @return the x
+   */
+  public X update(T key, X item) {
+    return mMap.put(key, item);
+  }
+
+  public X get(T key) {
+    return mMap.get(key);
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.util.HashMap#clear()
+   */
+  public void clear() {
+    mMap.clear();
+
+    fireChanged();
+  }
+
+  /**
+   * Gets the item count.
+   *
+   * @return the item count
+   */
+  public int size() {
+    return mMap.size();
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.abh.lib.event.ChangeEventProducer#addChangeListener(org.abh.lib.event.
+   * ChangeListener)
+   */
+  @Override
+  public void addChangeListener(ChangeListener l) {
+    listeners.addChangeListener(l);
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.abh.lib.event.ChangeEventProducer#removeChangeListener(org.abh.lib.event.
+   * ChangeListener)
+   */
+  @Override
+  public void removeChangeListener(ChangeListener l) {
+    listeners.removeChangeListener(l);
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.event.ChangeEventProducer#fireChanged(org.abh.lib.event.
+   * ChangeEvent)
+   */
+  @Override
+  public void fireChanged(ChangeEvent e) {
+    listeners.fireChanged(e);
+  }
+
+  /**
+   * Fire changed.
+   */
+  public void fireChanged() {
+    listeners.fireChanged();
+  }
 }

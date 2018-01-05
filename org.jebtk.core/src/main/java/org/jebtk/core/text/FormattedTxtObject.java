@@ -15,7 +15,6 @@
  */
 package org.jebtk.core.text;
 
-
 // TODO: Auto-generated Javadoc
 /**
  * Provides a unique id to a class.
@@ -25,33 +24,37 @@ package org.jebtk.core.text;
  */
 public class FormattedTxtObject implements FormattedTxt {
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return formattedTxt();
-	}
-	
-	/**
-	 * Formatted txt.
-	 *
-	 * @return the string
-	 */
-	public String formattedTxt() {
-		StringBuilder buffer = new StringBuilder();
-		
-		formattedTxt(buffer);
-		
-		return buffer.toString();
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.lib.FormattedTxt#formattedTxt(java.lang.Appendable)
-	 */
-	@Override
-	public void formattedTxt(Appendable buffer) {
-		// TODO Auto-generated method stub
-		
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Object#toString()
+   */
+  @Override
+  public String toString() {
+    return formattedTxt();
+  }
+
+  /**
+   * Formatted txt.
+   *
+   * @return the string
+   */
+  public String formattedTxt() {
+    StringBuilder buffer = new StringBuilder();
+
+    formattedTxt(buffer);
+
+    return buffer.toString();
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.FormattedTxt#formattedTxt(java.lang.Appendable)
+   */
+  @Override
+  public void formattedTxt(Appendable buffer) {
+    // TODO Auto-generated method stub
+
+  }
 }

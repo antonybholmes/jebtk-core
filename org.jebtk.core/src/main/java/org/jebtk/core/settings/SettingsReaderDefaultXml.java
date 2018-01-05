@@ -28,27 +28,29 @@ import org.xml.sax.SAXException;
  * The Class SettingsReaderDefaultXml.
  */
 public class SettingsReaderDefaultXml implements SettingsReader {
-	
-	/** The Constant XML_FILE. */
-	public static final Path XML_FILE = 
-			PathUtils.getPath("res/default.settings.xml");
 
-	/* (non-Javadoc)
-	 * @see org.abh.common.settings.SettingsReader#load(org.abh.common.settings.Settings)
-	 */
-	@Override
-	public void load(Settings settings) {
-		LOG.info("Loading user XML settings...");
+  /** The Constant XML_FILE. */
+  public static final Path XML_FILE = PathUtils.getPath("res/default.settings.xml");
 
-		// Load any per user settings. We flag these as being updated so
-		// that on the next write cycle, they will be written back to the
-		// settings file.
-		try {
-			settings.loadXml(XML_FILE, false);
-		} catch (SAXException | IOException | ParserConfigurationException e) {
-			e.printStackTrace();
-		}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.abh.common.settings.SettingsReader#load(org.abh.common.settings.Settings)
+   */
+  @Override
+  public void load(Settings settings) {
+    LOG.info("Loading user XML settings...");
 
-		LOG.info("Finished loading settings...");
-	}
+    // Load any per user settings. We flag these as being updated so
+    // that on the next write cycle, they will be written back to the
+    // settings file.
+    try {
+      settings.loadXml(XML_FILE, false);
+    } catch (SAXException | IOException | ParserConfigurationException e) {
+      e.printStackTrace();
+    }
+
+    LOG.info("Finished loading settings...");
+  }
 }

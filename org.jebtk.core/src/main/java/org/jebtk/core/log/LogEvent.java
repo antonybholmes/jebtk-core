@@ -24,69 +24,70 @@ import org.jebtk.core.event.Event;
  * The class LogEvent.
  */
 public class LogEvent extends Event {
-	
-	/**
-	 * The constant serialVersionUID.
-	 */
-	private static final long serialVersionUID = 1L;
-	
-	/**
-	 * The date.
-	 */
-	private Date date;
-	
-	/**
-	 * The formatted date.
-	 */
-	private String formattedDate;
-	
-	/**
-	 * The type.
-	 */
-	private LogEventType type;
 
-	/**
-	 * Instantiates a new log event.
-	 *
-	 * @param source the source
-	 * @param message the message
-	 * @param type the type
-	 */
-	public LogEvent(Object source,
-			String message,
-			LogEventType type) {
-		super(source, message);
-		
-		this.type = type;
-		
-		this.date = new Date();
-		this.formattedDate = Log.DATE_FORMAT.format(date.getTime());
-	}
-	
-	/**
-	 * Gets the type.
-	 *
-	 * @return the type
-	 */
-	public LogEventType getType() {
-		return type;
-	}
+  /**
+   * The constant serialVersionUID.
+   */
+  private static final long serialVersionUID = 1L;
 
-	/**
-	 * Gets the date.
-	 *
-	 * @return the date
-	 */
-	public final Date getDate() {
-		return date;
-	}
+  /**
+   * The date.
+   */
+  private Date date;
 
-	/**
-	 * Gets the formatted date.
-	 *
-	 * @return the formatted date
-	 */
-	public final String getFormattedDate() {
-		return formattedDate;
-	}
+  /**
+   * The formatted date.
+   */
+  private String formattedDate;
+
+  /**
+   * The type.
+   */
+  private LogEventType type;
+
+  /**
+   * Instantiates a new log event.
+   *
+   * @param source
+   *          the source
+   * @param message
+   *          the message
+   * @param type
+   *          the type
+   */
+  public LogEvent(Object source, String message, LogEventType type) {
+    super(source, message);
+
+    this.type = type;
+
+    this.date = new Date();
+    this.formattedDate = Log.DATE_FORMAT.format(date.getTime());
+  }
+
+  /**
+   * Gets the type.
+   *
+   * @return the type
+   */
+  public LogEventType getType() {
+    return type;
+  }
+
+  /**
+   * Gets the date.
+   *
+   * @return the date
+   */
+  public final Date getDate() {
+    return date;
+  }
+
+  /**
+   * Gets the formatted date.
+   *
+   * @return the formatted date
+   */
+  public final String getFormattedDate() {
+    return formattedDate;
+  }
 }

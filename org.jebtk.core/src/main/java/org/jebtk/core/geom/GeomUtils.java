@@ -22,30 +22,32 @@ import java.awt.Rectangle;
  * The Class GeomUtils.
  */
 public class GeomUtils {
-	
-	/** The Constant DIM_ZERO. */
-	public static final IntDim DIM_ZERO = IntDim.DIM_ZERO;
-	
-	/** The Constant INT_POINT_ZERO. */
-	public static final IntPos2D INT_POINT_ZERO = new IntPos2D(0, 0);
-	
-	public static final DoublePos2D DOUBLE_POINT_ZERO = new DoublePos2D(0, 0);
-	
-	/**
-	 * Instantiates a new geom utils.
-	 */
-	private GeomUtils() {
-		// Do nothing
-	}
 
-	/**
-	 * Returns a clone of a rectangle where the height has been adjusted.
-	 *
-	 * @param rect the rect
-	 * @param height the height
-	 * @return the rectangle
-	 */
-	public static Rectangle setHeight(Rectangle rect, int height) {
-		return new Rectangle(rect.x, rect.y, rect.width, height);
-	}
+  /** The Constant DIM_ZERO. */
+  public static final IntDim DIM_ZERO = IntDim.DIM_ZERO;
+
+  /** The Constant INT_POINT_ZERO. */
+  public static final IntPos2D INT_POINT_ZERO = new IntPos2D(0, 0);
+
+  public static final DoublePos2D DOUBLE_POINT_ZERO = new DoublePos2D(0, 0);
+
+  /**
+   * Instantiates a new geom utils.
+   */
+  private GeomUtils() {
+    // Do nothing
+  }
+
+  /**
+   * Returns a clone of a rectangle where the height has been adjusted.
+   *
+   * @param rect
+   *          the rect
+   * @param height
+   *          the height
+   * @return the rectangle
+   */
+  public static Rectangle setHeight(Rectangle rect, int height) {
+    return new Rectangle(rect.x, rect.y, rect.width, height);
+  }
 }

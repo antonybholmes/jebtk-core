@@ -24,15 +24,15 @@ import org.slf4j.LoggerFactory;
  */
 public interface SettingsReader {
 
-	/** The log. */
-	public final Logger LOG = 
-			LoggerFactory.getLogger(SettingsReader.class);
-	
-	/**
-	 * Load.
-	 *
-	 * @param settings the settings
-	 */
-	public void load(Settings settings);
+  /** The log. */
+  public final Logger LOG = LoggerFactory.getLogger(SettingsReader.class);
+
+  /**
+   * Load.
+   *
+   * @param settings
+   *          the settings
+   */
+  public void load(Settings settings);
 
 }

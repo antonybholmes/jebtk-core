@@ -25,180 +25,192 @@ import org.jebtk.core.path.PathLevel;
 import org.jebtk.core.path.StrictPath;
 import org.jebtk.core.settings.KeyNode;
 
-
 // TODO: Auto-generated Javadoc
 /**
- * Represents a node in a tree hierarchy. A node may contain
- * a data object as well as child nodes.
+ * Represents a node in a tree hierarchy. A node may contain a data object as
+ * well as child nodes.
  *
  * @author Antony Holmes Holmes
- * @param <T> the generic type
+ * @param <T>
+ *          the generic type
  */
 public class TextObjectNode<T> implements Iterable<TextObjectNode<T>>, Comparable<TextObjectNode<T>>, Serializable {
-	
-	/**
-	 * The constant serialVersionUID.
-	 */
-	private static final long serialVersionUID = 1L;
 
-	/**
-	 * The member value.
-	 */
-	protected T mValue = null;
-	
-	/**
-	 * The member children.
-	 */
-	protected Map<String, TextObjectNode<T>> mChildren = 
-			new HashMap<String, TextObjectNode<T>>();
+  /**
+   * The constant serialVersionUID.
+   */
+  private static final long serialVersionUID = 1L;
 
-	/**
-	 * The member name.
-	 */
-	private String mName;
+  /**
+   * The member value.
+   */
+  protected T mValue = null;
 
-	/**
-	 * Instantiates a new text object node.
-	 *
-	 * @param name the name
-	 */
-	public TextObjectNode(String name) {
-		mName = KeyNode.standardize(name);
-	}
+  /**
+   * The member children.
+   */
+  protected Map<String, TextObjectNode<T>> mChildren = new HashMap<String, TextObjectNode<T>>();
 
-	/**
-	 * Gets the name.
-	 *
-	 * @return the name
-	 */
-	public String getName() {
-		return mName;
-	}
-	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	public String toString() {
-		return mName;
-	}
-	
-	/**
-	 * Sets the value.
-	 *
-	 * @param value the new value
-	 */
-	public void setValue(T value) {
-		this.mValue = value;
-	}
-	
-	/**
-	 * Gets the value.
-	 *
-	 * @return the value
-	 */
-	public T getValue() {
-		return mValue;
-	}
+  /**
+   * The member name.
+   */
+  private String mName;
 
-	/**
-	 * Gets the child.
-	 *
-	 * @param level the level
-	 * @return the child
-	 */
-	public TextObjectNode<T> getChild(PathLevel level) {
-		return getChild(level.toString());
-	}
-	
-	/**
-	 * Gets the child.
-	 *
-	 * @param name the name
-	 * @return the child
-	 */
-	public TextObjectNode<T> getChild(String name) {
-		if (mChildren.containsKey(name)) {
-			return mChildren.get(name);
-		}
-		
-		TextObjectNode<T> node = new TextObjectNode<T>(name);
-		
-		mChildren.put(name, node);
-		
-		return node;
-	}
-	
-	/**
-	 * Gets the child by path.
-	 *
-	 * @param path the path
-	 * @return the child by path
-	 */
-	public TextObjectNode<T> getChildByPath(String path) {
-		return getChildByPath(new StrictPath(path));
-	}
+  /**
+   * Instantiates a new text object node.
+   *
+   * @param name
+   *          the name
+   */
+  public TextObjectNode(String name) {
+    mName = KeyNode.standardize(name);
+  }
 
-	/**
-	 * Traverse a properties tree using a path expression to
-	 * find a particular property. Returns null if the
-	 * property is not found.
-	 *
-	 * @param path the path
-	 * @return the child by path
-	 */
-	public TextObjectNode<T> getChildByPath(Path path) {
-		//System.err.println("Category path " + path);
-		
-		TextObjectNode<T> node = this;
-		
-		for (String level : path) {
-			//System.err.println("level " + level);
-			
-			node = node.getChild(level);
-		}
-		
-		return node;
-	}
-	
-	/**
-	 * Gets the child count.
-	 *
-	 * @return the child count
-	 */
-	public int getChildCount() {
-		return mChildren.size();
-	}
+  /**
+   * Gets the name.
+   *
+   * @return the name
+   */
+  public String getName() {
+    return mName;
+  }
 
-	/* (non-Javadoc)
-	 * @see java.lang.Iterable#iterator()
-	 */
-	public Iterator<TextObjectNode<T>> iterator() {
-		return mChildren.values().iterator();
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Object#toString()
+   */
+  public String toString() {
+    return mName;
+  }
 
-	/* (non-Javadoc)
-	 * @see java.lang.Comparable#compareTo(java.lang.Object)
-	 */
-	public int compareTo(TextObjectNode<T> n) {
-		return mName.compareTo(n.mName);
-	}
-	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
-	public boolean equals(Object o) {
-		if (!(o instanceof TextObjectNode)) {
-			return false;
-		}
-		
-		return compareTo((TextObjectNode<T>)o) == 0;
-	}
+  /**
+   * Sets the value.
+   *
+   * @param value
+   *          the new value
+   */
+  public void setValue(T value) {
+    this.mValue = value;
+  }
 
-	/**
-	 * Clear.
-	 */
-	public void clear() {
-		mChildren.clear();
-		mValue = null;
-	}
+  /**
+   * Gets the value.
+   *
+   * @return the value
+   */
+  public T getValue() {
+    return mValue;
+  }
+
+  /**
+   * Gets the child.
+   *
+   * @param level
+   *          the level
+   * @return the child
+   */
+  public TextObjectNode<T> getChild(PathLevel level) {
+    return getChild(level.toString());
+  }
+
+  /**
+   * Gets the child.
+   *
+   * @param name
+   *          the name
+   * @return the child
+   */
+  public TextObjectNode<T> getChild(String name) {
+    if (mChildren.containsKey(name)) {
+      return mChildren.get(name);
+    }
+
+    TextObjectNode<T> node = new TextObjectNode<T>(name);
+
+    mChildren.put(name, node);
+
+    return node;
+  }
+
+  /**
+   * Gets the child by path.
+   *
+   * @param path
+   *          the path
+   * @return the child by path
+   */
+  public TextObjectNode<T> getChildByPath(String path) {
+    return getChildByPath(new StrictPath(path));
+  }
+
+  /**
+   * Traverse a properties tree using a path expression to find a particular
+   * property. Returns null if the property is not found.
+   *
+   * @param path
+   *          the path
+   * @return the child by path
+   */
+  public TextObjectNode<T> getChildByPath(Path path) {
+    // System.err.println("Category path " + path);
+
+    TextObjectNode<T> node = this;
+
+    for (String level : path) {
+      // System.err.println("level " + level);
+
+      node = node.getChild(level);
+    }
+
+    return node;
+  }
+
+  /**
+   * Gets the child count.
+   *
+   * @return the child count
+   */
+  public int getChildCount() {
+    return mChildren.size();
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Iterable#iterator()
+   */
+  public Iterator<TextObjectNode<T>> iterator() {
+    return mChildren.values().iterator();
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Comparable#compareTo(java.lang.Object)
+   */
+  public int compareTo(TextObjectNode<T> n) {
+    return mName.compareTo(n.mName);
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Object#equals(java.lang.Object)
+   */
+  public boolean equals(Object o) {
+    if (!(o instanceof TextObjectNode)) {
+      return false;
+    }
+
+    return compareTo((TextObjectNode<T>) o) == 0;
+  }
+
+  /**
+   * Clear.
+   */
+  public void clear() {
+    mChildren.clear();
+    mValue = null;
+  }
 }

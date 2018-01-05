@@ -20,9 +20,11 @@ import java.util.Collection;
 /**
  * The interface CollectionCreator.
  *
- * @param <V> the value type
- * @param <T> the generic type
+ * @param <V>
+ *          the value type
+ * @param <T>
+ *          the generic type
  */
 public interface CollectionCreator<V, T extends Collection<V>> extends EntryCreator<T> {
-	
+
 }

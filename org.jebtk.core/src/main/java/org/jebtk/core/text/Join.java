@@ -30,340 +30,350 @@ import org.jebtk.core.stream.Stream;
  * The Class Join.
  */
 public class Join {
-	
-	/** The m delimiter. */
-	private String mDelimiter;
-	
-	/** The m ignore empty strings. */
-	private boolean mIgnoreEmptyStrings;
-	
-	/** The m ignore nulls. */
-	private boolean mIgnoreNulls;
-	
-	/** The m builder. */
-	StringBuilder mBuilder = new StringBuilder();
 
-	/**
-	 * Instantiates a new join.
-	 *
-	 * @param delimiter the delimiter
-	 */
-	public Join(String delimiter) {
-		this(delimiter, false, false);
-	}
-	
-	/**
-	 * Instantiates a new join.
-	 *
-	 * @param delimiter the delimiter
-	 * @param ignoreEmptyStrings the ignore empty strings
-	 * @param ignoreNulls the ignore nulls
-	 */
-	public Join(String delimiter, 
-			boolean ignoreEmptyStrings,
-			boolean ignoreNulls) {
-		mDelimiter = delimiter;
-		mIgnoreEmptyStrings = ignoreEmptyStrings;
-		mIgnoreNulls = ignoreNulls;
-	}
-	
-	/**
-	 * Instantiates a new join.
-	 *
-	 * @param join the join
-	 */
-	public Join(final Join join) {
-		mDelimiter = join.mDelimiter;
-		mIgnoreEmptyStrings = join.mIgnoreEmptyStrings;
-		mIgnoreNulls = join.mIgnoreNulls;
-		mBuilder.append(join.mBuilder);
-	}
-	
-	/**
-	 * Values.
-	 *
-	 * @param values the values
-	 * @return the join
-	 */
-	public Join values(final Collection<?> values) {
-		Join join = new Join(this);
-		
-		if (CollectionUtils.isNullOrEmpty(values)) {
-			return join;
-		}
-		
-		boolean first = true;
-		boolean append = join.mBuilder.length() > 0;
+  /** The m delimiter. */
+  private String mDelimiter;
 
-		for (Object v : values) {
-			if (v == null && mIgnoreNulls) {
-				continue;
-			}
-			
-			String s = v.toString();
-			
-			if (TextUtils.isNullOrEmpty(s) && mIgnoreEmptyStrings) {
-				continue;
-			}
-			
-			if (first && !append) {
-				join.mBuilder.append(s);
-			} else {
-				join.mBuilder.append(mDelimiter).append(s);
-			}
-			
-			first = false;
-		}
+  /** The m ignore empty strings. */
+  private boolean mIgnoreEmptyStrings;
 
-		return join;
-	}
-	
-	/**
-	 * Values.
-	 *
-	 * @param values the values
-	 * @return the join
-	 */
-	public Join values(Object... values) {
-		Join join = new Join(this);
-		
-		if (CollectionUtils.isNullOrEmpty(values)) {
-			return join;
-		}
-		
-		boolean first = true;
-		boolean append = mBuilder.length() > 0;
+  /** The m ignore nulls. */
+  private boolean mIgnoreNulls;
 
-		for (Object v : values) {
-			if (mIgnoreNulls && v == null) {
-				continue;
-			}
-			
-			String s = v.toString();
-			
-			if (mIgnoreEmptyStrings && TextUtils.isNullOrEmpty(s)) {
-				continue;
-			}
-			
-			if (first && !append) {
-				join.mBuilder.append(s);
-			} else {
-				join.mBuilder.append(mDelimiter).append(s);
-			}
-			
-			first = false;
-		}
+  /** The m builder. */
+  StringBuilder mBuilder = new StringBuilder();
 
-		return join;
-	}
-	
-	/**
-	 * Create a join from the values in an iterable object.
-	 *
-	 * @param values the values
-	 * @return the join
-	 */
-	public Join values(Iterable<?> values) {
-		Join join = new Join(this);
-		
-		boolean first = true;
-		boolean append = mBuilder.length() > 0;
+  /**
+   * Instantiates a new join.
+   *
+   * @param delimiter
+   *          the delimiter
+   */
+  public Join(String delimiter) {
+    this(delimiter, false, false);
+  }
 
-		for (Object v : values) {
-			if (mIgnoreNulls && v == null) {
-				continue;
-			}
-			
-			String s = v.toString();
-			
-			if (mIgnoreEmptyStrings && TextUtils.isNullOrEmpty(s)) {
-				continue;
-			}
-			
-			if (first && !append) {
-				join.mBuilder.append(s);
-			} else {
-				join.mBuilder.append(mDelimiter).append(s);
-			}
-			
-			first = false;
-		}
+  /**
+   * Instantiates a new join.
+   *
+   * @param delimiter
+   *          the delimiter
+   * @param ignoreEmptyStrings
+   *          the ignore empty strings
+   * @param ignoreNulls
+   *          the ignore nulls
+   */
+  public Join(String delimiter, boolean ignoreEmptyStrings, boolean ignoreNulls) {
+    mDelimiter = delimiter;
+    mIgnoreEmptyStrings = ignoreEmptyStrings;
+    mIgnoreNulls = ignoreNulls;
+  }
 
-		return join;
-	}
-	
-	/**
-	 * Repeat an item n times adding any necessary delimiters.
-	 *
-	 * @param o the o
-	 * @param n the n
-	 * @return the join
-	 */
-	public Join repeat(Object o, int n) {
-		Join join = new Join(this);
-		
-		// If there is something already cached, add
-		// a delimiter before beginning.
-		
-		if (mBuilder.length() > 0) {
-			join.mBuilder.append(mDelimiter);
-		}
-		
-		join.mBuilder.append(TextUtils.repeat(o, mDelimiter, n));
-		
-		return join;
-	}
-	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return mBuilder.toString();
-	}
-	
-	/**
-	 * Write the string produced by the join to the writer and add a newline.
-	 * 
-	 * @param writer
-	 * @throws IOException
-	 */
-	public void println(BufferedWriter writer) throws IOException {
-		println(writer);
-		writer.newLine();
-	}
-	
-	public void println(Writer writer) throws IOException {
-		writer.write(toString());
-	}
-	
-	/**
-	 * Print to System.out.
-	 */
-	public void println() {
-		println(System.out);
-	}
-	
-	public void println(PrintStream out) {
-		out.println(toString());
-	}
-	
-	/**
-	 * Ignore empty strings.
-	 *
-	 * @return the join
-	 */
-	public Join ignoreEmptyStrings() {
-		return new Join(mDelimiter, true, mIgnoreNulls);
-	}
-	
-	/**
-	 * Ignore nulls.
-	 *
-	 * @return the join
-	 */
-	public Join ignoreNulls() {
-		return new Join(mDelimiter, mIgnoreEmptyStrings, true);
-	}
-	
-	/**
-	 * Join values on a given character.
-	 *
-	 * @param delimiter the delimiter
-	 * @return the join
-	 */
-	public static Join on(char delimiter) {
-		return on(Character.toString(delimiter));
-	}
-	
-	/**
-	 * Join values using a given string.
-	 *
-	 * @param delimiter the delimiter
-	 * @return the join
-	 */
-	public static Join on(String delimiter) {
-		return new Join(delimiter, false, false);
-	}
-	
-	/**
-	 * Join values using the tab character.
-	 *
-	 * @return the join
-	 */
-	public static Join onTab() {
-		return on(TextUtils.TAB_DELIMITER);
-	}
-	
-	/**
-	 * On comma.
-	 *
-	 * @return the join
-	 */
-	public static Join onComma() {
-		return on(TextUtils.COMMA_DELIMITER);
-	}
-	
-	/**
-	 * On semi colon.
-	 *
-	 * @return the join
-	 */
-	public static Join onSemiColon() {
-		return on(TextUtils.SEMI_COLON_DELIMITER);
-	}
+  /**
+   * Instantiates a new join.
+   *
+   * @param join
+   *          the join
+   */
+  public Join(final Join join) {
+    mDelimiter = join.mDelimiter;
+    mIgnoreEmptyStrings = join.mIgnoreEmptyStrings;
+    mIgnoreNulls = join.mIgnoreNulls;
+    mBuilder.append(join.mBuilder);
+  }
 
-	/**
-	 * On tab.
-	 *
-	 * @param values the values
-	 * @return the join
-	 */
-	public static Join onTab(Object... values) {
-		return onTab().values(values);
-	}
-	
-	/**
-	 * On tab.
-	 *
-	 * @param <T> the generic type
-	 * @param values the values
-	 * @return the string
-	 */
-	public static <T extends Comparable<T>> String onTab(List<T> values) {
-		return Stream.of(values)
-				.asString()
-				.join(TextUtils.TAB_DELIMITER);
-	}
+  /**
+   * Values.
+   *
+   * @param values
+   *          the values
+   * @return the join
+   */
+  public Join values(final Collection<?> values) {
+    Join join = new Join(this);
 
-	/**
-	 * Join strings with a space.
-	 *
-	 * @return the join
-	 */
-	public static Join onSpace() {
-		return on(TextUtils.SPACE_DELIMITER);
-	}
+    if (CollectionUtils.isNullOrEmpty(values)) {
+      return join;
+    }
 
-	/**
-	 * Join on the colon ':' character.
-	 * 
-	 * @return
-	 */
-	public static Join onColon() {
-		return on(TextUtils.COLON_DELIMITER);
-	}
+    boolean first = true;
+    boolean append = join.mBuilder.length() > 0;
 
-	/**
-	 * Join on the dash '-' character.
-	 * 
-	 * @return
-	 */
-	public static Join onDash() {
-		return on(TextUtils.DASH_DELIMITER);
-	}
+    for (Object v : values) {
+      if (v == null && mIgnoreNulls) {
+        continue;
+      }
 
-	
+      String s = v.toString();
 
-	
+      if (TextUtils.isNullOrEmpty(s) && mIgnoreEmptyStrings) {
+        continue;
+      }
+
+      if (first && !append) {
+        join.mBuilder.append(s);
+      } else {
+        join.mBuilder.append(mDelimiter).append(s);
+      }
+
+      first = false;
+    }
+
+    return join;
+  }
+
+  /**
+   * Values.
+   *
+   * @param values
+   *          the values
+   * @return the join
+   */
+  public Join values(Object... values) {
+    Join join = new Join(this);
+
+    if (CollectionUtils.isNullOrEmpty(values)) {
+      return join;
+    }
+
+    boolean first = true;
+    boolean append = mBuilder.length() > 0;
+
+    for (Object v : values) {
+      if (mIgnoreNulls && v == null) {
+        continue;
+      }
+
+      String s = v.toString();
+
+      if (mIgnoreEmptyStrings && TextUtils.isNullOrEmpty(s)) {
+        continue;
+      }
+
+      if (first && !append) {
+        join.mBuilder.append(s);
+      } else {
+        join.mBuilder.append(mDelimiter).append(s);
+      }
+
+      first = false;
+    }
+
+    return join;
+  }
+
+  /**
+   * Create a join from the values in an iterable object.
+   *
+   * @param values
+   *          the values
+   * @return the join
+   */
+  public Join values(Iterable<?> values) {
+    Join join = new Join(this);
+
+    boolean first = true;
+    boolean append = mBuilder.length() > 0;
+
+    for (Object v : values) {
+      if (mIgnoreNulls && v == null) {
+        continue;
+      }
+
+      String s = v.toString();
+
+      if (mIgnoreEmptyStrings && TextUtils.isNullOrEmpty(s)) {
+        continue;
+      }
+
+      if (first && !append) {
+        join.mBuilder.append(s);
+      } else {
+        join.mBuilder.append(mDelimiter).append(s);
+      }
+
+      first = false;
+    }
+
+    return join;
+  }
+
+  /**
+   * Repeat an item n times adding any necessary delimiters.
+   *
+   * @param o
+   *          the o
+   * @param n
+   *          the n
+   * @return the join
+   */
+  public Join repeat(Object o, int n) {
+    Join join = new Join(this);
+
+    // If there is something already cached, add
+    // a delimiter before beginning.
+
+    if (mBuilder.length() > 0) {
+      join.mBuilder.append(mDelimiter);
+    }
+
+    join.mBuilder.append(TextUtils.repeat(o, mDelimiter, n));
+
+    return join;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Object#toString()
+   */
+  @Override
+  public String toString() {
+    return mBuilder.toString();
+  }
+
+  /**
+   * Write the string produced by the join to the writer and add a newline.
+   * 
+   * @param writer
+   * @throws IOException
+   */
+  public void println(BufferedWriter writer) throws IOException {
+    println(writer);
+    writer.newLine();
+  }
+
+  public void println(Writer writer) throws IOException {
+    writer.write(toString());
+  }
+
+  /**
+   * Print to System.out.
+   */
+  public void println() {
+    println(System.out);
+  }
+
+  public void println(PrintStream out) {
+    out.println(toString());
+  }
+
+  /**
+   * Ignore empty strings.
+   *
+   * @return the join
+   */
+  public Join ignoreEmptyStrings() {
+    return new Join(mDelimiter, true, mIgnoreNulls);
+  }
+
+  /**
+   * Ignore nulls.
+   *
+   * @return the join
+   */
+  public Join ignoreNulls() {
+    return new Join(mDelimiter, mIgnoreEmptyStrings, true);
+  }
+
+  /**
+   * Join values on a given character.
+   *
+   * @param delimiter
+   *          the delimiter
+   * @return the join
+   */
+  public static Join on(char delimiter) {
+    return on(Character.toString(delimiter));
+  }
+
+  /**
+   * Join values using a given string.
+   *
+   * @param delimiter
+   *          the delimiter
+   * @return the join
+   */
+  public static Join on(String delimiter) {
+    return new Join(delimiter, false, false);
+  }
+
+  /**
+   * Join values using the tab character.
+   *
+   * @return the join
+   */
+  public static Join onTab() {
+    return on(TextUtils.TAB_DELIMITER);
+  }
+
+  /**
+   * On comma.
+   *
+   * @return the join
+   */
+  public static Join onComma() {
+    return on(TextUtils.COMMA_DELIMITER);
+  }
+
+  /**
+   * On semi colon.
+   *
+   * @return the join
+   */
+  public static Join onSemiColon() {
+    return on(TextUtils.SEMI_COLON_DELIMITER);
+  }
+
+  /**
+   * On tab.
+   *
+   * @param values
+   *          the values
+   * @return the join
+   */
+  public static Join onTab(Object... values) {
+    return onTab().values(values);
+  }
+
+  /**
+   * On tab.
+   *
+   * @param <T>
+   *          the generic type
+   * @param values
+   *          the values
+   * @return the string
+   */
+  public static <T extends Comparable<T>> String onTab(List<T> values) {
+    return Stream.of(values).asString().join(TextUtils.TAB_DELIMITER);
+  }
+
+  /**
+   * Join strings with a space.
+   *
+   * @return the join
+   */
+  public static Join onSpace() {
+    return on(TextUtils.SPACE_DELIMITER);
+  }
+
+  /**
+   * Join on the colon ':' character.
+   * 
+   * @return
+   */
+  public static Join onColon() {
+    return on(TextUtils.COLON_DELIMITER);
+  }
+
+  /**
+   * Join on the dash '-' character.
+   * 
+   * @return
+   */
+  public static Join onDash() {
+    return on(TextUtils.DASH_DELIMITER);
+  }
+
 }

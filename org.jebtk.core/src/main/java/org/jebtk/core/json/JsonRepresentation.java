@@ -17,18 +17,18 @@ package org.jebtk.core.json;
 
 // TODO: Auto-generated Javadoc
 /**
- * Should be implemented by elements that can create
- * a JSON object representation of themselves.
+ * Should be implemented by elements that can create a JSON object
+ * representation of themselves.
  * 
  * @author Antony Holmes Holmes
  *
  */
 public interface JsonRepresentation {
-	
-	/**
-	 * To json.
-	 *
-	 * @return the json representation of an object
-	 */
-	public Json toJson();
+
+  /**
+   * To json.
+   *
+   * @return the json representation of an object
+   */
+  public Json toJson();
 }

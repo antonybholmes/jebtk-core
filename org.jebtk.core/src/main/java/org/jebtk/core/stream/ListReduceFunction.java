@@ -21,29 +21,31 @@ import java.util.List;
 import org.jebtk.core.Function;
 
 /**
- * A reduce function takes a stream and returns an object representing
- * a property of the stream, such as the sum of the numbers in it.
+ * A reduce function takes a stream and returns an object representing a
+ * property of the stream, such as the sum of the numbers in it.
  *
  * @author Antony Holmes Holmes
- * @param <T> the generic type
- * @param <V> the value type
+ * @param <T>
+ *          the generic type
+ * @param <V>
+ *          the value type
  */
 public abstract class ListReduceFunction<T, V> implements ReduceFunction<T, List<V>> {
 
-	@Override
-	public List<V> apply(Stream<T> stream) {
-		List<V> ret = new ArrayList<V>(1000);
-		
-		apply(stream, ret);
-		
-		return ret;
-	}
-	
-	public void apply(Stream<T> stream, List<V> values) {
-		while (stream.hasNext()) {
-			apply(stream.next(), values);
-		}
-	}
-	
-	public abstract void apply(T item, List<V> values);
+  @Override
+  public List<V> apply(Stream<T> stream) {
+    List<V> ret = new ArrayList<V>(1000);
+
+    apply(stream, ret);
+
+    return ret;
+  }
+
+  public void apply(Stream<T> stream, List<V> values) {
+    while (stream.hasNext()) {
+      apply(stream.next(), values);
+    }
+  }
+
+  public abstract void apply(T item, List<V> values);
 }

@@ -23,16 +23,17 @@ import java.io.File;
  */
 public class FileIsNotADirException extends FileException {
 
-	/** The Constant serialVersionUID. */
-	private static final long serialVersionUID = 1L;
+  /** The Constant serialVersionUID. */
+  private static final long serialVersionUID = 1L;
 
-	/**
-	 * Instantiates a new file is not A dir exception.
-	 *
-	 * @param path the path
-	 */
-	public FileIsNotADirException(File path) {
-		super(path + " is not a directory.");
-	}
+  /**
+   * Instantiates a new file is not A dir exception.
+   *
+   * @param path
+   *          the path
+   */
+  public FileIsNotADirException(File path) {
+    super(path + " is not a directory.");
+  }
 
 }

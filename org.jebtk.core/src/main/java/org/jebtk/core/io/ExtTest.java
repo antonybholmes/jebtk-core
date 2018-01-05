@@ -22,26 +22,28 @@ import java.nio.file.Path;
  * The Class ExtTest.
  */
 public class ExtTest {
-	
-	/** The m ext. */
-	private String mExt;
 
-	/**
-	 * Instantiates a new ext test.
-	 *
-	 * @param ext the ext
-	 */
-	public ExtTest(String ext) {
-		mExt = ext;
-	}
-	
-	/**
-	 * Test.
-	 *
-	 * @param file the file
-	 * @return true, if successful
-	 */
-	public boolean test(Path file) {
-		return PathUtils.getFileExt(file).equals(mExt);
-	}
+  /** The m ext. */
+  private String mExt;
+
+  /**
+   * Instantiates a new ext test.
+   *
+   * @param ext
+   *          the ext
+   */
+  public ExtTest(String ext) {
+    mExt = ext;
+  }
+
+  /**
+   * Test.
+   *
+   * @param file
+   *          the file
+   * @return true, if successful
+   */
+  public boolean test(Path file) {
+    return PathUtils.getFileExt(file).equals(mExt);
+  }
 }

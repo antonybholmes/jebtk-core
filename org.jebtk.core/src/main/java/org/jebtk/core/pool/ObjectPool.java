@@ -23,108 +23,112 @@ import java.util.Stack;
 
 // TODO: Auto-generated Javadoc
 /**
- * Represents a thread safe collection of objects that can
- * be reused.
+ * Represents a thread safe collection of objects that can be reused.
  *
  * @author Antony Holmes Holmes
- * @param <T> the generic type
+ * @param <T>
+ *          the generic type
  */
 public class ObjectPool<T> {
-	
-	/**
-	 * The pool.
-	 */
-	protected List<T> pool = new ArrayList<T>();
-	
-	/**
-	 * The available.
-	 */
-	protected Stack<T> available = new Stack<T>();
-	
-	/**
-	 * The used.
-	 */
-	protected Set<T> used = new HashSet<T>();
 
-	/**
-	 * The max size.
-	 */
-	protected int maxSize;
+  /**
+   * The pool.
+   */
+  protected List<T> pool = new ArrayList<T>();
 
-	/**
-	 * The name.
-	 */
-	private String name;
-	
-	/**
-	 * Instantiates a new object pool.
-	 *
-	 * @param name the name
-	 * @param maxSize the max size
-	 */
-	public ObjectPool(String name, int maxSize) {
-		this.name = name;
-		this.maxSize = maxSize;
-		
-		pool = new ArrayList<T>(maxSize);
-	}
-	
-	/**
-	 * Gets the name.
-	 *
-	 * @return the name
-	 */
-	public String getName() {
-		return name;
-	}
-	
-	/**
-	 * Adds the.
-	 *
-	 * @param object the object
-	 */
-	public synchronized void add(T object) {
-		if (pool.size() == maxSize) {
-			return;
-		}
+  /**
+   * The available.
+   */
+  protected Stack<T> available = new Stack<T>();
 
-		pool.add(object);
-		available.push(object);
-	}
-	
-	/**
-	 * Check out one of the objects from the pool.
-	 *
-	 * @return the t
-	 */
-	public synchronized T checkOut() {
-		if (available.size() > 0) {
-			T object = available.pop();
-			
-			used.add(object);
-			
-			return object;
-		}
+  /**
+   * The used.
+   */
+  protected Set<T> used = new HashSet<T>();
 
-		return null;
-	}
-	
-	/**
-	 * Check an object in to the store. The object must
-	 * have been checked out before it can be checked in.
-	 *
-	 * @param object the object
-	 */
-	public synchronized void checkIn(T object) {
-		if (!used.contains(object)) {
-			return;
-		}
-		
-		//System.err.println("check in " + object.toString());
-		
-		used.remove(object);
-		
-		available.push(object);
-	}
+  /**
+   * The max size.
+   */
+  protected int maxSize;
+
+  /**
+   * The name.
+   */
+  private String name;
+
+  /**
+   * Instantiates a new object pool.
+   *
+   * @param name
+   *          the name
+   * @param maxSize
+   *          the max size
+   */
+  public ObjectPool(String name, int maxSize) {
+    this.name = name;
+    this.maxSize = maxSize;
+
+    pool = new ArrayList<T>(maxSize);
+  }
+
+  /**
+   * Gets the name.
+   *
+   * @return the name
+   */
+  public String getName() {
+    return name;
+  }
+
+  /**
+   * Adds the.
+   *
+   * @param object
+   *          the object
+   */
+  public synchronized void add(T object) {
+    if (pool.size() == maxSize) {
+      return;
+    }
+
+    pool.add(object);
+    available.push(object);
+  }
+
+  /**
+   * Check out one of the objects from the pool.
+   *
+   * @return the t
+   */
+  public synchronized T checkOut() {
+    if (available.size() > 0) {
+      T object = available.pop();
+
+      used.add(object);
+
+      return object;
+    }
+
+    return null;
+  }
+
+  /**
+   * Check an object in to the store. The object must have been checked out before
+   * it can be checked in.
+   *
+   * @param object
+   *          the object
+   */
+  public synchronized void checkIn(T object) {
+    if (!used.contains(object)) {
+      return;
+    }
+
+    // System.err.println("check in " + object.toString());
+
+    used.remove(object);
+
+    available.push(object);
+  }
 
 }

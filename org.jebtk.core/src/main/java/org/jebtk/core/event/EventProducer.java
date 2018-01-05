@@ -18,23 +18,23 @@ package org.jebtk.core.event;
 import java.io.Serializable;
 import java.util.EventListener;
 
-
 // TODO: Auto-generated Javadoc
 /**
  * For classes that generate Events.
  *
  * @author Antony Holmes Holmes
- * @param <T> the generic type
+ * @param <T>
+ *          the generic type
  */
 public class EventProducer<T extends EventListener> implements Serializable {
-	
-	/**
-	 * The constant serialVersionUID.
-	 */
-	private static final long serialVersionUID = 1L;
 
-	/**
-	 * The member listeners.
-	 */
-	protected EventListeners<T> mListeners = new EventListeners<T>();
+  /**
+   * The constant serialVersionUID.
+   */
+  private static final long serialVersionUID = 1L;
+
+  /**
+   * The member listeners.
+   */
+  protected EventListeners<T> mListeners = new EventListeners<T>();
 }

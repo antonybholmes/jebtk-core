@@ -19,89 +19,88 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
-
-
 // TODO: Auto-generated Javadoc
 /**
- * Simple stack that can be reused. This is for cases where
- * the stack structure maintains results so that it can
- * be re-used without having to rebuild it each time.
+ * Simple stack that can be reused. This is for cases where the stack structure
+ * maintains results so that it can be re-used without having to rebuild it each
+ * time.
  *
  * @author Antony Holmes Holmes
- * @param <T> the generic type
+ * @param <T>
+ *          the generic type
  */
-public class PseudoStack <T> extends AbstractStack implements Serializable {
-	
-	/**
-	 * The constant serialVersionUID.
-	 */
-	private static final long serialVersionUID = 1L;
-	
-	/**
-	 * The elements.
-	 */
-	private List<T> elements = new ArrayList<T>(32);
+public class PseudoStack<T> extends AbstractStack implements Serializable {
 
-	/**
-	 * Push.
-	 *
-	 * @param item the item
-	 */
-	public final void push(T item) {
-		elements.add(item);
-		
-		reset();
-	}
+  /**
+   * The constant serialVersionUID.
+   */
+  private static final long serialVersionUID = 1L;
 
-	/**
-	 * Pop.
-	 *
-	 * @return the t
-	 */
-	public final T pop() {
-		//System.err.println("pc " + pc);
-		
-		if (mPc == -1) {
-			return null;
-		}
-		
-		T ret = elements.get(mPc);
-		
-		--mPc;
-		
-		return ret;
-	}
+  /**
+   * The elements.
+   */
+  private List<T> elements = new ArrayList<T>(32);
 
-	/**
-	 * Peek.
-	 *
-	 * @return the t
-	 */
-	public final T peek() {
-		if (mPc == -1) {
-			return null;
-		}
-		
-		return elements.get(mPc);
-	}
+  /**
+   * Push.
+   *
+   * @param item
+   *          the item
+   */
+  public final void push(T item) {
+    elements.add(item);
 
-	/**
-	 * Gets the.
-	 *
-	 * @param i the i
-	 * @return the t
-	 */
-	public T get(int i) {
-		return elements.get(i);
-	}
-	
-	/**
-	 * Allow stack structure to be reused.
-	 */
-	@Override
-	public void reset() {
-		mPc = elements.size() - 1;
-	}
+    reset();
+  }
+
+  /**
+   * Pop.
+   *
+   * @return the t
+   */
+  public final T pop() {
+    // System.err.println("pc " + pc);
+
+    if (mPc == -1) {
+      return null;
+    }
+
+    T ret = elements.get(mPc);
+
+    --mPc;
+
+    return ret;
+  }
+
+  /**
+   * Peek.
+   *
+   * @return the t
+   */
+  public final T peek() {
+    if (mPc == -1) {
+      return null;
+    }
+
+    return elements.get(mPc);
+  }
+
+  /**
+   * Gets the.
+   *
+   * @param i
+   *          the i
+   * @return the t
+   */
+  public T get(int i) {
+    return elements.get(i);
+  }
+
+  /**
+   * Allow stack structure to be reused.
+   */
+  @Override
+  public void reset() {
+    mPc = elements.size() - 1;
+  }
 }

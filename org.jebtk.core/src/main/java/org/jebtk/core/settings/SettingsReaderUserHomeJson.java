@@ -25,50 +25,51 @@ import org.jebtk.core.AppService;
  * The Class SettingsReaderUserHomeJson.
  */
 public class SettingsReaderUserHomeJson implements SettingsReader {
-	
-	/** The Constant USER_JSON_FILE. */
-	public static final String USER_JSON_FILE = "user.settings.json";
-	
-	/** The Constant APP_HOME. */
-	public static final String APP_HOME = "app_home";
 
-	/** The m file. */
-	private Path mFile;
+  /** The Constant USER_JSON_FILE. */
+  public static final String USER_JSON_FILE = "user.settings.json";
 
-	/**
-	 * Instantiates a new settings reader user home json.
-	 */
-	public SettingsReaderUserHomeJson() {
-		mFile = create();
-	}
+  /** The Constant APP_HOME. */
+  public static final String APP_HOME = "app_home";
 
-	/* (non-Javadoc)
-	 * @see org.abh.common.settings.SettingsReader#load(org.abh.common.settings.Settings)
-	 */
-	@Override
-	public void load(Settings settings) {
-		LOG.info("Loading user JSON settings from {}...", mFile);
+  /** The m file. */
+  private Path mFile;
 
-		// Load any per user settings. We flag these as being updated so
-		// that on the next write cycle, they will be written back to the
-		// settings file.
-		try {
-			settings.loadJson(mFile, false);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+  /**
+   * Instantiates a new settings reader user home json.
+   */
+  public SettingsReaderUserHomeJson() {
+    mFile = create();
+  }
 
-		LOG.info("Finished loading settings...");
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.abh.common.settings.SettingsReader#load(org.abh.common.settings.Settings)
+   */
+  @Override
+  public void load(Settings settings) {
+    LOG.info("Loading user JSON settings from {}...", mFile);
 
-	/**
-	 * Creates the.
-	 *
-	 * @return the path
-	 */
-	public static Path create() {
-		return AppService.getInstance()
-				.getAppDir()
-				.resolve(USER_JSON_FILE);
-	}
+    // Load any per user settings. We flag these as being updated so
+    // that on the next write cycle, they will be written back to the
+    // settings file.
+    try {
+      settings.loadJson(mFile, false);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+
+    LOG.info("Finished loading settings...");
+  }
+
+  /**
+   * Creates the.
+   *
+   * @return the path
+   */
+  public static Path create() {
+    return AppService.getInstance().getAppDir().resolve(USER_JSON_FILE);
+  }
 }

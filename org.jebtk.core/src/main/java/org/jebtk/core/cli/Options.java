@@ -26,103 +26,109 @@ import org.jebtk.core.text.TextUtils;
  * The Class Options.
  */
 public class Options implements Iterable<CommandLineOption> {
-	
-	/**
-	 * The member options.
-	 */
-	private List<CommandLineOption> mOptions = 
-			new ArrayList<CommandLineOption>();
 
-	/**
-	 * Instantiates a new options.
-	 */
-	public Options() {
-		add('h', "help");
-	}
-	
-	/**
-	 * Adds the.
-	 *
-	 * @param shortName the short name
-	 * @param longName the long name
-	 */
-	public void add(char shortName, 
-			String longName) {
-		add(shortName, longName, false);
-	}
-	
-	/**
-	 * Adds the.
-	 *
-	 * @param shortName the short name
-	 * @param longName the long name
-	 * @param hasArg the has arg
-	 */
-	public void add(char shortName, 
-			String longName, 
-			boolean hasArg) {
-		add(shortName, longName, hasArg, TextUtils.EMPTY_STRING);
-	}
-	
-	/**
-	 * Adds the option.
-	 *
-	 * @param shortName the short name
-	 * @param longName the long name
-	 * @param hasArg the has arg
-	 * @param description the description
-	 */
-	public void add(char shortName, 
-			String longName, 
-			boolean hasArg,
-			String description) {
-		addOption(new CommandLineOption(shortName, longName, hasArg, description));
-	}
-	
-	/**
-	 * Adds the option.
-	 *
-	 * @param option the option
-	 */
-	public void addOption(CommandLineOption option) {
-		mOptions.add(option);
-	}
-	
-	/* (non-Javadoc)
-	 * @see java.lang.Iterable#iterator()
-	 */
-	@Override
-	public Iterator<CommandLineOption> iterator() {
-		return mOptions.iterator();
-	}
+  /**
+   * The member options.
+   */
+  private List<CommandLineOption> mOptions = new ArrayList<CommandLineOption>();
 
-	/**
-	 * Prints the help.
-	 *
-	 * @param options the options
-	 */
-	public static void printHelp(Options options) {
-		System.out.println("OPTIONS");
-		for (CommandLineOption option : options) {
-			System.out.print("\t" + option.getShortName());
-			
-			if (option.hasArg()) {
-				System.out.print(" VALUE"); 
-			}
-			
-			System.out.print(", --" +option.getLongName());
-			
-			if (option.hasArg()) {
-				System.out.print("=VALUE"); 
-			}
-			
-			System.out.println();
-			
-			if (!TextUtils.isNullOrEmpty(option.getDescription())) {
-				System.out.println("\t\t" + option.getDescription());
-			}
-			
-			System.out.println();
-		}
-	}
+  /**
+   * Instantiates a new options.
+   */
+  public Options() {
+    add('h', "help");
+  }
+
+  /**
+   * Adds the.
+   *
+   * @param shortName
+   *          the short name
+   * @param longName
+   *          the long name
+   */
+  public void add(char shortName, String longName) {
+    add(shortName, longName, false);
+  }
+
+  /**
+   * Adds the.
+   *
+   * @param shortName
+   *          the short name
+   * @param longName
+   *          the long name
+   * @param hasArg
+   *          the has arg
+   */
+  public void add(char shortName, String longName, boolean hasArg) {
+    add(shortName, longName, hasArg, TextUtils.EMPTY_STRING);
+  }
+
+  /**
+   * Adds the option.
+   *
+   * @param shortName
+   *          the short name
+   * @param longName
+   *          the long name
+   * @param hasArg
+   *          the has arg
+   * @param description
+   *          the description
+   */
+  public void add(char shortName, String longName, boolean hasArg, String description) {
+    addOption(new CommandLineOption(shortName, longName, hasArg, description));
+  }
+
+  /**
+   * Adds the option.
+   *
+   * @param option
+   *          the option
+   */
+  public void addOption(CommandLineOption option) {
+    mOptions.add(option);
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Iterable#iterator()
+   */
+  @Override
+  public Iterator<CommandLineOption> iterator() {
+    return mOptions.iterator();
+  }
+
+  /**
+   * Prints the help.
+   *
+   * @param options
+   *          the options
+   */
+  public static void printHelp(Options options) {
+    System.out.println("OPTIONS");
+    for (CommandLineOption option : options) {
+      System.out.print("\t" + option.getShortName());
+
+      if (option.hasArg()) {
+        System.out.print(" VALUE");
+      }
+
+      System.out.print(", --" + option.getLongName());
+
+      if (option.hasArg()) {
+        System.out.print("=VALUE");
+      }
+
+      System.out.println();
+
+      if (!TextUtils.isNullOrEmpty(option.getDescription())) {
+        System.out.println("\t\t" + option.getDescription());
+      }
+
+      System.out.println();
+    }
+  }
 }

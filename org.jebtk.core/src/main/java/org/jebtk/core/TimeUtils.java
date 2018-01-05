@@ -21,29 +21,29 @@ package org.jebtk.core;
  */
 public class TimeUtils {
 
-	/**
-	 * Instantiates a new time utils.
-	 */
-	private TimeUtils() {
-		// Do nothing
-	}
-	
-	/**
-	 * Return the current time in milliseconds.
-	 *
-	 * @return the current time ms
-	 */
-	public static long getCurrentTimeMs() {
-		return System.currentTimeMillis();
-	}
-	
-	/**
-	 * Gets the current time S.
-	 *
-	 * @return the current time S
-	 */
-	public static long getCurrentTimeS() {
-		return getCurrentTimeMs() / 1000;
-	}
+  /**
+   * Instantiates a new time utils.
+   */
+  private TimeUtils() {
+    // Do nothing
+  }
+
+  /**
+   * Return the current time in milliseconds.
+   *
+   * @return the current time ms
+   */
+  public static long getCurrentTimeMs() {
+    return System.currentTimeMillis();
+  }
+
+  /**
+   * Gets the current time S.
+   *
+   * @return the current time S
+   */
+  public static long getCurrentTimeS() {
+    return getCurrentTimeMs() / 1000;
+  }
 
 }

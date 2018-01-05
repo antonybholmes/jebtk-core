@@ -17,12 +17,13 @@ package org.jebtk.core.collections;
 
 import java.util.Map;
 
-
 /**
  * The Interface MapCreator.
  *
- * @param <K> the key type
- * @param <V> the value type
+ * @param <K>
+ *          the key type
+ * @param <V>
+ *          the value type
  */
 public interface MapCreator<K, V> extends EntryCreator<Map<K, V>> {
 

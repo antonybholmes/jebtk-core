@@ -19,24 +19,24 @@ import java.io.IOException;
 
 // TODO: Auto-generated Javadoc
 /**
- * For classes that can output a text representation
- * of themselves. This should be used
+ * For classes that can output a text representation of themselves. This should
+ * be used
  * 
  * @author Antony Holmes Holmes
  *
  */
 public interface FormattedTxt {
-	
-	//String formattedTxt();
-	
-	/**
-	 * Like toString(), should create a text
-	 * representation of an object but write
-	 * it to a string buffer rather than creating
-	 * a new string.
-	 *
-	 * @param buffer the buffer
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 */
-	void formattedTxt(Appendable buffer) throws IOException;
+
+  // String formattedTxt();
+
+  /**
+   * Like toString(), should create a text representation of an object but write
+   * it to a string buffer rather than creating a new string.
+   *
+   * @param buffer
+   *          the buffer
+   * @throws IOException
+   *           Signals that an I/O exception has occurred.
+   */
+  void formattedTxt(Appendable buffer) throws IOException;
 }

@@ -25,55 +25,69 @@ import org.jebtk.core.text.TextUtils;
  */
 public class SettingBool extends Setting {
 
-	/** The Constant serialVersionUID. */
-	private static final long serialVersionUID = 1L;
-	
-	/** The m value. */
-	private boolean mValue;
+  /** The Constant serialVersionUID. */
+  private static final long serialVersionUID = 1L;
 
-	/**
-	 * Instantiates a new setting bool.
-	 *
-	 * @param path the path
-	 * @param value the value
-	 * @param description the description
-	 * @param locked the locked
-	 */
-	public SettingBool(Path path, boolean value, String description, boolean locked) {
-		super(path, description, locked);
-		
-		mValue = value;
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.settings.Setting#getAsString()
-	 */
-	@Override
-	public String getAsString() {
-		return Boolean.toString(mValue);
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.settings.Setting#getAsBool()
-	 */
-	@Override
-	public boolean getAsBool() {
-		return mValue;
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.settings.Setting#toString()
-	 */
-	@Override
-	public String toString() {
-		return new StringBuilder("bool_setting:").append(mPath.toString()).append(TextUtils.EQUALS_DELIMITER).append(mValue).toString();
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.settings.Setting#formatJsonValue(org.abh.common.json.Json)
-	 */
-	@Override
-	protected void formatJsonValue(Json o) {
-		o.add("value", mValue);
-	}
+  /** The m value. */
+  private boolean mValue;
+
+  /**
+   * Instantiates a new setting bool.
+   *
+   * @param path
+   *          the path
+   * @param value
+   *          the value
+   * @param description
+   *          the description
+   * @param locked
+   *          the locked
+   */
+  public SettingBool(Path path, boolean value, String description, boolean locked) {
+    super(path, description, locked);
+
+    mValue = value;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.settings.Setting#getAsString()
+   */
+  @Override
+  public String getAsString() {
+    return Boolean.toString(mValue);
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.settings.Setting#getAsBool()
+   */
+  @Override
+  public boolean getAsBool() {
+    return mValue;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.settings.Setting#toString()
+   */
+  @Override
+  public String toString() {
+    return new StringBuilder("bool_setting:").append(mPath.toString()).append(TextUtils.EQUALS_DELIMITER).append(mValue)
+        .toString();
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.abh.common.settings.Setting#formatJsonValue(org.abh.common.json.Json)
+   */
+  @Override
+  protected void formatJsonValue(Json o) {
+    o.add("value", mValue);
+  }
 }

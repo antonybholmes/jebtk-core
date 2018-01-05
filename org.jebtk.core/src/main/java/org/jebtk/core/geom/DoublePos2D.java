@@ -23,93 +23,101 @@ package org.jebtk.core.geom;
  *
  */
 public class DoublePos2D implements Comparable<DoublePos2D> {
-	
-	/**
-	 * The member x.
-	 */
-	protected double mX;
-	
-	/**
-	 * The member y.
-	 */
-	protected double mY;
 
-	/**
-	 * Instantiates a new point2 d double.
-	 *
-	 * @param x the x
-	 * @param y the y
-	 */
-	public DoublePos2D(double x, double y) {
-		mX = x;
-		mY = y;
-	}
-	
-	/**
-	 * Gets the x.
-	 *
-	 * @return the x
-	 */
-	public double getX() {
-		return mX;
-	}
-	
-	/**
-	 * Gets the y.
-	 *
-	 * @return the y
-	 */
-	public double getY() {
-		return mY;
-	}
-	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return mX + " " + mY;
-	}
+  /**
+   * The member x.
+   */
+  protected double mX;
 
-	/* (non-Javadoc)
-	 * @see java.lang.Comparable#compareTo(java.lang.Object)
-	 */
-	@Override
-	public int compareTo(DoublePos2D p) {
-		if (mX > p.mX) {
-			if (mY > p.mY) {
-				return 1;
-			} else {
-				return -1;
-			}
-		} else if (mX < p.mX) {
-			if (mY > p.mY) {
-				return 1;
-			} else {
-				return -1;
-			}
-		} else {
-			// Same x so just consider vertical position
-			
-			if (mY > p.mY) {
-				return 1;
-			} else if (mY < p.mY) {
-				return -1;
-			} else {
-				return 0;
-			}
-		}
-	}
-	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
-	@Override
-	public boolean equals(Object o) {
-		if (!(o instanceof DoublePos2D)) {
-			return false;
-		}
-		
-		return compareTo((DoublePos2D)o) == 0;
-	}
+  /**
+   * The member y.
+   */
+  protected double mY;
+
+  /**
+   * Instantiates a new point2 d double.
+   *
+   * @param x
+   *          the x
+   * @param y
+   *          the y
+   */
+  public DoublePos2D(double x, double y) {
+    mX = x;
+    mY = y;
+  }
+
+  /**
+   * Gets the x.
+   *
+   * @return the x
+   */
+  public double getX() {
+    return mX;
+  }
+
+  /**
+   * Gets the y.
+   *
+   * @return the y
+   */
+  public double getY() {
+    return mY;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Object#toString()
+   */
+  @Override
+  public String toString() {
+    return mX + " " + mY;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Comparable#compareTo(java.lang.Object)
+   */
+  @Override
+  public int compareTo(DoublePos2D p) {
+    if (mX > p.mX) {
+      if (mY > p.mY) {
+        return 1;
+      } else {
+        return -1;
+      }
+    } else if (mX < p.mX) {
+      if (mY > p.mY) {
+        return 1;
+      } else {
+        return -1;
+      }
+    } else {
+      // Same x so just consider vertical position
+
+      if (mY > p.mY) {
+        return 1;
+      } else if (mY < p.mY) {
+        return -1;
+      } else {
+        return 0;
+      }
+    }
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Object#equals(java.lang.Object)
+   */
+  @Override
+  public boolean equals(Object o) {
+    if (!(o instanceof DoublePos2D)) {
+      return false;
+    }
+
+    return compareTo((DoublePos2D) o) == 0;
+  }
 }

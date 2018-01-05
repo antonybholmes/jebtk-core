@@ -23,191 +23,208 @@ import java.util.List;
 import org.jebtk.core.Attribute;
 import org.jebtk.core.text.TextUtils;
 
-
 // TODO: Auto-generated Javadoc
 /**
  * The class XmlElement.
  */
 public class XmlElement implements Iterable<XmlElement>, FormattedXml {
-	
-	/**
-	 * The member attributes.
-	 */
-	private List<Attribute> mAttributes = new ArrayList<Attribute>();
-	
-	/**
-	 * The member elements.
-	 */
-	private List<XmlElement> mElements = new ArrayList<XmlElement>();
 
-	/**
-	 * The member name.
-	 */
-	private String mName;
+  /**
+   * The member attributes.
+   */
+  private List<Attribute> mAttributes = new ArrayList<Attribute>();
 
-	/**
-	 * Instantiates a new xml element.
-	 *
-	 * @param name the name
-	 */
-	public XmlElement(String name) {
-		mName = name;
-	}
+  /**
+   * The member elements.
+   */
+  private List<XmlElement> mElements = new ArrayList<XmlElement>();
 
-	
-	/**
-	 * Instantiates a new xml element.
-	 *
-	 * @param name the name
-	 * @param text the text
-	 */
-	public XmlElement(String name, String text) {
-		this(name);
-		
-		appendChild(new XmlDataElement(text));
-	}
+  /**
+   * The member name.
+   */
+  private String mName;
 
+  /**
+   * Instantiates a new xml element.
+   *
+   * @param name
+   *          the name
+   */
+  public XmlElement(String name) {
+    mName = name;
+  }
 
-	/**
-	 * Gets the name.
-	 *
-	 * @return the name
-	 */
-	public String getName() {
-		return mName;
-	}
+  /**
+   * Instantiates a new xml element.
+   *
+   * @param name
+   *          the name
+   * @param text
+   *          the text
+   */
+  public XmlElement(String name, String text) {
+    this(name);
 
-	/**
-	 * Sets the attribute.
-	 *
-	 * @param name the name
-	 * @param value the value
-	 */
-	public void setAttribute(String name, String value) {
-		mAttributes.add(new Attribute(name, value));
-	}
+    appendChild(new XmlDataElement(text));
+  }
 
-	/**
-	 * Sets the attribute.
-	 *
-	 * @param name the name
-	 * @param value the value
-	 */
-	public final void setAttribute(String name, int value) {
-		mAttributes.add(new Attribute(name, Integer.toString(value)));
-	}
-	
-	/**
-	 * Sets the attribute.
-	 *
-	 * @param name the name
-	 * @param value the value
-	 */
-	public final void setAttribute(String name, double value) {
-		mAttributes.add(new Attribute(name, Double.toString(value)));
-	}
+  /**
+   * Gets the name.
+   *
+   * @return the name
+   */
+  public String getName() {
+    return mName;
+  }
 
-	/**
-	 * Append child.
-	 *
-	 * @param element the element
-	 */
-	public final void appendChild(XmlElement element) {
-		mElements.add(element);
-	}
-	
-	/* (non-Javadoc)
-	 * @see java.lang.Iterable#iterator()
-	 */
-	@Override
-	public Iterator<XmlElement> iterator() {
-		return mElements.iterator();
-	}
-	
-	/**
-	 * Gets the elements by name.
-	 *
-	 * @param name the name
-	 * @return the elements by name
-	 */
-	public List<XmlElement> getElementsByName(String name) {
-		List<XmlElement> elementsByName = new ArrayList<XmlElement>();
+  /**
+   * Sets the attribute.
+   *
+   * @param name
+   *          the name
+   * @param value
+   *          the value
+   */
+  public void setAttribute(String name, String value) {
+    mAttributes.add(new Attribute(name, value));
+  }
 
-		for (XmlElement element : mElements) {
-			if (element.getName().equals(name)) {
-				elementsByName.add(element);
-			}
-		}
+  /**
+   * Sets the attribute.
+   *
+   * @param name
+   *          the name
+   * @param value
+   *          the value
+   */
+  public final void setAttribute(String name, int value) {
+    mAttributes.add(new Attribute(name, Integer.toString(value)));
+  }
 
-		return elementsByName;
-	}
-	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		String out = null;
-		
-		try {
-			out = formattedXml();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		return out;
-	}
-	
-	/**
-	 * Formatted xml.
-	 *
-	 * @return the string
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 */
-	public String formattedXml() throws IOException {
-		StringBuilder buffer = new StringBuilder();
-		
-		formattedXml(buffer);
-		
-		return buffer.toString();
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.lib.xml.FormattedXml#formattedXml(java.lang.Appendable)
-	 */
-	@Override
-	public void formattedXml(Appendable buffer) throws IOException {
-		formattedXml(buffer, 0);
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.lib.xml.FormattedXml#formattedXml(java.lang.Appendable, int)
-	 */
-	@Override
-	public void formattedXml(Appendable buffer, int level) throws IOException {
-		String indentation = Xml.indentation(level);
+  /**
+   * Sets the attribute.
+   *
+   * @param name
+   *          the name
+   * @param value
+   *          the value
+   */
+  public final void setAttribute(String name, double value) {
+    mAttributes.add(new Attribute(name, Double.toString(value)));
+  }
 
-		buffer.append(Xml.indentation(level));
-		buffer.append(Xml.openTag(mName));
+  /**
+   * Append child.
+   *
+   * @param element
+   *          the element
+   */
+  public final void appendChild(XmlElement element) {
+    mElements.add(element);
+  }
 
-		for (Attribute attribute: mAttributes) {
-			buffer.append(Xml.attribute(attribute));
-		}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Iterable#iterator()
+   */
+  @Override
+  public Iterator<XmlElement> iterator() {
+    return mElements.iterator();
+  }
 
-		if (mElements.size() > 0) {
-			buffer.append(Xml.closeTag());
-			buffer.append(TextUtils.UNIX_NEW_LINE);
+  /**
+   * Gets the elements by name.
+   *
+   * @param name
+   *          the name
+   * @return the elements by name
+   */
+  public List<XmlElement> getElementsByName(String name) {
+    List<XmlElement> elementsByName = new ArrayList<XmlElement>();
 
-			for (XmlElement element : mElements) {
-				element.formattedXml(buffer, level + 1);
-			}
+    for (XmlElement element : mElements) {
+      if (element.getName().equals(name)) {
+        elementsByName.add(element);
+      }
+    }
 
-			buffer.append(indentation + Xml.endTag(mName));
-		} else {
-			// self closing tag
-			buffer.append(Xml.closedTag());
-		}
-		
-		buffer.append(TextUtils.UNIX_NEW_LINE);
-	}
+    return elementsByName;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Object#toString()
+   */
+  @Override
+  public String toString() {
+    String out = null;
+
+    try {
+      out = formattedXml();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+
+    return out;
+  }
+
+  /**
+   * Formatted xml.
+   *
+   * @return the string
+   * @throws IOException
+   *           Signals that an I/O exception has occurred.
+   */
+  public String formattedXml() throws IOException {
+    StringBuilder buffer = new StringBuilder();
+
+    formattedXml(buffer);
+
+    return buffer.toString();
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.xml.FormattedXml#formattedXml(java.lang.Appendable)
+   */
+  @Override
+  public void formattedXml(Appendable buffer) throws IOException {
+    formattedXml(buffer, 0);
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.xml.FormattedXml#formattedXml(java.lang.Appendable, int)
+   */
+  @Override
+  public void formattedXml(Appendable buffer, int level) throws IOException {
+    String indentation = Xml.indentation(level);
+
+    buffer.append(Xml.indentation(level));
+    buffer.append(Xml.openTag(mName));
+
+    for (Attribute attribute : mAttributes) {
+      buffer.append(Xml.attribute(attribute));
+    }
+
+    if (mElements.size() > 0) {
+      buffer.append(Xml.closeTag());
+      buffer.append(TextUtils.UNIX_NEW_LINE);
+
+      for (XmlElement element : mElements) {
+        element.formattedXml(buffer, level + 1);
+      }
+
+      buffer.append(indentation + Xml.endTag(mName));
+    } else {
+      // self closing tag
+      buffer.append(Xml.closedTag());
+    }
+
+    buffer.append(TextUtils.UNIX_NEW_LINE);
+  }
 }

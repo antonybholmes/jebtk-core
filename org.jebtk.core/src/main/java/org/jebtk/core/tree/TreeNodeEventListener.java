@@ -21,30 +21,30 @@ import org.jebtk.core.event.ChangeEvent;
 
 // TODO: Auto-generated Javadoc
 /**
- * The listener interface for receiving treeNodeEvent events.
- * The class that is interested in processing a treeNodeEvent
- * event implements this interface, and the object created
- * with that class is registered with a component using the
- * component's <code>addTreeNodeEventListener<code> method. When
- * the treeNodeEvent event occurs, that object's appropriate
- * method is invoked.
+ * The listener interface for receiving treeNodeEvent events. The class that is
+ * interested in processing a treeNodeEvent event implements this interface, and
+ * the object created with that class is registered with a component using the
+ * component's <code>addTreeNodeEventListener<code> method. When the
+ * treeNodeEvent event occurs, that object's appropriate method is invoked.
  *
  * @see TreeNodeEventEvent
  */
 public interface TreeNodeEventListener extends EventListener {
 
-	/**
-	 * Node changed.
-	 *
-	 * @param e the e
-	 */
-	public void nodeChanged(ChangeEvent e);
+  /**
+   * Node changed.
+   *
+   * @param e
+   *          the e
+   */
+  public void nodeChanged(ChangeEvent e);
 
-	/**
-	 * Invoked when node update occurs.
-	 *
-	 * @param e the e
-	 */
-	public void nodeUpdated(ChangeEvent e);
+  /**
+   * Invoked when node update occurs.
+   *
+   * @param e
+   *          the e
+   */
+  public void nodeUpdated(ChangeEvent e);
 
 }

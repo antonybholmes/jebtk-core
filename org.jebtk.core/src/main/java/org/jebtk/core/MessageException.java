@@ -23,18 +23,19 @@ package org.jebtk.core;
  *
  */
 public class MessageException extends Exception {
-	
-	/**
-	 * The constant serialVersionUID.
-	 */
-	private static final long serialVersionUID = 1L;
 
-	/**
-	 * Instantiates a new message exception.
-	 *
-	 * @param message the message
-	 */
-	public MessageException(String message) {
-		super(message);
-	}
+  /**
+   * The constant serialVersionUID.
+   */
+  private static final long serialVersionUID = 1L;
+
+  /**
+   * Instantiates a new message exception.
+   *
+   * @param message
+   *          the message
+   */
+  public MessageException(String message) {
+    super(message);
+  }
 }

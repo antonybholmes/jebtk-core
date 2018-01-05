@@ -17,18 +17,19 @@ package org.jebtk.core.json;
 
 // TODO: Auto-generated Javadoc
 /**
- * Should be implemented by elements that can create
- * a JSON object representation of themselves.
+ * Should be implemented by elements that can create a JSON object
+ * representation of themselves.
  * 
  * @author Antony Holmes Holmes
  *
  */
 public interface ToJson {
-	
-	/**
-	 * Append json to the builder.
-	 *
-	 * @param builder the builder
-	 */
-	public void toJson(JsonBuilder builder);
+
+  /**
+   * Append json to the builder.
+   *
+   * @param builder
+   *          the builder
+   */
+  public void toJson(JsonBuilder builder);
 }

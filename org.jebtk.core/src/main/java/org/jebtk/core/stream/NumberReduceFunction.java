@@ -18,9 +18,11 @@ package org.jebtk.core.stream;
 /**
  * The Interface StringFunction.
  *
- * @param <T> the generic type
- * @param <V> the value type
+ * @param <T>
+ *          the generic type
+ * @param <V>
+ *          the value type
  */
 public interface NumberReduceFunction<T, V extends Number> extends ReduceFunction<T, V> {
-	// Do nothing
+  // Do nothing
 }

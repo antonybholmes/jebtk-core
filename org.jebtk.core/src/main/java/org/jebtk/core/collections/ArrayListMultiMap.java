@@ -19,47 +19,55 @@ import static org.jebtk.core.collections.MultiMap.DEFAULT_INITIAL_CAPACITY;
 
 // TODO: Auto-generated Javadoc
 /**
- * Creates a map of lists where the each list is initialized with an
- * default value to a given size.
+ * Creates a map of lists where the each list is initialized with an default
+ * value to a given size.
  * 
  *
- * @param <K> the key type
- * @param <V> the value type
+ * @param <K>
+ *          the key type
+ * @param <V>
+ *          the value type
  */
 public class ArrayListMultiMap<K, V> extends ListMultiMap<K, V> {
-	
-	/** The Constant serialVersionUID. */
-	private static final long serialVersionUID = 1L;
 
-	/**
-	 * Instantiates a new default list multi map.
-	 *
-	 * @param initialCapacity the initial capacity
-	 */
-	public ArrayListMultiMap(int initialCapacity) {
-		super(initialCapacity, new ArrayListCreator<V>());
-	}
-	
-	/**
-	 * Creates the.
-	 *
-	 * @param <VV> the generic type
-	 * @param <KK> the generic type
-	 * @return the multi map
-	 */
-	public static <VV, KK> ListMultiMap<KK, VV> create() {
-		return create(DEFAULT_INITIAL_CAPACITY);
-	}
-	
-	/**
-	 * Creates the.
-	 *
-	 * @param <VV> the generic type
-	 * @param <KK> the generic type
-	 * @param initialCapacity the initial capacity
-	 * @return the list multi map
-	 */
-	public static <VV, KK> ListMultiMap<KK, VV> create(int initialCapacity) {
-		return new ArrayListMultiMap<KK, VV>(initialCapacity);
-	}
+  /** The Constant serialVersionUID. */
+  private static final long serialVersionUID = 1L;
+
+  /**
+   * Instantiates a new default list multi map.
+   *
+   * @param initialCapacity
+   *          the initial capacity
+   */
+  public ArrayListMultiMap(int initialCapacity) {
+    super(initialCapacity, new ArrayListCreator<V>());
+  }
+
+  /**
+   * Creates the.
+   *
+   * @param <VV>
+   *          the generic type
+   * @param <KK>
+   *          the generic type
+   * @return the multi map
+   */
+  public static <VV, KK> ListMultiMap<KK, VV> create() {
+    return create(DEFAULT_INITIAL_CAPACITY);
+  }
+
+  /**
+   * Creates the.
+   *
+   * @param <VV>
+   *          the generic type
+   * @param <KK>
+   *          the generic type
+   * @param initialCapacity
+   *          the initial capacity
+   * @return the list multi map
+   */
+  public static <VV, KK> ListMultiMap<KK, VV> create(int initialCapacity) {
+    return new ArrayListMultiMap<KK, VV>(initialCapacity);
+  }
 }

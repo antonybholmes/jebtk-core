@@ -21,43 +21,51 @@ package org.jebtk.core.stream;
  * Holds a reference to an existing stream.
  *
  * @author Antony Holmes Holmes
- * @param <T> the generic type
+ * @param <T>
+ *          the generic type
  */
 public class IntArrayStream extends Stream<Integer> {
 
-	private final int[] mArray;
-	private int mPc = 0;
+  private final int[] mArray;
+  private int mPc = 0;
 
-	/**
-	 * Instantiates a new container stream.
-	 *
-	 * @param stream the stream
-	 */
-	public IntArrayStream(int... array) {
-		mArray = array;
-	}
+  /**
+   * Instantiates a new container stream.
+   *
+   * @param stream
+   *          the stream
+   */
+  public IntArrayStream(int... array) {
+    mArray = array;
+  }
 
-	/* (non-Javadoc)
-	 * @see java.util.Iterator#hasNext()
-	 */
-	@Override
-	public boolean hasNext() {
-		return mPc < mArray.length - 1;
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.util.Iterator#hasNext()
+   */
+  @Override
+  public boolean hasNext() {
+    return mPc < mArray.length - 1;
+  }
 
-	/* (non-Javadoc)
-	 * @see java.util.Iterator#next()
-	 */
-	@Override
-	public Integer next() {
-		return mArray[mPc++];
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.stream.Stream#size()
-	 */
-	@Override
-	public int size() {
-		return mArray.length;
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.util.Iterator#next()
+   */
+  @Override
+  public Integer next() {
+    return mArray[mPc++];
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.stream.Stream#size()
+   */
+  @Override
+  public int size() {
+    return mArray.length;
+  }
 }

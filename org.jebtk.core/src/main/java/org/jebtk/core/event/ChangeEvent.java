@@ -23,33 +23,36 @@ package org.jebtk.core.event;
  *
  */
 public class ChangeEvent extends Event {
-	
-	/**
-	 * The constant serialVersionUID.
-	 */
-	private static final long serialVersionUID = 1L;
-	
-	/**
-	 * The constant EVENT_ITEM_CHANGED.
-	 */
-	public static final String EVENT_ITEM_CHANGED = "item_changed";
 
-	/**
-	 * Instantiates a new change event.
-	 *
-	 * @param source the source
-	 */
-	public ChangeEvent(Object source) {
-		this(source, EVENT_ITEM_CHANGED);
-	}
-	
-	/**
-	 * Instantiates a new change event.
-	 *
-	 * @param source the source
-	 * @param message the message
-	 */
-	public ChangeEvent(Object source, String message) {
-		super(source, message);
-	}
+  /**
+   * The constant serialVersionUID.
+   */
+  private static final long serialVersionUID = 1L;
+
+  /**
+   * The constant EVENT_ITEM_CHANGED.
+   */
+  public static final String EVENT_ITEM_CHANGED = "item_changed";
+
+  /**
+   * Instantiates a new change event.
+   *
+   * @param source
+   *          the source
+   */
+  public ChangeEvent(Object source) {
+    this(source, EVENT_ITEM_CHANGED);
+  }
+
+  /**
+   * Instantiates a new change event.
+   *
+   * @param source
+   *          the source
+   * @param message
+   *          the message
+   */
+  public ChangeEvent(Object source, String message) {
+    super(source, message);
+  }
 }

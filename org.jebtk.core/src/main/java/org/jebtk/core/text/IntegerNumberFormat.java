@@ -22,16 +22,16 @@ import java.text.DecimalFormat;
  * The class IntegerNumberFormat.
  */
 public class IntegerNumberFormat extends DecimalFormat {
-	
-	/**
-	 * The constant serialVersionUID.
-	 */
-	private static final long serialVersionUID = 1L;
 
-	/**
-	 * Instantiates a new integer number format.
-	 */
-	public IntegerNumberFormat() {
-		super("###,###,###,###");
-	}
+  /**
+   * The constant serialVersionUID.
+   */
+  private static final long serialVersionUID = 1L;
+
+  /**
+   * Instantiates a new integer number format.
+   */
+  public IntegerNumberFormat() {
+    super("###,###,###,###");
+  }
 }

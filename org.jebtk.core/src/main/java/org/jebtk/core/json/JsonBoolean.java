@@ -26,38 +26,43 @@ import org.jebtk.core.text.TextUtils;
  * @author Antony Holmes Holmes
  */
 public class JsonBoolean extends Json {
-	
-	/**
-	 * The member value.
-	 */
-	private boolean mValue;
 
-	/**
-	 * Instantiates a new json boolean.
-	 *
-	 * @param value the value
-	 */
-	public JsonBoolean(boolean value) {
-		mValue = value;
-	}
+  /**
+   * The member value.
+   */
+  private boolean mValue;
 
-	/* (non-Javadoc)
-	 * @see org.abh.lib.json.JsonValue#getAsBoolean()
-	 */
-	@Override
-	public boolean getAsBool() {
-		return mValue;
-	}
+  /**
+   * Instantiates a new json boolean.
+   *
+   * @param value
+   *          the value
+   */
+  public JsonBoolean(boolean value) {
+    mValue = value;
+  }
 
-	/* (non-Javadoc)
-	 * @see org.abh.lib.json.JsonValue#formattedTxt(java.lang.StringBuilder)
-	 */
-	@Override
-	public void toJson(Appendable buffer) throws IOException {
-		if (mValue) {
-			buffer.append(TextUtils.TRUE);
-		} else {
-			buffer.append(TextUtils.FALSE);
-		}
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.json.JsonValue#getAsBoolean()
+   */
+  @Override
+  public boolean getAsBool() {
+    return mValue;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.json.JsonValue#formattedTxt(java.lang.StringBuilder)
+   */
+  @Override
+  public void toJson(Appendable buffer) throws IOException {
+    if (mValue) {
+      buffer.append(TextUtils.TRUE);
+    } else {
+      buffer.append(TextUtils.FALSE);
+    }
+  }
 }

@@ -20,7 +20,6 @@ import java.io.BufferedWriter;
 import org.jebtk.core.Attribute;
 import org.jebtk.core.text.TextUtils;
 
-
 // TODO: Auto-generated Javadoc
 /**
  * Creates XML strings for writing XML.
@@ -29,151 +28,159 @@ import org.jebtk.core.text.TextUtils;
  *
  */
 public class Xml {
-	
-	/**
-	 * The constant HEADER.
-	 */
-	private static final String HEADER = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
 
-	/**
-	 * Instantiates a new xml.
-	 */
-	private Xml() {
-		// do nothing
-	}
+  /**
+   * The constant HEADER.
+   */
+  private static final String HEADER = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
 
-	/**
-	 * Writes the default XML header to the writer.
-	 *
-	 * @param writer the writer
-	 */
-	public static final void writeXmlHeader(BufferedWriter writer) {
-		try {
-			writer.write(xmlHeader());
-			writer.newLine();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+  /**
+   * Instantiates a new xml.
+   */
+  private Xml() {
+    // do nothing
+  }
 
-	/**
-	 * Returns the default XML header for writing xml files.
-	 *
-	 * @return the string
-	 */
-	public static final String xmlHeader() {
-		//return "<?xml version=\"1.0\"?>";
-		return HEADER;
-	}
+  /**
+   * Writes the default XML header to the writer.
+   *
+   * @param writer
+   *          the writer
+   */
+  public static final void writeXmlHeader(BufferedWriter writer) {
+    try {
+      writer.write(xmlHeader());
+      writer.newLine();
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
 
-	/**
-	 * Start tag.
-	 *
-	 * @param text the text
-	 * @return the string
-	 */
-	public static final String startTag(String text) {
-		return new StringBuilder(openTag(text)).append(closeTag()).toString();
-	}
+  /**
+   * Returns the default XML header for writing xml files.
+   *
+   * @return the string
+   */
+  public static final String xmlHeader() {
+    // return "<?xml version=\"1.0\"?>";
+    return HEADER;
+  }
 
-	/**
-	 * Open tag.
-	 *
-	 * @param text the text
-	 * @return the string
-	 */
-	public static final String openTag(String text) {
-		return new StringBuilder(openTag()).append(text).toString();
-	}
+  /**
+   * Start tag.
+   *
+   * @param text
+   *          the text
+   * @return the string
+   */
+  public static final String startTag(String text) {
+    return new StringBuilder(openTag(text)).append(closeTag()).toString();
+  }
 
-	/**
-	 * Returns the start tag angle bracket.
-	 *
-	 * @return the string
-	 */
-	public static final String openTag() {
-		return "<";
-	}
+  /**
+   * Open tag.
+   *
+   * @param text
+   *          the text
+   * @return the string
+   */
+  public static final String openTag(String text) {
+    return new StringBuilder(openTag()).append(text).toString();
+  }
 
-	/**
-	 * Returns the end tag angle bracket.
-	 *
-	 * @return the string
-	 */
-	public static final String closeTag() {
-		return ">";
-	}
+  /**
+   * Returns the start tag angle bracket.
+   *
+   * @return the string
+   */
+  public static final String openTag() {
+    return "<";
+  }
 
-	/**
-	 * Returns the slash + closeTag to indicate the element
-	 * has no children.
-	 *
-	 * @return the string
-	 */
-	public static final String closedTag() {
-		return new StringBuilder("/").append(closeTag()).toString();
-	}
+  /**
+   * Returns the end tag angle bracket.
+   *
+   * @return the string
+   */
+  public static final String closeTag() {
+    return ">";
+  }
 
-	/**
-	 * Returns the named end tag to indicate a tag
-	 * can be closed.
-	 *
-	 * @param text the text
-	 * @return the string
-	 */
-	public static final String endTag(String text) {
-		return new StringBuilder("</").append(text).append(closeTag()).toString();
-	}
+  /**
+   * Returns the slash + closeTag to indicate the element has no children.
+   *
+   * @return the string
+   */
+  public static final String closedTag() {
+    return new StringBuilder("/").append(closeTag()).toString();
+  }
 
-	/**
-	 * Returns a named closed tag.
-	 *
-	 * @param text the text
-	 * @return the string
-	 */
-	public static final String closedTag(String text) {
-		return new StringBuilder(openTag()).append(text).append(closedTag()).toString();
-	}
+  /**
+   * Returns the named end tag to indicate a tag can be closed.
+   *
+   * @param text
+   *          the text
+   * @return the string
+   */
+  public static final String endTag(String text) {
+    return new StringBuilder("</").append(text).append(closeTag()).toString();
+  }
 
-	/**
-	 * Attribute.
-	 *
-	 * @param attribute the attribute
-	 * @return the string
-	 */
-	public static String attribute(Attribute attribute) {
-		return attribute(attribute.getName(), attribute.getValue());
-	}
+  /**
+   * Returns a named closed tag.
+   *
+   * @param text
+   *          the text
+   * @return the string
+   */
+  public static final String closedTag(String text) {
+    return new StringBuilder(openTag()).append(text).append(closedTag()).toString();
+  }
 
-	/**
-	 * Attribute.
-	 *
-	 * @param name the name
-	 * @param value the value
-	 * @return the string
-	 */
-	public static final String attribute(String name, String value) {
-		return new StringBuilder(" ").append(name).append("=\"").append(value).append("\"").toString();
-	}
+  /**
+   * Attribute.
+   *
+   * @param attribute
+   *          the attribute
+   * @return the string
+   */
+  public static String attribute(Attribute attribute) {
+    return attribute(attribute.getName(), attribute.getValue());
+  }
 
-	/**
-	 * Creates an indentation space for writing aesthetically
-	 * pleasing XML files rather than one line monoliths.
-	 *
-	 * @param level the level
-	 * @return the string
-	 */
-	public static String indentation(int level) {
-		return TextUtils.repeat(TextUtils.TAB_DELIMITER, level);
-	}
+  /**
+   * Attribute.
+   *
+   * @param name
+   *          the name
+   * @param value
+   *          the value
+   * @return the string
+   */
+  public static final String attribute(String name, String value) {
+    return new StringBuilder(" ").append(name).append("=\"").append(value).append("\"").toString();
+  }
 
-	/**
-	 * Surround a string with CDATA tags.
-	 *
-	 * @param data the data
-	 * @return the string
-	 */
-	public static String cdata(String data) {
-		return new StringBuilder("<![CDATA[").append(data).append("]]>").toString();
-	}
+  /**
+   * Creates an indentation space for writing aesthetically pleasing XML files
+   * rather than one line monoliths.
+   *
+   * @param level
+   *          the level
+   * @return the string
+   */
+  public static String indentation(int level) {
+    return TextUtils.repeat(TextUtils.TAB_DELIMITER, level);
+  }
+
+  /**
+   * Surround a string with CDATA tags.
+   *
+   * @param data
+   *          the data
+   * @return the string
+   */
+  public static String cdata(String data) {
+    return new StringBuilder("<![CDATA[").append(data).append("]]>").toString();
+  }
 }

@@ -18,30 +18,33 @@ package org.jebtk.core.collections;
 import java.util.HashSet;
 import java.util.Set;
 
-
 // TODO: Auto-generated Javadoc
 /**
  * The Class HashSetCreator.
  *
- * @param <V> the value type
+ * @param <V>
+ *          the value type
  */
 public class HashSetCreator<V> implements SetCreator<V> {
 
-	/* (non-Javadoc)
-	 * @see org.abh.lib.collections.EntryCreator#create()
-	 */
-	@Override
-	public Set<V> newEntry() {
-		return new HashSet<V>();
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.collections.EntryCreator#create()
+   */
+  @Override
+  public Set<V> newEntry() {
+    return new HashSet<V>();
+  }
 
-	/**
-	 * Creates the.
-	 *
-	 * @param <V1> the generic type
-	 * @return the collection creator
-	 */
-	public static <V1> SetCreator<V1> create() {
-		return new HashSetCreator<V1>();
-	}
+  /**
+   * Creates the.
+   *
+   * @param <V1>
+   *          the generic type
+   * @return the collection creator
+   */
+  public static <V1> SetCreator<V1> create() {
+    return new HashSetCreator<V1>();
+  }
 }

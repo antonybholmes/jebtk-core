@@ -27,47 +27,58 @@ import org.jebtk.core.text.TextUtils;
  */
 public class SettingColor extends Setting {
 
-	/** The Constant serialVersionUID. */
-	private static final long serialVersionUID = 1L;
-	
-	/** The m value. */
-	private Color mValue;
+  /** The Constant serialVersionUID. */
+  private static final long serialVersionUID = 1L;
 
-	/**
-	 * Instantiates a new setting color.
-	 *
-	 * @param path the path
-	 * @param value the value
-	 * @param description the description
-	 * @param locked the locked
-	 */
-	public SettingColor(Path path, Color value, String description, boolean locked) {
-		super(path, description, locked);
-		
-		mValue = value;
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.settings.Setting#getAsString()
-	 */
-	@Override
-	public String getAsString() {
-		return ColorUtils.toHtml(mValue);
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.settings.Setting#getAsColor()
-	 */
-	@Override
-	public Color getAsColor() {
-		return mValue;
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.settings.Setting#toString()
-	 */
-	@Override
-	public String toString() {
-		return new StringBuilder("color_setting:").append(TextUtils.EQUALS_DELIMITER).append(mPath.toString()).append(TextUtils.EQUALS_DELIMITER).append(mValue).toString();
-	}
+  /** The m value. */
+  private Color mValue;
+
+  /**
+   * Instantiates a new setting color.
+   *
+   * @param path
+   *          the path
+   * @param value
+   *          the value
+   * @param description
+   *          the description
+   * @param locked
+   *          the locked
+   */
+  public SettingColor(Path path, Color value, String description, boolean locked) {
+    super(path, description, locked);
+
+    mValue = value;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.settings.Setting#getAsString()
+   */
+  @Override
+  public String getAsString() {
+    return ColorUtils.toHtml(mValue);
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.settings.Setting#getAsColor()
+   */
+  @Override
+  public Color getAsColor() {
+    return mValue;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.settings.Setting#toString()
+   */
+  @Override
+  public String toString() {
+    return new StringBuilder("color_setting:").append(TextUtils.EQUALS_DELIMITER).append(mPath.toString())
+        .append(TextUtils.EQUALS_DELIMITER).append(mValue).toString();
+  }
 }

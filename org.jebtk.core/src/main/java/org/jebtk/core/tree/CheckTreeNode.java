@@ -23,124 +23,139 @@ import java.util.Deque;
  * A Node that has a selected property.
  *
  * @author Antony Holmes Holmes
- * @param <T> the generic type
+ * @param <T>
+ *          the generic type
  */
 public class CheckTreeNode<T> extends TreeNode<T> {
 
-	/** The Constant serialVersionUID. */
-	private static final long serialVersionUID = 1L;
+  /** The Constant serialVersionUID. */
+  private static final long serialVersionUID = 1L;
 
-	/** The m checked. */
-	private boolean mChecked;
+  /** The m checked. */
+  private boolean mChecked;
 
-	/**
-	 * Instantiates a new check tree node.
-	 *
-	 * @param name the name
-	 * @param value the value
-	 */
-	public CheckTreeNode(String name, T value) {
-		this(name, value, false);
-	}
+  /**
+   * Instantiates a new check tree node.
+   *
+   * @param name
+   *          the name
+   * @param value
+   *          the value
+   */
+  public CheckTreeNode(String name, T value) {
+    this(name, value, false);
+  }
 
-	/**
-	 * Instantiates a new check tree node.
-	 *
-	 * @param name the name
-	 */
-	public CheckTreeNode(String name) {
-		this(name, false);
-	}
+  /**
+   * Instantiates a new check tree node.
+   *
+   * @param name
+   *          the name
+   */
+  public CheckTreeNode(String name) {
+    this(name, false);
+  }
 
-	/**
-	 * Instantiates a new check tree node.
-	 *
-	 * @param name the name
-	 * @param selected the selected
-	 */
-	public CheckTreeNode(String name, boolean selected) {
-		this(name, null, selected);
-	}
+  /**
+   * Instantiates a new check tree node.
+   *
+   * @param name
+   *          the name
+   * @param selected
+   *          the selected
+   */
+  public CheckTreeNode(String name, boolean selected) {
+    this(name, null, selected);
+  }
 
-	/**
-	 * Instantiates a new check tree node.
-	 *
-	 * @param name the name
-	 * @param value the value
-	 * @param selected the selected
-	 */
-	public CheckTreeNode(String name, T value, boolean selected) {
-		super(name, value);
+  /**
+   * Instantiates a new check tree node.
+   *
+   * @param name
+   *          the name
+   * @param value
+   *          the value
+   * @param selected
+   *          the selected
+   */
+  public CheckTreeNode(String name, T value, boolean selected) {
+    super(name, value);
 
-		setChecked(selected);
-	}
+    setChecked(selected);
+  }
 
-	/**
-	 * Gets the checks if is checked.
-	 *
-	 * @return the checks if is checked
-	 */
-	public boolean getIsChecked() {
-		return mChecked;
-	}
+  /**
+   * Gets the checks if is checked.
+   *
+   * @return the checks if is checked
+   */
+  public boolean getIsChecked() {
+    return mChecked;
+  }
 
-	/**
-	 * Updates the node to be selected and by default all of its children.
-	 * Use {@code setSelected(selected, updateChildren)} to control whether
-	 * the children are updated.
-	 *
-	 * @param checked the new checked
-	 */
-	public void setChecked(boolean checked) {
-		setChecked(checked, true);
-	}
+  /**
+   * Updates the node to be selected and by default all of its children. Use
+   * {@code setSelected(selected, updateChildren)} to control whether the children
+   * are updated.
+   *
+   * @param checked
+   *          the new checked
+   */
+  public void setChecked(boolean checked) {
+    setChecked(checked, true);
+  }
 
-	/**
-	 * Sets the checked.
-	 *
-	 * @param checked the checked
-	 * @param recursive the recursive
-	 */
-	public void setChecked(boolean checked, boolean recursive) {
-		updateChecked(checked, recursive);
+  /**
+   * Sets the checked.
+   *
+   * @param checked
+   *          the checked
+   * @param recursive
+   *          the recursive
+   */
+  public void setChecked(boolean checked, boolean recursive) {
+    updateChecked(checked, recursive);
 
-		fireTreeNodeUpdated();
-	}
-	
-	/**
-	 * Update checked.
-	 *
-	 * @param checked the checked
-	 */
-	public void updateChecked(boolean checked) {
-		updateChecked(checked, true);
-	}
-	
-	/**
-	 * Update checked.
-	 *
-	 * @param checked the checked
-	 * @param recursive the recursive
-	 */
-	public void updateChecked(boolean checked, boolean recursive) {
-		Deque<TreeNode<T>> stack = new ArrayDeque<TreeNode<T>>();
+    fireTreeNodeUpdated();
+  }
 
-		stack.push(this);
+  /**
+   * Update checked.
+   *
+   * @param checked
+   *          the checked
+   */
+  public void updateChecked(boolean checked) {
+    updateChecked(checked, true);
+  }
 
-		while (!stack.isEmpty()) {
-			TreeNode<T> n = stack.pop();
+  /**
+   * Update checked.
+   *
+   * @param checked
+   *          the checked
+   * @param recursive
+   *          the recursive
+   */
+  public void updateChecked(boolean checked, boolean recursive) {
+    Deque<TreeNode<T>> stack = new ArrayDeque<TreeNode<T>>();
 
-			if (n instanceof CheckTreeNode) {
-				CheckTreeNode<T> node = (CheckTreeNode<T>)n;
-				
-				node.mChecked = checked;
-				
-				if (recursive) {
-					for (TreeNode<T> child : node) {
-						stack.push(child);
-					}
-				}
-			}
-		}
-	}
+    stack.push(this);
+
+    while (!stack.isEmpty()) {
+      TreeNode<T> n = stack.pop();
+
+      if (n instanceof CheckTreeNode) {
+        CheckTreeNode<T> node = (CheckTreeNode<T>) n;
+
+        node.mChecked = checked;
+
+        if (recursive) {
+          for (TreeNode<T> child : node) {
+            stack.push(child);
+          }
+        }
+      }
+    }
+  }
 }

@@ -26,12 +26,15 @@ import javax.net.ssl.SSLSession;
  *
  */
 public class TrustAllHosts implements HostnameVerifier {
-	
-	/* (non-Javadoc)
-	 * @see javax.net.ssl.HostnameVerifier#verify(java.lang.String, javax.net.ssl.SSLSession)
-	 */
-	@Override
-	public boolean verify(String hostname, SSLSession session) {
-		return true;
-	}
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see javax.net.ssl.HostnameVerifier#verify(java.lang.String,
+   * javax.net.ssl.SSLSession)
+   */
+  @Override
+  public boolean verify(String hostname, SSLSession session) {
+    return true;
+  }
 }

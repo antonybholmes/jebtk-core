@@ -17,85 +17,97 @@ package org.jebtk.core.collections;
 
 // TODO: Auto-generated Javadoc
 /**
- * Fast stack implementation for Integers. Note that at the moment,
- * no bound checks are performed for speed so it will ungraciously
- * throw exceptions if misused.
+ * Fast stack implementation for Integers. Note that at the moment, no bound
+ * checks are performed for speed so it will ungraciously throw exceptions if
+ * misused.
  *
  * @author Antony Holmes Holmes
- * @param <T> the generic type
+ * @param <T>
+ *          the generic type
  */
 public class FixedStack<T> extends AbstractStack {
-	
-	/**
-	 * The elements.
-	 */
-	private Object[] elements;
 
-	/**
-	 * Instantiates a new int fixed stack.
-	 */
-	public FixedStack() {
-		this(DEFAULT_SIZE);
-	}
+  /**
+   * The elements.
+   */
+  private Object[] elements;
 
-	/**
-	 * Instantiates a new int fixed stack.
-	 *
-	 * @param size the size
-	 */
-	public FixedStack(int size) {
-		elements = new Object[size];
-	}
+  /**
+   * Instantiates a new int fixed stack.
+   */
+  public FixedStack() {
+    this(DEFAULT_SIZE);
+  }
 
-	/**
-	 * Push.
-	 *
-	 * @param element the element
-	 */
-	/* (non-Javadoc)
-	 * @see org.abh.lib.AbstractFixedStack#push(java.lang.Object)
-	 */
-	public final void push(T element) {
-		elements[++mPc] = element;
-	}
+  /**
+   * Instantiates a new int fixed stack.
+   *
+   * @param size
+   *          the size
+   */
+  public FixedStack(int size) {
+    elements = new Object[size];
+  }
 
-	/**
-	 * Pop.
-	 *
-	 * @return the t
-	 */
-	/* (non-Javadoc)
-	 * @see org.abh.lib.AbstractFixedStack#pop()
-	 */
-	@SuppressWarnings("unchecked")
-	public final T pop() {
-		return (T)elements[mPc--];
-	}
+  /**
+   * Push.
+   *
+   * @param element
+   *          the element
+   */
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.AbstractFixedStack#push(java.lang.Object)
+   */
+  public final void push(T element) {
+    elements[++mPc] = element;
+  }
 
-	/**
-	 * Peek.
-	 *
-	 * @return the t
-	 */
-	/* (non-Javadoc)
-	 * @see org.abh.lib.AbstractFixedStack#peek()
-	 */
-	@SuppressWarnings("unchecked")
-	public final T peek() {
-		return (T)elements[mPc];
-	}
+  /**
+   * Pop.
+   *
+   * @return the t
+   */
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.AbstractFixedStack#pop()
+   */
+  @SuppressWarnings("unchecked")
+  public final T pop() {
+    return (T) elements[mPc--];
+  }
 
-	/**
-	 * Gets the.
-	 *
-	 * @param i the i
-	 * @return the t
-	 */
-	/* (non-Javadoc)
-	 * @see org.abh.lib.AbstractFixedStack#get(int)
-	 */
-	@SuppressWarnings("unchecked")
-	public T get(int i) {
-		return (T)elements[i];
-	}
+  /**
+   * Peek.
+   *
+   * @return the t
+   */
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.AbstractFixedStack#peek()
+   */
+  @SuppressWarnings("unchecked")
+  public final T peek() {
+    return (T) elements[mPc];
+  }
+
+  /**
+   * Gets the.
+   *
+   * @param i
+   *          the i
+   * @return the t
+   */
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.AbstractFixedStack#get(int)
+   */
+  @SuppressWarnings("unchecked")
+  public T get(int i) {
+    return (T) elements[i];
+  }
 }

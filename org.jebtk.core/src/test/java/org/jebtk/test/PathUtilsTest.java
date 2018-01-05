@@ -22,11 +22,11 @@ import org.junit.Test;
 
 public class PathUtilsTest {
 
-	@Test
-	public void testRelative() {
-		
-		System.out.println("Inside testPrintMessage()");
-		
-		assertEquals(PathUtils.relative("/test"), PathUtils.getPath("test"));
-	}
+  @Test
+  public void testRelative() {
+
+    System.out.println("Inside testPrintMessage()");
+
+    assertEquals(PathUtils.relative("/test"), PathUtils.getPath("test"));
+  }
 }

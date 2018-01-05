@@ -20,29 +20,29 @@ package org.jebtk.core.text;
  * The enum SentenceCaseType.
  */
 public enum SentenceCaseType {
-	
-	/**
-	 * The none.
-	 */
-	NONE,
-	
-	/**
-	 * The sentence case.
-	 */
-	SENTENCE_CASE,
-	
-	/**
-	 * The lowercase.
-	 */
-	LOWERCASE,
-	
-	/**
-	 * The uppercase.
-	 */
-	UPPERCASE,
-	
-	/**
-	 * The capitalize each word.
-	 */
-	CAPITALIZE_EACH_WORD
+
+  /**
+   * The none.
+   */
+  NONE,
+
+  /**
+   * The sentence case.
+   */
+  SENTENCE_CASE,
+
+  /**
+   * The lowercase.
+   */
+  LOWERCASE,
+
+  /**
+   * The uppercase.
+   */
+  UPPERCASE,
+
+  /**
+   * The capitalize each word.
+   */
+  CAPITALIZE_EACH_WORD
 }

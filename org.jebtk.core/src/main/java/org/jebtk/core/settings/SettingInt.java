@@ -25,71 +25,89 @@ import org.jebtk.core.text.TextUtils;
  */
 public class SettingInt extends Setting {
 
-	/** The Constant serialVersionUID. */
-	private static final long serialVersionUID = 1L;
-	
-	/** The m value. */
-	private int mValue;
+  /** The Constant serialVersionUID. */
+  private static final long serialVersionUID = 1L;
 
-	/**
-	 * Instantiates a new setting int.
-	 *
-	 * @param path the path
-	 * @param value the value
-	 * @param description the description
-	 * @param locked the locked
-	 */
-	public SettingInt(Path path, int value, String description, boolean locked) {
-		super(path, description, locked);
-		
-		mValue = value;
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.settings.Setting#getAsString()
-	 */
-	@Override
-	public String getAsString() {
-		return Integer.toString(mValue);
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.settings.Setting#getAsInt()
-	 */
-	@Override
-	public int getAsInt() {
-		return mValue;
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.settings.Setting#getAsDouble()
-	 */
-	@Override
-	public double getAsDouble() {
-		return mValue;
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.settings.Setting#getAsLong()
-	 */
-	@Override
-	public long getAsLong() {
-		return mValue;
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.settings.Setting#toString()
-	 */
-	@Override
-	public String toString() {
-		return new StringBuilder("int_setting:").append(mPath.toString()).append(TextUtils.EQUALS_DELIMITER).append(mValue).toString();
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.settings.Setting#formatJsonValue(org.abh.common.json.Json)
-	 */
-	@Override
-	protected void formatJsonValue(Json o) {
-		o.add("value", mValue);
-	}
+  /** The m value. */
+  private int mValue;
+
+  /**
+   * Instantiates a new setting int.
+   *
+   * @param path
+   *          the path
+   * @param value
+   *          the value
+   * @param description
+   *          the description
+   * @param locked
+   *          the locked
+   */
+  public SettingInt(Path path, int value, String description, boolean locked) {
+    super(path, description, locked);
+
+    mValue = value;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.settings.Setting#getAsString()
+   */
+  @Override
+  public String getAsString() {
+    return Integer.toString(mValue);
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.settings.Setting#getAsInt()
+   */
+  @Override
+  public int getAsInt() {
+    return mValue;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.settings.Setting#getAsDouble()
+   */
+  @Override
+  public double getAsDouble() {
+    return mValue;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.settings.Setting#getAsLong()
+   */
+  @Override
+  public long getAsLong() {
+    return mValue;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.settings.Setting#toString()
+   */
+  @Override
+  public String toString() {
+    return new StringBuilder("int_setting:").append(mPath.toString()).append(TextUtils.EQUALS_DELIMITER).append(mValue)
+        .toString();
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.abh.common.settings.Setting#formatJsonValue(org.abh.common.json.Json)
+   */
+  @Override
+  protected void formatJsonValue(Json o) {
+    o.add("value", mValue);
+  }
 }

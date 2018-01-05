@@ -19,35 +19,36 @@ import java.io.Serializable;
 
 import org.jebtk.core.text.TextUtils;
 
-
 // TODO: Auto-generated Javadoc
 /**
  * Creates a search radix tree of objects tagged by their name.
  *
  * @author Antony Holmes Holmes
- * @param <T> the generic type
+ * @param <T>
+ *          the generic type
  */
 public class RadixObjectDb<T> extends RadixObjectNode<T> implements Serializable {
-	
-	/**
-	 * The constant serialVersionUID.
-	 */
-	private static final long serialVersionUID = 1L;
 
-	/**
-	 * Instantiates a new radix object db.
-	 */
-	public RadixObjectDb() {
-		super('r', TextUtils.EMPTY_STRING);
-	}
-	
-	/**
-	 * Creates the.
-	 * @param <TT>
-	 *
-	 * @return the radix object db
-	 */
-	public static <TT> RadixObjectDb<TT> create() {
-		return new RadixObjectDb<TT>();
-	}
+  /**
+   * The constant serialVersionUID.
+   */
+  private static final long serialVersionUID = 1L;
+
+  /**
+   * Instantiates a new radix object db.
+   */
+  public RadixObjectDb() {
+    super('r', TextUtils.EMPTY_STRING);
+  }
+
+  /**
+   * Creates the.
+   * 
+   * @param <TT>
+   *
+   * @return the radix object db
+   */
+  public static <TT> RadixObjectDb<TT> create() {
+    return new RadixObjectDb<TT>();
+  }
 }

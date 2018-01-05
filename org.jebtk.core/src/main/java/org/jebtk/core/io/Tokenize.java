@@ -27,105 +27,114 @@ import org.jebtk.core.text.TextUtils;
  */
 public class Tokenize {
 
-	/** The m tf. */
-	private TokenFunction mTf;
-	
-	/** The m skip. */
-	private boolean mSkip = false;
-	
-	/** The m delim. */
-	private String mDelim = TextUtils.TAB_DELIMITER;
+  /** The m tf. */
+  private TokenFunction mTf;
 
-	/**
-	 * Instantiates a new tokenize.
-	 *
-	 * @param tf the tf
-	 */
-	public Tokenize(TokenFunction tf) {
-		mTf = tf;
-	}
+  /** The m skip. */
+  private boolean mSkip = false;
 
-	/**
-	 * Instantiates a new tokenize.
-	 *
-	 * @param t the t
-	 */
-	private Tokenize(Tokenize t) {
-		mTf = t.mTf;
-		mSkip = t.mSkip;
-		mDelim = t.mDelim;
-	}
+  /** The m delim. */
+  private String mDelim = TextUtils.TAB_DELIMITER;
 
-	/**
-	 * Skip header.
-	 *
-	 * @param skip the skip
-	 * @return the tokenize
-	 */
-	public Tokenize skipHeader(boolean skip) {
-		Tokenize tf = new Tokenize(this);
-		tf.mSkip = skip;
+  /**
+   * Instantiates a new tokenize.
+   *
+   * @param tf
+   *          the tf
+   */
+  public Tokenize(TokenFunction tf) {
+    mTf = tf;
+  }
 
-		return tf;
-	}
-	
-	/**
-	 * Sets the delimiter.
-	 *
-	 * @param d the d
-	 * @return the tokenize
-	 */
-	public Tokenize setDelimiter(String d) {
-		Tokenize tf = new Tokenize(this);
-		tf.mDelim = d;
+  /**
+   * Instantiates a new tokenize.
+   *
+   * @param t
+   *          the t
+   */
+  private Tokenize(Tokenize t) {
+    mTf = t.mTf;
+    mSkip = t.mSkip;
+    mDelim = t.mDelim;
+  }
 
-		return tf;
-	}
+  /**
+   * Skip header.
+   *
+   * @param skip
+   *          the skip
+   * @return the tokenize
+   */
+  public Tokenize skipHeader(boolean skip) {
+    Tokenize tf = new Tokenize(this);
+    tf.mSkip = skip;
 
-	/**
-	 * Tokens.
-	 *
-	 * @param file the file
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 */
-	public void tokens(Path file) throws IOException {
-		BufferedReader reader = FileUtils.newBufferedReader(file);
+    return tf;
+  }
 
-		try {
-			tokens(reader);
-		} finally {
-			reader.close();
-		}
-	}
-	
-	/**
-	 * Run through reader tokenizing each line for processing. Reader is
-	 * closed after function has been applied.
-	 *
-	 * @param reader the reader
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 */
-	public void tokens(BufferedReader reader) throws IOException {
-		Lines lines = new Lines(new LineFunction() {
+  /**
+   * Sets the delimiter.
+   *
+   * @param d
+   *          the d
+   * @return the tokenize
+   */
+  public Tokenize setDelimiter(String d) {
+    Tokenize tf = new Tokenize(this);
+    tf.mDelim = d;
 
-			@Override
-			public void parse(String line) {
-				if (!Io.isEmptyLine(line)) {
-					mTf.parse(TextUtils.fastSplit(line, mDelim));
-				}
-			}})
-				.skipHeader(mSkip);
+    return tf;
+  }
 
-		lines.lines(reader);	
-	}
-	
-	/**
-	 * Tokenize.
-	 *
-	 * @param tf the tf
-	 * @return the tokenize
-	 */
-	public static Tokenize tokenize(TokenFunction tf) {
-		return new Tokenize(tf);
-	}
+  /**
+   * Tokens.
+   *
+   * @param file
+   *          the file
+   * @throws IOException
+   *           Signals that an I/O exception has occurred.
+   */
+  public void tokens(Path file) throws IOException {
+    BufferedReader reader = FileUtils.newBufferedReader(file);
+
+    try {
+      tokens(reader);
+    } finally {
+      reader.close();
+    }
+  }
+
+  /**
+   * Run through reader tokenizing each line for processing. Reader is closed
+   * after function has been applied.
+   *
+   * @param reader
+   *          the reader
+   * @throws IOException
+   *           Signals that an I/O exception has occurred.
+   */
+  public void tokens(BufferedReader reader) throws IOException {
+    Lines lines = new Lines(new LineFunction() {
+
+      @Override
+      public void parse(String line) {
+        if (!Io.isEmptyLine(line)) {
+          mTf.parse(TextUtils.fastSplit(line, mDelim));
+        }
+      }
+    }).skipHeader(mSkip);
+
+    lines.lines(reader);
+  }
+
+  /**
+   * Tokenize.
+   *
+   * @param tf
+   *          the tf
+   * @return the tokenize
+   */
+  public static Tokenize tokenize(TokenFunction tf) {
+    return new Tokenize(tf);
+  }
 }

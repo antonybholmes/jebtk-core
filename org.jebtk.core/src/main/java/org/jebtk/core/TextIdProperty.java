@@ -23,12 +23,11 @@ package org.jebtk.core;
  *
  */
 public interface TextIdProperty {
-	
-	/**
-	 * Returns a unique id for this class of
-	 * objects.
-	 *
-	 * @return the id
-	 */
-	public String getId();
+
+  /**
+   * Returns a unique id for this class of objects.
+   *
+   * @return the id
+   */
+  public String getId();
 }

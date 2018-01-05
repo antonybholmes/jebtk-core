@@ -21,43 +21,51 @@ package org.jebtk.core.stream;
  * Holds a reference to an existing stream.
  *
  * @author Antony Holmes Holmes
- * @param <T> the generic type
+ * @param <T>
+ *          the generic type
  */
 public class ContainerStream<T> extends Stream<T> {
 
-	/** The m stream. */
-	protected Stream<T> mStream;
+  /** The m stream. */
+  protected Stream<T> mStream;
 
-	/**
-	 * Instantiates a new container stream.
-	 *
-	 * @param stream the stream
-	 */
-	public ContainerStream(Stream<T> stream) {
-		mStream = stream;
-	}
+  /**
+   * Instantiates a new container stream.
+   *
+   * @param stream
+   *          the stream
+   */
+  public ContainerStream(Stream<T> stream) {
+    mStream = stream;
+  }
 
-	/* (non-Javadoc)
-	 * @see java.util.Iterator#hasNext()
-	 */
-	@Override
-	public boolean hasNext() {
-		return mStream.hasNext();
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.util.Iterator#hasNext()
+   */
+  @Override
+  public boolean hasNext() {
+    return mStream.hasNext();
+  }
 
-	/* (non-Javadoc)
-	 * @see java.util.Iterator#next()
-	 */
-	@Override
-	public T next() {
-		return mStream.next();
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.stream.Stream#size()
-	 */
-	@Override
-	public int size() {
-		return mStream.size();
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.util.Iterator#next()
+   */
+  @Override
+  public T next() {
+    return mStream.next();
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.stream.Stream#size()
+   */
+  @Override
+  public int size() {
+    return mStream.size();
+  }
 }

@@ -23,95 +23,116 @@ import java.util.ListIterator;
 /**
  * The Class TailList.
  *
- * @param <T> the generic type
+ * @param <T>
+ *          the generic type
  */
 public class TailList<T> extends ReadOnlyListContainer<T> {
 
-	/** The m start. */
-	private int mStart;
+  /** The m start. */
+  private int mStart;
 
-	/**
-	 * Instantiates a new tail list.
-	 *
-	 * @param list the list
-	 */
-	public TailList(List<T> list) {
-		this(list, 1);
-	}
-	
-	/**
-	 * Instantiates a new tail list.
-	 *
-	 * @param list the list
-	 * @param start the start
-	 */
-	public TailList(List<T> list, int start) {
-		super(list);
-		
-		mStart = start;
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.collections.ReadOnlyListContainer#get(int)
-	 */
-	@Override
-	public T get(int index) {
-		return super.get(index + mStart);
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.collections.ReadOnlyListContainer#iterator()
-	 */
-	@Override
-	public Iterator<T> iterator() {
-		return listIterator();
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.collections.ReadOnlyListContainer#listIterator()
-	 */
-	@Override
-	public ListIterator<T> listIterator() {
-		return listIterator(0);
-	}
+  /**
+   * Instantiates a new tail list.
+   *
+   * @param list
+   *          the list
+   */
+  public TailList(List<T> list) {
+    this(list, 1);
+  }
 
-	/* (non-Javadoc)
-	 * @see org.abh.common.collections.ReadOnlyListContainer#listIterator(int)
-	 */
-	@Override
-	public ListIterator<T> listIterator(int index) {
-		return new TailListIterator<T>(mList, mStart + index);
-	}
+  /**
+   * Instantiates a new tail list.
+   *
+   * @param list
+   *          the list
+   * @param start
+   *          the start
+   */
+  public TailList(List<T> list, int start) {
+    super(list);
 
-	/* (non-Javadoc)
-	 * @see org.abh.common.collections.ReadOnlyListContainer#indexOf(java.lang.Object)
-	 */
-	@Override
-	public int indexOf(Object o) {
-		return indexOf(o) - mStart;
-	}
+    mStart = start;
+  }
 
-	/* (non-Javadoc)
-	 * @see org.abh.common.collections.ReadOnlyListContainer#isEmpty()
-	 */
-	@Override
-	public boolean isEmpty() {
-		return mStart == mList.size();
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.collections.ReadOnlyListContainer#size()
-	 */
-	@Override
-	public int size() {
-		return super.size() - mStart;
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.collections.ReadOnlyListContainer#subList(int, int)
-	 */
-	@Override
-	public List<T> subList(int fromIndex, int toIndex) {
-		return super.subList(fromIndex + mStart, toIndex + mStart);
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.collections.ReadOnlyListContainer#get(int)
+   */
+  @Override
+  public T get(int index) {
+    return super.get(index + mStart);
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.collections.ReadOnlyListContainer#iterator()
+   */
+  @Override
+  public Iterator<T> iterator() {
+    return listIterator();
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.collections.ReadOnlyListContainer#listIterator()
+   */
+  @Override
+  public ListIterator<T> listIterator() {
+    return listIterator(0);
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.collections.ReadOnlyListContainer#listIterator(int)
+   */
+  @Override
+  public ListIterator<T> listIterator(int index) {
+    return new TailListIterator<T>(mList, mStart + index);
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.abh.common.collections.ReadOnlyListContainer#indexOf(java.lang.Object)
+   */
+  @Override
+  public int indexOf(Object o) {
+    return indexOf(o) - mStart;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.collections.ReadOnlyListContainer#isEmpty()
+   */
+  @Override
+  public boolean isEmpty() {
+    return mStart == mList.size();
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.collections.ReadOnlyListContainer#size()
+   */
+  @Override
+  public int size() {
+    return super.size() - mStart;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.collections.ReadOnlyListContainer#subList(int, int)
+   */
+  @Override
+  public List<T> subList(int fromIndex, int toIndex) {
+    return super.subList(fromIndex + mStart, toIndex + mStart);
+  }
 }

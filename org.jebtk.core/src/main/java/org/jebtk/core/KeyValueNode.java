@@ -20,166 +20,176 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-
 // TODO: Auto-generated Javadoc
 /**
- * Represents a node in a tree hierarchy. Each node consists
- * of a string name (key) which can be coupled with an object
- * value. Each node may have children, though each child 
- * must have a distinct name. Unlike Category node, node
- * names are not required to be standardized so the user
- * must keep track of any naming conventions used. This node
- * is designed for textual tree structures without repeating
- * children (nodes with the same name). For a more ordered
- * tree where branch order can be inferred, try TreeNode
+ * Represents a node in a tree hierarchy. Each node consists of a string name
+ * (key) which can be coupled with an object value. Each node may have children,
+ * though each child must have a distinct name. Unlike Category node, node names
+ * are not required to be standardized so the user must keep track of any naming
+ * conventions used. This node is designed for textual tree structures without
+ * repeating children (nodes with the same name). For a more ordered tree where
+ * branch order can be inferred, try TreeNode
  *
  * @author Antony Holmes Holmes
- * @param <T> the generic type
+ * @param <T>
+ *          the generic type
  */
 public class KeyValueNode<T> implements Iterable<KeyValueNode<T>>, Comparable<KeyValueNode<T>>, Serializable {
-	
-	/**
-	 * The constant serialVersionUID.
-	 */
-	private static final long serialVersionUID = 1L;
 
-	/**
-	 * The children.
-	 */
-	private Map<String, KeyValueNode<T>> children = 
-			new HashMap<String, KeyValueNode<T>>();
+  /**
+   * The constant serialVersionUID.
+   */
+  private static final long serialVersionUID = 1L;
 
-	/**
-	 * The name.
-	 */
-	protected String name;
-	
-	/**
-	 * The value.
-	 */
-	private T value = null;
+  /**
+   * The children.
+   */
+  private Map<String, KeyValueNode<T>> children = new HashMap<String, KeyValueNode<T>>();
 
-	/**
-	 * Instantiates a new key value node.
-	 *
-	 * @param name the name
-	 */
-	public KeyValueNode(String name) {
-		this.name = name;
-	}
-	
-	/**
-	 * Instantiates a new key value node.
-	 *
-	 * @param name the name
-	 * @param value the value
-	 */
-	public KeyValueNode(String name, T value) {
-		this.name = name;
-		
-		this.value = value;
-	}
+  /**
+   * The name.
+   */
+  protected String name;
 
-	/**
-	 * Gets the name.
-	 *
-	 * @return the name
-	 */
-	public String getName() {
-		return name;
-	}
-	
-	/**
-	 * Gets the value.
-	 *
-	 * @return the value
-	 */
-	public T getValue() {
-		return value;
-	}
-	
-	/**
-	 * Sets the value.
-	 *
-	 * @param value the new value
-	 */
-	public void setValue(T value) {
-		this.value = value;
-	}
-	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	public String toString() {
-		return name;
-	}
+  /**
+   * The value.
+   */
+  private T value = null;
 
-	/**
-	 * Adds the child.
-	 *
-	 * @param child the child
-	 */
-	public void addChild(KeyValueNode<T> child) {
-		children.put(child.getName(), child);
-	}
+  /**
+   * Instantiates a new key value node.
+   *
+   * @param name
+   *          the name
+   */
+  public KeyValueNode(String name) {
+    this.name = name;
+  }
 
-	/**
-	 * Returns a sub category. Non-existant nodes
-	 * are automatically created.
-	 *
-	 * @param name the name
-	 * @return the child
-	 */
-	public KeyValueNode<T> getChild(String name) {
-		if (name == null) {
-			return null;
-		}
-		
-		if (!children.containsKey(name)) {
-			addChild(new KeyValueNode<T>(name));
-		}
-		
-		return children.get(name);
-	}
-	
-	/**
-	 * Gets the child count.
-	 *
-	 * @return the child count
-	 */
-	public int getChildCount() {
-		return children.size();
-	}
+  /**
+   * Instantiates a new key value node.
+   *
+   * @param name
+   *          the name
+   * @param value
+   *          the value
+   */
+  public KeyValueNode(String name, T value) {
+    this.name = name;
 
-	/* (non-Javadoc)
-	 * @see java.lang.Iterable#iterator()
-	 */
-	public Iterator<KeyValueNode<T>> iterator() {
-		return children.values().iterator();
-	}
+    this.value = value;
+  }
 
-	/* (non-Javadoc)
-	 * @see java.lang.Comparable#compareTo(java.lang.Object)
-	 */
-	public int compareTo(KeyValueNode<T> n) {
-		return name.compareTo(n.getName());
-	}
-	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
-	public boolean equals(Object o) {
-		if (!(o instanceof KeyValueNode)) {
-			return false;
-		}
-		
-		return name.equals(((KeyValueNode<?>)o).getName());
-	}
-	
-	/**
-	 * Clear.
-	 */
-	public void clear() {
-		children.clear();
-	}
+  /**
+   * Gets the name.
+   *
+   * @return the name
+   */
+  public String getName() {
+    return name;
+  }
+
+  /**
+   * Gets the value.
+   *
+   * @return the value
+   */
+  public T getValue() {
+    return value;
+  }
+
+  /**
+   * Sets the value.
+   *
+   * @param value
+   *          the new value
+   */
+  public void setValue(T value) {
+    this.value = value;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Object#toString()
+   */
+  public String toString() {
+    return name;
+  }
+
+  /**
+   * Adds the child.
+   *
+   * @param child
+   *          the child
+   */
+  public void addChild(KeyValueNode<T> child) {
+    children.put(child.getName(), child);
+  }
+
+  /**
+   * Returns a sub category. Non-existant nodes are automatically created.
+   *
+   * @param name
+   *          the name
+   * @return the child
+   */
+  public KeyValueNode<T> getChild(String name) {
+    if (name == null) {
+      return null;
+    }
+
+    if (!children.containsKey(name)) {
+      addChild(new KeyValueNode<T>(name));
+    }
+
+    return children.get(name);
+  }
+
+  /**
+   * Gets the child count.
+   *
+   * @return the child count
+   */
+  public int getChildCount() {
+    return children.size();
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Iterable#iterator()
+   */
+  public Iterator<KeyValueNode<T>> iterator() {
+    return children.values().iterator();
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Comparable#compareTo(java.lang.Object)
+   */
+  public int compareTo(KeyValueNode<T> n) {
+    return name.compareTo(n.getName());
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Object#equals(java.lang.Object)
+   */
+  public boolean equals(Object o) {
+    if (!(o instanceof KeyValueNode)) {
+      return false;
+    }
+
+    return name.equals(((KeyValueNode<?>) o).getName());
+  }
+
+  /**
+   * Clear.
+   */
+  public void clear() {
+    children.clear();
+  }
 }

@@ -25,93 +25,105 @@ import java.awt.Color;
  *
  */
 public class ColorValue {
-	
-	/**
-	 * The member red.
-	 */
-	public int mRed = 0;
-	
-	/**
-	 * The member green.
-	 */
-	public int mGreen = 0;
-	
-	/**
-	 * The member blue.
-	 */
-	public int mBlue = 0;
-	
-	/**
-	 * The member alpha.
-	 */
-	public int mAlpha = 0;
-	
-	/**
-	 * Instantiates a new color value.
-	 */
-	public ColorValue() {
-		// TODO Auto-generated constructor stub
-	}
-	
-	/**
-	 * Instantiates a new color value.
-	 *
-	 * @param red the red
-	 * @param green the green
-	 * @param blue the blue
-	 */
-	public ColorValue(int red, int green, int blue) {
-		this(red, green, blue, 255);
-	}
-	
-	/**
-	 * Instantiates a new color value.
-	 *
-	 * @param red the red
-	 * @param green the green
-	 * @param blue the blue
-	 * @param alpha the alpha
-	 */
-	public ColorValue(int red, int green, int blue, int alpha) {
-		mRed = red;
-		mGreen = green;
-		mBlue = blue;
-		mAlpha = alpha;
-	}
-	
-	/**
-	 * Instantiates a new color value.
-	 *
-	 * @param color the color
-	 */
-	public ColorValue(ColorValue color) {
-		this(color.mRed, color.mGreen, color.mBlue, color.mAlpha);
-	}
-	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	public String toString() {
-		return mRed + " " + mGreen + " " + mBlue + " " + mAlpha;
-	}
 
-	/**
-	 * Convert.
-	 *
-	 * @param color the color
-	 * @return the color value
-	 */
-	public static ColorValue convert(Color color) {
-		return new ColorValue(color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha());
-	}
-	
-	/**
-	 * Convert.
-	 *
-	 * @param color the color
-	 * @return the color
-	 */
-	public static Color convert(ColorValue color) {
-		return new Color(color.mRed, color.mGreen, color.mBlue, color.mAlpha);
-	}
+  /**
+   * The member red.
+   */
+  public int mRed = 0;
+
+  /**
+   * The member green.
+   */
+  public int mGreen = 0;
+
+  /**
+   * The member blue.
+   */
+  public int mBlue = 0;
+
+  /**
+   * The member alpha.
+   */
+  public int mAlpha = 0;
+
+  /**
+   * Instantiates a new color value.
+   */
+  public ColorValue() {
+    // TODO Auto-generated constructor stub
+  }
+
+  /**
+   * Instantiates a new color value.
+   *
+   * @param red
+   *          the red
+   * @param green
+   *          the green
+   * @param blue
+   *          the blue
+   */
+  public ColorValue(int red, int green, int blue) {
+    this(red, green, blue, 255);
+  }
+
+  /**
+   * Instantiates a new color value.
+   *
+   * @param red
+   *          the red
+   * @param green
+   *          the green
+   * @param blue
+   *          the blue
+   * @param alpha
+   *          the alpha
+   */
+  public ColorValue(int red, int green, int blue, int alpha) {
+    mRed = red;
+    mGreen = green;
+    mBlue = blue;
+    mAlpha = alpha;
+  }
+
+  /**
+   * Instantiates a new color value.
+   *
+   * @param color
+   *          the color
+   */
+  public ColorValue(ColorValue color) {
+    this(color.mRed, color.mGreen, color.mBlue, color.mAlpha);
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Object#toString()
+   */
+  public String toString() {
+    return mRed + " " + mGreen + " " + mBlue + " " + mAlpha;
+  }
+
+  /**
+   * Convert.
+   *
+   * @param color
+   *          the color
+   * @return the color value
+   */
+  public static ColorValue convert(Color color) {
+    return new ColorValue(color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha());
+  }
+
+  /**
+   * Convert.
+   *
+   * @param color
+   *          the color
+   * @return the color
+   */
+  public static Color convert(ColorValue color) {
+    return new Color(color.mRed, color.mGreen, color.mBlue, color.mAlpha);
+  }
 }

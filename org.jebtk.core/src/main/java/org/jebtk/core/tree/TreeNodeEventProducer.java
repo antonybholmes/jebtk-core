@@ -17,7 +17,6 @@ package org.jebtk.core.tree;
 
 import org.jebtk.core.event.ChangeEvent;
 
-
 // TODO: Auto-generated Javadoc
 /**
  * For classes that generate ModernClickEvents.
@@ -25,32 +24,36 @@ import org.jebtk.core.event.ChangeEvent;
  * @author Antony Holmes Holmes
  */
 public interface TreeNodeEventProducer {
-	
-	/**
-	 * Add an action listener.
-	 *
-	 * @param l the l
-	 */
-	public void addTreeNodeListener(TreeNodeEventListener l);
-	
-	/**
-	 * Remove an action listener.
-	 *
-	 * @param l the l
-	 */
-	public void removeTreeNodeListener(TreeNodeEventListener l);
-	
-	/**
-	 * fire an event.
-	 *
-	 * @param e the e
-	 */
-	public void fireTreeNodeChanged(ChangeEvent e);
-	
-	/**
-	 * Fire tree node updated.
-	 *
-	 * @param e the e
-	 */
-	public void fireTreeNodeUpdated(ChangeEvent e);
+
+  /**
+   * Add an action listener.
+   *
+   * @param l
+   *          the l
+   */
+  public void addTreeNodeListener(TreeNodeEventListener l);
+
+  /**
+   * Remove an action listener.
+   *
+   * @param l
+   *          the l
+   */
+  public void removeTreeNodeListener(TreeNodeEventListener l);
+
+  /**
+   * fire an event.
+   *
+   * @param e
+   *          the e
+   */
+  public void fireTreeNodeChanged(ChangeEvent e);
+
+  /**
+   * Fire tree node updated.
+   *
+   * @param e
+   *          the e
+   */
+  public void fireTreeNodeUpdated(ChangeEvent e);
 }

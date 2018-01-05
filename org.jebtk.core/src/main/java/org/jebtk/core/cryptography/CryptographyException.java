@@ -20,18 +20,19 @@ package org.jebtk.core.cryptography;
  * The class CryptographyException.
  */
 public class CryptographyException extends Exception {
-	
-	/**
-	 * The constant serialVersionUID.
-	 */
-	private static final long serialVersionUID = 1L;
 
-	/**
-	 * Instantiates a new cryptography exception.
-	 *
-	 * @param message the message
-	 */
-	public CryptographyException(String message) {
-		super(message);
-	}
+  /**
+   * The constant serialVersionUID.
+   */
+  private static final long serialVersionUID = 1L;
+
+  /**
+   * Instantiates a new cryptography exception.
+   *
+   * @param message
+   *          the message
+   */
+  public CryptographyException(String message) {
+    super(message);
+  }
 }

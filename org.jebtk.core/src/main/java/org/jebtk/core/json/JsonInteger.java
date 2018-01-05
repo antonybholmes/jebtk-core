@@ -25,57 +25,68 @@ import java.io.IOException;
  */
 public class JsonInteger extends Json {
 
-	/**
-	 * The member value.
-	 */
-	private int mValue;
-	
-	/**
-	 * Instantiates a new json integer.
-	 *
-	 * @param value the value
-	 */
-	public JsonInteger(int value) {
-		mValue = value;
-	}
+  /**
+   * The member value.
+   */
+  private int mValue;
 
-	/* (non-Javadoc)
-	 * @see org.abh.lib.json.JsonValue#getAsDouble()
-	 */
-	@Override
-	public double getAsDouble() {
-		return mValue;
-	}
+  /**
+   * Instantiates a new json integer.
+   *
+   * @param value
+   *          the value
+   */
+  public JsonInteger(int value) {
+    mValue = value;
+  }
 
-	/* (non-Javadoc)
-	 * @see org.abh.lib.json.JsonValue#getAsInt()
-	 */
-	@Override
-	public int getAsInt() {
-		return mValue;
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.json.JsonValue#getAsDouble()
+   */
+  @Override
+  public double getAsDouble() {
+    return mValue;
+  }
 
-	/* (non-Javadoc)
-	 * @see org.abh.lib.json.JsonValue#getAsString()
-	 */
-	@Override
-	public String getAsString() {
-		return Integer.toString(mValue);
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.json.Json#toString()
-	 */
-	@Override
-	public String toString() {
-		return getAsString();
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.json.JsonValue#getAsInt()
+   */
+  @Override
+  public int getAsInt() {
+    return mValue;
+  }
 
-	/* (non-Javadoc)
-	 * @see org.abh.lib.json.JsonValue#formattedTxt(java.lang.StringBuilder)
-	 */
-	@Override
-	public void toJson(Appendable buffer) throws IOException {
-		buffer.append(getAsString());
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.json.JsonValue#getAsString()
+   */
+  @Override
+  public String getAsString() {
+    return Integer.toString(mValue);
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.json.Json#toString()
+   */
+  @Override
+  public String toString() {
+    return getAsString();
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.json.JsonValue#formattedTxt(java.lang.StringBuilder)
+   */
+  @Override
+  public void toJson(Appendable buffer) throws IOException {
+    buffer.append(getAsString());
+  }
 }

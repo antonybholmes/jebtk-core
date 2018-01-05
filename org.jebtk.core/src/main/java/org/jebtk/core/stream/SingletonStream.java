@@ -24,64 +24,74 @@ import org.jebtk.core.collections.CollectionUtils;
  * Can be used to encapsulate a single item in a stream.
  *
  * @author Antony Holmes Holmes
- * @param <T> the generic type
+ * @param <T>
+ *          the generic type
  */
 public class SingletonStream<T> extends Stream<T> {
-	
-	/** The m item. */
-	private T mItem;
-	
-	private boolean mNext = true;
-	
-	/**
-	 * Instantiates a new base stream.
-	 *
-	 * @param item the item
-	 */
-	public SingletonStream(T item) {
-		mItem = item;
-	}
-	
-	
-	/* (non-Javadoc)
-	 * @see org.abh.common.stream.Stream#toList()
-	 */
-	@Override
-	public List<T> toList() {
-		return CollectionUtils.asList(mItem);
-	}
 
-	/* (non-Javadoc)
-	 * @see org.abh.common.stream.Stream#size()
-	 */
-	@Override
-	public int size() {
-		return 1;
-	}
+  /** The m item. */
+  private T mItem;
 
-	/* (non-Javadoc)
-	 * @see java.util.Iterator#hasNext()
-	 */
-	@Override
-	public boolean hasNext() {
-		return mNext;
-	}
+  private boolean mNext = true;
 
+  /**
+   * Instantiates a new base stream.
+   *
+   * @param item
+   *          the item
+   */
+  public SingletonStream(T item) {
+    mItem = item;
+  }
 
-	/* (non-Javadoc)
-	 * @see java.util.Iterator#next()
-	 */
-	@Override
-	public T next() {
-		mNext = false;
-		return mItem;
-	}
-	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return mItem.toString();
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.stream.Stream#toList()
+   */
+  @Override
+  public List<T> toList() {
+    return CollectionUtils.asList(mItem);
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.stream.Stream#size()
+   */
+  @Override
+  public int size() {
+    return 1;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.util.Iterator#hasNext()
+   */
+  @Override
+  public boolean hasNext() {
+    return mNext;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.util.Iterator#next()
+   */
+  @Override
+  public T next() {
+    mNext = false;
+    return mItem;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Object#toString()
+   */
+  @Override
+  public String toString() {
+    return mItem.toString();
+  }
 }

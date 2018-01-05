@@ -28,138 +28,158 @@ import org.jebtk.core.event.ChangeListeners;
 
 // TODO: Auto-generated Javadoc
 /**
- * Generic model for sharing items and receiving
- * notification when the items change.
+ * Generic model for sharing items and receiving notification when the items
+ * change.
  *
  * @author Antony Holmes Holmes
- * @param <T> the generic type
+ * @param <T>
+ *          the generic type
  */
 public class SetModel<T extends Comparable<? super T>> extends HashSet<T> implements ChangeEventProducer {
-	
-	/**
-	 * The constant serialVersionUID.
-	 */
-	private static final long serialVersionUID = 1L;
-	
-	/**
-	 * The listeners.
-	 */
-	private ChangeListeners listeners = new ChangeListeners();
 
-	/**
-	 * Sets the.
-	 *
-	 * @param item the item
-	 */
-	public void set(T item) {
-		set(CollectionUtils.asList(item));
-	}
-	
-	/**
-	 * Sets the.
-	 *
-	 * @param items the items
-	 */
-	public void set(Collection<T> items) {
-		addAll(items);
+  /**
+   * The constant serialVersionUID.
+   */
+  private static final long serialVersionUID = 1L;
 
-		fireChanged();
-	}
-	
-	/* (non-Javadoc)
-	 * @see java.util.HashSet#add(java.lang.Object)
-	 */
-	@Override
-	public boolean add(T item) {
-		boolean ret = super.add(item);
+  /**
+   * The listeners.
+   */
+  private ChangeListeners listeners = new ChangeListeners();
 
-		fireChanged();
-		
-		return ret;
-	}
-	
-	/* (non-Javadoc)
-	 * @see java.util.HashSet#remove(java.lang.Object)
-	 */
-	@Override
-	public boolean remove(Object item) {
-		boolean ret = super.remove(item);
+  /**
+   * Sets the.
+   *
+   * @param item
+   *          the item
+   */
+  public void set(T item) {
+    set(CollectionUtils.asList(item));
+  }
 
-		fireChanged();
-		
-		return ret;
-	}
-	
-	/* (non-Javadoc)
-	 * @see java.util.HashSet#clear()
-	 */
-	public void clear() {
-		clear();
+  /**
+   * Sets the.
+   *
+   * @param items
+   *          the items
+   */
+  public void set(Collection<T> items) {
+    addAll(items);
 
-		fireChanged();
-	}
-	
-	/**
-	 * Gets the item count.
-	 *
-	 * @return the item count
-	 */
-	public int getItemCount() {
-		return size();
-	}
-	
-	/**
-	 * To list.
-	 *
-	 * @return the list
-	 */
-	public List<T> toList() {
-		List<T> ret = new ArrayList<T>();
-		
-		for (T item : this) {
-			ret.add(item);
-		}
-		
-		return ret;
-	}
-	
-	/**
-	 * Returns the items sorted.
-	 *
-	 * @return the sorted
-	 */
-	public List<T> getSorted() {
-		return CollectionUtils.sort(this);
-	}
+    fireChanged();
+  }
 
-	/* (non-Javadoc)
-	 * @see org.abh.lib.event.ChangeEventProducer#addChangeListener(org.abh.lib.event.ChangeListener)
-	 */
-	@Override
-	public void addChangeListener(ChangeListener l) {
-		listeners.addChangeListener(l);
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.util.HashSet#add(java.lang.Object)
+   */
+  @Override
+  public boolean add(T item) {
+    boolean ret = super.add(item);
 
-	/* (non-Javadoc)
-	 * @see org.abh.lib.event.ChangeEventProducer#removeChangeListener(org.abh.lib.event.ChangeListener)
-	 */
-	@Override
-	public void removeChangeListener(ChangeListener l) {
-		listeners.removeChangeListener(l);
-	}
+    fireChanged();
 
-	/* (non-Javadoc)
-	 * @see org.abh.lib.event.ChangeEventProducer#fireChanged(org.abh.lib.event.ChangeEvent)
-	 */
-	@Override
-	public void fireChanged(ChangeEvent e) {
-		listeners.fireChanged(e);
-	}
-	
-	/**
-	 * Fire changed.
-	 */
-	public void fireChanged() {
-		listeners.fireChanged();
-	}
+    return ret;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.util.HashSet#remove(java.lang.Object)
+   */
+  @Override
+  public boolean remove(Object item) {
+    boolean ret = super.remove(item);
+
+    fireChanged();
+
+    return ret;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.util.HashSet#clear()
+   */
+  public void clear() {
+    clear();
+
+    fireChanged();
+  }
+
+  /**
+   * Gets the item count.
+   *
+   * @return the item count
+   */
+  public int getItemCount() {
+    return size();
+  }
+
+  /**
+   * To list.
+   *
+   * @return the list
+   */
+  public List<T> toList() {
+    List<T> ret = new ArrayList<T>();
+
+    for (T item : this) {
+      ret.add(item);
+    }
+
+    return ret;
+  }
+
+  /**
+   * Returns the items sorted.
+   *
+   * @return the sorted
+   */
+  public List<T> getSorted() {
+    return CollectionUtils.sort(this);
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.abh.lib.event.ChangeEventProducer#addChangeListener(org.abh.lib.event.
+   * ChangeListener)
+   */
+  @Override
+  public void addChangeListener(ChangeListener l) {
+    listeners.addChangeListener(l);
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.abh.lib.event.ChangeEventProducer#removeChangeListener(org.abh.lib.event.
+   * ChangeListener)
+   */
+  @Override
+  public void removeChangeListener(ChangeListener l) {
+    listeners.removeChangeListener(l);
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.event.ChangeEventProducer#fireChanged(org.abh.lib.event.
+   * ChangeEvent)
+   */
+  @Override
+  public void fireChanged(ChangeEvent e) {
+    listeners.fireChanged(e);
+  }
+
+  /**
+   * Fire changed.
+   */
+  public void fireChanged() {
+    listeners.fireChanged();
+  }
 }

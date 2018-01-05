@@ -31,153 +31,170 @@ import org.jebtk.core.collections.CollectionUtils;
  * The Class ByteStreams.
  */
 public class ByteStreams {
-	
-	/** The default buffer size when copying arrays. */
-	private static final int DEFAULT_BUFFER_SIZE = 0x1000; // 4096
 
-	/**
-	 * Instantiates a new byte streams.
-	 */
-	private ByteStreams() {
-		// Do nothing
-	}
+  /** The default buffer size when copying arrays. */
+  private static final int DEFAULT_BUFFER_SIZE = 0x1000; // 4096
 
-	/**
-	 * Copies all bytes from the input stream to the output stream.
-	 * Does not close or flush either stream.
-	 *
-	 * @param from 		The input stream to read from.
-	 * @param to 		The output stream to write to.
-	 * @return 			The number of bytes copied.
-	 * @throws IOException if an I/O error occurs.
-	 */
-	public static long copy(InputStream from, OutputStream to) throws IOException {
-		return copy(from, to, DEFAULT_BUFFER_SIZE);
-	}
-	
-	/**
-	 * Copies all bytes from the input stream to the output stream.
-	 * Does not close or flush either stream.
-	 *
-	 * @param from 		The input stream to read from.
-	 * @param to 		The output stream to write to.
-	 * @param bufSize 	The size in bytes of the buffer used for copying.
-	 * @return 			The number of bytes copied.
-	 * @throws IOException if an I/O error occurs
-	 */
-	public static long copy(InputStream from, 
-			OutputStream to, 
-			int bufSize) throws IOException {
-		byte[] buf = new byte[bufSize];
-		
-		long total = 0;
-		
-		int r; 
-		
-		while ((r = from.read(buf)) != -1) {
-			to.write(buf, 0, r);
-			total += r;
-		}
-		
-		return total;
-	}
+  /**
+   * Instantiates a new byte streams.
+   */
+  private ByteStreams() {
+    // Do nothing
+  }
 
-	/**
-	 * Copies all bytes from the readable channel to the writable channel.
-	 * Does not close or flush either channel.
-	 *
-	 * @param from the readable channel to read from
-	 * @param to the writable channel to write to
-	 * @return the number of bytes copied
-	 * @throws IOException if an I/O error occurs
-	 */
-	public static long copy(ReadableByteChannel from,
-			WritableByteChannel to) throws IOException {
-		ByteBuffer buf = ByteBuffer.allocate(DEFAULT_BUFFER_SIZE);
-		
-		long total = 0;
-		
-		while (from.read(buf) != -1) {
-			buf.flip();
-			
-			while (buf.hasRemaining()) {
-				total += to.write(buf);
-			}
-			
-			buf.clear();
-		}
-		
-		return total;
-	}
+  /**
+   * Copies all bytes from the input stream to the output stream. Does not close
+   * or flush either stream.
+   *
+   * @param from
+   *          The input stream to read from.
+   * @param to
+   *          The output stream to write to.
+   * @return The number of bytes copied.
+   * @throws IOException
+   *           if an I/O error occurs.
+   */
+  public static long copy(InputStream from, OutputStream to) throws IOException {
+    return copy(from, to, DEFAULT_BUFFER_SIZE);
+  }
 
-	/**
-	 * Reads all bytes from an input stream into a byte array.
-	 * Does not close the stream.
-	 *
-	 * @param in the input stream to read from
-	 * @return a byte array containing all the bytes from the stream
-	 * @throws IOException if an I/O error occurs
-	 */
-	public static byte[] toByteArray(InputStream in) throws IOException {
-		return toByteArray(in, DEFAULT_BUFFER_SIZE);
-	}
-	
-	/**
-	 * To byte array.
-	 *
-	 * @param in the in
-	 * @param bufSize the buf size
-	 * @return the byte[]
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 */
-	public static byte[] toByteArray(InputStream in, int bufSize) throws IOException {
-		ByteArrayOutputStream out = new ByteArrayOutputStream(bufSize);
-		
-		byte[] ret = CollectionUtils.EMPTY_BYTE_ARRAY;
-		
-		try {
-			copy(in, out);
-			
-			ret = out.toByteArray();
-		} finally {
-			out.close();
-		}
-		
-		return ret;
-	}
-	
-	/**
-	 * To byte array.
-	 *
-	 * @param in the in
-	 * @return the byte[]
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 */
-	public static byte[] toByteArray(ReadableByteChannel in) throws IOException {
-		return toByteArray(in, DEFAULT_BUFFER_SIZE);
-	}
-	
-	/**
-	 * To byte array.
-	 *
-	 * @param in the in
-	 * @param bufSize the buf size
-	 * @return the byte[]
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 */
-	public static byte[] toByteArray(ReadableByteChannel in, int bufSize) throws IOException {
-		ByteArrayOutputStream out = new ByteArrayOutputStream(bufSize);
-		
-		byte[] ret = CollectionUtils.EMPTY_BYTE_ARRAY;
-		
-		try {
-			copy(in, Channels.newChannel(out));
-			
-			ret = out.toByteArray();
-		} finally {
-			out.close();
-		}
-		
-		return ret;
-	}
+  /**
+   * Copies all bytes from the input stream to the output stream. Does not close
+   * or flush either stream.
+   *
+   * @param from
+   *          The input stream to read from.
+   * @param to
+   *          The output stream to write to.
+   * @param bufSize
+   *          The size in bytes of the buffer used for copying.
+   * @return The number of bytes copied.
+   * @throws IOException
+   *           if an I/O error occurs
+   */
+  public static long copy(InputStream from, OutputStream to, int bufSize) throws IOException {
+    byte[] buf = new byte[bufSize];
+
+    long total = 0;
+
+    int r;
+
+    while ((r = from.read(buf)) != -1) {
+      to.write(buf, 0, r);
+      total += r;
+    }
+
+    return total;
+  }
+
+  /**
+   * Copies all bytes from the readable channel to the writable channel. Does not
+   * close or flush either channel.
+   *
+   * @param from
+   *          the readable channel to read from
+   * @param to
+   *          the writable channel to write to
+   * @return the number of bytes copied
+   * @throws IOException
+   *           if an I/O error occurs
+   */
+  public static long copy(ReadableByteChannel from, WritableByteChannel to) throws IOException {
+    ByteBuffer buf = ByteBuffer.allocate(DEFAULT_BUFFER_SIZE);
+
+    long total = 0;
+
+    while (from.read(buf) != -1) {
+      buf.flip();
+
+      while (buf.hasRemaining()) {
+        total += to.write(buf);
+      }
+
+      buf.clear();
+    }
+
+    return total;
+  }
+
+  /**
+   * Reads all bytes from an input stream into a byte array. Does not close the
+   * stream.
+   *
+   * @param in
+   *          the input stream to read from
+   * @return a byte array containing all the bytes from the stream
+   * @throws IOException
+   *           if an I/O error occurs
+   */
+  public static byte[] toByteArray(InputStream in) throws IOException {
+    return toByteArray(in, DEFAULT_BUFFER_SIZE);
+  }
+
+  /**
+   * To byte array.
+   *
+   * @param in
+   *          the in
+   * @param bufSize
+   *          the buf size
+   * @return the byte[]
+   * @throws IOException
+   *           Signals that an I/O exception has occurred.
+   */
+  public static byte[] toByteArray(InputStream in, int bufSize) throws IOException {
+    ByteArrayOutputStream out = new ByteArrayOutputStream(bufSize);
+
+    byte[] ret = CollectionUtils.EMPTY_BYTE_ARRAY;
+
+    try {
+      copy(in, out);
+
+      ret = out.toByteArray();
+    } finally {
+      out.close();
+    }
+
+    return ret;
+  }
+
+  /**
+   * To byte array.
+   *
+   * @param in
+   *          the in
+   * @return the byte[]
+   * @throws IOException
+   *           Signals that an I/O exception has occurred.
+   */
+  public static byte[] toByteArray(ReadableByteChannel in) throws IOException {
+    return toByteArray(in, DEFAULT_BUFFER_SIZE);
+  }
+
+  /**
+   * To byte array.
+   *
+   * @param in
+   *          the in
+   * @param bufSize
+   *          the buf size
+   * @return the byte[]
+   * @throws IOException
+   *           Signals that an I/O exception has occurred.
+   */
+  public static byte[] toByteArray(ReadableByteChannel in, int bufSize) throws IOException {
+    ByteArrayOutputStream out = new ByteArrayOutputStream(bufSize);
+
+    byte[] ret = CollectionUtils.EMPTY_BYTE_ARRAY;
+
+    try {
+      copy(in, Channels.newChannel(out));
+
+      ret = out.toByteArray();
+    } finally {
+      out.close();
+    }
+
+    return ret;
+  }
 }

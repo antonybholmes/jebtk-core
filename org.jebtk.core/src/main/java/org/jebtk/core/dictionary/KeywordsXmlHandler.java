@@ -15,66 +15,66 @@
  */
 package org.jebtk.core.dictionary;
 
-
-
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 // TODO: Auto-generated Javadoc
 /**
- * Parses a dictionary xml file. A dictionary file consists of
- * the <dictionary> tag within which are nested <word> tags
- * within which are nested <synonym> tags. The <word> and
- * <synonym> tags must contain a name attribute to indicate
+ * Parses a dictionary xml file. A dictionary file consists of the <dictionary>
+ * tag within which are nested <word> tags within which are nested <synonym>
+ * tags. The <word> and <synonym> tags must contain a name attribute to indicate
  * their values.
  * 
  * @author Antony Holmes Holmes
  *
  */
 public class KeywordsXmlHandler extends DefaultHandler {
-	
-	/**
-	 * The service.
-	 */
-	public KeywordsService service;
-	
-	/**
-	 * The word mode.
-	 */
-	private boolean wordMode;
 
-	/**
-	 * Instantiates a new keywords xml handler.
-	 *
-	 * @param service the service
-	 */
-	public KeywordsXmlHandler (KeywordsService service) {
-		this.service = service;
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.xml.sax.helpers.DefaultHandler#startElement(java.lang.String, java.lang.String, java.lang.String, org.xml.sax.Attributes)
-	 */
-	public void startElement(String uri, 
-			String localName,
-			String qName, 
-            Attributes attributes) throws SAXException {
-		
-		if (qName.equals("word")) {
-			wordMode = true;
-		} else {
-			wordMode = false;
-		}
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.xml.sax.helpers.DefaultHandler#characters(char[], int, int)
-	 */
-	@Override
-	public void characters(char[] ch, int start, int length) throws SAXException {
-		if (wordMode) {
-			service.addWord(new String(ch, start, length));
-		}
-	}
+  /**
+   * The service.
+   */
+  public KeywordsService service;
+
+  /**
+   * The word mode.
+   */
+  private boolean wordMode;
+
+  /**
+   * Instantiates a new keywords xml handler.
+   *
+   * @param service
+   *          the service
+   */
+  public KeywordsXmlHandler(KeywordsService service) {
+    this.service = service;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.xml.sax.helpers.DefaultHandler#startElement(java.lang.String,
+   * java.lang.String, java.lang.String, org.xml.sax.Attributes)
+   */
+  public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
+
+    if (qName.equals("word")) {
+      wordMode = true;
+    } else {
+      wordMode = false;
+    }
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.xml.sax.helpers.DefaultHandler#characters(char[], int, int)
+   */
+  @Override
+  public void characters(char[] ch, int start, int length) throws SAXException {
+    if (wordMode) {
+      service.addWord(new String(ch, start, length));
+    }
+  }
 }

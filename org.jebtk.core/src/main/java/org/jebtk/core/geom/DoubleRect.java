@@ -26,99 +26,113 @@ import java.awt.Point;
  */
 public class DoubleRect extends DoublePos2D {
 
-	/**
-	 * The member w.
-	 */
-	protected double mW;
-	
-	/**
-	 * The member h.
-	 */
-	protected double mH;
+  /**
+   * The member w.
+   */
+  protected double mW;
 
-	/**
-	 * Instantiates a new double rect.
-	 *
-	 * @param x the x
-	 * @param y the y
-	 * @param w the w
-	 * @param h the h
-	 */
-	public DoubleRect(double x, double y, double w, double h) {
-		super(x, y);
-		
-		mW = w;
-		mH = h;
-	}
-	
-	/**
-	 * Gets the w.
-	 *
-	 * @return the w
-	 */
-	public double getW() {
-		return mW;
-	}
-	
-	/**
-	 * Gets the h.
-	 *
-	 * @return the h
-	 */
-	public double getH() {
-		return mH;
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.abh.lib.doublePosition#toString()
-	 */
-	@Override
-	public String toString() {
-		return mX + " " + mY + " " + mW + " " + mH;
-	}
+  /**
+   * The member h.
+   */
+  protected double mH;
 
-	/**
-	 * Contains.
-	 *
-	 * @param p the p
-	 * @return true, if successful
-	 */
-	public boolean contains(Point p) {
-		return contains(p, 0);
-	}
-	
-	/**
-	 * Contains.
-	 *
-	 * @param p the p
-	 * @param padding the padding
-	 * @return true, if successful
-	 */
-	public boolean contains(Point p, double padding) {
-		return contains(p.x, p.y, padding);
-	}
-	
-	/**
-	 * Returns true if the podouble is within the bounds of the rectangle.
-	 *
-	 * @param x the x
-	 * @param y the y
-	 * @return true, if successful
-	 */
-	public boolean contains(double x, double y) {
-		return contains(x, y, 0);
-	}
-	
-	/**
-	 * Returns true if the podouble x y is contained within the rectangle
-	 * plus a padding allowance.
-	 *
-	 * @param x the x
-	 * @param y the y
-	 * @param padding the padding
-	 * @return true, if successful
-	 */
-	public boolean contains(double x, double y, double padding) {
-		return x >= mX - padding && x <= mX + mW + padding && y >= mY - padding && y <= mY + mH + padding;
-	}
+  /**
+   * Instantiates a new double rect.
+   *
+   * @param x
+   *          the x
+   * @param y
+   *          the y
+   * @param w
+   *          the w
+   * @param h
+   *          the h
+   */
+  public DoubleRect(double x, double y, double w, double h) {
+    super(x, y);
+
+    mW = w;
+    mH = h;
+  }
+
+  /**
+   * Gets the w.
+   *
+   * @return the w
+   */
+  public double getW() {
+    return mW;
+  }
+
+  /**
+   * Gets the h.
+   *
+   * @return the h
+   */
+  public double getH() {
+    return mH;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.lib.doublePosition#toString()
+   */
+  @Override
+  public String toString() {
+    return mX + " " + mY + " " + mW + " " + mH;
+  }
+
+  /**
+   * Contains.
+   *
+   * @param p
+   *          the p
+   * @return true, if successful
+   */
+  public boolean contains(Point p) {
+    return contains(p, 0);
+  }
+
+  /**
+   * Contains.
+   *
+   * @param p
+   *          the p
+   * @param padding
+   *          the padding
+   * @return true, if successful
+   */
+  public boolean contains(Point p, double padding) {
+    return contains(p.x, p.y, padding);
+  }
+
+  /**
+   * Returns true if the podouble is within the bounds of the rectangle.
+   *
+   * @param x
+   *          the x
+   * @param y
+   *          the y
+   * @return true, if successful
+   */
+  public boolean contains(double x, double y) {
+    return contains(x, y, 0);
+  }
+
+  /**
+   * Returns true if the podouble x y is contained within the rectangle plus a
+   * padding allowance.
+   *
+   * @param x
+   *          the x
+   * @param y
+   *          the y
+   * @param padding
+   *          the padding
+   * @return true, if successful
+   */
+  public boolean contains(double x, double y, double padding) {
+    return x >= mX - padding && x <= mX + mW + padding && y >= mY - padding && y <= mY + mH + padding;
+  }
 }
