@@ -100,8 +100,7 @@ public class IntObjHashMap<V> implements IterMap<Integer, V> {
       if (mCount > 0) {
         Entry[] t = mTable;
 
-        while (index < t.length && (mNext = t[index++]) == null)
-          ;
+        while (index < t.length && (mNext = t[index++]) == null);
       }
     }
 
@@ -232,7 +231,7 @@ public class IntObjHashMap<V> implements IterMap<Integer, V> {
       throw new NullPointerException();
     }
 
-    Entry tab[] = mTable;
+    Entry[] tab = mTable;
 
     for (int i = tab.length - 1; i >= 0; --i) {
       for (Entry e = tab[i]; e != null; e = e.mNext) {
