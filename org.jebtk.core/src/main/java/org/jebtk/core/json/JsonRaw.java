@@ -33,8 +33,7 @@ public class JsonRaw extends Json {
   /**
    * Instantiates a new json raw.
    *
-   * @param value
-   *          the value
+   * @param value the value
    */
   public JsonRaw(String value) {
     if (value != null) {

@@ -24,10 +24,10 @@ import org.jebtk.core.text.TextUtils;
  * Creates a search radix tree of objects tagged by their name.
  *
  * @author Antony Holmes Holmes
- * @param <T>
- *          the generic type
+ * @param <T> the generic type
  */
-public class RadixObjectDb<T> extends RadixObjectNode<T> implements Serializable {
+public class RadixObjectDb<T> extends RadixObjectNode<T>
+    implements Serializable {
 
   /**
    * The constant serialVersionUID.

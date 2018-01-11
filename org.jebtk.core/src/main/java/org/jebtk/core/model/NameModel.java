@@ -25,10 +25,10 @@ import org.jebtk.core.event.ChangeListeners;
  * Generic model for sharing named items.
  *
  * @author Antony Holmes Holmes
- * @param <T>
- *          the generic type
+ * @param <T> the generic type
  */
-public abstract class NameModel<T> extends ChangeListeners implements Iterable<String> {
+public abstract class NameModel<T> extends ChangeListeners
+    implements Iterable<String> {
 
   /**
    * The constant serialVersionUID.
@@ -38,10 +38,8 @@ public abstract class NameModel<T> extends ChangeListeners implements Iterable<S
   /**
    * Adds the.
    *
-   * @param name
-   *          the name
-   * @param item
-   *          the item
+   * @param name the name
+   * @param item the item
    */
   public void add(String name, T item) {
     update(name, item);
@@ -52,26 +50,22 @@ public abstract class NameModel<T> extends ChangeListeners implements Iterable<S
   /**
    * Update.
    *
-   * @param name
-   *          the name
-   * @param item
-   *          the item
+   * @param name the name
+   * @param item the item
    */
   public abstract void update(String name, T item);
 
   /**
    * Removes the.
    *
-   * @param name
-   *          the name
+   * @param name the name
    */
   public abstract void remove(String name);
 
   /**
    * Gets the.
    *
-   * @param name
-   *          the name
+   * @param name the name
    * @return the t
    */
   public abstract T get(String name);
@@ -79,8 +73,7 @@ public abstract class NameModel<T> extends ChangeListeners implements Iterable<S
   /**
    * Contains.
    *
-   * @param name
-   *          the name
+   * @param name the name
    * @return true, if successful
    */
   public abstract boolean contains(String name);
@@ -98,8 +91,8 @@ public abstract class NameModel<T> extends ChangeListeners implements Iterable<S
   public abstract int size();
 
   /**
-   * Returns the items in the model as a list. This list is a copy of items in the
-   * model so altering the list will not alter the model.
+   * Returns the items in the model as a list. This list is a copy of items in
+   * the model so altering the list will not alter the model.
    *
    * @return the list
    */

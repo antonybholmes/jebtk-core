@@ -42,10 +42,8 @@ public class IntDim implements Comparable<IntDim> {
   /**
    * Instantiates a new int dim.
    *
-   * @param w
-   *          the w
-   * @param h
-   *          the h
+   * @param w the w
+   * @param h the h
    */
   public IntDim(int w, int h) {
     mW = w;
@@ -55,8 +53,7 @@ public class IntDim implements Comparable<IntDim> {
   /**
    * Instantiates a new int dim.
    *
-   * @param dim
-   *          the dim
+   * @param dim the dim
    */
   public IntDim(Dimension dim) {
     this(dim.width, dim.height);
@@ -93,8 +90,7 @@ public class IntDim implements Comparable<IntDim> {
   /**
    * To dimension.
    *
-   * @param size
-   *          the size
+   * @param size the size
    * @return the dimension
    */
   public static Dimension toDimension(IntDim size) {
@@ -150,10 +146,8 @@ public class IntDim implements Comparable<IntDim> {
   /**
    * Creates a new IntDim.
    *
-   * @param x
-   *          the x
-   * @param y
-   *          the y
+   * @param x the x
+   * @param y the y
    * @return the int dim
    */
   public static IntDim create(int x, int y) {
@@ -163,10 +157,8 @@ public class IntDim implements Comparable<IntDim> {
   /**
    * Creates the.
    *
-   * @param x
-   *          the x
-   * @param y
-   *          the y
+   * @param x the x
+   * @param y the y
    * @return the int dim
    */
   public static IntDim create(long x, long y) {
@@ -176,10 +168,8 @@ public class IntDim implements Comparable<IntDim> {
   /**
    * Creates the.
    *
-   * @param x
-   *          the x
-   * @param y
-   *          the y
+   * @param x the x
+   * @param y the y
    * @return the int dim
    */
   public static IntDim create(double x, double y) {
@@ -189,8 +179,7 @@ public class IntDim implements Comparable<IntDim> {
   /**
    * Create a new IntDim from a Dimension.
    *
-   * @param dim
-   *          the dim
+   * @param dim the dim
    * @return An IntDim
    */
   public static IntDim create(Dimension dim) {

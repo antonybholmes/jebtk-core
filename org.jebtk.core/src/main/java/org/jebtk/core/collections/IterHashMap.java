@@ -24,10 +24,8 @@ import java.util.Map;
  * A hashmap where the keys can be iterated over.
  *
  * @author Antony Holmes Holmes
- * @param <K>
- *          the key type
- * @param <V>
- *          the value type
+ * @param <K> the key type
+ * @param <V> the value type
  */
 public class IterHashMap<K, V> extends HashMap<K, V> implements IterMap<K, V> {
 
@@ -48,8 +46,7 @@ public class IterHashMap<K, V> extends HashMap<K, V> implements IterMap<K, V> {
   /**
    * Instantiates a new iter hash map.
    *
-   * @param initialCapacity
-   *          the initial capacity
+   * @param initialCapacity the initial capacity
    */
   public IterHashMap(int initialCapacity) {
     super(initialCapacity);

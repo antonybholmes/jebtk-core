@@ -32,20 +32,18 @@ public class StrictPathLevel extends PathLevel {
   /**
    * Instantiates a new strict path level.
    *
-   * @param level
-   *          the level
+   * @param level the level
    */
   public StrictPathLevel(String level) {
     super(sanitize(level));
   }
 
   /**
-   * Return the path level in a standardized way. Path elements consist only of of
-   * letters, numbers dashes and underscores. All other characters are considered
-   * illegal and stripped out. Brackets are converted to underscores.
+   * Return the path level in a standardized way. Path elements consist only of
+   * of letters, numbers dashes and underscores. All other characters are
+   * considered illegal and stripped out. Brackets are converted to underscores.
    *
-   * @param level
-   *          the level
+   * @param level the level
    * @return the string
    */
   public static String sanitize(String level) {

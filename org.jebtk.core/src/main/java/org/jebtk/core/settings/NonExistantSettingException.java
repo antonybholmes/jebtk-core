@@ -31,8 +31,7 @@ public class NonExistantSettingException extends MessageException {
   /**
    * Instantiates a new non existant setting exception.
    *
-   * @param name
-   *          the name
+   * @param name the name
    */
   public NonExistantSettingException(String name) {
     super("Setting " + name + " does not exists.");

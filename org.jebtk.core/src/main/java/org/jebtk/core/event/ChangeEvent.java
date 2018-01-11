@@ -37,8 +37,7 @@ public class ChangeEvent extends Event {
   /**
    * Instantiates a new change event.
    *
-   * @param source
-   *          the source
+   * @param source the source
    */
   public ChangeEvent(Object source) {
     this(source, EVENT_ITEM_CHANGED);
@@ -47,10 +46,8 @@ public class ChangeEvent extends Event {
   /**
    * Instantiates a new change event.
    *
-   * @param source
-   *          the source
-   * @param message
-   *          the message
+   * @param source the source
+   * @param message the message
    */
   public ChangeEvent(Object source, String message) {
     super(source, message);

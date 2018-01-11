@@ -31,10 +31,10 @@ import java.util.Map;
  * branch order can be inferred, try TreeNode
  *
  * @author Antony Holmes Holmes
- * @param <T>
- *          the generic type
+ * @param <T> the generic type
  */
-public class KeyValueNode<T> implements Iterable<KeyValueNode<T>>, Comparable<KeyValueNode<T>>, Serializable {
+public class KeyValueNode<T> implements Iterable<KeyValueNode<T>>,
+    Comparable<KeyValueNode<T>>, Serializable {
 
   /**
    * The constant serialVersionUID.
@@ -59,8 +59,7 @@ public class KeyValueNode<T> implements Iterable<KeyValueNode<T>>, Comparable<Ke
   /**
    * Instantiates a new key value node.
    *
-   * @param name
-   *          the name
+   * @param name the name
    */
   public KeyValueNode(String name) {
     this.name = name;
@@ -69,10 +68,8 @@ public class KeyValueNode<T> implements Iterable<KeyValueNode<T>>, Comparable<Ke
   /**
    * Instantiates a new key value node.
    *
-   * @param name
-   *          the name
-   * @param value
-   *          the value
+   * @param name the name
+   * @param value the value
    */
   public KeyValueNode(String name, T value) {
     this.name = name;
@@ -101,8 +98,7 @@ public class KeyValueNode<T> implements Iterable<KeyValueNode<T>>, Comparable<Ke
   /**
    * Sets the value.
    *
-   * @param value
-   *          the new value
+   * @param value the new value
    */
   public void setValue(T value) {
     this.value = value;
@@ -120,8 +116,7 @@ public class KeyValueNode<T> implements Iterable<KeyValueNode<T>>, Comparable<Ke
   /**
    * Adds the child.
    *
-   * @param child
-   *          the child
+   * @param child the child
    */
   public void addChild(KeyValueNode<T> child) {
     children.put(child.getName(), child);
@@ -130,8 +125,7 @@ public class KeyValueNode<T> implements Iterable<KeyValueNode<T>>, Comparable<Ke
   /**
    * Returns a sub category. Non-existant nodes are automatically created.
    *
-   * @param name
-   *          the name
+   * @param name the name
    * @return the child
    */
   public KeyValueNode<T> getChild(String name) {

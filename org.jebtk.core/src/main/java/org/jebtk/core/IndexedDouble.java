@@ -23,34 +23,31 @@ import java.util.List;
  * The class IndexedValueDouble.
  *
  * @author Antony Holmes Holmes
- * @param <T>
- *          the generic type
+ * @param <T> the generic type
  */
-public class IndexedDouble<T extends Comparable<? super T>> extends Indexed<Double, T> {
+public class IndexedDouble<T extends Comparable<? super T>>
+    extends Indexed<Double, T> {
 
   /**
    * Instantiates a new indexed value double.
    *
-   * @param index
-   *          the index
-   * @param item
-   *          the item
+   * @param index the index
+   * @param item the item
    */
   public IndexedDouble(double index, T item) {
     super(index, item);
   }
 
   /**
-   * Adds an index to items so we can keep track of where they occur in a list if
-   * we sort them etc.
+   * Adds an index to items so we can keep track of where they occur in a list
+   * if we sort them etc.
    *
-   * @param <T>
-   *          the generic type
-   * @param items
-   *          the items
+   * @param <T> the generic type
+   * @param items the items
    * @return the list
    */
-  public static <T extends Comparable<? super T>> List<IndexedDouble<T>> index(List<T> items) {
+  public static <T extends Comparable<? super T>> List<IndexedDouble<T>> index(
+      List<T> items) {
     List<IndexedDouble<T>> ret = new ArrayList<IndexedDouble<T>>(items.size());
 
     for (int i = 0; i < items.size(); ++i) {

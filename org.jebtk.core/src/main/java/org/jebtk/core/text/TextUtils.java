@@ -175,13 +175,16 @@ public class TextUtils {
   public static final String EMPTY_STRING = "";
 
   /** The Constant STRICT_INT_PATTERN. */
-  public static final Pattern STRICT_INT_PATTERN = Pattern.compile("^([-+]?[0-9]+([eE][-+]?[0-9]+)?)$");
+  public static final Pattern STRICT_INT_PATTERN = Pattern
+      .compile("^([-+]?[0-9]+([eE][-+]?[0-9]+)?)$");
 
   /** The Constant NUMBER_PATTERN. */
-  public static final Pattern NUMBER_PATTERN = Pattern.compile("([-+]?[0-9]*\\.?[0-9]+([eE][-+]?[0-9]+)?)");
+  public static final Pattern NUMBER_PATTERN = Pattern
+      .compile("([-+]?[0-9]*\\.?[0-9]+([eE][-+]?[0-9]+)?)");
 
   /** The Constant VAR_YEAR_PATTERN. */
-  public static final Pattern VAR_YEAR_PATTERN = Pattern.compile("\\$\\{year\\}");
+  public static final Pattern VAR_YEAR_PATTERN = Pattern
+      .compile("\\$\\{year\\}");
 
   /**
    * The constant ELLIPSIS.
@@ -267,14 +270,17 @@ public class TextUtils {
   public static final String NAN = "NaN";
 
   /** Lookup table for characters mapping between 0 and 25. */
-  public static final char[] CAPITAL_ALPHABET_CHARS = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
-      'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
+  public static final char[] CAPITAL_ALPHABET_CHARS = { 'A', 'B', 'C', 'D', 'E',
+      'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
+      'U', 'V', 'W', 'X', 'Y', 'Z' };
 
   /** The Constant SENTENCE_CASE_REGEX. */
-  private final static Pattern SENTENCE_CASE_REGEX = Pattern.compile("(^|[\\.\\!\\?])\\s*([a-z])");
+  private final static Pattern SENTENCE_CASE_REGEX = Pattern
+      .compile("(^|[\\.\\!\\?])\\s*([a-z])");
 
   /** The Constant TITLE_CASE_REGEX. */
-  private final static Pattern TITLE_CASE_REGEX = Pattern.compile("(^|\\s)([a-z])");
+  private final static Pattern TITLE_CASE_REGEX = Pattern
+      .compile("(^|\\s)([a-z])");
 
   /** The Constant SPACE_RUN_REGEX. */
   private final static Pattern SPACE_RUN_REGEX = Pattern.compile("\\s+");
@@ -289,11 +295,10 @@ public class TextUtils {
   }
 
   /**
-   * Returns true if the string is either null or empty. Often this is considered
-   * effectively the same state, i.e. absence of information.
+   * Returns true if the string is either null or empty. Often this is
+   * considered effectively the same state, i.e. absence of information.
    * 
-   * @param s
-   *          A string to test.
+   * @param s A string to test.
    * @return True if the string is empty or null.
    */
   public static boolean isNullOrEmpty(final String s) {
@@ -344,8 +349,7 @@ public class TextUtils {
   /**
    * Create a string enclosed in parentheses.
    *
-   * @param o
-   *          An object that will be converted to a string representation.
+   * @param o An object that will be converted to a string representation.
    * @return A string enclosed in parentheses.
    */
   public static String parenthesis(Object o) {
@@ -363,25 +367,21 @@ public class TextUtils {
   /**
    * Create a string enclosed in parentheses.
    *
-   * @param o
-   *          the o
-   * @param buffer
-   *          the buffer
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @param o the o
+   * @param buffer the buffer
+   * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static void parenthesis(Object o, Appendable buffer) throws IOException {
+  public static void parenthesis(Object o, Appendable buffer)
+      throws IOException {
     buffer.append("(").append(o.toString()).append(")");
   }
 
   /**
    * Square brackets.
    *
-   * @param text
-   *          the text
+   * @param text the text
    * @return the string
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public static String squareBrackets(String text) {
     StringBuilder buffer = new StringBuilder();
@@ -398,24 +398,20 @@ public class TextUtils {
   /**
    * Square bracket.
    *
-   * @param text
-   *          the text
-   * @param buffer
-   *          the buffer
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @param text the text
+   * @param buffer the buffer
+   * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static void squareBracket(String text, Appendable buffer) throws IOException {
+  public static void squareBracket(String text, Appendable buffer)
+      throws IOException {
     buffer.append("[").append(text).append("]");
   }
 
   /**
    * Quote.
    *
-   * @param s
-   *          the s
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @param s the s
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public static final void quote(String[] s) throws IOException {
     for (int i = 0; i < s.length; ++i) {
@@ -426,10 +422,8 @@ public class TextUtils {
   /**
    * Quote.
    *
-   * @param s
-   *          the s
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @param s the s
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public static final void quote(List<String> s) throws IOException {
     for (int i = 0; i < s.size(); ++i) {
@@ -440,14 +434,12 @@ public class TextUtils {
   /**
    * Quote.
    *
-   * @param s
-   *          the s
-   * @param quote
-   *          the quote
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @param s the s
+   * @param quote the quote
+   * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static final void quote(List<String> s, String quote) throws IOException {
+  public static final void quote(List<String> s, String quote)
+      throws IOException {
     for (int i = 0; i < s.size(); ++i) {
       s.set(i, quote(s.get(i), quote));
     }
@@ -456,10 +448,8 @@ public class TextUtils {
   /**
    * Single quote.
    *
-   * @param s
-   *          the s
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @param s the s
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public static final void singleQuote(List<String> s) throws IOException {
     for (int i = 0; i < s.size(); ++i) {
@@ -470,11 +460,9 @@ public class TextUtils {
   /**
    * Adds quotation marks around a string.
    *
-   * @param text
-   *          the text
+   * @param text the text
    * @return the string
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public static final String quote(String text) throws IOException {
     StringBuilder buffer = new StringBuilder();
@@ -487,25 +475,21 @@ public class TextUtils {
   /**
    * Append a quoted string to an existing buffer.
    *
-   * @param text
-   *          the text
-   * @param buffer
-   *          the buffer
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @param text the text
+   * @param buffer the buffer
+   * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static final void quote(String text, Appendable buffer) throws IOException {
+  public static final void quote(String text, Appendable buffer)
+      throws IOException {
     quote(text, QUOTE, buffer);
   }
 
   /**
    * Single quote.
    *
-   * @param text
-   *          the text
+   * @param text the text
    * @return the string
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public static final String singleQuote(String text) throws IOException {
     StringBuilder buffer = new StringBuilder();
@@ -518,29 +502,25 @@ public class TextUtils {
   /**
    * Single quote.
    *
-   * @param text
-   *          the text
-   * @param buffer
-   *          the buffer
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @param text the text
+   * @param buffer the buffer
+   * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static final void singleQuote(String text, Appendable buffer) throws IOException {
+  public static final void singleQuote(String text, Appendable buffer)
+      throws IOException {
     quote(text, SINGLE_QUOTE, buffer);
   }
 
   /**
    * Create a quoted string.
    *
-   * @param text
-   *          the text
-   * @param quote
-   *          the quote
+   * @param text the text
+   * @param quote the quote
    * @return the string
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static final String quote(String text, String quote) throws IOException {
+  public static final String quote(String text, String quote)
+      throws IOException {
     StringBuilder buffer = new StringBuilder();
 
     quote(text, quote, buffer);
@@ -551,16 +531,13 @@ public class TextUtils {
   /**
    * Adds quotation marks around a string on an existing buffer.
    *
-   * @param text
-   *          the text
-   * @param quote
-   *          the quote
-   * @param buffer
-   *          the buffer
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @param text the text
+   * @param quote the quote
+   * @param buffer the buffer
+   * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static final void quote(String text, String quote, Appendable buffer) throws IOException {
+  public static final void quote(String text, String quote, Appendable buffer)
+      throws IOException {
     if (text.startsWith(quote)) {
       return;
     }
@@ -569,22 +546,21 @@ public class TextUtils {
   }
 
   /**
-   * Removes regex characters from a string so if the string is not misinterpreted
-   * when used in a regex match.
+   * Removes regex characters from a string so if the string is not
+   * misinterpreted when used in a regex match.
    *
-   * @param text
-   *          the text
+   * @param text the text
    * @return the string
    */
   public static final String removeRegexChars(String text) {
-    return text.replaceAll("^F-", "").replaceAll("\\?", "").replaceAll("\\+", "").replaceAll("\\*", "X");
+    return text.replaceAll("^F-", "").replaceAll("\\?", "")
+        .replaceAll("\\+", "").replaceAll("\\*", "X");
   }
 
   /**
    * Removes leading and trailing whitespace from a string (similar to Perl).
    *
-   * @param text
-   *          the text
+   * @param text the text
    * @return the string
    */
   public static final String chomp(String text) {
@@ -594,10 +570,8 @@ public class TextUtils {
   /**
    * Split.
    *
-   * @param line
-   *          the line
-   * @param regex
-   *          the regex
+   * @param line the line
+   * @param regex the regex
    * @return the list
    */
   public static final List<String> split(String line, String regex) {
@@ -617,8 +591,7 @@ public class TextUtils {
   /**
    * First tab split.
    *
-   * @param line
-   *          the line
+   * @param line the line
    * @return the string
    */
   public static final String firstTabSplit(String line) {
@@ -628,10 +601,8 @@ public class TextUtils {
   /**
    * First split.
    *
-   * @param line
-   *          the line
-   * @param delimiter
-   *          the delimiter
+   * @param line the line
+   * @param delimiter the delimiter
    * @return the string
    */
   public static final String firstSplit(String line, String delimiter) {
@@ -641,12 +612,9 @@ public class TextUtils {
   /**
    * Fast split.
    *
-   * @param line
-   *          the line
-   * @param split
-   *          the split
-   * @param n
-   *          the n
+   * @param line the line
+   * @param split the split
+   * @param n the n
    * @return the list
    */
   public static final List<String> fastSplit(String line, String split, int n) {
@@ -697,12 +665,9 @@ public class TextUtils {
   /**
    * Fast splits a line into at most n tokens.
    *
-   * @param line
-   *          the line
-   * @param split
-   *          the split
-   * @param n
-   *          the n
+   * @param line the line
+   * @param split the split
+   * @param n the n
    * @return the list
    */
   public static final List<String> fastSplit(String line, char split, int n) {
@@ -731,10 +696,8 @@ public class TextUtils {
   /**
    * Fast split.
    *
-   * @param line
-   *          the line
-   * @param delimiter
-   *          the delimiter
+   * @param line the line
+   * @param delimiter the delimiter
    * @return the list
    */
   public static final List<String> fastSplit(String line, String delimiter) {
@@ -764,10 +727,8 @@ public class TextUtils {
   /**
    * Fast split.
    *
-   * @param line
-   *          the line
-   * @param delimiter
-   *          the split
+   * @param line the line
+   * @param delimiter the split
    * @return the list
    */
   public static final List<String> fastSplit(String line, char delimiter) {
@@ -795,10 +756,8 @@ public class TextUtils {
   /**
    * Fast split.
    *
-   * @param line
-   *          the line
-   * @param delimiter
-   *          the delimiter
+   * @param line the line
+   * @param delimiter the delimiter
    * @return the list
    */
   public static final List<String> fastSplit(String line, Pattern delimiter) {
@@ -829,13 +788,12 @@ public class TextUtils {
   /**
    * Fast split remove quotes.
    *
-   * @param line
-   *          the line
-   * @param delimiter
-   *          the delimiter
+   * @param line the line
+   * @param delimiter the delimiter
    * @return the list
    */
-  public static List<String> fastSplitRemoveQuotes(String line, String delimiter) {
+  public static List<String> fastSplitRemoveQuotes(String line,
+      String delimiter) {
     String cleaned = removeQuotes(line);
 
     return fastSplit(cleaned, delimiter);
@@ -844,8 +802,7 @@ public class TextUtils {
   /**
    * Fast split remove quotes.
    *
-   * @param line
-   *          the line
+   * @param line the line
    * @return the list
    */
   public static final List<String> fastSplitRemoveQuotes(String line) {
@@ -855,13 +812,12 @@ public class TextUtils {
   /**
    * Fast split remove quotes.
    *
-   * @param line
-   *          the line
-   * @param delimiter
-   *          the split
+   * @param line the line
+   * @param delimiter the split
    * @return the list
    */
-  public static final List<String> fastSplitRemoveQuotes(String line, char delimiter) {
+  public static final List<String> fastSplitRemoveQuotes(String line,
+      char delimiter) {
     String cleaned = removeQuotes(line);
 
     return fastSplit(cleaned, delimiter);
@@ -870,26 +826,24 @@ public class TextUtils {
   /**
    * Fast split remove quotes.
    *
-   * @param line
-   *          the line
-   * @param delimiter
-   *          the split
-   * @param n
-   *          the n
+   * @param line the line
+   * @param delimiter the split
+   * @param n the n
    * @return the list
    */
-  public static final List<String> fastSplitRemoveQuotes(String line, char delimiter, int n) {
+  public static final List<String> fastSplitRemoveQuotes(String line,
+      char delimiter,
+      int n) {
     String cleaned = removeQuotes(line);
 
     return fastSplit(cleaned, delimiter, n);
   }
 
   /**
-   * Parses an integer guaranteeing not to throw an error and return -1 should an
-   * error occur.
+   * Parses an integer guaranteeing not to throw an error and return -1 should
+   * an error occur.
    *
-   * @param field
-   *          the field
+   * @param field the field
    * @return the int
    */
   public static final int scanInt(String field) {
@@ -900,10 +854,8 @@ public class TextUtils {
    * Parses an integer guaranteeing not to throw an error and return a default
    * value should an error occur.
    *
-   * @param field
-   *          the field
-   * @param defaultValue
-   *          the default value
+   * @param field the field
+   * @param defaultValue the default value
    * @return the int
    */
   public static final int scanInt(String field, int defaultValue) {
@@ -913,14 +865,13 @@ public class TextUtils {
   }
 
   /**
-   * Looks for a double in a string or returns Double.MIN_VALUE if a double cannot
-   * be found. By extension this method cannot be used to parse Double.MIN_VALUE,
-   * but we assume that this value is unlikely to occur since it is at the extreme
-   * of representation and likely means there is some kind of problem with the
-   * value.
+   * Looks for a double in a string or returns Double.MIN_VALUE if a double
+   * cannot be found. By extension this method cannot be used to parse
+   * Double.MIN_VALUE, but we assume that this value is unlikely to occur since
+   * it is at the extreme of representation and likely means there is some kind
+   * of problem with the value.
    *
-   * @param field
-   *          the field
+   * @param field the field
    * @return the double
    */
   public static final Double scanDouble(String field) {
@@ -928,14 +879,12 @@ public class TextUtils {
   }
 
   /**
-   * Parses a string for a double value, returning a default value if there is an
-   * error. This method negates needing an error handler for number parsing since
-   * it is guaranteed to return a double.
+   * Parses a string for a double value, returning a default value if there is
+   * an error. This method negates needing an error handler for number parsing
+   * since it is guaranteed to return a double.
    *
-   * @param field
-   *          the field
-   * @param defaultValue
-   *          the default value
+   * @param field the field
+   * @param defaultValue the default value
    * @return the double
    */
   public static final Double scanDouble(String field, double defaultValue) {
@@ -954,26 +903,22 @@ public class TextUtils {
    * Parses an integer field as a float and then converts back to int to provide
    * more robust handling of ints written as floating point numbers in files.
    *
-   * @param field
-   *          the field
+   * @param field the field
    * @return the int
-   * @throws ParseException
-   *           the parse exception
+   * @throws ParseException the parse exception
    */
   public static final int parseInt(String field) {
     return Integer.parseInt(field.replace(",", EMPTY_STRING)); // (int)parseDouble(field);
   }
 
   /**
-   * More robust number extraction that copes with text in the field. It attempts
-   * to extract the longest run of digits (with optional period) { possible from a
-   * string and convert it to a number.
+   * More robust number extraction that copes with text in the field. It
+   * attempts to extract the longest run of digits (with optional period) {
+   * possible from a string and convert it to a number.
    *
-   * @param field
-   *          the field
+   * @param field the field
    * @return A double
-   * @throws ParseException
-   *           the parse exception
+   * @throws ParseException the parse exception
    */
   public static final double parseDouble(String field) throws ParseException {
     if (isNullOrEmpty(field)) {
@@ -1000,8 +945,7 @@ public class TextUtils {
   /**
    * Extracts a number from a string.
    *
-   * @param field
-   *          the field
+   * @param field the field
    * @return the string
    */
   public static final String extractNumber(String field) {
@@ -1017,8 +961,7 @@ public class TextUtils {
   /**
    * Returns true if the field contains an extractable number.
    *
-   * @param field
-   *          the field
+   * @param field the field
    * @return true, if successful
    */
   public static final boolean containsNumber(String field) {
@@ -1030,8 +973,7 @@ public class TextUtils {
   /**
    * Remove quotes from strings.
    *
-   * @param text
-   *          the text
+   * @param text the text
    * @return the string
    */
   public static final String removeQuotes(String text) {
@@ -1041,8 +983,7 @@ public class TextUtils {
   /**
    * Remove quotation marks if they enclose text.
    *
-   * @param text
-   *          the text
+   * @param text the text
    * @return the string
    */
   public static final String unquote(String text) {
@@ -1056,8 +997,7 @@ public class TextUtils {
   /**
    * Removes the trailing whitespace.
    *
-   * @param text
-   *          the text
+   * @param text the text
    * @return the string
    */
   public static final String removeTrailingWhitespace(String text) {
@@ -1067,13 +1007,12 @@ public class TextUtils {
   /**
    * Convert to int.
    *
-   * @param values
-   *          the values
+   * @param values the values
    * @return the list
-   * @throws ParseException
-   *           the parse exception
+   * @throws ParseException the parse exception
    */
-  public static final List<Integer> convertToInt(List<String> values) throws ParseException {
+  public static final List<Integer> convertToInt(List<String> values)
+      throws ParseException {
     List<Integer> ret = new ArrayList<Integer>();
 
     for (String value : values) {
@@ -1084,13 +1023,11 @@ public class TextUtils {
   }
 
   /**
-   * Truncates a string to a specified length and adds ellipses to indicate it has
-   * been truncated.
+   * Truncates a string to a specified length and adds ellipses to indicate it
+   * has been truncated.
    *
-   * @param text
-   *          the text
-   * @param length
-   *          the length
+   * @param text the text
+   * @param length the length
    * @return the string
    */
   public static final String truncate(String text, int length) {
@@ -1112,10 +1049,8 @@ public class TextUtils {
    * Truncates the center of a string to a specified length and adds ellipses to
    * indicate it has been truncated.
    *
-   * @param text
-   *          the text
-   * @param length
-   *          the length
+   * @param text the text
+   * @param length the length
    * @return the string
    */
   public static final String truncateCenter(String text, int length) {
@@ -1125,16 +1060,15 @@ public class TextUtils {
 
     int l = (length - 3) / 2;
 
-    return text.substring(0, l) + "..." + text.substring(text.length() - l - 1, text.length());
+    return text.substring(0, l) + "..."
+        + text.substring(text.length() - l - 1, text.length());
   }
 
   /**
    * Search a list for a string and return the index if it is found.
    *
-   * @param list
-   *          the list
-   * @param text
-   *          the text
+   * @param list the list
+   * @param text the text
    * @return the index of the item or -1 if not found.
    */
   public static int searchList(List<String> list, String text) {
@@ -1154,10 +1088,8 @@ public class TextUtils {
   /**
    * Search list exact.
    *
-   * @param list
-   *          the list
-   * @param text
-   *          the text
+   * @param list the list
+   * @param text the text
    * @return the int
    */
   public static int searchListExact(List<String> list, String text) {
@@ -1175,8 +1107,7 @@ public class TextUtils {
   /**
    * Guesses a delimiter for a string.
    *
-   * @param line
-   *          the line
+   * @param line the line
    * @return the delimiter
    */
   public static String getDelimiter(String line) {
@@ -1190,10 +1121,8 @@ public class TextUtils {
   /**
    * Repeat a string multiple times.
    *
-   * @param text
-   *          the text
-   * @param repeats
-   *          the repeats
+   * @param text the text
+   * @param repeats the repeats
    * @return the string
    */
   public static String repeat(String text, int repeats) {
@@ -1203,12 +1132,9 @@ public class TextUtils {
   /**
    * Repeat a value with a given delimiter inbetween values.
    *
-   * @param text
-   *          the text
-   * @param delimiter
-   *          the delimiter
-   * @param repeats
-   *          the repeats
+   * @param text the text
+   * @param delimiter the delimiter
+   * @param repeats the repeats
    * @return the string
    */
   public static String repeat(Object text, String delimiter, int repeats) {
@@ -1224,8 +1150,7 @@ public class TextUtils {
   /**
    * Creates the blank row.
    *
-   * @param headings
-   *          the headings
+   * @param headings the headings
    * @return the list
    */
   public static List<String> createBlankRow(List<String> headings) {
@@ -1235,8 +1160,7 @@ public class TextUtils {
   /**
    * Creates the blank row.
    *
-   * @param size
-   *          the size
+   * @param size the size
    * @return the list
    */
   public static List<String> createBlankRow(int size) {
@@ -1252,10 +1176,8 @@ public class TextUtils {
   /**
    * Join a collection of objects as strings using a delimiter.
    *
-   * @param delimiter
-   *          the delimiter
-   * @param values
-   *          the values
+   * @param delimiter the delimiter
+   * @param values the values
    * @return the string
    */
   public static final String join(String delimiter, Object... values) {
@@ -1271,10 +1193,8 @@ public class TextUtils {
   /**
    * Join.
    *
-   * @param delimiter
-   *          the delimiter
-   * @param values
-   *          the values
+   * @param delimiter the delimiter
+   * @param values the values
    * @return the string
    */
   public static final String join(String delimiter, String... values) {
@@ -1291,10 +1211,8 @@ public class TextUtils {
    * Concatenates a list of items into a single string where each item is
    * separated by a delimiter.
    *
-   * @param list
-   *          the list
-   * @param delimiter
-   *          the delimiter
+   * @param list the list
+   * @param delimiter the delimiter
    * @return the string
    */
   public static final String join(Collection<?> list, String delimiter) {
@@ -1316,8 +1234,7 @@ public class TextUtils {
   /**
    * To string.
    *
-   * @param o
-   *          the o
+   * @param o the o
    * @return the string
    */
   public static String toString(Object o) {
@@ -1329,15 +1246,12 @@ public class TextUtils {
   }
 
   /**
-   * Concatenates a set of items into a single string where each item is separated
-   * by a delimiter.
+   * Concatenates a set of items into a single string where each item is
+   * separated by a delimiter.
    *
-   * @param <T>
-   *          the generic type
-   * @param s
-   *          the s
-   * @param delimiter
-   *          the delimiter
+   * @param <T> the generic type
+   * @param s the s
+   * @param delimiter the delimiter
    * @return the string
    */
   public static final <T> String join(Set<?> s, String delimiter) {
@@ -1359,12 +1273,9 @@ public class TextUtils {
    * Concatenates a list of items into a single string where each item is
    * separated by a delimiter.
    *
-   * @param <T>
-   *          the generic type
-   * @param s
-   *          the s
-   * @param delimiter
-   *          the delimiter
+   * @param <T> the generic type
+   * @param s the s
+   * @param delimiter the delimiter
    * @return the string
    */
   public static final <T> String join(T[] s, String delimiter) {
@@ -1385,8 +1296,7 @@ public class TextUtils {
    * Return a list of items as a comma separated list adding a final and between
    * the second to last and last item (also including an oxford comma).
    *
-   * @param list
-   *          the list
+   * @param list the list
    * @return the string
    */
   public static String listAsSentence(List<?> list) {
@@ -1398,7 +1308,8 @@ public class TextUtils {
       return list.get(0).toString();
     }
 
-    String text = join(CollectionUtils.subList(list, 0, list.size() - 1), TextUtils.COMMA_DELIMITER);
+    String text = join(CollectionUtils.subList(list, 0, list.size() - 1),
+        TextUtils.COMMA_DELIMITER);
 
     text += ", and " + list.get(list.size() - 1).toString();
 
@@ -1409,8 +1320,7 @@ public class TextUtils {
    * Repeat a delimited string of empty values. Useful for creating blank
    * rows/columns in a table output.
    *
-   * @param size
-   *          the size
+   * @param size the size
    * @return the string
    */
   public static String emptyCells(int size) {
@@ -1420,10 +1330,8 @@ public class TextUtils {
   /**
    * Empty cells.
    *
-   * @param size
-   *          the size
-   * @param delimiter
-   *          the delimiter
+   * @param size the size
+   * @param delimiter the delimiter
    * @return the string
    */
   public static String emptyCells(int size, String delimiter) {
@@ -1437,31 +1345,31 @@ public class TextUtils {
   }
 
   /**
-   * Attempts to split words based on them being separated by spaces, hyphens and
-   * other characters considered to indicate a word boundary. Word break
+   * Attempts to split words based on them being separated by spaces, hyphens
+   * and other characters considered to indicate a word boundary. Word break
    * characters are removed.
    *
-   * @param sentence
-   *          the sentence
+   * @param sentence the sentence
    * @return the sets the
    */
   public static Set<String> keywords(String sentence) {
     // Replace characters indicating a word break with a space and then
     // replace all multiple spaces with a single space so we have a
     // cleaned up sentence we can split into words
-    String s = sentence.replaceAll("[\\;\\,\\.\\'\\:\\\"\\?\\(\\)\\[\\]\\{\\}\\_\\+\\-\\=]", TextUtils.SPACE_DELIMITER)
+    String s = sentence
+        .replaceAll("[\\;\\,\\.\\'\\:\\\"\\?\\(\\)\\[\\]\\{\\}\\_\\+\\-\\=]",
+            TextUtils.SPACE_DELIMITER)
         .replaceAll("\\s+", TextUtils.SPACE_DELIMITER).trim();
 
-    return CollectionUtils.unique(TextUtils.fastSplit(s, TextUtils.SPACE_DELIMITER));
+    return CollectionUtils
+        .unique(TextUtils.fastSplit(s, TextUtils.SPACE_DELIMITER));
   }
 
   /**
    * Generates a lookup map for finding strings in a list.
    *
-   * @param <T>
-   *          the generic type
-   * @param list
-   *          the list
+   * @param <T> the generic type
+   * @param list the list
    * @return the map
    */
   public static <T> Map<T, Integer> valueIndexMap(List<T> list) {
@@ -1477,10 +1385,8 @@ public class TextUtils {
   /**
    * Returns true if s is within a list of string, false otherwise.
    *
-   * @param list
-   *          the list
-   * @param s
-   *          the s
+   * @param list the list
+   * @param s the s
    * @return true, if successful
    */
   public static boolean in(List<String> list, String s) {
@@ -1500,12 +1406,11 @@ public class TextUtils {
   }
 
   /**
-   * Returns true if one of the strings in a list starts with s, false otherwise.
+   * Returns true if one of the strings in a list starts with s, false
+   * otherwise.
    *
-   * @param list
-   *          the list
-   * @param s
-   *          the s
+   * @param list the list
+   * @param s the s
    * @return the list
    */
   public static List<Integer> startsWith(List<String> list, String s) {
@@ -1529,10 +1434,8 @@ public class TextUtils {
   /**
    * Find.
    *
-   * @param list
-   *          the list
-   * @param s
-   *          the s
+   * @param list the list
+   * @param s the s
    * @return the list
    */
   public static List<Integer> find(String[] list, String s) {
@@ -1542,10 +1445,8 @@ public class TextUtils {
   /**
    * Returns the first index of a string containing s or -1 if s is not found.
    *
-   * @param list
-   *          the list
-   * @param s
-   *          the s
+   * @param list the list
+   * @param s the s
    * @return the int
    */
   public static int findFirst(List<String> list, String... s) {
@@ -1565,10 +1466,8 @@ public class TextUtils {
   /**
    * Find first.
    *
-   * @param list
-   *          the list
-   * @param s
-   *          the s
+   * @param list the list
+   * @param s the s
    * @return the int
    */
   public static int findFirst(List<String> list, Collection<String> s) {
@@ -1588,10 +1487,8 @@ public class TextUtils {
   /**
    * Returns the indices of items in a list that match a string.
    *
-   * @param list
-   *          the list
-   * @param s
-   *          the s
+   * @param list the list
+   * @param s the s
    * @return the list
    */
   public static List<Integer> find(List<String> list, String s) {
@@ -1613,10 +1510,8 @@ public class TextUtils {
   /**
    * Returns the indices of strings in a list of strings that match a regex.
    *
-   * @param list
-   *          the list
-   * @param regex
-   *          the regex
+   * @param list the list
+   * @param regex the regex
    * @return the list
    */
   public static List<Integer> findByRegex(List<String> list, String regex) {
@@ -1626,10 +1521,8 @@ public class TextUtils {
   /**
    * Returns the indices of strings in a list that match a regex.
    *
-   * @param list
-   *          the list
-   * @param regex
-   *          the regex
+   * @param list the list
+   * @param regex the regex
    * @return the list
    */
   public static List<Integer> find(List<String> list, Pattern regex) {
@@ -1653,10 +1546,8 @@ public class TextUtils {
   /**
    * Match.
    *
-   * @param text
-   *          the text
-   * @param regex
-   *          the regex
+   * @param text the text
+   * @param regex the regex
    * @return true, if successful
    */
   public static boolean match(String text, String regex) {
@@ -1666,10 +1557,8 @@ public class TextUtils {
   /**
    * Match.
    *
-   * @param text
-   *          the text
-   * @param regex
-   *          the regex
+   * @param text the text
+   * @param regex the regex
    * @return true, if successful
    */
   public static boolean match(String text, Pattern regex) {
@@ -1681,21 +1570,19 @@ public class TextUtils {
   /**
    * Returns a formatted version of an array.
    *
-   * @param <T>
-   *          the generic type
-   * @param items
-   *          the items
+   * @param <T> the generic type
+   * @param items the items
    * @return the string
    */
   public static <T> String toString(List<T> items) {
-    return OPEN_PARENTHESES + join(items, FORMATTED_LIST_DELIMITER) + CLOSE_PARENTHESES;
+    return OPEN_PARENTHESES + join(items, FORMATTED_LIST_DELIMITER)
+        + CLOSE_PARENTHESES;
   }
 
   /**
    * Convert lines into a string with newlines to preserve formatting.
    *
-   * @param lines
-   *          the lines
+   * @param lines the lines
    * @return the string
    */
   public static String linesToText(List<String> lines) {
@@ -1715,10 +1602,8 @@ public class TextUtils {
   /**
    * Splits a string into a list of strings of equal length.
    *
-   * @param text
-   *          the text
-   * @param size
-   *          the size
+   * @param text the text
+   * @param size the size
    * @return the list
    */
   public static List<String> breakApart(String text, int size) {
@@ -1740,8 +1625,7 @@ public class TextUtils {
   /**
    * Returns the max length of a list of strings.
    *
-   * @param items
-   *          the items
+   * @param items the items
    * @return the int
    */
   public static int maxLength(Collection<String> items) {
@@ -1761,8 +1645,7 @@ public class TextUtils {
   /**
    * Returns the string with the max length.
    *
-   * @param items
-   *          the items
+   * @param items the items
    * @return the string
    */
   public static String maxString(Collection<String> items) {
@@ -1784,8 +1667,7 @@ public class TextUtils {
   /**
    * Returns a list of elements with empty tokens removed.
    *
-   * @param iter
-   *          the iter
+   * @param iter the iter
    * @return the list
    */
   public static List<String> removeEmptyElements(Iterable<String> iter) {
@@ -1809,8 +1691,7 @@ public class TextUtils {
   /**
    * Removes the na.
    *
-   * @param iter
-   *          the iter
+   * @param iter the iter
    * @return the list
    */
   public static List<String> removeNA(Iterable<String> iter) {
@@ -1832,10 +1713,8 @@ public class TextUtils {
   /**
    * Case insensitive match.
    *
-   * @param s1
-   *          the s1
-   * @param s2
-   *          the s2
+   * @param s1 the s1
+   * @param s2 the s2
    * @return true, if successful
    */
   public static boolean caseInsensitiveMatch(String s1, String s2) {
@@ -1849,10 +1728,8 @@ public class TextUtils {
   /**
    * Parses an array as ints.
    *
-   * @param text
-   *          the text
-   * @param delimiter
-   *          the delimiter
+   * @param text the text
+   * @param delimiter the delimiter
    * @return the list
    */
   public static List<Integer> splitInts(String text, String delimiter) {
@@ -1874,8 +1751,7 @@ public class TextUtils {
   /**
    * Split line on tabs. Equivalent to fastSplit(line, TextUtils.TAB_DELIMITER).
    *
-   * @param line
-   *          the line
+   * @param line the line
    * @return the list
    */
   public static List<String> tabSplit(String line) {
@@ -1885,8 +1761,7 @@ public class TextUtils {
   /**
    * New line split.
    *
-   * @param text
-   *          the text
+   * @param text the text
    * @return the list
    */
   public static List<String> newLineSplit(String text) {
@@ -1896,8 +1771,7 @@ public class TextUtils {
   /**
    * Join strings with a tab separator.
    *
-   * @param tokens
-   *          the tokens
+   * @param tokens the tokens
    * @return the string
    */
   public static String tabJoin(List<String> tokens) {
@@ -1907,10 +1781,8 @@ public class TextUtils {
   /**
    * Join on semi-colon.
    *
-   * @param <T>
-   *          the generic type
-   * @param tokens
-   *          the tokens
+   * @param <T> the generic type
+   * @param tokens the tokens
    * @return the string
    */
   public static <T> String scJoin(List<T> tokens) {
@@ -1920,8 +1792,7 @@ public class TextUtils {
   /**
    * Sc split.
    *
-   * @param line
-   *          the line
+   * @param line the line
    * @return the list
    */
   public static List<String> scSplit(String line) {
@@ -1931,8 +1802,7 @@ public class TextUtils {
   /**
    * Period split.
    *
-   * @param line
-   *          the line
+   * @param line the line
    * @return the list
    */
   public static List<String> periodSplit(String line) {
@@ -1942,10 +1812,8 @@ public class TextUtils {
   /**
    * Comma join.
    *
-   * @param <T>
-   *          the generic type
-   * @param tokens
-   *          the tokens
+   * @param <T> the generic type
+   * @param tokens the tokens
    * @return the string
    */
   public static <T> String commaJoin(List<T> tokens) {
@@ -1953,11 +1821,10 @@ public class TextUtils {
   }
 
   /**
-   * Returns a comma separated list putting a space after each comma so it is more
-   * human readable.
+   * Returns a comma separated list putting a space after each comma so it is
+   * more human readable.
    *
-   * @param list
-   *          the list
+   * @param list the list
    * @return the string
    */
   public static String formattedList(List<String> list) {
@@ -1981,8 +1848,7 @@ public class TextUtils {
   /**
    * Convert a string list of ints to a list of ints.
    *
-   * @param items
-   *          the items
+   * @param items the items
    * @return the list
    */
   public static List<Integer> toInt(List<String> items) {
@@ -2002,8 +1868,7 @@ public class TextUtils {
   /**
    * Return the reverse of a string.
    *
-   * @param text
-   *          the text
+   * @param text the text
    * @return the string
    */
   public static String reverse(String text) {
@@ -2013,8 +1878,7 @@ public class TextUtils {
   /**
    * Comma split.
    *
-   * @param line
-   *          the line
+   * @param line the line
    * @return the list
    */
   public static List<String> commaSplit(String line) {
@@ -2028,10 +1892,8 @@ public class TextUtils {
   /**
    * Returns the tail substring of a string.
    *
-   * @param text
-   *          the text
-   * @param n
-   *          the n
+   * @param text the text
+   * @param n the n
    * @return the string
    */
   public static String tail(String text, int n) {
@@ -2041,8 +1903,7 @@ public class TextUtils {
   /**
    * Replaces spaces with underscores.
    *
-   * @param text
-   *          the text
+   * @param text the text
    * @return the string
    */
   public static String replaceSpaces(String text) {
@@ -2052,8 +1913,7 @@ public class TextUtils {
   /**
    * Paste.
    *
-   * @param objects
-   *          the objects
+   * @param objects the objects
    * @return the string
    */
   public static String paste(Object... objects) {
@@ -2069,8 +1929,7 @@ public class TextUtils {
   /**
    * Paste.
    *
-   * @param strings
-   *          the strings
+   * @param strings the strings
    * @return the string
    */
   public static String paste(String... strings) {
@@ -2086,8 +1945,7 @@ public class TextUtils {
   /**
    * Convert a list of string regexes to a list of compiled regexes.
    *
-   * @param regexes
-   *          the regexes
+   * @param regexes the regexes
    * @return the list
    */
   public static List<Pattern> compile(List<String> regexes) {
@@ -2097,13 +1955,12 @@ public class TextUtils {
   /**
    * Compile.
    *
-   * @param regexes
-   *          the regexes
-   * @param caseInsensitive
-   *          the case insensitive
+   * @param regexes the regexes
+   * @param caseInsensitive the case insensitive
    * @return the list
    */
-  public static List<Pattern> compile(List<String> regexes, boolean caseInsensitive) {
+  public static List<Pattern> compile(List<String> regexes,
+      boolean caseInsensitive) {
     if (CollectionUtils.isNullOrEmpty(regexes)) {
       return Collections.emptyList();
     }
@@ -2124,8 +1981,7 @@ public class TextUtils {
   /**
    * To lower case.
    *
-   * @param items
-   *          the items
+   * @param items the items
    * @return the list
    */
   public static List<String> toLowerCase(Collection<String> items) {
@@ -2145,8 +2001,7 @@ public class TextUtils {
   /**
    * Converts a set of strings to a set of lower case string.
    *
-   * @param items
-   *          the items
+   * @param items the items
    * @return the sets the
    */
   public static Set<String> toLowerCase(Set<String> items) {
@@ -2166,8 +2021,7 @@ public class TextUtils {
   /**
    * To lower case.
    *
-   * @param items
-   *          the items
+   * @param items the items
    * @return the list
    */
   public static List<String> toLowerCase(String[] items) {
@@ -2187,8 +2041,7 @@ public class TextUtils {
   /**
    * Returns true if text appears to be a number.
    *
-   * @param value
-   *          the value
+   * @param value the value
    * @return true, if is number
    */
   public static boolean isNumber(String value) {
@@ -2210,8 +2063,7 @@ public class TextUtils {
   /**
    * Returns true if text appears to be an integer.
    *
-   * @param value
-   *          the value
+   * @param value the value
    * @return true, if is number
    */
   public static boolean isInt(String value) {
@@ -2227,8 +2079,7 @@ public class TextUtils {
   /**
    * Tail tab split.
    *
-   * @param line
-   *          the line
+   * @param line the line
    * @return the string
    */
   public static String tailTabSplit(String line) {
@@ -2238,10 +2089,8 @@ public class TextUtils {
   /**
    * Tail split.
    *
-   * @param line
-   *          the line
-   * @param delimiter
-   *          the delimiter
+   * @param line the line
+   * @param delimiter the delimiter
    * @return the string
    */
   public static String tailSplit(String line, String delimiter) {
@@ -2252,21 +2101,20 @@ public class TextUtils {
    * Parse a string as boolean. True if lower case value matches "true", "t",
    * "yes", "y", or "1".
    *
-   * @param value
-   *          the value
+   * @param value the value
    * @return true, if successful
    */
   public static boolean parseBool(String value) {
     String l = value.toLowerCase();
 
-    return l.equals("true") || l.equals("t") || l.equals("yes") || l.equals("y") || l.equals("1");
+    return l.equals("true") || l.equals("t") || l.equals("yes") || l.equals("y")
+        || l.equals("1");
   }
 
   /**
    * Returns the common prefix of multiple strings.
    *
-   * @param values
-   *          the values
+   * @param values the values
    * @return the string
    */
   public static String commonPrefix(String... values) {
@@ -2301,8 +2149,7 @@ public class TextUtils {
   /**
    * Min length.
    *
-   * @param values
-   *          the values
+   * @param values the values
    * @return the int
    */
   public static int minLength(String... values) {
@@ -2320,8 +2167,7 @@ public class TextUtils {
    * Excel to render cells as text rather than guessing. This makes parsing text
    * files more difficult
    *
-   * @param line
-   *          the line
+   * @param line the line
    * @return the string
    */
   public static String removeExcelQuotes(String line) {
@@ -2332,8 +2178,7 @@ public class TextUtils {
    * Parses a CSV line taking into account quotations so that data in quotations
    * containing a comma is not erroneously separated.
    *
-   * @param line
-   *          the line
+   * @param line the line
    * @return the list
    */
   public static List<String> parseCSVLine(final String line) {
@@ -2377,11 +2222,9 @@ public class TextUtils {
     /**
      * To int.
      *
-     * @param text
-     *          the text
+     * @param text the text
      * @return the int
-     * @throws ParseException
-     *           the parse exception
+     * @throws ParseException the parse exception
      */
     public int toInt(final String text) throws ParseException {
       return parseInt(text);
@@ -2390,11 +2233,9 @@ public class TextUtils {
     /**
      * To double.
      *
-     * @param text
-     *          the text
+     * @param text the text
      * @return the double
-     * @throws ParseException
-     *           the parse exception
+     * @throws ParseException the parse exception
      */
     public double toDouble(final String text) throws ParseException {
       return parseDouble(text);
@@ -2413,8 +2254,7 @@ public class TextUtils {
   /**
    * Extracts text from between double quotation marks.
    *
-   * @param text
-   *          the text
+   * @param text the text
    * @return the string
    */
   public static String extractFromQuotes(String text) {
@@ -2436,8 +2276,7 @@ public class TextUtils {
   /**
    * Non empty.
    *
-   * @param values
-   *          the values
+   * @param values the values
    * @return the list
    */
   public static List<String> nonEmpty(Collection<String> values) {
@@ -2455,8 +2294,7 @@ public class TextUtils {
   /**
    * Converts a string to an array of single character strings.
    *
-   * @param s
-   *          the s
+   * @param s the s
    * @return the string[]
    */
   public static String[] toStringArray(String s) {
@@ -2472,32 +2310,27 @@ public class TextUtils {
   /**
    * Loads the first.
    *
-   * @param file
-   *          the file
-   * @param skipHeader
-   *          the skip header
+   * @param file the file
+   * @param skipHeader the skip header
    * @return the list
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static List<String> firstColAsList(Path file, boolean skipHeader) throws IOException {
+  public static List<String> firstColAsList(Path file, boolean skipHeader)
+      throws IOException {
     return colAsList(file, skipHeader, 0);
   }
 
   /**
    * Parses a matrix file and extracts a column as a list.
    *
-   * @param file
-   *          the file
-   * @param skipHeader
-   *          the skip header
-   * @param col
-   *          the col
+   * @param file the file
+   * @param skipHeader the skip header
+   * @param col the col
    * @return the list
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static List<String> colAsList(Path file, boolean skipHeader, int col) throws IOException {
+  public static List<String> colAsList(Path file, boolean skipHeader, int col)
+      throws IOException {
     // LOG.info("Load list from {}, {}...", file, skipHeader);
 
     BufferedReader reader = FileUtils.newBufferedReader(file);
@@ -2525,11 +2358,10 @@ public class TextUtils {
   }
 
   /**
-   * Formats a number as it would appear in a written order such as 1 becomes 1st,
-   * 2 becomes 2nd, etc.
+   * Formats a number as it would appear in a written order such as 1 becomes
+   * 1st, 2 becomes 2nd, etc.
    *
-   * @param order
-   *          the order
+   * @param order the order
    * @return the string
    */
   public static String formatOrder(int order) {
@@ -2548,10 +2380,8 @@ public class TextUtils {
   /**
    * Append a string to each string in a list of strings.
    *
-   * @param tokens
-   *          the tokens
-   * @param append
-   *          the append
+   * @param tokens the tokens
+   * @param append the append
    * @return the list
    */
   public static List<String> append(List<String> tokens, String append) {
@@ -2562,16 +2392,15 @@ public class TextUtils {
    * Append a string to each string in a list of strings, optionally skipping
    * elements.
    *
-   * @param tokens
-   *          A list of strings.
-   * @param append
-   *          The text to append to each element.
-   * @param step
-   *          How many elements to skip, for example 2 will append {@code append}
-   *          to every second element.
+   * @param tokens A list of strings.
+   * @param append The text to append to each element.
+   * @param step How many elements to skip, for example 2 will append
+   *          {@code append} to every second element.
    * @return the list
    */
-  public static List<String> append(List<String> tokens, String append, int step) {
+  public static List<String> append(List<String> tokens,
+      String append,
+      int step) {
     int n = tokens.size();
 
     List<String> ret = new ArrayList<String>(n);
@@ -2592,8 +2421,7 @@ public class TextUtils {
    * 
    * ${year} - The current year.
    *
-   * @param s
-   *          the s
+   * @param s the s
    * @return the string
    */
   public static String replaceVariables(String s) {
@@ -2607,8 +2435,7 @@ public class TextUtils {
   /**
    * Sentence case.
    *
-   * @param o
-   *          the o
+   * @param o the o
    * @return the string
    */
   public static String sentenceCase(final Object o) {
@@ -2618,8 +2445,7 @@ public class TextUtils {
   /**
    * Convert a string to sentence case.
    *
-   * @param s
-   *          the s
+   * @param s the s
    * @return the string
    */
   public static String sentenceCase(final String s) {
@@ -2629,7 +2455,9 @@ public class TextUtils {
     // We replace the last character of the match (which is the start of
     // a word) with its upper case equivalent.
     while (matcher.find()) {
-      buffer.replace(matcher.end() - 1, matcher.end(), matcher.group(2).toUpperCase());
+      buffer.replace(matcher.end() - 1,
+          matcher.end(),
+          matcher.group(2).toUpperCase());
     }
 
     return buffer.toString();
@@ -2638,8 +2466,7 @@ public class TextUtils {
   /**
    * Capitalize the first letter of each word.
    *
-   * @param s
-   *          the s
+   * @param s the s
    * @return the string
    */
   public static String titleCase(final String s) {
@@ -2649,7 +2476,9 @@ public class TextUtils {
     // We replace the last character of the match (which is the start of
     // a word) with its upper case equivalent.
     while (matcher.find()) {
-      buffer.replace(matcher.end() - 1, matcher.end(), matcher.group(2).toUpperCase());
+      buffer.replace(matcher.end() - 1,
+          matcher.end(),
+          matcher.group(2).toUpperCase());
     }
 
     return buffer.toString();
@@ -2658,8 +2487,7 @@ public class TextUtils {
   /**
    * Replace runs of spaces with a single space.
    *
-   * @param text
-   *          Text to fix.
+   * @param text Text to fix.
    * @return the string
    */
   public static String fixSpaceRuns(String text) {
@@ -2669,14 +2497,13 @@ public class TextUtils {
   /**
    * Replace all substrings in a buffer.
    * 
-   * @param text
-   *          The text to find.
-   * @param replacement
-   *          The replacement text.
-   * @param buffer
-   *          The buffer to scan.
+   * @param text The text to find.
+   * @param replacement The replacement text.
+   * @param buffer The buffer to scan.
    */
-  public static void replace(final String text, final String replacement, StringBuilder buffer) {
+  public static void replace(final String text,
+      final String replacement,
+      StringBuilder buffer) {
     int index = buffer.indexOf(text);
 
     int n = text.length();
@@ -2692,8 +2519,7 @@ public class TextUtils {
   /**
    * Concatenate strings together.
    *
-   * @param strings
-   *          the strings
+   * @param strings the strings
    * @return the string
    */
   public static String cat(String... strings) {
@@ -2709,10 +2535,8 @@ public class TextUtils {
   /**
    * Returns true if line starts with any of the matches.
    *
-   * @param line
-   *          the line
-   * @param matches
-   *          the matches
+   * @param line the line
+   * @param matches the matches
    * @return true, if successful
    */
   public static boolean startsWith(String line, Collection<String> matches) {
@@ -2742,7 +2566,8 @@ public class TextUtils {
    * @param names
    * @return
    */
-  public static Map<String, String> toLowerCaseMap(final Collection<String> values) {
+  public static Map<String, String> toLowerCaseMap(
+      final Collection<String> values) {
     Map<String, String> ret = new HashMap<String, String>();
 
     for (String v : values) {

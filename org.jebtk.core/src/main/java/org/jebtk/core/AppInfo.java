@@ -73,54 +73,48 @@ public class AppInfo {
   /**
    * Instantiates a new application information.
    *
-   * @param name
-   *          the name
-   * @param version
-   *          the version
-   * @param copyright
-   *          the copyright
+   * @param name the name
+   * @param version the version
+   * @param copyright the copyright
    */
   public AppInfo(String name, AppVersion version, String copyright) {
-    this(name, version, copyright, name.toLowerCase().replaceAll("\\s", ""), TextUtils.EMPTY_STRING);
+    this(name, version, copyright, name.toLowerCase().replaceAll("\\s", ""),
+        TextUtils.EMPTY_STRING);
   }
 
   /**
    * Instantiates a new application information.
    *
-   * @param name
-   *          the name
-   * @param version
-   *          the version
-   * @param copyright
-   *          the copyright
-   * @param description
-   *          the description
+   * @param name the name
+   * @param version the version
+   * @param copyright the copyright
+   * @param description the description
    */
-  public AppInfo(String name, AppVersion version, String copyright, String description) {
-    this(name, version, copyright, name.toLowerCase().replaceAll("[\\.\\s]", ""), description);
+  public AppInfo(String name, AppVersion version, String copyright,
+      String description) {
+    this(name, version, copyright,
+        name.toLowerCase().replaceAll("[\\.\\s]", ""), description);
   }
 
   /**
    * Instantiates a new application information.
    *
-   * @param name
-   *          the name
-   * @param version
-   *          the version
-   * @param copyright
-   *          the copyright
-   * @param helpName
-   *          the help name
-   * @param description
-   *          the description
+   * @param name the name
+   * @param version the version
+   * @param copyright the copyright
+   * @param helpName the help name
+   * @param description the description
    */
-  public AppInfo(String name, AppVersion version, String copyright, String helpName, String description) {
+  public AppInfo(String name, AppVersion version, String copyright,
+      String helpName, String description) {
     mName = name;
     mCopyright = TextUtils.replaceVariables(copyright);
     mHelpName = helpName;
     mDescription = description;
 
-    mVersion = version; // loadVersion(); //SettingsService.getInstance().getAsString(helpName +
+    mVersion = version; // loadVersion();
+                        // //SettingsService.getInstance().getAsString(helpName
+                        // +
                         // ".version");
   }
 
@@ -172,12 +166,12 @@ public class AppInfo {
   /**
    * Gets the setting.
    *
-   * @param setting
-   *          the setting
+   * @param setting the setting
    * @return the setting
    */
   public Setting getSetting(String setting) {
-    return SettingsService.getInstance().getSetting(getHelpName() + "." + setting);
+    return SettingsService.getInstance()
+        .getSetting(getHelpName() + "." + setting);
   }
 
   /**
@@ -185,16 +179,13 @@ public class AppInfo {
    * lowercase and spaces are replaced by underscore. A name.settings.xml file
    * must exist in the res folder inside the application jar file.
    *
-   * @param appInfo
-   *          the app info
-   * @throws SAXException
-   *           the SAX exception
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
-   * @throws ParserConfigurationException
-   *           the parser configuration exception
+   * @param appInfo the app info
+   * @throws SAXException the SAX exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws ParserConfigurationException the parser configuration exception
    */
-  public static void loadSettings(AppInfo appInfo) throws SAXException, IOException, ParserConfigurationException {
+  public static void loadSettings(AppInfo appInfo)
+      throws SAXException, IOException, ParserConfigurationException {
     SettingsService.getInstance().loadLibSettings(appInfo.getHelpName());
   }
 

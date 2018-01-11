@@ -33,8 +33,7 @@ public class BufferedTableWriter extends BufferedWriter {
   /**
    * Instantiates a new buffered table writer.
    *
-   * @param out
-   *          the out
+   * @param out the out
    */
   public BufferedTableWriter(Writer out) {
     this(out, TextUtils.TAB_DELIMITER);
@@ -43,10 +42,8 @@ public class BufferedTableWriter extends BufferedWriter {
   /**
    * Instantiates a new buffered table writer using the given separator.
    *
-   * @param out
-   *          the out
-   * @param sep
-   *          the sep
+   * @param out the out
+   * @param sep the sep
    */
   public BufferedTableWriter(Writer out, String sep) {
     super(out);
@@ -57,8 +54,7 @@ public class BufferedTableWriter extends BufferedWriter {
   /**
    * Write the table separator.
    *
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public void sep() throws IOException {
     write(mSep);

@@ -20,8 +20,7 @@ package org.jebtk.core.pool;
  * Represents a thread safe collection of objects that can be reused.
  *
  * @author Antony Holmes Holmes
- * @param <T>
- *          the generic type
+ * @param <T> the generic type
  */
 public class DynamicObjectPool<T> extends ObjectPool<T> {
 
@@ -38,12 +37,9 @@ public class DynamicObjectPool<T> extends ObjectPool<T> {
   /**
    * Instantiates a new dynamic object pool.
    *
-   * @param name
-   *          the name
-   * @param creator
-   *          the creator
-   * @param maxSize
-   *          the max size
+   * @param name the name
+   * @param creator the creator
+   * @param maxSize the max size
    */
   public DynamicObjectPool(String name, ObjectCreator<T> creator, int maxSize) {
     super(name, maxSize);
@@ -54,10 +50,8 @@ public class DynamicObjectPool<T> extends ObjectPool<T> {
   /**
    * Instantiates a new dynamic object pool.
    *
-   * @param name
-   *          the name
-   * @param creator
-   *          the creator
+   * @param name the name
+   * @param creator the creator
    */
   public DynamicObjectPool(String name, ObjectCreator<T> creator) {
     super(name, DEFAULT_SIZE);

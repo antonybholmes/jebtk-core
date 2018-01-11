@@ -47,12 +47,9 @@ public class CommandLineOption {
   /**
    * Instantiates a new command line option.
    *
-   * @param shortName
-   *          the short name
-   * @param hasArg
-   *          the has arg
-   * @param description
-   *          the description
+   * @param shortName the short name
+   * @param hasArg the has arg
+   * @param description the description
    */
   public CommandLineOption(char shortName, boolean hasArg, String description) {
     this(shortName, null, hasArg, description);
@@ -61,16 +58,13 @@ public class CommandLineOption {
   /**
    * Instantiates a new command line option.
    *
-   * @param shortName
-   *          the short name
-   * @param longName
-   *          the long name
-   * @param hasArg
-   *          the has arg
-   * @param description
-   *          the description
+   * @param shortName the short name
+   * @param longName the long name
+   * @param hasArg the has arg
+   * @param description the description
    */
-  public CommandLineOption(char shortName, String longName, boolean hasArg, String description) {
+  public CommandLineOption(char shortName, String longName, boolean hasArg,
+      String description) {
     mShortName = shortName;
     mLongName = longName;
     mHasArg = hasArg;

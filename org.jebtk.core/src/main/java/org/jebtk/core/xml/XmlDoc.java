@@ -35,14 +35,12 @@ public class XmlDoc {
   /**
    * Write.
    *
-   * @param doc
-   *          the doc
-   * @param file
-   *          the file
-   * @throws TransformerException
-   *           the transformer exception
+   * @param doc the doc
+   * @param file the file
+   * @throws TransformerException the transformer exception
    */
-  public static void write(Document doc, File file) throws TransformerException {
+  public static void write(Document doc, File file)
+      throws TransformerException {
     TransformerFactory transformerFactory = TransformerFactory.newInstance();
     Transformer transformer = transformerFactory.newTransformer();
     DOMSource source = new DOMSource(doc);
@@ -57,14 +55,12 @@ public class XmlDoc {
   /**
    * Write.
    *
-   * @param doc
-   *          the doc
-   * @param file
-   *          the file
-   * @throws TransformerException
-   *           the transformer exception
+   * @param doc the doc
+   * @param file the file
+   * @throws TransformerException the transformer exception
    */
-  public static void write(Document doc, Path file) throws TransformerException {
+  public static void write(Document doc, Path file)
+      throws TransformerException {
     TransformerFactory transformerFactory = TransformerFactory.newInstance();
     Transformer transformer = transformerFactory.newTransformer();
     DOMSource source = new DOMSource(doc);

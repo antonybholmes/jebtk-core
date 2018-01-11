@@ -36,8 +36,7 @@ public class IntFixedStack extends FixedStack<Integer> {
   /**
    * Instantiates a new int fixed stack.
    *
-   * @param size
-   *          the size
+   * @param size the size
    */
   public IntFixedStack(int size) {
     super(size);

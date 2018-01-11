@@ -22,8 +22,7 @@ import java.util.TreeSet;
 /**
  * The Class TreeSetCreator.
  *
- * @param <V>
- *          the value type
+ * @param <V> the value type
  */
 public class TreeSetCreator<V> implements SetCreator<V> {
 
@@ -40,8 +39,7 @@ public class TreeSetCreator<V> implements SetCreator<V> {
   /**
    * Creates the.
    *
-   * @param <V1>
-   *          the generic type
+   * @param <V1> the generic type
    * @return the collection creator
    */
   public static <V1> SetCreator<V1> create() {

@@ -19,13 +19,13 @@ package org.jebtk.core.collections;
 /**
  * The Interface Reversible.
  *
- * @param <T>
- *          the generic type
+ * @param <T> the generic type
  */
 public interface Reversible<T> {
 
   /**
-   * Should provide an iterator that goes in reverse order over a data structure.
+   * Should provide an iterator that goes in reverse order over a data
+   * structure.
    *
    * @return the iterable
    */

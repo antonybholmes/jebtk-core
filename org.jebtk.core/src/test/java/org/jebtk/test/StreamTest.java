@@ -15,7 +15,8 @@ toString * Copyright 2016 Antony Holmes
  */
 package org.jebtk.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +38,8 @@ public class StreamTest {
 
     Stream<Integer> stream = Stream.of(values);
 
-    assertTrue("Stream list: " + stream.toList().toString(), stream.toList().toString().equals("[1, 2, 3, 4]"));
+    assertTrue("Stream list: " + stream.toList().toString(),
+        stream.toList().toString().equals("[1, 2, 3, 4]"));
   }
 
   @Test
@@ -68,7 +70,8 @@ public class StreamTest {
 
     List<Integer> s = stream.toList();
 
-    assertTrue("Stream list: " + s.toString(), s.toString().equals("[1, 2, 4]"));
+    assertTrue("Stream list: " + s.toString(),
+        s.toString().equals("[1, 2, 4]"));
   }
 
   @Test
@@ -122,6 +125,7 @@ public class StreamTest {
 
     List<Integer> s = stream.toList();
 
-    assertTrue("Stream list: " + s.toString(), s.toString().equals("[1, 2, 3, 4, 5, 6, 7, 8]"));
+    assertTrue("Stream list: " + s.toString(),
+        s.toString().equals("[1, 2, 3, 4, 5, 6, 7, 8]"));
   }
 }

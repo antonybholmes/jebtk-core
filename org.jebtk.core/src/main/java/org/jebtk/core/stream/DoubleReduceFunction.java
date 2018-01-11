@@ -18,9 +18,9 @@ package org.jebtk.core.stream;
 /**
  * Reduces a stream to a double value.
  *
- * @param <T>
- *          the generic type
+ * @param <T> the generic type
  */
-public interface DoubleReduceFunction<T> extends NumberReduceFunction<T, Double> {
+public interface DoubleReduceFunction<T>
+    extends NumberReduceFunction<T, Double> {
   // Do nothing
 }

@@ -39,8 +39,7 @@ public class SubstitutionXmlHandler extends DefaultHandler {
   /**
    * Instantiates a new substitution xml handler.
    *
-   * @param service
-   *          the service
+   * @param service the service
    */
   public SubstitutionXmlHandler(SubstitutionService service) {
     this.service = service;
@@ -52,10 +51,14 @@ public class SubstitutionXmlHandler extends DefaultHandler {
    * @see org.xml.sax.helpers.DefaultHandler#startElement(java.lang.String,
    * java.lang.String, java.lang.String, org.xml.sax.Attributes)
    */
-  public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
+  public void startElement(String uri,
+      String localName,
+      String qName,
+      Attributes attributes) throws SAXException {
 
     if (qName.equals("word")) {
-      service.addSubstitution(attributes.getValue("name"), attributes.getValue("substitute"));
+      service.addSubstitution(attributes.getValue("name"),
+          attributes.getValue("substitute"));
     }
   }
 
@@ -65,7 +68,8 @@ public class SubstitutionXmlHandler extends DefaultHandler {
    * @see org.xml.sax.helpers.DefaultHandler#endElement(java.lang.String,
    * java.lang.String, java.lang.String)
    */
-  public void endElement(String uri, String localName, String qName) throws SAXException {
+  public void endElement(String uri, String localName, String qName)
+      throws SAXException {
     // do nothing
   }
 }

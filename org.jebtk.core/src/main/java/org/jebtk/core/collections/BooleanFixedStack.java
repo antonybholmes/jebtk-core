@@ -40,8 +40,7 @@ public class BooleanFixedStack extends AbstractStack {
   /**
    * Instantiates a new int fixed stack.
    *
-   * @param size
-   *          the size
+   * @param size the size
    */
   public BooleanFixedStack(int size) {
     elements = new boolean[size];
@@ -50,8 +49,7 @@ public class BooleanFixedStack extends AbstractStack {
   /**
    * Push.
    *
-   * @param element
-   *          the element
+   * @param element the element
    */
   /*
    * (non-Javadoc)
@@ -93,8 +91,7 @@ public class BooleanFixedStack extends AbstractStack {
   /**
    * Gets the.
    *
-   * @param i
-   *          the i
+   * @param i the i
    * @return true, if successful
    */
   /*

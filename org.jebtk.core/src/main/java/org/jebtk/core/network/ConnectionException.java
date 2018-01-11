@@ -34,8 +34,7 @@ public class ConnectionException extends MessageException {
   /**
    * Instantiates a new connection exception.
    *
-   * @param message
-   *          the message
+   * @param message the message
    */
   public ConnectionException(String message) {
     super(message);

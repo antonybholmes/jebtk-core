@@ -41,10 +41,8 @@ public class GeomUtils {
   /**
    * Returns a clone of a rectangle where the height has been adjusted.
    *
-   * @param rect
-   *          the rect
-   * @param height
-   *          the height
+   * @param rect the rect
+   * @param height the height
    * @return the rectangle
    */
   public static Rectangle setHeight(Rectangle rect, int height) {

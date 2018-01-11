@@ -26,8 +26,7 @@ import java.util.List;
  * time.
  *
  * @author Antony Holmes Holmes
- * @param <T>
- *          the generic type
+ * @param <T> the generic type
  */
 public class PseudoStack<T> extends AbstractStack implements Serializable {
 
@@ -44,8 +43,7 @@ public class PseudoStack<T> extends AbstractStack implements Serializable {
   /**
    * Push.
    *
-   * @param item
-   *          the item
+   * @param item the item
    */
   public final void push(T item) {
     elements.add(item);
@@ -88,8 +86,7 @@ public class PseudoStack<T> extends AbstractStack implements Serializable {
   /**
    * Gets the.
    *
-   * @param i
-   *          the i
+   * @param i the i
    * @return the t
    */
   public T get(int i) {

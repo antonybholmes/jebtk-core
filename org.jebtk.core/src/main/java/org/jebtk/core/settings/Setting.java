@@ -16,7 +16,6 @@
 package org.jebtk.core.settings;
 
 import java.awt.Color;
-import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -44,7 +43,8 @@ import org.w3c.dom.Element;
  * @author Antony Holmes Holmes
  *
  */
-public class Setting extends ChangeListeners implements Comparable<Setting>, XmlRepresentation, JsonRepresentation {
+public class Setting extends ChangeListeners
+    implements Comparable<Setting>, XmlRepresentation, JsonRepresentation {
 
   /**
    * The constant serialVersionUID.
@@ -67,10 +67,8 @@ public class Setting extends ChangeListeners implements Comparable<Setting>, Xml
   /**
    * Instantiates a new setting.
    *
-   * @param path
-   *          the path
-   * @param locked
-   *          the locked
+   * @param path the path
+   * @param locked the locked
    */
   public Setting(String path, boolean locked) {
     this(new StrictPath(path), locked);
@@ -79,10 +77,8 @@ public class Setting extends ChangeListeners implements Comparable<Setting>, Xml
   /**
    * Instantiates a new setting.
    *
-   * @param path
-   *          the path
-   * @param locked
-   *          the locked
+   * @param path the path
+   * @param locked the locked
    */
   public Setting(Path path, boolean locked) {
     this(path, null, locked);
@@ -91,12 +87,9 @@ public class Setting extends ChangeListeners implements Comparable<Setting>, Xml
   /**
    * Instantiates a new setting.
    *
-   * @param path
-   *          the path
-   * @param description
-   *          the description
-   * @param locked
-   *          the locked
+   * @param path the path
+   * @param description the description
+   * @param locked the locked
    */
   public Setting(String path, String description, boolean locked) {
     this(new StrictPath(path), description, locked);
@@ -105,12 +98,9 @@ public class Setting extends ChangeListeners implements Comparable<Setting>, Xml
   /**
    * Instantiates a new setting.
    *
-   * @param path
-   *          the path
-   * @param description
-   *          the description
-   * @param locked
-   *          the locked
+   * @param path the path
+   * @param description the description
+   * @param locked the locked
    */
   public Setting(Path path, String description, boolean locked) {
 
@@ -306,8 +296,7 @@ public class Setting extends ChangeListeners implements Comparable<Setting>, Xml
   /**
    * Gets the lib name.
    *
-   * @param path
-   *          the path
+   * @param path the path
    * @return the lib name
    */
   public static String getLibName(StrictPath path) {
@@ -317,27 +306,24 @@ public class Setting extends ChangeListeners implements Comparable<Setting>, Xml
   /**
    * Parses the.
    *
-   * @param path
-   *          the path
-   * @param value
-   *          the value
-   * @param description
-   *          the description
-   * @param locked
-   *          the locked
+   * @param path the path
+   * @param value the value
+   * @param description the description
+   * @param locked the locked
    * @return the setting
    */
-  public static Setting parse(String path, String value, String description, boolean locked) {
+  public static Setting parse(String path,
+      String value,
+      String description,
+      boolean locked) {
     return parse(new StrictPath(path), value, description, locked);
   }
 
   /**
    * Parses the.
    *
-   * @param path
-   *          the path
-   * @param value
-   *          the value
+   * @param path the path
+   * @param value the value
    * @return the setting
    */
   public static Setting parse(Path path, String value) {
@@ -347,17 +333,16 @@ public class Setting extends ChangeListeners implements Comparable<Setting>, Xml
   /**
    * Parses the.
    *
-   * @param path
-   *          the path
-   * @param value
-   *          the value
-   * @param description
-   *          the description
-   * @param locked
-   *          the locked
+   * @param path the path
+   * @param value the value
+   * @param description the description
+   * @param locked the locked
    * @return the setting
    */
-  public static Setting parse(Path path, String value, String description, boolean locked) {
+  public static Setting parse(Path path,
+      String value,
+      String description,
+      boolean locked) {
     if (TextUtils.isNumber(value)) {
       double v = Double.parseDouble(value); // Parser.toDouble(s);
 
@@ -367,7 +352,8 @@ public class Setting extends ChangeListeners implements Comparable<Setting>, Xml
         return new SettingDouble(path, v, description, locked);
       }
     } else if (ColorUtils.isHtmlColor(value)) {
-      return new SettingColor(path, ColorUtils.decodeHtmlColor(value), description, locked);
+      return new SettingColor(path, ColorUtils.decodeHtmlColor(value),
+          description, locked);
     } else if (UrlUtils.isUrl(value)) {
       return new SettingUrl(path, new UrlBuilder(value), description, locked);
     } else if (value.toLowerCase().equals(TextUtils.TRUE)) {
@@ -382,10 +368,8 @@ public class Setting extends ChangeListeners implements Comparable<Setting>, Xml
   /**
    * Parses the.
    *
-   * @param path
-   *          the path
-   * @param value
-   *          the value
+   * @param path the path
+   * @param value the value
    * @return the setting
    */
   public static Setting parse(String path, double value) {
@@ -395,10 +379,8 @@ public class Setting extends ChangeListeners implements Comparable<Setting>, Xml
   /**
    * Parses the.
    *
-   * @param path
-   *          the path
-   * @param value
-   *          the value
+   * @param path the path
+   * @param value the value
    * @return the setting
    */
   public static Setting parse(Path path, double value) {
@@ -408,44 +390,40 @@ public class Setting extends ChangeListeners implements Comparable<Setting>, Xml
   /**
    * Parses the.
    *
-   * @param path
-   *          the path
-   * @param value
-   *          the value
-   * @param description
-   *          the description
-   * @param locked
-   *          the locked
+   * @param path the path
+   * @param value the value
+   * @param description the description
+   * @param locked the locked
    * @return the setting
    */
-  public static Setting parse(String path, double value, String description, boolean locked) {
+  public static Setting parse(String path,
+      double value,
+      String description,
+      boolean locked) {
     return parse(new StrictPath(path), value, description, locked);
   }
 
   /**
    * Parses the.
    *
-   * @param path
-   *          the path
-   * @param value
-   *          the value
-   * @param description
-   *          the description
-   * @param locked
-   *          the locked
+   * @param path the path
+   * @param value the value
+   * @param description the description
+   * @param locked the locked
    * @return the setting
    */
-  public static Setting parse(Path path, double value, String description, boolean locked) {
+  public static Setting parse(Path path,
+      double value,
+      String description,
+      boolean locked) {
     return new SettingDouble(path, value, description, locked);
   }
 
   /**
    * Parses the.
    *
-   * @param path
-   *          the path
-   * @param value
-   *          the value
+   * @param path the path
+   * @param value the value
    * @return the setting
    */
   public static Setting parse(String path, int value) {
@@ -455,10 +433,8 @@ public class Setting extends ChangeListeners implements Comparable<Setting>, Xml
   /**
    * Parses the.
    *
-   * @param path
-   *          the path
-   * @param value
-   *          the value
+   * @param path the path
+   * @param value the value
    * @return the setting
    */
   public static Setting parse(Path path, int value) {
@@ -468,44 +444,40 @@ public class Setting extends ChangeListeners implements Comparable<Setting>, Xml
   /**
    * Parses the.
    *
-   * @param path
-   *          the path
-   * @param value
-   *          the value
-   * @param description
-   *          the description
-   * @param locked
-   *          the locked
+   * @param path the path
+   * @param value the value
+   * @param description the description
+   * @param locked the locked
    * @return the setting
    */
-  public static Setting parse(String path, int value, String description, boolean locked) {
+  public static Setting parse(String path,
+      int value,
+      String description,
+      boolean locked) {
     return parse(new StrictPath(path), value, description, locked);
   }
 
   /**
    * Parses the.
    *
-   * @param path
-   *          the path
-   * @param value
-   *          the value
-   * @param description
-   *          the description
-   * @param locked
-   *          the locked
+   * @param path the path
+   * @param value the value
+   * @param description the description
+   * @param locked the locked
    * @return the setting
    */
-  public static Setting parse(Path path, int value, String description, boolean locked) {
+  public static Setting parse(Path path,
+      int value,
+      String description,
+      boolean locked) {
     return new SettingInt(path, value, description, locked);
   }
 
   /**
    * Parses the.
    *
-   * @param path
-   *          the path
-   * @param value
-   *          the value
+   * @param path the path
+   * @param value the value
    * @return the setting
    */
   public static Setting parse(String path, long value) {
@@ -515,10 +487,8 @@ public class Setting extends ChangeListeners implements Comparable<Setting>, Xml
   /**
    * Parses the.
    *
-   * @param path
-   *          the path
-   * @param value
-   *          the value
+   * @param path the path
+   * @param value the value
    * @return the setting
    */
   public static Setting parse(Path path, long value) {
@@ -528,44 +498,40 @@ public class Setting extends ChangeListeners implements Comparable<Setting>, Xml
   /**
    * Parses the.
    *
-   * @param path
-   *          the path
-   * @param value
-   *          the value
-   * @param description
-   *          the description
-   * @param locked
-   *          the locked
+   * @param path the path
+   * @param value the value
+   * @param description the description
+   * @param locked the locked
    * @return the setting
    */
-  public static Setting parse(String path, long value, String description, boolean locked) {
+  public static Setting parse(String path,
+      long value,
+      String description,
+      boolean locked) {
     return parse(new StrictPath(path), value, description, locked);
   }
 
   /**
    * Parses the.
    *
-   * @param path
-   *          the path
-   * @param value
-   *          the value
-   * @param description
-   *          the description
-   * @param locked
-   *          the locked
+   * @param path the path
+   * @param value the value
+   * @param description the description
+   * @param locked the locked
    * @return the setting
    */
-  public static Setting parse(Path path, long value, String description, boolean locked) {
+  public static Setting parse(Path path,
+      long value,
+      String description,
+      boolean locked) {
     return new SettingLong(path, value, description, locked);
   }
 
   /**
    * Parses the.
    *
-   * @param path
-   *          the path
-   * @param value
-   *          the value
+   * @param path the path
+   * @param value the value
    * @return the setting
    */
   public static Setting parse(String path, Color value) {
@@ -575,10 +541,8 @@ public class Setting extends ChangeListeners implements Comparable<Setting>, Xml
   /**
    * Parses the.
    *
-   * @param path
-   *          the path
-   * @param value
-   *          the value
+   * @param path the path
+   * @param value the value
    * @return the setting
    */
   public static Setting parse(Path path, Color value) {
@@ -588,44 +552,40 @@ public class Setting extends ChangeListeners implements Comparable<Setting>, Xml
   /**
    * Parses the.
    *
-   * @param path
-   *          the path
-   * @param value
-   *          the value
-   * @param description
-   *          the description
-   * @param locked
-   *          the locked
+   * @param path the path
+   * @param value the value
+   * @param description the description
+   * @param locked the locked
    * @return the setting
    */
-  public static Setting parse(String path, Color value, String description, boolean locked) {
+  public static Setting parse(String path,
+      Color value,
+      String description,
+      boolean locked) {
     return parse(new StrictPath(path), value, description, locked);
   }
 
   /**
    * Parses the.
    *
-   * @param path
-   *          the path
-   * @param value
-   *          the value
-   * @param description
-   *          the description
-   * @param locked
-   *          the locked
+   * @param path the path
+   * @param value the value
+   * @param description the description
+   * @param locked the locked
    * @return the setting
    */
-  public static Setting parse(Path path, Color value, String description, boolean locked) {
+  public static Setting parse(Path path,
+      Color value,
+      String description,
+      boolean locked) {
     return new SettingColor(path, value, description, locked);
   }
 
   /**
    * Parses the.
    *
-   * @param path
-   *          the path
-   * @param value
-   *          the value
+   * @param path the path
+   * @param value the value
    * @return the setting
    */
   public static Setting parse(String path, boolean value) {
@@ -635,10 +595,8 @@ public class Setting extends ChangeListeners implements Comparable<Setting>, Xml
   /**
    * Parses the.
    *
-   * @param path
-   *          the path
-   * @param value
-   *          the value
+   * @param path the path
+   * @param value the value
    * @return the setting
    */
   public static Setting parse(Path path, boolean value) {
@@ -648,34 +606,32 @@ public class Setting extends ChangeListeners implements Comparable<Setting>, Xml
   /**
    * Parses the.
    *
-   * @param path
-   *          the path
-   * @param value
-   *          the value
-   * @param description
-   *          the description
-   * @param locked
-   *          the locked
+   * @param path the path
+   * @param value the value
+   * @param description the description
+   * @param locked the locked
    * @return the setting
    */
-  public static Setting parse(String path, boolean value, String description, boolean locked) {
+  public static Setting parse(String path,
+      boolean value,
+      String description,
+      boolean locked) {
     return parse(new StrictPath(path), value, description, locked);
   }
 
   /**
    * Parses the.
    *
-   * @param path
-   *          the path
-   * @param value
-   *          the value
-   * @param description
-   *          the description
-   * @param locked
-   *          the locked
+   * @param path the path
+   * @param value the value
+   * @param description the description
+   * @param locked the locked
    * @return the setting
    */
-  public static Setting parse(Path path, boolean value, String description, boolean locked) {
+  public static Setting parse(Path path,
+      boolean value,
+      String description,
+      boolean locked) {
     return new SettingBool(path, value, description, locked);
   }
 
@@ -704,8 +660,7 @@ public class Setting extends ChangeListeners implements Comparable<Setting>, Xml
    * {@code toJson()} to allow sub-classes to override it for specialized types
    * such as bools and numbers.
    *
-   * @param o
-   *          the o
+   * @param o the o
    */
   protected void formatJsonValue(Json o) {
     if (getAsString() != null) {

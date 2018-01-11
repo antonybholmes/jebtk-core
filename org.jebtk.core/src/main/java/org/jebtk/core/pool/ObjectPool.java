@@ -26,8 +26,7 @@ import java.util.Stack;
  * Represents a thread safe collection of objects that can be reused.
  *
  * @author Antony Holmes Holmes
- * @param <T>
- *          the generic type
+ * @param <T> the generic type
  */
 public class ObjectPool<T> {
 
@@ -59,10 +58,8 @@ public class ObjectPool<T> {
   /**
    * Instantiates a new object pool.
    *
-   * @param name
-   *          the name
-   * @param maxSize
-   *          the max size
+   * @param name the name
+   * @param maxSize the max size
    */
   public ObjectPool(String name, int maxSize) {
     this.name = name;
@@ -83,8 +80,7 @@ public class ObjectPool<T> {
   /**
    * Adds the.
    *
-   * @param object
-   *          the object
+   * @param object the object
    */
   public synchronized void add(T object) {
     if (pool.size() == maxSize) {
@@ -113,11 +109,10 @@ public class ObjectPool<T> {
   }
 
   /**
-   * Check an object in to the store. The object must have been checked out before
-   * it can be checked in.
+   * Check an object in to the store. The object must have been checked out
+   * before it can be checked in.
    *
-   * @param object
-   *          the object
+   * @param object the object
    */
   public synchronized void checkIn(T object) {
     if (!used.contains(object)) {

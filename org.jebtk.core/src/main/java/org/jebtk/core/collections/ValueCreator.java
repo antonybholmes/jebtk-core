@@ -21,8 +21,7 @@ package org.jebtk.core.collections;
  * the same value. This is best used with immutable objects such as strings and
  * numbers.
  *
- * @param <T>
- *          the generic type
+ * @param <T> the generic type
  */
 public class ValueCreator<T> implements EntryCreator<T> {
 
@@ -34,8 +33,7 @@ public class ValueCreator<T> implements EntryCreator<T> {
   /**
    * Instantiates a new value creator.
    *
-   * @param value
-   *          the value
+   * @param value the value
    */
   public ValueCreator(T value) {
     mValue = value;

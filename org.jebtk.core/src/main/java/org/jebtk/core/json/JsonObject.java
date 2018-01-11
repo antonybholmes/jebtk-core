@@ -55,8 +55,7 @@ public class JsonObject extends JsonContainer {
   /**
    * Instantiates a new json object.
    *
-   * @param name
-   *          the name
+   * @param name the name
    */
   public JsonObject(String name) {
     add("name", name);
@@ -172,7 +171,8 @@ public class JsonObject extends JsonContainer {
     for (String name : mMemberNames) {
       v = mMemberMap.get(name);
 
-      buffer.append(TextUtils.quote(JsonString.escape(name))).append(JsonBuilder.JSON_VALUE_DELIMITER);
+      buffer.append(TextUtils.quote(JsonString.escape(name)))
+          .append(JsonBuilder.JSON_VALUE_DELIMITER);
 
       if (v == null) {
         buffer.append(JsonBuilder.JSON_NULL);
@@ -246,10 +246,8 @@ public class JsonObject extends JsonContainer {
   /**
    * Creates the.
    *
-   * @param key
-   *          the key
-   * @param value
-   *          the value
+   * @param key the key
+   * @param value the value
    * @return the json
    */
   public static Json create(String key, String value) {

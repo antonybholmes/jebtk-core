@@ -26,8 +26,8 @@ public class SettingsWriterPackageJson implements SettingsWriter {
   /*
    * (non-Javadoc)
    * 
-   * @see
-   * org.abh.common.settings.SettingsWriter#save(org.abh.common.settings.Settings)
+   * @see org.abh.common.settings.SettingsWriter#save(org.abh.common.settings.
+   * Settings)
    */
   @Override
   public void save(Settings settings) {

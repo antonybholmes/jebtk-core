@@ -33,8 +33,7 @@ public class JsonInteger extends Json {
   /**
    * Instantiates a new json integer.
    *
-   * @param value
-   *          the value
+   * @param value the value
    */
   public JsonInteger(int value) {
     mValue = value;

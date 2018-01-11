@@ -21,8 +21,7 @@ package org.jebtk.core.tree;
  * name be changed.
  *
  * @author Antony Holmes Holmes
- * @param <T>
- *          the generic type
+ * @param <T> the generic type
  */
 public class TreeRootNode<T> extends TreeNode<T> {
 

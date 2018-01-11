@@ -76,8 +76,7 @@ public class Temp {
    * guaranteed to be unique if the program or VM are restarted.
    *
    * @return the file
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public static Path generateTempFile() throws IOException {
     return generateTempFile("tmp");
@@ -86,16 +85,15 @@ public class Temp {
   /**
    * Generate a temp file with the given extension.
    *
-   * @param ext
-   *          the ext
+   * @param ext the ext
    * @return the file
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public static Path generateTempFile(String ext) throws IOException {
     createTempDirectory();
 
-    return TEMP_DIRECTORY.resolve(TextUtils.paste("t", NEXT_ID.getAndIncrement(), ".", ext));
+    return TEMP_DIRECTORY
+        .resolve(TextUtils.paste("t", NEXT_ID.getAndIncrement(), ".", ext));
   }
 
   /**
@@ -108,8 +106,7 @@ public class Temp {
   /**
    * Delete temp files.
    *
-   * @param name
-   *          the name
+   * @param name the name
    */
   public static void deleteTempFiles(String name) {
     if (!FileUtils.exists(TEMP_DIRECTORY)) {
@@ -120,7 +117,8 @@ public class Temp {
 
     try {
       for (Path file : FileUtils.ls(TEMP_DIRECTORY)) {
-        if (name != null && !name.equals("") && !PathUtils.getName(file).contains(name)) {
+        if (name != null && !name.equals("")
+            && !PathUtils.getName(file).contains(name)) {
           continue;
         }
 
@@ -134,11 +132,9 @@ public class Temp {
   /**
    * Creates the temp file.
    *
-   * @param name
-   *          the name
+   * @param name the name
    * @return the file
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public static Path createTempFile(String name) throws IOException {
     return createTempFile(TEMP_DIRECTORY, name);
@@ -147,15 +143,13 @@ public class Temp {
   /**
    * Creates a valid, random, disposable file name.
    *
-   * @param tempDirectory
-   *          the temp directory
-   * @param name
-   *          the name
+   * @param tempDirectory the temp directory
+   * @param name the name
    * @return the file
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static Path createTempFile(Path tempDirectory, String name) throws IOException {
+  public static Path createTempFile(Path tempDirectory, String name)
+      throws IOException {
     // ensure the temp directory exists
     FileUtils.mkdir(tempDirectory);
 

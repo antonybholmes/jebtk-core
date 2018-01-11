@@ -32,8 +32,7 @@ public class MessageException extends Exception {
   /**
    * Instantiates a new message exception.
    *
-   * @param message
-   *          the message
+   * @param message the message
    */
   public MessageException(String message) {
     super(message);

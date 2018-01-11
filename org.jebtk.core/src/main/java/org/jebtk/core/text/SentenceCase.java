@@ -24,12 +24,14 @@ public class SentenceCase {
   /**
    * The constant FONT_CASES.
    */
-  public static final String[] FONT_CASES = { "Sentence case.", "UPPERCASE", "lowercase", "Capitalize Each Word" };
+  public static final String[] FONT_CASES = { "Sentence case.", "UPPERCASE",
+      "lowercase", "Capitalize Each Word" };
 
   /**
    * The constant types.
    */
-  public static final SentenceCaseType[] types = { SentenceCaseType.SENTENCE_CASE, SentenceCaseType.UPPERCASE,
+  public static final SentenceCaseType[] types = {
+      SentenceCaseType.SENTENCE_CASE, SentenceCaseType.UPPERCASE,
       SentenceCaseType.LOWERCASE, SentenceCaseType.CAPITALIZE_EACH_WORD };
 
   /**
@@ -41,16 +43,15 @@ public class SentenceCase {
   /**
    * Converts text to a different case.
    *
-   * @param text
-   *          the text
-   * @param type
-   *          the type
+   * @param text the text
+   * @param type the type
    * @return the string
    */
   public static String convert(String text, SentenceCaseType type) {
     switch (type) {
     case SENTENCE_CASE:
-      return text.substring(0, 0).toUpperCase() + text.substring(1, text.length() - 1);
+      return text.substring(0, 0).toUpperCase()
+          + text.substring(1, text.length() - 1);
     case UPPERCASE:
       return text.toUpperCase();
     case LOWERCASE:

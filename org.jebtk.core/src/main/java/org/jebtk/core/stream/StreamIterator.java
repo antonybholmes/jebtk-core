@@ -21,8 +21,7 @@ import java.util.Iterator;
 /**
  * The Interface StreamIterator.
  *
- * @param <T>
- *          the generic type
+ * @param <T> the generic type
  */
 public interface StreamIterator<T> extends Iterator<T> {
 

@@ -27,16 +27,14 @@ import java.util.ListIterator;
  * and calls to subList() and toObject() will be slower since it is assumed that
  * these will not be called on a view, despite being valid.
  *
- * @param <E>
- *          the element type
+ * @param <E> the element type
  */
 public class SubList<E> implements List<E> {
 
   /**
    * The class SubListIterator.
    *
-   * @param <T>
-   *          the generic type
+   * @param <T> the generic type
    */
   private class SubListIterator<T> implements Iterator<T> {
 
@@ -58,12 +56,9 @@ public class SubList<E> implements List<E> {
     /**
      * Instantiates a new sub list iterator.
      *
-     * @param list
-     *          the list
-     * @param start
-     *          the start
-     * @param length
-     *          the length
+     * @param list the list
+     * @param start the start
+     * @param length the length
      */
     public SubListIterator(List<T> list, int start, int length) {
       mList = list;
@@ -105,8 +100,7 @@ public class SubList<E> implements List<E> {
   /**
    * The class SubListListIterator.
    *
-   * @param <T>
-   *          the generic type
+   * @param <T> the generic type
    */
   private class SubListListIterator<T> implements ListIterator<T> {
 
@@ -133,12 +127,9 @@ public class SubList<E> implements List<E> {
     /**
      * Instantiates a new sub list list iterator.
      *
-     * @param list
-     *          the list
-     * @param start
-     *          the start
-     * @param length
-     *          the length
+     * @param list the list
+     * @param start the start
+     * @param length the length
      */
     public SubListListIterator(List<T> list, int start, int length) {
       mList = list;
@@ -264,12 +255,9 @@ public class SubList<E> implements List<E> {
   /**
    * Instantiates a new sub list view.
    *
-   * @param list
-   *          the list
-   * @param start
-   *          the start
-   * @param length
-   *          the length
+   * @param list the list
+   * @param start the start
+   * @param length the length
    */
   public SubList(List<E> list, int start, int length) {
     mList = list;

@@ -28,8 +28,7 @@ public interface ToJson {
   /**
    * Append json to the builder.
    *
-   * @param builder
-   *          the builder
+   * @param builder the builder
    */
   public void toJson(JsonBuilder builder);
 }

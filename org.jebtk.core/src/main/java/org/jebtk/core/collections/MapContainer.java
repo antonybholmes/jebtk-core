@@ -26,10 +26,8 @@ import java.util.Set;
  * types (e.g. hash or tree etc). It's primary function is to provide the
  * boilerplate code for writing a class that has an internal map.
  *
- * @param <K>
- *          the key type
- * @param <V>
- *          the value type
+ * @param <K> the key type
+ * @param <V> the value type
  */
 public class MapContainer<K, V> implements IterMap<K, V> {
 
@@ -44,8 +42,7 @@ public class MapContainer<K, V> implements IterMap<K, V> {
   /**
    * Instantiates a new map container.
    *
-   * @param map
-   *          the map
+   * @param map the map
    */
   public MapContainer(Map<K, V> map) {
     mMap = map;

@@ -19,18 +19,18 @@ package org.jebtk.core.stream;
 /**
  * Represents a stream containing numbers.
  *
- * @param <T>
- *          the generic type
+ * @param <T> the generic type
  */
-public abstract class NumberStream<T extends Number> extends ContainerStream<T> {
+public abstract class NumberStream<T extends Number>
+    extends ContainerStream<T> {
 
   /**
    * The Class MeanFunction.
    *
-   * @param <T>
-   *          the generic type
+   * @param <T> the generic type
    */
-  private static class MeanFunction<T extends Number> implements ReduceFunction<T, Double> {
+  private static class MeanFunction<T extends Number>
+      implements ReduceFunction<T, Double> {
 
     /*
      * (non-Javadoc)
@@ -55,8 +55,7 @@ public abstract class NumberStream<T extends Number> extends ContainerStream<T> 
   /**
    * Instantiates a new number stream.
    *
-   * @param stream
-   *          the stream
+   * @param stream the stream
    */
   public NumberStream(Stream<T> stream) {
     super(stream);

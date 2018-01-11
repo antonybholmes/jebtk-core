@@ -39,8 +39,7 @@ public class PathContainer implements Path {
   /**
    * Instantiates a new path container.
    *
-   * @param path
-   *          the path
+   * @param path the path
    */
   public PathContainer(Path path) {
     mPath = path;
@@ -173,7 +172,8 @@ public class PathContainer implements Path {
    * java.nio.file.WatchEvent.Kind[])
    */
   @Override
-  public WatchKey register(WatchService watcher, Kind<?>... events) throws IOException {
+  public WatchKey register(WatchService watcher, Kind<?>... events)
+      throws IOException {
     return mPath.register(watcher, events);
   }
 
@@ -184,7 +184,9 @@ public class PathContainer implements Path {
    * java.nio.file.WatchEvent.Kind[], java.nio.file.WatchEvent.Modifier[])
    */
   @Override
-  public WatchKey register(WatchService watcher, Kind<?>[] events, Modifier... modifiers) throws IOException {
+  public WatchKey register(WatchService watcher,
+      Kind<?>[] events,
+      Modifier... modifiers) throws IOException {
     return mPath.register(watcher, events, modifiers);
   }
 

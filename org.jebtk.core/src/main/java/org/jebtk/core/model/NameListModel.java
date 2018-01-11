@@ -28,8 +28,7 @@ import org.jebtk.core.collections.UniqueArrayList;
  * entered and are retrivable either by name or index.
  *
  * @author Antony Holmes Holmes
- * @param <T>
- *          the generic type
+ * @param <T> the generic type
  */
 public class NameListModel<T> extends NameModel<T> {
 
@@ -96,8 +95,7 @@ public class NameListModel<T> extends NameModel<T> {
   /**
    * Gets the.
    *
-   * @param index
-   *          the index
+   * @param index the index
    * @return the t
    */
   public T get(int index) {

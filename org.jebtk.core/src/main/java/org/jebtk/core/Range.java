@@ -37,8 +37,7 @@ public class Range implements Iterable<Integer> {
   /**
    * Instantiates a new range.
    *
-   * @param length
-   *          the length
+   * @param length the length
    */
   public Range(int length) {
     this(0, length);
@@ -51,10 +50,8 @@ public class Range implements Iterable<Integer> {
   /**
    * Instantiates a new range.
    *
-   * @param start
-   *          the start
-   * @param length
-   *          the length
+   * @param start the start
+   * @param length the length
    */
   public Range(int start, int end, int skip) {
     mStart = start;
@@ -66,8 +63,8 @@ public class Range implements Iterable<Integer> {
   /*
    * @Override public boolean hasNext() { return mStart < mLength; }
    * 
-   * @Override public Integer next() { if (hasNext()) { return mStart++; } else {
-   * throw new NoSuchElementException("Range ended"); } }
+   * @Override public Integer next() { if (hasNext()) { return mStart++; } else
+   * { throw new NoSuchElementException("Range ended"); } }
    * 
    * @Override public void remove() { throw new
    * UnsupportedOperationException("Cannot remove values from a Range"); }
@@ -101,7 +98,8 @@ public class Range implements Iterable<Integer> {
 
       @Override
       public void remove() {
-        throw new UnsupportedOperationException("Cannot remove values from a Range");
+        throw new UnsupportedOperationException(
+            "Cannot remove values from a Range");
       }
     };
   }
@@ -119,8 +117,7 @@ public class Range implements Iterable<Integer> {
   /**
    * Creates a new Range.
    *
-   * @param length
-   *          The max value (exclusive) of the range, thus 5 will generate
+   * @param length The max value (exclusive) of the range, thus 5 will generate
    *          0,1,2,3,4.
    * @return A range object.
    */
@@ -131,10 +128,8 @@ public class Range implements Iterable<Integer> {
   /**
    * Creates the.
    *
-   * @param start
-   *          the start
-   * @param length
-   *          the length
+   * @param start the start
+   * @param length the length
    * @return the range
    */
   public static Range create(int start, int end) {

@@ -46,8 +46,7 @@ public class Xhtml {
   /**
    * Start tag.
    *
-   * @param text
-   *          the text
+   * @param text the text
    * @return the string
    */
   public static final String startTag(String text) {
@@ -57,8 +56,7 @@ public class Xhtml {
   /**
    * Open tag.
    *
-   * @param text
-   *          the text
+   * @param text the text
    * @return the string
    */
   public static final String openTag(String text) {
@@ -95,8 +93,7 @@ public class Xhtml {
   /**
    * End tag.
    *
-   * @param text
-   *          the text
+   * @param text the text
    * @return the string
    */
   public static final String endTag(String text) {
@@ -106,8 +103,7 @@ public class Xhtml {
   /**
    * Closed tag.
    *
-   * @param text
-   *          the text
+   * @param text the text
    * @return the string
    */
   public static final String closedTag(String text) {
@@ -117,8 +113,7 @@ public class Xhtml {
   /**
    * Attribute.
    *
-   * @param attribute
-   *          the attribute
+   * @param attribute the attribute
    * @return the string
    */
   public static String attribute(Attribute attribute) {
@@ -128,10 +123,8 @@ public class Xhtml {
   /**
    * Attribute.
    *
-   * @param name
-   *          the name
-   * @param value
-   *          the value
+   * @param name the name
+   * @param value the value
    * @return the string
    */
   public static final String attribute(String name, String value) {
@@ -142,8 +135,7 @@ public class Xhtml {
    * Creates an indentation space for writing aesthetically pleasing XML files
    * rather than one line monoliths.
    *
-   * @param level
-   *          the level
+   * @param level the level
    * @return the string
    */
   public static String indentation(int level) {
@@ -153,8 +145,7 @@ public class Xhtml {
   /**
    * Cdata.
    *
-   * @param data
-   *          the data
+   * @param data the data
    * @return the string
    */
   public static String cdata(String data) {

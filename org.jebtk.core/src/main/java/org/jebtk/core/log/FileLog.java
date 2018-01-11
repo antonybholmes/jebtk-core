@@ -50,8 +50,7 @@ public class FileLog implements LogEventListener {
   /**
    * Instantiates a new file log.
    *
-   * @param file
-   *          the file
+   * @param file the file
    */
   public FileLog(Path file) {
     mFile = file;

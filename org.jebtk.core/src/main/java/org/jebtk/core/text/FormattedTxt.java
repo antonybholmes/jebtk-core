@@ -33,10 +33,8 @@ public interface FormattedTxt {
    * Like toString(), should create a text representation of an object but write
    * it to a string buffer rather than creating a new string.
    *
-   * @param buffer
-   *          the buffer
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @param buffer the buffer
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   void formattedTxt(Appendable buffer) throws IOException;
 }

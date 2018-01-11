@@ -27,10 +27,10 @@ import org.jebtk.core.path.Path;
  * Stores objects by categories in a searchable radix tree.
  *
  * @author Antony Holmes Holmes
- * @param <T>
- *          the generic type
+ * @param <T> the generic type
  */
-public class CategoryObjectDb<T> implements Iterable<CategoryObjectNode<T>>, Serializable {
+public class CategoryObjectDb<T>
+    implements Iterable<CategoryObjectNode<T>>, Serializable {
 
   /**
    * The constant serialVersionUID.
@@ -57,8 +57,7 @@ public class CategoryObjectDb<T> implements Iterable<CategoryObjectNode<T>>, Ser
   /**
    * Gets the child by path.
    *
-   * @param path
-   *          the path
+   * @param path the path
    * @return the child by path
    */
   public CategoryObjectNode<T> getChildByPath(String path) {
@@ -68,8 +67,7 @@ public class CategoryObjectDb<T> implements Iterable<CategoryObjectNode<T>>, Ser
   /**
    * Gets the child by path.
    *
-   * @param path
-   *          the path
+   * @param path the path
    * @return the child by path
    */
   public CategoryObjectNode<T> getChildByPath(Path path) {

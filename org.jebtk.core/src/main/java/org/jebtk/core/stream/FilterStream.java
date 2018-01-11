@@ -19,8 +19,7 @@ package org.jebtk.core.stream;
 /**
  * The Class FilterStream.
  *
- * @param <T>
- *          the generic type
+ * @param <T> the generic type
  */
 public class FilterStream<T> extends ContainerStream<T> {
 
@@ -30,10 +29,8 @@ public class FilterStream<T> extends ContainerStream<T> {
   /**
    * Instantiates a new filter stream.
    *
-   * @param stream
-   *          the stream
-   * @param filter
-   *          the filter
+   * @param stream the stream
+   * @param filter the filter
    */
   public FilterStream(Stream<T> stream, Filter<T> filter) {
     super(stream);

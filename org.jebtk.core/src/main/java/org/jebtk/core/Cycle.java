@@ -23,8 +23,7 @@ import java.util.List;
  * List that allows continuous cycling through items.
  *
  * @author Antony Holmes Holmes
- * @param <T>
- *          the generic type
+ * @param <T> the generic type
  */
 public class Cycle<T> {
 
@@ -41,8 +40,7 @@ public class Cycle<T> {
   /**
    * Adds the.
    *
-   * @param item
-   *          the item
+   * @param item the item
    */
   public void add(T item) {
     mItems.add(item);

@@ -49,8 +49,7 @@ public class DictionaryXmlHandler extends DefaultHandler {
   /**
    * Instantiates a new dictionary xml handler.
    *
-   * @param service
-   *          the service
+   * @param service the service
    */
   public DictionaryXmlHandler(DictionaryService service) {
     this.service = service;
@@ -62,7 +61,10 @@ public class DictionaryXmlHandler extends DefaultHandler {
    * @see org.xml.sax.helpers.DefaultHandler#startElement(java.lang.String,
    * java.lang.String, java.lang.String, org.xml.sax.Attributes)
    */
-  public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
+  public void startElement(String uri,
+      String localName,
+      String qName,
+      Attributes attributes) throws SAXException {
 
     if (qName.equals("word")) {
       word = attributes.getValue("name");
@@ -88,7 +90,8 @@ public class DictionaryXmlHandler extends DefaultHandler {
    * @see org.xml.sax.helpers.DefaultHandler#endElement(java.lang.String,
    * java.lang.String, java.lang.String)
    */
-  public void endElement(String uri, String localName, String qName) throws SAXException {
+  public void endElement(String uri, String localName, String qName)
+      throws SAXException {
     // do nothing
   }
 }

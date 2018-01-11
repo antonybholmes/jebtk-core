@@ -42,8 +42,7 @@ public class KeyNode extends TreeNode<String> {
   /**
    * Instantiates a new key node.
    *
-   * @param name
-   *          the name
+   * @param name the name
    */
   public KeyNode(String name) {
     super(name);
@@ -52,10 +51,8 @@ public class KeyNode extends TreeNode<String> {
   /**
    * Instantiates a new key node.
    *
-   * @param name
-   *          the name
-   * @param value
-   *          the value
+   * @param name the name
+   * @param value the value
    */
   public KeyNode(String name, String value) {
     super(name, value);
@@ -64,8 +61,7 @@ public class KeyNode extends TreeNode<String> {
   /**
    * Create a clone of a node by inheriting its properties.
    *
-   * @param node
-   *          the node
+   * @param node the node
    */
   public KeyNode(KeyNode node) {
     super(node);
@@ -83,8 +79,7 @@ public class KeyNode extends TreeNode<String> {
   /**
    * Sets the description.
    *
-   * @param description
-   *          the new description
+   * @param description the new description
    */
   public void setDescription(String description) {
     if (description == null) {
@@ -141,8 +136,7 @@ public class KeyNode extends TreeNode<String> {
   /**
    * Standardize.
    *
-   * @param name
-   *          the name
+   * @param name the name
    * @return the string
    */
   public static String standardize(String name) {

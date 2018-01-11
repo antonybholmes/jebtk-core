@@ -19,10 +19,8 @@ package org.jebtk.core.collections;
 /**
  * Hashmap that automatically adds a default value if a key does not exist.
  *
- * @param <K>
- *          the key type
- * @param <V>
- *          the value type
+ * @param <K> the key type
+ * @param <V> the value type
  */
 public class DefaultOrderedHashMap<K, V> extends OrderedHashMap<K, V> {
 
@@ -37,8 +35,7 @@ public class DefaultOrderedHashMap<K, V> extends OrderedHashMap<K, V> {
   /**
    * Instantiates a new auto hash map.
    *
-   * @param defaultValue
-   *          the default value
+   * @param defaultValue the default value
    */
   public DefaultOrderedHashMap(V defaultValue) {
     this(HashMapCreator.INITIAL_CAPACITY, defaultValue);
@@ -47,10 +44,8 @@ public class DefaultOrderedHashMap<K, V> extends OrderedHashMap<K, V> {
   /**
    * Instantiates a new auto hash map.
    *
-   * @param initialCapacity
-   *          the initial capacity
-   * @param defaultValue
-   *          the default value
+   * @param initialCapacity the initial capacity
+   * @param defaultValue the default value
    */
   public DefaultOrderedHashMap(int initialCapacity, V defaultValue) {
     this(initialCapacity, new ValueCreator<V>(defaultValue));
@@ -59,12 +54,11 @@ public class DefaultOrderedHashMap<K, V> extends OrderedHashMap<K, V> {
   /**
    * Instantiates a new default map.
    *
-   * @param initialCapacity
-   *          the initial capacity
-   * @param defaultValue
-   *          the default value
+   * @param initialCapacity the initial capacity
+   * @param defaultValue the default value
    */
-  public DefaultOrderedHashMap(int initialCapacity, EntryCreator<V> defaultValue) {
+  public DefaultOrderedHashMap(int initialCapacity,
+      EntryCreator<V> defaultValue) {
     super(initialCapacity);
 
     mDefaultValue = defaultValue;
@@ -73,8 +67,7 @@ public class DefaultOrderedHashMap<K, V> extends OrderedHashMap<K, V> {
   /**
    * Instantiates a new default ordered hash map.
    *
-   * @param defaultValue
-   *          the default value
+   * @param defaultValue the default value
    */
   public DefaultOrderedHashMap(EntryCreator<V> defaultValue) {
     mDefaultValue = defaultValue;
@@ -94,8 +87,7 @@ public class DefaultOrderedHashMap<K, V> extends OrderedHashMap<K, V> {
   /**
    * Gets the value.
    *
-   * @param key
-   *          the key
+   * @param key the key
    * @return the value
    */
   public V getValue(K key) {
@@ -113,12 +105,9 @@ public class DefaultOrderedHashMap<K, V> extends OrderedHashMap<K, V> {
   /**
    * Creates a new Default Hash Map.
    *
-   * @param <K1>
-   *          the generic type
-   * @param <V1>
-   *          the generic type
-   * @param defaultValue
-   *          the default value
+   * @param <K1> the generic type
+   * @param <V1> the generic type
+   * @param defaultValue the default value
    * @return the map
    */
   public static <K1, V1> IterMap<K1, V1> create(V1 defaultValue) {
@@ -128,49 +117,41 @@ public class DefaultOrderedHashMap<K, V> extends OrderedHashMap<K, V> {
   /**
    * Creates the.
    *
-   * @param <K1>
-   *          the generic type
-   * @param <V1>
-   *          the generic type
-   * @param defaultValue
-   *          the default value
+   * @param <K1> the generic type
+   * @param <V1> the generic type
+   * @param defaultValue the default value
    * @return the map
    */
   public static <K1, V1> IterMap<K1, V1> create(EntryCreator<V1> defaultValue) {
-    return new DefaultOrderedHashMap<K1, V1>(HashMapCreator.INITIAL_CAPACITY, defaultValue);
+    return new DefaultOrderedHashMap<K1, V1>(HashMapCreator.INITIAL_CAPACITY,
+        defaultValue);
   }
 
   /**
    * Creates the.
    *
-   * @param <K1>
-   *          the generic type
-   * @param <V1>
-   *          the generic type
-   * @param initialCapacity
-   *          the initial capacity
-   * @param defaultValue
-   *          the default value
+   * @param <K1> the generic type
+   * @param <V1> the generic type
+   * @param initialCapacity the initial capacity
+   * @param defaultValue the default value
    * @return the map
    */
-  public static <K1, V1> IterMap<K1, V1> create(int initialCapacity, V1 defaultValue) {
+  public static <K1, V1> IterMap<K1, V1> create(int initialCapacity,
+      V1 defaultValue) {
     return create(initialCapacity, new ValueCreator<V1>(defaultValue));
   }
 
   /**
    * Creates the.
    *
-   * @param <K1>
-   *          the generic type
-   * @param <V1>
-   *          the generic type
-   * @param initialCapacity
-   *          the initial capacity
-   * @param defaultValue
-   *          the default value
+   * @param <K1> the generic type
+   * @param <V1> the generic type
+   * @param initialCapacity the initial capacity
+   * @param defaultValue the default value
    * @return the map
    */
-  public static <K1, V1> IterMap<K1, V1> create(int initialCapacity, EntryCreator<V1> defaultValue) {
+  public static <K1, V1> IterMap<K1, V1> create(int initialCapacity,
+      EntryCreator<V1> defaultValue) {
     return new DefaultOrderedHashMap<K1, V1>(initialCapacity, defaultValue);
   }
 }

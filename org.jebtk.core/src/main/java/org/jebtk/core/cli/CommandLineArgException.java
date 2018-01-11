@@ -31,8 +31,7 @@ public class CommandLineArgException extends MessageException {
   /**
    * Instantiates a new command line arg exception.
    *
-   * @param message
-   *          the message
+   * @param message the message
    */
   public CommandLineArgException(String message) {
     super(message);

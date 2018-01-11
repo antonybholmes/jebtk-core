@@ -20,8 +20,7 @@ package org.jebtk.core.stream;
  * The Class ReplicateStream replicates each value in a given stream n times so
  * that the length of a stream can be expanded.
  *
- * @param <T>
- *          the generic type
+ * @param <T> the generic type
  */
 public class ReplicateStream<T> extends ContainerStream<T> {
 
@@ -37,10 +36,8 @@ public class ReplicateStream<T> extends ContainerStream<T> {
   /**
    * Instantiates a new filter stream.
    *
-   * @param stream
-   *          the stream
-   * @param n
-   *          the n
+   * @param stream the stream
+   * @param n the n
    */
   public ReplicateStream(Stream<T> stream, int n) {
     super(stream);

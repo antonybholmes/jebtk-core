@@ -39,14 +39,10 @@ public class DoubleRect extends DoublePos2D {
   /**
    * Instantiates a new double rect.
    *
-   * @param x
-   *          the x
-   * @param y
-   *          the y
-   * @param w
-   *          the w
-   * @param h
-   *          the h
+   * @param x the x
+   * @param y the y
+   * @param w the w
+   * @param h the h
    */
   public DoubleRect(double x, double y, double w, double h) {
     super(x, y);
@@ -86,8 +82,7 @@ public class DoubleRect extends DoublePos2D {
   /**
    * Contains.
    *
-   * @param p
-   *          the p
+   * @param p the p
    * @return true, if successful
    */
   public boolean contains(Point p) {
@@ -97,10 +92,8 @@ public class DoubleRect extends DoublePos2D {
   /**
    * Contains.
    *
-   * @param p
-   *          the p
-   * @param padding
-   *          the padding
+   * @param p the p
+   * @param padding the padding
    * @return true, if successful
    */
   public boolean contains(Point p, double padding) {
@@ -110,10 +103,8 @@ public class DoubleRect extends DoublePos2D {
   /**
    * Returns true if the podouble is within the bounds of the rectangle.
    *
-   * @param x
-   *          the x
-   * @param y
-   *          the y
+   * @param x the x
+   * @param y the y
    * @return true, if successful
    */
   public boolean contains(double x, double y) {
@@ -124,15 +115,13 @@ public class DoubleRect extends DoublePos2D {
    * Returns true if the podouble x y is contained within the rectangle plus a
    * padding allowance.
    *
-   * @param x
-   *          the x
-   * @param y
-   *          the y
-   * @param padding
-   *          the padding
+   * @param x the x
+   * @param y the y
+   * @param padding the padding
    * @return true, if successful
    */
   public boolean contains(double x, double y, double padding) {
-    return x >= mX - padding && x <= mX + mW + padding && y >= mY - padding && y <= mY + mH + padding;
+    return x >= mX - padding && x <= mX + mW + padding && y >= mY - padding
+        && y <= mY + mH + padding;
   }
 }

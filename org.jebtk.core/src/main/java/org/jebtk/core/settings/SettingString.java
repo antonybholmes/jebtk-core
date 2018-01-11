@@ -41,16 +41,13 @@ public class SettingString extends Setting {
   /**
    * Instantiates a new setting string.
    *
-   * @param path
-   *          the path
-   * @param value
-   *          the value
-   * @param description
-   *          the description
-   * @param locked
-   *          the locked
+   * @param path the path
+   * @param value the value
+   * @param description the description
+   * @param locked the locked
    */
-  public SettingString(Path path, String value, String description, boolean locked) {
+  public SettingString(Path path, String value, String description,
+      boolean locked) {
     super(path, description, locked);
 
     mValue = value;
@@ -133,7 +130,7 @@ public class SettingString extends Setting {
    */
   @Override
   public String toString() {
-    return new StringBuilder("string_setting:").append(mPath.toString()).append(TextUtils.EQUALS_DELIMITER)
-        .append(mValue).toString();
+    return new StringBuilder("string_setting:").append(mPath.toString())
+        .append(TextUtils.EQUALS_DELIMITER).append(mValue).toString();
   }
 }

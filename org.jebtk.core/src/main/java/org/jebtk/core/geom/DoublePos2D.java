@@ -37,10 +37,8 @@ public class DoublePos2D implements Comparable<DoublePos2D> {
   /**
    * Instantiates a new point2 d double.
    *
-   * @param x
-   *          the x
-   * @param y
-   *          the y
+   * @param x the x
+   * @param y the y
    */
   public DoublePos2D(double x, double y) {
     mX = x;

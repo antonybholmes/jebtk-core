@@ -35,16 +35,13 @@ public class SettingUrl extends Setting {
   /**
    * Instantiates a new setting url.
    *
-   * @param path
-   *          the path
-   * @param value
-   *          the value
-   * @param description
-   *          the description
-   * @param locked
-   *          the locked
+   * @param path the path
+   * @param value the value
+   * @param description the description
+   * @param locked the locked
    */
-  public SettingUrl(Path path, UrlBuilder value, String description, boolean locked) {
+  public SettingUrl(Path path, UrlBuilder value, String description,
+      boolean locked) {
     super(path, description, locked);
 
     mValue = value;
@@ -87,7 +84,7 @@ public class SettingUrl extends Setting {
    */
   @Override
   public String toString() {
-    return new StringBuilder("url_setting:").append(mPath.toString()).append(TextUtils.EQUALS_DELIMITER).append(mValue)
-        .toString();
+    return new StringBuilder("url_setting:").append(mPath.toString())
+        .append(TextUtils.EQUALS_DELIMITER).append(mValue).toString();
   }
 }

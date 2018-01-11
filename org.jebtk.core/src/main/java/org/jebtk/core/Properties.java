@@ -44,10 +44,8 @@ public class Properties extends ChangeListeners implements Iterable<String> {
   /**
    * Sets the property and triggers a change event for any listener.
    *
-   * @param name
-   *          the name
-   * @param item
-   *          the item
+   * @param name the name
+   * @param item the item
    */
   public void setProperty(String name, Object item) {
     updateProperty(name, item);
@@ -58,10 +56,8 @@ public class Properties extends ChangeListeners implements Iterable<String> {
   /**
    * Update a property without triggering a change event.
    *
-   * @param name
-   *          the name
-   * @param item
-   *          the item
+   * @param name the name
+   * @param item the item
    */
   public void updateProperty(String name, Object item) {
     mPropertyMap.put(name, item);
@@ -70,8 +66,7 @@ public class Properties extends ChangeListeners implements Iterable<String> {
   /**
    * Gets the property.
    *
-   * @param name
-   *          the name
+   * @param name the name
    * @return the property
    */
   public Object getProperty(String name) {
@@ -81,8 +76,7 @@ public class Properties extends ChangeListeners implements Iterable<String> {
   /**
    * Gets the property as int.
    *
-   * @param name
-   *          the name
+   * @param name the name
    * @return the property as int
    */
   public int getAsInt(String name) {
@@ -92,8 +86,7 @@ public class Properties extends ChangeListeners implements Iterable<String> {
   /**
    * Gets the as bool.
    *
-   * @param name
-   *          the name
+   * @param name the name
    * @return the as bool
    */
   public boolean getAsBool(String name) {
@@ -107,8 +100,7 @@ public class Properties extends ChangeListeners implements Iterable<String> {
   /**
    * Gets the as color.
    *
-   * @param name
-   *          the name
+   * @param name the name
    * @return the as color
    */
   public Color getAsColor(String name) {
@@ -118,8 +110,7 @@ public class Properties extends ChangeListeners implements Iterable<String> {
   /**
    * Gets the property as double.
    *
-   * @param name
-   *          the name
+   * @param name the name
    * @return the property as double
    */
   public double getPropertyAsDouble(String name) {
@@ -129,8 +120,7 @@ public class Properties extends ChangeListeners implements Iterable<String> {
   /**
    * Contains.
    *
-   * @param name
-   *          the name
+   * @param name the name
    * @return true, if successful
    */
   public boolean contains(String name) {

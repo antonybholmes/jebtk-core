@@ -36,8 +36,7 @@ public class Array {
   /**
    * Instantiates a new array.
    *
-   * @param size
-   *          the size
+   * @param size the size
    */
   public Array(int size) {
     items = new int[size];
@@ -55,10 +54,8 @@ public class Array {
   /**
    * Sets the.
    *
-   * @param index
-   *          the index
-   * @param value
-   *          the value
+   * @param index the index
+   * @param value the value
    */
   public void set(int index, int value) {
     items[index] = value;
@@ -67,8 +64,7 @@ public class Array {
   /**
    * Gets the.
    *
-   * @param index
-   *          the index
+   * @param index the index
    * @return the int
    */
   public int get(int index) {
@@ -78,8 +74,7 @@ public class Array {
   /**
    * Set all values in the list to a particular value.
    *
-   * @param v
-   *          the new all
+   * @param v the new all
    */
   public void setAll(int v) {
     for (int i = 0; i < items.length; ++i) {
@@ -90,10 +85,8 @@ public class Array {
   /**
    * Creates the int array.
    *
-   * @param size
-   *          the size
-   * @param v
-   *          the v
+   * @param size the size
+   * @param v the v
    * @return the int[]
    */
   public static int[] createIntArray(int size, int v) {
@@ -107,10 +100,8 @@ public class Array {
   /**
    * Set all values in an array to a particular value.
    *
-   * @param array
-   *          the array
-   * @param v
-   *          the v
+   * @param array the array
+   * @param v the v
    */
   public static void setIntArray(int[] array, int v) {
     for (int i = 0; i < array.length; ++i) {
@@ -121,10 +112,8 @@ public class Array {
   /**
    * Creates the double array.
    *
-   * @param size
-   *          the size
-   * @param v
-   *          the v
+   * @param size the size
+   * @param v the v
    * @return the double[]
    */
   public static double[] createDoubleArray(int size, double v) {
@@ -138,10 +127,8 @@ public class Array {
   /**
    * Sets the double array.
    *
-   * @param array
-   *          the array
-   * @param v
-   *          the v
+   * @param array the array
+   * @param v the v
    */
   public static void setDoubleArray(double[] array, double v) {
     for (int i = 0; i < array.length; ++i) {
@@ -152,10 +139,8 @@ public class Array {
   /**
    * Create an array of size n so all n elements can be addressed out of order.
    *
-   * @param <T>
-   *          the generic type
-   * @param size
-   *          the size
+   * @param <T> the generic type
+   * @param size the size
    * @return the list
    */
   public static <T> List<T> init(int size) {

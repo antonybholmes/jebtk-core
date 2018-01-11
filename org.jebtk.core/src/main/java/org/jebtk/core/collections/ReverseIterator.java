@@ -16,8 +16,8 @@
 package org.jebtk.core.collections;
 
 import java.util.Iterator;
-import java.util.ListIterator;
 import java.util.List;
+import java.util.ListIterator;
 
 public class ReverseIterator<T> implements Iterator<T>, Iterable<T> {
   private ListIterator<T> mIt;
@@ -57,8 +57,7 @@ public class ReverseIterator<T> implements Iterator<T>, Iterable<T> {
  * ReverseIterator traverses a list in reverse order to negate having to sort
  * and or copy a list to reverse it.
  *
- * @param <T>
- *          the generic type
+ * @param <T> the generic type
  */
 // public class ReverseIterator<T> implements Iterator<T>, Iterable<T> {
 //

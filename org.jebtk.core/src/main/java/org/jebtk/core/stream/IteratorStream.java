@@ -25,8 +25,7 @@ import org.jebtk.core.collections.CollectionUtils;
  * The Class BaseStream encapulates an initial collection with the intent of
  * apply further streams to process the list.
  *
- * @param <T>
- *          the generic type
+ * @param <T> the generic type
  */
 public class IteratorStream<T> extends Stream<T> {
 
@@ -39,8 +38,7 @@ public class IteratorStream<T> extends Stream<T> {
   /**
    * Instantiates a new base stream.
    *
-   * @param iter
-   *          the iter
+   * @param iter the iter
    */
   public IteratorStream(Iterator<T> iter) {
     mIter = iter;

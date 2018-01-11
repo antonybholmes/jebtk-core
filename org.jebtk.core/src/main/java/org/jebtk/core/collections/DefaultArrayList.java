@@ -23,8 +23,7 @@ import java.util.List;
  * ArrayList that auto fills with default values so that it is initialized to a
  * given size.
  *
- * @param <T>
- *          the value type
+ * @param <T> the value type
  */
 public class DefaultArrayList<T> extends ArrayList<T> {
 
@@ -48,8 +47,7 @@ public class DefaultArrayList<T> extends ArrayList<T> {
   /**
    * Instantiates a new default array list.
    *
-   * @param defaultValue
-   *          the default value
+   * @param defaultValue the default value
    */
   public DefaultArrayList(T defaultValue) {
     this(DEFAULT_SIZE, new ValueCreator<T>(defaultValue));
@@ -58,10 +56,8 @@ public class DefaultArrayList<T> extends ArrayList<T> {
   /**
    * Instantiates a new auto hash map.
    *
-   * @param size
-   *          the size
-   * @param defaultValue
-   *          the default value
+   * @param size the size
+   * @param defaultValue the default value
    */
   public DefaultArrayList(int size, T defaultValue) {
     this(size, new ValueCreator<T>(defaultValue));
@@ -70,10 +66,8 @@ public class DefaultArrayList<T> extends ArrayList<T> {
   /**
    * Instantiates a new default list.
    *
-   * @param size
-   *          the size
-   * @param defaultValue
-   *          the default value
+   * @param size the size
+   * @param defaultValue the default value
    */
   public DefaultArrayList(int size, EntryCreator<T> defaultValue) {
     super(size);
@@ -105,8 +99,7 @@ public class DefaultArrayList<T> extends ArrayList<T> {
   /**
    * Auto create.
    *
-   * @param size
-   *          the size
+   * @param size the size
    */
   private void autoCreate(int size) {
     while (size() < size) {
@@ -121,10 +114,8 @@ public class DefaultArrayList<T> extends ArrayList<T> {
   /**
    * Creates the.
    *
-   * @param <T1>
-   *          the generic type
-   * @param defaultValue
-   *          the default value
+   * @param <T1> the generic type
+   * @param defaultValue the default value
    * @return the list
    */
   public static <T1> List<T1> create(T1 defaultValue) {
@@ -134,12 +125,9 @@ public class DefaultArrayList<T> extends ArrayList<T> {
   /**
    * Creates the.
    *
-   * @param <T1>
-   *          the generic type
-   * @param size
-   *          the size
-   * @param defaultValue
-   *          the default value
+   * @param <T1> the generic type
+   * @param size the size
+   * @param defaultValue the default value
    * @return the list
    */
   public static <T1> List<T1> create(int size, T1 defaultValue) {
@@ -149,10 +137,8 @@ public class DefaultArrayList<T> extends ArrayList<T> {
   /**
    * Creates a new {@code DefaultArrayList}.
    *
-   * @param <T1>
-   *          the generic type
-   * @param defaultValue
-   *          the default value
+   * @param <T1> the generic type
+   * @param defaultValue the default value
    * @return the list
    */
   public static <T1> List<T1> create(EntryCreator<T1> defaultValue) {
@@ -162,12 +148,9 @@ public class DefaultArrayList<T> extends ArrayList<T> {
   /**
    * Creates a new {@code DefaultArrayList}.
    *
-   * @param <T1>
-   *          the generic type
-   * @param size
-   *          the size
-   * @param defaultValue
-   *          the default value
+   * @param <T1> the generic type
+   * @param size the size
+   * @param defaultValue the default value
    * @return the list
    */
   public static <T1> List<T1> create(int size, EntryCreator<T1> defaultValue) {

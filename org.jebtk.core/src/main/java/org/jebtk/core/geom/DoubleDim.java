@@ -43,10 +43,8 @@ public class DoubleDim implements Comparable<DoubleDim> {
   /**
    * Instantiates a new double dim.
    *
-   * @param w
-   *          the w
-   * @param h
-   *          the h
+   * @param w the w
+   * @param h the h
    */
   public DoubleDim(double w, double h) {
     mW = w;
@@ -56,8 +54,7 @@ public class DoubleDim implements Comparable<DoubleDim> {
   /**
    * Instantiates a new double dim.
    *
-   * @param dim
-   *          the dim
+   * @param dim the dim
    */
   public DoubleDim(Dimension dim) {
     this(dim.width, dim.height);
@@ -94,8 +91,7 @@ public class DoubleDim implements Comparable<DoubleDim> {
   /**
    * To dimension.
    *
-   * @param size
-   *          the size
+   * @param size the size
    * @return the dimension
    */
   public static Dimension toDimension(DoubleDim size) {

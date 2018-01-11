@@ -31,8 +31,7 @@ public class ObjectPoolExhaustedException extends MessageException {
   /**
    * Instantiates a new object pool exhausted exception.
    *
-   * @param pool
-   *          the pool
+   * @param pool the pool
    */
   public ObjectPoolExhaustedException(ObjectPool<?> pool) {
     super(pool.getName() + " exhausted.");

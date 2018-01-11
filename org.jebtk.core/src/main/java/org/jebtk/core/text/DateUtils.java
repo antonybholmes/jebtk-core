@@ -64,8 +64,7 @@ public class DateUtils {
   /**
    * Format.
    *
-   * @param dates
-   *          the dates
+   * @param dates the dates
    * @return the list
    */
   public static List<String> format(Collection<Date> dates) {
@@ -75,10 +74,8 @@ public class DateUtils {
   /**
    * Format.
    *
-   * @param dates
-   *          the dates
-   * @param format
-   *          the format
+   * @param dates the dates
+   * @param format the format
    * @return the list
    */
   public static List<String> format(Collection<Date> dates, DateFormat format) {
@@ -95,8 +92,7 @@ public class DateUtils {
   /**
    * Gets the rev formatted date.
    *
-   * @param date
-   *          the date
+   * @param date the date
    * @return the rev formatted date
    */
   public static final String getRevFormattedDate(Date date) {
@@ -106,8 +102,7 @@ public class DateUtils {
   /**
    * Gets the american formatted date.
    *
-   * @param date
-   *          the date
+   * @param date the date
    * @return the american formatted date
    */
   public static final String getAmericanFormattedDate(Date date) {
@@ -117,13 +112,12 @@ public class DateUtils {
   /**
    * Parses the rev formatted date.
    *
-   * @param date
-   *          the date
+   * @param date the date
    * @return the date
-   * @throws ParseException
-   *           the parse exception
+   * @throws ParseException the parse exception
    */
-  public static final Date parseRevFormattedDate(String date) throws ParseException {
+  public static final Date parseRevFormattedDate(String date)
+      throws ParseException {
     return new SimpleDateFormat("yyyy-mm-dd").parse(date);
   }
 
@@ -133,6 +127,7 @@ public class DateUtils {
    * @return the string
    */
   public static String year() {
-    return new SimpleDateFormat(YYYY_FORMAT).format(Calendar.getInstance().getTime());
+    return new SimpleDateFormat(YYYY_FORMAT)
+        .format(Calendar.getInstance().getTime());
   }
 }

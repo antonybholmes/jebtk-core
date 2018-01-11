@@ -27,10 +27,10 @@ import org.jebtk.core.path.StrictPath;
  * Category Object nodes store data in radix trees for fast searching.
  *
  * @author Antony Holmes Holmes
- * @param <T>
- *          the generic type
+ * @param <T> the generic type
  */
-public class SimpleCategoryObjectDb<T> implements Iterable<StrictPath>, Serializable {
+public class SimpleCategoryObjectDb<T>
+    implements Iterable<StrictPath>, Serializable {
 
   /**
    * The constant serialVersionUID.
@@ -57,8 +57,7 @@ public class SimpleCategoryObjectDb<T> implements Iterable<StrictPath>, Serializ
   /**
    * Gets the category.
    *
-   * @param args
-   *          the args
+   * @param args the args
    * @return the category
    */
   public RadixObjectDb<T> getCategory(Object... args) {
@@ -68,8 +67,7 @@ public class SimpleCategoryObjectDb<T> implements Iterable<StrictPath>, Serializ
   /**
    * Gets the category.
    *
-   * @param path
-   *          the path
+   * @param path the path
    * @return the category
    */
   public RadixObjectDb<T> getCategory(String path) {
@@ -79,8 +77,7 @@ public class SimpleCategoryObjectDb<T> implements Iterable<StrictPath>, Serializ
   /**
    * Gets the category.
    *
-   * @param path
-   *          the path
+   * @param path the path
    * @return the category
    */
   public RadixObjectDb<T> getCategory(StrictPath path) {

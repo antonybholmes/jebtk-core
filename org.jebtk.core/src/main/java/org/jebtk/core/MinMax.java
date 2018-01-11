@@ -36,10 +36,8 @@ public class MinMax implements Comparable<MinMax> {
   /**
    * Instantiates a new int dim.
    *
-   * @param w
-   *          the w
-   * @param h
-   *          the h
+   * @param w the w
+   * @param h the h
    */
   public MinMax(double min, double max) {
     mMin = min;
@@ -121,10 +119,8 @@ public class MinMax implements Comparable<MinMax> {
   /**
    * Creates a new IntDim.
    *
-   * @param x
-   *          the x
-   * @param y
-   *          the y
+   * @param x the x
+   * @param y the y
    * @return the int dim
    */
   public static MinMax create(int x, int y) {
@@ -134,10 +130,8 @@ public class MinMax implements Comparable<MinMax> {
   /**
    * Creates the.
    *
-   * @param x
-   *          the x
-   * @param y
-   *          the y
+   * @param x the x
+   * @param y the y
    * @return the int dim
    */
   public static MinMax create(long x, long y) {
@@ -147,10 +141,8 @@ public class MinMax implements Comparable<MinMax> {
   /**
    * Creates the.
    *
-   * @param x
-   *          the x
-   * @param y
-   *          the y
+   * @param x the x
+   * @param y the y
    * @return the int dim
    */
   public static MinMax create(double x, double y) {

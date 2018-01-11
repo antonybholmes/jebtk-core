@@ -43,8 +43,7 @@ public class Formatter {
     /**
      * Format.
      *
-     * @param v
-     *          the v
+     * @param v the v
      * @return the string
      */
     public String format(int v);
@@ -52,8 +51,7 @@ public class Formatter {
     /**
      * Format.
      *
-     * @param v
-     *          the v
+     * @param v the v
      * @return the string
      */
     public String format(long v);
@@ -61,8 +59,7 @@ public class Formatter {
     /**
      * Format.
      *
-     * @param v
-     *          the v
+     * @param v the v
      * @return the string
      */
     public String format(float v);
@@ -70,8 +67,7 @@ public class Formatter {
     /**
      * Format.
      *
-     * @param v
-     *          the v
+     * @param v the v
      * @return the string
      */
     public String format(double v);
@@ -79,10 +75,8 @@ public class Formatter {
     /**
      * Format.
      *
-     * @param <T>
-     *          the generic type
-     * @param values
-     *          the values
+     * @param <T> the generic type
+     * @param values the values
      * @return the list
      */
     public <T extends Number> List<String> format(Collection<T> values);
@@ -94,7 +88,8 @@ public class Formatter {
   public static class LocaleDpFormatter implements NumberFormatter {
 
     /** The m nf. */
-    public static NumberFormat mNf = NumberFormat.getInstance(Locale.getDefault());
+    public static NumberFormat mNf = NumberFormat
+        .getInstance(Locale.getDefault());
 
     public LocaleDpFormatter() {
       this(3);
@@ -103,8 +98,7 @@ public class Formatter {
     /**
      * Instantiates a new locale dp formatter.
      *
-     * @param dp
-     *          the dp
+     * @param dp the dp
      */
     public LocaleDpFormatter(int dp) {
       // mNf.setMinimumFractionDigits(dp);
@@ -154,8 +148,8 @@ public class Formatter {
     /*
      * (non-Javadoc)
      * 
-     * @see
-     * org.abh.common.text.Formatter.NumberFormatter#format(java.util.Collection)
+     * @see org.abh.common.text.Formatter.NumberFormatter#format(java.util.
+     * Collection)
      */
     @Override
     public <T extends Number> List<String> format(Collection<T> values) {
@@ -188,8 +182,7 @@ public class Formatter {
     /**
      * Instantiates a new dp formatter.
      *
-     * @param dp
-     *          the dp
+     * @param dp the dp
      */
     public DpFormatter(int dp) {
       mNf = new DecimalFormat("0." + TextUtils.repeat("0", dp));
@@ -238,8 +231,8 @@ public class Formatter {
     /*
      * (non-Javadoc)
      * 
-     * @see
-     * org.abh.common.text.Formatter.NumberFormatter#format(java.util.Collection)
+     * @see org.abh.common.text.Formatter.NumberFormatter#format(java.util.
+     * Collection)
      */
     @Override
     public <T extends Number> List<String> format(Collection<T> values) {
@@ -276,8 +269,7 @@ public class Formatter {
     /**
      * Format a number with a maximum number of decimal places.
      *
-     * @param dp
-     *          the dp
+     * @param dp the dp
      * @return the number formatter
      */
     public NumberFormatter dp(int dp) {
@@ -293,8 +285,7 @@ public class Formatter {
     /**
      * Format a number with a maximum number of decimal places.
      *
-     * @param dp
-     *          the dp
+     * @param dp the dp
      * @return the number formatter
      */
     public NumberFormatter dp(int dp) {

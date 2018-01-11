@@ -72,8 +72,7 @@ public class AppService implements NameProperty {
   /**
    * Set the application name and create a home directory.
    *
-   * @param name
-   *          the new app info
+   * @param name the new app info
    */
   public void setAppInfo(String name) {
     mName = name.toLowerCase();
@@ -110,8 +109,7 @@ public class AppService implements NameProperty {
   /**
    * Creates a file name in the application directory by prefixing .
    *
-   * @param name
-   *          the name
+   * @param name the name
    * @return the file
    * @{code appname.name} onto the application directory
    */
@@ -126,8 +124,7 @@ public class AppService implements NameProperty {
   /**
    * Creates the the application directory path.
    *
-   * @param name
-   *          the name
+   * @param name the name
    * @return the path
    */
   public static Path create(String name) {

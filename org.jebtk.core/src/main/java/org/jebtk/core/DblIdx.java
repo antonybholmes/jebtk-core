@@ -21,10 +21,8 @@ package org.jebtk.core;
  * of index.
  *
  * @author Antony Holmes Holmes
- * @param <K>
- *          the generic type
- * @param <V>
- *          the value type
+ * @param <K> the generic type
+ * @param <V> the value type
  */
 public class DblIdx implements Comparable<DblIdx> {
 
@@ -41,10 +39,8 @@ public class DblIdx implements Comparable<DblIdx> {
   /**
    * Instantiates a new indexed value.
    *
-   * @param index
-   *          the index
-   * @param item
-   *          the item
+   * @param index the index
+   * @param item the item
    */
   public DblIdx(int index, double item) {
     mValue = item;
@@ -108,8 +104,7 @@ public class DblIdx implements Comparable<DblIdx> {
   /**
    * Return the items indexed.
    *
-   * @param items
-   *          the items
+   * @param items the items
    * @return the list
    */
   public static DblIdx[] index(double[] items) {

@@ -25,35 +25,33 @@ import java.util.List;
  * Compliments IndexValue
  *
  * @author Antony Holmes Holmes
- * @param <T>
- *          the generic type
+ * @param <T> the generic type
  */
-public class IndexedInt<T extends Comparable<? super T>> extends Indexed<Integer, T> {
+public class IndexedInt<T extends Comparable<? super T>>
+    extends Indexed<Integer, T> {
 
   /**
    * Instantiates a new indexed value int.
    *
-   * @param index
-   *          the index
-   * @param item
-   *          the item
+   * @param index the index
+   * @param item the item
    */
   public IndexedInt(int index, T item) {
     super(index, item);
   }
 
   /**
-   * Adds an index to items so we can keep track of where they occur in a list if
-   * we sort them etc.
+   * Adds an index to items so we can keep track of where they occur in a list
+   * if we sort them etc.
    *
-   * @param <T>
-   *          the generic type
-   * @param items
-   *          the items
+   * @param <T> the generic type
+   * @param items the items
    * @return the list
    */
-  public static <T extends Comparable<? super T>> List<Indexed<Integer, T>> index(Collection<T> items) {
-    List<Indexed<Integer, T>> ret = new ArrayList<Indexed<Integer, T>>(items.size());
+  public static <T extends Comparable<? super T>> List<Indexed<Integer, T>> index(
+      Collection<T> items) {
+    List<Indexed<Integer, T>> ret = new ArrayList<Indexed<Integer, T>>(
+        items.size());
 
     int c = 0;
 
@@ -69,14 +67,14 @@ public class IndexedInt<T extends Comparable<? super T>> extends Indexed<Integer
   /**
    * Index.
    *
-   * @param <T>
-   *          the generic type
-   * @param items
-   *          the items
+   * @param <T> the generic type
+   * @param items the items
    * @return the list
    */
-  public static <T extends Comparable<? super T>> List<Indexed<Integer, T>> index(T[] items) {
-    List<Indexed<Integer, T>> ret = new ArrayList<Indexed<Integer, T>>(items.length);
+  public static <T extends Comparable<? super T>> List<Indexed<Integer, T>> index(
+      T[] items) {
+    List<Indexed<Integer, T>> ret = new ArrayList<Indexed<Integer, T>>(
+        items.length);
 
     for (int i = 0; i < items.length; ++i) {
       ret.add(new IndexedInt<T>(i, items[i]));
@@ -88,12 +86,12 @@ public class IndexedInt<T extends Comparable<? super T>> extends Indexed<Integer
   /**
    * Index.
    *
-   * @param items
-   *          the items
+   * @param items the items
    * @return the list
    */
   public static List<Indexed<Integer, Double>> index(double[] items) {
-    List<Indexed<Integer, Double>> ret = new ArrayList<Indexed<Integer, Double>>(items.length);
+    List<Indexed<Integer, Double>> ret = new ArrayList<Indexed<Integer, Double>>(
+        items.length);
 
     for (int i = 0; i < items.length; ++i) {
       ret.add(new IndexedInt<Double>(i, items[i]));

@@ -19,12 +19,11 @@ package org.jebtk.core.collections;
 /**
  * The Class DefaultHashMapCreator.
  *
- * @param <K>
- *          the key type
- * @param <V>
- *          the value type
+ * @param <K> the key type
+ * @param <V> the value type
  */
-public class DefaultOrderedHashMapCreator<K, V> implements IterMapCreator<K, V> {
+public class DefaultOrderedHashMapCreator<K, V>
+    implements IterMapCreator<K, V> {
 
   /** The m default value. */
   private EntryCreator<V> mDefaultValue;
@@ -35,8 +34,7 @@ public class DefaultOrderedHashMapCreator<K, V> implements IterMapCreator<K, V> 
   /**
    * Instantiates a new default hash map creator.
    *
-   * @param defaultValue
-   *          the default value
+   * @param defaultValue the default value
    */
   public DefaultOrderedHashMapCreator(V defaultValue) {
     this(0, defaultValue);
@@ -45,10 +43,8 @@ public class DefaultOrderedHashMapCreator<K, V> implements IterMapCreator<K, V> 
   /**
    * Instantiates a new auto hash map.
    *
-   * @param initialCapacity
-   *          the initial capacity
-   * @param defaultValue
-   *          the default value
+   * @param initialCapacity the initial capacity
+   * @param defaultValue the default value
    */
   public DefaultOrderedHashMapCreator(int initialCapacity, V defaultValue) {
     this(initialCapacity, new ValueCreator<V>(defaultValue));
@@ -57,8 +53,7 @@ public class DefaultOrderedHashMapCreator<K, V> implements IterMapCreator<K, V> 
   /**
    * Instantiates a new default map.
    *
-   * @param creator
-   *          the creator
+   * @param creator the creator
    */
   public DefaultOrderedHashMapCreator(EntryCreator<V> creator) {
     this(0, creator);
@@ -67,12 +62,11 @@ public class DefaultOrderedHashMapCreator<K, V> implements IterMapCreator<K, V> 
   /**
    * Instantiates a new default hash map creator.
    *
-   * @param initialCapacity
-   *          the initial capacity
-   * @param creator
-   *          the creator
+   * @param initialCapacity the initial capacity
+   * @param creator the creator
    */
-  public DefaultOrderedHashMapCreator(int initialCapacity, EntryCreator<V> creator) {
+  public DefaultOrderedHashMapCreator(int initialCapacity,
+      EntryCreator<V> creator) {
     mInitialCapacity = initialCapacity;
     mDefaultValue = creator;
   }

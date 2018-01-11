@@ -40,8 +40,7 @@ public class Trimmer {
     /**
      * Instantiates a new char trim mode.
      *
-     * @param delimiter
-     *          the delimiter
+     * @param delimiter the delimiter
      */
     public CharTrimMode(char delimiter) {
       mDelimiter = delimiter;
@@ -81,25 +80,23 @@ public class Trimmer {
   /**
    * Trims a string and applies the splitter on the trimmed string.
    *
-   * @param splitMode
-   *          the split mode
-   * @param text
-   *          the text
-   * @param ignoreEmptyStrings
-   *          the ignore empty strings
-   * @param maxNumItems
-   *          the max num items
+   * @param splitMode the split mode
+   * @param text the text
+   * @param ignoreEmptyStrings the ignore empty strings
+   * @param maxNumItems the max num items
    * @return the list
    */
-  public List<String> trim(SplitMode splitMode, final String text, boolean ignoreEmptyStrings, int maxNumItems) {
+  public List<String> trim(SplitMode splitMode,
+      final String text,
+      boolean ignoreEmptyStrings,
+      int maxNumItems) {
     return splitMode.split(trim(text), ignoreEmptyStrings, maxNumItems);
   }
 
   /**
    * Should trim the next if necessary.
    *
-   * @param text
-   *          the text
+   * @param text the text
    * @return the string
    */
   public String trim(String text) {
@@ -109,8 +106,7 @@ public class Trimmer {
   /**
    * On.
    *
-   * @param delimiter
-   *          the delimiter
+   * @param delimiter the delimiter
    * @return the trimmer
    */
   public static Trimmer on(char delimiter) {

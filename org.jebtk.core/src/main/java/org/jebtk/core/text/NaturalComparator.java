@@ -23,8 +23,7 @@ import java.util.Comparator;
  * strings beginning with numbers or two strings with the same prefix and then a
  * number are sorted by the number and
  *
- * @param <T>
- *          the generic type
+ * @param <T> the generic type
  */
 public class NaturalComparator<T> implements Comparator<T> {
 
@@ -90,20 +89,19 @@ public class NaturalComparator<T> implements Comparator<T> {
   }
 
   /**
-   * Length of string is passed in for improved efficiency (only need to calculate
-   * it once) .
+   * Length of string is passed in for improved efficiency (only need to
+   * calculate it once) .
    *
-   * @param s
-   *          the char string
-   * @param slength
-   *          the slength
-   * @param marker
-   *          the marker
-   * @param buffer
-   *          buffer
+   * @param s the char string
+   * @param slength the slength
+   * @param marker the marker
+   * @param buffer buffer
    * @return *
    */
-  private static final int getChunk(char[] s, int slength, int marker, char[] buffer) {
+  private static final int getChunk(char[] s,
+      int slength,
+      int marker,
+      char[] buffer) {
 
     // buffer counter
     int cp = 0;
@@ -144,14 +142,10 @@ public class NaturalComparator<T> implements Comparator<T> {
   /**
    * Compare two char arrays based on String.compareTo().
    *
-   * @param s1
-   *          char array 1.
-   * @param l1
-   *          char array 1 length.
-   * @param s2
-   *          char array 2.
-   * @param l2
-   *          char array 2 length.
+   * @param s1 char array 1.
+   * @param l1 char array 1 length.
+   * @param s2 char array 2.
+   * @param l2 char array 2 length.
    * @return the int
    */
   private static final int compareTo(char[] s1, int l1, char[] s2, int l2) {
@@ -172,8 +166,7 @@ public class NaturalComparator<T> implements Comparator<T> {
   /**
    * Checks if is digit.
    *
-   * @param ch
-   *          the ch
+   * @param ch the ch
    * @return true, if is digit
    */
   private static final boolean isDigit(char ch) {
@@ -183,12 +176,9 @@ public class NaturalComparator<T> implements Comparator<T> {
   /**
    * Filter any characters we do not want to include.
    * 
-   * @param c
-   *          The character to append.
-   * @param cp
-   *          Index in buffer to add next character at.
-   * @param buffer
-   *          Buffer to append characters to.
+   * @param c The character to append.
+   * @param cp Index in buffer to add next character at.
+   * @param buffer Buffer to append characters to.
    * @return
    */
   private static final int filter(char c, int cp, char[] buffer) {

@@ -39,8 +39,7 @@ public class StringId {
   /**
    * Instantiates a new string id.
    *
-   * @param prefix
-   *          the prefix
+   * @param prefix the prefix
    */
   public StringId(String prefix) {
     mPrefix = prefix;

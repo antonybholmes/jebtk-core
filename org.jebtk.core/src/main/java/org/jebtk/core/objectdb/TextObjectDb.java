@@ -27,10 +27,10 @@ import org.jebtk.core.path.Path;
  * Creates a searchable database of objects tagged by categories.
  *
  * @author Antony Holmes Holmes
- * @param <T>
- *          the generic type
+ * @param <T> the generic type
  */
-public class TextObjectDb<T> implements Iterable<TextObjectNode<T>>, Serializable {
+public class TextObjectDb<T>
+    implements Iterable<TextObjectNode<T>>, Serializable {
 
   /**
    * The constant serialVersionUID.
@@ -50,8 +50,7 @@ public class TextObjectDb<T> implements Iterable<TextObjectNode<T>>, Serializabl
   /**
    * Gets the child by path.
    *
-   * @param path
-   *          the path
+   * @param path the path
    * @return the child by path
    */
   public TextObjectNode<T> getChildByPath(String path) {
@@ -61,8 +60,7 @@ public class TextObjectDb<T> implements Iterable<TextObjectNode<T>>, Serializabl
   /**
    * Gets the child by path.
    *
-   * @param path
-   *          the path
+   * @param path the path
    * @return the child by path
    */
   public TextObjectNode<T> getChildByPath(Path path) {

@@ -29,8 +29,7 @@ public class FileException extends MessageException {
   /**
    * Instantiates a new file exception.
    *
-   * @param message
-   *          the message
+   * @param message the message
    */
   public FileException(String message) {
     super(message);

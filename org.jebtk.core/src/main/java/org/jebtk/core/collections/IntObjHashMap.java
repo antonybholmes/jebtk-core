@@ -57,14 +57,10 @@ public class IntObjHashMap<V> implements IterMap<Integer, V> {
     /**
      * Create a new entry with the given values.
      *
-     * @param hash
-     *          The code used to hash the object with
-     * @param key
-     *          The key used to enter this in the table
-     * @param value
-     *          The value for this key
-     * @param next
-     *          A reference to the next entry in the table
+     * @param hash The code used to hash the object with
+     * @param key The key used to enter this in the table
+     * @param value The value for this key
+     * @param next A reference to the next entry in the table
      */
     public Entry(int key, Object value, Entry next) {
       mKey = key;
@@ -100,7 +96,8 @@ public class IntObjHashMap<V> implements IterMap<Integer, V> {
       if (mCount > 0) {
         Entry[] t = mTable;
 
-        while (index < t.length && (mNext = t[index++]) == null);
+        while (index < t.length && (mNext = t[index++]) == null)
+          ;
       }
     }
 
@@ -148,32 +145,28 @@ public class IntObjHashMap<V> implements IterMap<Integer, V> {
    * Constructs a new, empty hashtable with the specified initial capacity and
    * default load factor, which is <code>0.75</code>.
    *
-   * @param initialCapacity
-   *          the initial capacity of the hashtable.
-   * @throws IllegalArgumentException
-   *           if the initial capacity is less than zero.
+   * @param initialCapacity the initial capacity of the hashtable.
+   * @throws IllegalArgumentException if the initial capacity is less than zero.
    */
   public IntObjHashMap(int initialCapacity) {
     this(initialCapacity, 0.75);
   }
 
   /**
-   * Constructs a new, empty hashtable with the specified initial capacity and the
-   * specified load factor.
+   * Constructs a new, empty hashtable with the specified initial capacity and
+   * the specified load factor.
    *
-   * @param initialCapacity
-   *          the initial capacity of the hashtable.
-   * @param loadFactor
-   *          the load factor of the hashtable.
-   * @throws IllegalArgumentException
-   *           if the initial capacity is less than zero, or if the load factor is
-   *           nonpositive.
+   * @param initialCapacity the initial capacity of the hashtable.
+   * @param loadFactor the load factor of the hashtable.
+   * @throws IllegalArgumentException if the initial capacity is less than zero,
+   *           or if the load factor is nonpositive.
    */
   public IntObjHashMap(int initialCapacity, double loadFactor) {
     super();
 
     if (initialCapacity < 0) {
-      throw new IllegalArgumentException("Illegal Capacity: " + initialCapacity);
+      throw new IllegalArgumentException(
+          "Illegal Capacity: " + initialCapacity);
     }
 
     if (loadFactor <= 0) {
@@ -212,16 +205,14 @@ public class IntObjHashMap<V> implements IterMap<Integer, V> {
    * Tests if some key maps into the specified value in this hashtable. This
    * operation is more expensive than the <code>containsKey</code> method.
    *
-   * Note that this method is identical in functionality to containsValue, (which
-   * is part of the Map interface in the collections framework).
+   * Note that this method is identical in functionality to containsValue,
+   * (which is part of the Map interface in the collections framework).
    *
-   * @param value
-   *          a value to search for.
+   * @param value a value to search for.
    * @return <code>true</code> if and only if some key maps to the
    *         <code>value</code> argument in this hashtable as determined by the
    *         <tt>equals</tt> method; <code>false</code> otherwise.
-   * @throws NullPointerException
-   *           if the value is <code>null</code>.
+   * @throws NullPointerException if the value is <code>null</code>.
    * @see #containsKey(int)
    * @see #containsValue(Object)
    * @see java.util.Map
@@ -251,8 +242,7 @@ public class IntObjHashMap<V> implements IterMap<Integer, V> {
    * Note that this method is identical in functionality to contains (which
    * predates the Map interface).
    *
-   * @param value
-   *          value whose presence in this HashMap is to be tested.
+   * @param value value whose presence in this HashMap is to be tested.
    * @return boolean <code>true</code> if the value is contained
    * @see java.util.Map
    * @since JDK1.2
@@ -264,8 +254,7 @@ public class IntObjHashMap<V> implements IterMap<Integer, V> {
   /**
    * Tests if the specified object is a key in this hashtable.
    *
-   * @param key
-   *          possible key.
+   * @param key possible key.
    * @return <code>true</code> if and only if the specified object is a key in
    *         this hashtable, as determined by the <tt>equals</tt> method;
    *         <code>false</code> otherwise.
@@ -290,8 +279,7 @@ public class IntObjHashMap<V> implements IterMap<Integer, V> {
   /**
    * Returns the value to which the specified key is mapped in this map.
    *
-   * @param key
-   *          a key in the hashtable.
+   * @param key a key in the hashtable.
    * @return the value to which the key is mapped in this hashtable;
    *         <code>null</code> if the key is not mapped to any value in this
    *         hashtable.
@@ -337,17 +325,14 @@ public class IntObjHashMap<V> implements IterMap<Integer, V> {
    * Maps the specified <code>key</code> to the specified <code>value</code> in
    * this hashtable. The key cannot be <code>null</code>.
    *
-   * The value can be retrieved by calling the <code>get</code> method with a key
-   * that is equal to the original key.
+   * The value can be retrieved by calling the <code>get</code> method with a
+   * key that is equal to the original key.
    *
-   * @param key
-   *          the hashtable key.
-   * @param value
-   *          the value.
+   * @param key the hashtable key.
+   * @param value the value.
    * @return the previous value of the specified key in this hashtable, or
    *         <code>null</code> if it did not have one.
-   * @throws NullPointerException
-   *           if the key is <code>null</code>.
+   * @throws NullPointerException if the key is <code>null</code>.
    * @see #get(int)
    */
   public Object put(int key, Object value) {
@@ -387,8 +372,7 @@ public class IntObjHashMap<V> implements IterMap<Integer, V> {
    *
    * This method does nothing if the key is not present in the hashtable.
    *
-   * @param key
-   *          the key that needs to be removed.
+   * @param key the key that needs to be removed.
    * @return the value to which the key had been mapped in this hashtable, or
    *         <code>null</code> if the key did not have a mapping.
    */

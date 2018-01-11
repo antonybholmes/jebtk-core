@@ -34,8 +34,7 @@ public class HttpUrlBuilder extends UrlBuilder {
   /**
    * Instantiates a new http url builder.
    *
-   * @throws UnsupportedEncodingException
-   *           the unsupported encoding exception
+   * @throws UnsupportedEncodingException the unsupported encoding exception
    */
   public HttpUrlBuilder() throws UnsupportedEncodingException {
     super("http://");

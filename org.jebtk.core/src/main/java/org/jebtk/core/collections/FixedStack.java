@@ -22,8 +22,7 @@ package org.jebtk.core.collections;
  * misused.
  *
  * @author Antony Holmes Holmes
- * @param <T>
- *          the generic type
+ * @param <T> the generic type
  */
 public class FixedStack<T> extends AbstractStack {
 
@@ -42,8 +41,7 @@ public class FixedStack<T> extends AbstractStack {
   /**
    * Instantiates a new int fixed stack.
    *
-   * @param size
-   *          the size
+   * @param size the size
    */
   public FixedStack(int size) {
     elements = new Object[size];
@@ -52,8 +50,7 @@ public class FixedStack<T> extends AbstractStack {
   /**
    * Push.
    *
-   * @param element
-   *          the element
+   * @param element the element
    */
   /*
    * (non-Javadoc)
@@ -97,8 +94,7 @@ public class FixedStack<T> extends AbstractStack {
   /**
    * Gets the.
    *
-   * @param i
-   *          the i
+   * @param i the i
    * @return the t
    */
   /*

@@ -46,10 +46,12 @@ public class Path implements Iterable<String>, Serializable, Comparable<Path> {
   // Pattern.compile("[\\.\\/\\\\]");
 
   /** The Constant SPLITTER. */
-  private static final Splitter SPLITTER = Splitter.on('.', '/').ignoreEmptyStrings();
+  private static final Splitter SPLITTER = Splitter.on('.', '/')
+      .ignoreEmptyStrings();
 
   // private static final String START_PATH_DELIMITER = "^\\" + PATH_DELIMITER;
-  // private static final String END_PATH_DELIMITER = "\\" + PATH_DELIMITER + "$";
+  // private static final String END_PATH_DELIMITER = "\\" + PATH_DELIMITER +
+  // "$";
 
   /**
    * The member levels.
@@ -68,10 +70,8 @@ public class Path implements Iterable<String>, Serializable, Comparable<Path> {
   /**
    * Instantiates a new path.
    *
-   * @param <T>
-   *          the generic type
-   * @param path
-   *          the path
+   * @param <T> the generic type
+   * @param path the path
    */
   public <T> Path(String path) {
     this(path, false);
@@ -80,12 +80,9 @@ public class Path implements Iterable<String>, Serializable, Comparable<Path> {
   /**
    * Instantiates a new path.
    *
-   * @param <T>
-   *          the generic type
-   * @param path
-   *          the path
-   * @param isRoot
-   *          the is root
+   * @param <T> the generic type
+   * @param path the path
+   * @param isRoot the is root
    */
   public <T> Path(String path, boolean isRoot) {
     if (isRoot || path.startsWith(PATH_DELIMITER)) {
@@ -98,8 +95,7 @@ public class Path implements Iterable<String>, Serializable, Comparable<Path> {
   /**
    * Create a clone of a path.
    *
-   * @param path
-   *          the path
+   * @param path the path
    */
   public Path(Path path) {
     mPrefix = path.mPrefix;
@@ -112,10 +108,8 @@ public class Path implements Iterable<String>, Serializable, Comparable<Path> {
   /**
    * Create a clone of a path and add some new levels to it.
    *
-   * @param path
-   *          the path
-   * @param levels
-   *          the levels
+   * @param path the path
+   * @param levels the levels
    */
   public Path(Path path, Object... levels) {
     this(path);
@@ -128,8 +122,7 @@ public class Path implements Iterable<String>, Serializable, Comparable<Path> {
   /**
    * Instantiates a new path.
    *
-   * @param levels
-   *          the levels
+   * @param levels the levels
    */
   public Path(List<?> levels) {
     for (Object s : levels) {
@@ -140,10 +133,8 @@ public class Path implements Iterable<String>, Serializable, Comparable<Path> {
   /**
    * Instantiates a new path.
    *
-   * @param level
-   *          the level
-   * @param levels
-   *          the levels
+   * @param level the level
+   * @param levels the levels
    */
   public Path(Object level, Object... levels) {
     this(false, level, levels);
@@ -152,12 +143,9 @@ public class Path implements Iterable<String>, Serializable, Comparable<Path> {
   /**
    * Instantiates a new path.
    *
-   * @param isRoot
-   *          the is root
-   * @param level
-   *          the level
-   * @param levels
-   *          the levels
+   * @param isRoot the is root
+   * @param level the level
+   * @param levels the levels
    */
   public Path(boolean isRoot, Object level, Object... levels) {
     if (isRoot) {
@@ -174,8 +162,7 @@ public class Path implements Iterable<String>, Serializable, Comparable<Path> {
   /**
    * Return a copy of the path with the new path appended to it.
    *
-   * @param path
-   *          the path
+   * @param path the path
    * @return the path
    */
   public Path append(Path path) {
@@ -191,8 +178,7 @@ public class Path implements Iterable<String>, Serializable, Comparable<Path> {
   /**
    * Append.
    *
-   * @param level
-   *          the level
+   * @param level the level
    * @return the path
    */
   public Path append(Object level) {
@@ -203,8 +189,7 @@ public class Path implements Iterable<String>, Serializable, Comparable<Path> {
    * Append levels to a path. A new path consisting of the current path with the
    * new level added will be returned to preserve path immutability.
    *
-   * @param level
-   *          the level
+   * @param level the level
    * @return the path
    */
   public Path append(String level) {
@@ -225,11 +210,10 @@ public class Path implements Iterable<String>, Serializable, Comparable<Path> {
   }
 
   /**
-   * Internal method for updating the path. Since paths are immutable, this is not
-   * publicly accessible.
+   * Internal method for updating the path. Since paths are immutable, this is
+   * not publicly accessible.
    *
-   * @param level
-   *          the level
+   * @param level the level
    * @return the path
    */
   private void parse(Object level) {
@@ -237,11 +221,10 @@ public class Path implements Iterable<String>, Serializable, Comparable<Path> {
   }
 
   /**
-   * Internal method for updating the path. Since paths are immutable, this is not
-   * publicly accessible.
+   * Internal method for updating the path. Since paths are immutable, this is
+   * not publicly accessible.
    *
-   * @param level
-   *          the level
+   * @param level the level
    * @return the path
    */
   private void parse(String level) {
@@ -327,8 +310,7 @@ public class Path implements Iterable<String>, Serializable, Comparable<Path> {
   /**
    * Sanitizes string.
    *
-   * @param s
-   *          the s
+   * @param s the s
    * @return the string
    */
   protected String sanitize(String s) {
@@ -372,8 +354,7 @@ public class Path implements Iterable<String>, Serializable, Comparable<Path> {
   /**
    * Level.
    *
-   * @param i
-   *          the i
+   * @param i the i
    * @return the path level
    */
   public String level(int i) {
@@ -383,8 +364,7 @@ public class Path implements Iterable<String>, Serializable, Comparable<Path> {
   /**
    * Creates the.
    *
-   * @param path
-   *          the path
+   * @param path the path
    * @return the path
    */
   public static Path create(String path) {
@@ -394,8 +374,7 @@ public class Path implements Iterable<String>, Serializable, Comparable<Path> {
   /**
    * The main method.
    *
-   * @param args
-   *          the arguments
+   * @param args the arguments
    */
   public static void main(String[] args) {
     Path p = new Path("Characteristics[GEP Based Classification]");
@@ -406,8 +385,7 @@ public class Path implements Iterable<String>, Serializable, Comparable<Path> {
   /**
    * Checks if is valid path.
    *
-   * @param path
-   *          the path
+   * @param path the path
    * @return true, if is valid path
    */
   public static boolean isValidPath(String path) {
@@ -418,10 +396,8 @@ public class Path implements Iterable<String>, Serializable, Comparable<Path> {
   /**
    * Creates a path starting from the root ('/').
    *
-   * @param level
-   *          the level
-   * @param levels
-   *          the levels
+   * @param level the level
+   * @param levels the levels
    * @return the path
    */
   public static Path createRootPath(Object level, Object... levels) {
@@ -431,8 +407,7 @@ public class Path implements Iterable<String>, Serializable, Comparable<Path> {
   /**
    * Creates the root path.
    *
-   * @param path
-   *          the path
+   * @param path the path
    * @return the path
    */
   public static Path createRootPath(String path) {

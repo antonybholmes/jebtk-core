@@ -46,14 +46,12 @@ public class Zip {
   /**
    * Create a zip file from a list of files.
    *
-   * @param outFile
-   *          the out file
-   * @param files
-   *          the files
-   * @throws Exception
-   *           {
+   * @param outFile the out file
+   * @param files the files
+   * @throws Exception {
    */
-  public static void createZip(File outFile, List<File> files) throws Exception {
+  public static void createZip(File outFile, List<File> files)
+      throws Exception {
     ZipOutputStream out = new ZipOutputStream(new FileOutputStream(outFile));
 
     for (File file : files) {

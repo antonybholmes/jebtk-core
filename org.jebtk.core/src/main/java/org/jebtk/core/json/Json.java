@@ -67,10 +67,8 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
   /**
    * Formatted txt.
    *
-   * @param buffer
-   *          the buffer
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @param buffer the buffer
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public abstract void toJson(Appendable buffer) throws IOException;
 
@@ -102,8 +100,9 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
   }
 
   /**
-   * Returns the String value of this object. This should be used in preference to
-   * toString() which will return the json formatted representation of the object.
+   * Returns the String value of this object. This should be used in preference
+   * to toString() which will return the json formatted representation of the
+   * object.
    * 
    * This method will return null if the object is not of type JsonString
    *
@@ -160,8 +159,7 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
    * Returns the object stored in this field, if the object is a JSON object. If
    * the object is a JSON array, it will return null.
    *
-   * @param name
-   *          the name
+   * @param name the name
    * @return the json value
    */
   public Json get(String name) {
@@ -169,13 +167,11 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
   }
 
   /**
-   * Returns the object by name, creating a JsonBoolean with the default value if
-   * it does not exist.
+   * Returns the object by name, creating a JsonBoolean with the default value
+   * if it does not exist.
    *
-   * @param name
-   *          the name
-   * @param defaultValue
-   *          the default value
+   * @param name the name
+   * @param defaultValue the default value
    * @return the json
    */
   public Json get(String name, boolean defaultValue) {
@@ -185,8 +181,7 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
   /**
    * Returns the indexed item if this object is a JSON array.
    *
-   * @param index
-   *          the index
+   * @param index the index
    * @return the json value
    */
   public Json get(int index) {
@@ -196,8 +191,7 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
   /**
    * Gets the array.
    *
-   * @param name
-   *          the name
+   * @param name the name
    * @return the array
    */
   public JsonArray getArray(String name) {
@@ -207,8 +201,7 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
   /**
    * Gets the array.
    *
-   * @param index
-   *          the index
+   * @param index the index
    * @return the array
    */
   public JsonArray getArray(int index) {
@@ -218,8 +211,7 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
   /**
    * Gets the as string.
    *
-   * @param name
-   *          the name
+   * @param name the name
    * @return the as string
    */
   public String getAsString(String name) {
@@ -235,8 +227,7 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
   /**
    * Gets the as color.
    *
-   * @param name
-   *          the name
+   * @param name the name
    * @return the as color
    */
   public Color getAsColor(String name) {
@@ -252,8 +243,7 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
   /**
    * Gets the as string.
    *
-   * @param index
-   *          the index
+   * @param index the index
    * @return the as string
    */
   public String getAsString(int index) {
@@ -269,8 +259,7 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
   /**
    * Gets the as int.
    *
-   * @param name
-   *          the name
+   * @param name the name
    * @return the as int
    */
   public int getAsInt(String name) {
@@ -286,8 +275,7 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
   /**
    * Gets the as int.
    *
-   * @param index
-   *          the index
+   * @param index the index
    * @return the as int
    */
   public int getAsInt(int index) {
@@ -304,8 +292,7 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
    * Returns a named item as a double value. If the item is not a number or does
    * not exist, Double.NaN will be returned.
    *
-   * @param name
-   *          the name
+   * @param name the name
    * @return the as double
    */
   public double getAsDouble(String name) {
@@ -321,8 +308,7 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
   /**
    * Gets the as double.
    *
-   * @param index
-   *          the index
+   * @param index the index
    * @return the as double
    */
   public double getAsDouble(int index) {
@@ -338,8 +324,7 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
   /**
    * Gets the as bool.
    *
-   * @param name
-   *          the name
+   * @param name the name
    * @return the as bool
    */
   public boolean getAsBool(String name) {
@@ -355,8 +340,7 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
   /**
    * Gets the as bool.
    *
-   * @param index
-   *          the index
+   * @param index the index
    * @return the as bool
    */
   public boolean getAsBool(int index) {
@@ -381,10 +365,8 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
   /**
    * Adds a JSON member.
    *
-   * @param name
-   *          the name
-   * @param value
-   *          the value
+   * @param name the name
+   * @param value the value
    * @return the json value
    */
   public Json add(String name, Json value) {
@@ -394,10 +376,8 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
   /**
    * Adds the.
    *
-   * @param name
-   *          the name
-   * @param value
-   *          the value
+   * @param name the name
+   * @param value the value
    * @return the json value
    */
   public Json add(String name, String value) {
@@ -408,10 +388,8 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
    * If a generic object is added to a json object, it will be interpreted as a
    * string using toString() and its value added as json string.
    *
-   * @param name
-   *          the name
-   * @param value
-   *          the value
+   * @param name the name
+   * @param value the value
    * @return the json
    */
   public Json add(String name, Object value) {
@@ -421,10 +399,8 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
   /**
    * Adds the.
    *
-   * @param name
-   *          the name
-   * @param value
-   *          the value
+   * @param name the name
+   * @param value the value
    * @return the json
    */
   public Json add(String name, Path value) {
@@ -434,10 +410,8 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
   /**
    * Adds the.
    *
-   * @param name
-   *          the name
-   * @param value
-   *          the value
+   * @param name the name
+   * @param value the value
    * @return the json value
    */
   public Json add(String name, double value) {
@@ -447,10 +421,8 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
   /**
    * Adds the.
    *
-   * @param name
-   *          the name
-   * @param value
-   *          the value
+   * @param name the name
+   * @param value the value
    * @return the json value
    */
   public Json add(String name, int value) {
@@ -460,10 +432,8 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
   /**
    * Adds the.
    *
-   * @param name
-   *          the name
-   * @param value
-   *          the value
+   * @param name the name
+   * @param value the value
    * @return the json
    */
   public Json add(String name, long value) {
@@ -473,10 +443,8 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
   /**
    * Adds the.
    *
-   * @param name
-   *          the name
-   * @param value
-   *          the value
+   * @param name the name
+   * @param value the value
    * @return the json value
    */
   public Json add(String name, boolean value) {
@@ -486,8 +454,7 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
   /**
    * Adds the.
    *
-   * @param value
-   *          the value
+   * @param value the value
    * @return the json
    */
   public Json add(Path value) {
@@ -497,8 +464,7 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
   /**
    * Adds the.
    *
-   * @param value
-   *          the value
+   * @param value the value
    * @return the json value
    */
   public Json add(String value) {
@@ -508,8 +474,7 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
   /**
    * Adds the.
    *
-   * @param value
-   *          the value
+   * @param value the value
    * @return the json value
    */
   public Json add(double value) {
@@ -519,8 +484,7 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
   /**
    * Adds the.
    *
-   * @param value
-   *          the value
+   * @param value the value
    * @return the json value
    */
   public Json add(int value) {
@@ -530,8 +494,7 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
   /**
    * Adds the.
    *
-   * @param value
-   *          the value
+   * @param value the value
    * @return the json
    */
   public Json add(char value) {
@@ -541,8 +504,7 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
   /**
    * Adds the.
    *
-   * @param value
-   *          the value
+   * @param value the value
    * @return the json value
    */
   public Json add(Json value) {
@@ -552,10 +514,8 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
   /**
    * Insert raw json as a named field.
    *
-   * @param name
-   *          the name
-   * @param json
-   *          the json
+   * @param name the name
+   * @param json the json
    * @return the json
    */
   public Json insert(String name, String json) {
@@ -565,10 +525,8 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
   /**
    * Insert.
    *
-   * @param name
-   *          the name
-   * @param json
-   *          the json
+   * @param name the name
+   * @param json the json
    * @return the json
    */
   public Json insert(String name, JsonRaw json) {
@@ -578,8 +536,7 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
   /**
    * Insert.
    *
-   * @param json
-   *          the json
+   * @param json the json
    * @return the json
    */
   public Json insert(String json) {
@@ -589,8 +546,7 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
   /**
    * Insert.
    *
-   * @param json
-   *          the json
+   * @param json the json
    * @return the json
    */
   public Json insert(JsonRaw json) {
@@ -601,8 +557,7 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
    * Set the json of the object, ignoring the underlying data structure. The
    * string may not checked and will be assumed to be valid json.
    *
-   * @param json
-   *          the new json
+   * @param json the new json
    */
   public void setJson(String json) {
 
@@ -611,8 +566,7 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
   /**
    * Contains key.
    *
-   * @param key
-   *          the key
+   * @param key the key
    * @return true, if successful
    */
   public boolean containsKey(String key) {
@@ -642,8 +596,7 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
    * Formatted json.
    *
    * @return the string
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public String prettyJson() throws IOException {
     StringBuilder buffer = new StringBuilder();
@@ -656,10 +609,8 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
   /**
    * Formatted json.
    *
-   * @param buffer
-   *          the buffer
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @param buffer the buffer
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public void prettyJson(Appendable buffer) throws IOException {
     prettyJson(buffer, 0);
@@ -668,7 +619,8 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
   /*
    * (non-Javadoc)
    * 
-   * @see org.abh.common.json.FormattedJsonRepresentation#formattedJson(java.lang.
+   * @see
+   * org.abh.common.json.FormattedJsonRepresentation#formattedJson(java.lang.
    * Appendable, int)
    */
   @Override
@@ -679,12 +631,9 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
   /**
    * Write.
    *
-   * @param json
-   *          the json
-   * @param file
-   *          the file
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @param json the json
+   * @param file the file
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public static void write(Json json, File file) throws IOException {
     write(json, file.toPath());
@@ -693,12 +642,9 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
   /**
    * Write.
    *
-   * @param json
-   *          the json
-   * @param file
-   *          the file
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @param json the json
+   * @param file the file
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public static void write(Json json, Path file) throws IOException {
     BufferedWriter writer = FileUtils.newBufferedWriter(file);
@@ -714,12 +660,9 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
   /**
    * Pretty write.
    *
-   * @param json
-   *          the json
-   * @param file
-   *          the file
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @param json the json
+   * @param file the file
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public static void prettyWrite(Json json, Path file) throws IOException {
     BufferedWriter writer = FileUtils.newBufferedWriter(file);
@@ -735,8 +678,7 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
   /**
    * Indentation.
    *
-   * @param level
-   *          the level
+   * @param level the level
    * @return the string
    */
   public static String indentation(int level) {
@@ -746,11 +688,9 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
   /**
    * Parses the.
    *
-   * @param file
-   *          the file
+   * @param file the file
    * @return the json
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public static Json fromJson(File file) throws IOException {
     return fromJson(file.toPath());
@@ -759,11 +699,9 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
   /**
    * Parses the.
    *
-   * @param file
-   *          the file
+   * @param file the file
    * @return the json
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public static Json fromJson(Path file) throws IOException {
     return new JsonParser().parse(file);
@@ -772,11 +710,9 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
   /**
    * Parses the.
    *
-   * @param is
-   *          the is
+   * @param is the is
    * @return the json
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public static Json parse(InputStream is) throws IOException {
     return new JsonParser().parse(is);
@@ -795,8 +731,7 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
   /**
    * Creates the object.
    *
-   * @param name
-   *          the name
+   * @param name the name
    * @return the json
    */
   public Json createObject(String name) {
@@ -810,8 +745,7 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
   /**
    * Creates the array.
    *
-   * @param name
-   *          the name
+   * @param name the name
    * @return the json
    */
   public Json createArray(String name) {

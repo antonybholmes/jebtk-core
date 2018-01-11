@@ -108,8 +108,7 @@ public class IntStream extends NumberStream<Integer> {
     /**
      * Instantiates a new round function.
      *
-     * @param v
-     *          the v
+     * @param v the v
      */
     public MultiplyFunction(int v) {
       mV = v;
@@ -129,7 +128,8 @@ public class IntStream extends NumberStream<Integer> {
   /**
    * The Class MultiplyDoubleFunction.
    */
-  private static class MultiplyDoubleFunction implements Function<Integer, Double> {
+  private static class MultiplyDoubleFunction
+      implements Function<Integer, Double> {
 
     /** The m V. */
     private double mV;
@@ -137,8 +137,7 @@ public class IntStream extends NumberStream<Integer> {
     /**
      * Instantiates a new round function.
      *
-     * @param v
-     *          the v
+     * @param v the v
      */
     public MultiplyDoubleFunction(double v) {
       mV = v;
@@ -166,8 +165,7 @@ public class IntStream extends NumberStream<Integer> {
     /**
      * Instantiates a new round function.
      *
-     * @param v
-     *          the v
+     * @param v the v
      */
     public AddFunction(int v) {
       mV = v;
@@ -187,8 +185,7 @@ public class IntStream extends NumberStream<Integer> {
   /**
    * Instantiates a new int stream.
    *
-   * @param stream
-   *          the stream
+   * @param stream the stream
    */
   public IntStream(Stream<Integer> stream) {
     super(stream);
@@ -206,8 +203,7 @@ public class IntStream extends NumberStream<Integer> {
   /**
    * Multiply the values in a number stream by a constant.
    *
-   * @param v
-   *          the v
+   * @param v the v
    * @return the int stream
    */
   public IntStream multiply(int v) {
@@ -217,8 +213,7 @@ public class IntStream extends NumberStream<Integer> {
   /**
    * Multiple the values in a number stream by a constant.
    *
-   * @param v
-   *          the v
+   * @param v the v
    * @return the double stream
    */
   public DoubleStream multiply(double v) {
@@ -228,8 +223,7 @@ public class IntStream extends NumberStream<Integer> {
   /**
    * Adds the.
    *
-   * @param v
-   *          the v
+   * @param v the v
    * @return the int stream
    */
   public IntStream add(int v) {

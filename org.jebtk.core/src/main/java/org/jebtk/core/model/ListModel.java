@@ -31,8 +31,7 @@ import org.jebtk.core.event.ChangeListeners;
  * change.
  *
  * @author Antony Holmes Holmes
- * @param <T>
- *          the generic type
+ * @param <T> the generic type
  */
 public class ListModel<T> extends ArrayList<T> implements ChangeEventProducer {
 
@@ -49,8 +48,7 @@ public class ListModel<T> extends ArrayList<T> implements ChangeEventProducer {
   /**
    * Sets the.
    *
-   * @param item
-   *          the item
+   * @param item the item
    */
   public void set(T item) {
     clear();
@@ -61,8 +59,7 @@ public class ListModel<T> extends ArrayList<T> implements ChangeEventProducer {
   /**
    * Sets the.
    *
-   * @param items
-   *          the items
+   * @param items the items
    */
   public void set(Collection<T> items) {
     clear();
@@ -87,8 +84,7 @@ public class ListModel<T> extends ArrayList<T> implements ChangeEventProducer {
   /**
    * Adds the.
    *
-   * @param items
-   *          the items
+   * @param items the items
    */
   public void add(Collection<T> items) {
     addAll(items);
@@ -113,8 +109,7 @@ public class ListModel<T> extends ArrayList<T> implements ChangeEventProducer {
   /**
    * Remove a set of indices.
    *
-   * @param indices
-   *          the indices
+   * @param indices the indices
    */
   public void remove(List<Integer> indices) {
 
@@ -166,8 +161,8 @@ public class ListModel<T> extends ArrayList<T> implements ChangeEventProducer {
    * (non-Javadoc)
    * 
    * @see
-   * org.abh.lib.event.ChangeEventProducer#removeChangeListener(org.abh.lib.event.
-   * ChangeListener)
+   * org.abh.lib.event.ChangeEventProducer#removeChangeListener(org.abh.lib.
+   * event. ChangeListener)
    */
   @Override
   public void removeChangeListener(ChangeListener l) {

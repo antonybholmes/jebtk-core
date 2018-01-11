@@ -32,7 +32,8 @@ import org.jebtk.core.text.TextUtils;
  * @author Antony Holmes Holmes
  *
  */
-public class TreePath implements Iterable<Integer>, Serializable, Comparable<TreePath> {
+public class TreePath
+    implements Iterable<Integer>, Serializable, Comparable<TreePath> {
 
   /**
    * The constant serialVersionUID.
@@ -59,17 +60,15 @@ public class TreePath implements Iterable<Integer>, Serializable, Comparable<Tre
   /**
    * Instantiates a new tree path.
    *
-   * @param <T>
-   *          the generic type
-   * @param path
-   *          the path
-   * @throws ParseException
-   *           the parse exception
+   * @param <T> the generic type
+   * @param path the path
+   * @throws ParseException the parse exception
    */
   public <T> TreePath(String path) throws ParseException {
     // System.err.println("parse path " + path);
 
-    List<String> t = TextUtils.fastSplit(path.toString(), StrictPath.PATH_DELIMITER);
+    List<String> t = TextUtils.fastSplit(path.toString(),
+        StrictPath.PATH_DELIMITER);
 
     for (String token : t) {
       add(token);
@@ -79,8 +78,7 @@ public class TreePath implements Iterable<Integer>, Serializable, Comparable<Tre
   /**
    * Clone constructor.
    *
-   * @param path
-   *          the path
+   * @param path the path
    */
   public TreePath(TreePath path) {
     for (int i : path) {
@@ -91,10 +89,8 @@ public class TreePath implements Iterable<Integer>, Serializable, Comparable<Tre
   /**
    * Instantiates a new tree path.
    *
-   * @param <T>
-   *          the generic type
-   * @param node
-   *          the node
+   * @param <T> the generic type
+   * @param node the node
    */
   public <T> TreePath(TreeNode<T> node) {
     add(node);
@@ -103,10 +99,8 @@ public class TreePath implements Iterable<Integer>, Serializable, Comparable<Tre
   /**
    * Adds the.
    *
-   * @param <T>
-   *          the generic type
-   * @param node
-   *          the node
+   * @param <T> the generic type
+   * @param node the node
    * @return the tree path
    */
   public <T> TreePath add(TreeNode<T> node) {
@@ -116,11 +110,9 @@ public class TreePath implements Iterable<Integer>, Serializable, Comparable<Tre
   /**
    * Adds the.
    *
-   * @param element
-   *          the element
+   * @param element the element
    * @return the tree path
-   * @throws ParseException
-   *           the parse exception
+   * @throws ParseException the parse exception
    */
   private TreePath add(String element) throws ParseException {
     return add(TextUtils.parseInt(element));
@@ -129,8 +121,7 @@ public class TreePath implements Iterable<Integer>, Serializable, Comparable<Tre
   /**
    * Adds the.
    *
-   * @param level
-   *          the level
+   * @param level the level
    * @return the tree path
    */
   private TreePath add(int level) {

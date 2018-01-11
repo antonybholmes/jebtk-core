@@ -32,8 +32,7 @@ public class RuntimeMessageException extends RuntimeException {
   /**
    * Instantiates a new message exception.
    *
-   * @param message
-   *          the message
+   * @param message the message
    */
   public RuntimeMessageException(String message) {
     super(message);

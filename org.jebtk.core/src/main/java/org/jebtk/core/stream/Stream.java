@@ -31,15 +31,13 @@ import org.jebtk.core.collections.UniqueArrayList;
  * perform data processing.
  *
  * @author Antony Holmes Holmes
- * @param <T>
- *          the generic type
+ * @param <T> the generic type
  */
 public abstract class Stream<T> implements StreamIterator<T>, Iterable<T> {
   /**
    * The Class CountFunction.
    *
-   * @param <T>
-   *          the generic type
+   * @param <T> the generic type
    */
   private static class CountFunction<T> implements IntReduceFunction<T> {
 
@@ -63,8 +61,7 @@ public abstract class Stream<T> implements StreamIterator<T>, Iterable<T> {
   /**
    * The Class IntMapFunction.
    *
-   * @param <T>
-   *          the generic type
+   * @param <T> the generic type
    */
   private static class IntMapFunction<T> implements Function<T, Integer> {
 
@@ -90,8 +87,7 @@ public abstract class Stream<T> implements StreamIterator<T>, Iterable<T> {
   /**
    * The Class DoubleMapFunction.
    *
-   * @param <T>
-   *          the generic type
+   * @param <T> the generic type
    */
   private static class DoubleMapFunction<T> implements Function<T, Double> {
 
@@ -117,8 +113,7 @@ public abstract class Stream<T> implements StreamIterator<T>, Iterable<T> {
   /**
    * The Class ToListFunction.
    *
-   * @param <T>
-   *          the generic type
+   * @param <T> the generic type
    */
   private static class ToListFunction<T> extends ListReduceFunction<T, T> {
 
@@ -136,8 +131,7 @@ public abstract class Stream<T> implements StreamIterator<T>, Iterable<T> {
   /**
    * The Class ToSetFunction.
    *
-   * @param <T>
-   *          the generic type
+   * @param <T> the generic type
    */
   private static class ToSetFunction<T> implements ReduceFunction<T, Set<T>> {
 
@@ -161,8 +155,7 @@ public abstract class Stream<T> implements StreamIterator<T>, Iterable<T> {
   /**
    * Converts an object to a string representation.
    *
-   * @param <T>
-   *          the generic type
+   * @param <T> the generic type
    */
   private static class AsStringFunction<T> implements StringMapFunction<T> {
 
@@ -198,8 +191,7 @@ public abstract class Stream<T> implements StreamIterator<T>, Iterable<T> {
   /**
    * Filter the stream to remove values. Streams cannot contain nulls.
    *
-   * @param filter
-   *          the filter
+   * @param filter the filter
    * @return the stream
    */
   public Stream<T> filter(Filter<T> filter) {
@@ -209,8 +201,7 @@ public abstract class Stream<T> implements StreamIterator<T>, Iterable<T> {
   /**
    * Replicate.
    *
-   * @param n
-   *          the n
+   * @param n the n
    * @return the stream
    */
   public Stream<T> replicate(int n) {
@@ -221,8 +212,7 @@ public abstract class Stream<T> implements StreamIterator<T>, Iterable<T> {
    * Jump every n elements in a stream, thus can be used to skip elements when
    * iterating.
    *
-   * @param n
-   *          the n
+   * @param n the n
    * @return the stream
    */
   public Stream<T> jump(int n) {
@@ -236,10 +226,8 @@ public abstract class Stream<T> implements StreamIterator<T>, Iterable<T> {
   /**
    * Map the values in a stream to a different type.
    *
-   * @param <V>
-   *          the value type
-   * @param f
-   *          the f
+   * @param <V> the value type
+   * @param f the f
    * @return the stream
    */
   public <V> Stream<V> map(Function<T, V> f) {
@@ -250,8 +238,7 @@ public abstract class Stream<T> implements StreamIterator<T>, Iterable<T> {
    * Convenience methods to encapsulate a function that maps objects to integers
    * as an IntStream. This is equivalent to calling {@code map(f).mapToInt()}.
    *
-   * @param f
-   *          the f
+   * @param f the f
    * @return the int stream
    */
   public IntStream asInt(Function<T, Integer> f) {
@@ -281,8 +268,7 @@ public abstract class Stream<T> implements StreamIterator<T>, Iterable<T> {
    * method for returning a proper @{code StringStream} if the mapping function
    * maps to a String.
    *
-   * @param f
-   *          the f
+   * @param f the f
    * @return the string stream
    */
   public StringStream asString(Function<T, String> f) {
@@ -310,14 +296,12 @@ public abstract class Stream<T> implements StreamIterator<T>, Iterable<T> {
   }
 
   /**
-   * Maps the items in a stream to a single value, for example the sum of a number
-   * stream. Reduce consumes all data in the stream pipeline so another stream
-   * will need to be created to continue streaming data.
+   * Maps the items in a stream to a single value, for example the sum of a
+   * number stream. Reduce consumes all data in the stream pipeline so another
+   * stream will need to be created to continue streaming data.
    *
-   * @param <V>
-   *          the value type
-   * @param f
-   *          a Reduce function.
+   * @param <V> the value type
+   * @param f a Reduce function.
    * @return the v
    */
   public <V> V reduce(ReduceFunction<T, V> f) {
@@ -327,8 +311,7 @@ public abstract class Stream<T> implements StreamIterator<T>, Iterable<T> {
   /**
    * Skip the first n elements of a stream.
    *
-   * @param n
-   *          the n
+   * @param n the n
    * @return the stream
    */
   public Stream<T> skip(int n) {
@@ -339,8 +322,7 @@ public abstract class Stream<T> implements StreamIterator<T>, Iterable<T> {
    * Concatenate a collection to this stream as a new stream. Equivalent to
    * {@code cat(stream(values)}.
    *
-   * @param values
-   *          the values
+   * @param values the values
    * @return the stream
    */
   public Stream<T> cat(Iterable<T> values) {
@@ -352,8 +334,7 @@ public abstract class Stream<T> implements StreamIterator<T>, Iterable<T> {
    * concatenated separately once the new stream has been created as this may
    * cause undesired behavior.
    *
-   * @param stream
-   *          The stream to concatenate at the end of this stream.
+   * @param stream The stream to concatenate at the end of this stream.
    * @return the stream
    */
   public Stream<T> cat(Stream<T> stream) {
@@ -364,8 +345,7 @@ public abstract class Stream<T> implements StreamIterator<T>, Iterable<T> {
    * Returns the union of two streams. This is a terminal operation for both
    * streams.
    *
-   * @param stream
-   *          the stream
+   * @param stream the stream
    * @return the list
    */
   public List<T> union(Stream<T> stream) {
@@ -386,8 +366,7 @@ public abstract class Stream<T> implements StreamIterator<T>, Iterable<T> {
    * Returns the union of two streams. This is a terminal operation for both
    * streams.
    *
-   * @param stream
-   *          the stream
+   * @param stream the stream
    * @return the list
    */
   public List<T> intersect(Stream<T> stream) {
@@ -408,20 +387,20 @@ public abstract class Stream<T> implements StreamIterator<T>, Iterable<T> {
   }
 
   /**
-   * Join the values in a stream into a string using a given delimiter. This is a
-   * convenience method for {@code mapToString().join()}.
+   * Join the values in a stream into a string using a given delimiter. This is
+   * a convenience method for {@code mapToString().join()}.
    * 
-   * @param delimiter
-   *          The string delimiter.
-   * @return The stream values in a single string separated by {@code delimiter}.
+   * @param delimiter The string delimiter.
+   * @return The stream values in a single string separated by
+   *         {@code delimiter}.
    */
   public String join(String delimiter) {
     return asString().join(delimiter);
   }
 
   /**
-   * Counts the number of items in the stream. This is a reduce function that will
-   * render the stream consumed and unusable.
+   * Counts the number of items in the stream. This is a reduce function that
+   * will render the stream consumed and unusable.
    *
    * @return the int
    */
@@ -430,8 +409,8 @@ public abstract class Stream<T> implements StreamIterator<T>, Iterable<T> {
   }
 
   /**
-   * Converts the stream to a list. The returned list will be a copy of the stream
-   * values, thus it is modifiable, but will will not affect the internal
+   * Converts the stream to a list. The returned list will be a copy of the
+   * stream values, thus it is modifiable, but will will not affect the internal
    * structure of the stream. This method uses the reduce function and will
    * renderer the stream consumed and unusable.
    *
@@ -470,7 +449,8 @@ public abstract class Stream<T> implements StreamIterator<T>, Iterable<T> {
    */
   @Override
   public void remove() {
-    throw new UnsupportedOperationException("Items cannot be removed from streams.");
+    throw new UnsupportedOperationException(
+        "Items cannot be removed from streams.");
   }
 
   /**
@@ -500,10 +480,8 @@ public abstract class Stream<T> implements StreamIterator<T>, Iterable<T> {
   /**
    * Stream.
    *
-   * @param <T>
-   *          the generic type
-   * @param iter
-   *          the iter
+   * @param <T> the generic type
+   * @param iter the iter
    * @return the stream
    */
   public static <T> Stream<T> of(Iterable<T> iter) {
@@ -517,10 +495,8 @@ public abstract class Stream<T> implements StreamIterator<T>, Iterable<T> {
   /**
    * Creates a stream from a single item.
    *
-   * @param <T>
-   *          the generic type
-   * @param items
-   *          the items
+   * @param <T> the generic type
+   * @param items the items
    * @return the stream
    */
   public static <T> Stream<T> of(T item) {
@@ -538,8 +514,7 @@ public abstract class Stream<T> implements StreamIterator<T>, Iterable<T> {
   /**
    * Int stream.
    *
-   * @param values
-   *          the values
+   * @param values the values
    * @return the int stream
    */
   public static IntStream asInt(Iterable<Integer> values) {
@@ -557,8 +532,7 @@ public abstract class Stream<T> implements StreamIterator<T>, Iterable<T> {
   /**
    * Double stream.
    *
-   * @param values
-   *          the values
+   * @param values the values
    * @return the double stream
    */
   public static DoubleStream asDouble(Iterable<Double> values) {
@@ -576,8 +550,7 @@ public abstract class Stream<T> implements StreamIterator<T>, Iterable<T> {
   /**
    * String stream.
    *
-   * @param values
-   *          the values
+   * @param values the values
    * @return the string stream
    */
   public static StringStream asString(Iterable<String> values) {

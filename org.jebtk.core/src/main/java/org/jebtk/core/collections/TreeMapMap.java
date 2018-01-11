@@ -20,12 +20,9 @@ package org.jebtk.core.collections;
  * Implementation of a Map of Maps using a HashMap to store the primary key
  * values.
  *
- * @param <K1>
- *          the generic type
- * @param <K2>
- *          the generic type
- * @param <V>
- *          the value type
+ * @param <K1> the generic type
+ * @param <K2> the generic type
+ * @param <V> the value type
  */
 public class TreeMapMap<K1, K2, V> extends DefaultHashMapMap<K1, K2, V> {
 
@@ -35,8 +32,7 @@ public class TreeMapMap<K1, K2, V> extends DefaultHashMapMap<K1, K2, V> {
   /**
    * Instantiates a new default list multi map.
    *
-   * @param initialCapacity
-   *          the initial capacity
+   * @param initialCapacity the initial capacity
    */
   public TreeMapMap(int initialCapacity) {
     super(initialCapacity, new TreeMapCreator<K2, V>());
@@ -45,12 +41,9 @@ public class TreeMapMap<K1, K2, V> extends DefaultHashMapMap<K1, K2, V> {
   /**
    * Creates the.
    *
-   * @param <KK1>
-   *          the generic type
-   * @param <KK2>
-   *          the generic type
-   * @param <VV>
-   *          the generic type
+   * @param <KK1> the generic type
+   * @param <KK2> the generic type
+   * @param <VV> the generic type
    * @return the multi map
    */
   public static <KK1, KK2, VV> MapMap<KK1, KK2, VV> create() {
@@ -60,17 +53,14 @@ public class TreeMapMap<K1, K2, V> extends DefaultHashMapMap<K1, K2, V> {
   /**
    * Creates the.
    *
-   * @param <KK1>
-   *          the generic type
-   * @param <KK2>
-   *          the generic type
-   * @param <VV>
-   *          the generic type
-   * @param initialCapacity
-   *          the initial capacity
+   * @param <KK1> the generic type
+   * @param <KK2> the generic type
+   * @param <VV> the generic type
+   * @param initialCapacity the initial capacity
    * @return the multi map
    */
-  public static <KK1, KK2, VV> MapMap<KK1, KK2, VV> create(int initialCapacity) {
+  public static <KK1, KK2, VV> MapMap<KK1, KK2, VV> create(
+      int initialCapacity) {
     return new TreeMapMap<KK1, KK2, VV>(initialCapacity);
   }
 }

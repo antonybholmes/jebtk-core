@@ -22,8 +22,7 @@ import java.util.ListIterator;
 /**
  * The Class TailListIterator.
  *
- * @param <T>
- *          the generic type
+ * @param <T> the generic type
  */
 public class TailListIterator<T> implements ListIterator<T> {
 
@@ -39,10 +38,8 @@ public class TailListIterator<T> implements ListIterator<T> {
   /**
    * Instantiates a new tail list iterator.
    *
-   * @param list
-   *          the list
-   * @param start
-   *          the start
+   * @param list the list
+   * @param start the start
    */
   TailListIterator(List<T> list, int start) {
     mList = list;

@@ -19,18 +19,15 @@ package org.jebtk.core;
 /**
  * The Interface Function.
  *
- * @param <T>
- *          the generic type
- * @param <V>
- *          the value type
+ * @param <T> the generic type
+ * @param <V> the value type
  */
 public interface Function<T, V> {
 
   /**
    * Apply.
    *
-   * @param item
-   *          the item
+   * @param item the item
    * @return the v
    */
   public V apply(T item);

@@ -44,8 +44,7 @@ public class CommandLineArg {
   /**
    * Instantiates a new command line arg.
    *
-   * @param option
-   *          the option
+   * @param option the option
    */
   public CommandLineArg(CommandLineOption option) {
     this(option, null);
@@ -54,10 +53,8 @@ public class CommandLineArg {
   /**
    * Instantiates a new command line arg.
    *
-   * @param option
-   *          the option
-   * @param value
-   *          the value
+   * @param option the option
+   * @param value the value
    */
   public CommandLineArg(CommandLineOption option, String value) {
     this(option.getShortName(), option.getLongName(), value);
@@ -66,10 +63,8 @@ public class CommandLineArg {
   /**
    * Instantiates a new command line arg.
    *
-   * @param shortName
-   *          the short name
-   * @param longName
-   *          the long name
+   * @param shortName the short name
+   * @param longName the long name
    */
   public CommandLineArg(char shortName, String longName) {
     this(shortName, longName, null);
@@ -78,12 +73,9 @@ public class CommandLineArg {
   /**
    * Instantiates a new command line arg.
    *
-   * @param shortName
-   *          the short name
-   * @param longName
-   *          the long name
-   * @param value
-   *          the value
+   * @param shortName the short name
+   * @param longName the long name
+   * @param value the value
    */
   public CommandLineArg(char shortName, String longName, String value) {
     mShortName = shortName;
@@ -121,8 +113,7 @@ public class CommandLineArg {
   /**
    * Parses the posix arg.
    *
-   * @param arg
-   *          the arg
+   * @param arg the arg
    * @return the command line arg
    */
   public static CommandLineArg parsePosixArg(String arg) {
@@ -132,7 +123,8 @@ public class CommandLineArg {
     CommandLineArg ret;
 
     if (arg.contains("=")) {
-      List<String> tokens = TextUtils.fastSplit(arg, TextUtils.EQUALS_DELIMITER);
+      List<String> tokens = TextUtils.fastSplit(arg,
+          TextUtils.EQUALS_DELIMITER);
 
       ret = new CommandLineArg((char) 0, tokens.get(0), tokens.get(1));
     } else {

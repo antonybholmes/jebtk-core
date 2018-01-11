@@ -31,12 +31,9 @@ public interface XmlStream {
   /**
    * The parent should be edited to represent this class.
    *
-   * @param doc
-   *          the doc
-   * @param parent
-   *          the parent
-   * @throws DOMException
-   *           the DOM exception
+   * @param doc the doc
+   * @param parent the parent
+   * @throws DOMException the DOM exception
    */
   public void toXml(Document doc, Element parent) throws DOMException;
 }

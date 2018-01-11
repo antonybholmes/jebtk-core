@@ -26,24 +26,21 @@ public interface LogEventProducer {
   /**
    * Adds the log listener.
    *
-   * @param l
-   *          the l
+   * @param l the l
    */
   public void addLogListener(LogEventListener l);
 
   /**
    * Removes the log listener.
    *
-   * @param l
-   *          the l
+   * @param l the l
    */
   public void removeLogListener(LogEventListener l);
 
   /**
    * Fire log event.
    *
-   * @param e
-   *          the e
+   * @param e the e
    */
   public void fireLogEvent(LogEvent e);
 }

@@ -23,10 +23,8 @@ import static org.jebtk.core.collections.MultiMap.DEFAULT_INITIAL_CAPACITY;
  * value to a given size.
  * 
  *
- * @param <K>
- *          the key type
- * @param <V>
- *          the value type
+ * @param <K> the key type
+ * @param <V> the value type
  */
 public class TreeSetMultiMap<K, V> extends SetMultiMap<K, V> {
 
@@ -36,8 +34,7 @@ public class TreeSetMultiMap<K, V> extends SetMultiMap<K, V> {
   /**
    * Instantiates a new default list multi map.
    *
-   * @param initialCapacity
-   *          the initial capacity
+   * @param initialCapacity the initial capacity
    */
   public TreeSetMultiMap(int initialCapacity) {
     super(initialCapacity, new TreeSetCreator<V>());
@@ -46,10 +43,8 @@ public class TreeSetMultiMap<K, V> extends SetMultiMap<K, V> {
   /**
    * Creates the.
    *
-   * @param <V1>
-   *          the generic type
-   * @param <K1>
-   *          the generic type
+   * @param <V1> the generic type
+   * @param <K1> the generic type
    * @return the multi map
    */
   public static <V1, K1> SetMultiMap<K1, V1> create() {
@@ -59,12 +54,9 @@ public class TreeSetMultiMap<K, V> extends SetMultiMap<K, V> {
   /**
    * Creates the.
    *
-   * @param <V1>
-   *          the generic type
-   * @param <K1>
-   *          the generic type
-   * @param initialCapacity
-   *          the initial capacity
+   * @param <V1> the generic type
+   * @param <K1> the generic type
+   * @param initialCapacity the initial capacity
    * @return the multi map
    */
   public static <V1, K1> SetMultiMap<K1, V1> create(int initialCapacity) {

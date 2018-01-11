@@ -24,8 +24,7 @@ import java.util.HashSet;
  * benefits of a vector without the ability to modify it.
  *
  * @author Antony Holmes Holmes
- * @param <T>
- *          the generic type
+ * @param <T> the generic type
  */
 public class ImmutableSet<T> extends HashSet<T> {
 

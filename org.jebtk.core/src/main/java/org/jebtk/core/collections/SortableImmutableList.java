@@ -23,10 +23,10 @@ import java.util.Collections;
  * benefits of a vector without the ability to modify it.
  *
  * @author Antony Holmes Holmes
- * @param <T>
- *          the generic type
+ * @param <T> the generic type
  */
-public class SortableImmutableList<T extends Comparable<? super T>> extends ImmutableList<T> {
+public class SortableImmutableList<T extends Comparable<? super T>>
+    extends ImmutableList<T> {
 
   /**
    * The constant serialVersionUID.

@@ -24,16 +24,14 @@ import java.util.List;
  * that require a list interface, but want to easily change list functions such
  * as preventing items from being removed or added etc.
  *
- * @param <T>
- *          the generic type
+ * @param <T> the generic type
  */
 public class ListContainer<T> extends ReadOnlyListContainer<T> {
 
   /**
    * Instantiates a new list container.
    *
-   * @param list
-   *          the list
+   * @param list the list
    */
   public ListContainer(Collection<T> list) {
     this(CollectionUtils.toList(list));
@@ -42,8 +40,7 @@ public class ListContainer<T> extends ReadOnlyListContainer<T> {
   /**
    * Instantiates a new list container.
    *
-   * @param list
-   *          the list
+   * @param list the list
    */
   public ListContainer(List<T> list) {
     super(list);

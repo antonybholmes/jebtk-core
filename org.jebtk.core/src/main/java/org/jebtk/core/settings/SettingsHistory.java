@@ -38,10 +38,8 @@ public class SettingsHistory {
   /**
    * Adds the.
    *
-   * @param setting
-   *          the setting
-   * @param updated
-   *          the updated
+   * @param setting the setting
+   * @param updated the updated
    */
   public void add(Setting setting, boolean updated) {
     if (!updated) {
@@ -101,8 +99,7 @@ public class SettingsHistory {
   /**
    * Gets the.
    *
-   * @param index
-   *          the index
+   * @param index the index
    * @return the setting
    */
   private Setting get(int index) {

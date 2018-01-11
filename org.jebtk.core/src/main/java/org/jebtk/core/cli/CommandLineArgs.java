@@ -32,15 +32,15 @@ public class CommandLineArgs implements Iterable<CommandLineArg> {
   /**
    * The member args.
    */
-  private Map<String, List<CommandLineArg>> mArgMap = DefaultHashMap.create(new ArrayListCreator<CommandLineArg>());
+  private Map<String, List<CommandLineArg>> mArgMap = DefaultHashMap
+      .create(new ArrayListCreator<CommandLineArg>());
 
   private List<CommandLineArg> mArgs = new ArrayList<CommandLineArg>();
 
   /**
    * Adds the arg.
    *
-   * @param arg
-   *          the arg
+   * @param arg the arg
    */
   public void add(CommandLineArg arg) {
     mArgs.add(arg);
@@ -51,8 +51,7 @@ public class CommandLineArgs implements Iterable<CommandLineArg> {
   /**
    * Gets the arg.
    *
-   * @param name
-   *          the name
+   * @param name the name
    * @return the arg
    */
   public Iterable<CommandLineArg> get(String name) {
@@ -72,10 +71,8 @@ public class CommandLineArgs implements Iterable<CommandLineArg> {
   /**
    * Parses the.
    *
-   * @param options
-   *          the options
-   * @param args
-   *          the args
+   * @param options the options
+   * @param args the args
    * @return the command line args
    */
   public static CommandLineArgs parse(Options options, String... args) {

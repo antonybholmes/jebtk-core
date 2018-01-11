@@ -19,18 +19,15 @@ package org.jebtk.core.stream;
 /**
  * Remove nulls
  *
- * @param <T>
- *          the generic type
+ * @param <T> the generic type
  */
 public class SkipNullStream<T> extends ContainerStream<T> {
 
   /**
    * Instantiates a new filter stream.
    *
-   * @param stream
-   *          the stream
-   * @param n
-   *          the n
+   * @param stream the stream
+   * @param n the n
    */
   public SkipNullStream(Stream<T> stream) {
     super(stream);

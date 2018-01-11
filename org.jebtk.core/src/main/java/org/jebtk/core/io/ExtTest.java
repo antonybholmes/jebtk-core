@@ -29,8 +29,7 @@ public class ExtTest {
   /**
    * Instantiates a new ext test.
    *
-   * @param ext
-   *          the ext
+   * @param ext the ext
    */
   public ExtTest(String ext) {
     mExt = ext;
@@ -39,8 +38,7 @@ public class ExtTest {
   /**
    * Test.
    *
-   * @param file
-   *          the file
+   * @param file the file
    * @return true, if successful
    */
   public boolean test(Path file) {

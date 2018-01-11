@@ -24,8 +24,7 @@ import java.util.List;
  * Provides an iterable wrapper around a list that only allows items to be added
  * and iterated over.
  *
- * @param <T>
- *          the generic type
+ * @param <T> the generic type
  */
 public class ListIterator<T> implements Iterable<T> {
 
@@ -35,8 +34,7 @@ public class ListIterator<T> implements Iterable<T> {
   /**
    * Adds an item to the iterator.
    *
-   * @param v
-   *          the v
+   * @param v the v
    */
   public void add(T v) {
     mValues.add(v);

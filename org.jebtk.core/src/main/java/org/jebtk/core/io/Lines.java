@@ -38,8 +38,7 @@ public class Lines {
   /**
    * Instantiates a new lines.
    *
-   * @param tf
-   *          the tf
+   * @param tf the tf
    */
   public Lines(LineFunction tf) {
     mTf = tf;
@@ -48,8 +47,7 @@ public class Lines {
   /**
    * Instantiates a new lines.
    *
-   * @param t
-   *          the t
+   * @param t the t
    */
   private Lines(Lines t) {
     mTf = t.mTf;
@@ -59,8 +57,7 @@ public class Lines {
   /**
    * Skip header.
    *
-   * @param skip
-   *          the skip
+   * @param skip the skip
    * @return the lines
    */
   public Lines skipHeader(boolean skip) {
@@ -73,10 +70,8 @@ public class Lines {
   /**
    * Lines.
    *
-   * @param file
-   *          the file
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @param file the file
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public void lines(Path file) throws IOException {
     BufferedReader reader = FileUtils.newBufferedReader(file);
@@ -100,10 +95,8 @@ public class Lines {
    * Run through reader tokenizing each line for processing. Reader is closed
    * after function has been applied.
    *
-   * @param reader
-   *          the reader
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @param reader the reader
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public void lines(BufferedReader reader) throws IOException {
     // try {

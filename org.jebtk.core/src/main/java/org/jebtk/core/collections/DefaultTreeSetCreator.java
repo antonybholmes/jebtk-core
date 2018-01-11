@@ -22,8 +22,7 @@ import java.util.TreeSet;
 /**
  * The class DefaultListCreator.
  *
- * @param <V>
- *          the value type
+ * @param <V> the value type
  */
 public class DefaultTreeSetCreator<V> implements SetCreator<V> {
   /*

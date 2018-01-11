@@ -42,10 +42,8 @@ public class Options implements Iterable<CommandLineOption> {
   /**
    * Adds the.
    *
-   * @param shortName
-   *          the short name
-   * @param longName
-   *          the long name
+   * @param shortName the short name
+   * @param longName the long name
    */
   public void add(char shortName, String longName) {
     add(shortName, longName, false);
@@ -54,12 +52,9 @@ public class Options implements Iterable<CommandLineOption> {
   /**
    * Adds the.
    *
-   * @param shortName
-   *          the short name
-   * @param longName
-   *          the long name
-   * @param hasArg
-   *          the has arg
+   * @param shortName the short name
+   * @param longName the long name
+   * @param hasArg the has arg
    */
   public void add(char shortName, String longName, boolean hasArg) {
     add(shortName, longName, hasArg, TextUtils.EMPTY_STRING);
@@ -68,24 +63,22 @@ public class Options implements Iterable<CommandLineOption> {
   /**
    * Adds the option.
    *
-   * @param shortName
-   *          the short name
-   * @param longName
-   *          the long name
-   * @param hasArg
-   *          the has arg
-   * @param description
-   *          the description
+   * @param shortName the short name
+   * @param longName the long name
+   * @param hasArg the has arg
+   * @param description the description
    */
-  public void add(char shortName, String longName, boolean hasArg, String description) {
+  public void add(char shortName,
+      String longName,
+      boolean hasArg,
+      String description) {
     addOption(new CommandLineOption(shortName, longName, hasArg, description));
   }
 
   /**
    * Adds the option.
    *
-   * @param option
-   *          the option
+   * @param option the option
    */
   public void addOption(CommandLineOption option) {
     mOptions.add(option);
@@ -104,8 +97,7 @@ public class Options implements Iterable<CommandLineOption> {
   /**
    * Prints the help.
    *
-   * @param options
-   *          the options
+   * @param options the options
    */
   public static void printHelp(Options options) {
     System.out.println("OPTIONS");

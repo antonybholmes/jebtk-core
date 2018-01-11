@@ -37,10 +37,8 @@ public class Limits {
   /**
    * Instantiates a new limits.
    *
-   * @param min
-   *          the min
-   * @param max
-   *          the max
+   * @param min the min
+   * @param max the max
    */
   public Limits(double min, double max) {
     this.min = min;

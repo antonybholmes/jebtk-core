@@ -48,12 +48,9 @@ public class LogEvent extends Event {
   /**
    * Instantiates a new log event.
    *
-   * @param source
-   *          the source
-   * @param message
-   *          the message
-   * @param type
-   *          the type
+   * @param source the source
+   * @param message the message
+   * @param type the type
    */
   public LogEvent(Object source, String message, LogEventType type) {
     super(source, message);

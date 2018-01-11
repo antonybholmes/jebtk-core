@@ -42,10 +42,8 @@ public class IntBlock implements Comparable<IntBlock> {
   /**
    * Instantiates a new int dim.
    *
-   * @param w
-   *          the w
-   * @param h
-   *          the h
+   * @param w the w
+   * @param h the h
    */
   public IntBlock(int w, int h) {
     mX = w;
@@ -83,8 +81,7 @@ public class IntBlock implements Comparable<IntBlock> {
   /**
    * To dimension.
    *
-   * @param size
-   *          the size
+   * @param size the size
    * @return the dimension
    */
   public static Dimension toDimension(IntBlock size) {
@@ -140,10 +137,8 @@ public class IntBlock implements Comparable<IntBlock> {
   /**
    * Creates a new IntDim.
    *
-   * @param x
-   *          the x
-   * @param y
-   *          the y
+   * @param x the x
+   * @param y the y
    * @return the int dim
    */
   public static IntBlock create(int x, int y) {
@@ -153,10 +148,8 @@ public class IntBlock implements Comparable<IntBlock> {
   /**
    * Creates the.
    *
-   * @param x
-   *          the x
-   * @param y
-   *          the y
+   * @param x the x
+   * @param y the y
    * @return the int dim
    */
   public static IntBlock create(long x, long y) {
@@ -166,10 +159,8 @@ public class IntBlock implements Comparable<IntBlock> {
   /**
    * Creates the.
    *
-   * @param x
-   *          the x
-   * @param y
-   *          the y
+   * @param x the x
+   * @param y the y
    * @return the int dim
    */
   public static IntBlock create(double x, double y) {

@@ -21,8 +21,7 @@ package org.jebtk.core.stream;
  * Holds a reference to an existing stream.
  *
  * @author Antony Holmes Holmes
- * @param <T>
- *          the generic type
+ * @param <T> the generic type
  */
 public class DoubleArrayStream extends Stream<Double> {
 
@@ -32,8 +31,7 @@ public class DoubleArrayStream extends Stream<Double> {
   /**
    * Instantiates a new container stream.
    *
-   * @param stream
-   *          the stream
+   * @param stream the stream
    */
   public DoubleArrayStream(double... array) {
     mArray = array;

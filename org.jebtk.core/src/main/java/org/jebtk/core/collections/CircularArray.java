@@ -26,8 +26,7 @@ import java.util.Collections;
  * copying.
  *
  * @author Antony Holmes Holmes
- * @param <T>
- *          the generic type
+ * @param <T> the generic type
  */
 public class CircularArray<T> extends ArrayList<T> {
 
@@ -54,8 +53,7 @@ public class CircularArray<T> extends ArrayList<T> {
   /**
    * Instantiates a new circular array.
    *
-   * @param capacity
-   *          the capacity
+   * @param capacity the capacity
    */
   public CircularArray(int capacity) {
     super(Collections.nCopies(capacity, (T) null));

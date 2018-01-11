@@ -20,8 +20,7 @@ import java.util.List;
 /**
  * The interface CollectionCreator.
  *
- * @param <V>
- *          the value type
+ * @param <V> the value type
  */
 public interface ListCreator<V> extends CollectionCreator<V, List<V>> {
 

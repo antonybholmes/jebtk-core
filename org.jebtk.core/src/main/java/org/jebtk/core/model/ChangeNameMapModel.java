@@ -23,11 +23,10 @@ import org.jebtk.core.event.ChangeEventProducer;
  * Generic model for sharing named items.
  *
  * @author Antony Holmes Holmes
- * @param <T>
- *          the generic type
+ * @param <T> the generic type
  */
-public class ChangeNameMapModel<T extends ChangeEventProducer> extends NameMapModel<T>
-    implements org.jebtk.core.event.ChangeListener {
+public class ChangeNameMapModel<T extends ChangeEventProducer>
+    extends NameMapModel<T> implements org.jebtk.core.event.ChangeListener {
 
   /**
    * The constant serialVersionUID.
@@ -49,7 +48,8 @@ public class ChangeNameMapModel<T extends ChangeEventProducer> extends NameMapMo
   /*
    * (non-Javadoc)
    * 
-   * @see org.abh.lib.event.ChangeListener#changed(org.abh.lib.event.ChangeEvent)
+   * @see
+   * org.abh.lib.event.ChangeListener#changed(org.abh.lib.event.ChangeEvent)
    */
   @Override
   public void changed(ChangeEvent e) {

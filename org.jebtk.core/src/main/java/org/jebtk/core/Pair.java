@@ -25,10 +25,8 @@ import org.jebtk.core.collections.CollectionUtils;
  * Pair items together.
  *
  * @author Antony Holmes Holmes
- * @param <T>
- *          the generic type
- * @param <V>
- *          the value type
+ * @param <T> the generic type
+ * @param <V> the value type
  */
 public class Pair<T, V> {
 
@@ -45,10 +43,8 @@ public class Pair<T, V> {
   /**
    * Instantiates a new pair.
    *
-   * @param item1
-   *          the item1
-   * @param item2
-   *          the item2
+   * @param item1 the item1
+   * @param item2 the item2
    */
   public Pair(T item1, V item2) {
     this.item1 = item1;
@@ -58,18 +54,15 @@ public class Pair<T, V> {
   /**
    * Pair.
    *
-   * @param <T>
-   *          the generic type
-   * @param <V>
-   *          the value type
-   * @param l1
-   *          the l1
-   * @param l2
-   *          the l2
+   * @param <T> the generic type
+   * @param <V> the value type
+   * @param l1 the l1
+   * @param l2 the l2
    * @return the list
    */
   public static <T, V> List<Pair<T, V>> pair(List<T> l1, List<V> l2) {
-    if (CollectionUtils.isNullOrEmpty(l1) || CollectionUtils.isNullOrEmpty(l2) || l1.size() != l2.size()) {
+    if (CollectionUtils.isNullOrEmpty(l1) || CollectionUtils.isNullOrEmpty(l2)
+        || l1.size() != l2.size()) {
       return null;
     }
 

@@ -34,16 +34,14 @@ public interface TreeNodeEventListener extends EventListener {
   /**
    * Node changed.
    *
-   * @param e
-   *          the e
+   * @param e the e
    */
   public void nodeChanged(ChangeEvent e);
 
   /**
    * Invoked when node update occurs.
    *
-   * @param e
-   *          the e
+   * @param e the e
    */
   public void nodeUpdated(ChangeEvent e);
 

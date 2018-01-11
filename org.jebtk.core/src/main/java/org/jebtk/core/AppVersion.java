@@ -59,8 +59,7 @@ public class AppVersion {
   /**
    * Instantiates a new application version.
    *
-   * @param major
-   *          the major
+   * @param major the major
    */
   public AppVersion(int major) {
     this(major, 0, 0);
@@ -69,10 +68,8 @@ public class AppVersion {
   /**
    * Instantiates a new application version.
    *
-   * @param major
-   *          the major
-   * @param minor
-   *          the minor
+   * @param major the major
+   * @param minor the minor
    */
   public AppVersion(int major, int minor) {
     this(major, minor, 0);
@@ -81,12 +78,9 @@ public class AppVersion {
   /**
    * Instantiates a new application version.
    *
-   * @param major
-   *          the major
-   * @param minor
-   *          the minor
-   * @param revision
-   *          the revision
+   * @param major the major
+   * @param minor the minor
+   * @param revision the revision
    */
   public AppVersion(int major, int minor, int revision) {
     mMajor = major;

@@ -32,12 +32,11 @@ import org.jebtk.core.collections.DefaultHashMap;
  * of index.
  *
  * @author Antony Holmes Holmes
- * @param <K>
- *          the generic type
- * @param <V>
- *          the value type
+ * @param <K> the generic type
+ * @param <V> the value type
  */
-public class Indexed<K extends Number, V extends Comparable<? super V>> implements Comparable<Indexed<K, V>> {
+public class Indexed<K extends Number, V extends Comparable<? super V>>
+    implements Comparable<Indexed<K, V>> {
 
   /**
    * The member index.
@@ -52,10 +51,8 @@ public class Indexed<K extends Number, V extends Comparable<? super V>> implemen
   /**
    * Instantiates a new indexed value.
    *
-   * @param index
-   *          the index
-   * @param item
-   *          the item
+   * @param index the index
+   * @param item the item
    */
   public Indexed(K index, V item) {
     mValue = item;
@@ -119,12 +116,9 @@ public class Indexed<K extends Number, V extends Comparable<? super V>> implemen
   /**
    * Return the indices from a list of indexed values.
    *
-   * @param <K1>
-   *          the generic type
-   * @param <V1>
-   *          the generic type
-   * @param items
-   *          the items
+   * @param <K1> the generic type
+   * @param <V1> the generic type
+   * @param items the items
    * @return a list of indices.
    */
   public static <K1 extends Number, V1 extends Comparable<? super V1>> List<K1> indices(
@@ -141,15 +135,13 @@ public class Indexed<K extends Number, V extends Comparable<? super V>> implemen
   /**
    * Convert indexed values back to values.
    *
-   * @param <K1>
-   *          the generic type
-   * @param <V1>
-   *          the generic type
-   * @param items
-   *          the items
+   * @param <K1> the generic type
+   * @param <V1> the generic type
+   * @param items the items
    * @return the list
    */
-  public static <K1 extends Number, V1 extends Comparable<? super V1>> List<V1> values(List<Indexed<K1, V1>> items) {
+  public static <K1 extends Number, V1 extends Comparable<? super V1>> List<V1> values(
+      List<Indexed<K1, V1>> items) {
     List<V1> ret = new ArrayList<V1>();
 
     for (Indexed<K1, V1> index : items) {
@@ -162,18 +154,17 @@ public class Indexed<K extends Number, V extends Comparable<? super V>> implemen
   /**
    * Pair.
    *
-   * @param <T>
-   *          the generic type
-   * @param <V>
-   *          the value type
-   * @param l1
-   *          the l1
-   * @param l2
-   *          the l2
+   * @param <T> the generic type
+   * @param <V> the value type
+   * @param l1 the l1
+   * @param l2 the l2
    * @return the list
    */
-  public static <T extends Number, V extends Comparable<? super V>> List<Indexed<T, V>> pair(List<T> l1, List<V> l2) {
-    if (CollectionUtils.isNullOrEmpty(l1) || CollectionUtils.isNullOrEmpty(l2) || l1.size() != l2.size()) {
+  public static <T extends Number, V extends Comparable<? super V>> List<Indexed<T, V>> pair(
+      List<T> l1,
+      List<V> l2) {
+    if (CollectionUtils.isNullOrEmpty(l1) || CollectionUtils.isNullOrEmpty(l2)
+        || l1.size() != l2.size()) {
       return Collections.emptyList();
     }
 
@@ -189,12 +180,9 @@ public class Indexed<K extends Number, V extends Comparable<? super V>> implemen
   /**
    * Map values to index.
    *
-   * @param <T>
-   *          the generic type
-   * @param <V>
-   *          the value type
-   * @param values
-   *          the values
+   * @param <T> the generic type
+   * @param <V> the value type
+   * @param values the values
    * @return the map
    */
   public static <T extends Number, V extends Comparable<? super V>> Map<V, T> mapValuesToIndex(
@@ -215,32 +203,29 @@ public class Indexed<K extends Number, V extends Comparable<? super V>> implemen
   /**
    * Creates the int.
    *
-   * @param <V1>
-   *          the generic type
-   * @param index
-   *          the index
-   * @param v
-   *          the v
+   * @param <V1> the generic type
+   * @param index the index
+   * @param v the v
    * @return the indexed
    */
-  public static <V1 extends Comparable<? super V1>> Indexed<Integer, V1> createInt(int index, V1 v) {
+  public static <V1 extends Comparable<? super V1>> Indexed<Integer, V1> createInt(
+      int index,
+      V1 v) {
     return new Indexed<Integer, V1>(index, v);
   }
 
   /**
    * Creates a map from the keys of the indexed values.
    *
-   * @param <K1>
-   *          the generic type
-   * @param <V1>
-   *          the generic type
-   * @param indexed
-   *          the indexed
+   * @param <K1> the generic type
+   * @param <V1> the generic type
+   * @param indexed the indexed
    * @return the map
    */
   public static <K1 extends Number, V1 extends Comparable<? super V1>> Map<V1, List<Indexed<K1, V1>>> listToMap(
       List<Indexed<K1, V1>> indexed) {
-    Map<V1, List<Indexed<K1, V1>>> ret = DefaultHashMap.create(new ArrayListCreator<Indexed<K1, V1>>());
+    Map<V1, List<Indexed<K1, V1>>> ret = DefaultHashMap
+        .create(new ArrayListCreator<Indexed<K1, V1>>());
 
     for (Indexed<K1, V1> item : indexed) {
       ret.get(item.getIndex()).add(item);
@@ -253,14 +238,14 @@ public class Indexed<K extends Number, V extends Comparable<? super V>> implemen
   /**
    * Index values using an integer index.
    *
-   * @param <T>
-   *          the generic type
-   * @param items
-   *          the items
+   * @param <T> the generic type
+   * @param items the items
    * @return the list
    */
-  public static <T extends Comparable<? super T>> List<Indexed<Integer, T>> intIndex(Collection<T> items) {
-    List<Indexed<Integer, T>> ret = new ArrayList<Indexed<Integer, T>>(items.size());
+  public static <T extends Comparable<? super T>> List<Indexed<Integer, T>> intIndex(
+      Collection<T> items) {
+    List<Indexed<Integer, T>> ret = new ArrayList<Indexed<Integer, T>>(
+        items.size());
 
     int c = 0;
 
@@ -276,14 +261,14 @@ public class Indexed<K extends Number, V extends Comparable<? super V>> implemen
   /**
    * Int index.
    *
-   * @param <T>
-   *          the generic type
-   * @param items
-   *          the items
+   * @param <T> the generic type
+   * @param items the items
    * @return the list
    */
-  public static <T extends Comparable<? super T>> List<Indexed<Integer, T>> intIndex(T[] items) {
-    List<Indexed<Integer, T>> ret = new ArrayList<Indexed<Integer, T>>(items.length);
+  public static <T extends Comparable<? super T>> List<Indexed<Integer, T>> intIndex(
+      T[] items) {
+    List<Indexed<Integer, T>> ret = new ArrayList<Indexed<Integer, T>>(
+        items.length);
 
     int c = 0;
 
@@ -299,12 +284,12 @@ public class Indexed<K extends Number, V extends Comparable<? super V>> implemen
   /**
    * Int index.
    *
-   * @param items
-   *          the items
+   * @param items the items
    * @return the list
    */
   public static List<Indexed<Integer, Double>> intIndex(double[] items) {
-    List<Indexed<Integer, Double>> ret = new ArrayList<Indexed<Integer, Double>>(items.length);
+    List<Indexed<Integer, Double>> ret = new ArrayList<Indexed<Integer, Double>>(
+        items.length);
 
     int c = 0;
 

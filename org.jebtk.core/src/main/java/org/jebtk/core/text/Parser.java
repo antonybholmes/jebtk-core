@@ -29,13 +29,16 @@ public class Parser {
   public static final String NAN = "NaN";
 
   /** The Constant NUMBER_PATTERN. */
-  public static final Pattern NUMBER_PATTERN = Pattern.compile("([-+]?[0-9]*\\.?[0-9]+([eE][-+]?[0-9]+)?)");
+  public static final Pattern NUMBER_PATTERN = Pattern
+      .compile("([-+]?[0-9]*\\.?[0-9]+([eE][-+]?[0-9]+)?)");
 
   /** The Constant ENDS_WITH_NUMBER_PATTERN. */
-  public static final Pattern ENDS_WITH_NUMBER_PATTERN = Pattern.compile("([-+]?[0-9]*\\.?[0-9]+([eE][-+]?[0-9]+)?)$");
+  public static final Pattern ENDS_WITH_NUMBER_PATTERN = Pattern
+      .compile("([-+]?[0-9]*\\.?[0-9]+([eE][-+]?[0-9]+)?)$");
 
   /** The Constant STRICT_NUMBER_PATTERN. */
-  public static final Pattern STRICT_NUMBER_PATTERN = Pattern.compile("^([-+]?[0-9]*\\.?[0-9]+([eE][-+]?[0-9]+)?)$");
+  public static final Pattern STRICT_NUMBER_PATTERN = Pattern
+      .compile("^([-+]?[0-9]*\\.?[0-9]+([eE][-+]?[0-9]+)?)$");
 
   /**
    * Instantiates a new parser.
@@ -45,11 +48,10 @@ public class Parser {
   }
 
   /**
-   * Parses an integer guaranteeing not to throw an error and return -1 should an
-   * error occur.
+   * Parses an integer guaranteeing not to throw an error and return -1 should
+   * an error occur.
    *
-   * @param field
-   *          the field
+   * @param field the field
    * @return the int
    */
   public static final int scanInt(String field) {
@@ -60,10 +62,8 @@ public class Parser {
    * Parses an integer guaranteeing not to throw an error and return a default
    * value should an error occur.
    *
-   * @param field
-   *          the field
-   * @param defaultValue
-   *          the default value
+   * @param field the field
+   * @param defaultValue the default value
    * @return the int
    */
   public static final int scanInt(String field, int defaultValue) {
@@ -79,14 +79,13 @@ public class Parser {
   }
 
   /**
-   * Looks for a double in a string or returns Double.MIN_VALUE if a double cannot
-   * be found. By extension this method cannot be used to parse Double.MIN_VALUE,
-   * but we assume that this value is unlikely to occur since it is at the extreme
-   * of representation and likely means there is some kind of problem with the
-   * value.
+   * Looks for a double in a string or returns Double.MIN_VALUE if a double
+   * cannot be found. By extension this method cannot be used to parse
+   * Double.MIN_VALUE, but we assume that this value is unlikely to occur since
+   * it is at the extreme of representation and likely means there is some kind
+   * of problem with the value.
    *
-   * @param field
-   *          the field
+   * @param field the field
    * @return the double
    */
   public static final Double scanDouble(String field) {
@@ -94,14 +93,12 @@ public class Parser {
   }
 
   /**
-   * Parses a string for a double value, returning a default value if there is an
-   * error. This method negates needing an error handler for number parsing since
-   * it is guaranteed to return a double.
+   * Parses a string for a double value, returning a default value if there is
+   * an error. This method negates needing an error handler for number parsing
+   * since it is guaranteed to return a double.
    *
-   * @param field
-   *          the field
-   * @param defaultValue
-   *          the default value
+   * @param field the field
+   * @param defaultValue the default value
    * @return the double
    */
   public static final Double scanDouble(String field, double defaultValue) {
@@ -120,26 +117,22 @@ public class Parser {
    * Parses an integer field as a float and then converts back to int to provide
    * more robust handling of ints written as floating point numbers in files.
    *
-   * @param field
-   *          the field
+   * @param field the field
    * @return the int
-   * @throws ParseException
-   *           the parse exception
+   * @throws ParseException the parse exception
    */
   public static final int toInt(String field) throws ParseException {
     return (int) toDouble(field);
   }
 
   /**
-   * More robust number extraction that copes with text in the field. It attempts
-   * to extract the longest run of digits (with optional period) { possible from a
-   * string and convert it to a number.
+   * More robust number extraction that copes with text in the field. It
+   * attempts to extract the longest run of digits (with optional period) {
+   * possible from a string and convert it to a number.
    *
-   * @param field
-   *          the field
+   * @param field the field
    * @return A double
-   * @throws ParseException
-   *           the parse exception
+   * @throws ParseException the parse exception
    */
   public static final double toDouble(String field) throws ParseException {
     if (TextUtils.isNullOrEmpty(field)) {
@@ -167,8 +160,7 @@ public class Parser {
    * Extracts the numerical portion of a string and returns it as a double or
    * Double.NaN if no number if found.
    *
-   * @param field
-   *          the field
+   * @param field the field
    * @return the double
    */
   public static final double d(String field) {
@@ -196,8 +188,7 @@ public class Parser {
   /**
    * I.
    *
-   * @param field
-   *          the field
+   * @param field the field
    * @return the int
    */
   public static final int i(String field) {
@@ -225,12 +216,12 @@ public class Parser {
   /**
    * Extracts a number from a string.
    *
-   * @param field
-   *          the field
+   * @param field the field
    * @return the string
    */
   public static final String extractNumber(String field) {
-    Matcher matcher = STRICT_NUMBER_PATTERN.matcher(field.replaceAll(",", TextUtils.EMPTY_STRING));
+    Matcher matcher = STRICT_NUMBER_PATTERN
+        .matcher(field.replaceAll(",", TextUtils.EMPTY_STRING));
 
     if (matcher.find()) {
       return matcher.group(1);
@@ -242,12 +233,12 @@ public class Parser {
   /**
    * Extract number from text.
    *
-   * @param field
-   *          the field
+   * @param field the field
    * @return the string
    */
   public static final String extractNumberFromText(String field) {
-    Matcher matcher = ENDS_WITH_NUMBER_PATTERN.matcher(field.replaceAll(",", TextUtils.EMPTY_STRING));
+    Matcher matcher = ENDS_WITH_NUMBER_PATTERN
+        .matcher(field.replaceAll(",", TextUtils.EMPTY_STRING));
 
     if (matcher.find()) {
       return matcher.group(1);

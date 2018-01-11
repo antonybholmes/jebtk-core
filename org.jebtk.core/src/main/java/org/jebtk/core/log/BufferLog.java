@@ -24,7 +24,8 @@ import org.jebtk.core.collections.CircularArray;
  * @author Antony Holmes Holmes
  *
  */
-public class BufferLog extends CircularArray<LogEvent> implements LogEventListener {
+public class BufferLog extends CircularArray<LogEvent>
+    implements LogEventListener {
 
   /**
    * The constant DEFAULT_SIZE.
@@ -41,8 +42,7 @@ public class BufferLog extends CircularArray<LogEvent> implements LogEventListen
   /**
    * Instantiates a new buffer log.
    *
-   * @param maxSize
-   *          the max size
+   * @param maxSize the max size
    */
   public BufferLog(int maxSize) {
     super(maxSize);

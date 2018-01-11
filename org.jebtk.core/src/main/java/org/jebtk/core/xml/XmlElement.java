@@ -47,8 +47,7 @@ public class XmlElement implements Iterable<XmlElement>, FormattedXml {
   /**
    * Instantiates a new xml element.
    *
-   * @param name
-   *          the name
+   * @param name the name
    */
   public XmlElement(String name) {
     mName = name;
@@ -57,10 +56,8 @@ public class XmlElement implements Iterable<XmlElement>, FormattedXml {
   /**
    * Instantiates a new xml element.
    *
-   * @param name
-   *          the name
-   * @param text
-   *          the text
+   * @param name the name
+   * @param text the text
    */
   public XmlElement(String name, String text) {
     this(name);
@@ -80,10 +77,8 @@ public class XmlElement implements Iterable<XmlElement>, FormattedXml {
   /**
    * Sets the attribute.
    *
-   * @param name
-   *          the name
-   * @param value
-   *          the value
+   * @param name the name
+   * @param value the value
    */
   public void setAttribute(String name, String value) {
     mAttributes.add(new Attribute(name, value));
@@ -92,10 +87,8 @@ public class XmlElement implements Iterable<XmlElement>, FormattedXml {
   /**
    * Sets the attribute.
    *
-   * @param name
-   *          the name
-   * @param value
-   *          the value
+   * @param name the name
+   * @param value the value
    */
   public final void setAttribute(String name, int value) {
     mAttributes.add(new Attribute(name, Integer.toString(value)));
@@ -104,10 +97,8 @@ public class XmlElement implements Iterable<XmlElement>, FormattedXml {
   /**
    * Sets the attribute.
    *
-   * @param name
-   *          the name
-   * @param value
-   *          the value
+   * @param name the name
+   * @param value the value
    */
   public final void setAttribute(String name, double value) {
     mAttributes.add(new Attribute(name, Double.toString(value)));
@@ -116,8 +107,7 @@ public class XmlElement implements Iterable<XmlElement>, FormattedXml {
   /**
    * Append child.
    *
-   * @param element
-   *          the element
+   * @param element the element
    */
   public final void appendChild(XmlElement element) {
     mElements.add(element);
@@ -136,8 +126,7 @@ public class XmlElement implements Iterable<XmlElement>, FormattedXml {
   /**
    * Gets the elements by name.
    *
-   * @param name
-   *          the name
+   * @param name the name
    * @return the elements by name
    */
   public List<XmlElement> getElementsByName(String name) {
@@ -174,8 +163,7 @@ public class XmlElement implements Iterable<XmlElement>, FormattedXml {
    * Formatted xml.
    *
    * @return the string
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public String formattedXml() throws IOException {
     StringBuilder buffer = new StringBuilder();

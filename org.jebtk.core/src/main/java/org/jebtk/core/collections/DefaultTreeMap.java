@@ -19,10 +19,8 @@ package org.jebtk.core.collections;
 /**
  * Hashmap that automatically adds a default value if a key does not exist.
  *
- * @param <K>
- *          the key type
- * @param <V>
- *          the value type
+ * @param <K> the key type
+ * @param <V> the value type
  */
 public class DefaultTreeMap<K, V> extends IterTreeMap<K, V> {
 
@@ -39,8 +37,7 @@ public class DefaultTreeMap<K, V> extends IterTreeMap<K, V> {
   /**
    * Instantiates a new auto hash map.
    *
-   * @param defaultValue
-   *          the default value
+   * @param defaultValue the default value
    */
   public DefaultTreeMap(V defaultValue) {
     this(new ValueCreator<V>(defaultValue));
@@ -49,8 +46,7 @@ public class DefaultTreeMap<K, V> extends IterTreeMap<K, V> {
   /**
    * Instantiates a new default map.
    *
-   * @param defaultValue
-   *          the default value
+   * @param defaultValue the default value
    */
   public DefaultTreeMap(EntryCreator<V> defaultValue) {
     mDefaultValue = defaultValue;
@@ -70,8 +66,7 @@ public class DefaultTreeMap<K, V> extends IterTreeMap<K, V> {
   /**
    * Gets the value.
    *
-   * @param key
-   *          the key
+   * @param key the key
    * @return the value
    */
   public V getValue(K key) {
@@ -85,12 +80,9 @@ public class DefaultTreeMap<K, V> extends IterTreeMap<K, V> {
   /**
    * Creates a new Default Tree Map.
    *
-   * @param <KK>
-   *          the generic type
-   * @param <VV>
-   *          the generic type
-   * @param defaultValue
-   *          the default value
+   * @param <KK> the generic type
+   * @param <VV> the generic type
+   * @param defaultValue the default value
    * @return the map
    */
   public static <KK, VV> IterMap<KK, VV> create(VV defaultValue) {
@@ -100,12 +92,9 @@ public class DefaultTreeMap<K, V> extends IterTreeMap<K, V> {
   /**
    * Creates the.
    *
-   * @param <KK>
-   *          the generic type
-   * @param <VV>
-   *          the generic type
-   * @param defaultValue
-   *          the default value
+   * @param <KK> the generic type
+   * @param <VV> the generic type
+   * @param defaultValue the default value
    * @return the map
    */
   public static <KK, VV> IterMap<KK, VV> create(EntryCreator<VV> defaultValue) {

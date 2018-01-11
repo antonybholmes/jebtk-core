@@ -19,8 +19,7 @@ package org.jebtk.core.stream;
 /**
  * Jump items (i.e skip)
  *
- * @param <T>
- *          the generic type
+ * @param <T> the generic type
  */
 public class JumpStream<T> extends ContainerStream<T> {
 
@@ -30,10 +29,8 @@ public class JumpStream<T> extends ContainerStream<T> {
   /**
    * Instantiates a new filter stream.
    *
-   * @param stream
-   *          the stream
-   * @param n
-   *          the n
+   * @param stream the stream
+   * @param n the n
    */
   public JumpStream(Stream<T> stream, int n) {
     super(stream);

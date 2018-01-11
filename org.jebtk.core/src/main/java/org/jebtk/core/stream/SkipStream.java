@@ -19,8 +19,7 @@ package org.jebtk.core.stream;
 /**
  * Skip the first n items in a stream.
  *
- * @param <T>
- *          the generic type
+ * @param <T> the generic type
  */
 public class SkipStream<T> extends ContainerStream<T> {
 
@@ -33,10 +32,8 @@ public class SkipStream<T> extends ContainerStream<T> {
   /**
    * Instantiates a new filter stream.
    *
-   * @param stream
-   *          the stream
-   * @param n
-   *          the n
+   * @param stream the stream
+   * @param n the n
    */
   public SkipStream(Stream<T> stream, int n) {
     super(stream);

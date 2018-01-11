@@ -76,8 +76,7 @@ public class DictionaryService {
   /**
    * Load xml.
    *
-   * @param file
-   *          the file
+   * @param file the file
    */
   public void loadXml(File file) {
     try {
@@ -95,8 +94,7 @@ public class DictionaryService {
   /**
    * Load tsv file.
    *
-   * @param file
-   *          the file
+   * @param file the file
    */
   public void loadTSVFile(File file) {
     try {
@@ -110,7 +108,8 @@ public class DictionaryService {
             continue;
           }
 
-          List<String> tokens = TextUtils.fastSplit(line, TextUtils.TAB_DELIMITER);
+          List<String> tokens = TextUtils.fastSplit(line,
+              TextUtils.TAB_DELIMITER);
 
           addWord(tokens.get(0), tokens.get(1));
 
@@ -129,8 +128,7 @@ public class DictionaryService {
   /**
    * Exists.
    *
-   * @param word
-   *          the word
+   * @param word the word
    * @return true, if successful
    */
   public boolean exists(String word) {
@@ -140,8 +138,7 @@ public class DictionaryService {
   /**
    * Adds the word.
    *
-   * @param word
-   *          the word
+   * @param word the word
    */
   public void addWord(String word) {
     words.add(word.toLowerCase());
@@ -150,10 +147,8 @@ public class DictionaryService {
   /**
    * Adds the word.
    *
-   * @param word
-   *          the word
-   * @param definition
-   *          the definition
+   * @param word the word
+   * @param definition the definition
    */
   public void addWord(String word, String definition) {
     addWord(word);
@@ -164,8 +159,7 @@ public class DictionaryService {
   /**
    * Gets the definition.
    *
-   * @param word
-   *          the word
+   * @param word the word
    * @return the definition
    */
   public String getDefinition(String word) {
@@ -175,10 +169,8 @@ public class DictionaryService {
   /**
    * Adds the synonym.
    *
-   * @param word
-   *          the word
-   * @param synonym
-   *          the synonym
+   * @param word the word
+   * @param synonym the synonym
    */
   public void addSynonym(String word, String synonym) {
     String s = word.toLowerCase();
@@ -193,11 +185,10 @@ public class DictionaryService {
   }
 
   /**
-   * Returns the synonyms of a given word. The list will always contain the search
-   * word.
+   * Returns the synonyms of a given word. The list will always contain the
+   * search word.
    *
-   * @param word
-   *          the word
+   * @param word the word
    * @return the synonyms
    */
   public Set<String> getSynonyms(String word) {

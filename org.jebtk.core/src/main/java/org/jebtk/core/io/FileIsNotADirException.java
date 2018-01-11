@@ -29,8 +29,7 @@ public class FileIsNotADirException extends FileException {
   /**
    * Instantiates a new file is not A dir exception.
    *
-   * @param path
-   *          the path
+   * @param path the path
    */
   public FileIsNotADirException(File path) {
     super(path + " is not a directory.");

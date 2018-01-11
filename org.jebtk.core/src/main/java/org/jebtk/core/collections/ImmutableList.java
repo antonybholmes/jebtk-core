@@ -23,8 +23,7 @@ import java.util.ArrayList;
  * benefits of a vector without the ability to modify it.
  *
  * @author Antony Holmes Holmes
- * @param <T>
- *          the generic type
+ * @param <T> the generic type
  */
 public class ImmutableList<T> extends ArrayList<T> {
 

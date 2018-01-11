@@ -19,10 +19,8 @@ package org.jebtk.core.collections;
 /**
  * The Class HashMapCreator.
  *
- * @param <K>
- *          the key type
- * @param <V>
- *          the value type
+ * @param <K> the key type
+ * @param <V> the value type
  */
 public class HashMapCreator<K, V> implements IterMapCreator<K, V> {
 
@@ -42,8 +40,7 @@ public class HashMapCreator<K, V> implements IterMapCreator<K, V> {
   /**
    * Instantiates a new hash map creator.
    *
-   * @param initCap
-   *          the init cap
+   * @param initCap the init cap
    */
   public HashMapCreator(int initCap) {
     mInitCap = initCap;

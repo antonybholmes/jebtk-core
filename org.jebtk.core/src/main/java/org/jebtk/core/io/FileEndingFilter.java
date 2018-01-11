@@ -32,8 +32,7 @@ public class FileEndingFilter implements FileFilter {
   /**
    * Instantiates a new file ending filter.
    *
-   * @param filter
-   *          the filter
+   * @param filter the filter
    */
   public FileEndingFilter(String filter) {
     // System.out.println("filter:" + filter);
@@ -48,7 +47,8 @@ public class FileEndingFilter implements FileFilter {
    */
   public boolean accept(File f) {
     // files should not begin with a period as this indicates hidden files
-    return !f.isDirectory() && !f.getName().startsWith(".") && f.getName().toLowerCase().endsWith(filter.toLowerCase());
+    return !f.isDirectory() && !f.getName().startsWith(".")
+        && f.getName().toLowerCase().endsWith(filter.toLowerCase());
   }
 
   /**

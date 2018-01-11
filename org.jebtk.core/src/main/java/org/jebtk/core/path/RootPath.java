@@ -37,10 +37,8 @@ public class RootPath extends Path {
   /**
    * Instantiates a new root path.
    *
-   * @param level
-   *          the level
-   * @param levels
-   *          the levels
+   * @param level the level
+   * @param levels the levels
    */
   public RootPath(Object level, Object... levels) {
     super(true, level, levels);

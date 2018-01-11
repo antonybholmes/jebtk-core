@@ -48,8 +48,7 @@ public class DoubleModel extends ChangeListeners {
   /**
    * Sets the.
    *
-   * @param item
-   *          the item
+   * @param item the item
    */
   public void set(double item) {
     update(item);
@@ -60,8 +59,7 @@ public class DoubleModel extends ChangeListeners {
   /**
    * Update.
    *
-   * @param item
-   *          the item
+   * @param item the item
    */
   public void update(double item) {
     mPreviousItem = mItem;

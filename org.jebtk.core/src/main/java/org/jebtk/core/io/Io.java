@@ -80,7 +80,8 @@ public class Io {
   /**
    * The constant PWD.
    */
-  public static final Path PWD = PathUtils.getPath(System.getProperty("user.dir"));
+  public static final Path PWD = PathUtils
+      .getPath(System.getProperty("user.dir"));
 
   /**
    * The buffer.
@@ -90,8 +91,7 @@ public class Io {
   /**
    * Read sequences.
    *
-   * @param file
-   *          the file
+   * @param file the file
    * @return the map
    */
   public static final Map<String, String> readSequences(Path file) {
@@ -101,13 +101,12 @@ public class Io {
   /**
    * Read sequences.
    *
-   * @param file
-   *          the file
-   * @param shortName
-   *          the short name
+   * @param file the file
+   * @param shortName the short name
    * @return the map
    */
-  public static final Map<String, String> readSequences(Path file, boolean shortName) {
+  public static final Map<String, String> readSequences(Path file,
+      boolean shortName) {
     Map<String, String> sequences = new HashMap<String, String>();
 
     try {
@@ -130,7 +129,8 @@ public class Io {
           if (fastaHeaderMatcher.find()) {
             name = fastaHeaderMatcher.group(1);
 
-            // replace asterixes in the name with capital X to make seaches easier
+            // replace asterixes in the name with capital X to make seaches
+            // easier
             name = name.replaceAll("\\*", "X");
 
             // name = Text.removeRegexChars(name);
@@ -146,7 +146,8 @@ public class Io {
             if (name.length() != 0) {
               if (line.length() > 0) {
                 sequences.put(name, sequences.get(name) + line);
-                // System.out.println("seq:" + name + ":" + sequences.get(name) + line);
+                // System.out.println("seq:" + name + ":" + sequences.get(name)
+                // + line);
               }
             }
           }
@@ -164,14 +165,13 @@ public class Io {
   /**
    * Read alignments.
    *
-   * @param file
-   *          the file
-   * @param delimiter
-   *          the delimiter
-   * @param alignments
-   *          the alignments
+   * @param file the file
+   * @param delimiter the delimiter
+   * @param alignments the alignments
    */
-  public static final void readAlignments(Path file, String delimiter, Map<String, List<List<String>>> alignments) {
+  public static final void readAlignments(Path file,
+      String delimiter,
+      Map<String, List<List<String>>> alignments) {
     try {
       BufferedReader reader = FileUtils.newBufferedReader(file);
 
@@ -214,18 +214,17 @@ public class Io {
   /**
    * Removes the comments.
    *
-   * @param in
-   *          the in
-   * @param out
-   *          the out
-   * @param comment
-   *          the comment
+   * @param in the in
+   * @param out the out
+   * @param comment the comment
    */
   public static final void removeComments(Path in, Path out, String comment) {
     try {
       // System.out.println(file.toString());
 
-      BufferedReader reader = FileUtils.newBufferedReader(in); // new BufferedReader(new FileReader(in));
+      BufferedReader reader = FileUtils.newBufferedReader(in); // new
+                                                               // BufferedReader(new
+                                                               // FileReader(in));
       BufferedWriter writer = FileUtils.newBufferedWriter(out); // FileUtils.newBufferedReader(file);
 
       String line;
@@ -251,16 +250,16 @@ public class Io {
   /**
    * Removes the blank lines.
    *
-   * @param in
-   *          the in
-   * @param out
-   *          the out
+   * @param in the in
+   * @param out the out
    */
   public static final void removeBlankLines(Path in, Path out) {
     try {
       // System.out.println(file.toString());
 
-      BufferedReader reader = FileUtils.newBufferedReader(in); // new BufferedReader(new FileReader(in));
+      BufferedReader reader = FileUtils.newBufferedReader(in); // new
+                                                               // BufferedReader(new
+                                                               // FileReader(in));
       BufferedWriter writer = FileUtils.newBufferedWriter(out); // FileUtils.newBufferedReader(file);
 
       String line;
@@ -286,19 +285,16 @@ public class Io {
   /**
    * Loads a table into memory.
    *
-   * @param file
-   *          the file
-   * @param delimiter
-   *          the delimiter
-   * @param columnHeaderMode
-   *          the column header mode
-   * @param rowHeaderMode
-   *          the row header mode
+   * @param file the file
+   * @param delimiter the delimiter
+   * @param columnHeaderMode the column header mode
+   * @param rowHeaderMode the row header mode
    * @return the table data
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static final TableData<String> loadTable(Path file, char delimiter, boolean columnHeaderMode,
+  public static final TableData<String> loadTable(Path file,
+      char delimiter,
+      boolean columnHeaderMode,
       boolean rowHeaderMode) throws IOException {
     return loadTable(file, delimiter, columnHeaderMode, rowHeaderMode, null);
   }
@@ -306,22 +302,19 @@ public class Io {
   /**
    * Loads a table into memory.
    *
-   * @param file
-   *          the file
-   * @param delimiter
-   *          the delimiter
-   * @param columnHeaderMode
-   *          the column header mode
-   * @param rowHeaderMode
-   *          the row header mode
-   * @param columns
-   *          the columns
+   * @param file the file
+   * @param delimiter the delimiter
+   * @param columnHeaderMode the column header mode
+   * @param rowHeaderMode the row header mode
+   * @param columns the columns
    * @return the table data
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static final TableData<String> loadTable(Path file, char delimiter, boolean columnHeaderMode,
-      boolean rowHeaderMode, List<Integer> columns) throws IOException {
+  public static final TableData<String> loadTable(Path file,
+      char delimiter,
+      boolean columnHeaderMode,
+      boolean rowHeaderMode,
+      List<Integer> columns) throws IOException {
 
     BufferedReader reader = FileUtils.newBufferedReader(file);
 
@@ -335,7 +328,8 @@ public class Io {
 
     try {
       if (columnHeaderMode) {
-        tokens = TextUtils.fastSplitRemoveQuotes(reader.readLine(), TextUtils.TAB_DELIMITER_CHAR);
+        tokens = TextUtils.fastSplitRemoveQuotes(reader.readLine(),
+            TextUtils.TAB_DELIMITER_CHAR);
 
         table.columnHeadings = new ArrayList<String>();
 
@@ -359,7 +353,8 @@ public class Io {
 
         // System.err.println("table line " + file);
 
-        tokens = TextUtils.fastSplitRemoveQuotes(line, TextUtils.TAB_DELIMITER_CHAR);
+        tokens = TextUtils.fastSplitRemoveQuotes(line,
+            TextUtils.TAB_DELIMITER_CHAR);
 
         if (rowHeaderMode) {
           table.rowHeader.add(tokens.get(0));
@@ -392,20 +387,18 @@ public class Io {
   /**
    * Load double table.
    *
-   * @param file
-   *          the file
-   * @param delimiter
-   *          the delimiter
-   * @param columnHeaderMode
-   *          the column header mode
-   * @param rowHeaderMode
-   *          the row header mode
-   * @param columns
-   *          the columns
+   * @param file the file
+   * @param delimiter the delimiter
+   * @param columnHeaderMode the column header mode
+   * @param rowHeaderMode the row header mode
+   * @param columns the columns
    * @return the table data
    */
-  public static final TableData<Double> loadDoubleTable(Path file, String delimiter, boolean columnHeaderMode,
-      boolean rowHeaderMode, List<Integer> columns) {
+  public static final TableData<Double> loadDoubleTable(Path file,
+      String delimiter,
+      boolean columnHeaderMode,
+      boolean rowHeaderMode,
+      List<Integer> columns) {
     try {
       // System.out.println(file.toString());
 
@@ -482,16 +475,14 @@ public class Io {
   /**
    * Write table.
    *
-   * @param <T>
-   *          the generic type
-   * @param table
-   *          the table
-   * @param delimiter
-   *          the delimiter
-   * @param file
-   *          the file
+   * @param <T> the generic type
+   * @param table the table
+   * @param delimiter the delimiter
+   * @param file the file
    */
-  public static final <T> void writeTable(TableData<T> table, String delimiter, Path file) {
+  public static final <T> void writeTable(TableData<T> table,
+      String delimiter,
+      Path file) {
     try {
       // System.out.println("creating table " + out.getAbsolutePath());
 
@@ -499,7 +490,8 @@ public class Io {
 
       try {
         if (table.columnHeadings != null) {
-          writer.write(Stream.of(table.columnHeadings).asString().join(delimiter));
+          writer.write(
+              Stream.of(table.columnHeadings).asString().join(delimiter));
           writer.newLine();
         }
 
@@ -527,19 +519,16 @@ public class Io {
   /**
    * Write table.
    *
-   * @param columnNames
-   *          the column names
-   * @param data
-   *          the data
-   * @param delimiter
-   *          the delimiter
-   * @param file
-   *          the file
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @param columnNames the column names
+   * @param data the data
+   * @param delimiter the delimiter
+   * @param file the file
+   * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static void writeTable(String[] columnNames, List<Object[]> data, String delimiter, Path file)
-      throws IOException {
+  public static void writeTable(String[] columnNames,
+      List<Object[]> data,
+      String delimiter,
+      Path file) throws IOException {
     // System.out.println("creating table " + out.getAbsolutePath());
 
     BufferedWriter writer = FileUtils.newBufferedWriter(file);
@@ -560,12 +549,9 @@ public class Io {
   /**
    * Writes a list to file.
    *
-   * @param <T>
-   *          the generic type
-   * @param list
-   *          the list
-   * @param out
-   *          the out
+   * @param <T> the generic type
+   * @param list the list
+   * @param out the out
    */
   public static final <T> void writeList(List<T> list, Path out) {
     try {
@@ -587,15 +573,13 @@ public class Io {
   /**
    * Loads a list from file assuming one entry per line.
    *
-   * @param file
-   *          the file
-   * @param skipHeader
-   *          the skip header
+   * @param file the file
+   * @param skipHeader the skip header
    * @return the list
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static final List<String> loadList(Path file, boolean skipHeader) throws IOException {
+  public static final List<String> loadList(Path file, boolean skipHeader)
+      throws IOException {
     LOG.info("Load list from {}, {}...", file, skipHeader);
 
     BufferedReader reader = FileUtils.newBufferedReader(file);
@@ -625,11 +609,9 @@ public class Io {
   /**
    * Gets the header.
    *
-   * @param file
-   *          the file
+   * @param file the file
    * @return the header
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public static final List<String> getHeader(Path file) throws IOException {
     LOG.info("Load list from {}...", file);
@@ -650,15 +632,13 @@ public class Io {
   /**
    * Load csv list.
    *
-   * @param file
-   *          the file
-   * @param skipHeader
-   *          the skip header
+   * @param file the file
+   * @param skipHeader the skip header
    * @return the list
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static final List<String> loadCSVList(Path file, boolean skipHeader) throws IOException {
+  public static final List<String> loadCSVList(Path file, boolean skipHeader)
+      throws IOException {
     LOG.info("Load list from {}, {}...", file, skipHeader);
 
     BufferedReader reader = FileUtils.newBufferedReader(file);
@@ -688,11 +668,9 @@ public class Io {
   /**
    * Gets the CSV header.
    *
-   * @param file
-   *          the file
+   * @param file the file
    * @return the CSV header
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public static final List<String> getCSVHeader(Path file) throws IOException {
     LOG.info("Load list from {}...", file);
@@ -713,8 +691,7 @@ public class Io {
   /**
    * Load double list.
    *
-   * @param file
-   *          the file
+   * @param file the file
    * @return the list
    */
   public static final List<Double> loadDoubleList(Path file) {
@@ -751,11 +728,9 @@ public class Io {
   /**
    * Gets the lines.
    *
-   * @param file
-   *          the file
+   * @param file the file
    * @return the lines
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public static final List<String> getLines(Path file) throws IOException {
     List<String> lines = new ArrayList<String>();
@@ -778,11 +753,9 @@ public class Io {
   /**
    * Returns the first line of a file.
    *
-   * @param file
-   *          the file
+   * @param file the file
    * @return the head
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public static final String getHead(Path file) throws IOException {
     BufferedReader reader = FileUtils.newBufferedReader(file);
@@ -801,22 +774,20 @@ public class Io {
   /**
    * Read map.
    *
-   * @param file
-   *          the file
-   * @param delimiter
-   *          the delimiter
-   * @param headerMode
-   *          the header mode
-   * @param columns
-   *          the columns
-   * @param referenceColumn
-   *          the reference column
-   * @param map
-   *          the map
+   * @param file the file
+   * @param delimiter the delimiter
+   * @param headerMode the header mode
+   * @param columns the columns
+   * @param referenceColumn the reference column
+   * @param map the map
    * @return the list
    */
-  public static final List<String> readMap(Path file, String delimiter, boolean headerMode, List<Integer> columns,
-      int referenceColumn, Map<String, String> map) {
+  public static final List<String> readMap(Path file,
+      String delimiter,
+      boolean headerMode,
+      List<Integer> columns,
+      int referenceColumn,
+      Map<String, String> map) {
     try {
       // System.out.println(file.toString());
 
@@ -871,17 +842,15 @@ public class Io {
   /**
    * Read table.
    *
-   * @param file
-   *          the file
-   * @param delimiter
-   *          the delimiter
-   * @param table
-   *          the table
-   * @param headerMode
-   *          the header mode
+   * @param file the file
+   * @param delimiter the delimiter
+   * @param table the table
+   * @param headerMode the header mode
    * @return the list
    */
-  public static final List<String> readTable(Path file, String delimiter, List<List<String>> table,
+  public static final List<String> readTable(Path file,
+      String delimiter,
+      List<List<String>> table,
       boolean headerMode) {
     try {
       // System.out.println(file.toString());
@@ -920,8 +889,7 @@ public class Io {
   /**
    * Returns a list of files from a text file containing a list of files.
    *
-   * @param file
-   *          the file
+   * @param file the file
    * @return the files from list
    */
   public static final List<Path> getFilesFromList(Path file) {
@@ -952,15 +920,13 @@ public class Io {
   /**
    * Returns a sorted list of files from a directory.
    *
-   * @param dir
-   *          the dir
-   * @param filter
-   *          the filter
+   * @param dir the dir
+   * @param filter the filter
    * @return the list
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static final List<Path> listFiles(Path dir, FileFilter filter) throws IOException {
+  public static final List<Path> listFiles(Path dir, FileFilter filter)
+      throws IOException {
 
     List<Path> files = FileUtils.ls(dir, filter);
 
@@ -982,11 +948,9 @@ public class Io {
   /**
    * Return a sorted list of the directories in a directory.
    *
-   * @param dir
-   *          the dir
+   * @param dir the dir
    * @return the list
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public static final List<Path> listDirectories(Path dir) throws IOException {
     List<Path> files = FileUtils.ls(dir);
@@ -1009,8 +973,7 @@ public class Io {
   /**
    * Deletes a file from the system.
    *
-   * @param file
-   *          the file
+   * @param file the file
    * @return true, if successful
    */
   public static final boolean delete(File file) {
@@ -1037,13 +1000,10 @@ public class Io {
   /**
    * Creates the file.
    *
-   * @param dir
-   *          the dir
-   * @param file
-   *          the file
+   * @param dir the dir
+   * @param file the file
    * @return the file
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public static final Path createFile(Path dir, Path file) throws IOException {
     return dir.resolve(file);
@@ -1052,28 +1012,23 @@ public class Io {
   /**
    * Creates the file.
    *
-   * @param dir
-   *          the dir
-   * @param file
-   *          the file
+   * @param dir the dir
+   * @param file the file
    * @return the path
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static final Path createFile(Path dir, String file) throws IOException {
+  public static final Path createFile(Path dir, String file)
+      throws IOException {
     return dir.resolve(file);
   }
 
   /**
    * Creates the file.
    *
-   * @param dir
-   *          the dir
-   * @param file
-   *          the file
+   * @param dir the dir
+   * @param file the file
    * @return the file
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public static final File createFile(File dir, File file) throws IOException {
     return new File(dir, file.getAbsolutePath());
@@ -1082,14 +1037,12 @@ public class Io {
   /**
    * Concatenate multiple files together.
    *
-   * @param files
-   *          the files
-   * @param out
-   *          the out
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @param files the files
+   * @param out the out
+   * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static final void catFiles(List<Path> files, Path out) throws IOException {
+  public static final void catFiles(List<Path> files, Path out)
+      throws IOException {
     BufferedWriter writer = FileUtils.newBufferedWriter(out);
 
     String line;
@@ -1113,18 +1066,16 @@ public class Io {
   }
 
   /**
-   * Makes a copy of a file using the NIO method and also attempts to use a normal
-   * copy method if that fails.
+   * Makes a copy of a file using the NIO method and also attempts to use a
+   * normal copy method if that fails.
    *
-   * @param sourceFile
-   *          the source file
-   * @param destFile
-   *          the dest file
+   * @param sourceFile the source file
+   * @param destFile the dest file
    * @return true, if successful
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static final boolean copyFile(File sourceFile, File destFile) throws IOException {
+  public static final boolean copyFile(File sourceFile, File destFile)
+      throws IOException {
     System.err.println("Copying " + sourceFile + " to " + destFile);
 
     try {
@@ -1141,7 +1092,8 @@ public class Io {
 
         return true;
       } catch (IOException e2) {
-        System.err.println("Error using NIO block copy, trying original method...");
+        System.err
+            .println("Error using NIO block copy, trying original method...");
 
         try {
           copyFileOriginal(sourceFile, destFile);
@@ -1167,8 +1119,8 @@ public class Io {
      * MAX_COPY_SIZE, destination); } } finally { if(source != null) {
      * source.close(); }
      * 
-     * if(destination != null) { destination.close(); } } } catch (Exception e) { //
-     * some sort of copy error so try again
+     * if(destination != null) { destination.close(); } } } catch (Exception e)
+     * { // some sort of copy error so try again
      * 
      * System.err.println("Error using NIO copy, trying original method...");
      * 
@@ -1179,34 +1131,32 @@ public class Io {
   /**
    * Copy file.
    *
-   * @param source
-   *          the source
-   * @param dest
-   *          the dest
+   * @param source the source
+   * @param dest the dest
    * @return true, if successful
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static final boolean copyFile(Path source, Path dest) throws IOException {
+  public static final boolean copyFile(Path source, Path dest)
+      throws IOException {
     return FileUtils.copy(source, dest);
   }
 
   /**
    * Makes a file copy using NIO.
    *
-   * @param source
-   *          the source
-   * @param dest
-   *          the dest
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @param source the source
+   * @param dest the dest
+   * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static final void copyFileNio(File source, File dest) throws IOException {
+  public static final void copyFileNio(File source, File dest)
+      throws IOException {
     FileInputStream inChannel = new FileInputStream(source);
     FileOutputStream outChannel = new FileOutputStream(source);
 
     try {
-      inChannel.getChannel().transferTo(0, inChannel.getChannel().size(), outChannel.getChannel());
+      inChannel.getChannel().transferTo(0,
+          inChannel.getChannel().size(),
+          outChannel.getChannel());
     } finally {
       inChannel.close();
 
@@ -1218,9 +1168,10 @@ public class Io {
      * 
      * FileChannel source = null; FileChannel destination = null;
      * 
-     * try { source = new FileInputStream(sourceFile).getChannel(); destination =
-     * new FileOutputStream(destFile).getChannel(); destination.transferFrom(source,
-     * 0, source.size()); } finally { if(source != null) { source.close(); }
+     * try { source = new FileInputStream(sourceFile).getChannel(); destination
+     * = new FileOutputStream(destFile).getChannel();
+     * destination.transferFrom(source, 0, source.size()); } finally { if(source
+     * != null) { source.close(); }
      * 
      * if(destination != null) { destination.close(); } }
      */
@@ -1237,8 +1188,8 @@ public class Io {
      * MAX_COPY_SIZE, destination); } } finally { if(source != null) {
      * source.close(); }
      * 
-     * if(destination != null) { destination.close(); } } } catch (Exception e) { //
-     * some sort of copy error so try again
+     * if(destination != null) { destination.close(); } } } catch (Exception e)
+     * { // some sort of copy error so try again
      * 
      * System.err.println("Error using NIO copy, trying original method...");
      * 
@@ -1249,14 +1200,12 @@ public class Io {
   /**
    * Copy file nio block.
    *
-   * @param sourceFile
-   *          the source file
-   * @param destFile
-   *          the dest file
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @param sourceFile the source file
+   * @param destFile the dest file
+   * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static final void copyFileNioBlock(File sourceFile, File destFile) throws IOException {
+  public static final void copyFileNioBlock(File sourceFile, File destFile)
+      throws IOException {
     FileInputStream source = new FileInputStream(sourceFile);
     FileOutputStream destination = new FileOutputStream(destFile);
 
@@ -1270,7 +1219,8 @@ public class Io {
       // method required to copy with windows file copy limits
 
       while (position < size) {
-        position += sourceChannel.transferTo(position, MAX_COPY_SIZE, destinationChannel);
+        position += sourceChannel
+            .transferTo(position, MAX_COPY_SIZE, destinationChannel);
       }
     } finally {
       source.close();
@@ -1284,14 +1234,12 @@ public class Io {
   /**
    * Makes a copy of a file using the conventional Java IO operations.
    *
-   * @param in
-   *          the in
-   * @param out
-   *          the out
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @param in the in
+   * @param out the out
+   * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static final void copyFileOriginal(File in, File out) throws IOException {
+  public static final void copyFileOriginal(File in, File out)
+      throws IOException {
     FileInputStream fis = new FileInputStream(in);
     FileOutputStream fos = new FileOutputStream(out);
 
@@ -1311,8 +1259,7 @@ public class Io {
   /**
    * Make a directory and create parent directories if necessary.
    *
-   * @param dir
-   *          the dir
+   * @param dir the dir
    * @return true, if successful
    */
   public static final boolean makeDirectory(File dir) {
@@ -1328,11 +1275,9 @@ public class Io {
   /**
    * Make directory.
    *
-   * @param dir
-   *          the dir
+   * @param dir the dir
    * @return true, if successful
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public static final boolean makeDirectory(Path dir) throws IOException {
     return FileUtils.mkdir(dir);
@@ -1341,15 +1286,13 @@ public class Io {
   /**
    * Move file.
    *
-   * @param source
-   *          the source
-   * @param destination
-   *          the destination
+   * @param source the source
+   * @param destination the destination
    * @return true, if successful
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static final boolean moveFile(File source, File destination) throws IOException {
+  public static final boolean moveFile(File source, File destination)
+      throws IOException {
     boolean success = copyFile(source, destination);
 
     if (success) {
@@ -1357,12 +1300,16 @@ public class Io {
       success = delete(source);
 
       if (success) {
-        LOG.info("{} moved to {}.", source.getAbsolutePath(), destination.getAbsolutePath());
+        LOG.info("{} moved to {}.",
+            source.getAbsolutePath(),
+            destination.getAbsolutePath());
       } else {
         LOG.error("{} could not be deleted.", source.getAbsolutePath());
       }
     } else {
-      LOG.error("{} could not be moved to {}.", source.getAbsolutePath(), destination.getAbsolutePath());
+      LOG.error("{} could not be moved to {}.",
+          source.getAbsolutePath(),
+          destination.getAbsolutePath());
     }
 
     return success;
@@ -1371,13 +1318,13 @@ public class Io {
   /**
    * Checks if is empty line.
    *
-   * @param line
-   *          the line
+   * @param line the line
    * @return true, if is empty line
    */
   public static final boolean isEmptyLine(String line) {
     // return line == null || line.length() == 0 ||
-    // line.startsWith(Text.TAB_DELIMITER) || line.startsWith(Text.COMMA_DELIMITER)
+    // line.startsWith(Text.TAB_DELIMITER) ||
+    // line.startsWith(Text.COMMA_DELIMITER)
     // || line.startsWith(Text.NEWLINE);
     return TextUtils.isNullOrEmpty(line) || line.startsWith(TextUtils.NEW_LINE);
   }
@@ -1387,15 +1334,13 @@ public class Io {
    * does not create duplicate endings such as .txt.txt, but it will allow
    * .csv.txt for example.
    *
-   * @param file
-   *          the file
-   * @param extension
-   *          the extension
+   * @param file the file
+   * @param extension the extension
    * @return the file
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static final File addExtension(final File file, final String extension) throws IOException {
+  public static final File addExtension(final File file, final String extension)
+      throws IOException {
     String s = file.getCanonicalPath();
 
     if (!s.toLowerCase().endsWith("." + extension)) {
@@ -1408,30 +1353,26 @@ public class Io {
   /**
    * Adds the extension.
    *
-   * @param file
-   *          the file
-   * @param extension
-   *          the extension
+   * @param file the file
+   * @param extension the extension
    * @return the path
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static final Path addExtension(final Path file, final String extension) throws IOException {
+  public static final Path addExtension(final Path file, final String extension)
+      throws IOException {
     return PathUtils.addExtension(file, extension);
   }
 
   /**
    * Replace a file extension with another.
    *
-   * @param file
-   *          the file
-   * @param extension
-   *          the extension
+   * @param file the file
+   * @param extension the extension
    * @return the file
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static Path replaceExtension(Path file, String extension) throws IOException {
+  public static Path replaceExtension(Path file, String extension)
+      throws IOException {
     String s = PathUtils.toString(file);
 
     s = s.replaceFirst("\\.\\w+$", "." + extension);
@@ -1442,11 +1383,9 @@ public class Io {
   /**
    * Load text file.
    *
-   * @param file
-   *          the file
+   * @param file the file
    * @return the string
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public static final String loadTextFile(final Path file) throws IOException {
     BufferedReader reader = FileUtils.newBufferedReader(file);
@@ -1472,14 +1411,12 @@ public class Io {
   /**
    * Load text file.
    *
-   * @param file
-   *          the file
-   * @param textArea
-   *          the text area
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @param file the file
+   * @param textArea the text area
+   * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static final void loadTextFile(Path file, JTextArea textArea) throws IOException {
+  public static final void loadTextFile(Path file, JTextArea textArea)
+      throws IOException {
     BufferedReader reader = FileUtils.newBufferedReader(file);
 
     String line;
@@ -1501,15 +1438,14 @@ public class Io {
   /**
    * Writes table model data to a text file using a delimiter.
    *
-   * @param file
-   *          the file
-   * @param model
-   *          the model
-   * @param delimiter
-   *          the delimiter
+   * @param file the file
+   * @param model the model
+   * @param delimiter the delimiter
    * @return true, if successful
    */
-  public static final boolean writeTableToFile(Path file, TableModel model, String delimiter) {
+  public static final boolean writeTableToFile(Path file,
+      TableModel model,
+      String delimiter) {
     try {
       BufferedWriter out = FileUtils.newBufferedWriter(file);
 
@@ -1550,19 +1486,16 @@ public class Io {
   /**
    * Write table to file.
    *
-   * @param file
-   *          the file
-   * @param header
-   *          the header
-   * @param rows
-   *          the rows
-   * @param delimiter
-   *          the delimiter
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @param file the file
+   * @param header the header
+   * @param rows the rows
+   * @param delimiter the delimiter
+   * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static final void writeTableToFile(Path file, List<String> header, List<List<String>> rows, String delimiter)
-      throws IOException {
+  public static final void writeTableToFile(Path file,
+      List<String> header,
+      List<List<String>> rows,
+      String delimiter) throws IOException {
 
     BufferedWriter out = FileUtils.newBufferedWriter(file);
 
@@ -1584,12 +1517,9 @@ public class Io {
   /**
    * Writes text directly to a file.
    *
-   * @param file
-   *          the file
-   * @param text
-   *          the text
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @param file the file
+   * @param text the text
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public static void write(Path file, String text) throws IOException {
     BufferedWriter out = FileUtils.newBufferedWriter(file);
@@ -1605,8 +1535,7 @@ public class Io {
   /**
    * Gets the file ext.
    *
-   * @param file
-   *          the file
+   * @param file the file
    * @return the file ext
    */
   public static String getFileExt(Path file) {
@@ -1617,8 +1546,7 @@ public class Io {
    * Returns the extension of a file based on its name containing a period
    * followed by an extension.
    *
-   * @param file
-   *          the file
+   * @param file the file
    * @return the file extension
    */
   public static String getFileExt(File file) {
@@ -1628,8 +1556,7 @@ public class Io {
   /**
    * Returns the file extension (e.g. txt) from a file name
    *
-   * @param file
-   *          the file
+   * @param file the file
    * @return the file extension
    */
   public static String getFileExt(String file) {
@@ -1639,8 +1566,7 @@ public class Io {
   /**
    * Returns the portion of the file name after the first period is encountered.
    *
-   * @param file
-   *          the file
+   * @param file the file
    * @return the file ext long
    */
   public static String getFileExtLong(String file) {
@@ -1658,8 +1584,7 @@ public class Io {
   /**
    * Remove the contents of a directory but leave the directory inplace.
    *
-   * @param directory
-   *          the directory
+   * @param directory the directory
    */
   public static void clearDirectory(File directory) {
     Deque<File> stack = new ArrayDeque<File>();
@@ -1696,8 +1621,7 @@ public class Io {
   /**
    * Return a byte as an unsigned value.
    *
-   * @param b
-   *          the b
+   * @param b the b
    * @return the int
    */
   public static int unsignedToSigned(byte b) {
@@ -1707,8 +1631,7 @@ public class Io {
   /**
    * Convert a byte array to an unsigned byte array stored as integers.
    *
-   * @param buf
-   *          the buf
+   * @param buf the buf
    * @return the int[]
    */
   public static int[] unsignedToSigned(byte[] buf) {
@@ -1724,8 +1647,7 @@ public class Io {
   /**
    * Int to char.
    *
-   * @param buf
-   *          the buf
+   * @param buf the buf
    * @return the char[]
    */
   public static char[] intToChar(int[] buf) {
@@ -1741,8 +1663,7 @@ public class Io {
   /**
    * Int to char.
    *
-   * @param buf
-   *          the buf
+   * @param buf the buf
    * @return the char[]
    */
   public static char[] intToChar(byte[] buf) {
@@ -1758,8 +1679,7 @@ public class Io {
   /**
    * Returns the name of the file, minus any extension.
    *
-   * @param file
-   *          the file
+   * @param file the file
    * @return the name
    */
   public static String getName(File file) {
@@ -1767,18 +1687,17 @@ public class Io {
   }
 
   /**
-   * Create a zip file from a list of files. Each zip entry will be called by the
-   * file name excluding the path.
+   * Create a zip file from a list of files. Each zip entry will be called by
+   * the file name excluding the path.
    *
-   * @param outFile
-   *          the out file
-   * @param files
-   *          the files
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @param outFile the out file
+   * @param files the files
+   * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static void createZip(Path outFile, List<Path> files) throws IOException {
-    ZipOutputStream out = new ZipOutputStream(FileUtils.newOutputStream(outFile));
+  public static void createZip(Path outFile, List<Path> files)
+      throws IOException {
+    ZipOutputStream out = new ZipOutputStream(
+        FileUtils.newOutputStream(outFile));
 
     for (Path file : files) {
       InputStream in = FileUtils.newBufferedInputStream(file);
@@ -1802,10 +1721,8 @@ public class Io {
   /**
    * Find a file matching a pattern in a dir.
    *
-   * @param dir
-   *          the dir
-   * @param pattern
-   *          the pattern
+   * @param dir the dir
+   * @param pattern the pattern
    * @return the file
    */
   public static File find(File dir, String pattern) {
@@ -1821,10 +1738,8 @@ public class Io {
   /**
    * Starts with.
    *
-   * @param dir
-   *          the dir
-   * @param pattern
-   *          the pattern
+   * @param dir the dir
+   * @param pattern the pattern
    * @return the file
    */
   public static File startsWith(File dir, String pattern) {
@@ -1841,10 +1756,8 @@ public class Io {
    * Find all files in a directory matching a set of patterns. Each file must
    * match all of the patterns.
    *
-   * @param dir
-   *          the dir
-   * @param patterns
-   *          the patterns
+   * @param dir the dir
+   * @param patterns the patterns
    * @return the list
    */
   public static List<File> findAll(File dir, String... patterns) {
@@ -1871,32 +1784,28 @@ public class Io {
   /**
    * Gets the column.
    *
-   * @param file
-   *          the file
-   * @param skipHeader
-   *          the skip header
+   * @param file the file
+   * @param skipHeader the skip header
    * @return the column
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static List<String> getColumn(Path file, boolean skipHeader) throws IOException {
+  public static List<String> getColumn(Path file, boolean skipHeader)
+      throws IOException {
     return getColumn(file, skipHeader, 0);
   }
 
   /**
    * Return a column from a tab delimited file.
    *
-   * @param file
-   *          the file
-   * @param skipHeader
-   *          the skip header
-   * @param column
-   *          the column
+   * @param file the file
+   * @param skipHeader the skip header
+   * @param column the column
    * @return the column
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static List<String> getColumn(Path file, boolean skipHeader, int column) throws IOException {
+  public static List<String> getColumn(Path file,
+      boolean skipHeader,
+      int column) throws IOException {
     BufferedReader reader = FileUtils.newBufferedReader(file);
 
     List<String> ret = new ArrayList<String>();
@@ -1927,8 +1836,7 @@ public class Io {
   /**
    * Returns true if file has a txt extension in its name.
    *
-   * @param file
-   *          the file
+   * @param file the file
    * @return the checks for txt ext
    */
   public static boolean getHasTxtExt(File file) {

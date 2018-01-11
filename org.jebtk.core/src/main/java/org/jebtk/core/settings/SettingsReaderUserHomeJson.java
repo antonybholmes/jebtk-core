@@ -45,8 +45,8 @@ public class SettingsReaderUserHomeJson implements SettingsReader {
   /*
    * (non-Javadoc)
    * 
-   * @see
-   * org.abh.common.settings.SettingsReader#load(org.abh.common.settings.Settings)
+   * @see org.abh.common.settings.SettingsReader#load(org.abh.common.settings.
+   * Settings)
    */
   @Override
   public void load(Settings settings) {

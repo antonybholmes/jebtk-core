@@ -21,8 +21,7 @@ package org.jebtk.core.stream;
  * Holds a reference to an existing stream.
  *
  * @author Antony Holmes Holmes
- * @param <T>
- *          the generic type
+ * @param <T> the generic type
  */
 public class ContainerStream<T> extends Stream<T> {
 
@@ -32,8 +31,7 @@ public class ContainerStream<T> extends Stream<T> {
   /**
    * Instantiates a new container stream.
    *
-   * @param stream
-   *          the stream
+   * @param stream the stream
    */
   public ContainerStream(Stream<T> stream) {
     mStream = stream;

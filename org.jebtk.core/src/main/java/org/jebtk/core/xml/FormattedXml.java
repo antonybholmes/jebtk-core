@@ -30,22 +30,17 @@ public interface FormattedXml {
   /**
    * Formatted xml.
    *
-   * @param buffer
-   *          the buffer
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @param buffer the buffer
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public void formattedXml(Appendable buffer) throws IOException;
 
   /**
    * Formatted xml.
    *
-   * @param buffer
-   *          the buffer
-   * @param level
-   *          the level
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @param buffer the buffer
+   * @param level the level
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public void formattedXml(Appendable buffer, int level) throws IOException;
 }

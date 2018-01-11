@@ -39,10 +39,8 @@ public class XmlWriter {
   /**
    * Instantiates a new xml writer.
    *
-   * @param file
-   *          the file
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @param file the file
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public XmlWriter(File file) throws IOException {
     writer = new BufferedWriter(new FileWriter(file));
@@ -52,10 +50,8 @@ public class XmlWriter {
   /**
    * Write tag.
    *
-   * @param tag
-   *          the tag
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @param tag the tag
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public final void writeTag(String tag) throws IOException {
     writer.write(Xml.startTag(tag));
@@ -65,10 +61,8 @@ public class XmlWriter {
   /**
    * Write end tag.
    *
-   * @param tag
-   *          the tag
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @param tag the tag
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public final void writeEndTag(String tag) throws IOException {
     writer.write(Xml.endTag(tag));
@@ -77,10 +71,8 @@ public class XmlWriter {
   /**
    * Write open tag.
    *
-   * @param tag
-   *          the tag
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @param tag the tag
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public final void writeOpenTag(String tag) throws IOException {
     writer.write("<" + tag);
@@ -89,8 +81,7 @@ public class XmlWriter {
   /**
    * Write close tag.
    *
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public final void writeCloseTag() throws IOException {
     writer.write(">");
@@ -99,8 +90,7 @@ public class XmlWriter {
   /**
    * End closed tag.
    *
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public final void endClosedTag() throws IOException {
     writer.write(" />");
@@ -109,12 +99,9 @@ public class XmlWriter {
   /**
    * Adds the parameter.
    *
-   * @param name
-   *          the name
-   * @param value
-   *          the value
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @param name the name
+   * @param value the value
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public final void addParameter(String name, String value) throws IOException {
     writer.write(" " + name + "=\"" + value + "\"");
@@ -123,8 +110,7 @@ public class XmlWriter {
   /**
    * Close.
    *
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public final void close() throws IOException {
     writer.close();
@@ -133,10 +119,8 @@ public class XmlWriter {
   /**
    * Write.
    *
-   * @param text
-   *          the text
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @param text the text
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public final void write(String text) throws IOException {
     writer.write(text);
@@ -145,14 +129,12 @@ public class XmlWriter {
   /**
    * Write tagged text.
    *
-   * @param tag
-   *          the tag
-   * @param text
-   *          the text
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @param tag the tag
+   * @param text the text
+   * @throws IOException Signals that an I/O exception has occurred.
    */
-  public final void writeTaggedText(String tag, String text) throws IOException {
+  public final void writeTaggedText(String tag, String text)
+      throws IOException {
     writeTag(tag);
     write(text);
     writeEndTag(tag);
@@ -162,8 +144,7 @@ public class XmlWriter {
   /**
    * New line.
    *
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public final void newLine() throws IOException {
     writer.newLine();

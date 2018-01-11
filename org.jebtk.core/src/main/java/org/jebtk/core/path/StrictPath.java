@@ -39,18 +39,18 @@ public class StrictPath extends Path {
   private static final Pattern SLASH_REGEX = Pattern.compile("[\\/\\\\]");
 
   /** The Constant BRACKET_REGEX. */
-  private static final Pattern BRACKET_REGEX = Pattern.compile("[\\[\\]\\(\\)\\{\\}]");
+  private static final Pattern BRACKET_REGEX = Pattern
+      .compile("[\\[\\]\\(\\)\\{\\}]");
 
   /** The Constant ILLEGAL_REGEX. */
-  private static final Pattern ILLEGAL_REGEX = Pattern.compile("[^a-zA-Z0-9\\-_\\.]");
+  private static final Pattern ILLEGAL_REGEX = Pattern
+      .compile("[^a-zA-Z0-9\\-_\\.]");
 
   /**
    * Instantiates a new strict path.
    *
-   * @param <T>
-   *          the generic type
-   * @param path
-   *          the path
+   * @param <T> the generic type
+   * @param path the path
    */
   public <T> StrictPath(String path) {
     super(path);
@@ -59,8 +59,7 @@ public class StrictPath extends Path {
   /**
    * Instantiates a new strict path.
    *
-   * @param path
-   *          the path
+   * @param path the path
    */
   public StrictPath(Path path) {
     super(path);
@@ -69,10 +68,8 @@ public class StrictPath extends Path {
   /**
    * Instantiates a new strict path.
    *
-   * @param path
-   *          the path
-   * @param levels
-   *          the levels
+   * @param path the path
+   * @param levels the levels
    */
   public StrictPath(Path path, Object... levels) {
     super(path, levels);
@@ -81,8 +78,7 @@ public class StrictPath extends Path {
   /**
    * Instantiates a new strict path.
    *
-   * @param levels
-   *          the levels
+   * @param levels the levels
    */
   public StrictPath(List<?> levels) {
     super(levels);
@@ -91,8 +87,7 @@ public class StrictPath extends Path {
   /**
    * Instantiates a new strict path.
    *
-   * @param levels
-   *          the levels
+   * @param levels the levels
    */
   public StrictPath(Object... levels) {
     super(levels);

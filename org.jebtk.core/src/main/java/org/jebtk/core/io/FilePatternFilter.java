@@ -32,8 +32,7 @@ public class FilePatternFilter implements FileFilter {
   /**
    * Instantiates a new file pattern filter.
    *
-   * @param pattern
-   *          the pattern
+   * @param pattern the pattern
    */
   public FilePatternFilter(String pattern) {
     // System.out.println("filter:" + filter);
@@ -48,6 +47,7 @@ public class FilePatternFilter implements FileFilter {
    */
   public boolean accept(File f) {
     // files should not begin with a period as this indicates hidden files
-    return !f.isDirectory() && !f.getName().startsWith(".") && f.getName().matches(pattern);
+    return !f.isDirectory() && !f.getName().startsWith(".")
+        && f.getName().matches(pattern);
   }
 }

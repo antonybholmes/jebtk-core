@@ -46,8 +46,7 @@ public class Join {
   /**
    * Instantiates a new join.
    *
-   * @param delimiter
-   *          the delimiter
+   * @param delimiter the delimiter
    */
   public Join(String delimiter) {
     this(delimiter, false, false);
@@ -56,14 +55,12 @@ public class Join {
   /**
    * Instantiates a new join.
    *
-   * @param delimiter
-   *          the delimiter
-   * @param ignoreEmptyStrings
-   *          the ignore empty strings
-   * @param ignoreNulls
-   *          the ignore nulls
+   * @param delimiter the delimiter
+   * @param ignoreEmptyStrings the ignore empty strings
+   * @param ignoreNulls the ignore nulls
    */
-  public Join(String delimiter, boolean ignoreEmptyStrings, boolean ignoreNulls) {
+  public Join(String delimiter, boolean ignoreEmptyStrings,
+      boolean ignoreNulls) {
     mDelimiter = delimiter;
     mIgnoreEmptyStrings = ignoreEmptyStrings;
     mIgnoreNulls = ignoreNulls;
@@ -72,8 +69,7 @@ public class Join {
   /**
    * Instantiates a new join.
    *
-   * @param join
-   *          the join
+   * @param join the join
    */
   public Join(final Join join) {
     mDelimiter = join.mDelimiter;
@@ -85,8 +81,7 @@ public class Join {
   /**
    * Values.
    *
-   * @param values
-   *          the values
+   * @param values the values
    * @return the join
    */
   public Join values(final Collection<?> values) {
@@ -125,8 +120,7 @@ public class Join {
   /**
    * Values.
    *
-   * @param values
-   *          the values
+   * @param values the values
    * @return the join
    */
   public Join values(Object... values) {
@@ -165,8 +159,7 @@ public class Join {
   /**
    * Create a join from the values in an iterable object.
    *
-   * @param values
-   *          the values
+   * @param values the values
    * @return the join
    */
   public Join values(Iterable<?> values) {
@@ -201,10 +194,8 @@ public class Join {
   /**
    * Repeat an item n times adding any necessary delimiters.
    *
-   * @param o
-   *          the o
-   * @param n
-   *          the n
+   * @param o the o
+   * @param n the n
    * @return the join
    */
   public Join repeat(Object o, int n) {
@@ -279,8 +270,7 @@ public class Join {
   /**
    * Join values on a given character.
    *
-   * @param delimiter
-   *          the delimiter
+   * @param delimiter the delimiter
    * @return the join
    */
   public static Join on(char delimiter) {
@@ -290,8 +280,7 @@ public class Join {
   /**
    * Join values using a given string.
    *
-   * @param delimiter
-   *          the delimiter
+   * @param delimiter the delimiter
    * @return the join
    */
   public static Join on(String delimiter) {
@@ -328,8 +317,7 @@ public class Join {
   /**
    * On tab.
    *
-   * @param values
-   *          the values
+   * @param values the values
    * @return the join
    */
   public static Join onTab(Object... values) {
@@ -339,10 +327,8 @@ public class Join {
   /**
    * On tab.
    *
-   * @param <T>
-   *          the generic type
-   * @param values
-   *          the values
+   * @param <T> the generic type
+   * @param values the values
    * @return the string
    */
   public static <T extends Comparable<T>> String onTab(List<T> values) {

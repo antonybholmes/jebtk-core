@@ -29,8 +29,7 @@ public class CryptographyException extends Exception {
   /**
    * Instantiates a new cryptography exception.
    *
-   * @param message
-   *          the message
+   * @param message the message
    */
   public CryptographyException(String message) {
     super(message);

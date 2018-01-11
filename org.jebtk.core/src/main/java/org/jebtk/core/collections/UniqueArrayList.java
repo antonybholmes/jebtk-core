@@ -23,15 +23,14 @@ import java.util.List;
 /**
  * The class UniqueList.
  *
- * @param <T>
- *          the generic type
+ * @param <T> the generic type
  */
 public class UniqueArrayList<T> extends UniqueList<T> {
 
   /**
    * Instantiates a new unique array list. A unique array list is an array list
-   * that preserves the order of items as they are added, but discards subsequent
-   * duplicates.
+   * that preserves the order of items as they are added, but discards
+   * subsequent duplicates.
    */
   public UniqueArrayList() {
     super(new ArrayList<T>());
@@ -44,8 +43,7 @@ public class UniqueArrayList<T> extends UniqueList<T> {
   /**
    * Instantiates a new unique array list.
    *
-   * @param size
-   *          the size
+   * @param size the size
    */
   public UniqueArrayList(int size) {
     super(new ArrayList<T>(size));
@@ -54,8 +52,7 @@ public class UniqueArrayList<T> extends UniqueList<T> {
   /**
    * Create a new unique array list.
    *
-   * @param <TT>
-   *          the generic type
+   * @param <TT> the generic type
    * @return the list
    */
   public static <TT> List<TT> create() {

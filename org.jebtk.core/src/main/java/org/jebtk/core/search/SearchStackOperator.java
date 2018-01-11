@@ -146,8 +146,7 @@ public enum SearchStackOperator {
   /**
    * Gets the operator.
    *
-   * @param operator
-   *          the operator
+   * @param operator the operator
    * @return the operator
    */
   public static final String getOperator(SearchStackOperator operator) {
@@ -174,8 +173,7 @@ public enum SearchStackOperator {
   /**
    * Parses the operator.
    *
-   * @param op
-   *          the op
+   * @param op the op
    * @return the search stack operator
    */
   public static final SearchStackOperator parseOperator(String op) {
@@ -205,8 +203,7 @@ public enum SearchStackOperator {
   /**
    * Convert a boolean operator into the relevant MatchStack operator.
    *
-   * @param operator
-   *          the operator
+   * @param operator the operator
    * @return the search stack operator
    */
   public static final SearchStackOperator convert(BooleanOperator operator) {
@@ -231,8 +228,7 @@ public enum SearchStackOperator {
   /**
    * Precedence.
    *
-   * @param operator
-   *          the operator
+   * @param operator the operator
    * @return the int
    */
   public static final int precedence(SearchStackOperator operator) {
@@ -253,8 +249,7 @@ public enum SearchStackOperator {
   /**
    * Checks if is left associative.
    *
-   * @param operator
-   *          the operator
+   * @param operator the operator
    * @return true, if is left associative
    */
   public static boolean isLeftAssociative(SearchStackOperator operator) {

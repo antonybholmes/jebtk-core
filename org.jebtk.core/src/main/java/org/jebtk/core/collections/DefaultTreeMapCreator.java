@@ -15,16 +15,12 @@
  */
 package org.jebtk.core.collections;
 
-import java.util.Map;
-
 // TODO: Auto-generated Javadoc
 /**
  * The Class DefaultTreeMapCreator.
  *
- * @param <K>
- *          the key type
- * @param <V>
- *          the value type
+ * @param <K> the key type
+ * @param <V> the value type
  */
 public class DefaultTreeMapCreator<K, V> implements IterMapCreator<K, V> {
 
@@ -34,8 +30,7 @@ public class DefaultTreeMapCreator<K, V> implements IterMapCreator<K, V> {
   /**
    * Instantiates a new default tree map creator.
    *
-   * @param defaultValue
-   *          the default value
+   * @param defaultValue the default value
    */
   public DefaultTreeMapCreator(V defaultValue) {
     this(new ValueCreator<V>(defaultValue));
@@ -44,8 +39,7 @@ public class DefaultTreeMapCreator<K, V> implements IterMapCreator<K, V> {
   /**
    * Instantiates a new default map.
    *
-   * @param defaultValue
-   *          the default value
+   * @param defaultValue the default value
    */
   public DefaultTreeMapCreator(EntryCreator<V> defaultValue) {
     mDefaultValue = defaultValue;
@@ -64,12 +58,9 @@ public class DefaultTreeMapCreator<K, V> implements IterMapCreator<K, V> {
   /**
    * Creates a new Default Tree Map.
    *
-   * @param <KK>
-   *          the generic type
-   * @param <VV>
-   *          the generic type
-   * @param defaultValue
-   *          the default value
+   * @param <KK> the generic type
+   * @param <VV> the generic type
+   * @param defaultValue the default value
    * @return the map
    */
   public static <KK, VV> IterMapCreator<KK, VV> create(VV defaultValue) {
@@ -79,15 +70,13 @@ public class DefaultTreeMapCreator<K, V> implements IterMapCreator<K, V> {
   /**
    * Creates the.
    *
-   * @param <KK>
-   *          the generic type
-   * @param <VV>
-   *          the generic type
-   * @param defaultValue
-   *          the default value
+   * @param <KK> the generic type
+   * @param <VV> the generic type
+   * @param defaultValue the default value
    * @return the map
    */
-  public static <KK, VV> IterMapCreator<KK, VV> create(EntryCreator<VV> defaultValue) {
+  public static <KK, VV> IterMapCreator<KK, VV> create(
+      EntryCreator<VV> defaultValue) {
     return new DefaultTreeMapCreator<KK, VV>(defaultValue);
   }
 }

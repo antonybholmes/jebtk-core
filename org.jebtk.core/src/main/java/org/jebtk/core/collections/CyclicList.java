@@ -25,16 +25,14 @@ import java.util.List;
  * start so the element before the start, would be the last element in the list.
  * Unlike a {@code CircularArray}, the size of the cyclic list can change.
  *
- * @param <T>
- *          the generic type
+ * @param <T> the generic type
  */
 public class CyclicList<T> extends ListContainer<T> {
 
   /**
    * Instantiates a new cyclic list.
    *
-   * @param list
-   *          the list
+   * @param list the list
    */
   public CyclicList(List<T> list) {
     super(list);

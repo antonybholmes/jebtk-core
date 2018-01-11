@@ -23,10 +23,8 @@ import java.util.TreeMap;
  * A Tree map where the keys can be iterated over.
  *
  * @author Antony Holmes Holmes
- * @param <K>
- *          the key type
- * @param <V>
- *          the value type
+ * @param <K> the key type
+ * @param <V> the value type
  */
 public class IterTreeMap<K, V> extends TreeMap<K, V> implements IterMap<K, V> {
 

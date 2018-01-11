@@ -64,8 +64,7 @@ public class KeywordsService implements Iterable<String>, Serializable {
   /**
    * Load xml.
    *
-   * @param file
-   *          the file
+   * @param file the file
    */
   public void loadXml(File file) {
     System.err.println("Parseing " + file);
@@ -85,8 +84,7 @@ public class KeywordsService implements Iterable<String>, Serializable {
   /**
    * Exists.
    *
-   * @param word
-   *          the word
+   * @param word the word
    * @return true, if successful
    */
   public boolean exists(String word) {
@@ -96,8 +94,7 @@ public class KeywordsService implements Iterable<String>, Serializable {
   /**
    * Adds the word.
    *
-   * @param word
-   *          the word
+   * @param word the word
    */
   public void addWord(String word) {
     words.add(word.toLowerCase());
@@ -116,8 +113,7 @@ public class KeywordsService implements Iterable<String>, Serializable {
   /**
    * Returns the list of keywords found in a given sentence.
    *
-   * @param sentence
-   *          the sentence
+   * @param sentence the sentence
    * @return the list
    */
   public List<String> searchForKeywords(String sentence) {

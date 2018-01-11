@@ -47,8 +47,7 @@ public abstract class IdObject implements IdProperty, Comparable<IdObject> {
   /**
    * Instantiates a new uid object.
    *
-   * @param id
-   *          the id
+   * @param id the id
    */
   public IdObject(int id) {
     mId = id;

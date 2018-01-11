@@ -30,8 +30,7 @@ public interface SettingsWriter {
   /**
    * Save.
    *
-   * @param settings
-   *          the settings
+   * @param settings the settings
    */
   void save(Settings settings);
 }

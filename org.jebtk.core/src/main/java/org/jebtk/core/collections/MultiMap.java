@@ -23,12 +23,9 @@ import java.util.Map;
  * The interface MultiMap for maps that map keys to collections of values. The
  * keys are automatically created if they do not exist.
  *
- * @param <K>
- *          the key type
- * @param <V>
- *          the value type
- * @param <T>
- *          the value type
+ * @param <K> the key type
+ * @param <V> the value type
+ * @param <T> the value type
  */
 public interface MultiMap<K, V, T extends Collection<V>> extends Map<K, T> {
 

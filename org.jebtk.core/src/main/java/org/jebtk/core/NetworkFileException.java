@@ -32,8 +32,7 @@ public class NetworkFileException extends Exception {
   /**
    * Instantiates a new network file exception.
    *
-   * @param message
-   *          the message
+   * @param message the message
    */
   public NetworkFileException(String message) {
     super(message);

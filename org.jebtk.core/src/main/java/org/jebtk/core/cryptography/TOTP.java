@@ -31,7 +31,8 @@ public class TOTP {
   public static final long DEFAULT_TOTP_STEP_MS = 60000;
 
   /** The Constant DIGITS_POWER. */
-  private static final int[] DIGITS_POWER = { 1, 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000 };
+  private static final int[] DIGITS_POWER = { 1, 10, 100, 1000, 10000, 100000,
+      1000000, 10000000, 100000000 };
 
   /** The Constant LAST_BYTE. */
   private static final int LAST_BYTE = 31;
@@ -39,10 +40,8 @@ public class TOTP {
   /**
    * Topt256 auth.
    *
-   * @param phrase
-   *          the phrase
-   * @param totp
-   *          the totp
+   * @param phrase the phrase
+   * @param totp the totp
    * @return true, if successful
    */
   public static boolean totp256Auth(String phrase, int totp) {
@@ -52,12 +51,9 @@ public class TOTP {
   /**
    * Topt256 auth.
    *
-   * @param phrase
-   *          the phrase
-   * @param totp
-   *          the totp
-   * @param step
-   *          the step
+   * @param phrase the phrase
+   * @param totp the totp
+   * @param step the step
    * @return true, if successful
    */
   public static boolean totp256Auth(String phrase, int totp, long step) {
@@ -67,36 +63,34 @@ public class TOTP {
   /**
    * Check that two totp phrases generated on different machines are the same.
    *
-   * @param phrase
-   *          the phrase
-   * @param totp
-   *          the totp
-   * @param epoch
-   *          the epoch
-   * @param step
-   *          the step
+   * @param phrase the phrase
+   * @param totp the totp
+   * @param epoch the epoch
+   * @param step the step
    * @return true, if successful
    */
-  public static boolean totp256Auth(String phrase, int totp, long epoch, long step) {
+  public static boolean totp256Auth(String phrase,
+      int totp,
+      long epoch,
+      long step) {
     return totp256Auth(phrase, totp, TimeUtils.getCurrentTimeMs(), epoch, step);
   }
 
   /**
    * Topt256 auth.
    *
-   * @param phrase
-   *          the phrase
-   * @param totp
-   *          the totp
-   * @param time
-   *          the time
-   * @param epoch
-   *          the epoch
-   * @param step
-   *          the step
+   * @param phrase the phrase
+   * @param totp the totp
+   * @param time the time
+   * @param epoch the epoch
+   * @param step the step
    * @return true, if successful
    */
-  public static boolean totp256Auth(String phrase, int totp, long time, long epoch, long step) {
+  public static boolean totp256Auth(String phrase,
+      int totp,
+      long time,
+      long epoch,
+      long step) {
     String t = totp256(phrase, time, epoch, step);
 
     if (t.equals(totp)) {
@@ -126,8 +120,7 @@ public class TOTP {
    * Generates a one time pass phrase every DEFAULT_TOPT_STEP milliseconds
    * assuming the default epoch.
    *
-   * @param phrase
-   *          the phrase
+   * @param phrase the phrase
    * @return the string
    */
   public static String totp256(String phrase) {
@@ -137,10 +130,8 @@ public class TOTP {
   /**
    * Topt256.
    *
-   * @param phrase
-   *          the phrase
-   * @param step
-   *          the step
+   * @param phrase the phrase
+   * @param step the step
    * @return the string
    */
   public static String totp256(String phrase, long step) {
@@ -150,12 +141,9 @@ public class TOTP {
   /**
    * Topt256.
    *
-   * @param phrase
-   *          the phrase
-   * @param epoch
-   *          the epoch
-   * @param step
-   *          the step
+   * @param phrase the phrase
+   * @param epoch the epoch
+   * @param step the step
    * @return the string
    */
   public static String totp256(String phrase, long epoch, long step) {
@@ -165,14 +153,10 @@ public class TOTP {
   /**
    * Topt256. Returns the first 32 chars of a 64 char encoding.
    *
-   * @param key
-   *          the phrase
-   * @param time
-   *          the time
-   * @param epoch
-   *          the epoch
-   * @param step
-   *          the step
+   * @param key the phrase
+   * @param time the time
+   * @param epoch the epoch
+   * @param step the step
    * @return the string
    */
   public static String totp256(String key, long time, long epoch, long step) {
@@ -184,10 +168,8 @@ public class TOTP {
   /**
    * Totp C 256.
    *
-   * @param key
-   *          the key
-   * @param counter
-   *          the counter
+   * @param key the key
+   * @param counter the counter
    * @return the string
    */
   public static String totpC256(String key, long counter) {
@@ -197,10 +179,8 @@ public class TOTP {
   /**
    * Topt256 auth.
    *
-   * @param phrase
-   *          the phrase
-   * @param totp
-   *          the totp
+   * @param phrase the phrase
+   * @param totp the totp
    * @return true, if successful
    */
   public static boolean totpAuth(String phrase, int totp) {
@@ -210,12 +190,9 @@ public class TOTP {
   /**
    * Topt256 auth.
    *
-   * @param phrase
-   *          the phrase
-   * @param totp
-   *          the totp
-   * @param step
-   *          the step
+   * @param phrase the phrase
+   * @param totp the totp
+   * @param step the step
    * @return true, if successful
    */
   public static boolean totpAuth(String phrase, int totp, long step) {
@@ -225,36 +202,34 @@ public class TOTP {
   /**
    * Check that two totp phrases generated on different machines are the same.
    *
-   * @param phrase
-   *          the phrase
-   * @param totp
-   *          the totp
-   * @param epoch
-   *          the epoch
-   * @param step
-   *          the step
+   * @param phrase the phrase
+   * @param totp the totp
+   * @param epoch the epoch
+   * @param step the step
    * @return true, if successful
    */
-  public static boolean totpAuth(String phrase, int totp, long epoch, long step) {
+  public static boolean totpAuth(String phrase,
+      int totp,
+      long epoch,
+      long step) {
     return totpAuth(phrase, totp, TimeUtils.getCurrentTimeMs(), epoch, step);
   }
 
   /**
    * Topt256 auth.
    *
-   * @param phrase
-   *          the phrase
-   * @param totp
-   *          the totp
-   * @param time
-   *          the time
-   * @param epoch
-   *          the epoch
-   * @param step
-   *          the step
+   * @param phrase the phrase
+   * @param totp the totp
+   * @param time the time
+   * @param epoch the epoch
+   * @param step the step
    * @return true, if successful
    */
-  public static boolean totpAuth(String phrase, int totp, long time, long epoch, long step) {
+  public static boolean totpAuth(String phrase,
+      int totp,
+      long time,
+      long epoch,
+      long step) {
     int t = generateTOTP(phrase, time, epoch, step);
 
     // System.err.println("step " + step + " " + totp);
@@ -281,8 +256,7 @@ public class TOTP {
   /**
    * Generate TOTP.
    *
-   * @param phrase
-   *          the phrase
+   * @param phrase the phrase
    * @return the int
    */
   public static int generateTOTP(String phrase) {
@@ -292,10 +266,8 @@ public class TOTP {
   /**
    * Topt256.
    *
-   * @param phrase
-   *          the phrase
-   * @param step
-   *          the step
+   * @param phrase the phrase
+   * @param step the step
    * @return the string
    */
   public static int generateTOTP(String phrase, long step) {
@@ -305,12 +277,9 @@ public class TOTP {
   /**
    * Topt256.
    *
-   * @param phrase
-   *          the phrase
-   * @param epoch
-   *          the epoch
-   * @param step
-   *          the step
+   * @param phrase the phrase
+   * @param epoch the epoch
+   * @param step the step
    * @return the string
    */
   public static int generateTOTP(String phrase, long epoch, long step) {
@@ -320,14 +289,10 @@ public class TOTP {
   /**
    * Topt256. Returns the first 32 chars of a 64 char encoding.
    *
-   * @param key
-   *          the phrase
-   * @param time
-   *          the time
-   * @param epoch
-   *          the epoch
-   * @param step
-   *          the step
+   * @param key the phrase
+   * @param time the time
+   * @param epoch the epoch
+   * @param step the step
    * @return the string
    */
   public static int generateTOTP(String key, long time, long epoch, long step) {
@@ -339,10 +304,8 @@ public class TOTP {
   /**
    * Generate CTOTP.
    *
-   * @param key
-   *          the key
-   * @param counter
-   *          the counter
+   * @param key the key
+   * @param counter the counter
    * @return the int
    */
   public static int generateCTOTP(String key, long counter) {
@@ -352,12 +315,9 @@ public class TOTP {
   /**
    * Generates a Time base One Time Password or -1 if it fails.
    *
-   * @param key
-   *          the key
-   * @param counter
-   *          the counter
-   * @param digits
-   *          the digits
+   * @param key the key
+   * @param counter the counter
+   * @param digits the digits
    * @return the int
    */
   public static int generateCTOTP(String key, long counter, int digits) {
@@ -371,10 +331,8 @@ public class TOTP {
   /**
    * Generates a standard 8 digit TOTP code.
    *
-   * @param key
-   *          the key
-   * @param counter
-   *          the counter
+   * @param key the key
+   * @param counter the counter
    * @return the int
    */
   public static int generateCTOTP8(String key, long counter) {
@@ -384,10 +342,8 @@ public class TOTP {
   /**
    * Generate CTOTP 8.
    *
-   * @param key
-   *          the key
-   * @param message
-   *          the message
+   * @param key the key
+   * @param message the message
    * @return the int
    */
   public static int generateCTOTP8(String key, byte[] message) {
@@ -397,10 +353,8 @@ public class TOTP {
   /**
    * Generates a standard 8 digit TOTP code. Returns -1 if there is a failure.
    *
-   * @param key
-   *          the key
-   * @param message
-   *          the message
+   * @param key the key
+   * @param message the message
    * @return the int
    */
   public static int generateCTOTP8(byte[] key, byte[] message) {
@@ -414,10 +368,8 @@ public class TOTP {
   /**
    * Generates a standard 6 digit TOTP code.
    *
-   * @param key
-   *          the key
-   * @param counter
-   *          the counter
+   * @param key the key
+   * @param counter the counter
    * @return the int
    */
   public static int generateCTOTP6(String key, long counter) {
@@ -427,10 +379,8 @@ public class TOTP {
   /**
    * Generate CTOTP 6.
    *
-   * @param key
-   *          the key
-   * @param message
-   *          the message
+   * @param key the key
+   * @param message the message
    * @return the int
    */
   public static int generateCTOTP6(String key, byte[] message) {
@@ -440,10 +390,8 @@ public class TOTP {
   /**
    * Generates a standard 6 digit TOTP code. Returns -1 if there is a failure.
    *
-   * @param key
-   *          the key
-   * @param message
-   *          the message
+   * @param key the key
+   * @param message the message
    * @return the int
    */
   public static int generateCTOTP6(byte[] key, byte[] message) {
@@ -455,11 +403,10 @@ public class TOTP {
   }
 
   /**
-   * Converts a hmac hash (must be 32 bytes, 256 bits) to an integer which can be
-   * used to generate totp code. Returns -1 if hash is null.
+   * Converts a hmac hash (must be 32 bytes, 256 bits) to an integer which can
+   * be used to generate totp code. Returns -1 if hash is null.
    *
-   * @param hash
-   *          the hash
+   * @param hash the hash
    * @return the int
    */
   private static int hmac256HashToTOTPInt(final byte[] hash) {
@@ -473,17 +420,15 @@ public class TOTP {
     // Create integer from bytes around the offset using 0x7f to mask
     // the highest order bit in case it might be misinterpreted
     // Use 0xff mask to convert byte to unsigned int
-    return ((hash[offset] & 0x7f) << 24) | ((hash[offset + 1] & 0xff) << 16) | ((hash[offset + 2] & 0xff) << 8)
-        | (hash[offset + 3] & 0xff);
+    return ((hash[offset] & 0x7f) << 24) | ((hash[offset + 1] & 0xff) << 16)
+        | ((hash[offset + 2] & 0xff) << 8) | (hash[offset + 3] & 0xff);
   }
 
   /**
    * Gets the totp salt.
    *
-   * @param time
-   *          the time
-   * @param step
-   *          the step
+   * @param time the time
+   * @param step the step
    * @return the totp salt
    */
   public static long getCounter(long time, long step) {
@@ -493,12 +438,9 @@ public class TOTP {
   /**
    * Gets the totp counter.
    *
-   * @param time
-   *          The time in ms.
-   * @param epoch
-   *          The epoch in ms.
-   * @param step
-   *          The step in ms.
+   * @param time The time in ms.
+   * @param epoch The epoch in ms.
+   * @param step The step in ms.
    * 
    * @return The totp counter.
    */

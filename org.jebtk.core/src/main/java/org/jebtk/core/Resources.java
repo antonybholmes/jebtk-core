@@ -108,11 +108,9 @@ public class Resources implements Iterable<String> {
   /**
    * Load text list.
    *
-   * @param name
-   *          the name
+   * @param name the name
    * @return the list
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public static List<String> loadTextList(String name) throws IOException {
     InputStream is = null;
@@ -148,8 +146,7 @@ public class Resources implements Iterable<String> {
   /**
    * Gets the res input stream.
    *
-   * @param name
-   *          the name
+   * @param name the name
    * @return the res input stream
    */
   public static InputStream getResInputStream(String name) {
@@ -159,24 +156,21 @@ public class Resources implements Iterable<String> {
   /**
    * Gets the res gzip input stream.
    *
-   * @param name
-   *          the name
+   * @param name the name
    * @return the res gzip input stream
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static InputStream getResGzipInputStream(String name) throws IOException {
+  public static InputStream getResGzipInputStream(String name)
+      throws IOException {
     return new GZIPInputStream(getResInputStream(name));
   }
 
   /**
    * Gets the res gzip reader.
    *
-   * @param file
-   *          the file
+   * @param file the file
    * @return the res gzip reader
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public static BufferedReader getResGzipReader(File file) throws IOException {
     return getResGzipReader(file.toPath());
@@ -185,11 +179,9 @@ public class Resources implements Iterable<String> {
   /**
    * Gets the res gzip reader.
    *
-   * @param file
-   *          the file
+   * @param file the file
    * @return the res gzip reader
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public static BufferedReader getResGzipReader(Path file) throws IOException {
     return getResGzipReader(PathUtils.toString(file));
@@ -198,26 +190,24 @@ public class Resources implements Iterable<String> {
   /**
    * Gets the res gzip reader.
    *
-   * @param name
-   *          the name
+   * @param name the name
    * @return the res gzip reader
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static BufferedReader getResGzipReader(String name) throws IOException {
+  public static BufferedReader getResGzipReader(String name)
+      throws IOException {
     System.err.println("Load GZIP from " + name);
 
-    return new BufferedReader(new InputStreamReader(getResGzipInputStream(name)));
+    return new BufferedReader(
+        new InputStreamReader(getResGzipInputStream(name)));
   }
 
   /**
    * Gets the input stream.
    *
-   * @param file
-   *          the file
+   * @param file the file
    * @return the input stream
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public static InputStream getInputStream(File file) throws IOException {
     return getInputStream(file.toPath());
@@ -226,11 +216,9 @@ public class Resources implements Iterable<String> {
   /**
    * Gets the input stream.
    *
-   * @param file
-   *          the file
+   * @param file the file
    * @return the input stream
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public static InputStream getInputStream(Path file) throws IOException {
     return Files.newInputStream(file);
@@ -239,11 +227,9 @@ public class Resources implements Iterable<String> {
   /**
    * Gets the gzip input stream.
    *
-   * @param file
-   *          the file
+   * @param file the file
    * @return the gzip input stream
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public static InputStream getGzipInputStream(File file) throws IOException {
     return new GZIPInputStream(getInputStream(file));
@@ -252,11 +238,9 @@ public class Resources implements Iterable<String> {
   /**
    * Gets the gzip input stream.
    *
-   * @param file
-   *          the file
+   * @param file the file
    * @return the gzip input stream
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public static InputStream getGzipInputStream(Path file) throws IOException {
     return new GZIPInputStream(getInputStream(file));
@@ -265,11 +249,9 @@ public class Resources implements Iterable<String> {
   /**
    * Gets the gzip reader.
    *
-   * @param file
-   *          the file
+   * @param file the file
    * @return the gzip reader
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public static BufferedReader getGzipReader(File file) throws IOException {
     return getGzipReader(file.toPath());
@@ -278,11 +260,9 @@ public class Resources implements Iterable<String> {
   /**
    * Gets the gzip reader.
    *
-   * @param file
-   *          the file
+   * @param file the file
    * @return the gzip reader
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public static BufferedReader getGzipReader(Path file) throws IOException {
     System.err.println("Load GZIP from " + file);
@@ -293,8 +273,7 @@ public class Resources implements Iterable<String> {
   /**
    * Gets the resource.
    *
-   * @param name
-   *          the name
+   * @param name the name
    * @return the resource
    */
   public static URL getResource(String name) {
@@ -304,10 +283,8 @@ public class Resources implements Iterable<String> {
   /**
    * Auto load.
    *
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
-   * @throws URISyntaxException
-   *           the URI syntax exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws URISyntaxException the URI syntax exception
    */
   private synchronized void autoLoad() throws IOException, URISyntaxException {
     if (mLoaded) {
@@ -322,12 +299,11 @@ public class Resources implements Iterable<String> {
   /**
    * Cache resource files.
    *
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
-   * @throws URISyntaxException
-   *           the URI syntax exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws URISyntaxException the URI syntax exception
    */
-  private synchronized void cacheResourceFiles() throws IOException, URISyntaxException {
+  private synchronized void cacheResourceFiles()
+      throws IOException, URISyntaxException {
     LOG.info("Finding resource files...");
 
     List<File> files = new ArrayList<File>();
@@ -342,12 +318,18 @@ public class Resources implements Iterable<String> {
 
     if (url.getProtocol().equals("jar")) {
       /* A JAR path */
-      String jarPath = url.getPath().substring(5, url.getPath().indexOf("!")); // strip out only the JAR file
+      String jarPath = url.getPath().substring(5, url.getPath().indexOf("!")); // strip
+                                                                               // out
+                                                                               // only
+                                                                               // the
+                                                                               // JAR
+                                                                               // file
 
       JarFile jar = new JarFile(URLDecoder.decode(jarPath, "UTF-8"));
 
       try {
-        Enumeration<JarEntry> entries = jar.entries(); // gives ALL entries in jar
+        Enumeration<JarEntry> entries = jar.entries(); // gives ALL entries in
+                                                       // jar
 
         while (entries.hasMoreElements()) {
           String name = entries.nextElement().getName();
@@ -381,14 +363,12 @@ public class Resources implements Iterable<String> {
   /**
    * Cache resource files.
    *
-   * @param file
-   *          the file
-   * @throws MalformedURLException
-   *           the malformed url exception
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @param file the file
+   * @throws MalformedURLException the malformed url exception
+   * @throws IOException Signals that an I/O exception has occurred.
    */
-  private void cacheResourceFiles(File file) throws MalformedURLException, IOException {
+  private void cacheResourceFiles(File file)
+      throws MalformedURLException, IOException {
     LOG.info("Finding resource files in {}...", file);
 
     if (file.isDirectory()) {
@@ -418,11 +398,9 @@ public class Resources implements Iterable<String> {
   /**
    * Load text.
    *
-   * @param name
-   *          the name
+   * @param name the name
    * @return the string
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public static String loadText(String name) throws IOException {
     List<String> list = loadTextList(name);
@@ -439,14 +417,12 @@ public class Resources implements Iterable<String> {
   /**
    * Loads a TTF font from a resource and makes it available to the UI.
    *
-   * @param font
-   *          the font
-   * @throws FontFormatException
-   *           the font format exception
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @param font the font
+   * @throws FontFormatException the font format exception
+   * @throws IOException Signals that an I/O exception has occurred.
    */
-  public void registerFont(String font) throws FontFormatException, IOException {
+  public void registerFont(String font)
+      throws FontFormatException, IOException {
     String resource = FONT_RES + font;
 
     LOG.info("Loading font {}...", resource);
@@ -456,7 +432,8 @@ public class Resources implements Iterable<String> {
     try {
       Font f = Font.createFont(Font.TRUETYPE_FONT, is);
 
-      GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+      GraphicsEnvironment ge = GraphicsEnvironment
+          .getLocalGraphicsEnvironment();
 
       ge.registerFont(f);
     } finally {
@@ -483,15 +460,13 @@ public class Resources implements Iterable<String> {
   /**
    * Reads a resource as a string list.
    *
-   * @param res
-   *          the res
-   * @param hasHeader
-   *          the has header
+   * @param res the res
+   * @param hasHeader the has header
    * @return the list from res
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static List<String> getListFromRes(String res, boolean hasHeader) throws IOException {
+  public static List<String> getListFromRes(String res, boolean hasHeader)
+      throws IOException {
     BufferedReader reader = getResGzipReader(res);
 
     List<String> ret = new ArrayList<String>();
@@ -516,8 +491,7 @@ public class Resources implements Iterable<String> {
   /**
    * Make the resource directory if it does not exist.
    *
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public static void makeResDir() throws IOException {
     FileUtils.mkdir(RES_DIR);

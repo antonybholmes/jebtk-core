@@ -61,8 +61,7 @@ public class LogService extends NameMapModel<Log> {
    * Returns a logger with a specific name. If the log does not exist, it is
    * created.
    *
-   * @param name
-   *          the name
+   * @param name the name
    * @return the log
    */
   public final Log getLog(String name) {
@@ -78,8 +77,7 @@ public class LogService extends NameMapModel<Log> {
   /**
    * Adds the file log.
    *
-   * @param name
-   *          the name
+   * @param name the name
    */
   public void addFileLog(String name) {
     getLog(name).addLogListener(new FileLog());
@@ -88,8 +86,7 @@ public class LogService extends NameMapModel<Log> {
   /**
    * Adds the console log.
    *
-   * @param name
-   *          the name
+   * @param name the name
    */
   public void addConsoleLog(String name) {
     getLog(name).addLogListener(new ConsoleLog());
@@ -98,8 +95,7 @@ public class LogService extends NameMapModel<Log> {
   /**
    * Adds the std err log.
    *
-   * @param name
-   *          the name
+   * @param name the name
    */
   public void addStdErrLog(String name) {
     getLog(name).addLogListener(new StdErrLog());

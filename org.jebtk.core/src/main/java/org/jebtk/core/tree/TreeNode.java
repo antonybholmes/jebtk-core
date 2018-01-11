@@ -47,11 +47,12 @@ import org.w3c.dom.Element;
  * well as child nodes.
  *
  * @author Antony Holmes Holmes
- * @param <T>
- *          the generic type
+ * @param <T> the generic type
  */
-public class TreeNode<T> implements IdProperty, Iterable<TreeNode<T>>, Reversible<TreeNode<T>>, Comparable<TreeNode<T>>,
-    Cloneable, TreeNodeEventProducer, XmlRepresentation, JsonRepresentation, Serializable, TreeNodeEventListener {
+public class TreeNode<T>
+    implements IdProperty, Iterable<TreeNode<T>>, Reversible<TreeNode<T>>,
+    Comparable<TreeNode<T>>, Cloneable, TreeNodeEventProducer,
+    XmlRepresentation, JsonRepresentation, Serializable, TreeNodeEventListener {
 
   /**
    * The constant serialVersionUID.
@@ -139,14 +140,13 @@ public class TreeNode<T> implements IdProperty, Iterable<TreeNode<T>>, Reversibl
   /**
    * The class ChildEvents.
    *
-   * @param name
-   *          the name
+   * @param name the name
    */
   /*
    * private class ChildEvents implements TreeNodeEventListener {
    * 
-   * @Override public void nodeChanged(ChangeEvent e) { countCumulativeChildren();
-   * }
+   * @Override public void nodeChanged(ChangeEvent e) {
+   * countCumulativeChildren(); }
    * 
    * @Override public void nodeUpdated(ChangeEvent e) { // Do nothing } }
    */
@@ -155,8 +155,7 @@ public class TreeNode<T> implements IdProperty, Iterable<TreeNode<T>>, Reversibl
    * Create node with a name, but no data. Typically used for creating folder
    * nodes.
    *
-   * @param name
-   *          the name
+   * @param name the name
    */
   public TreeNode(String name) {
     this(name, null);
@@ -165,10 +164,8 @@ public class TreeNode<T> implements IdProperty, Iterable<TreeNode<T>>, Reversibl
   /**
    * Creates a node with a given name and associated data.
    *
-   * @param name
-   *          the name
-   * @param value
-   *          the value
+   * @param name the name
+   * @param value the value
    */
   public TreeNode(String name, T value) {
     mName = name;
@@ -180,8 +177,7 @@ public class TreeNode<T> implements IdProperty, Iterable<TreeNode<T>>, Reversibl
    * not immutable, this method should be overridden to ensure that value is
    * properly cloned as well.
    *
-   * @param node
-   *          the node
+   * @param node the node
    */
   public TreeNode(TreeNode<T> node) {
     this(node.mName, node.mValue);
@@ -192,8 +188,7 @@ public class TreeNode<T> implements IdProperty, Iterable<TreeNode<T>>, Reversibl
   /**
    * Sets the name.
    *
-   * @param name
-   *          the new name
+   * @param name the new name
    */
   public void setName(String name) {
     mName = name;
@@ -232,8 +227,7 @@ public class TreeNode<T> implements IdProperty, Iterable<TreeNode<T>>, Reversibl
   /**
    * Sets the value.
    *
-   * @param value
-   *          the new value
+   * @param value the new value
    */
   public void setValue(T value) {
     if (value == null) {
@@ -250,8 +244,7 @@ public class TreeNode<T> implements IdProperty, Iterable<TreeNode<T>>, Reversibl
   /**
    * Adds a child.
    *
-   * @param node
-   *          the node
+   * @param node the node
    */
   public void addChild(TreeNode<T> node) {
     node.setParent(this);
@@ -276,10 +269,8 @@ public class TreeNode<T> implements IdProperty, Iterable<TreeNode<T>>, Reversibl
   /**
    * Adds the child before.
    *
-   * @param ref
-   *          the ref
-   * @param node
-   *          the node
+   * @param ref the ref
+   * @param node the node
    */
   public void addChildBefore(TreeNode<T> ref, TreeNode<T> node) {
     addChildBefore(indexOf(ref), node);
@@ -288,10 +279,8 @@ public class TreeNode<T> implements IdProperty, Iterable<TreeNode<T>>, Reversibl
   /**
    * Adds the child before.
    *
-   * @param i
-   *          the i
-   * @param node
-   *          the node
+   * @param i the i
+   * @param node the node
    */
   public void addChildBefore(int i, TreeNode<T> node) {
     node.setParent(this);
@@ -314,8 +303,7 @@ public class TreeNode<T> implements IdProperty, Iterable<TreeNode<T>>, Reversibl
   /**
    * Adds the children.
    *
-   * @param children
-   *          the children
+   * @param children the children
    */
   public void addChildren(List<TreeNode<T>> children) {
     for (TreeNode<T> node : children) {
@@ -336,8 +324,7 @@ public class TreeNode<T> implements IdProperty, Iterable<TreeNode<T>>, Reversibl
   /**
    * Removes a child.
    *
-   * @param node
-   *          the node
+   * @param node the node
    */
   public void removeChild(TreeNode<T> node) {
     // We must remove ourselves as as listener, otherwise if this node
@@ -357,8 +344,7 @@ public class TreeNode<T> implements IdProperty, Iterable<TreeNode<T>>, Reversibl
   /**
    * Remove all children with the given name.
    *
-   * @param name
-   *          the name
+   * @param name the name
    */
   public void removeChildren(String name) {
     Stack<Integer> indexes = new Stack<Integer>();
@@ -398,8 +384,8 @@ public class TreeNode<T> implements IdProperty, Iterable<TreeNode<T>>, Reversibl
   }
 
   /**
-   * Returns the total number of children under this parent (i.e all children and
-   * children of children etc).
+   * Returns the total number of children under this parent (i.e all children
+   * and children of children etc).
    *
    * @return the cumulative child count
    */
@@ -410,8 +396,7 @@ public class TreeNode<T> implements IdProperty, Iterable<TreeNode<T>>, Reversibl
   /**
    * Sets the parent.
    *
-   * @param node
-   *          the new parent
+   * @param node the new parent
    */
   public void setParent(TreeNode<T> node) {
     mParent = node;
@@ -430,8 +415,7 @@ public class TreeNode<T> implements IdProperty, Iterable<TreeNode<T>>, Reversibl
    * Can be used to forcibly indicate that a node is a parent, for example a
    * folder node that is currently empty.
    *
-   * @param isParent
-   *          the new checks if is parent
+   * @param isParent the new checks if is parent
    */
   public void setIsParent(boolean isParent) {
     mIsParent = isParent;
@@ -476,8 +460,7 @@ public class TreeNode<T> implements IdProperty, Iterable<TreeNode<T>>, Reversibl
   /**
    * Sets whether the node should be displayed expandable or not.
    *
-   * @param isExpandable
-   *          the new checks if is expandable
+   * @param isExpandable the new checks if is expandable
    */
   public void setIsExpandable(boolean isExpandable) {
     mIsExpandable = isExpandable;
@@ -495,8 +478,7 @@ public class TreeNode<T> implements IdProperty, Iterable<TreeNode<T>>, Reversibl
   /**
    * Sets the visible.
    *
-   * @param visible
-   *          the new visible
+   * @param visible the new visible
    */
   public void setVisible(boolean visible) {
     mVisible = visible;
@@ -514,8 +496,7 @@ public class TreeNode<T> implements IdProperty, Iterable<TreeNode<T>>, Reversibl
   /**
    * Sets whether the node should be displayed collapsed or not.
    *
-   * @param isExpanded
-   *          the new expanded
+   * @param isExpanded the new expanded
    */
   public void setExpanded(boolean isExpanded) {
     setExpanded(isExpanded, false);
@@ -523,14 +504,12 @@ public class TreeNode<T> implements IdProperty, Iterable<TreeNode<T>>, Reversibl
 
   /**
    * Sets whether the node should be displayed collapsed or not and controls
-   * whether a node changed event should be fire. This is used by batch methods to
-   * do bulk expand operations on multiple nodes without fireing node events for
-   * each change.
+   * whether a node changed event should be fire. This is used by batch methods
+   * to do bulk expand operations on multiple nodes without fireing node events
+   * for each change.
    *
-   * @param isExpanded
-   *          the is expanded
-   * @param recursive
-   *          the recursive
+   * @param isExpanded the is expanded
+   * @param recursive the recursive
    */
   public void setExpanded(boolean isExpanded, boolean recursive) {
     updateExpanded(isExpanded, recursive);
@@ -541,8 +520,7 @@ public class TreeNode<T> implements IdProperty, Iterable<TreeNode<T>>, Reversibl
   /**
    * Update expanded.
    *
-   * @param isExpanded
-   *          the is expanded
+   * @param isExpanded the is expanded
    */
   public void updateExpanded(boolean isExpanded) {
     updateExpanded(this, isExpanded, false);
@@ -551,10 +529,8 @@ public class TreeNode<T> implements IdProperty, Iterable<TreeNode<T>>, Reversibl
   /**
    * Update expanded.
    *
-   * @param isExpanded
-   *          the is expanded
-   * @param recursive
-   *          the recursive
+   * @param isExpanded the is expanded
+   * @param recursive the recursive
    */
   public void updateExpanded(boolean isExpanded, boolean recursive) {
     updateExpanded(this, isExpanded, recursive);
@@ -563,16 +539,14 @@ public class TreeNode<T> implements IdProperty, Iterable<TreeNode<T>>, Reversibl
   /**
    * Update expanded.
    *
-   * @param <X>
-   *          the generic type
-   * @param root
-   *          the root
-   * @param isExpanded
-   *          the is expanded
-   * @param recursive
-   *          the recursive
+   * @param <X> the generic type
+   * @param root the root
+   * @param isExpanded the is expanded
+   * @param recursive the recursive
    */
-  public static <X> void updateExpanded(TreeNode<X> root, boolean isExpanded, boolean recursive) {
+  public static <X> void updateExpanded(TreeNode<X> root,
+      boolean isExpanded,
+      boolean recursive) {
     Deque<TreeNode<X>> stack = new ArrayDeque<TreeNode<X>>();
 
     stack.push(root);
@@ -595,8 +569,7 @@ public class TreeNode<T> implements IdProperty, Iterable<TreeNode<T>>, Reversibl
   /**
    * Collapase the children but not the node itself.
    *
-   * @param isExpanded
-   *          the new children are expanded
+   * @param isExpanded the new children are expanded
    */
   public void setChildrenAreExpanded(boolean isExpanded) {
     setChildrenAreExpanded(isExpanded, false);
@@ -605,10 +578,8 @@ public class TreeNode<T> implements IdProperty, Iterable<TreeNode<T>>, Reversibl
   /**
    * Sets the children are expanded.
    *
-   * @param isExpanded
-   *          the is expanded
-   * @param recursive
-   *          the recursive
+   * @param isExpanded the is expanded
+   * @param recursive the recursive
    */
   public void setChildrenAreExpanded(boolean isExpanded, boolean recursive) {
     updateChildrenAreExpanded(isExpanded, recursive);
@@ -620,8 +591,7 @@ public class TreeNode<T> implements IdProperty, Iterable<TreeNode<T>>, Reversibl
   /**
    * Update children are expanded.
    *
-   * @param isExpanded
-   *          the is expanded
+   * @param isExpanded the is expanded
    */
   public void updateChildrenAreExpanded(boolean isExpanded) {
     updateChildrenAreExpanded(isExpanded, false);
@@ -630,10 +600,8 @@ public class TreeNode<T> implements IdProperty, Iterable<TreeNode<T>>, Reversibl
   /**
    * Update children are expanded.
    *
-   * @param isExpanded
-   *          the is expanded
-   * @param recursive
-   *          the recursive
+   * @param isExpanded the is expanded
+   * @param recursive the recursive
    */
   public void updateChildrenAreExpanded(boolean isExpanded, boolean recursive) {
     for (TreeNode<T> child : mChildren) {
@@ -662,8 +630,7 @@ public class TreeNode<T> implements IdProperty, Iterable<TreeNode<T>>, Reversibl
   /**
    * Sets the checks if is selectable.
    *
-   * @param isSelectable
-   *          the new checks if is selectable
+   * @param isSelectable the new checks if is selectable
    */
   public void setIsSelectable(boolean isSelectable) {
     mIsSelectable = isSelectable;
@@ -673,11 +640,10 @@ public class TreeNode<T> implements IdProperty, Iterable<TreeNode<T>>, Reversibl
 
   /**
    * Allow a node to inherit the children of another node. This will result in
-   * nodes sharing child nodes. Use close to create copies of children so that the
-   * node can be updated independently.
+   * nodes sharing child nodes. Use close to create copies of children so that
+   * the node can be updated independently.
    *
-   * @param node
-   *          the node
+   * @param node the node
    */
   public void inherit(final TreeNode<T> node) {
     for (TreeNode<T> child : node) {
@@ -688,8 +654,7 @@ public class TreeNode<T> implements IdProperty, Iterable<TreeNode<T>>, Reversibl
   /**
    * Allow a node to inherit a copy of the children of another node.
    *
-   * @param node
-   *          the node
+   * @param node the node
    */
   public void clone(final TreeNode<T> node) {
     for (TreeNode<T> child : node) {
@@ -700,8 +665,7 @@ public class TreeNode<T> implements IdProperty, Iterable<TreeNode<T>>, Reversibl
   /**
    * Gets the child.
    *
-   * @param name
-   *          the name
+   * @param name the name
    * @return the child
    */
   public TreeNode<T> getChild(String name) {
@@ -719,8 +683,7 @@ public class TreeNode<T> implements IdProperty, Iterable<TreeNode<T>>, Reversibl
    * Search a tree using a path of ids. Since all nodes have a unique id, this
    * method guarantees the correct node will be returned along a valid path.
    *
-   * @param path
-   *          the path
+   * @param path the path
    * @return the child
    */
   public TreeNode<T> getChild(TreePath path) {
@@ -758,8 +721,7 @@ public class TreeNode<T> implements IdProperty, Iterable<TreeNode<T>>, Reversibl
   /**
    * Gets the child by path.
    *
-   * @param path
-   *          the path
+   * @param path the path
    * @return the child by path
    */
   public TreeNode<T> getChildByPath(String path) {
@@ -767,13 +729,12 @@ public class TreeNode<T> implements IdProperty, Iterable<TreeNode<T>>, Reversibl
   }
 
   /**
-   * Search a tree using a path of ids. Since node names are not guaranteed to be
-   * unique, this method may not find the correct branch if you allow multiple
-   * nodes with the same name.
+   * Search a tree using a path of ids. Since node names are not guaranteed to
+   * be unique, this method may not find the correct branch if you allow
+   * multiple nodes with the same name.
    * 
    *
-   * @param path
-   *          the path
+   * @param path the path
    * @return the child
    */
   public TreeNode<T> getChildByPath(Path path) {
@@ -829,8 +790,7 @@ public class TreeNode<T> implements IdProperty, Iterable<TreeNode<T>>, Reversibl
    * Search the tree for a node containing the search text. Returns null if node
    * not found.
    *
-   * @param search
-   *          the search
+   * @param search the search
    * @return the tree node
    */
   public TreeNode<T> findFirst(String search) {
@@ -860,8 +820,7 @@ public class TreeNode<T> implements IdProperty, Iterable<TreeNode<T>>, Reversibl
   /**
    * Index of.
    *
-   * @param node
-   *          the node
+   * @param node the node
    * @return the int
    */
   public int indexOf(TreeNode<T> node) {
@@ -875,11 +834,10 @@ public class TreeNode<T> implements IdProperty, Iterable<TreeNode<T>>, Reversibl
   }
 
   /**
-   * Search the tree for a node whose name equals the search text. Returns null if
-   * node not found.
+   * Search the tree for a node whose name equals the search text. Returns null
+   * if node not found.
    *
-   * @param search
-   *          the search
+   * @param search the search
    * @return the tree node
    */
   public TreeNode<T> matchFirst(String search) {
@@ -911,8 +869,7 @@ public class TreeNode<T> implements IdProperty, Iterable<TreeNode<T>>, Reversibl
   /**
    * Return the list of nodes corresponding to the path.
    *
-   * @param path
-   *          the path
+   * @param path the path
    * @return the chain
    */
   public TreeNodeChain<T> getChain(TreePath path) {
@@ -953,13 +910,13 @@ public class TreeNode<T> implements IdProperty, Iterable<TreeNode<T>>, Reversibl
   }
 
   /**
-   * Translates a tree path into a path. This can make it easier to see a path by
-   * name rather than ids to make it more human readable. Since trees may contain
-   * multiple nodes with the same name, paths using node names are not guaranteed
-   * to be unique, therefore it is advisable to use TreePath to search a tree.
+   * Translates a tree path into a path. This can make it easier to see a path
+   * by name rather than ids to make it more human readable. Since trees may
+   * contain multiple nodes with the same name, paths using node names are not
+   * guaranteed to be unique, therefore it is advisable to use TreePath to
+   * search a tree.
    * 
-   * @param treePath
-   *          a TreePath
+   * @param treePath a TreePath
    * @return a path representation of a TreePath
    */
   public Path convertToPath(TreePath treePath) {
@@ -1027,8 +984,7 @@ public class TreeNode<T> implements IdProperty, Iterable<TreeNode<T>>, Reversibl
   /**
    * Gets the child.
    *
-   * @param index
-   *          the index
+   * @param index the index
    * @return the child
    */
   public TreeNode<T> getChild(int index) {
@@ -1065,8 +1021,7 @@ public class TreeNode<T> implements IdProperty, Iterable<TreeNode<T>>, Reversibl
    * As double.
    *
    * @return the double
-   * @throws ParseException
-   *           the parse exception
+   * @throws ParseException the parse exception
    */
   public double getAsDouble() throws ParseException {
     return TextUtils.parseDouble(mValue.toString());
@@ -1202,8 +1157,8 @@ public class TreeNode<T> implements IdProperty, Iterable<TreeNode<T>>, Reversibl
    * (non-Javadoc)
    * 
    * @see
-   * org.abh.lib.tree.TreeNodeEventProducer#addTreeNodeListener(org.abh.lib.tree.
-   * TreeNodeEventListener)
+   * org.abh.lib.tree.TreeNodeEventProducer#addTreeNodeListener(org.abh.lib.
+   * tree. TreeNodeEventListener)
    */
   @Override
   public void addTreeNodeListener(TreeNodeEventListener l) {
@@ -1233,8 +1188,8 @@ public class TreeNode<T> implements IdProperty, Iterable<TreeNode<T>>, Reversibl
    * (non-Javadoc)
    * 
    * @see
-   * org.abh.lib.tree.TreeNodeEventProducer#fireTreeNodeChanged(org.abh.lib.event.
-   * ChangeEvent)
+   * org.abh.lib.tree.TreeNodeEventProducer#fireTreeNodeChanged(org.abh.lib.
+   * event. ChangeEvent)
    */
   @Override
   public void fireTreeNodeChanged(ChangeEvent e) {
@@ -1252,8 +1207,8 @@ public class TreeNode<T> implements IdProperty, Iterable<TreeNode<T>>, Reversibl
    * (non-Javadoc)
    * 
    * @see
-   * org.abh.lib.tree.TreeNodeEventProducer#fireTreeNodeUpdated(org.abh.lib.event.
-   * ChangeEvent)
+   * org.abh.lib.tree.TreeNodeEventProducer#fireTreeNodeUpdated(org.abh.lib.
+   * event. ChangeEvent)
    */
   @Override
   public void fireTreeNodeUpdated(ChangeEvent e) {

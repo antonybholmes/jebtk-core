@@ -30,11 +30,10 @@ import org.jebtk.core.settings.KeyNode;
  * Category Object nodes store data in radix trees for fast searching.
  *
  * @author Antony Holmes Holmes
- * @param <T>
- *          the generic type
+ * @param <T> the generic type
  */
-public class CategoryObjectNode<T>
-    implements Iterable<CategoryObjectNode<T>>, Comparable<CategoryObjectNode<T>>, Serializable {
+public class CategoryObjectNode<T> implements Iterable<CategoryObjectNode<T>>,
+    Comparable<CategoryObjectNode<T>>, Serializable {
 
   /**
    * The constant serialVersionUID.
@@ -59,8 +58,7 @@ public class CategoryObjectNode<T>
   /**
    * Instantiates a new category object node.
    *
-   * @param name
-   *          the name
+   * @param name the name
    */
   public CategoryObjectNode(String name) {
     mName = KeyNode.standardize(name);
@@ -96,8 +94,7 @@ public class CategoryObjectNode<T>
   /**
    * Gets the child.
    *
-   * @param level
-   *          the level
+   * @param level the level
    * @return the child
    */
   public CategoryObjectNode<T> getChild(PathLevel level) {
@@ -107,8 +104,7 @@ public class CategoryObjectNode<T>
   /**
    * Gets the child.
    *
-   * @param name
-   *          the name
+   * @param name the name
    * @return the child
    */
   public CategoryObjectNode<T> getChild(String name) {
@@ -128,8 +124,7 @@ public class CategoryObjectNode<T>
   /**
    * Gets the child by path.
    *
-   * @param path
-   *          the path
+   * @param path the path
    * @return the child by path
    */
   public CategoryObjectNode<T> getChildByPath(String path) {
@@ -140,8 +135,7 @@ public class CategoryObjectNode<T>
    * Traverse a properties tree using a path expression to find a particular
    * property. Returns null if the property is not found.
    *
-   * @param path
-   *          the path
+   * @param path the path
    * @return the child by path
    */
   public CategoryObjectNode<T> getChildByPath(Path path) {

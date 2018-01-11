@@ -110,8 +110,7 @@ public class DoubleStream extends NumberStream<Double> {
     /**
      * Instantiates a new round function.
      *
-     * @param places
-     *          the places
+     * @param places the places
      */
     public RoundFunction(int places) {
       mPlaces = places;
@@ -139,8 +138,7 @@ public class DoubleStream extends NumberStream<Double> {
     /**
      * Instantiates a new round function.
      *
-     * @param v
-     *          the v
+     * @param v the v
      */
     public MultiplyFunction(double v) {
       mV = v;
@@ -160,8 +158,7 @@ public class DoubleStream extends NumberStream<Double> {
   /**
    * Instantiates a new double stream.
    *
-   * @param stream
-   *          the stream
+   * @param stream the stream
    */
   public DoubleStream(Stream<Double> stream) {
     super(stream);
@@ -179,8 +176,7 @@ public class DoubleStream extends NumberStream<Double> {
   /**
    * Min.
    *
-   * @param places
-   *          the places
+   * @param places the places
    * @return the double
    */
   // public double min() {
@@ -190,8 +186,7 @@ public class DoubleStream extends NumberStream<Double> {
   /**
    * Rounds the numbers in the stream to a given number of decimal places.
    *
-   * @param places
-   *          the places
+   * @param places the places
    * @return the stream
    */
   public DoubleStream round(int places) {
@@ -201,8 +196,7 @@ public class DoubleStream extends NumberStream<Double> {
   /**
    * Multiply the values in the stream by a constant.
    *
-   * @param v
-   *          the v
+   * @param v the v
    * @return the double stream
    */
   public DoubleStream multiply(double v) {

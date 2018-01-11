@@ -19,10 +19,8 @@ package org.jebtk.core.collections;
 /**
  * The Class DefaultTreeMapCreator.
  *
- * @param <K>
- *          the key type
- * @param <V>
- *          the value type
+ * @param <K> the key type
+ * @param <V> the value type
  */
 public class DefaultIntObjMapCreator<V> implements IterMapCreator<Integer, V> {
 
@@ -32,8 +30,7 @@ public class DefaultIntObjMapCreator<V> implements IterMapCreator<Integer, V> {
   /**
    * Instantiates a new default tree map creator.
    *
-   * @param defaultValue
-   *          the default value
+   * @param defaultValue the default value
    */
   public DefaultIntObjMapCreator(V defaultValue) {
     this(new ValueCreator<V>(defaultValue));
@@ -42,8 +39,7 @@ public class DefaultIntObjMapCreator<V> implements IterMapCreator<Integer, V> {
   /**
    * Instantiates a new default map.
    *
-   * @param defaultValue
-   *          the default value
+   * @param defaultValue the default value
    */
   public DefaultIntObjMapCreator(EntryCreator<V> defaultValue) {
     mDefaultValue = defaultValue;
@@ -62,12 +58,9 @@ public class DefaultIntObjMapCreator<V> implements IterMapCreator<Integer, V> {
   /**
    * Creates a new Default Tree Map.
    *
-   * @param <KK>
-   *          the generic type
-   * @param <VV>
-   *          the generic type
-   * @param defaultValue
-   *          the default value
+   * @param <KK> the generic type
+   * @param <VV> the generic type
+   * @param defaultValue the default value
    * @return the map
    */
   public static <VV> IterMapCreator<Integer, VV> create(VV defaultValue) {
@@ -77,15 +70,13 @@ public class DefaultIntObjMapCreator<V> implements IterMapCreator<Integer, V> {
   /**
    * Creates the.
    *
-   * @param <KK>
-   *          the generic type
-   * @param <VV>
-   *          the generic type
-   * @param defaultValue
-   *          the default value
+   * @param <KK> the generic type
+   * @param <VV> the generic type
+   * @param defaultValue the default value
    * @return the map
    */
-  public static <VV> IterMapCreator<Integer, VV> create(EntryCreator<VV> defaultValue) {
+  public static <VV> IterMapCreator<Integer, VV> create(
+      EntryCreator<VV> defaultValue) {
     return new DefaultIntObjMapCreator<VV>(defaultValue);
   }
 }

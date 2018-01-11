@@ -39,8 +39,7 @@ public class PathUtils {
   /**
    * Convert.
    *
-   * @param files
-   *          the files
+   * @param files the files
    * @return the list
    */
   public static List<Path> toList(File[] files) {
@@ -56,8 +55,7 @@ public class PathUtils {
   /**
    * Gets the file ext.
    *
-   * @param file
-   *          the file
+   * @param file the file
    * @return the file ext
    */
   public static String getFileExt(final Path file) {
@@ -67,8 +65,7 @@ public class PathUtils {
   /**
    * Returns the portion of the path name after the first period is encountered.
    *
-   * @param file
-   *          the file
+   * @param file the file
    * @return the file ext long
    */
   public static String getFileExtLong(final Path file) {
@@ -78,8 +75,7 @@ public class PathUtils {
   /**
    * Returns the absolute path of a file as a string.
    *
-   * @param file
-   *          the file
+   * @param file the file
    * @return the string
    */
   public static String toString(final Path file) {
@@ -93,8 +89,7 @@ public class PathUtils {
   /**
    * Gets the name.
    *
-   * @param file
-   *          the file
+   * @param file the file
    * @return the name
    */
   public static String getName(Path file) {
@@ -108,11 +103,10 @@ public class PathUtils {
   }
 
   /**
-   * Gets the name of a file excluding the parent path and the file extension (the
-   * last period up until the end of the file name).
+   * Gets the name of a file excluding the parent path and the file extension
+   * (the last period up until the end of the file name).
    *
-   * @param file
-   *          the file
+   * @param file the file
    * @return the name no ext
    */
   public static String getNameNoExt(final Path file) {
@@ -130,8 +124,7 @@ public class PathUtils {
   /**
    * Name prefix.
    *
-   * @param file
-   *          the file
+   * @param file the file
    * @return the string
    */
   public static String namePrefix(final Path file) {
@@ -141,10 +134,8 @@ public class PathUtils {
   /**
    * Returns the name of the file removing everything after a break.
    *
-   * @param file
-   *          the file
-   * @param s
-   *          the s
+   * @param file the file
+   * @param s the s
    * @return the string
    */
   public static String namePrefix(final Path file, String s) {
@@ -164,13 +155,12 @@ public class PathUtils {
    * does not create duplicate endings such as .txt.txt, but it will allow
    * .csv.txt for example.
    *
-   * @param file
-   *          the file
-   * @param extension
-   *          the extension
+   * @param file the file
+   * @param extension the extension
    * @return the file
    */
-  public static final Path addExtension(final Path file, final String extension) {
+  public static final Path addExtension(final Path file,
+      final String extension) {
     String s = toString(file);
 
     if (!s.toLowerCase().endsWith("." + extension)) {
@@ -183,10 +173,8 @@ public class PathUtils {
   /**
    * Gets the path.
    *
-   * @param first
-   *          the first
-   * @param rest
-   *          the rest
+   * @param first the first
+   * @param rest the rest
    * @return the path
    */
   public static Path getPath(String first, String... rest) {
@@ -200,8 +188,7 @@ public class PathUtils {
   /**
    * Gets the path.
    *
-   * @param first
-   *          the first
+   * @param first the first
    * @return the path
    */
   public static Path getPath(String first) {
@@ -278,8 +265,7 @@ public class PathUtils {
     /**
      * Type.
      *
-     * @param ext
-     *          the ext
+     * @param ext the ext
      * @return the ext test
      */
     public ExtTest type(String ext) {
@@ -299,8 +285,7 @@ public class PathUtils {
   /**
    * Ensures a path is in relative form by stripping leading slashes.
    *
-   * @param path
-   *          the path
+   * @param path the path
    * @return the path
    */
   public static Path relative(Path path) {
@@ -310,8 +295,7 @@ public class PathUtils {
   /**
    * Ensures a path is in relative form by stripping leading slashes.
    *
-   * @param path
-   *          the path
+   * @param path the path
    * @return the path
    */
   public static Path relative(String path) {

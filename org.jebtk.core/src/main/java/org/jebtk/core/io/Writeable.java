@@ -25,21 +25,18 @@ import java.nio.file.Path;
 public interface Writeable {
 
   /**
-   * Writes the contents for file to the string builder so multiple exporters can
-   * be amalgamated.
+   * Writes the contents for file to the string builder so multiple exporters
+   * can be amalgamated.
    *
-   * @param buffer
-   *          the buffer
+   * @param buffer the buffer
    */
   void append(StringBuilder buffer);
 
   /**
    * Writes a file to disk without prompting.
    *
-   * @param file
-   *          the file
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @param file the file
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   void write(Path file) throws IOException;
 }

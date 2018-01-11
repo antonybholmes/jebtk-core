@@ -35,8 +35,7 @@ public class JsonBoolean extends Json {
   /**
    * Instantiates a new json boolean.
    *
-   * @param value
-   *          the value
+   * @param value the value
    */
   public JsonBoolean(boolean value) {
     mValue = value;

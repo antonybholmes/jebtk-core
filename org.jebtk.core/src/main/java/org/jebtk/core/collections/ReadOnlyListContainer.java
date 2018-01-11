@@ -25,8 +25,7 @@ import java.util.ListIterator;
  * A list container that allows addition of elements and iteration, but does not
  * allow items to be removed.
  *
- * @param <T>
- *          the generic type
+ * @param <T> the generic type
  */
 public class ReadOnlyListContainer<T> implements List<T> {
 
@@ -36,8 +35,7 @@ public class ReadOnlyListContainer<T> implements List<T> {
   /**
    * Instantiates a new read only list container.
    *
-   * @param list
-   *          the list
+   * @param list the list
    */
   public ReadOnlyListContainer(List<T> list) {
     mList = list;

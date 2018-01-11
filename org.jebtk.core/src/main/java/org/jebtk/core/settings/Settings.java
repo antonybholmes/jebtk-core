@@ -68,7 +68,8 @@ import org.xml.sax.helpers.DefaultHandler;
  * @author Antony Holmes Holmes
  *
  */
-public class Settings extends ChangeListeners implements Iterable<Path>, XmlRepresentation, JsonRepresentation {
+public class Settings extends ChangeListeners
+    implements Iterable<Path>, XmlRepresentation, JsonRepresentation {
 
   /** The Constant serialVersionUID. */
   private static final long serialVersionUID = 1L;
@@ -102,8 +103,7 @@ public class Settings extends ChangeListeners implements Iterable<Path>, XmlRepr
     /**
      * Instantiates a new settings xml handler.
      *
-     * @param update
-     *          the update
+     * @param update the update
      */
     public SettingsXmlHandler(boolean update) {
       mUpdate = update;
@@ -118,7 +118,10 @@ public class Settings extends ChangeListeners implements Iterable<Path>, XmlRepr
      * java.lang.String, java.lang.String, org.xml.sax.Attributes)
      */
     @Override
-    public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
+    public void startElement(String uri,
+        String localName,
+        String qName,
+        Attributes attributes) throws SAXException {
 
       if (qName.equals("setting")) {
         Path path = mCurrentPaths.peek().append(attributes.getValue("name"));
@@ -139,7 +142,8 @@ public class Settings extends ChangeListeners implements Iterable<Path>, XmlRepr
           description = TextUtils.EMPTY_STRING;
         }
 
-        boolean locked = attributes.getValue("locked") != null && TextUtils.parseBool(attributes.getValue("locked"));
+        boolean locked = attributes.getValue("locked") != null
+            && TextUtils.parseBool(attributes.getValue("locked"));
 
         Setting setting = Setting.parse(path, value, description, locked);
 
@@ -176,10 +180,8 @@ public class Settings extends ChangeListeners implements Iterable<Path>, XmlRepr
   /**
    * Update.
    *
-   * @param path
-   *          the path
-   * @param color
-   *          the color
+   * @param path the path
+   * @param color the color
    */
   public void update(String path, Color color) {
     update(Setting.parse(path, color));
@@ -188,10 +190,8 @@ public class Settings extends ChangeListeners implements Iterable<Path>, XmlRepr
   /**
    * Sets the setting.
    *
-   * @param path
-   *          the path
-   * @param value
-   *          the value
+   * @param path the path
+   * @param value the value
    */
   public void update(String path, boolean value) {
     update(Setting.parse(path, value));
@@ -200,10 +200,8 @@ public class Settings extends ChangeListeners implements Iterable<Path>, XmlRepr
   /**
    * Update.
    *
-   * @param path
-   *          the path
-   * @param value
-   *          the value
+   * @param path the path
+   * @param value the value
    */
   public void update(Path path, boolean value) {
     update(Setting.parse(path, value));
@@ -212,10 +210,8 @@ public class Settings extends ChangeListeners implements Iterable<Path>, XmlRepr
   /**
    * Set a user setting. Triggers writing of setting to res/user.settings.xml.
    *
-   * @param path
-   *          the path
-   * @param value
-   *          the value
+   * @param path the path
+   * @param value the value
    */
   public void update(String path, String value) {
     update(new StrictPath(path), value);
@@ -224,10 +220,8 @@ public class Settings extends ChangeListeners implements Iterable<Path>, XmlRepr
   /**
    * Sets the setting.
    *
-   * @param path
-   *          the path
-   * @param value
-   *          the value
+   * @param path the path
+   * @param value the value
    */
   public void update(String path, int value) {
     update(Setting.parse(path, value));
@@ -236,10 +230,8 @@ public class Settings extends ChangeListeners implements Iterable<Path>, XmlRepr
   /**
    * Update.
    *
-   * @param path
-   *          the path
-   * @param value
-   *          the value
+   * @param path the path
+   * @param value the value
    */
   public void update(String path, long value) {
     update(Setting.parse(path, value));
@@ -252,10 +244,8 @@ public class Settings extends ChangeListeners implements Iterable<Path>, XmlRepr
   /**
    * Sets the.
    *
-   * @param path
-   *          the path
-   * @param value
-   *          the value
+   * @param path the path
+   * @param value the value
    */
   public void set(String path, double value) {
     update(path, value);
@@ -266,10 +256,8 @@ public class Settings extends ChangeListeners implements Iterable<Path>, XmlRepr
   /**
    * Sets the setting.
    *
-   * @param path
-   *          the path
-   * @param value
-   *          the value
+   * @param path the path
+   * @param value the value
    */
   public void update(Path path, String value) {
     update(Setting.parse(path, value));
@@ -278,10 +266,8 @@ public class Settings extends ChangeListeners implements Iterable<Path>, XmlRepr
   /**
    * Sets the setting.
    *
-   * @param path
-   *          the path
-   * @param value
-   *          the value
+   * @param path the path
+   * @param value the value
    */
   public void update(String path, double value) {
     update(Setting.parse(path, value));
@@ -290,10 +276,8 @@ public class Settings extends ChangeListeners implements Iterable<Path>, XmlRepr
   /**
    * Sets the.
    *
-   * @param path
-   *          the path
-   * @param value
-   *          the value
+   * @param path the path
+   * @param value the value
    */
   public void set(String path, boolean value) {
     update(path, value);
@@ -304,10 +288,8 @@ public class Settings extends ChangeListeners implements Iterable<Path>, XmlRepr
   /**
    * Sets the.
    *
-   * @param path
-   *          the path
-   * @param value
-   *          the value
+   * @param path the path
+   * @param value the value
    */
   public void set(Path path, boolean value) {
     update(path, value);
@@ -318,10 +300,8 @@ public class Settings extends ChangeListeners implements Iterable<Path>, XmlRepr
   /**
    * Sets the.
    *
-   * @param path
-   *          the path
-   * @param value
-   *          the value
+   * @param path the path
+   * @param value the value
    */
   public void set(Path path, String value) {
     update(path, value);
@@ -338,8 +318,7 @@ public class Settings extends ChangeListeners implements Iterable<Path>, XmlRepr
   /**
    * Add a new setting.
    *
-   * @param setting
-   *          the setting
+   * @param setting the setting
    */
   protected void set(Setting setting) {
     update(setting);
@@ -350,8 +329,7 @@ public class Settings extends ChangeListeners implements Iterable<Path>, XmlRepr
   /**
    * Update.
    *
-   * @param setting
-   *          the setting
+   * @param setting the setting
    */
   protected synchronized void update(Setting setting) {
     update(setting, true);
@@ -363,10 +341,8 @@ public class Settings extends ChangeListeners implements Iterable<Path>, XmlRepr
    * all settings being written to a user's personal settings. Only subsequent
    * changes by the user get written to their personal settings file.
    *
-   * @param setting
-   *          the setting
-   * @param updated
-   *          the updated
+   * @param setting the setting
+   * @param updated the updated
    */
   protected synchronized void update(Setting setting, boolean updated) {
     // The first time a setting is added, is it set to not update.
@@ -396,8 +372,7 @@ public class Settings extends ChangeListeners implements Iterable<Path>, XmlRepr
   /**
    * If a setting exists, reset it back to its default setting.
    *
-   * @param path
-   *          the path
+   * @param path the path
    */
   public void resetToDefault(String path) {
     resetToDefault(new StrictPath(path));
@@ -406,8 +381,7 @@ public class Settings extends ChangeListeners implements Iterable<Path>, XmlRepr
   /**
    * If a setting exists, reset it back to its default setting.
    *
-   * @param path
-   *          the path
+   * @param path the path
    */
   public void resetToDefault(Path path) {
     SettingsHistory settings = getSettings(path);
@@ -450,8 +424,7 @@ public class Settings extends ChangeListeners implements Iterable<Path>, XmlRepr
   /**
    * Gets the setting.
    *
-   * @param name
-   *          the name
+   * @param name the name
    * @return the setting
    */
   public synchronized Setting getSetting(String name) {
@@ -461,8 +434,7 @@ public class Settings extends ChangeListeners implements Iterable<Path>, XmlRepr
   /**
    * Gets the setting.
    *
-   * @param path
-   *          the path
+   * @param path the path
    * @return the setting
    */
   public synchronized Setting getSetting(Path path) {
@@ -481,8 +453,7 @@ public class Settings extends ChangeListeners implements Iterable<Path>, XmlRepr
   /**
    * Gets the settings.
    *
-   * @param path
-   *          the path
+   * @param path the path
    * @return the settings
    */
   public synchronized SettingsHistory getSettings(Path path) {
@@ -492,8 +463,7 @@ public class Settings extends ChangeListeners implements Iterable<Path>, XmlRepr
   /**
    * Contains.
    *
-   * @param path
-   *          the path
+   * @param path the path
    * @return true, if successful
    */
   public synchronized boolean contains(String path) {
@@ -503,8 +473,7 @@ public class Settings extends ChangeListeners implements Iterable<Path>, XmlRepr
   /**
    * Contains.
    *
-   * @param path
-   *          the path
+   * @param path the path
    * @return true, if successful
    */
   public synchronized boolean contains(Path path) {
@@ -514,8 +483,7 @@ public class Settings extends ChangeListeners implements Iterable<Path>, XmlRepr
   /**
    * Returns true if the user has updated the setting.
    *
-   * @param path
-   *          the path
+   * @param path the path
    * @return true, if is updated
    */
   public synchronized boolean isUpdated(Path path) {
@@ -527,8 +495,7 @@ public class Settings extends ChangeListeners implements Iterable<Path>, XmlRepr
   /**
    * Gets the as int.
    *
-   * @param name
-   *          the name
+   * @param name the name
    * @return the as int
    */
   public synchronized int getAsInt(String name) {
@@ -538,8 +505,7 @@ public class Settings extends ChangeListeners implements Iterable<Path>, XmlRepr
   /**
    * Gets the as int.
    *
-   * @param name
-   *          the name
+   * @param name the name
    * @return the as int
    */
   public synchronized int getAsInt(Path name) {
@@ -549,8 +515,7 @@ public class Settings extends ChangeListeners implements Iterable<Path>, XmlRepr
   /**
    * Gets the as double.
    *
-   * @param name
-   *          the name
+   * @param name the name
    * @return the as double
    */
   public synchronized double getAsDouble(String name) {
@@ -560,8 +525,7 @@ public class Settings extends ChangeListeners implements Iterable<Path>, XmlRepr
   /**
    * Gets the as double.
    *
-   * @param name
-   *          the name
+   * @param name the name
    * @return the as double
    */
   public synchronized double getAsDouble(Path name) {
@@ -583,8 +547,7 @@ public class Settings extends ChangeListeners implements Iterable<Path>, XmlRepr
   /**
    * Gets the as bool.
    *
-   * @param name
-   *          the name
+   * @param name the name
    * @return the as bool
    */
   public synchronized boolean getAsBool(String name) {
@@ -600,8 +563,7 @@ public class Settings extends ChangeListeners implements Iterable<Path>, XmlRepr
   /**
    * Gets the as bool.
    *
-   * @param name
-   *          the name
+   * @param name the name
    * @return the as bool
    */
   public synchronized boolean getAsBool(Path name) {
@@ -617,10 +579,8 @@ public class Settings extends ChangeListeners implements Iterable<Path>, XmlRepr
   /**
    * Returns a setting, creating it with the default value it if does not exist.
    *
-   * @param name
-   *          the name
-   * @param defaultValue
-   *          the default value
+   * @param name the name
+   * @param defaultValue the default value
    * @return the as bool
    */
   public synchronized boolean getAsBool(String name, boolean defaultValue) {
@@ -630,10 +590,8 @@ public class Settings extends ChangeListeners implements Iterable<Path>, XmlRepr
   /**
    * Gets the as bool.
    *
-   * @param name
-   *          the name
-   * @param defaultValue
-   *          the default value
+   * @param name the name
+   * @param defaultValue the default value
    * @return the as bool
    */
   public synchronized boolean getAsBool(Path name, boolean defaultValue) {
@@ -647,8 +605,7 @@ public class Settings extends ChangeListeners implements Iterable<Path>, XmlRepr
   /**
    * Gets the as string.
    *
-   * @param name
-   *          the name
+   * @param name the name
    * @return the as string
    */
   public synchronized String getAsString(String name) {
@@ -658,8 +615,7 @@ public class Settings extends ChangeListeners implements Iterable<Path>, XmlRepr
   /**
    * Gets the as string.
    *
-   * @param name
-   *          the name
+   * @param name the name
    * @return the as string
    */
   public synchronized String getAsString(Path name) {
@@ -675,8 +631,7 @@ public class Settings extends ChangeListeners implements Iterable<Path>, XmlRepr
   /**
    * Gets the as color.
    *
-   * @param name
-   *          the name
+   * @param name the name
    * @return the as color
    */
   public synchronized Color getAsColor(String name) {
@@ -686,8 +641,7 @@ public class Settings extends ChangeListeners implements Iterable<Path>, XmlRepr
   /**
    * Gets the as color.
    *
-   * @param name
-   *          the name
+   * @param name the name
    * @return the as color
    */
   public synchronized Color getAsColor(Path name) {
@@ -697,8 +651,7 @@ public class Settings extends ChangeListeners implements Iterable<Path>, XmlRepr
   /**
    * Gets the as url.
    *
-   * @param name
-   *          the name
+   * @param name the name
    * @return the as url
    */
   public synchronized URL getAsUrl(String name) {
@@ -708,8 +661,7 @@ public class Settings extends ChangeListeners implements Iterable<Path>, XmlRepr
   /**
    * Gets the as url.
    *
-   * @param name
-   *          the name
+   * @param name the name
    * @return the as url
    */
   public synchronized URL getAsUrl(Path name) {
@@ -719,8 +671,7 @@ public class Settings extends ChangeListeners implements Iterable<Path>, XmlRepr
   /**
    * Gets the as file.
    *
-   * @param name
-   *          the name
+   * @param name the name
    * @return the as file
    */
   public java.nio.file.Path getAsFile(String name) {
@@ -730,8 +681,7 @@ public class Settings extends ChangeListeners implements Iterable<Path>, XmlRepr
   /**
    * Gets the as file.
    *
-   * @param name
-   *          the name
+   * @param name the name
    * @return the as file
    */
   public java.nio.file.Path getAsFile(Path name) {
@@ -753,18 +703,16 @@ public class Settings extends ChangeListeners implements Iterable<Path>, XmlRepr
    * libName.settings.xml and resides in the res directory accessible from the
    * programs classpath.
    *
-   * @param libName
-   *          the lib name
+   * @param libName the lib name
    * @return true, if successful
-   * @throws SAXException
-   *           the SAX exception
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
-   * @throws ParserConfigurationException
-   *           the parser configuration exception
+   * @throws SAXException the SAX exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws ParserConfigurationException the parser configuration exception
    */
-  public boolean loadLibSettings(String libName) throws SAXException, IOException, ParserConfigurationException {
-    String Path = new StringBuilder(libName.toLowerCase()).append(".settings.xml").toString();
+  public boolean loadLibSettings(String libName)
+      throws SAXException, IOException, ParserConfigurationException {
+    String Path = new StringBuilder(libName.toLowerCase())
+        .append(".settings.xml").toString();
 
     LOG.info("Attempting to load settings from {}...", Path);
 
@@ -780,16 +728,11 @@ public class Settings extends ChangeListeners implements Iterable<Path>, XmlRepr
   /**
    * Load xml.
    *
-   * @param file
-   *          the file
-   * @param update
-   *          the update
-   * @throws SAXException
-   *           the SAX exception
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
-   * @throws ParserConfigurationException
-   *           the parser configuration exception
+   * @param file the file
+   * @param update the update
+   * @throws SAXException the SAX exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws ParserConfigurationException the parser configuration exception
    */
   public void loadXml(java.nio.file.Path file, boolean update)
       throws SAXException, IOException, ParserConfigurationException {
@@ -811,17 +754,12 @@ public class Settings extends ChangeListeners implements Iterable<Path>, XmlRepr
   /**
    * Load xml.
    *
-   * @param is
-   *          the is
-   * @param update
-   *          the update
+   * @param is the is
+   * @param update the update
    * @return true, if successful
-   * @throws SAXException
-   *           the SAX exception
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
-   * @throws ParserConfigurationException
-   *           the parser configuration exception
+   * @throws SAXException the SAX exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws ParserConfigurationException the parser configuration exception
    */
   protected synchronized boolean loadXml(InputStream is, boolean update)
       throws SAXException, IOException, ParserConfigurationException {
@@ -842,16 +780,13 @@ public class Settings extends ChangeListeners implements Iterable<Path>, XmlRepr
   /**
    * Load json.
    *
-   * @param file
-   *          the file
-   * @param update
-   *          the update
-   * @throws FileNotFoundException
-   *           the file not found exception
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @param file the file
+   * @param update the update
+   * @throws FileNotFoundException the file not found exception
+   * @throws IOException Signals that an I/O exception has occurred.
    */
-  public void loadJson(java.nio.file.Path file, boolean update) throws FileNotFoundException, IOException {
+  public void loadJson(java.nio.file.Path file, boolean update)
+      throws FileNotFoundException, IOException {
     if (file == null || !FileUtils.exists(file)) {
       return;
     }
@@ -870,15 +805,13 @@ public class Settings extends ChangeListeners implements Iterable<Path>, XmlRepr
   /**
    * Load xml.
    *
-   * @param is
-   *          the is
-   * @param update
-   *          the update
+   * @param is the is
+   * @param update the update
    * @return true, if successful
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
-  protected synchronized boolean loadJson(InputStream is, boolean update) throws IOException {
+  protected synchronized boolean loadJson(InputStream is, boolean update)
+      throws IOException {
     if (is == null) {
       return false;
     }
@@ -888,8 +821,10 @@ public class Settings extends ChangeListeners implements Iterable<Path>, XmlRepr
     for (int i = 0; i < json.size(); ++i) {
       Json settingJson = json.get(i);
 
-      Setting setting = Setting.parse(settingJson.getAsString("name"), settingJson.getAsString("value"),
-          settingJson.getAsString("description"), settingJson.getAsBool("locked"));
+      Setting setting = Setting.parse(settingJson.getAsString("name"),
+          settingJson.getAsString("value"),
+          settingJson.getAsString("description"),
+          settingJson.getAsBool("locked"));
 
       update(setting, update);
     }
@@ -908,14 +843,10 @@ public class Settings extends ChangeListeners implements Iterable<Path>, XmlRepr
   /**
    * Write xml.
    *
-   * @param file
-   *          the file
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
-   * @throws TransformerException
-   *           the transformer exception
-   * @throws ParserConfigurationException
-   *           the parser configuration exception
+   * @param file the file
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws TransformerException the transformer exception
+   * @throws ParserConfigurationException the parser configuration exception
    */
   public final void writeXml(java.nio.file.Path file)
       throws IOException, TransformerException, ParserConfigurationException {
@@ -931,10 +862,8 @@ public class Settings extends ChangeListeners implements Iterable<Path>, XmlRepr
   /**
    * Write json.
    *
-   * @param file
-   *          the file
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @param file the file
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public final void writeJson(java.nio.file.Path file) throws IOException {
     Json.prettyWrite(toJson(), file);
@@ -944,10 +873,8 @@ public class Settings extends ChangeListeners implements Iterable<Path>, XmlRepr
   /**
    * Load ini settings.
    *
-   * @param file
-   *          the file
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @param file the file
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public void loadIniSettings(java.nio.file.Path file) throws IOException {
     BufferedReader reader = FileUtils.newBufferedReader(file);
@@ -983,9 +910,11 @@ public class Settings extends ChangeListeners implements Iterable<Path>, XmlRepr
           continue;
         }
 
-        List<String> tokens = TextUtils.fastSplit(line, TextUtils.EQUALS_DELIMITER, 2);
+        List<String> tokens = TextUtils
+            .fastSplit(line, TextUtils.EQUALS_DELIMITER, 2);
 
-        Setting setting = Setting.parse(new StrictPath(group, tokens.get(0)), tokens.get(1));
+        Setting setting = Setting.parse(new StrictPath(group, tokens.get(0)),
+            tokens.get(1));
 
         update(setting);
       }

@@ -33,8 +33,7 @@ public class DirFile extends File {
   /**
    * Instantiates a new dir file.
    *
-   * @param path
-   *          the path
+   * @param path the path
    */
   private DirFile(String path) {
     super(path);
@@ -43,8 +42,7 @@ public class DirFile extends File {
   /**
    * Instantiates a new dir file.
    *
-   * @param path
-   *          the path
+   * @param path the path
    */
   private DirFile(File path) {
     this(path.getAbsolutePath());
@@ -53,11 +51,9 @@ public class DirFile extends File {
   /**
    * Creates the.
    *
-   * @param more
-   *          the more
+   * @param more the more
    * @return the dir file
-   * @throws FileIsNotADirException
-   *           the file is not A dir exception
+   * @throws FileIsNotADirException the file is not A dir exception
    */
   public static DirFile create(String... more) throws FileIsNotADirException {
     return create(new File(TextUtils.join(File.separator, more)));
@@ -66,11 +62,9 @@ public class DirFile extends File {
   /**
    * Creates the.
    *
-   * @param path
-   *          the path
+   * @param path the path
    * @return the dir file
-   * @throws FileIsNotADirException
-   *           the file is not A dir exception
+   * @throws FileIsNotADirException the file is not A dir exception
    */
   public static DirFile create(File path) throws FileIsNotADirException {
     if (path.isDirectory()) {
@@ -83,13 +77,12 @@ public class DirFile extends File {
   /**
    * Convert.
    *
-   * @param files
-   *          the files
+   * @param files the files
    * @return the list
-   * @throws FileIsNotADirException
-   *           the file is not A dir exception
+   * @throws FileIsNotADirException the file is not A dir exception
    */
-  public static List<DirFile> convert(File[] files) throws FileIsNotADirException {
+  public static List<DirFile> convert(File[] files)
+      throws FileIsNotADirException {
     List<DirFile> ret = new ArrayList<DirFile>(files.length);
 
     for (File file : files) {

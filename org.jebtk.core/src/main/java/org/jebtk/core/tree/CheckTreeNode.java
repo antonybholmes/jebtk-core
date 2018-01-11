@@ -23,8 +23,7 @@ import java.util.Deque;
  * A Node that has a selected property.
  *
  * @author Antony Holmes Holmes
- * @param <T>
- *          the generic type
+ * @param <T> the generic type
  */
 public class CheckTreeNode<T> extends TreeNode<T> {
 
@@ -37,10 +36,8 @@ public class CheckTreeNode<T> extends TreeNode<T> {
   /**
    * Instantiates a new check tree node.
    *
-   * @param name
-   *          the name
-   * @param value
-   *          the value
+   * @param name the name
+   * @param value the value
    */
   public CheckTreeNode(String name, T value) {
     this(name, value, false);
@@ -49,8 +46,7 @@ public class CheckTreeNode<T> extends TreeNode<T> {
   /**
    * Instantiates a new check tree node.
    *
-   * @param name
-   *          the name
+   * @param name the name
    */
   public CheckTreeNode(String name) {
     this(name, false);
@@ -59,10 +55,8 @@ public class CheckTreeNode<T> extends TreeNode<T> {
   /**
    * Instantiates a new check tree node.
    *
-   * @param name
-   *          the name
-   * @param selected
-   *          the selected
+   * @param name the name
+   * @param selected the selected
    */
   public CheckTreeNode(String name, boolean selected) {
     this(name, null, selected);
@@ -71,12 +65,9 @@ public class CheckTreeNode<T> extends TreeNode<T> {
   /**
    * Instantiates a new check tree node.
    *
-   * @param name
-   *          the name
-   * @param value
-   *          the value
-   * @param selected
-   *          the selected
+   * @param name the name
+   * @param value the value
+   * @param selected the selected
    */
   public CheckTreeNode(String name, T value, boolean selected) {
     super(name, value);
@@ -95,11 +86,10 @@ public class CheckTreeNode<T> extends TreeNode<T> {
 
   /**
    * Updates the node to be selected and by default all of its children. Use
-   * {@code setSelected(selected, updateChildren)} to control whether the children
-   * are updated.
+   * {@code setSelected(selected, updateChildren)} to control whether the
+   * children are updated.
    *
-   * @param checked
-   *          the new checked
+   * @param checked the new checked
    */
   public void setChecked(boolean checked) {
     setChecked(checked, true);
@@ -108,10 +98,8 @@ public class CheckTreeNode<T> extends TreeNode<T> {
   /**
    * Sets the checked.
    *
-   * @param checked
-   *          the checked
-   * @param recursive
-   *          the recursive
+   * @param checked the checked
+   * @param recursive the recursive
    */
   public void setChecked(boolean checked, boolean recursive) {
     updateChecked(checked, recursive);
@@ -122,8 +110,7 @@ public class CheckTreeNode<T> extends TreeNode<T> {
   /**
    * Update checked.
    *
-   * @param checked
-   *          the checked
+   * @param checked the checked
    */
   public void updateChecked(boolean checked) {
     updateChecked(checked, true);
@@ -132,10 +119,8 @@ public class CheckTreeNode<T> extends TreeNode<T> {
   /**
    * Update checked.
    *
-   * @param checked
-   *          the checked
-   * @param recursive
-   *          the recursive
+   * @param checked the checked
+   * @param recursive the recursive
    */
   public void updateChecked(boolean checked, boolean recursive) {
     Deque<TreeNode<T>> stack = new ArrayDeque<TreeNode<T>>();

@@ -19,10 +19,8 @@ package org.jebtk.core.collections;
 /**
  * Enforces that both keys must be of the same type.
  *
- * @param <K>
- *          the key type
- * @param <V>
- *          the value type
+ * @param <K> the key type
+ * @param <V> the value type
  */
 public class SimpleHashMapMap<K, V> extends DefaultHashMapMap<K, K, V> {
 
@@ -39,8 +37,7 @@ public class SimpleHashMapMap<K, V> extends DefaultHashMapMap<K, K, V> {
   /**
    * Instantiates a new simple hash map map.
    *
-   * @param initialCapacity
-   *          the initial capacity
+   * @param initialCapacity the initial capacity
    */
   public SimpleHashMapMap(int initialCapacity) {
     super(initialCapacity);
@@ -49,10 +46,8 @@ public class SimpleHashMapMap<K, V> extends DefaultHashMapMap<K, K, V> {
   /**
    * Creates the.
    *
-   * @param <KK>
-   *          the generic type
-   * @param <VV>
-   *          the generic type
+   * @param <KK> the generic type
+   * @param <VV> the generic type
    * @return the multi map
    */
   public static <KK, VV> MapMap<KK, KK, VV> create() {
@@ -62,12 +57,9 @@ public class SimpleHashMapMap<K, V> extends DefaultHashMapMap<K, K, V> {
   /**
    * Creates the.
    *
-   * @param <KK>
-   *          the generic type
-   * @param <VV>
-   *          the generic type
-   * @param initialCapacity
-   *          the initial capacity
+   * @param <KK> the generic type
+   * @param <VV> the generic type
+   * @param initialCapacity the initial capacity
    * @return the multi map
    */
   public static <KK, VV> MapMap<KK, KK, VV> create(int initialCapacity) {

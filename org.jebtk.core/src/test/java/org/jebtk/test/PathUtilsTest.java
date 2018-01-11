@@ -15,7 +15,7 @@
  */
 package org.jebtk.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.jebtk.core.io.PathUtils;
 import org.junit.Test;

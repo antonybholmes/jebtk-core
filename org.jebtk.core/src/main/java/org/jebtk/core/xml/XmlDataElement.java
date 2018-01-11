@@ -33,8 +33,7 @@ public class XmlDataElement extends XmlElement {
   /**
    * Instantiates a new xml data element.
    *
-   * @param data
-   *          the data
+   * @param data the data
    */
   public XmlDataElement(int data) {
     this(Integer.toString(data));
@@ -43,8 +42,7 @@ public class XmlDataElement extends XmlElement {
   /**
    * Instantiates a new xml data element.
    *
-   * @param data
-   *          the data
+   * @param data the data
    */
   public XmlDataElement(double data) {
     this(Double.toString(data));
@@ -53,8 +51,7 @@ public class XmlDataElement extends XmlElement {
   /**
    * Instantiates a new xml data element.
    *
-   * @param data
-   *          the data
+   * @param data the data
    */
   public XmlDataElement(String data) {
     super(null);

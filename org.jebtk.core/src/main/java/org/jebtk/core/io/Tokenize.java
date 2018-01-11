@@ -39,8 +39,7 @@ public class Tokenize {
   /**
    * Instantiates a new tokenize.
    *
-   * @param tf
-   *          the tf
+   * @param tf the tf
    */
   public Tokenize(TokenFunction tf) {
     mTf = tf;
@@ -49,8 +48,7 @@ public class Tokenize {
   /**
    * Instantiates a new tokenize.
    *
-   * @param t
-   *          the t
+   * @param t the t
    */
   private Tokenize(Tokenize t) {
     mTf = t.mTf;
@@ -61,8 +59,7 @@ public class Tokenize {
   /**
    * Skip header.
    *
-   * @param skip
-   *          the skip
+   * @param skip the skip
    * @return the tokenize
    */
   public Tokenize skipHeader(boolean skip) {
@@ -75,8 +72,7 @@ public class Tokenize {
   /**
    * Sets the delimiter.
    *
-   * @param d
-   *          the d
+   * @param d the d
    * @return the tokenize
    */
   public Tokenize setDelimiter(String d) {
@@ -89,10 +85,8 @@ public class Tokenize {
   /**
    * Tokens.
    *
-   * @param file
-   *          the file
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @param file the file
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public void tokens(Path file) throws IOException {
     BufferedReader reader = FileUtils.newBufferedReader(file);
@@ -108,10 +102,8 @@ public class Tokenize {
    * Run through reader tokenizing each line for processing. Reader is closed
    * after function has been applied.
    *
-   * @param reader
-   *          the reader
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @param reader the reader
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public void tokens(BufferedReader reader) throws IOException {
     Lines lines = new Lines(new LineFunction() {
@@ -130,8 +122,7 @@ public class Tokenize {
   /**
    * Tokenize.
    *
-   * @param tf
-   *          the tf
+   * @param tf the tf
    * @return the tokenize
    */
   public static Tokenize tokenize(TokenFunction tf) {

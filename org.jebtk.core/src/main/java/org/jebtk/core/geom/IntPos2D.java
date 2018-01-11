@@ -35,10 +35,8 @@ public class IntPos2D implements Comparable<IntPos2D> {
   /**
    * Instantiates a new int position.
    *
-   * @param x
-   *          the x
-   * @param y
-   *          the y
+   * @param x the x
+   * @param y the y
    */
   public IntPos2D(int x, int y) {
     mX = x;
@@ -122,10 +120,8 @@ public class IntPos2D implements Comparable<IntPos2D> {
   /**
    * Creates the.
    *
-   * @param x
-   *          the x
-   * @param y
-   *          the y
+   * @param x the x
+   * @param y the y
    * @return the int pos
    */
   public static IntPos2D create(int x, int y) {
@@ -135,10 +131,8 @@ public class IntPos2D implements Comparable<IntPos2D> {
   /**
    * Creates the.
    *
-   * @param x
-   *          the x
-   * @param y
-   *          the y
+   * @param x the x
+   * @param y the y
    * @return the int pos
    */
   public static IntPos2D create(long x, long y) {
@@ -148,10 +142,8 @@ public class IntPos2D implements Comparable<IntPos2D> {
   /**
    * Creates the.
    *
-   * @param x
-   *          the x
-   * @param y
-   *          the y
+   * @param x the x
+   * @param y the y
    * @return the int pos
    */
   public static IntPos2D create(double x, double y) {

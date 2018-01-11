@@ -23,8 +23,7 @@ import java.util.ListIterator;
 /**
  * The Class TailList.
  *
- * @param <T>
- *          the generic type
+ * @param <T> the generic type
  */
 public class TailList<T> extends ReadOnlyListContainer<T> {
 
@@ -34,8 +33,7 @@ public class TailList<T> extends ReadOnlyListContainer<T> {
   /**
    * Instantiates a new tail list.
    *
-   * @param list
-   *          the list
+   * @param list the list
    */
   public TailList(List<T> list) {
     this(list, 1);
@@ -44,10 +42,8 @@ public class TailList<T> extends ReadOnlyListContainer<T> {
   /**
    * Instantiates a new tail list.
    *
-   * @param list
-   *          the list
-   * @param start
-   *          the start
+   * @param list the list
+   * @param start the start
    */
   public TailList(List<T> list, int start) {
     super(list);

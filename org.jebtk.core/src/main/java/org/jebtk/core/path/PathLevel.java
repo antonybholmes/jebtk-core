@@ -39,8 +39,7 @@ public class PathLevel implements Comparable<PathLevel>, Serializable {
   /**
    * Instantiates a new path level.
    *
-   * @param level
-   *          the level
+   * @param level the level
    */
   public PathLevel(String level) {
     mLevel = sanitize(level);
@@ -92,8 +91,7 @@ public class PathLevel implements Comparable<PathLevel>, Serializable {
   /**
    * Sanitize.
    *
-   * @param level
-   *          the level
+   * @param level the level
    * @return the string
    */
   public static String sanitize(String level) {

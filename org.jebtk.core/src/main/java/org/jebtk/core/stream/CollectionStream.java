@@ -24,8 +24,7 @@ import java.util.List;
  * The Class BaseStream encapulates an initial collection with the intent of
  * apply further streams to process the list.
  *
- * @param <T>
- *          the generic type
+ * @param <T> the generic type
  */
 public class CollectionStream<T> extends IteratorStream<T> {
 
@@ -35,8 +34,7 @@ public class CollectionStream<T> extends IteratorStream<T> {
   /**
    * Instantiates a new base stream.
    *
-   * @param items
-   *          the items
+   * @param items the items
    */
   public CollectionStream(Collection<T> items) {
     super(items.iterator());

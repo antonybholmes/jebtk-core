@@ -21,7 +21,6 @@ import java.text.ParseException;
 import java.util.Iterator;
 
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.TransformerException;
 
 import org.jebtk.core.Resources;
 import org.jebtk.core.json.Json;
@@ -110,8 +109,7 @@ public class SettingsService extends Settings {
   /**
    * Gets the setting.
    *
-   * @param path
-   *          the path
+   * @param path the path
    * @return the setting
    */
   @Override
@@ -165,17 +163,13 @@ public class SettingsService extends Settings {
   /**
    * Auto load xml.
    *
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
-   * @throws URISyntaxException
-   *           the URI syntax exception
-   * @throws SAXException
-   *           the SAX exception
-   * @throws ParserConfigurationException
-   *           the parser configuration exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws URISyntaxException the URI syntax exception
+   * @throws SAXException the SAX exception
+   * @throws ParserConfigurationException the parser configuration exception
    */
-  private synchronized void autoLoadXml()
-      throws IOException, URISyntaxException, SAXException, ParserConfigurationException {
+  private synchronized void autoLoadXml() throws IOException,
+      URISyntaxException, SAXException, ParserConfigurationException {
     LOG.info("Auto loading XML settings...");
 
     for (String res : Resources.getInstance()) {
@@ -202,10 +196,8 @@ public class SettingsService extends Settings {
   /**
    * Auto load json.
    *
-   * @throws ParseException
-   *           the parse exception
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws ParseException the parse exception
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   private synchronized void autoLoadJson() throws ParseException, IOException {
     LOG.info("Auto loading JSON settings...");
@@ -234,7 +226,8 @@ public class SettingsService extends Settings {
   /*
    * (non-Javadoc)
    * 
-   * @see org.abh.common.settings.Settings#update(org.abh.common.settings.Setting)
+   * @see
+   * org.abh.common.settings.Settings#update(org.abh.common.settings.Setting)
    */
   @Override
   protected synchronized void update(Setting setting, boolean updated) {
@@ -334,10 +327,10 @@ public class SettingsService extends Settings {
   }
 
   /**
-   * Sets whether settings are automatically saved to disk when they are updated.
+   * Sets whether settings are automatically saved to disk when they are
+   * updated.
    *
-   * @param autoSave
-   *          the new auto save
+   * @param autoSave the new auto save
    */
   public void setAutoSave(boolean autoSave) {
     mAutoSave = autoSave;

@@ -111,11 +111,9 @@ public class JsonParser {
   /**
    * Reads the response from a URL and parses it as JSON.
    *
-   * @param url
-   *          the url
+   * @param url the url
    * @return the json value
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public Json parse(URL url) throws IOException {
     return parse(url.openConnection());
@@ -124,11 +122,9 @@ public class JsonParser {
   /**
    * Parses the.
    *
-   * @param connection
-   *          the connection
+   * @param connection the connection
    * @return the json value
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   private Json parse(URLConnection connection) throws IOException {
     return parse(FileUtils.newBufferedInputStream(connection.getInputStream()));
@@ -137,11 +133,9 @@ public class JsonParser {
   /**
    * Parses the.
    *
-   * @param file
-   *          the file
+   * @param file the file
    * @return the json
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public Json parse(File file) throws IOException {
     return parse(file.toPath());
@@ -150,11 +144,9 @@ public class JsonParser {
   /**
    * Parses the.
    *
-   * @param file
-   *          the file
+   * @param file the file
    * @return the json
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public Json parse(Path file) throws IOException {
     return parse(FileUtils.newBufferedInputStream(file));
@@ -163,11 +155,9 @@ public class JsonParser {
   /**
    * Parses the.
    *
-   * @param in
-   *          the in
+   * @param in the in
    * @return the json
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public Json parse(InputStream in) throws IOException {
     reset();
@@ -188,11 +178,9 @@ public class JsonParser {
   /**
    * Parses the.
    *
-   * @param json
-   *          the json
+   * @param json the json
    * @return the json value
-   * @throws ParseException
-   *           the parse exception
+   * @throws ParseException the parse exception
    */
   public Json parse(String json) throws ParseException {
     return parse(json.toCharArray());
@@ -201,11 +189,9 @@ public class JsonParser {
   /**
    * Parse a JSON string of the form { ... }.
    *
-   * @param json
-   *          the json
+   * @param json the json
    * @return the json value
-   * @throws ParseException
-   *           the parse exception
+   * @throws ParseException the parse exception
    */
   public Json parse(char[] json) throws ParseException {
     if (json == null) {
@@ -232,8 +218,7 @@ public class JsonParser {
   /**
    * Parse a single char and construct the running JSON structure using it.
    *
-   * @param c
-   *          the c
+   * @param c the c
    */
   private void parse(char c) {
     // System.err.println("buffer: " + mBuffer);
@@ -246,7 +231,8 @@ public class JsonParser {
       mUnicodeBuffer.append(c);
 
       if (mUnicodeBuffer.length() == 4) {
-        mBuffer.append(new String(Character.toChars(Integer.parseInt(mUnicodeBuffer.toString(), 16))));
+        mBuffer.append(new String(Character
+            .toChars(Integer.parseInt(mUnicodeBuffer.toString(), 16))));
 
         mUnicodeBuffer.setLength(0);
 
@@ -356,8 +342,10 @@ public class JsonParser {
         mBuffer.append(c);
       } else {
         // The name minus quotes
-        mCurrentName = mBuffer.toString(); // .subSequence(1, mBuffer.length() - 1);
-                                           // //TextUtils.removeQuotes(String.valueOf(buffer, 0, bc));
+        mCurrentName = mBuffer.toString(); // .subSequence(1, mBuffer.length() -
+                                           // 1);
+                                           // //TextUtils.removeQuotes(String.valueOf(buffer,
+                                           // 0, bc));
 
         mBuffer.setLength(0);
       }
@@ -535,11 +523,9 @@ public class JsonParser {
   /**
    * Json.
    *
-   * @param file
-   *          the file
+   * @param file the file
    * @return the json
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public static Json json(Path file) throws IOException {
     return new JsonParser().parse(file);

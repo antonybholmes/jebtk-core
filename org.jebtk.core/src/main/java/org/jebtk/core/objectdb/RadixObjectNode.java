@@ -34,10 +34,10 @@ import org.jebtk.core.text.TextUtils;
  * characters which can be associated with one or more objects.
  *
  * @author Antony Holmes Holmes
- * @param <T>
- *          the generic type
+ * @param <T> the generic type
  */
-public class RadixObjectNode<T> implements Comparable<RadixObjectNode<T>>, Serializable, Iterable<T> {
+public class RadixObjectNode<T>
+    implements Comparable<RadixObjectNode<T>>, Serializable, Iterable<T> {
 
   /**
    * The constant serialVersionUID.
@@ -72,10 +72,8 @@ public class RadixObjectNode<T> implements Comparable<RadixObjectNode<T>>, Seria
   /**
    * Instantiates a new radix object node.
    *
-   * @param c
-   *          the c
-   * @param prefix
-   *          the prefix
+   * @param c the c
+   * @param prefix the prefix
    */
   public RadixObjectNode(char c, String prefix) {
     mC = standardize(c);
@@ -112,15 +110,15 @@ public class RadixObjectNode<T> implements Comparable<RadixObjectNode<T>>, Seria
   /**
    * Returns the node associated with a given prefix.
    *
-   * @param prefix
-   *          the prefix
+   * @param prefix the prefix
    * @return the child
    */
   public RadixObjectNode<T> getChild(String prefix) {
     return getChild(this, prefix);
   }
 
-  public static <TT> RadixObjectNode<TT> getChild(RadixObjectNode<TT> root, String prefix) {
+  public static <TT> RadixObjectNode<TT> getChild(RadixObjectNode<TT> root,
+      String prefix) {
     RadixObjectNode<TT> ret = root;
 
     char[] chars = standardize(prefix).toCharArray();
@@ -141,8 +139,7 @@ public class RadixObjectNode<T> implements Comparable<RadixObjectNode<T>>, Seria
   /**
    * Returns a child node. Will return null if the child does not exist.
    *
-   * @param c
-   *          the c
+   * @param c the c
    * @return the child
    */
   private RadixObjectNode<T> getChild(char c) {
@@ -153,15 +150,15 @@ public class RadixObjectNode<T> implements Comparable<RadixObjectNode<T>>, Seria
    * Return the words associated with a prefix or null if the prefix does not
    * exist in this tree.
    *
-   * @param prefix
-   *          the prefix
+   * @param prefix the prefix
    * @return the words
    */
   public Set<String> getWords(String prefix) {
     return getWords(this, prefix);
   }
 
-  public static <TT> Set<String> getWords(RadixObjectNode<TT> root, String prefix) {
+  public static <TT> Set<String> getWords(RadixObjectNode<TT> root,
+      String prefix) {
     RadixObjectNode<TT> ret = getChild(root, prefix);
 
     return Collections.unmodifiableSet(ret.mWords);
@@ -177,14 +174,12 @@ public class RadixObjectNode<T> implements Comparable<RadixObjectNode<T>>, Seria
   }
 
   /**
-   * Returns a child node and auto creates the child if it does not already exist.
+   * Returns a child node and auto creates the child if it does not already
+   * exist.
    *
-   * @param c
-   *          the c
-   * @param prefix
-   *          the prefix
-   * @param word
-   *          the word
+   * @param c the c
+   * @param prefix the prefix
+   * @param word the word
    * @return the radix object node
    */
   private RadixObjectNode<T> createChild(char c, String prefix, String word) {
@@ -208,10 +203,8 @@ public class RadixObjectNode<T> implements Comparable<RadixObjectNode<T>>, Seria
    * Parse a string into prefixs and build a sub tree under the current node to
    * represent that string.
    *
-   * @param word
-   *          the word
-   * @param object
-   *          the object
+   * @param word the word
+   * @param object the object
    */
   public void addObject(String word, T object) {
     if (TextUtils.isNullOrEmpty(word) || object == null) {
@@ -308,10 +301,10 @@ public class RadixObjectNode<T> implements Comparable<RadixObjectNode<T>>, Seria
   }
 
   /**
-   * Ensure characters are consistent for searching purposes i.e case insensitive.
+   * Ensure characters are consistent for searching purposes i.e case
+   * insensitive.
    *
-   * @param name
-   *          the name
+   * @param name the name
    * @return the char
    */
   private static char standardize(char name) {
@@ -321,8 +314,7 @@ public class RadixObjectNode<T> implements Comparable<RadixObjectNode<T>>, Seria
   /**
    * Standardize.
    *
-   * @param name
-   *          the name
+   * @param name the name
    * @return the string
    */
   private static String standardize(String name) {

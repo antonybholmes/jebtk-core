@@ -30,8 +30,7 @@ public interface SettingsReader {
   /**
    * Load.
    *
-   * @param settings
-   *          the settings
+   * @param settings the settings
    */
   public void load(Settings settings);
 

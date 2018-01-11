@@ -23,8 +23,7 @@ import java.util.EventListener;
  * For classes that generate Events.
  *
  * @author Antony Holmes Holmes
- * @param <T>
- *          the generic type
+ * @param <T> the generic type
  */
 public class EventProducer<T extends EventListener> implements Serializable {
 

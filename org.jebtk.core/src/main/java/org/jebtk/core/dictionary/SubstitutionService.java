@@ -66,8 +66,7 @@ public class SubstitutionService {
   /**
    * Load xml.
    *
-   * @param file
-   *          the file
+   * @param file the file
    */
   public void loadXml(File file) {
     try {
@@ -85,8 +84,7 @@ public class SubstitutionService {
   /**
    * Load tsv file.
    *
-   * @param file
-   *          the file
+   * @param file the file
    */
   public void loadTSVFile(File file) {
     try {
@@ -100,7 +98,8 @@ public class SubstitutionService {
             continue;
           }
 
-          List<String> tokens = TextUtils.fastSplit(line, TextUtils.TAB_DELIMITER);
+          List<String> tokens = TextUtils.fastSplit(line,
+              TextUtils.TAB_DELIMITER);
 
           addSubstitution(tokens.get(0), tokens.get(1));
         }
@@ -115,10 +114,8 @@ public class SubstitutionService {
   /**
    * Adds the substitution.
    *
-   * @param word
-   *          the word
-   * @param subsitute
-   *          the subsitute
+   * @param word the word
+   * @param subsitute the subsitute
    */
   public void addSubstitution(String word, String subsitute) {
     substitutions.put(word, subsitute);
@@ -127,8 +124,7 @@ public class SubstitutionService {
   /**
    * Gets the substitute.
    *
-   * @param word
-   *          the word
+   * @param word the word
    * @return the substitute
    */
   public String getSubstitute(String word) {

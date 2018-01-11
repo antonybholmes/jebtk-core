@@ -27,13 +27,14 @@ import org.jebtk.core.io.PathUtils;
 public class SettingsReaderDefaultJson implements SettingsReader {
 
   /** The Constant JSON_FILE. */
-  public static final Path JSON_FILE = PathUtils.getPath("res/default.settings.json");
+  public static final Path JSON_FILE = PathUtils
+      .getPath("res/default.settings.json");
 
   /*
    * (non-Javadoc)
    * 
-   * @see
-   * org.abh.common.settings.SettingsReader#load(org.abh.common.settings.Settings)
+   * @see org.abh.common.settings.SettingsReader#load(org.abh.common.settings.
+   * Settings)
    */
   @Override
   public void load(Settings settings) {

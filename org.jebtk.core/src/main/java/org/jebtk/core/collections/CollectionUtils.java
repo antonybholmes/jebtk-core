@@ -63,8 +63,7 @@ public class CollectionUtils {
   /**
    * The class SortIgnoreCase.
    *
-   * @param <X>
-   *          the generic type
+   * @param <X> the generic type
    */
   private static class SortIgnoreCase<X> implements Comparator<X> {
 
@@ -91,10 +90,8 @@ public class CollectionUtils {
   /**
    * Returns true if the collection is null or empty.
    *
-   * @param <T>
-   *          the generic type
-   * @param c
-   *          the c
+   * @param <T> the generic type
+   * @param c the c
    * @return true, if is null or empty
    */
   public static <T> boolean isNullOrEmpty(Collection<T> c) {
@@ -104,10 +101,8 @@ public class CollectionUtils {
   /**
    * Returns true if the collection contains elements and is not null.
    *
-   * @param <T>
-   *          the generic type
-   * @param c
-   *          the c
+   * @param <T> the generic type
+   * @param c the c
    * @return true, if is not null or empty
    */
   public static <T> boolean isNotNullOrEmpty(Collection<T> c) {
@@ -117,12 +112,9 @@ public class CollectionUtils {
   /**
    * Checks if is null or empty.
    *
-   * @param <K>
-   *          the key type
-   * @param <V>
-   *          the value type
-   * @param c
-   *          the c
+   * @param <K> the key type
+   * @param <V> the value type
+   * @param c the c
    * @return true, if is null or empty
    */
   public static <K, V> boolean isNullOrEmpty(Map<K, V> c) {
@@ -132,10 +124,8 @@ public class CollectionUtils {
   /**
    * Checks if is null or empty.
    *
-   * @param <T>
-   *          the generic type
-   * @param c
-   *          the c
+   * @param <T> the generic type
+   * @param c the c
    * @return true, if is null or empty
    */
   public static <T> boolean isNullOrEmpty(int[] c) {
@@ -145,10 +135,8 @@ public class CollectionUtils {
   /**
    * Checks if is null or empty.
    *
-   * @param <T>
-   *          the generic type
-   * @param c
-   *          the c
+   * @param <T> the generic type
+   * @param c the c
    * @return true, if is null or empty
    */
   public static <T> boolean isNullOrEmpty(double[] c) {
@@ -158,10 +146,8 @@ public class CollectionUtils {
   /**
    * Checks if is null or empty.
    *
-   * @param <T>
-   *          the generic type
-   * @param c
-   *          the c
+   * @param <T> the generic type
+   * @param c the c
    * @return true, if is null or empty
    */
   public static <T> boolean isNullOrEmpty(boolean[] c) {
@@ -171,10 +157,8 @@ public class CollectionUtils {
   /**
    * Checks if is null or empty.
    *
-   * @param <T>
-   *          the generic type
-   * @param c
-   *          the c
+   * @param <T> the generic type
+   * @param c the c
    * @return true, if is null or empty
    */
   public static <T> boolean isNullOrEmpty(T[] c) {
@@ -182,19 +166,17 @@ public class CollectionUtils {
   }
 
   /**
-   * Reorder a list. The list will be truncated to the size of indices if the list
-   * of indices is shorter than the input list. Items will also be duplicated if
-   * indices contains repeats.
+   * Reorder a list. The list will be truncated to the size of indices if the
+   * list of indices is shorter than the input list. Items will also be
+   * duplicated if indices contains repeats.
    *
-   * @param <T>
-   *          the generic type
-   * @param s
-   *          the s
-   * @param indices
-   *          the indices
+   * @param <T> the generic type
+   * @param s the s
+   * @param indices the indices
    * @return the list
    */
-  public static final <T> List<T> reorder(final List<T> s, final List<Integer> indices) {
+  public static final <T> List<T> reorder(final List<T> s,
+      final List<Integer> indices) {
     List<T> ret = new ArrayList<T>(s.size());
 
     for (int i : indices) {
@@ -207,15 +189,14 @@ public class CollectionUtils {
   /**
    * Sort.
    *
-   * @param <T>
-   *          the generic type
-   * @param collection
-   *          the collection
-   * @param ascending
-   *          the ascending
+   * @param <T> the generic type
+   * @param collection the collection
+   * @param ascending the ascending
    * @return the list
    */
-  public static <T extends Comparable<? super T>> List<T> sort(Collection<T> collection, boolean ascending) {
+  public static <T extends Comparable<? super T>> List<T> sort(
+      Collection<T> collection,
+      boolean ascending) {
     List<T> ret = sort(collection);
 
     if (!ascending) {
@@ -225,7 +206,9 @@ public class CollectionUtils {
     return ret;
   }
 
-  public static <T extends Comparable<? super T>> List<T> sort(Collection<T> collection, Comparator<T> comparator,
+  public static <T extends Comparable<? super T>> List<T> sort(
+      Collection<T> collection,
+      Comparator<T> comparator,
       boolean ascending) {
     List<T> ret = sort(collection, comparator);
 
@@ -239,15 +222,14 @@ public class CollectionUtils {
   /**
    * Sort.
    *
-   * @param <T>
-   *          the generic type
-   * @param collection
-   *          the collection
-   * @param ascending
-   *          the ascending
+   * @param <T> the generic type
+   * @param collection the collection
+   * @param ascending the ascending
    * @return the list
    */
-  public static <T extends Comparable<? super T>> List<T> sort(Iterable<T> collection, boolean ascending) {
+  public static <T extends Comparable<? super T>> List<T> sort(
+      Iterable<T> collection,
+      boolean ascending) {
     List<T> ret = sort(collection);
 
     if (!ascending) {
@@ -260,13 +242,12 @@ public class CollectionUtils {
   /**
    * Sort a list of items.
    *
-   * @param <T>
-   *          the generic type
-   * @param collection
-   *          the collection
+   * @param <T> the generic type
+   * @param collection the collection
    * @return the list
    */
-  public static <T extends Comparable<? super T>> List<T> sort(Collection<T> collection) {
+  public static <T extends Comparable<? super T>> List<T> sort(
+      Collection<T> collection) {
     List<T> ret = new ArrayList<T>(collection);
 
     Collections.sort(ret);
@@ -277,15 +258,14 @@ public class CollectionUtils {
   /**
    * Sort.
    *
-   * @param <T>
-   *          the generic type
-   * @param collection
-   *          the collection
-   * @param comparator
-   *          the comparator
+   * @param <T> the generic type
+   * @param collection the collection
+   * @param comparator the comparator
    * @return the list
    */
-  public static <T extends Comparable<? super T>> List<T> sort(Collection<T> collection, Comparator<T> comparator) {
+  public static <T extends Comparable<? super T>> List<T> sort(
+      Collection<T> collection,
+      Comparator<T> comparator) {
     List<T> ret = new ArrayList<T>(collection);
 
     Collections.sort(ret, comparator);
@@ -296,13 +276,12 @@ public class CollectionUtils {
   /**
    * Sort case insensitive.
    *
-   * @param <T>
-   *          the generic type
-   * @param collection
-   *          the collection
+   * @param <T> the generic type
+   * @param collection the collection
    * @return the list
    */
-  public static <T extends Comparable<? super T>> List<T> sortCaseInsensitive(Collection<T> collection) {
+  public static <T extends Comparable<? super T>> List<T> sortCaseInsensitive(
+      Collection<T> collection) {
     List<T> ret = new ArrayList<T>(collection);
 
     Collections.sort(ret, new SortIgnoreCase<T>());
@@ -313,13 +292,12 @@ public class CollectionUtils {
   /**
    * Sort.
    *
-   * @param <T>
-   *          the generic type
-   * @param iter
-   *          the iter
+   * @param <T> the generic type
+   * @param iter the iter
    * @return the list
    */
-  public static <T extends Comparable<? super T>> List<T> sort(Iterable<T> iter) {
+  public static <T extends Comparable<? super T>> List<T> sort(
+      Iterable<T> iter) {
     List<T> ret = toList(iter);
 
     Collections.sort(ret);
@@ -330,15 +308,13 @@ public class CollectionUtils {
   /**
    * Sort.
    *
-   * @param <T>
-   *          the generic type
-   * @param iter
-   *          the iter
-   * @param comparator
-   *          the comparator
+   * @param <T> the generic type
+   * @param iter the iter
+   * @param comparator the comparator
    * @return the list
    */
-  public static <T extends Comparable<? super T>> List<T> sort(Iterable<T> iter, Comparator<T> comparator) {
+  public static <T extends Comparable<? super T>> List<T> sort(Iterable<T> iter,
+      Comparator<T> comparator) {
     List<T> ret = toList(iter);
 
     Collections.sort(ret, comparator);
@@ -349,10 +325,8 @@ public class CollectionUtils {
   /**
    * Returns a reversed copy of a list.
    *
-   * @param <T>
-   *          the generic type
-   * @param iter
-   *          the iter
+   * @param <T> the generic type
+   * @param iter the iter
    * @return the list
    */
   public static <T> List<T> reverse(Iterable<T> iter) {
@@ -366,10 +340,8 @@ public class CollectionUtils {
   /**
    * Reverse.
    *
-   * @param <T>
-   *          the generic type
-   * @param list
-   *          the list
+   * @param <T> the generic type
+   * @param list the list
    * @return the list
    */
   public static <T> List<T> reverse(List<T> list) {
@@ -384,10 +356,8 @@ public class CollectionUtils {
   /**
    * Reverses the elements in a list.
    *
-   * @param <T>
-   *          the generic type
-   * @param list
-   *          the list
+   * @param <T> the generic type
+   * @param list the list
    */
   public static <T> void reverseList(List<T> list) {
     int m = list.size() / 2;
@@ -414,31 +384,28 @@ public class CollectionUtils {
   }
 
   /**
-   * Reverse sort a list. This method returns a sorted list and does not sort the
-   * original.
+   * Reverse sort a list. This method returns a sorted list and does not sort
+   * the original.
    *
-   * @param <T>
-   *          the generic type
-   * @param values
-   *          the values
+   * @param <T> the generic type
+   * @param values the values
    * @return the list
    */
-  public static <T extends Comparable<? super T>> List<T> reverseSort(final Collection<T> values) {
+  public static <T extends Comparable<? super T>> List<T> reverseSort(
+      final Collection<T> values) {
     return reverse(sort(values));
   }
 
   /**
    * Returns a sorted list of an array.
    *
-   * @param <X>
-   *          the generic type
-   * @param <T>
-   *          the generic type
-   * @param items
-   *          the items
+   * @param <X> the generic type
+   * @param <T> the generic type
+   * @param items the items
    * @return the list
    */
-  public static final <X extends Comparable<? super X>, T extends Iterable<X>> List<X> sort(X[] items) {
+  public static final <X extends Comparable<? super X>, T extends Iterable<X>> List<X> sort(
+      X[] items) {
     List<X> ret = new ArrayList<X>();
 
     for (X item : items) {
@@ -456,34 +423,33 @@ public class CollectionUtils {
   /**
    * Sort keys.
    *
-   * @param <T>
-   *          the generic type
-   * @param <X>
-   *          the generic type
-   * @param map
-   *          the map
+   * @param <T> the generic type
+   * @param <X> the generic type
+   * @param map the map
    * @return the list
    */
-  public static <T extends Comparable<? super T>, X> List<T> sortKeys(Map<T, X> map) {
+  public static <T extends Comparable<? super T>, X> List<T> sortKeys(
+      Map<T, X> map) {
     return sortKeys(map, true);
   }
 
   /**
    * Sort the keys in a map.
    *
-   * @param <T>
-   *          the generic type
-   * @param map
-   *          the map
-   * @param ascending
-   *          the ascending
+   * @param <T> the generic type
+   * @param map the map
+   * @param ascending the ascending
    * @return the list
    */
-  public static <T extends Comparable<? super T>> List<T> sortKeys(Map<T, ?> map, boolean ascending) {
+  public static <T extends Comparable<? super T>> List<T> sortKeys(
+      Map<T, ?> map,
+      boolean ascending) {
     return sort(map.keySet(), ascending);
   }
 
-  public static <T extends Comparable<? super T>> List<T> sortKeys(Map<T, ?> map, Comparator<T> comparator,
+  public static <T extends Comparable<? super T>> List<T> sortKeys(
+      Map<T, ?> map,
+      Comparator<T> comparator,
       boolean ascending) {
     return sort(map.keySet(), comparator, ascending);
   }
@@ -491,15 +457,13 @@ public class CollectionUtils {
   /**
    * Returns the values of a map sorted by their key.
    *
-   * @param <T>
-   *          the generic type
-   * @param <X>
-   *          the generic type
-   * @param map
-   *          the map
+   * @param <T> the generic type
+   * @param <X> the generic type
+   * @param map the map
    * @return the list
    */
-  public static <T extends Comparable<? super T>, X> List<X> sort(Map<T, X> map) {
+  public static <T extends Comparable<? super T>, X> List<X> sort(
+      Map<T, X> map) {
     List<T> keys = sortKeys(map);
 
     List<X> ret = new ArrayList<X>();
@@ -514,15 +478,13 @@ public class CollectionUtils {
   /**
    * Sort list map.
    *
-   * @param <T>
-   *          the generic type
-   * @param <X>
-   *          the generic type
-   * @param map
-   *          the map
+   * @param <T> the generic type
+   * @param <X> the generic type
+   * @param map the map
    * @return the list
    */
-  public static <T extends Comparable<? super T>, X> List<X> sortListMap(Map<T, List<X>> map) {
+  public static <T extends Comparable<? super T>, X> List<X> sortListMap(
+      Map<T, List<X>> map) {
     List<T> keys = sortKeys(map);
 
     List<X> ret = new ArrayList<X>();
@@ -539,12 +501,9 @@ public class CollectionUtils {
   /**
    * Returns the head of a list.
    *
-   * @param <T>
-   *          the generic type
-   * @param s
-   *          the s
-   * @param size
-   *          the size
+   * @param <T> the generic type
+   * @param s the s
+   * @param size the size
    * @return the list
    */
   public static final <T> List<T> head(final List<T> s, int size) {
@@ -568,10 +527,8 @@ public class CollectionUtils {
   /**
    * Default tail function returning the last element of a list.
    *
-   * @param <T>
-   *          the generic type
-   * @param list
-   *          the list
+   * @param <T> the generic type
+   * @param list the list
    * @return the t
    */
   public static final <T> T end(List<T> list) {
@@ -581,10 +538,8 @@ public class CollectionUtils {
   /**
    * Returns a list without its head element.
    *
-   * @param <T>
-   *          the generic type
-   * @param list
-   *          the list
+   * @param <T> the generic type
+   * @param list the list
    * @return the list
    */
   public static final <T> List<T> tail(List<T> list) {
@@ -606,12 +561,9 @@ public class CollectionUtils {
   /**
    * Return the last n elements of a list.
    *
-   * @param <T>
-   *          the generic type
-   * @param list
-   *          the list
-   * @param n
-   *          the n
+   * @param <T> the generic type
+   * @param list the list
+   * @param n the n
    * @return the list
    */
   public static final <T> List<T> end(List<T> list, int n) {
@@ -625,12 +577,9 @@ public class CollectionUtils {
   /**
    * Sub list.
    *
-   * @param <T>
-   *          the generic type
-   * @param list
-   *          the list
-   * @param start
-   *          the start
+   * @param <T> the generic type
+   * @param list the list
+   * @param start the start
    * @return the list
    */
   public static <T> List<T> subList(List<T> list, int start) {
@@ -644,18 +593,15 @@ public class CollectionUtils {
   /**
    * Return part of a list.
    *
-   * @param <T>
-   *          the generic type
-   * @param list
-   *          the list
-   * @param start
-   *          the start
-   * @param length
-   *          the length
+   * @param <T> the generic type
+   * @param list the list
+   * @param start the start
+   * @param length the length
    * @return the list
    */
   public static final <T> List<T> subList(List<T> list, int start, int length) {
-    if (isNullOrEmpty(list) || start < 0 || start >= list.size() || length < 1) {
+    if (isNullOrEmpty(list) || start < 0 || start >= list.size()
+        || length < 1) {
       return Collections.emptyList();
     }
 
@@ -673,8 +619,11 @@ public class CollectionUtils {
     return ret;
   }
 
-  public static final <T> Object[] subList(Object[] list, int start, int length) {
-    if (isNullOrEmpty(list) || start < 0 || start >= list.length || length < 1) {
+  public static final <T> Object[] subList(Object[] list,
+      int start,
+      int length) {
+    if (isNullOrEmpty(list) || start < 0 || start >= list.length
+        || length < 1) {
       return null;
     }
 
@@ -692,15 +641,13 @@ public class CollectionUtils {
    * Returns a subset of the items in a list in the order the indices appear in
    * the collection. Duplicate indices will result in duplicate values.
    *
-   * @param <T>
-   *          the generic type
-   * @param list
-   *          the list
-   * @param indices
-   *          the indices
+   * @param <T> the generic type
+   * @param list the list
+   * @param indices the indices
    * @return the list
    */
-  public static final <T> List<T> subList(List<T> list, Collection<Integer> indices) {
+  public static final <T> List<T> subList(List<T> list,
+      Collection<Integer> indices) {
     if (isNullOrEmpty(list)) {
       return Collections.emptyList();
     }
@@ -717,17 +664,14 @@ public class CollectionUtils {
   /**
    * Sub list indexed.
    *
-   * @param <T>
-   *          the generic type
-   * @param <V>
-   *          the value type
-   * @param list
-   *          the list
-   * @param indices
-   *          the indices
+   * @param <T> the generic type
+   * @param <V> the value type
+   * @param list the list
+   * @param indices the indices
    * @return the list
    */
-  public static final <T, V extends Comparable<? super V>> List<T> subListIndexed(List<T> list,
+  public static final <T, V extends Comparable<? super V>> List<T> subListIndexed(
+      List<T> list,
       final Collection<Indexed<Integer, V>> indices) {
     if (isNullOrEmpty(list)) {
       return Collections.emptyList();
@@ -745,15 +689,13 @@ public class CollectionUtils {
   /**
    * Sub list indexed.
    *
-   * @param <V>
-   *          the value type
-   * @param list
-   *          the list
-   * @param indices
-   *          the indices
+   * @param <V> the value type
+   * @param list the list
+   * @param indices the indices
    * @return the double[]
    */
-  public static final <V extends Comparable<? super V>> double[] subListIndexed(double[] list,
+  public static final <V extends Comparable<? super V>> double[] subListIndexed(
+      double[] list,
       final Collection<Indexed<Integer, V>> indices) {
     if (isNullOrEmpty(list)) {
       return null;
@@ -773,15 +715,13 @@ public class CollectionUtils {
   /**
    * Returns a sublist.
    *
-   * @param <T>
-   *          the generic type
-   * @param list
-   *          the list
-   * @param indices
-   *          the indices
+   * @param <T> the generic type
+   * @param list the list
+   * @param indices the indices
    * @return the list
    */
-  public static final <T> List<T> subList(T[] list, final Collection<Integer> indices) {
+  public static final <T> List<T> subList(T[] list,
+      final Collection<Integer> indices) {
     List<T> subset = new ArrayList<T>();
 
     for (int i : indices) {
@@ -794,15 +734,13 @@ public class CollectionUtils {
   /**
    * Sub list.
    *
-   * @param <T>
-   *          the generic type
-   * @param list
-   *          the list
-   * @param indices
-   *          the indices
+   * @param <T> the generic type
+   * @param list the list
+   * @param indices the indices
    * @return the double[]
    */
-  public static final <T> double[] subList(double[] list, final Collection<Integer> indices) {
+  public static final <T> double[] subList(double[] list,
+      final Collection<Integer> indices) {
     double[] subset = new double[indices.size()];
 
     int c = 0;
@@ -817,10 +755,8 @@ public class CollectionUtils {
   /**
    * Head.
    *
-   * @param list
-   *          the list
-   * @param size
-   *          the size
+   * @param list the list
+   * @param size the size
    * @return the list
    */
   public static final List<Double> head(final double[] list, int size) {
@@ -830,10 +766,8 @@ public class CollectionUtils {
   /**
    * Tail.
    *
-   * @param list
-   *          the list
-   * @param size
-   *          the size
+   * @param list the list
+   * @param size the size
    * @return the list
    */
   public static final List<Double> end(final double[] list, int size) {
@@ -843,8 +777,7 @@ public class CollectionUtils {
   /**
    * Tail.
    *
-   * @param list
-   *          the list
+   * @param list the list
    * @return the list
    */
   public static final List<Double> tail(final double[] list) {
@@ -854,10 +787,8 @@ public class CollectionUtils {
   /**
    * Sub list.
    *
-   * @param list
-   *          the list
-   * @param start
-   *          the start
+   * @param list the list
+   * @param start the start
    * @return the list
    */
   public static final List<Double> subList(final double[] list, int start) {
@@ -867,15 +798,14 @@ public class CollectionUtils {
   /**
    * Sub list.
    *
-   * @param list
-   *          the list
-   * @param start
-   *          the start
-   * @param length
-   *          the length
+   * @param list the list
+   * @param start the start
+   * @param length the length
    * @return the list
    */
-  public static final List<Double> subList(final double[] list, int start, int length) {
+  public static final List<Double> subList(final double[] list,
+      int start,
+      int length) {
     if (isNullOrEmpty(list)) {
       return Collections.emptyList();
     }
@@ -898,12 +828,9 @@ public class CollectionUtils {
   /**
    * Given an item and a list, return the indices where the item occurs.
    *
-   * @param <T>
-   *          the generic type
-   * @param list
-   *          the list
-   * @param item
-   *          the item
+   * @param <T> the generic type
+   * @param list the list
+   * @param item the item
    * @return the list
    */
   public static final <T> List<Integer> indices(List<T> list, T item) {
@@ -926,8 +853,7 @@ public class CollectionUtils {
    * Returns a list containing the rank of the elements in the input list. The
    * input list is unaltered.
    *
-   * @param list
-   *          the list
+   * @param list the list
    * @return the list
    */
   public static final List<Integer> rank(final List<Double> list) {
@@ -957,10 +883,8 @@ public class CollectionUtils {
   /**
    * Adds the.
    *
-   * @param l1
-   *          the l1
-   * @param l2
-   *          the l2
+   * @param l1 the l1
+   * @param l2 the l2
    * @return the list
    */
   public static final List<Double> add(List<Double> l1, List<Double> l2) {
@@ -980,13 +904,12 @@ public class CollectionUtils {
   /**
    * Adds the int list.
    *
-   * @param l1
-   *          the l1
-   * @param l2
-   *          the l2
+   * @param l1 the l1
+   * @param l2 the l2
    * @return the list
    */
-  public static final List<Integer> addIntList(List<Integer> l1, List<Integer> l2) {
+  public static final List<Integer> addIntList(List<Integer> l1,
+      List<Integer> l2) {
     if (isNullOrEmpty(l1) || isNullOrEmpty(l1) || l1.size() != l2.size()) {
       return Collections.emptyList();
     }
@@ -1004,8 +927,7 @@ public class CollectionUtils {
    * Finds the smallest element in a list. If the list is null, it will return
    * Integer.MIN_VALUE
    *
-   * @param list
-   *          the list
+   * @param list the list
    * @return the int
    */
   public static final int min(List<Integer> list) {
@@ -1025,15 +947,13 @@ public class CollectionUtils {
   /**
    * Returns.
    *
-   * @param <T>
-   *          the generic type
-   * @param map
-   *          the map
-   * @param indices
-   *          the indices
+   * @param <T> the generic type
+   * @param map the map
+   * @param indices the indices
    * @return the map
    */
-  public static final <T> Map<Integer, T> subset(Map<Integer, T> map, Collection<Integer> indices) {
+  public static final <T> Map<Integer, T> subset(Map<Integer, T> map,
+      Collection<Integer> indices) {
     if (isNullOrEmpty(map) || isNullOrEmpty(indices)) {
       return Collections.emptyMap();
     }
@@ -1048,13 +968,11 @@ public class CollectionUtils {
   }
 
   /**
-   * /** Calculates the intersection of two collections adding only those elements
-   * that occur in both sets. Tries to preserve order
+   * /** Calculates the intersection of two collections adding only those
+   * elements that occur in both sets. Tries to preserve order
    *
-   * @param <T>
-   *          the generic type
-   * @param collections
-   *          the collections
+   * @param <T> the generic type
+   * @param collections the collections
    * @return the int
    */
 
@@ -1078,12 +996,9 @@ public class CollectionUtils {
   /**
    * Intersect.
    *
-   * @param <T>
-   *          the generic type
-   * @param m1
-   *          the m 1
-   * @param m2
-   *          the m 2
+   * @param <T> the generic type
+   * @param m1 the m 1
+   * @param m2 the m 2
    * @return the list
    */
   public static final <T> List<T> intersect(Map<T, ?> m1, Map<T, ?> m2) {
@@ -1093,39 +1008,36 @@ public class CollectionUtils {
   /**
    * Intersect.
    *
-   * @param <T>
-   *          the generic type
-   * @param items1
-   *          the items1
-   * @param items2
-   *          the items2
+   * @param <T> the generic type
+   * @param items1 the items1
+   * @param items2 the items2
    * @return the list
    */
-  public static <T> List<T> iterIntersect(Iterable<T> items1, Iterable<T> items2) {
+  public static <T> List<T> iterIntersect(Iterable<T> items1,
+      Iterable<T> items2) {
     return intersect(toSetIter(items1), toSetIter(items2));
   }
 
   /**
    * Intersect.
    *
-   * @param <T>
-   *          the generic type
-   * @param l1
-   *          the l 1
-   * @param l2
-   *          the l 2
-   * @param others
-   *          the others
+   * @param <T> the generic type
+   * @param l1 the l 1
+   * @param l2 the l 2
+   * @param others the others
    * @return the list
    */
   @SafeVarargs
-  public static final <T> List<T> intersect(Collection<T> l1, Collection<T> l2, Collection<T>... others) {
+  public static final <T> List<T> intersect(Collection<T> l1,
+      Collection<T> l2,
+      Collection<T>... others) {
     if (isNullOrEmpty(l1) || isNullOrEmpty(l2)) {
       return Collections.emptyList();
     }
 
     if (others.length > 0) {
-      List<T> s = new ArrayList<T>(l1.size() + l2.size() + countElements(others));
+      List<T> s = new ArrayList<T>(
+          l1.size() + l2.size() + countElements(others));
 
       // Lets create sets of l2 + others to check l1 in
 
@@ -1174,15 +1086,13 @@ public class CollectionUtils {
   /**
    * Returns the set of things in l1 that are not in l2.
    *
-   * @param <T>
-   *          the generic type
-   * @param l1
-   *          the l1
-   * @param l2
-   *          the l2
+   * @param <T> the generic type
+   * @param l1 the l1
+   * @param l2 the l2
    * @return the list
    */
-  public static final <T> List<T> compliment(Collection<T> l1, Collection<T> l2) {
+  public static final <T> List<T> compliment(Collection<T> l1,
+      Collection<T> l2) {
     // If l1 is empty // no point continuing
     if (isNullOrEmpty(l1)) {
       return Collections.emptyList();
@@ -1207,15 +1117,13 @@ public class CollectionUtils {
   /**
    * Returns a set of the items in l1 that are not in l2.
    *
-   * @param <T>
-   *          the generic type
-   * @param l1
-   *          the l 1
-   * @param l2
-   *          the l 2
+   * @param <T> the generic type
+   * @param l1 the l 1
+   * @param l2 the l 2
    * @return the collection
    */
-  public static final <T> Collection<T> notIn(Collection<T> l1, Collection<T> l2) {
+  public static final <T> Collection<T> notIn(Collection<T> l1,
+      Collection<T> l2) {
     // If l1 is empty // no point continuing
     if (isNullOrEmpty(l1)) {
       return Collections.emptySet();
@@ -1240,29 +1148,25 @@ public class CollectionUtils {
   /**
    * Compliment iter.
    *
-   * @param <T>
-   *          the generic type
-   * @param l1
-   *          the l1
-   * @param l2
-   *          the l2
+   * @param <T> the generic type
+   * @param l1 the l1
+   * @param l2 the l2
    * @return the list
    */
-  public static final <T> List<T> iterCompliment(Iterable<T> l1, Iterable<T> l2) {
+  public static final <T> List<T> iterCompliment(Iterable<T> l1,
+      Iterable<T> l2) {
     return compliment(iterToList(l1), iterToList(l2));
   }
 
   /**
    * Updates l1 so it contains only those elements also present in l2.
    *
-   * @param <T>
-   *          the generic type
-   * @param l1
-   *          the l1
-   * @param l2
-   *          the l2
+   * @param <T> the generic type
+   * @param l1 the l1
+   * @param l2 the l2
    */
-  public static final <T> void intersectionUpdate(Collection<T> l1, Collection<T> l2) {
+  public static final <T> void intersectionUpdate(Collection<T> l1,
+      Collection<T> l2) {
     if (isNullOrEmpty(l1) || isNullOrEmpty(l2)) {
       return;
     }
@@ -1290,21 +1194,19 @@ public class CollectionUtils {
 
   /**
    * /** Calculates the union of two lists, i.e all of the elements present in
-   * both sets, but without duplicates. This method will try to preserve order if
-   * the collections are ordered.
+   * both sets, but without duplicates. This method will try to preserve order
+   * if the collections are ordered.
    *
-   * @param <T>
-   *          the generic type
-   * @param l1
-   *          the l 1
-   * @param l2
-   *          the l 2
-   * @param others
-   *          the others
+   * @param <T> the generic type
+   * @param l1 the l 1
+   * @param l2 the l 2
+   * @param others the others
    * @return the list
    */
   @SafeVarargs
-  public static final <T> List<T> union(final Collection<T> l1, final Collection<T> l2, final Collection<T>... others) {
+  public static final <T> List<T> union(final Collection<T> l1,
+      final Collection<T> l2,
+      final Collection<T>... others) {
     List<T> ret = new UniqueArrayList<T>();
 
     for (T e : l1) {
@@ -1327,12 +1229,9 @@ public class CollectionUtils {
   /**
    * Add the elements of l2 to l1 if l1 does not contain the element.
    *
-   * @param <T>
-   *          the generic type
-   * @param l1
-   *          the l1
-   * @param l2
-   *          the l2
+   * @param <T> the generic type
+   * @param l1 the l1
+   * @param l2 the l2
    */
   public static final <T> void unionUpdate(Collection<T> l1, Collection<T> l2) {
     if (isNullOrEmpty(l1) || isNullOrEmpty(l2)) {
@@ -1352,12 +1251,9 @@ public class CollectionUtils {
    * Calculates the exclusive or of two collections. Returns a list that is
    * guaranteed to contain unique items. This allows order to be preserved.
    *
-   * @param <T>
-   *          the generic type
-   * @param l1
-   *          the l1
-   * @param l2
-   *          the l2
+   * @param <T> the generic type
+   * @param l1 the l1
+   * @param l2 the l2
    * @return the list
    */
   public static final <T> List<T> xor(Collection<T> l1, Collection<T> l2) {
@@ -1385,10 +1281,8 @@ public class CollectionUtils {
   /**
    * Converts a primitive array into an object array.
    *
-   * @param <T>
-   *          the generic type
-   * @param array
-   *          the array
+   * @param <T> the generic type
+   * @param array the array
    * @return the list
    */
   public static final <T> List<T> convertToArray(T[] array) {
@@ -1408,15 +1302,13 @@ public class CollectionUtils {
   /**
    * Creates a map view of a table indexed on a column.
    *
-   * @param <T>
-   *          the generic type
-   * @param list
-   *          the list
-   * @param keyColumn
-   *          the key column
+   * @param <T> the generic type
+   * @param list the list
+   * @param keyColumn the key column
    * @return the map
    */
-  public static final <T> Map<T, List<T[]>> convertToMap(List<T[]> list, int keyColumn) {
+  public static final <T> Map<T, List<T[]>> convertToMap(List<T[]> list,
+      int keyColumn) {
     if (isNullOrEmpty(list)) {
       return Collections.emptyMap();
     }
@@ -1441,15 +1333,13 @@ public class CollectionUtils {
   /**
    * Convert to hash map.
    *
-   * @param <T>
-   *          the generic type
-   * @param array
-   *          the array
-   * @param keyColumn
-   *          the key column
+   * @param <T> the generic type
+   * @param array the array
+   * @param keyColumn the key column
    * @return the map
    */
-  public static final <T> Map<T, T[]> convertToHashMap(List<T[]> array, int keyColumn) {
+  public static final <T> Map<T, T[]> convertToHashMap(List<T[]> array,
+      int keyColumn) {
     if (isNullOrEmpty(array)) {
       return Collections.emptyMap();
     }
@@ -1466,10 +1356,8 @@ public class CollectionUtils {
   /**
    * Converts a set to a list.
    *
-   * @param <T>
-   *          the generic type
-   * @param items
-   *          the items
+   * @param <T> the generic type
+   * @param items the items
    * @return the list
    */
   public static final <T> List<T> toList(final Set<T> items) {
@@ -1489,25 +1377,21 @@ public class CollectionUtils {
   /**
    * To sorted list.
    *
-   * @param <T>
-   *          the generic type
-   * @param items
-   *          the items
+   * @param <T> the generic type
+   * @param items the items
    * @return the list
    */
-  public static final <T extends Comparable<? super T>> List<T> toSortedList(final Set<T> items) {
+  public static final <T extends Comparable<? super T>> List<T> toSortedList(
+      final Set<T> items) {
     return sort(toList(items));
   }
 
   /**
    * Create a list from a single item.
    *
-   * @param <T>
-   *          the generic type
-   * @param item
-   *          the item
-   * @param items
-   *          the items
+   * @param <T> the generic type
+   * @param item the item
+   * @param items the items
    * @return the list
    */
   @SafeVarargs
@@ -1526,10 +1410,8 @@ public class CollectionUtils {
   /**
    * Converts a iterator into a list.
    *
-   * @param <T>
-   *          the generic type
-   * @param iter
-   *          the iter
+   * @param <T> the generic type
+   * @param iter the iter
    * @return the list
    */
   public static <T> List<T> toList(Iterable<T> iter) {
@@ -1569,10 +1451,8 @@ public class CollectionUtils {
   /**
    * To list.
    *
-   * @param <T>
-   *          the generic type
-   * @param iter
-   *          the iter
+   * @param <T> the generic type
+   * @param iter the iter
    * @return the list
    */
   public static <T> List<T> toList(Iterator<T> iter) {
@@ -1592,10 +1472,8 @@ public class CollectionUtils {
   /**
    * Turn an item into a list.
    *
-   * @param <T>
-   *          the generic type
-   * @param item
-   *          the item
+   * @param <T> the generic type
+   * @param item the item
    * @return the list
    */
   public static <T> List<T> toList(T item) {
@@ -1617,15 +1495,13 @@ public class CollectionUtils {
   /**
    * Convert a map to a list of strings formatted as "key=value".
    *
-   * @param <K>
-   *          the key type
-   * @param <V>
-   *          the value type
-   * @param map
-   *          the map
+   * @param <K> the key type
+   * @param <V> the value type
+   * @param map the map
    * @return the list
    */
-  public static <K extends Comparable<? super K>, V> List<String> toList(Map<K, V> map) {
+  public static <K extends Comparable<? super K>, V> List<String> toList(
+      Map<K, V> map) {
     List<String> ret = new ArrayList<String>(map.size());
 
     for (K k : sortKeys(map)) {
@@ -1638,10 +1514,8 @@ public class CollectionUtils {
   /**
    * To list.
    *
-   * @param <T>
-   *          the generic type
-   * @param items
-   *          the items
+   * @param <T> the generic type
+   * @param items the items
    * @return the list
    */
   @SafeVarargs
@@ -1660,8 +1534,7 @@ public class CollectionUtils {
   /**
    * To list.
    *
-   * @param items
-   *          the items
+   * @param items the items
    * @return the list
    */
   @SafeVarargs
@@ -1676,12 +1549,11 @@ public class CollectionUtils {
   }
 
   /**
-   * Create a set from a single item or returns an empty list if the item is null.
+   * Create a set from a single item or returns an empty list if the item is
+   * null.
    *
-   * @param <T>
-   *          the generic type
-   * @param item
-   *          the item
+   * @param <T> the generic type
+   * @param item the item
    * @return the sets the
    */
   public static final <T> Set<T> toSet(T item) {
@@ -1704,12 +1576,9 @@ public class CollectionUtils {
    * Converts an item, or multiple items into a set. Useful for one line
    * instantiation and population of a set.
    *
-   * @param <T>
-   *          the generic type
-   * @param item
-   *          The item to create a set from.
-   * @param items
-   *          Optional extra items to add.
+   * @param <T> the generic type
+   * @param item The item to create a set from.
+   * @param items Optional extra items to add.
    * @return the sets the
    */
   @SafeVarargs
@@ -1732,12 +1601,9 @@ public class CollectionUtils {
   /**
    * Append the items of list2 to list1.
    *
-   * @param <T>
-   *          the generic type
-   * @param l1
-   *          the l1
-   * @param l2
-   *          the l2
+   * @param <T> the generic type
+   * @param l1 the l1
+   * @param l2 the l2
    * @return the list
    */
   public static <T> List<T> append(List<T> l1, List<T> l2) {
@@ -1786,10 +1652,8 @@ public class CollectionUtils {
   /**
    * Returns the unique items in a set.
    *
-   * @param <T>
-   *          the generic type
-   * @param items
-   *          the items
+   * @param <T> the generic type
+   * @param items the items
    * @return the sets the
    */
   public static <T> Set<T> unique(Collection<T> items) {
@@ -1810,10 +1674,8 @@ public class CollectionUtils {
   /**
    * Returns the unique items in an array.
    *
-   * @param <T>
-   *          the generic type
-   * @param items
-   *          the items
+   * @param <T> the generic type
+   * @param items the items
    * @return the sets the
    */
   public static <T> Set<T> unique(T[] items) {
@@ -1834,10 +1696,8 @@ public class CollectionUtils {
    * Returns the unique items in a collection in the order they appear in the
    * collection.
    *
-   * @param <T>
-   *          the generic type
-   * @param items
-   *          the items
+   * @param <T> the generic type
+   * @param items the items
    * @return the list
    */
   public static <T> List<T> uniquePreserveOrder(Collection<T> items) {
@@ -1847,10 +1707,8 @@ public class CollectionUtils {
   /**
    * Returns a unique version of items which preserves the order of the items.
    *
-   * @param <T>
-   *          the generic type
-   * @param iter
-   *          the iter
+   * @param <T> the generic type
+   * @param iter the iter
    * @return the list
    */
   public static <T> List<T> uniquePreserveOrder(Iterable<T> iter) {
@@ -1874,14 +1732,10 @@ public class CollectionUtils {
   /**
    * Copy the values from one map to another.
    *
-   * @param <X>
-   *          the generic type
-   * @param <Y>
-   *          the generic type
-   * @param from
-   *          the from
-   * @param to
-   *          the to
+   * @param <X> the generic type
+   * @param <Y> the generic type
+   * @param from the from
+   * @param to the to
    */
   public static <X, Y> void copy(Map<X, Y> from, Map<X, Y> to) {
     if (isNullOrEmpty(from) || isNullOrEmpty(to)) {
@@ -1896,12 +1750,9 @@ public class CollectionUtils {
   /**
    * Create a list of a specific size of a repeated value.
    *
-   * @param <T>
-   *          the generic type
-   * @param value
-   *          the value
-   * @param size
-   *          the size
+   * @param <T> the generic type
+   * @param value the value
+   * @param size the size
    * @return the list
    */
   public static <T> List<T> replicate(T value, int size) {
@@ -1917,12 +1768,9 @@ public class CollectionUtils {
   /**
    * Repeat each value in a collection, n times.
    *
-   * @param <T>
-   *          the generic type
-   * @param values
-   *          the values
-   * @param n
-   *          the n
+   * @param <T> the generic type
+   * @param values the values
+   * @param n the n
    * @return the list
    */
   public static <T> List<T> replicate(Collection<T> values, int n) {
@@ -1942,10 +1790,8 @@ public class CollectionUtils {
   /**
    * Quick sort a list.
    *
-   * @param <T>
-   *          the generic type
-   * @param list
-   *          the list
+   * @param <T> the generic type
+   * @param list the list
    */
   public static <T extends Comparable<? super T>> void quickSort(List<T> list) {
     if (isNullOrEmpty(list)) {
@@ -2017,10 +1863,8 @@ public class CollectionUtils {
   /**
    * Convert a list into a set.
    *
-   * @param <T>
-   *          the generic type
-   * @param items
-   *          the items
+   * @param <T> the generic type
+   * @param items the items
    * @return the sets the
    */
   public static <T> Set<T> toSet(Collection<T> items) {
@@ -2040,10 +1884,8 @@ public class CollectionUtils {
   /**
    * To set iter.
    *
-   * @param <T>
-   *          the generic type
-   * @param iter
-   *          the iterable object.
+   * @param <T> the generic type
+   * @param iter the iterable object.
    * @return the sets the
    */
   public static <T> Set<T> toSetIter(Iterable<T> iter) {
@@ -2063,10 +1905,8 @@ public class CollectionUtils {
   /**
    * Create a list from an iterator.
    *
-   * @param <T>
-   *          the generic type
-   * @param iter
-   *          the iter
+   * @param <T> the generic type
+   * @param iter the iter
    * @return the list
    */
   public static <T> List<T> iterToList(Iterable<T> iter) {
@@ -2088,8 +1928,7 @@ public class CollectionUtils {
    * 
    * @param <T>
    *
-   * @param values
-   *          the values
+   * @param values the values
    * @return the double[]
    */
   public static <T extends Number> double[] toDoublePrimitive(List<T> values) {
@@ -2109,8 +1948,7 @@ public class CollectionUtils {
   /**
    * Converts a integer object list into a primitive array.
    *
-   * @param values
-   *          the values
+   * @param values the values
    * @return the int[]
    */
   public static int[] toIntPrimitive(List<Integer> values) {
@@ -2128,14 +1966,12 @@ public class CollectionUtils {
   }
 
   /**
-   * Convert a string list into a list of integers with the assumption that every
-   * entry is a string representation of a number.
+   * Convert a string list into a list of integers with the assumption that
+   * every entry is a string representation of a number.
    *
-   * @param values
-   *          the values
+   * @param values the values
    * @return the list
-   * @throws ParseException
-   *           the parse exception
+   * @throws ParseException the parse exception
    */
   public static List<Integer> toInt(List<?> values) throws ParseException {
     if (isNullOrEmpty(values)) {
@@ -2154,13 +1990,12 @@ public class CollectionUtils {
   /**
    * Convert to int.
    *
-   * @param values
-   *          the values
+   * @param values the values
    * @return the list
-   * @throws ParseException
-   *           the parse exception
+   * @throws ParseException the parse exception
    */
-  public static List<Integer> convertToInt(Collection<? extends NumConvertable> values) throws ParseException {
+  public static List<Integer> convertToInt(
+      Collection<? extends NumConvertable> values) throws ParseException {
     if (isNullOrEmpty(values)) {
       return Collections.emptyList();
     }
@@ -2177,13 +2012,12 @@ public class CollectionUtils {
   /**
    * Convert to double.
    *
-   * @param values
-   *          the values
+   * @param values the values
    * @return the list
-   * @throws ParseException
-   *           the parse exception
+   * @throws ParseException the parse exception
    */
-  public static List<Double> convertToDouble(Collection<? extends NumConvertable> values) throws ParseException {
+  public static List<Double> convertToDouble(
+      Collection<? extends NumConvertable> values) throws ParseException {
     if (isNullOrEmpty(values)) {
       return Collections.emptyList();
     }
@@ -2198,15 +2032,13 @@ public class CollectionUtils {
   }
 
   /**
-   * Convert a string list into a list of integers with the assumption that every
-   * entry is a string representation of a number. An empty list will be returned
-   * if any string appears to be an invalid representation of a number.
+   * Convert a string list into a list of integers with the assumption that
+   * every entry is a string representation of a number. An empty list will be
+   * returned if any string appears to be an invalid representation of a number.
    *
-   * @param values
-   *          the values
+   * @param values the values
    * @return the list
-   * @throws ParseException
-   *           the parse exception
+   * @throws ParseException the parse exception
    */
   public static List<Double> toDouble(List<?> values) throws ParseException {
     if (isNullOrEmpty(values)) {
@@ -2240,12 +2072,9 @@ public class CollectionUtils {
   /**
    * Concatenate two lists together.
    *
-   * @param <T>
-   *          the generic type
-   * @param l1
-   *          the l1
-   * @param l2
-   *          the l2
+   * @param <T> the generic type
+   * @param l1 the l1
+   * @param l2 the l2
    * @return the list
    */
   public static <T> List<T> concatenate(List<T> l1, List<T> l2) {
@@ -2270,13 +2099,12 @@ public class CollectionUtils {
    * Adds a rank to an ordered set of value using standard competition ranking
    * (i.e. sames values get same rank).
    *
-   * @param <T>
-   *          the generic type
-   * @param items
-   *          the items
+   * @param <T> the generic type
+   * @param items the items
    * @return the map
    */
-  public static <T extends Comparable<? super T>> Map<T, Integer> competitionRank(List<T> items) {
+  public static <T extends Comparable<? super T>> Map<T, Integer> competitionRank(
+      List<T> items) {
     if (isNullOrEmpty(items)) {
       return Collections.emptyMap();
     }
@@ -2306,13 +2134,12 @@ public class CollectionUtils {
   /**
    * Competition rank2.
    *
-   * @param <T>
-   *          the generic type
-   * @param items
-   *          the items
+   * @param <T> the generic type
+   * @param items the items
    * @return the map
    */
-  public static <T extends Comparable<? super T>> Map<Integer, T> competitionRank2(List<T> items) {
+  public static <T extends Comparable<? super T>> Map<Integer, T> competitionRank2(
+      List<T> items) {
     if (isNullOrEmpty(items)) {
       return null;
     }
@@ -2342,14 +2169,10 @@ public class CollectionUtils {
   /**
    * Creates a map from two lists where the keys are from l1 and the values l2.
    *
-   * @param <T>
-   *          the generic type
-   * @param <V>
-   *          the value type
-   * @param l1
-   *          the l1
-   * @param l2
-   *          the l2
+   * @param <T> the generic type
+   * @param <V> the value type
+   * @param l1 the l1
+   * @param l2 the l2
    * @return the map
    */
   public static <T, V> Map<T, V> createMap(List<T> l1, List<V> l2) {
@@ -2367,17 +2190,13 @@ public class CollectionUtils {
   }
 
   /**
-   * Create a map to set of values in two lists. It is assumed l1 as the key will
-   * include repeats to different values in l2.
+   * Create a map to set of values in two lists. It is assumed l1 as the key
+   * will include repeats to different values in l2.
    *
-   * @param <T>
-   *          the generic type
-   * @param <V>
-   *          the value type
-   * @param l1
-   *          the l1
-   * @param l2
-   *          the l2
+   * @param <T> the generic type
+   * @param <V> the value type
+   * @param l1 the l1
+   * @param l2 the l2
    * @return the map
    */
   public static <T, V> Map<T, Set<V>> createMapSet(List<T> l1, List<V> l2) {
@@ -2401,12 +2220,9 @@ public class CollectionUtils {
   /**
    * Sort a map's keys by their values.
    *
-   * @param <T>
-   *          the generic type
-   * @param <X>
-   *          the generic type
-   * @param map
-   *          the map
+   * @param <T> the generic type
+   * @param <X> the generic type
+   * @param map the map
    * @return the list
    */
   public static <T extends Comparable<? super T>, X extends Comparable<? super X>> List<T> sortKeysByValues(
@@ -2433,12 +2249,9 @@ public class CollectionUtils {
    * and the keys as values. Allowance is made for multiple keys mapping to the
    * same object.
    *
-   * @param <T>
-   *          the generic type
-   * @param <X>
-   *          the generic type
-   * @param map
-   *          the map
+   * @param <T> the generic type
+   * @param <X> the generic type
+   * @param map the map
    * @return the map
    */
   public static <T, X> Map<X, Set<T>> mapValuesToKeys(Map<T, X> map) {
@@ -2460,13 +2273,11 @@ public class CollectionUtils {
   }
 
   /**
-   * Converts a list of objects to a list of string names. Nulls are converted to
-   * empty strings.
+   * Converts a list of objects to a list of string names. Nulls are converted
+   * to empty strings.
    *
-   * @param <T>
-   *          the generic type
-   * @param values
-   *          the values
+   * @param <T> the generic type
+   * @param values the values
    * @return the list
    */
   public static <T> List<String> toString(Collection<T> values) {
@@ -2490,10 +2301,8 @@ public class CollectionUtils {
   /**
    * To string.
    *
-   * @param <T>
-   *          the generic type
-   * @param iter
-   *          the iter
+   * @param <T> the generic type
+   * @param iter the iter
    * @return the list
    */
   public static <T> List<String> toString(Iterable<T> iter) {
@@ -2513,8 +2322,7 @@ public class CollectionUtils {
   /**
    * To string.
    *
-   * @param objects
-   *          the objects
+   * @param objects the objects
    * @return the list
    */
   public static List<String> toString(Object... objects) {
@@ -2534,10 +2342,8 @@ public class CollectionUtils {
   /**
    * Create a generic object version of an array.
    *
-   * @param <T>
-   *          the generic type
-   * @param values
-   *          the values
+   * @param <T> the generic type
+   * @param values the values
    * @return the list
    */
   public static <T> List<Object> toObjects(List<T> values) {
@@ -2557,14 +2363,10 @@ public class CollectionUtils {
   /**
    * Extract a set of items from a map in order.
    *
-   * @param <T>
-   *          the generic type
-   * @param <X>
-   *          the generic type
-   * @param map
-   *          the map
-   * @param items
-   *          the items
+   * @param <T> the generic type
+   * @param <X> the generic type
+   * @param map the map
+   * @param items the items
    * @return the list
    */
   public static <T, X> List<X> extract(Map<T, X> map, List<T> items) {
@@ -2586,14 +2388,10 @@ public class CollectionUtils {
   /**
    * Extract.
    *
-   * @param <T>
-   *          the generic type
-   * @param <X>
-   *          the generic type
-   * @param map
-   *          the map
-   * @param item
-   *          the item
+   * @param <T> the generic type
+   * @param <X> the generic type
+   * @param map the map
+   * @param item the item
    * @return the x
    */
   public static <T, X> X extract(Map<T, X> map, T item) {
@@ -2603,23 +2401,19 @@ public class CollectionUtils {
   /**
    * Reverse.
    *
-   * @param items
-   *          the items
+   * @param items the items
    */
   public static void reverse(double[] items) {
     reverse(items, 0, items.length);
   }
 
   /**
-   * Reverse part of a buffer. Useful if the buffer is larger than what we want to
-   * search.
+   * Reverse part of a buffer. Useful if the buffer is larger than what we want
+   * to search.
    *
-   * @param items
-   *          the items
-   * @param start
-   *          the start
-   * @param n
-   *          the n
+   * @param items the items
+   * @param start the start
+   * @param n the n
    */
   public static void reverse(double[] items, int start, int n) {
     if (isNullOrEmpty(items)) {
@@ -2650,8 +2444,7 @@ public class CollectionUtils {
   /**
    * Reverse copy.
    *
-   * @param items
-   *          the items
+   * @param items the items
    * @return the double[]
    */
   public static double[] reverseCopy(double[] items) {
@@ -2675,12 +2468,9 @@ public class CollectionUtils {
   /**
    * Copy a value into all elements of an array.
    *
-   * @param <T>
-   *          the generic type
-   * @param value
-   *          the value
-   * @param values
-   *          the values
+   * @param <T> the generic type
+   * @param value the value
+   * @param values the values
    */
   public static <T> void copyValue(T value, T[] values) {
     if (isNullOrEmpty(values)) {
@@ -2695,10 +2485,8 @@ public class CollectionUtils {
   /**
    * Copy value.
    *
-   * @param value
-   *          the value
-   * @param values
-   *          the values
+   * @param value the value
+   * @param values the values
    */
   public static void copyValue(boolean value, boolean[] values) {
     copyValue(value, values, values.length);
@@ -2707,12 +2495,9 @@ public class CollectionUtils {
   /**
    * Copy value.
    *
-   * @param value
-   *          the value
-   * @param values
-   *          the values
-   * @param n
-   *          the n
+   * @param value the value
+   * @param values the values
+   * @param n the n
    */
   public static void copyValue(boolean value, boolean[] values, int n) {
     copyValue(value, values, n, 0);
@@ -2721,16 +2506,15 @@ public class CollectionUtils {
   /**
    * Copy a value into an byte array n times from a given offset.
    *
-   * @param value
-   *          the value
-   * @param values
-   *          the values
-   * @param n
-   *          the n
-   * @param offset
-   *          the offset
+   * @param value the value
+   * @param values the values
+   * @param n the n
+   * @param offset the offset
    */
-  public static void copyValue(boolean value, boolean[] values, int n, int offset) {
+  public static void copyValue(boolean value,
+      boolean[] values,
+      int n,
+      int offset) {
     if (isNullOrEmpty(values)) {
       return;
     }
@@ -2749,10 +2533,8 @@ public class CollectionUtils {
   /**
    * Copy value.
    *
-   * @param value
-   *          the value
-   * @param values
-   *          the values
+   * @param value the value
+   * @param values the values
    */
   public static void copyValue(double value, double[] values) {
     copyValue(value, values.length, values);
@@ -2761,12 +2543,9 @@ public class CollectionUtils {
   /**
    * Copy value.
    *
-   * @param value
-   *          the value
-   * @param n
-   *          the n
-   * @param values
-   *          the values
+   * @param value the value
+   * @param n the n
+   * @param values the values
    */
   public static void copyValue(double value, int n, double[] values) {
     copyValue(value, n, 0, values);
@@ -2775,16 +2554,15 @@ public class CollectionUtils {
   /**
    * Copy value.
    *
-   * @param value
-   *          the value
-   * @param n
-   *          the n
-   * @param offset
-   *          the offset
-   * @param values
-   *          the values
+   * @param value the value
+   * @param n the n
+   * @param offset the offset
+   * @param values the values
    */
-  public static void copyValue(double value, int n, int offset, double[] values) {
+  public static void copyValue(double value,
+      int n,
+      int offset,
+      double[] values) {
     if (isNullOrEmpty(values)) {
       return;
     }
@@ -2803,10 +2581,8 @@ public class CollectionUtils {
   /**
    * Copy value.
    *
-   * @param value
-   *          the value
-   * @param values
-   *          the values
+   * @param value the value
+   * @param values the values
    */
   public static void copyValue(int value, int[] values) {
     copyValue(value, values, values.length);
@@ -2815,12 +2591,9 @@ public class CollectionUtils {
   /**
    * Copy value.
    *
-   * @param value
-   *          the value
-   * @param values
-   *          the values
-   * @param n
-   *          the n
+   * @param value the value
+   * @param values the values
+   * @param n the n
    */
   public static void copyValue(int value, int[] values, int n) {
     copyValue(value, values, n, 0);
@@ -2829,14 +2602,10 @@ public class CollectionUtils {
   /**
    * Copy value.
    *
-   * @param value
-   *          the value
-   * @param values
-   *          the values
-   * @param n
-   *          the n
-   * @param offset
-   *          the offset
+   * @param value the value
+   * @param values the values
+   * @param n the n
+   * @param offset the offset
    */
   public static void copyValue(int value, int[] values, int n, int offset) {
     if (isNullOrEmpty(values)) {
@@ -2857,14 +2626,10 @@ public class CollectionUtils {
   /**
    * Pad a list with a set value until it reaches a minimum size.
    *
-   * @param <T>
-   *          the generic type
-   * @param items
-   *          the items
-   * @param v
-   *          the v
-   * @param size
-   *          the size
+   * @param <T> the generic type
+   * @param items the items
+   * @param v the v
+   * @param size the size
    * @return the list
    */
   public static <T> List<T> pad(Collection<T> items, T v, int size) {
@@ -2888,8 +2653,7 @@ public class CollectionUtils {
   /**
    * Returns the indices of null entries.
    *
-   * @param values
-   *          the values
+   * @param values the values
    * @return the list
    */
   public static List<Integer> nulls(List<?> values) {
@@ -2907,8 +2671,7 @@ public class CollectionUtils {
   /**
    * Null or zero length.
    *
-   * @param values
-   *          the values
+   * @param values the values
    * @return the list
    */
   public static List<Integer> nullOrZeroLength(List<?> values) {
@@ -2928,12 +2691,9 @@ public class CollectionUtils {
   /**
    * Initialize a list with values.
    *
-   * @param <T>
-   *          the generic type
-   * @param size
-   *          the size
-   * @param value
-   *          the value
+   * @param <T> the generic type
+   * @param size the size
+   * @param value the value
    * @return the list
    */
   public static <T> List<T> initList(int size, T value) {
@@ -2949,10 +2709,8 @@ public class CollectionUtils {
   /**
    * If the list is null, return an empty list, otherwise return the list.
    *
-   * @param <T>
-   *          the generic type
-   * @param values
-   *          the values
+   * @param <T> the generic type
+   * @param values the values
    * @return the list
    */
   public static <T> List<T> makeEmpty(List<T> values) {
@@ -2966,14 +2724,10 @@ public class CollectionUtils {
   /**
    * Unique.
    *
-   * @param <K>
-   *          the key type
-   * @param <V>
-   *          the value type
-   * @param m1
-   *          the m 1
-   * @param m2
-   *          the m 2
+   * @param <K> the key type
+   * @param <V> the value type
+   * @param m1 the m 1
+   * @param m2 the m 2
    * @return the list
    */
   public static <K, V> List<K> unique(final Map<K, V> m1, final Map<K, V> m2) {
@@ -2983,12 +2737,9 @@ public class CollectionUtils {
   /**
    * Finds the items unique to c1 that are not in c2.
    *
-   * @param <K>
-   *          the key type
-   * @param c1
-   *          the c 1
-   * @param c2
-   *          the c 2
+   * @param <K> the key type
+   * @param c1 the c 1
+   * @param c2 the c 2
    * @return the list
    */
   public static <K> List<K> unique(final Collection<K> c1, final Set<K> c2) {
@@ -3006,12 +2757,9 @@ public class CollectionUtils {
   /**
    * Pick a sub set of items across a set of values.
    *
-   * @param <T>
-   *          the generic type
-   * @param values
-   *          the values
-   * @param size
-   *          the size
+   * @param <T> the generic type
+   * @param values the values
+   * @param size the size
    * @return the list
    */
   public static <T> List<T> subSample(List<T> values, int size) {
@@ -3035,14 +2783,10 @@ public class CollectionUtils {
    * the keys. Values are returned in the order keys are iterated from the keys
    * collection.
    *
-   * @param <K>
-   *          the key type
-   * @param <V>
-   *          the value type
-   * @param keys
-   *          the keys
-   * @param map
-   *          the map
+   * @param <K> the key type
+   * @param <V> the value type
+   * @param keys the keys
+   * @param map the map
    * @return the list
    */
   public static <K, V> List<V> map(final Collection<K> keys, Map<K, V> map) {
@@ -3058,12 +2802,9 @@ public class CollectionUtils {
   /**
    * Swap the keys and values in a map.
    *
-   * @param <K>
-   *          the key type
-   * @param <V>
-   *          the value type
-   * @param map
-   *          the map
+   * @param <K> the key type
+   * @param <V> the value type
+   * @param map the map
    * @return the map
    */
   public static <K, V> Map<V, Set<K>> invertMap(Map<K, V> map) {
@@ -3079,14 +2820,10 @@ public class CollectionUtils {
   /**
    * Counts the number of keys that map to a given value.
    *
-   * @param <K>
-   *          the key type
-   * @param <V>
-   *          the value type
-   * @param map
-   *          the map
-   * @param type
-   *          the type
+   * @param <K> the key type
+   * @param <V> the value type
+   * @param map the map
+   * @param type the type
    * @return the int
    */
   public static <K, V> int countKeys(final Map<K, V> map, final V type) {
@@ -3104,14 +2841,10 @@ public class CollectionUtils {
   /**
    * Returns a list of the keys whose value matches a given value.
    *
-   * @param <K>
-   *          the key type
-   * @param <V>
-   *          the value type
-   * @param map
-   *          the map
-   * @param type
-   *          the type
+   * @param <K> the key type
+   * @param <V> the value type
+   * @param map the map
+   * @param type the type
    * @return the list
    */
   public static <K, V> List<K> keys(final Map<K, V> map, final V type) {
@@ -3129,14 +2862,10 @@ public class CollectionUtils {
   /**
    * Sub map.
    *
-   * @param <K>
-   *          the key type
-   * @param <V>
-   *          the value type
-   * @param map
-   *          the map
-   * @param keys
-   *          the keys
+   * @param <K> the key type
+   * @param <V> the value type
+   * @param map the map
+   * @param keys the keys
    * @return the map
    */
   public static <K, V> Map<K, V> subMap(Map<K, V> map, List<K> keys) {
@@ -3158,8 +2887,7 @@ public class CollectionUtils {
   /**
    * Casts a double list to an int list.
    *
-   * @param values
-   *          the values
+   * @param values the values
    * @return the list
    */
   public static List<Integer> double2Int(List<Double> values) {
@@ -3175,8 +2903,7 @@ public class CollectionUtils {
   /**
    * Int 2 double.
    *
-   * @param values
-   *          the values
+   * @param values the values
    * @return the list
    */
   public static List<Double> int2Double(List<Integer> values) {
@@ -3192,10 +2919,8 @@ public class CollectionUtils {
   /**
    * Takes a list and creates a mapping from each item to its index in the list.
    *
-   * @param <V>
-   *          the value type
-   * @param values
-   *          the values
+   * @param <V> the value type
+   * @param values the values
    * @return the map
    */
   public static <V> Map<V, Integer> toIndexMap(List<V> values) {
@@ -3211,12 +2936,12 @@ public class CollectionUtils {
   /**
    * Index a list of numbers to track their positions.
    *
-   * @param items
-   *          the items
+   * @param items the items
    * @return the list
    */
   public static List<Indexed<Integer, Double>> index(List<Double> items) {
-    List<Indexed<Integer, Double>> ret = new ArrayList<Indexed<Integer, Double>>(items.size());
+    List<Indexed<Integer, Double>> ret = new ArrayList<Indexed<Integer, Double>>(
+        items.size());
 
     for (int i = 0; i < items.size(); ++i) {
       ret.add(new Indexed<Integer, Double>(i, items.get(i)));
@@ -3228,14 +2953,14 @@ public class CollectionUtils {
   /**
    * Index.
    *
-   * @param items
-   *          the items
+   * @param items the items
    * @return the list
    */
   public static List<Indexed<Integer, Double>> index(double[] items) {
     int n = items.length;
 
-    List<Indexed<Integer, Double>> ret = new ArrayList<Indexed<Integer, Double>>(n);
+    List<Indexed<Integer, Double>> ret = new ArrayList<Indexed<Integer, Double>>(
+        n);
 
     for (int i = 0; i < n; ++i) {
       ret.add(new Indexed<Integer, Double>(i, items[i]));
@@ -3247,8 +2972,7 @@ public class CollectionUtils {
   /**
    * Returns the minimum size of a set of collections.
    *
-   * @param collections
-   *          the collections
+   * @param collections the collections
    * @return the int
    */
   public static int minSize(Collection<?>... collections) {
@@ -3267,10 +2991,8 @@ public class CollectionUtils {
    * Given a set of lists, extracts the ith element of each and returns these
    * values in a list.
    *
-   * @param i
-   *          the i
-   * @param lists
-   *          the lists
+   * @param i the i
+   * @param lists the lists
    * @return the list
    */
   public static List<Object> asList(int i, List<?>... lists) {
@@ -3286,10 +3008,8 @@ public class CollectionUtils {
   /**
    * Flatten a collection of collections into a list of items.
    *
-   * @param <V>
-   *          the value type
-   * @param values
-   *          the values
+   * @param <V> the value type
+   * @param values the values
    * @return the list
    */
   public static <V> List<V> flatten(List<List<V>> values) {
@@ -3309,10 +3029,8 @@ public class CollectionUtils {
   /**
    * Set an array to have the same value in all elements.
    *
-   * @param v
-   *          the v
-   * @param array
-   *          the array
+   * @param v the v
+   * @param array the array
    */
   public static void fill(double v, double[] array) {
     Arrays.fill(array, 0);
@@ -3321,12 +3039,9 @@ public class CollectionUtils {
   /**
    * Fill.
    *
-   * @param v
-   *          the v
-   * @param n
-   *          the n
-   * @param array
-   *          the array
+   * @param v the v
+   * @param n the n
+   * @param array the array
    */
   public static void fill(double v, int n, double[] array) {
     Arrays.fill(array, 0, n, 0);
@@ -3335,14 +3050,10 @@ public class CollectionUtils {
   /**
    * Fill.
    *
-   * @param v
-   *          the v
-   * @param s
-   *          the s
-   * @param e
-   *          the e
-   * @param array
-   *          the array
+   * @param v the v
+   * @param s the s
+   * @param e the e
+   * @param array the array
    */
   public static void fill(double v, int s, int e, double[] array) {
     Arrays.fill(array, s, e, 0);
@@ -3351,8 +3062,7 @@ public class CollectionUtils {
   /**
    * Convert a double list to an array.
    *
-   * @param values
-   *          the values
+   * @param values the values
    * @return the double[]
    */
   public static double[] toArray(List<Double> values) {
@@ -3368,8 +3078,7 @@ public class CollectionUtils {
   /**
    * To list.
    *
-   * @param values
-   *          the values
+   * @param values the values
    * @return the list
    */
   public static List<Double> toList(final double[] values) {
@@ -3385,14 +3094,12 @@ public class CollectionUtils {
   /**
    * Adds all the items from source to target.
    *
-   * @param <V>
-   *          the value type
-   * @param source
-   *          the source
-   * @param target
-   *          the target
+   * @param <V> the value type
+   * @param source the source
+   * @param target the target
    */
-  public static <V> void addAll(final Collection<V> source, Collection<V> target) {
+  public static <V> void addAll(final Collection<V> source,
+      Collection<V> target) {
     for (V v : source) {
       target.add(v);
     }
@@ -3401,14 +3108,12 @@ public class CollectionUtils {
   /**
    * Adds all the items from source to target.
    *
-   * @param <V>
-   *          the value type
-   * @param source
-   *          the source
-   * @param target
-   *          the target
+   * @param <V> the value type
+   * @param source the source
+   * @param target the target
    */
-  public static <V> void addAll(final Iterable<V> source, Collection<V> target) {
+  public static <V> void addAll(final Iterable<V> source,
+      Collection<V> target) {
     for (V v : source) {
       target.add(v);
     }
@@ -3417,10 +3122,8 @@ public class CollectionUtils {
   /**
    * Create a copy of a list.
    *
-   * @param <V>
-   *          the value type
-   * @param values
-   *          the values
+   * @param <V> the value type
+   * @param values the values
    * @return the list
    */
   public static <V> List<V> copy(final List<V> values) {
@@ -3436,12 +3139,9 @@ public class CollectionUtils {
   /**
    * Returns true if the index is within the bounds of the array.
    *
-   * @param <V>
-   *          the value type
-   * @param index
-   *          the index
-   * @param values
-   *          the values
+   * @param <V> the value type
+   * @param index the index
+   * @param values the values
    * @return true, if successful
    */
   public static boolean inBounds(int index, List<?> values) {
@@ -3449,14 +3149,12 @@ public class CollectionUtils {
   }
 
   /**
-   * Returns a cyclic index that allows you to address indices between 0 and (size
-   * - 1). If the index is less than 0, it is wrapped around the size. For example
-   * -1 maps to (size - 1) and -2 maps to (size - 2)
+   * Returns a cyclic index that allows you to address indices between 0 and
+   * (size - 1). If the index is less than 0, it is wrapped around the size. For
+   * example -1 maps to (size - 1) and -2 maps to (size - 2)
    *
-   * @param index
-   *          the index
-   * @param size
-   *          the size
+   * @param index the index
+   * @param size the size
    * @return the int
    */
   public static int cyclicIndex(int index, int size) {
@@ -3473,17 +3171,13 @@ public class CollectionUtils {
 
   /**
    * Tests whether a map contains a key from a list of possible keys. The first
-   * key that the map contains is returned or null if none of the keys are in the
-   * map.
+   * key that the map contains is returned or null if none of the keys are in
+   * the map.
    *
-   * @param <K>
-   *          the key type
-   * @param <V>
-   *          the value type
-   * @param map
-   *          the map
-   * @param keys
-   *          the keys
+   * @param <K> the key type
+   * @param <V> the value type
+   * @param map the map
+   * @param keys the keys
    * @return the k
    */
   @SafeVarargs
@@ -3500,12 +3194,9 @@ public class CollectionUtils {
   /**
    * Return the values in a map as as list.
    *
-   * @param <K>
-   *          the key type
-   * @param <V>
-   *          the value type
-   * @param map
-   *          the map
+   * @param <K> the key type
+   * @param <V> the value type
+   * @param map the map
    * @return the list
    */
   public static <K, V> List<V> values(Map<K, V> map) {
@@ -3521,15 +3212,13 @@ public class CollectionUtils {
   /**
    * Returns true if an element of c1 is contained within c2.
    *
-   * @param <K>
-   *          the key type
-   * @param c1
-   *          the c 1
-   * @param c2
-   *          the c 2
+   * @param <K> the key type
+   * @param c1 the c 1
+   * @param c2 the c 2
    * @return true, if successful
    */
-  public static <K> boolean contains(final Collection<K> c1, final Collection<K> c2) {
+  public static <K> boolean contains(final Collection<K> c1,
+      final Collection<K> c2) {
     for (K c : c1) {
       if (c2.contains(c)) {
         return true;

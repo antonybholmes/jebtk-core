@@ -24,10 +24,8 @@ import java.util.Map;
  * reaches a maximum size.
  *
  * @author Antony Holmes Holmes
- * @param <T>
- *          the generic type
- * @param <X>
- *          the generic type
+ * @param <T> the generic type
+ * @param <X> the generic type
  */
 public class AgeMap<T, X> extends HashMap<T, X> {
 
@@ -54,8 +52,7 @@ public class AgeMap<T, X> extends HashMap<T, X> {
   /**
    * Instantiates a new age map.
    *
-   * @param maxSize
-   *          the max size
+   * @param maxSize the max size
    */
   public AgeMap(int maxSize) {
     mMaxSize = maxSize;

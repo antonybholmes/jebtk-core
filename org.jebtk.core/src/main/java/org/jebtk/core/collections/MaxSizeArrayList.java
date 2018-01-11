@@ -22,8 +22,7 @@ import java.util.Collection;
 /**
  * An array list whose size has a fixed upper bound.
  *
- * @param <T>
- *          the generic type
+ * @param <T> the generic type
  */
 public class MaxSizeArrayList<T> extends ArrayList<T> {
 
@@ -38,9 +37,8 @@ public class MaxSizeArrayList<T> extends ArrayList<T> {
   /**
    * Creates a new array that cannot grow to beyond max size elements.
    * 
-   * @param maxSize
-   *          The maximum size of the array. If set to -1 array behaves like a
-   *          normal array list.
+   * @param maxSize The maximum size of the array. If set to -1 array behaves
+   *          like a normal array list.
    */
   public MaxSizeArrayList(int maxSize) {
     mMaxSize = maxSize;
@@ -49,10 +47,8 @@ public class MaxSizeArrayList<T> extends ArrayList<T> {
   /**
    * Instantiates a new unique list.
    *
-   * @param size
-   *          the size
-   * @param maxSize
-   *          the max size
+   * @param size the size
+   * @param maxSize the max size
    */
   public MaxSizeArrayList(int size, int maxSize) {
     super(size);

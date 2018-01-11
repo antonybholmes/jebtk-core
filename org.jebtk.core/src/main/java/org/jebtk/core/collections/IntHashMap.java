@@ -5,11 +5,10 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import org.jebtk.core.collections.IntHashMap.IntEntry;
-
 /**
  * IntIntMap2 without states array. We introduce one extra pairs of fields - for
  * key=0, which is used as 'used' flag
+ * 
  * @param <T>
  */
 public abstract class IntHashMap<T> implements Map<Integer, T> {
@@ -33,9 +32,9 @@ public abstract class IntHashMap<T> implements Map<Integer, T> {
   protected int mSize;
   /** Mask to calculate the original position */
   private int mMask;
-  
+
   protected class IntEntry implements Entry<Integer, T> {
-    
+
     private int mKey;
     private T mValue;
 
@@ -43,7 +42,7 @@ public abstract class IntHashMap<T> implements Map<Integer, T> {
       mKey = key;
       mValue = value;
     }
-    
+
     @Override
     public Integer getKey() {
       return mKey;
@@ -58,7 +57,7 @@ public abstract class IntHashMap<T> implements Map<Integer, T> {
     public T setValue(T value) {
       return null;
     }
-    
+
   }
 
   public IntHashMap(final int size, final double fillFactor) {
@@ -75,21 +74,21 @@ public abstract class IntHashMap<T> implements Map<Integer, T> {
     mMask = capacity - 1;
     mFillFactor = fillFactor;
 
-    //mKeys = new int[capacity];
-    //mValues = new int[capacity];
-    //mThreshold = (int)(capacity * fillFactor);
+    // mKeys = new int[capacity];
+    // mValues = new int[capacity];
+    // mThreshold = (int)(capacity * fillFactor);
 
     rehash(capacity);
   }
 
   @Override
   public T get(Object o) {
-    final int key = (int)o;
+    final int key = (int) o;
 
     int ptr = (phiMix(key) & mMask) << 1;
 
     if (key == FREE_KEY)
-      return mHasFreeKey ? mFreeValue : null; //NO_VALUE;
+      return mHasFreeKey ? mFreeValue : null; // NO_VALUE;
 
     int k = mKeys[ptr];
 
@@ -165,7 +164,7 @@ public abstract class IntHashMap<T> implements Map<Integer, T> {
         }
 
         return null;
-      } 
+      }
 
       if (kv == key) {
         final T ret = getValue(ptr);
@@ -177,7 +176,7 @@ public abstract class IntHashMap<T> implements Map<Integer, T> {
 
   @Override
   public T remove(Object o) {
-    final int key = (int)o;
+    final int key = (int) o;
 
     if (key == FREE_KEY) {
       if (!mHasFreeKey) {
@@ -212,7 +211,7 @@ public abstract class IntHashMap<T> implements Map<Integer, T> {
         shiftKeys(ptr);
         --mSize;
         return res;
-      } 
+      }
 
       if (k == FREE_KEY) {
         return null;
@@ -225,7 +224,7 @@ public abstract class IntHashMap<T> implements Map<Integer, T> {
     int last;
     int slot;
     int k;
-    //final int[] data = this.m_keys;
+    // final int[] data = this.m_keys;
 
     while (true) {
       pos = ((last = pos) + 1) & mMask;
@@ -236,9 +235,11 @@ public abstract class IntHashMap<T> implements Map<Integer, T> {
           return last;
         }
 
-        slot = (phiMix(k) & mMask) << 1; // calculate the starting slot for the current key
+        slot = (phiMix(k) & mMask) << 1; // calculate the starting slot for the
+                                         // current key
 
-        if (last <= pos ? last >= slot || slot > pos : last >= slot && slot > pos) {
+        if (last <= pos ? last >= slot || slot > pos
+            : last >= slot && slot > pos) {
           break;
         }
 
@@ -255,7 +256,7 @@ public abstract class IntHashMap<T> implements Map<Integer, T> {
   }
 
   private void rehash(final int newCapacity) {
-    mThreshold = (int)(newCapacity / 2 * mFillFactor);
+    mThreshold = (int) (newCapacity / 2 * mFillFactor);
     mMask = newCapacity / 2 - 1;
 
     rehash(newCapacity, mKeys.length);
@@ -272,7 +273,7 @@ public abstract class IntHashMap<T> implements Map<Integer, T> {
   public int[] keys() {
     return mKeys;
   }
-  
+
   @Override
   public boolean isEmpty() {
     return mSize == 0;
@@ -280,7 +281,7 @@ public abstract class IntHashMap<T> implements Map<Integer, T> {
 
   @Override
   public boolean containsKey(Object k) {
-    final int key = (int)k;
+    final int key = (int) k;
 
     if (key == FREE_KEY) {
       return mHasFreeKey;
@@ -294,19 +295,17 @@ public abstract class IntHashMap<T> implements Map<Integer, T> {
 
       if (kv == FREE_KEY) {
         return false;
-      } 
+      }
 
       if (kv == key) {
         return true;
       }
-      
+
       ptr = (ptr + 1) & mMask; // that's next index calculation
     }
-    
+
     return false;
   }
-
-  
 
   @Override
   public void putAll(Map<? extends Integer, ? extends T> m) {
@@ -341,7 +340,7 @@ public abstract class IntHashMap<T> implements Map<Integer, T> {
 
     for (int i = 0; i < mKeys.length; ++i) {
       final int key = mKeys[i];
-      
+
       if (key == FREE_KEY) {
         if (mHasFreeKey) {
           ret.add(new IntEntry(key, mFreeValue));
@@ -353,7 +352,7 @@ public abstract class IntHashMap<T> implements Map<Integer, T> {
 
     return ret;
   }
-  
+
   /** Taken from FastUtil implementation */
 
   /**
@@ -362,9 +361,9 @@ public abstract class IntHashMap<T> implements Map<Integer, T> {
    * <p>
    * Note that this function will return 1 when the argument is 0.
    *
-   * @param x
-   *          a long integer smaller than or equal to 2<sup>62</sup>.
-   * @return the least power of two greater than or equal to the specified value.
+   * @param x a long integer smaller than or equal to 2<sup>62</sup>.
+   * @return the least power of two greater than or equal to the specified
+   *         value.
    */
   public static int nextPowerOfTwo(int x) {
     if (x == 0) {
@@ -384,19 +383,18 @@ public abstract class IntHashMap<T> implements Map<Integer, T> {
    * Returns the least power of two smaller than or equal to 2<sup>30</sup> and
    * larger than or equal to <code>Math.ceil( expected / f )</code>.
    *
-   * @param expected
-   *          the expected number of elements in a hash table.
-   * @param f
-   *          the load factor.
+   * @param expected the expected number of elements in a hash table.
+   * @param f the load factor.
    * @return the minimum possible size for a backing array.
-   * @throws IllegalArgumentException
-   *           if the necessary size is larger than 2<sup>30</sup>.
+   * @throws IllegalArgumentException if the necessary size is larger than
+   *           2<sup>30</sup>.
    */
   public static int arraySize(final int expected, final double f) {
-    final int s = Math.max(2, nextPowerOfTwo((int)Math.ceil(expected / f)));
+    final int s = Math.max(2, nextPowerOfTwo((int) Math.ceil(expected / f)));
 
     if (s > (1 << 30)) {
-      throw new IllegalArgumentException("Too large (" + expected + " expected elements with load factor " + f + ")");
+      throw new IllegalArgumentException("Too large (" + expected
+          + " expected elements with load factor " + f + ")");
     }
 
     return s;
@@ -409,7 +407,5 @@ public abstract class IntHashMap<T> implements Map<Integer, T> {
     final int h = x * INT_PHI;
     return h ^ (h >> 16);
   }
-
-  
 
 }

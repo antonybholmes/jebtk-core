@@ -30,8 +30,7 @@ public class NameObject implements NameProperty {
   /**
    * Instantiates a new name object.
    *
-   * @param name
-   *          the name
+   * @param name the name
    */
   public NameObject(String name) {
     mName = name;

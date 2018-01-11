@@ -21,10 +21,8 @@ import java.util.TreeMap;
 /**
  * The Class OrderedTreeMap.
  *
- * @param <K>
- *          the key type
- * @param <V>
- *          the value type
+ * @param <K> the key type
+ * @param <V> the value type
  */
 public class OrderedTreeMap<K, V> extends OrderedMap<K, V> {
 

@@ -71,8 +71,7 @@ public class JsonString extends JsonRaw {
   /**
    * Instantiates a new json string.
    *
-   * @param value
-   *          the value
+   * @param value the value
    */
   public JsonString(String value) {
     super(value);
@@ -91,14 +90,13 @@ public class JsonString extends JsonRaw {
   /**
    * Escape characters to make the string JSON compliant.
    *
-   * @param value
-   *          the value
+   * @param value the value
    * @return the string
    */
   public static String escape(String value) {
     /*
-     * value = REGEX_DOUBLE_SLASH.matcher(value).replaceAll(DOUBLE_SLASH_REP); value
-     * = REGEX_QUOTE.matcher(value).replaceAll(QUOTE_REP); value =
+     * value = REGEX_DOUBLE_SLASH.matcher(value).replaceAll(DOUBLE_SLASH_REP);
+     * value = REGEX_QUOTE.matcher(value).replaceAll(QUOTE_REP); value =
      * REGEX_FORWARD.matcher(value).replaceAll(FORWARD_REP); value =
      * REGEX_BACKSPACE.matcher(value).replaceAll(BACKSPACE_REP); value =
      * REGEX_TAB.matcher(value).replaceAll(TAB_REP); value =
@@ -108,8 +106,10 @@ public class JsonString extends JsonRaw {
      * return value;
      */
 
-    return value.replace("\\", DOUBLE_SLASH_REP).replace("\"", QUOTE_REP).replace("/", FORWARD_REP)
-        .replace("\b", BACKSPACE_REP).replace("\t", TAB_REP).replace("\n", NEWLINE_REP).replace("\r", RETURN_REP);
+    return value.replace("\\", DOUBLE_SLASH_REP).replace("\"", QUOTE_REP)
+        .replace("/", FORWARD_REP).replace("\b", BACKSPACE_REP)
+        .replace("\t", TAB_REP).replace("\n", NEWLINE_REP)
+        .replace("\r", RETURN_REP);
 
     /*
      * return value .replaceAll("\\\\", "\\\\\\\\") .replaceAll("\"", "\\\\\"")

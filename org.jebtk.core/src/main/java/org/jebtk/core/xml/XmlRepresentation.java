@@ -33,8 +33,7 @@ public interface XmlRepresentation {
    * be streamed to a file and used to reconstruct the object's state at a later
    * date.
    *
-   * @param doc
-   *          the doc
+   * @param doc the doc
    * @return the xml element
    */
   public Element toXml(Document doc);

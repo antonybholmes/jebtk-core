@@ -34,10 +34,8 @@ public class Attribute {
   /**
    * Instantiates a new attribute.
    *
-   * @param name
-   *          the name
-   * @param value
-   *          the value
+   * @param name the name
+   * @param value the value
    */
   public Attribute(String name, String value) {
     this.name = name;

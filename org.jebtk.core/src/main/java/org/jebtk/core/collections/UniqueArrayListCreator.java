@@ -21,8 +21,7 @@ import java.util.List;
 /**
  * The class ListCreator.
  *
- * @param <V>
- *          the value type
+ * @param <V> the value type
  */
 public class UniqueArrayListCreator<V> implements ListCreator<V> {
 
@@ -39,8 +38,7 @@ public class UniqueArrayListCreator<V> implements ListCreator<V> {
   /**
    * Instantiates a new array list creator.
    *
-   * @param size
-   *          the size
+   * @param size the size
    */
   public UniqueArrayListCreator(int size) {
     mSize = size;

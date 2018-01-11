@@ -36,10 +36,12 @@ public class RegexUtils {
   public static final Pattern UNDERSCORES_PATTERN = Pattern.compile("_+");
 
   /** The Constant LEADING_UNDERSCORES_PATTERN. */
-  public static final Pattern LEADING_UNDERSCORES_PATTERN = Pattern.compile("^_+");
+  public static final Pattern LEADING_UNDERSCORES_PATTERN = Pattern
+      .compile("^_+");
 
   /** The Constant TRAILING_UNDERSCORES_PATTERN. */
-  public static final Pattern TRAILING_UNDERSCORES_PATTERN = Pattern.compile("_+$");
+  public static final Pattern TRAILING_UNDERSCORES_PATTERN = Pattern
+      .compile("_+$");
 
   /**
    * Instantiates a new regex utils.
@@ -51,8 +53,7 @@ public class RegexUtils {
   /**
    * Converts a set of string regexes to compiled patterns.
    *
-   * @param regexes
-   *          the regexes
+   * @param regexes the regexes
    * @return the list
    */
   public static List<Pattern> compile(List<String> regexes) {
@@ -62,13 +63,12 @@ public class RegexUtils {
   /**
    * Compile.
    *
-   * @param regexes
-   *          the regexes
-   * @param caseInsensitive
-   *          the case insensitive
+   * @param regexes the regexes
+   * @param caseInsensitive the case insensitive
    * @return the list
    */
-  public static List<Pattern> compile(List<String> regexes, boolean caseInsensitive) {
+  public static List<Pattern> compile(List<String> regexes,
+      boolean caseInsensitive) {
     if (CollectionUtils.isNullOrEmpty(regexes)) {
       return Collections.emptyList();
     }
@@ -89,8 +89,7 @@ public class RegexUtils {
   /**
    * Compile.
    *
-   * @param regex
-   *          the regex
+   * @param regex the regex
    * @return the pattern
    */
   public static Pattern compile(String regex) {
@@ -100,10 +99,8 @@ public class RegexUtils {
   /**
    * Convert a string regex into a compiled pattern.
    *
-   * @param regex
-   *          the regex
-   * @param caseInsensitive
-   *          the case insensitive
+   * @param regex the regex
+   * @param caseInsensitive the case insensitive
    * @return the pattern
    */
   public static Pattern compile(String regex, boolean caseInsensitive) {
@@ -117,8 +114,7 @@ public class RegexUtils {
   /**
    * Literal.
    *
-   * @param regex
-   *          the regex
+   * @param regex the regex
    * @return the pattern
    */
   public static Pattern literal(String regex) {
@@ -129,10 +125,8 @@ public class RegexUtils {
    * Creates a pattern from a regex assuming all special characters should be
    * interpreted as literals and not regular expressions marks.
    *
-   * @param regex
-   *          the regex
-   * @param caseInsensitive
-   *          the case insensitive
+   * @param regex the regex
+   * @param caseInsensitive the case insensitive
    * @return the pattern
    */
   public static Pattern literal(String regex, boolean caseInsensitive) {
@@ -154,12 +148,9 @@ public class RegexUtils {
   /**
    * Replace all occurrences of a pattern in a string with a replacement.
    * 
-   * @param s
-   *          A string to search for a pattern.
-   * @param p
-   *          A pattern to match on.
-   * @param rep
-   *          The replacement.
+   * @param s A string to search for a pattern.
+   * @param p A pattern to match on.
+   * @param rep The replacement.
    * @return The string s with characters replaced.
    */
   public static String replaceAll(String s, Pattern p, String rep) {

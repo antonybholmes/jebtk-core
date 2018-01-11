@@ -42,8 +42,7 @@ public class XmlDocument extends XmlElement {
   /**
    * Instantiates a new xml document.
    *
-   * @param element
-   *          the element
+   * @param element the element
    */
   public XmlDocument(XmlElement element) {
     super("document");
@@ -54,12 +53,9 @@ public class XmlDocument extends XmlElement {
   /**
    * Write the document to the file in a nicely formatted, tab indented fashion.
    *
-   * @param doc
-   *          the doc
-   * @param file
-   *          the file
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @param doc the doc
+   * @param file the file
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public static void writeXml(XmlDocument doc, File file) throws IOException {
     writeXml(doc, file.toPath());
@@ -68,12 +64,9 @@ public class XmlDocument extends XmlElement {
   /**
    * Write xml.
    *
-   * @param doc
-   *          the doc
-   * @param file
-   *          the file
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @param doc the doc
+   * @param file the file
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public static void writeXml(XmlDocument doc, Path file) throws IOException {
     BufferedWriter writer = FileUtils.newBufferedWriter(file);

@@ -33,8 +33,7 @@ public class JsonDouble extends Json {
   /**
    * Instantiates a new json double.
    *
-   * @param value
-   *          the value
+   * @param value the value
    */
   public JsonDouble(double value) {
     mValue = value;

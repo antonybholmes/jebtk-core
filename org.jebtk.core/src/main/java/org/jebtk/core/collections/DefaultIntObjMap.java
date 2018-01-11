@@ -19,10 +19,8 @@ package org.jebtk.core.collections;
 /**
  * Hashmap that automatically adds a default value if a key does not exist.
  *
- * @param <K>
- *          the key type
- * @param <V>
- *          the value type
+ * @param <K> the key type
+ * @param <V> the value type
  */
 public class DefaultIntObjMap<V> extends IntObjHashMap<V> {
 
@@ -39,8 +37,7 @@ public class DefaultIntObjMap<V> extends IntObjHashMap<V> {
   /**
    * Instantiates a new auto hash map.
    *
-   * @param defaultValue
-   *          the default value
+   * @param defaultValue the default value
    */
   public DefaultIntObjMap(V defaultValue) {
     this(HashMapCreator.INITIAL_CAPACITY, defaultValue);
@@ -49,10 +46,8 @@ public class DefaultIntObjMap<V> extends IntObjHashMap<V> {
   /**
    * Instantiates a new auto hash map.
    *
-   * @param initialCapacity
-   *          the initial capacity
-   * @param defaultValue
-   *          the default value
+   * @param initialCapacity the initial capacity
+   * @param defaultValue the default value
    */
   public DefaultIntObjMap(int initialCapacity, V defaultValue) {
     this(initialCapacity, new ValueCreator<V>(defaultValue));
@@ -61,10 +56,8 @@ public class DefaultIntObjMap<V> extends IntObjHashMap<V> {
   /**
    * Instantiates a new default map.
    *
-   * @param initialCapacity
-   *          the initial capacity
-   * @param defaultValue
-   *          the default value
+   * @param initialCapacity the initial capacity
+   * @param defaultValue the default value
    */
   public DefaultIntObjMap(int initialCapacity, EntryCreator<V> defaultValue) {
     super(initialCapacity);
@@ -75,8 +68,7 @@ public class DefaultIntObjMap<V> extends IntObjHashMap<V> {
   /**
    * Instantiates a new default hash map.
    *
-   * @param defaultValue
-   *          the default value
+   * @param defaultValue the default value
    */
   public DefaultIntObjMap(EntryCreator<V> defaultValue) {
     mDefaultValue = defaultValue;
@@ -96,8 +88,7 @@ public class DefaultIntObjMap<V> extends IntObjHashMap<V> {
   /**
    * Gets the value.
    *
-   * @param key
-   *          the key
+   * @param key the key
    * @return the value
    */
   @SuppressWarnings("unchecked")
@@ -116,12 +107,9 @@ public class DefaultIntObjMap<V> extends IntObjHashMap<V> {
   /**
    * Creates a new Default Hash Map.
    *
-   * @param <K1>
-   *          the generic type
-   * @param <V1>
-   *          the generic type
-   * @param defaultValue
-   *          the default value
+   * @param <K1> the generic type
+   * @param <V1> the generic type
+   * @param defaultValue the default value
    * @return the map
    */
   public static <V1> IterMap<Integer, V1> create(V1 defaultValue) {
@@ -131,49 +119,42 @@ public class DefaultIntObjMap<V> extends IntObjHashMap<V> {
   /**
    * Creates the.
    *
-   * @param <K1>
-   *          the generic type
-   * @param <VV>
-   *          the generic type
-   * @param defaultValue
-   *          the default value
+   * @param <K1> the generic type
+   * @param <VV> the generic type
+   * @param defaultValue the default value
    * @return the map
    */
-  public static <VV> IterMap<Integer, VV> create(EntryCreator<VV> defaultValue) {
-    return new DefaultIntObjMap<VV>(HashMapCreator.INITIAL_CAPACITY, defaultValue);
+  public static <VV> IterMap<Integer, VV> create(
+      EntryCreator<VV> defaultValue) {
+    return new DefaultIntObjMap<VV>(HashMapCreator.INITIAL_CAPACITY,
+        defaultValue);
   }
 
   /**
    * Creates the.
    *
-   * @param <K1>
-   *          the generic type
-   * @param <VV>
-   *          the generic type
-   * @param initialCapacity
-   *          the initial capacity
-   * @param defaultValue
-   *          the default value
+   * @param <K1> the generic type
+   * @param <VV> the generic type
+   * @param initialCapacity the initial capacity
+   * @param defaultValue the default value
    * @return the map
    */
-  public static <VV> IterMap<Integer, VV> create(int initialCapacity, VV defaultValue) {
+  public static <VV> IterMap<Integer, VV> create(int initialCapacity,
+      VV defaultValue) {
     return create(initialCapacity, new ValueCreator<VV>(defaultValue));
   }
 
   /**
    * Creates the.
    *
-   * @param <K1>
-   *          the generic type
-   * @param <VV>
-   *          the generic type
-   * @param initialCapacity
-   *          the initial capacity
-   * @param defaultValue
-   *          the default value
+   * @param <K1> the generic type
+   * @param <VV> the generic type
+   * @param initialCapacity the initial capacity
+   * @param defaultValue the default value
    * @return the map
    */
-  public static <VV> IterMap<Integer, VV> create(int initialCapacity, EntryCreator<VV> defaultValue) {
+  public static <VV> IterMap<Integer, VV> create(int initialCapacity,
+      EntryCreator<VV> defaultValue) {
     return new DefaultIntObjMap<VV>(initialCapacity, defaultValue);
   }
 }

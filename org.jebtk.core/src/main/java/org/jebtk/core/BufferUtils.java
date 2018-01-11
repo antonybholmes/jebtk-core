@@ -42,8 +42,7 @@ public class BufferUtils {
     /**
      * Wrap.
      *
-     * @param array
-     *          the array
+     * @param array the array
      * @return the buffer wrapper
      */
     public BufferWrapper wrap(final byte[] array) {
@@ -51,11 +50,10 @@ public class BufferUtils {
     }
 
     /**
-     * Buffer a collection of integers into a byte array buffer using 4 bytes per
-     * integer.
+     * Buffer a collection of integers into a byte array buffer using 4 bytes
+     * per integer.
      *
-     * @param values
-     *          the values
+     * @param values the values
      * @return the byte buffer
      */
     public ByteBuffer allocate(final Collection<Integer> values) {
@@ -71,8 +69,7 @@ public class BufferUtils {
     /**
      * Allocate.
      *
-     * @param values
-     *          the values
+     * @param values the values
      * @return the byte buffer
      */
     public ByteBuffer allocate(List<Character> values) {
@@ -97,16 +94,15 @@ public class BufferUtils {
     /**
      * Instantiates a new buffer wrapper.
      *
-     * @param array
-     *          the array
+     * @param array the array
      */
     public BufferWrapper(byte[] array) {
       mArray = array;
     }
 
     /**
-     * Interprets a byte array as integers (4 bytes per int) and creates a list of
-     * integers.
+     * Interprets a byte array as integers (4 bytes per int) and creates a list
+     * of integers.
      *
      * @return the list
      */

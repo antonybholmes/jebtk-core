@@ -20,12 +20,11 @@ package org.jebtk.core;
  * A simple mapping between a key and a value which can be used in place of two
  * separate variables.
  *
- * @param <K>
- *          the key type
- * @param <V>
- *          the value type
+ * @param <K> the key type
+ * @param <V> the value type
  */
-public class KeyValuePair<K extends Comparable<? super K>, V> implements Comparable<KeyValuePair<K, V>> {
+public class KeyValuePair<K extends Comparable<? super K>, V>
+    implements Comparable<KeyValuePair<K, V>> {
 
   /**
    * The member key.
@@ -40,10 +39,8 @@ public class KeyValuePair<K extends Comparable<? super K>, V> implements Compara
   /**
    * Instantiates a new key value pair.
    *
-   * @param key
-   *          the key
-   * @param value
-   *          the value
+   * @param key the key
+   * @param value the value
    */
   public KeyValuePair(K key, V value) {
     mKey = key;
@@ -72,8 +69,7 @@ public class KeyValuePair<K extends Comparable<? super K>, V> implements Compara
   /**
    * Sets the value.
    *
-   * @param value
-   *          the new value
+   * @param value the new value
    */
   public void setValue(V value) {
     mValue = value;

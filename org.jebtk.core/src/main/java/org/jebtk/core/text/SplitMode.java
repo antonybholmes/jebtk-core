@@ -26,13 +26,12 @@ public interface SplitMode {
   /**
    * Split.
    *
-   * @param text
-   *          the text
-   * @param ignoreEmptyStrings
-   *          the ignore empty strings
-   * @param maxNumItems
-   *          the maxNumItems
+   * @param text the text
+   * @param ignoreEmptyStrings the ignore empty strings
+   * @param maxNumItems the maxNumItems
    * @return the list
    */
-  public List<String> split(final String text, boolean ignoreEmptyStrings, int maxNumItems);
+  public List<String> split(final String text,
+      boolean ignoreEmptyStrings,
+      int maxNumItems);
 }

@@ -23,10 +23,8 @@ import static org.jebtk.core.collections.MultiMap.DEFAULT_INITIAL_CAPACITY;
  * value to a given size.
  * 
  *
- * @param <K>
- *          the key type
- * @param <V>
- *          the value type
+ * @param <K> the key type
+ * @param <V> the value type
  */
 public class ArrayListMultiMap<K, V> extends ListMultiMap<K, V> {
 
@@ -36,8 +34,7 @@ public class ArrayListMultiMap<K, V> extends ListMultiMap<K, V> {
   /**
    * Instantiates a new default list multi map.
    *
-   * @param initialCapacity
-   *          the initial capacity
+   * @param initialCapacity the initial capacity
    */
   public ArrayListMultiMap(int initialCapacity) {
     super(initialCapacity, new ArrayListCreator<V>());
@@ -46,10 +43,8 @@ public class ArrayListMultiMap<K, V> extends ListMultiMap<K, V> {
   /**
    * Creates the.
    *
-   * @param <VV>
-   *          the generic type
-   * @param <KK>
-   *          the generic type
+   * @param <VV> the generic type
+   * @param <KK> the generic type
    * @return the multi map
    */
   public static <VV, KK> ListMultiMap<KK, VV> create() {
@@ -59,12 +54,9 @@ public class ArrayListMultiMap<K, V> extends ListMultiMap<K, V> {
   /**
    * Creates the.
    *
-   * @param <VV>
-   *          the generic type
-   * @param <KK>
-   *          the generic type
-   * @param initialCapacity
-   *          the initial capacity
+   * @param <VV> the generic type
+   * @param <KK> the generic type
+   * @param initialCapacity the initial capacity
    * @return the list multi map
    */
   public static <VV, KK> ListMultiMap<KK, VV> create(int initialCapacity) {

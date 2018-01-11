@@ -33,8 +33,7 @@ public class JsonLong extends Json {
   /**
    * Instantiates a new json integer.
    *
-   * @param value
-   *          the value
+   * @param value the value
    */
   public JsonLong(long value) {
     mValue = value;

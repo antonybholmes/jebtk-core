@@ -32,8 +32,7 @@ public interface LogEventListener extends EventListener {
   /**
    * Log event.
    *
-   * @param e
-   *          the e
+   * @param e the e
    */
   public void logEvent(LogEvent e);
 

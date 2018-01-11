@@ -22,8 +22,7 @@ import java.util.Set;
 /**
  * The Class HashSetCreator.
  *
- * @param <V>
- *          the value type
+ * @param <V> the value type
  */
 public class HashSetCreator<V> implements SetCreator<V> {
 
@@ -40,8 +39,7 @@ public class HashSetCreator<V> implements SetCreator<V> {
   /**
    * Creates the.
    *
-   * @param <V1>
-   *          the generic type
+   * @param <V1> the generic type
    * @return the collection creator
    */
   public static <V1> SetCreator<V1> create() {

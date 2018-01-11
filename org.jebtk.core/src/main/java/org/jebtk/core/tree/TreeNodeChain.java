@@ -25,8 +25,7 @@ import java.util.List;
  * path.
  *
  * @author Antony Holmes Holmes
- * @param <T>
- *          the generic type
+ * @param <T> the generic type
  */
 public class TreeNodeChain<T> implements Iterable<TreeNode<T>> {
 
@@ -38,8 +37,7 @@ public class TreeNodeChain<T> implements Iterable<TreeNode<T>> {
   /**
    * Adds the.
    *
-   * @param node
-   *          the node
+   * @param node the node
    */
   public void add(TreeNode<T> node) {
     nodes.add(node);

@@ -25,12 +25,11 @@ import java.util.Map.Entry;
  * benefits of a vector without the ability to modify it.
  *
  * @author Antony Holmes Holmes
- * @param <T1>
- *          the generic type
- * @param <T2>
- *          the generic type
+ * @param <T1> the generic type
+ * @param <T2> the generic type
  */
-public class ImmutableMap<T1, T2> extends HashMap<T1, T2> implements Iterable<Entry<T1, T2>> {
+public class ImmutableMap<T1, T2> extends HashMap<T1, T2>
+    implements Iterable<Entry<T1, T2>> {
 
   /**
    * The constant serialVersionUID.

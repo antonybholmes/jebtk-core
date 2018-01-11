@@ -36,8 +36,7 @@ public class JsonColor extends Json {
   /**
    * Instantiates a new json double.
    *
-   * @param value
-   *          the value
+   * @param value the value
    */
   public JsonColor(Color value) {
     mValue = value;

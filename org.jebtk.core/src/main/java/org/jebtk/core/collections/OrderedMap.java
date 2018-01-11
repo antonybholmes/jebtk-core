@@ -25,10 +25,8 @@ import java.util.Map;
 /**
  * A specialized map which can be iterated over in the order keys were added.
  *
- * @param <K>
- *          the key type
- * @param <V>
- *          the value type
+ * @param <K> the key type
+ * @param <V> the value type
  */
 public class OrderedMap<K, V> extends MapContainer<K, V> {
 
@@ -41,8 +39,7 @@ public class OrderedMap<K, V> extends MapContainer<K, V> {
   /**
    * Instantiates a new ordered map.
    *
-   * @param map
-   *          the map
+   * @param map the map
    */
   public OrderedMap(Map<K, V> map) {
     super(map);
@@ -88,10 +85,8 @@ public class OrderedMap<K, V> extends MapContainer<K, V> {
   /**
    * Creates the key ordered map.
    *
-   * @param <KK>
-   *          the generic type
-   * @param <VV>
-   *          the generic type
+   * @param <KK> the generic type
+   * @param <VV> the generic type
    * @return the ordered map
    */
   public static <KK, VV> OrderedMap<KK, VV> newOrderedMap() {
@@ -101,12 +96,9 @@ public class OrderedMap<K, V> extends MapContainer<K, V> {
   /**
    * Creates the key ordered map.
    *
-   * @param <KK>
-   *          the generic type
-   * @param <VV>
-   *          the generic type
-   * @param map
-   *          the map
+   * @param <KK> the generic type
+   * @param <VV> the generic type
+   * @param map the map
    * @return the ordered map
    */
   public static <KK, VV> OrderedMap<KK, VV> newOrderedMap(Map<KK, VV> map) {

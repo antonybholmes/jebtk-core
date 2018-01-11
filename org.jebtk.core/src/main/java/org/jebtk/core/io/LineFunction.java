@@ -15,8 +15,6 @@
  */
 package org.jebtk.core.io;
 
-import java.util.List;
-
 // TODO: Auto-generated Javadoc
 /**
  * The Interface LineFunction.
@@ -26,8 +24,7 @@ public interface LineFunction {
   /**
    * Give a list of tokens to be processed.
    *
-   * @param line
-   *          the line
+   * @param line the line
    */
   public void parse(final String line);
 }

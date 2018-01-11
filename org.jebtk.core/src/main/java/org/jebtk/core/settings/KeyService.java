@@ -45,8 +45,7 @@ public class KeyService extends KeyNode {
   /**
    * Instantiates a new key service.
    *
-   * @param name
-   *          the name
+   * @param name the name
    */
   public KeyService(String name) {
     super(name);
@@ -55,16 +54,13 @@ public class KeyService extends KeyNode {
   /**
    * Load xml.
    *
-   * @param file
-   *          the file
-   * @throws SAXException
-   *           the SAX exception
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
-   * @throws ParserConfigurationException
-   *           the parser configuration exception
+   * @param file the file
+   * @throws SAXException the SAX exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws ParserConfigurationException the parser configuration exception
    */
-  public void loadXml(File file) throws SAXException, IOException, ParserConfigurationException {
+  public void loadXml(File file)
+      throws SAXException, IOException, ParserConfigurationException {
     System.err.println("Loading settings from " + file + "...");
 
     InputStream stream = new FileInputStream(file);
@@ -75,16 +71,13 @@ public class KeyService extends KeyNode {
   /**
    * Load xml.
    *
-   * @param is
-   *          the is
-   * @throws SAXException
-   *           the SAX exception
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
-   * @throws ParserConfigurationException
-   *           the parser configuration exception
+   * @param is the is
+   * @throws SAXException the SAX exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws ParserConfigurationException the parser configuration exception
    */
-  public void loadXml(InputStream is) throws SAXException, IOException, ParserConfigurationException {
+  public void loadXml(InputStream is)
+      throws SAXException, IOException, ParserConfigurationException {
     if (is == null) {
       return;
     }
@@ -100,10 +93,8 @@ public class KeyService extends KeyNode {
   /**
    * Write xml.
    *
-   * @param out
-   *          the out
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @param out the out
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   protected synchronized final void writeXml(File out) throws IOException {
     writeXml(out, this);
@@ -112,14 +103,12 @@ public class KeyService extends KeyNode {
   /**
    * Write the settings as an xml file.
    *
-   * @param out
-   *          the out
-   * @param node
-   *          the node
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @param out the out
+   * @param node the node
+   * @throws IOException Signals that an I/O exception has occurred.
    */
-  private static final void writeXml(File out, TreeNode<String> node) throws IOException {
+  private static final void writeXml(File out, TreeNode<String> node)
+      throws IOException {
     BufferedWriter writer = new BufferedWriter(new FileWriter(out));
 
     try {
@@ -141,19 +130,17 @@ public class KeyService extends KeyNode {
   }
 
   /**
-   * Writes out the given node at the given indentation level so that the XML file
-   * remains formatted.
+   * Writes out the given node at the given indentation level so that the XML
+   * file remains formatted.
    *
-   * @param writer
-   *          the writer
-   * @param node
-   *          the node
-   * @param level
-   *          the level
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @param writer the writer
+   * @param node the node
+   * @param level the level
+   * @throws IOException Signals that an I/O exception has occurred.
    */
-  private static void write(BufferedWriter writer, TreeNode<String> node, int level) throws IOException {
+  private static void write(BufferedWriter writer,
+      TreeNode<String> node,
+      int level) throws IOException {
     writer.write(Xml.indentation(level));
     writer.write(Xml.openTag("key"));
     writer.write(Xml.attribute("name", node.getName()));

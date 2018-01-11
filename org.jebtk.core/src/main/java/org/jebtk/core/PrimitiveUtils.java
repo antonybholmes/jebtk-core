@@ -37,8 +37,7 @@ public class PrimitiveUtils {
   /**
    * Convert a long to a byte array.
    *
-   * @param l
-   *          the l
+   * @param l the l
    * @return the byte[]
    */
   public static byte[] toByteArray(long l) {
@@ -55,8 +54,7 @@ public class PrimitiveUtils {
   /**
    * Converts a byte array to a long value.
    *
-   * @param b
-   *          the b
+   * @param b the b
    * @return the long
    */
   public static long toLong(final byte[] b) {

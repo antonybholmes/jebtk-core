@@ -24,8 +24,7 @@ import java.util.TreeMap;
  * Generic model for sharing named items.
  *
  * @author Antony Holmes Holmes
- * @param <T>
- *          the generic type
+ * @param <T> the generic type
  */
 public class NameMapModel<T> extends NameModel<T> {
 

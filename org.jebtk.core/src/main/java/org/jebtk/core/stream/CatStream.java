@@ -19,8 +19,7 @@ package org.jebtk.core.stream;
 /**
  * Concatenate two streams.
  *
- * @param <T>
- *          the generic type
+ * @param <T> the generic type
  */
 public class CatStream<T> extends Stream<T> {
 
@@ -36,10 +35,8 @@ public class CatStream<T> extends Stream<T> {
   /**
    * Instantiates a new map stream.
    *
-   * @param s1
-   *          the s 1
-   * @param s2
-   *          the s 2
+   * @param s1 the s 1
+   * @param s2 the s 2
    */
   public CatStream(Stream<T> s1, Stream<T> s2) {
     mS1 = s1;

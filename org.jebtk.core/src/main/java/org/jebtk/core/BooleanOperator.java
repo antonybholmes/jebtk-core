@@ -62,8 +62,7 @@ public enum BooleanOperator {
   /**
    * From string.
    *
-   * @param value
-   *          the value
+   * @param value the value
    * @return the boolean operator
    */
   public static final BooleanOperator fromString(String value) {
@@ -87,8 +86,7 @@ public enum BooleanOperator {
   /**
    * To string.
    *
-   * @param operator
-   *          the operator
+   * @param operator the operator
    * @return the string
    */
   public static String toString(BooleanOperator operator) {

@@ -29,8 +29,7 @@ public interface ChangeListener extends EventListener {
   /**
    * Changed.
    *
-   * @param e
-   *          the e
+   * @param e the e
    */
   public void changed(ChangeEvent e);
 }

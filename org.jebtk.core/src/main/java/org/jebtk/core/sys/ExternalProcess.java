@@ -47,13 +47,13 @@ public class ExternalProcess {
   /**
    * The constant LOG.
    */
-  private static final Logger LOG = LoggerFactory.getLogger(ExternalProcess.class);
+  private static final Logger LOG = LoggerFactory
+      .getLogger(ExternalProcess.class);
 
   /**
    * Instantiates a new external process.
    *
-   * @param workingDirectory
-   *          the working directory
+   * @param workingDirectory the working directory
    */
   public ExternalProcess(File workingDirectory) {
     mWorkingDirectory = workingDirectory;
@@ -62,8 +62,7 @@ public class ExternalProcess {
   /**
    * Adds the arg.
    *
-   * @param arg
-   *          the arg
+   * @param arg the arg
    */
   public final void addArg(String arg) {
     mArgs.add(arg);
@@ -72,8 +71,7 @@ public class ExternalProcess {
   /**
    * Sets the args.
    *
-   * @param args
-   *          the new args
+   * @param args the new args
    */
   public final void setArgs(List<String> args) {
     mArgs = new ArrayList<String>(args);
@@ -82,8 +80,7 @@ public class ExternalProcess {
   /**
    * Sets the args.
    *
-   * @param args
-   *          the new args
+   * @param args the new args
    */
   public final void setArgs(String[] args) {
     mArgs = Arrays.asList(args);
@@ -92,10 +89,8 @@ public class ExternalProcess {
   /**
    * Run.
    *
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
-   * @throws InterruptedException
-   *           the interrupted exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws InterruptedException the interrupted exception
    */
   public final void run() throws IOException, InterruptedException {
     ProcessBuilder builder = new ProcessBuilder(mArgs);
@@ -111,7 +106,8 @@ public class ExternalProcess {
     // Runtime runtime = Runtime.getRuntime();
     // Process process = runtime.exec(args);
 
-    BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream()));
+    BufferedReader br = new BufferedReader(
+        new InputStreamReader(process.getInputStream()));
     String line;
 
     while ((line = br.readLine()) != null) {
@@ -124,16 +120,13 @@ public class ExternalProcess {
   /**
    * Run.
    *
-   * @param command
-   *          the command
-   * @param workingDirectory
-   *          the working directory
-   * @throws InterruptedException
-   *           the interrupted exception
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @param command the command
+   * @param workingDirectory the working directory
+   * @throws InterruptedException the interrupted exception
+   * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static final void run(String command, File workingDirectory) throws InterruptedException, IOException {
+  public static final void run(String command, File workingDirectory)
+      throws InterruptedException, IOException {
     ExternalProcess process = new ExternalProcess(workingDirectory);
 
     process.addArg(command);
@@ -144,16 +137,13 @@ public class ExternalProcess {
   /**
    * Run.
    *
-   * @param commands
-   *          the commands
-   * @param workingDirectory
-   *          the working directory
-   * @throws InterruptedException
-   *           the interrupted exception
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @param commands the commands
+   * @param workingDirectory the working directory
+   * @throws InterruptedException the interrupted exception
+   * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static final void run(List<String> commands, File workingDirectory) throws InterruptedException, IOException {
+  public static final void run(List<String> commands, File workingDirectory)
+      throws InterruptedException, IOException {
     ExternalProcess process = new ExternalProcess(workingDirectory);
 
     process.setArgs(commands);
@@ -164,16 +154,13 @@ public class ExternalProcess {
   /**
    * Run.
    *
-   * @param commands
-   *          the commands
-   * @param workingDirectory
-   *          the working directory
-   * @throws InterruptedException
-   *           the interrupted exception
-   * @throws IOException
-   *           Signals that an I/O exception has occurred.
+   * @param commands the commands
+   * @param workingDirectory the working directory
+   * @throws InterruptedException the interrupted exception
+   * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static final void run(String[] commands, Path pwd) throws InterruptedException, IOException {
+  public static final void run(String[] commands, Path pwd)
+      throws InterruptedException, IOException {
     ExternalProcess process = new ExternalProcess(pwd.toFile());
 
     process.setArgs(commands);

@@ -28,12 +28,12 @@ import java.util.concurrent.ConcurrentHashMap;
  * EventListenerList by taking care of casting etc.
  *
  * @author Antony Holmes Holmes
- * @param <T>
- *          the generic type
+ * @param <T> the generic type
  */
 public class EventListeners<T extends EventListener> implements Iterable<T> {
 
-  private Set<T> mListeners = Collections.newSetFromMap(new ConcurrentHashMap<T, Boolean>());
+  private Set<T> mListeners = Collections
+      .newSetFromMap(new ConcurrentHashMap<T, Boolean>());
 
   /**
    * Instantiates a new event listeners.
@@ -45,8 +45,7 @@ public class EventListeners<T extends EventListener> implements Iterable<T> {
   /**
    * Instantiates a new event listeners.
    *
-   * @param l
-   *          the l
+   * @param l the l
    */
   public EventListeners(EventListeners<T> l) {
     addAll(l);

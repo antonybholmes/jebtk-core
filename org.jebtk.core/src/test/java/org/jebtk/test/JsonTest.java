@@ -41,8 +41,8 @@ public class JsonTest {
     System.err.println(jsonArray.toString());
 
     try {
-      System.err.println(new JsonParser()
-          .parse("[{\"name\":\"edbw\",\"version\":2.0,\"copyright\":\"Copyright (C) 2013-2015 Antony Holmes\"}]"));
+      System.err.println(new JsonParser().parse(
+          "[{\"name\":\"edbw\",\"version\":2.0,\"copyright\":\"Copyright (C) 2013-2015 Antony Holmes\"}]"));
     } catch (ParseException e1) {
       e1.printStackTrace();
     }
@@ -73,8 +73,8 @@ public class JsonTest {
   public void testJsonUnicodeParser() {
 
     try {
-      System.err.println(new JsonParser()
-          .parse("[{\"name\":\"\\u0063\",\"version\":2.0,\"copyright\":\"Copyright (C) 2013-2015 Antony Holmes\"}]"));
+      System.err.println(new JsonParser().parse(
+          "[{\"name\":\"\\u0063\",\"version\":2.0,\"copyright\":\"Copyright (C) 2013-2015 Antony Holmes\"}]"));
     } catch (ParseException e1) {
       e1.printStackTrace();
     }
@@ -91,8 +91,9 @@ public class JsonTest {
 
   @Test
   public void testBuilder() {
-    System.err.println("Json test builder "
-        + new JsonBuilder().startArray().add("cake").add(1).add(false).startObject().add("p", "test/sdf\\sdf")
-            .add("q", 4).add("r", true).startArray("hmm").add("2").add("dfdf").endArray().endObject().endArray());
+    System.err.println("Json test builder " + new JsonBuilder().startArray()
+        .add("cake").add(1).add(false).startObject().add("p", "test/sdf\\sdf")
+        .add("q", 4).add("r", true).startArray("hmm").add("2").add("dfdf")
+        .endArray().endObject().endArray());
   }
 }

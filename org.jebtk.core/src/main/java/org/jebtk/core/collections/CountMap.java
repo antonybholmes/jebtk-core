@@ -21,8 +21,7 @@ import java.util.Collection;
 /**
  * A specialized DefaultHashMap for storing the number of times a key is added.
  *
- * @param <K>
- *          the key type
+ * @param <K> the key type
  */
 public class CountMap<K> extends DefaultHashMap<K, Integer> {
 
@@ -41,8 +40,7 @@ public class CountMap<K> extends DefaultHashMap<K, Integer> {
   /**
    * Instantiates a new count map.
    *
-   * @param defaultValue
-   *          the default value
+   * @param defaultValue the default value
    */
   public CountMap(int defaultValue) {
     super(defaultValue);
@@ -51,8 +49,7 @@ public class CountMap<K> extends DefaultHashMap<K, Integer> {
   /**
    * Removal has no effect.
    *
-   * @param key
-   *          the key
+   * @param key the key
    * @return the integer
    */
   @Override
@@ -71,8 +68,7 @@ public class CountMap<K> extends DefaultHashMap<K, Integer> {
   /**
    * Put all of the values from an iterator into the map.
    *
-   * @param iter
-   *          the iter
+   * @param iter the iter
    */
   public void putAll(Iterable<K> iter) {
     for (K v : iter) {
@@ -83,8 +79,7 @@ public class CountMap<K> extends DefaultHashMap<K, Integer> {
   /**
    * Adds the key to the map and increments it if it does not exist.
    *
-   * @param key
-   *          the key
+   * @param key the key
    */
   public void put(K key) {
     inc(key);
@@ -93,8 +88,7 @@ public class CountMap<K> extends DefaultHashMap<K, Integer> {
   /**
    * Increment the key count by 1 (default).
    *
-   * @param key
-   *          the key
+   * @param key the key
    */
   public void inc(K key) {
     inc(key, 1);
@@ -103,8 +97,7 @@ public class CountMap<K> extends DefaultHashMap<K, Integer> {
   /**
    * Inits the.
    *
-   * @param key
-   *          the key
+   * @param key the key
    */
   public void init(K key) {
     put(key, 0);
@@ -113,10 +106,8 @@ public class CountMap<K> extends DefaultHashMap<K, Integer> {
   /**
    * Increment the key count by ({@code inc} each time a key is added.
    *
-   * @param key
-   *          the key
-   * @param inc
-   *          the inc
+   * @param key the key
+   * @param inc the inc
    */
   public void inc(K key, int inc) {
     int c = (int) get(key) + inc;
@@ -140,11 +131,9 @@ public class CountMap<K> extends DefaultHashMap<K, Integer> {
   /**
    * Decrement the key by a given amount.
    *
-   * @param key
-   *          the key
-   * @param dec
-   *          Should be a positive integer indicating how much to reduce the count
-   *          of the key by
+   * @param key the key
+   * @param dec Should be a positive integer indicating how much to reduce the
+   *          count of the key by
    */
   public void dec(K key, int dec) {
     inc(key, -dec);
@@ -153,8 +142,7 @@ public class CountMap<K> extends DefaultHashMap<K, Integer> {
   /**
    * Increment the values in a collection.
    *
-   * @param values
-   *          the values
+   * @param values the values
    */
   public void inc(Collection<K> values) {
     for (K value : values) {
@@ -165,8 +153,7 @@ public class CountMap<K> extends DefaultHashMap<K, Integer> {
   /**
    * Creates the.
    *
-   * @param <K1>
-   *          the generic type
+   * @param <K1> the generic type
    * @return the count map
    */
   public static <K1> CountMap<K1> create() {
@@ -176,10 +163,8 @@ public class CountMap<K> extends DefaultHashMap<K, Integer> {
   /**
    * Creates the.
    *
-   * @param <K1>
-   *          the generic type
-   * @param defaultValue
-   *          the default value
+   * @param <K1> the generic type
+   * @param defaultValue the default value
    * @return the count map
    */
   public static <K1> CountMap<K1> create(int defaultValue) {

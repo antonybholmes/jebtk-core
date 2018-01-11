@@ -19,10 +19,8 @@ package org.jebtk.core.collections;
 /**
  * The Class DefaultHashMapCreator.
  *
- * @param <K>
- *          the key type
- * @param <V>
- *          the value type
+ * @param <K> the key type
+ * @param <V> the value type
  */
 public class DefaultHashMapCreator<K, V> implements IterMapCreator<K, V> {
 
@@ -35,8 +33,7 @@ public class DefaultHashMapCreator<K, V> implements IterMapCreator<K, V> {
   /**
    * Instantiates a new default hash map creator.
    *
-   * @param defaultValue
-   *          the default value
+   * @param defaultValue the default value
    */
   public DefaultHashMapCreator(V defaultValue) {
     this(0, defaultValue);
@@ -45,10 +42,8 @@ public class DefaultHashMapCreator<K, V> implements IterMapCreator<K, V> {
   /**
    * Instantiates a new auto hash map.
    *
-   * @param initialCapacity
-   *          the initial capacity
-   * @param defaultValue
-   *          the default value
+   * @param initialCapacity the initial capacity
+   * @param defaultValue the default value
    */
   public DefaultHashMapCreator(int initialCapacity, V defaultValue) {
     this(initialCapacity, new ValueCreator<V>(defaultValue));
@@ -57,8 +52,7 @@ public class DefaultHashMapCreator<K, V> implements IterMapCreator<K, V> {
   /**
    * Instantiates a new default map.
    *
-   * @param creator
-   *          the creator
+   * @param creator the creator
    */
   public DefaultHashMapCreator(EntryCreator<V> creator) {
     this(0, creator);
@@ -67,10 +61,8 @@ public class DefaultHashMapCreator<K, V> implements IterMapCreator<K, V> {
   /**
    * Instantiates a new default hash map creator.
    *
-   * @param initialCapacity
-   *          the initial capacity
-   * @param creator
-   *          the creator
+   * @param initialCapacity the initial capacity
+   * @param creator the creator
    */
   public DefaultHashMapCreator(int initialCapacity, EntryCreator<V> creator) {
     mInitialCapacity = initialCapacity;
@@ -87,7 +79,8 @@ public class DefaultHashMapCreator<K, V> implements IterMapCreator<K, V> {
     return new DefaultHashMap<K, V>(mInitialCapacity, mDefaultValue);
   }
 
-  public static <KK, VV> IterMapCreator<KK, VV> create(EntryCreator<VV> defaultValue) {
+  public static <KK, VV> IterMapCreator<KK, VV> create(
+      EntryCreator<VV> defaultValue) {
     return new DefaultHashMapCreator<KK, VV>(defaultValue);
   }
 }

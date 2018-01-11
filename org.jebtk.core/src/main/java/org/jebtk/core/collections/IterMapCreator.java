@@ -18,10 +18,8 @@ package org.jebtk.core.collections;
 /**
  * The Interface MapCreator.
  *
- * @param <K>
- *          the key type
- * @param <V>
- *          the value type
+ * @param <K> the key type
+ * @param <V> the value type
  */
 public interface IterMapCreator<K, V> extends EntryCreator<IterMap<K, V>> {
 

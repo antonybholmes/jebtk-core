@@ -32,8 +32,7 @@ public class FileBeginningFilter implements FileFilter {
   /**
    * Instantiates a new file beginning filter.
    *
-   * @param filter
-   *          the filter
+   * @param filter the filter
    */
   public FileBeginningFilter(String filter) {
     // System.out.println("filter:" + filter);

@@ -44,8 +44,7 @@ public class Xml {
   /**
    * Writes the default XML header to the writer.
    *
-   * @param writer
-   *          the writer
+   * @param writer the writer
    */
   public static final void writeXmlHeader(BufferedWriter writer) {
     try {
@@ -69,8 +68,7 @@ public class Xml {
   /**
    * Start tag.
    *
-   * @param text
-   *          the text
+   * @param text the text
    * @return the string
    */
   public static final String startTag(String text) {
@@ -80,8 +78,7 @@ public class Xml {
   /**
    * Open tag.
    *
-   * @param text
-   *          the text
+   * @param text the text
    * @return the string
    */
   public static final String openTag(String text) {
@@ -118,8 +115,7 @@ public class Xml {
   /**
    * Returns the named end tag to indicate a tag can be closed.
    *
-   * @param text
-   *          the text
+   * @param text the text
    * @return the string
    */
   public static final String endTag(String text) {
@@ -129,19 +125,18 @@ public class Xml {
   /**
    * Returns a named closed tag.
    *
-   * @param text
-   *          the text
+   * @param text the text
    * @return the string
    */
   public static final String closedTag(String text) {
-    return new StringBuilder(openTag()).append(text).append(closedTag()).toString();
+    return new StringBuilder(openTag()).append(text).append(closedTag())
+        .toString();
   }
 
   /**
    * Attribute.
    *
-   * @param attribute
-   *          the attribute
+   * @param attribute the attribute
    * @return the string
    */
   public static String attribute(Attribute attribute) {
@@ -151,22 +146,20 @@ public class Xml {
   /**
    * Attribute.
    *
-   * @param name
-   *          the name
-   * @param value
-   *          the value
+   * @param name the name
+   * @param value the value
    * @return the string
    */
   public static final String attribute(String name, String value) {
-    return new StringBuilder(" ").append(name).append("=\"").append(value).append("\"").toString();
+    return new StringBuilder(" ").append(name).append("=\"").append(value)
+        .append("\"").toString();
   }
 
   /**
    * Creates an indentation space for writing aesthetically pleasing XML files
    * rather than one line monoliths.
    *
-   * @param level
-   *          the level
+   * @param level the level
    * @return the string
    */
   public static String indentation(int level) {
@@ -176,8 +169,7 @@ public class Xml {
   /**
    * Surround a string with CDATA tags.
    *
-   * @param data
-   *          the data
+   * @param data the data
    * @return the string
    */
   public static String cdata(String data) {

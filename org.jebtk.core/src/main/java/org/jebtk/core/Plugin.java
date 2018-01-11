@@ -32,8 +32,7 @@ public class Plugin implements Comparable<Plugin> {
   /**
    * Instantiates a new plugin.
    *
-   * @param c
-   *          the c
+   * @param c the c
    */
   public Plugin(Class<?> c) {
     mClass = c;

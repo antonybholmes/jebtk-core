@@ -30,13 +30,14 @@ import org.xml.sax.SAXException;
 public class SettingsReaderDefaultXml implements SettingsReader {
 
   /** The Constant XML_FILE. */
-  public static final Path XML_FILE = PathUtils.getPath("res/default.settings.xml");
+  public static final Path XML_FILE = PathUtils
+      .getPath("res/default.settings.xml");
 
   /*
    * (non-Javadoc)
    * 
-   * @see
-   * org.abh.common.settings.SettingsReader#load(org.abh.common.settings.Settings)
+   * @see org.abh.common.settings.SettingsReader#load(org.abh.common.settings.
+   * Settings)
    */
   @Override
   public void load(Settings settings) {

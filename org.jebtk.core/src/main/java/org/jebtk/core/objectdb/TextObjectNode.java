@@ -31,10 +31,10 @@ import org.jebtk.core.settings.KeyNode;
  * well as child nodes.
  *
  * @author Antony Holmes Holmes
- * @param <T>
- *          the generic type
+ * @param <T> the generic type
  */
-public class TextObjectNode<T> implements Iterable<TextObjectNode<T>>, Comparable<TextObjectNode<T>>, Serializable {
+public class TextObjectNode<T> implements Iterable<TextObjectNode<T>>,
+    Comparable<TextObjectNode<T>>, Serializable {
 
   /**
    * The constant serialVersionUID.
@@ -59,8 +59,7 @@ public class TextObjectNode<T> implements Iterable<TextObjectNode<T>>, Comparabl
   /**
    * Instantiates a new text object node.
    *
-   * @param name
-   *          the name
+   * @param name the name
    */
   public TextObjectNode(String name) {
     mName = KeyNode.standardize(name);
@@ -87,8 +86,7 @@ public class TextObjectNode<T> implements Iterable<TextObjectNode<T>>, Comparabl
   /**
    * Sets the value.
    *
-   * @param value
-   *          the new value
+   * @param value the new value
    */
   public void setValue(T value) {
     this.mValue = value;
@@ -106,8 +104,7 @@ public class TextObjectNode<T> implements Iterable<TextObjectNode<T>>, Comparabl
   /**
    * Gets the child.
    *
-   * @param level
-   *          the level
+   * @param level the level
    * @return the child
    */
   public TextObjectNode<T> getChild(PathLevel level) {
@@ -117,8 +114,7 @@ public class TextObjectNode<T> implements Iterable<TextObjectNode<T>>, Comparabl
   /**
    * Gets the child.
    *
-   * @param name
-   *          the name
+   * @param name the name
    * @return the child
    */
   public TextObjectNode<T> getChild(String name) {
@@ -136,8 +132,7 @@ public class TextObjectNode<T> implements Iterable<TextObjectNode<T>>, Comparabl
   /**
    * Gets the child by path.
    *
-   * @param path
-   *          the path
+   * @param path the path
    * @return the child by path
    */
   public TextObjectNode<T> getChildByPath(String path) {
@@ -148,8 +143,7 @@ public class TextObjectNode<T> implements Iterable<TextObjectNode<T>>, Comparabl
    * Traverse a properties tree using a path expression to find a particular
    * property. Returns null if the property is not found.
    *
-   * @param path
-   *          the path
+   * @param path the path
    * @return the child by path
    */
   public TextObjectNode<T> getChildByPath(Path path) {
