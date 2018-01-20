@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.nio.file.Path;
 
 import org.jebtk.core.io.FileUtils;
+import org.jebtk.core.io.PathUtils;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -55,12 +56,27 @@ public class AppService implements NameProperty {
 
   /** Returns the shared module directory */
   public static final Path MOD_DIR = RES_DIR.resolve("modules");
+  
+  
+  public static final Path INSTANCE_RES_DIR = PathUtils.getPath("res");
+
+  /** 
+   * Returns the module directory for an app. This is specific to the
+   * app's location
+   */
+  public static final Path INSTANCE_MOD_DIR = 
+      INSTANCE_RES_DIR.resolve("modules");
+  
 
   /** The m directory. */
   private Path mDirectory;
 
   /** The m name. */
   private String mName;
+
+  private Path mInstModDir;
+
+  private Path mModDir;
 
   /**
    * Instantiates a new app service.
@@ -85,6 +101,10 @@ public class AppService implements NameProperty {
     } catch (IOException e) {
       e.printStackTrace();
     }
+    
+    mModDir = MOD_DIR.resolve(mName);
+    
+    mInstModDir = INSTANCE_MOD_DIR.resolve(mName);
   }
 
   /*
@@ -104,6 +124,14 @@ public class AppService implements NameProperty {
    */
   public Path getAppDir() {
     return mDirectory;
+  }
+  
+  public Path getModDir() {
+    return mModDir;
+  }
+  
+  public Path getInstanceModDir() {
+    return mInstModDir;
   }
 
   /**
@@ -128,6 +156,6 @@ public class AppService implements NameProperty {
    * @return the path
    */
   public static Path create(String name) {
-    return FileUtils.home().resolve(APP_HOME).resolve(name.toLowerCase());
+    return APP_ROOT.resolve(name.toLowerCase());
   }
 }
