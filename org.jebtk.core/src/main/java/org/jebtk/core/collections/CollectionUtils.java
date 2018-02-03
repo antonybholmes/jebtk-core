@@ -3044,19 +3044,37 @@ public class CollectionUtils {
    * @param array the array
    */
   public static void fill(double v, int n, double[] array) {
-    Arrays.fill(array, 0, n, 0);
+    fill(v, 0, n, array);
   }
 
   /**
-   * Fill.
+   * Fill an array with v starting at position s and finishing at e (exclusive).
    *
-   * @param v the v
-   * @param s the s
-   * @param e the e
-   * @param array the array
+   * @param v the value to copy.
+   * @param s the starting position.
+   * @param e the ending position (exclusive).
+   * @param array the array.
    */
   public static void fill(double v, int s, int e, double[] array) {
     Arrays.fill(array, s, e, 0);
+  }
+  
+  /**
+   * Copy a value into an array, but keep the maximum between the array and
+   * the value at a given position to guarantee the maximum value is kept.
+   * 
+   * @param v
+   * @param s
+   * @param e
+   * @param array
+   */
+  public static void fillMax(double v, int s, int e, double[] array) {
+    for (int i = s; i < e; ++i) {
+      if (v > array[i]) {
+        // Record the maximum score found
+        array[i] = v;
+      }
+    }
   }
 
   /**
@@ -3241,6 +3259,50 @@ public class CollectionUtils {
     for (int i = 0; i < l; ++i) {
       out[i] = f.apply(in[i]);
     }
+  }
+
+  /**
+   * Finds the index of the next position in the array with a value different
+   * to a given value. This can be used to find runs of the same value in an
+   * array. Returns the last index of the array if all the array values are
+   * the same.
+   * 
+   * @param values    The array to search
+   * @param f         The current value.
+   * @param i         The starting index.
+   * @return
+   */
+  public static int nextDiffValIdx(final double[] values, double f, int start) {
+    int ret = values.length - 1;
+    
+    for (int i = start; i < values.length; ++i) {
+      if (values[i] != f) {
+        ret = i;
+        break;
+      }
+    }
+    
+    return ret;
+  }
+  
+  /**
+   * Finds the next zero entry in an array.
+   * 
+   * @param values
+   * @param start
+   * @return
+   */
+  public static int nextZero(final double[] values, int start) {
+    int ret = values.length - 1;
+    
+    for (int i = start; i < values.length; ++i) {
+      if (values[i] == 0) {
+        ret = i;
+        break;
+      }
+    }
+    
+    return ret;
   }
 
 }

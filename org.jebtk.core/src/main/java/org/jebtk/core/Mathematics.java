@@ -1301,6 +1301,12 @@ public class Mathematics {
     return ret;
   }
 
+  /**
+   * Return a random number between 0 and max (exclusive).
+   * 
+   * @param max
+   * @return
+   */
   public static int rand(int max) {
     Random rand = new Random();
 
@@ -1577,6 +1583,20 @@ public class Mathematics {
       return -1;
     } else {
       return v;
+    }
+  }
+
+  /**
+   * Add x to an array.
+   * 
+   * @param x
+   * @param s
+   * @param e
+   * @param values
+   */
+  public static void add(double x, int s, int e, double[] values) {
+    for (int i = s; i < e; ++i) {
+      values[i] += x;
     }
   }
 }

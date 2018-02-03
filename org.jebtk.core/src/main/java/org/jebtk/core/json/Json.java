@@ -142,7 +142,17 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
     if (e != null) {
       return e.getAsChar();
     } else {
-      return 0;
+      return Character.MIN_VALUE;
+    }
+  }
+  
+  public char getAsChar(String name) {
+    Json e = get(name);
+
+    if (e != null) {
+      return e.getAsChar();
+    } else {
+      return Character.MIN_VALUE;
     }
   }
 
