@@ -44,9 +44,10 @@ public class Options implements Iterable<CommandLineOption> {
    *
    * @param shortName the short name
    * @param longName the long name
+   * @return 
    */
-  public void add(char shortName, String longName) {
-    add(shortName, longName, false);
+  public Options add(char shortName, String longName) {
+    return add(shortName, longName, false);
   }
 
   /**
@@ -55,9 +56,10 @@ public class Options implements Iterable<CommandLineOption> {
    * @param shortName the short name
    * @param longName the long name
    * @param hasArg the has arg
+   * @return 
    */
-  public void add(char shortName, String longName, boolean hasArg) {
-    add(shortName, longName, hasArg, TextUtils.EMPTY_STRING);
+  public Options add(char shortName, String longName, boolean hasArg) {
+    return add(shortName, longName, hasArg, TextUtils.EMPTY_STRING);
   }
 
   /**
@@ -67,21 +69,25 @@ public class Options implements Iterable<CommandLineOption> {
    * @param longName the long name
    * @param hasArg the has arg
    * @param description the description
+   * @return 
    */
-  public void add(char shortName,
+  public Options add(char shortName,
       String longName,
       boolean hasArg,
       String description) {
-    addOption(new CommandLineOption(shortName, longName, hasArg, description));
+    return addOption(new CommandLineOption(shortName, longName, hasArg, description));
   }
 
   /**
    * Adds the option.
    *
    * @param option the option
+   * @return 
    */
-  public void addOption(CommandLineOption option) {
+  public Options addOption(CommandLineOption option) {
     mOptions.add(option);
+    
+    return this;
   }
 
   /*

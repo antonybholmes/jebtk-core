@@ -351,6 +351,10 @@ public class SysUtils {
       int l) {
     arraycopy(src, srcoffset, dest, 0, l);
   }
+  
+  public static void arraycopy(Object[] src, int offset, Object[] dest) {
+    arraycopy(src, offset, dest, dest.length);
+  }
 
   public static void arraycopy(Object[] src,
       int srcoffset,

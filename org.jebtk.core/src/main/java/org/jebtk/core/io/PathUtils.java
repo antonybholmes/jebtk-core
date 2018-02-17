@@ -305,4 +305,14 @@ public class PathUtils {
       return null;
     }
   }
+
+  /**
+   * Returns the directory of a file.
+   * 
+   * @param file
+   * @return
+   */
+  public static Path getDir(Path file) {
+    return file.toAbsolutePath().getParent();
+  }
 }
