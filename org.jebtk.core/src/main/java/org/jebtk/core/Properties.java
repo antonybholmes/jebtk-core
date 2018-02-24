@@ -16,11 +16,10 @@
 package org.jebtk.core;
 
 import java.awt.Color;
-import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
 
-import org.jebtk.core.collections.CollectionUtils;
+import org.jebtk.core.collections.IterMap;
+import org.jebtk.core.collections.IterTreeMap;
 import org.jebtk.core.event.ChangeListeners;
 
 // TODO: Auto-generated Javadoc
@@ -39,18 +38,22 @@ public class Properties extends ChangeListeners implements Iterable<String> {
   /**
    * The member items.
    */
-  protected Map<String, Object> mPropertyMap = new HashMap<String, Object>();
+  protected IterMap<String, Object> mPropertyMap = 
+      new IterTreeMap<String, Object>();
 
   /**
    * Sets the property and triggers a change event for any listener.
    *
    * @param name the name
    * @param item the item
+   * @return 
    */
-  public void setProperty(String name, Object item) {
+  public Properties setProperty(String name, Object item) {
     updateProperty(name, item);
 
     fireChanged();
+    
+    return this;
   }
 
   /**
@@ -58,9 +61,12 @@ public class Properties extends ChangeListeners implements Iterable<String> {
    *
    * @param name the name
    * @param item the item
+   * @return 
    */
-  public void updateProperty(String name, Object item) {
+  public Properties updateProperty(String name, Object item) {
     mPropertyMap.put(name, item);
+    
+    return this;
   }
 
   /**
@@ -152,7 +158,7 @@ public class Properties extends ChangeListeners implements Iterable<String> {
    */
   @Override
   public Iterator<String> iterator() {
-    return CollectionUtils.sort(mPropertyMap.keySet()).iterator();
+    return mPropertyMap.iterator();
   }
 
 }
