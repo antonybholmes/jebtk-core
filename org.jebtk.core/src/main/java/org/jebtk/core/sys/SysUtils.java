@@ -123,6 +123,55 @@ public class SysUtils {
   public static Out err() {
     return new Out(System.err);
   }
+  
+  /**
+   * Copy one array to another. Is is assumed the dest array can contain the src
+   * array.
+   * 
+   * @param src
+   * @param dest
+   */
+  public static void arraycopy(char[] src, char[] dest) {
+    arraycopy(src, dest, src.length);
+  }
+
+  public static void arraycopy(char[] src, char[] dest, int l) {
+    arraycopy(src, 0, dest, 0, l);
+  }
+
+  public static void arraycopy(char[] src, int offset, char[] dest, int l) {
+    arraycopy(src, offset, dest, 0, l);
+  }
+
+  /**
+   * Copy the src to the dest at the given offset.
+   * 
+   * @param src
+   * @param dest
+   * @param destoffset
+   * @param l
+   */
+  public static void arraycopy(char[] src, char[] dest, int offset, int l) {
+    arraycopy(src, 0, dest, offset, l);
+  }
+
+  public static void arraycopy(char[] src,
+      int srcoffset,
+      char[] dest,
+      int destoffset,
+      int l) {
+    System.arraycopy(src, srcoffset, dest, destoffset, l);
+  }
+
+
+  
+  
+  
+  
+  
+  
+  
+  
 
   /**
    * Copy one array to another. Is is assumed the dest array can contain the src

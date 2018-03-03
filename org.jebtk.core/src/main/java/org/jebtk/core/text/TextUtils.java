@@ -181,6 +181,9 @@ public class TextUtils {
   /** The Constant NUMBER_PATTERN. */
   public static final Pattern NUMBER_PATTERN = Pattern
       .compile("([-+]?[0-9]*\\.?[0-9]+([eE][-+]?[0-9]+)?)");
+  
+  public static final Pattern INT_PARSE_PATTERN = Pattern
+      .compile("(\\-|\\+)?[0-9]+");
 
   /** The Constant VAR_YEAR_PATTERN. */
   public static final Pattern VAR_YEAR_PATTERN = Pattern
@@ -888,19 +891,13 @@ public class TextUtils {
    * @return the double
    */
   public static final Double scanDouble(String field, double defaultValue) {
-    double v;
-
-    try {
-      v = parseDouble(field);
-    } catch (ParseException e) {
-      v = defaultValue;
-    }
+    double v = parseDouble(field);
 
     return v;
   }
 
   /**
-   * Parses an integer field as a float and then converts back to int to provide
+   * Parses an integer field as a double and then converts back to int to provide
    * more robust handling of ints written as floating point numbers in files.
    *
    * @param field the field
@@ -908,7 +905,30 @@ public class TextUtils {
    * @throws ParseException the parse exception
    */
   public static final int parseInt(String field) {
-    return Integer.parseInt(field.replace(",", EMPTY_STRING)); // (int)parseDouble(field);
+    // If it's an int, parse it normally
+    if (INT_PARSE_PATTERN.matcher(field).matches()) {
+      return Integer.parseInt(field);
+    } else {
+      // Convert to double and parse it.
+      return (int)parseDouble(field); 
+    }
+  }
+  
+  /**
+   * Parse a string as long. If the string appears to be a double, convert
+   * to double and cast to long.
+   * 
+   * @param field
+   * @return
+   */
+  public static final long parseLong(String field) {
+    // If it's an int, parse it normally
+    if (INT_PARSE_PATTERN.matcher(field).matches()) {
+      return Long.parseLong(field);
+    } else {
+      // Convert to double and parse it.
+      return (long)parseDouble(field); 
+    }
   }
 
   /**
@@ -920,26 +940,8 @@ public class TextUtils {
    * @return A double
    * @throws ParseException the parse exception
    */
-  public static final double parseDouble(String field) throws ParseException {
-    if (isNullOrEmpty(field)) {
-      throw new ParseException(STRING_EMPTY_NULL_WARNING, 0);
-    }
-
-    if (field.equals(NAN)) {
-      return Double.NaN;
-    }
-
-    String f = extractNumber(field);
-
-    if (isNullOrEmpty(f)) {
-      throw new ParseException(f + " does not contain a number.", 0);
-    }
-
-    try {
-      return Double.parseDouble(f);
-    } catch (Exception e) {
-      throw new ParseException(f + " is not a valid number.", 0);
-    }
+  public static final double parseDouble(String field) {
+    return Double.parseDouble(field.replace(",", EMPTY_STRING));
   }
 
   /**

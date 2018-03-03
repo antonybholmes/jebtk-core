@@ -84,17 +84,21 @@ public class CommandLineArgs implements Iterable<CommandLineArg> {
       String arg = args[argIndex];
 
       for (CommandLineOption option : options) {
-        if (arg.startsWith("--" + option.getLongName())) {
+        if (arg.startsWith("--")) {
           if (option.hasArg()) {
-            // skip the equals and take the rest as an argument
-            String value = arg.substring(arg.indexOf("=") + 1);
+            if (arg.contains(option.getLongName() + "=")) {
+              // skip the equals and take the rest as an argument
+              String value = arg.substring(arg.indexOf("=") + 1);
 
-            commandLineOptions.add(new CommandLineArg(option, value));
+              commandLineOptions.add(new CommandLineArg(option, value));
+              break;
+            }
           } else {
-            commandLineOptions.add(new CommandLineArg(option));
+            if (arg.equals("--" + option.getLongName())) {
+              commandLineOptions.add(new CommandLineArg(option));
+              break;
+            }
           }
-
-          break;
         } else if (arg.equals("-" + option.getShortName())) {
           if (option.hasArg()) {
             String value = args[argIndex + 1];

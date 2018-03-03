@@ -21,7 +21,9 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.File;
 import java.io.FileFilter;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
@@ -38,6 +40,7 @@ import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Deque;
 import java.util.List;
@@ -170,6 +173,42 @@ public class FileUtils {
   }
 
   /**
+   * Find all files with a given file extension.
+   * 
+   * @param root    The root directory to search.
+   * @param ext     The file extension to search for.
+   * @return
+   * @throws IOException
+   */
+  public static List<Path> ext(Path root, String ext) throws IOException {
+    List<Path> files = FileUtils.ls(root, false, false, true);
+
+    List<Path> ret = new ArrayList<Path>(files.size());
+
+    for (Path file : files) {
+      if (PathUtils.getFileExt(file).equals(ext)) {
+        ret.add(file);
+      }
+    }
+
+    return ret;
+  }
+
+  public static List<Path> endsWith(Path root, String ext) throws IOException {
+    List<Path> files = FileUtils.ls(root, false, false, true);
+
+    List<Path> ret = new ArrayList<Path>(files.size());
+
+    for (Path file : files) {
+      if (PathUtils.getName(file).endsWith(ext)) {
+        ret.add(file);
+      }
+    }
+
+    return ret;
+  }
+
+  /**
    * List just the directories in a directory.
    *
    * @param root the root
@@ -274,18 +313,6 @@ public class FileUtils {
   /**
    * Find the first file whose name ends with a given suffix.
    *
-   * @param dir the dir
-   * @param pattern the pattern
-   * @return the path
-   * @throws IOException Signals that an I/O exception has occurred.
-   */
-  public static Path endsWith(Path dir, String pattern) throws IOException {
-    return endsWith(dir, false, pattern);
-  }
-
-  /**
-   * Find the first file whose name ends with a given suffix.
-   *
    * @param dir The starting directory.
    * @param recursive Whether to search recursively.
    * @param pattern The pattern to look for.
@@ -311,7 +338,7 @@ public class FileUtils {
       boolean includeDirs,
       boolean recursive,
       String pattern) throws IOException {
-    for (Path path : ls(dir, includeDirs, recursive)) {
+    for (Path path : ls(dir, includeDirs, false, recursive)) {
       if (path.toString().endsWith(pattern)) {
         return path;
       }
@@ -748,6 +775,11 @@ public class FileUtils {
     return new DataOutputStream(newOutputStream(file));
   }
 
+  public static FileOutputStream newFileOutputStream(Path file)
+      throws IOException {
+    return new FileOutputStream(file.toFile());
+  }
+
   /**
    * Returns a new random access file for reading.
    *
@@ -1012,5 +1044,43 @@ public class FileUtils {
     }
 
     return rows;
+  }
+
+  /**
+   * Zip some files.
+   * 
+   * @param out
+   * @param files
+   */
+  public static void zip(Path out, Collection<Path> files) {
+
+    byte[] buffer = new byte[1024];
+
+    try {
+
+      FileOutputStream fos = newFileOutputStream(out);
+      ZipOutputStream zos = new ZipOutputStream(fos);
+
+      for(Path f : files) {
+
+        ZipEntry ze = new ZipEntry(PathUtils.getName(f));
+        zos.putNextEntry(ze);
+
+        InputStream in = newInputStream(f);
+
+        int len;
+
+        while ((len = in.read(buffer)) > 0) {
+          zos.write(buffer, 0, len);
+        }
+
+        in.close();
+        zos.closeEntry();
+      }
+
+      zos.close();
+    } catch(IOException e){
+      e.printStackTrace();
+    }
   }
 }
