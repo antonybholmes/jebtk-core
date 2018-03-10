@@ -122,7 +122,7 @@ public class PathUtils {
   }
 
   /**
-   * Name prefix.
+   * Returns the file name up until the first period (.) is encountered.
    *
    * @param file the file
    * @return the string

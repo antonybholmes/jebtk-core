@@ -47,25 +47,21 @@ public class AppService implements NameProperty {
     return AppServiceLoader.INSTANCE;
   }
 
-  /** The Constant APP_HOME. */
-  public static final String APP_HOME = "app_home";
+  public static final Path APP_HOME = FileUtils.HOME.resolve("app_home");
 
-  public static final Path APP_ROOT = FileUtils.home().resolve(APP_HOME);
-
-  public static final Path RES_DIR = APP_ROOT.resolve("res");
+  public static final Path RES_HOME = APP_HOME.resolve("res");
 
   /** Returns the shared module directory */
-  public static final Path MOD_DIR = RES_DIR.resolve("modules");
+  public static final Path MOD_HOME = RES_HOME.resolve("modules");
   
   
-  public static final Path INSTANCE_RES_DIR = PathUtils.getPath("res");
+  public static final Path RES_DIR = PathUtils.getPath("res");
 
   /** 
    * Returns the module directory for an app. This is specific to the
    * app's location
    */
-  public static final Path INSTANCE_MOD_DIR = 
-      INSTANCE_RES_DIR.resolve("modules");
+  public static final Path MOD_DIR = RES_DIR.resolve("modules");
   
 
   /** The m directory. */
@@ -102,9 +98,9 @@ public class AppService implements NameProperty {
       e.printStackTrace();
     }
     
-    mModDir = MOD_DIR.resolve(mName);
+    mModDir = MOD_HOME.resolve(mName);
     
-    mInstModDir = INSTANCE_MOD_DIR.resolve(mName);
+    mInstModDir = MOD_DIR.resolve(mName);
   }
 
   /*
@@ -156,6 +152,6 @@ public class AppService implements NameProperty {
    * @return the path
    */
   public static Path create(String name) {
-    return APP_ROOT.resolve(name.toLowerCase());
+    return APP_HOME.resolve(name.toLowerCase());
   }
 }

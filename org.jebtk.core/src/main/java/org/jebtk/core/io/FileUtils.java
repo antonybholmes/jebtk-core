@@ -21,9 +21,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
-import java.io.File;
 import java.io.FileFilter;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
@@ -31,6 +29,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.io.RandomAccessFile;
 import java.io.Reader;
 import java.nio.charset.Charset;
@@ -45,6 +44,7 @@ import java.util.Collections;
 import java.util.Deque;
 import java.util.List;
 import java.util.zip.GZIPInputStream;
+import java.util.zip.GZIPOutputStream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipException;
 import java.util.zip.ZipFile;
@@ -65,6 +65,8 @@ public class FileUtils {
 
   /** The Constant LOG. */
   protected final static Logger LOG = LoggerFactory.getLogger(FileUtils.class);
+  
+  public static final Path HOME = PathUtils.getPath(System.getProperty("user.home"));
 
   /**
    * Instantiates a new file utils.
@@ -73,14 +75,6 @@ public class FileUtils {
     // Do nothing
   }
 
-  /**
-   * Return the user's home directory.
-   *
-   * @return the path
-   */
-  public static Path home() {
-    return PathUtils.getPath(System.getProperty("user.home"));
-  }
 
   /**
    * Ls.
@@ -434,14 +428,19 @@ public class FileUtils {
   }
 
   /**
-   * New buffered writer.
+   * New buffered writer. If the file has a gz extension, the writer will
+   * automatically wrap a gz compressed output.
    *
    * @param file the file
    * @return the buffered writer
    * @throws IOException Signals that an I/O exception has occurred.
    */
   public static BufferedWriter newBufferedWriter(Path file) throws IOException {
-    return Files.newBufferedWriter(file, DEFAULT_CHARSET);
+    if (PathUtils.getFileExt(file).equals("gz")) {
+      return new BufferedWriter(new OutputStreamWriter(new GZIPOutputStream(newFileOutputStream(file)), DEFAULT_CHARSET));
+    } else {
+      return Files.newBufferedWriter(file, DEFAULT_CHARSET);
+    }
   }
 
   /**
