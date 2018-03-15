@@ -19,6 +19,7 @@ import java.awt.Desktop;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URI;
@@ -26,6 +27,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
+import java.nio.file.Path;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.security.cert.Certificate;
@@ -42,6 +44,8 @@ import org.jebtk.core.collections.CollectionUtils;
 import org.jebtk.core.io.ByteStreams;
 import org.jebtk.core.io.FileUtils;
 import org.jebtk.core.text.TextUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -50,8 +54,11 @@ import org.jebtk.core.text.TextUtils;
  * @author Antony Holmes Holmes
  *
  */
-public class UrlUtils {
+public class URLUtils {
 
+  private static final Logger LOG = 
+      LoggerFactory.getLogger(URLUtils.class);
+  
   /** The Constant GOOD_IRI_CHAR. */
   public static final Pattern GOOD_IRI_CHAR = Pattern
       .compile("a-zA-Z0-9\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF");
@@ -102,6 +109,7 @@ public class UrlUtils {
           + "\\-\\.\\+\\!\\*\\'\\(\\)\\,\\_])|(?:\\%[a-fA-F0-9]{2}))*)?"
           + "(?:\\b|$)");
 
+
   // and finally, a word boundary or end of
   // input. This is to stop foo.sure from
   // matching as foo.su
@@ -109,7 +117,7 @@ public class UrlUtils {
   /**
    * Instantiates a new network.
    */
-  private UrlUtils() {
+  private URLUtils() {
     // Do nothing
   }
 
@@ -487,4 +495,26 @@ public class UrlUtils {
     }
   }
 
+  public static void downloadFile(URL url, Path localFile) throws IOException {
+   LOG.info("Downloading {}...", url);
+    
+    OutputStream output = FileUtils.newOutputStream(localFile);
+
+    InputStream input = url.openStream();
+
+    try {
+      byte[] buffer = new byte[2048];
+
+      int bytesRead;
+
+      while ((bytesRead = input.read(buffer)) != -1) {
+        output.write(buffer, 0, bytesRead);
+      }
+    } finally {
+      input.close();
+      output.close();
+    }
+    
+    LOG.info("Finished.");
+  }
 }

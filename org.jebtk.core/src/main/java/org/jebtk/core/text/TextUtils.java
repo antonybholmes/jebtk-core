@@ -178,10 +178,20 @@ public class TextUtils {
   public static final Pattern STRICT_INT_PATTERN = Pattern
       .compile("^([-+]?[0-9]+([eE][-+]?[0-9]+)?)$");
 
-  /** The Constant NUMBER_PATTERN. */
-  public static final Pattern NUMBER_PATTERN = Pattern
-      .compile("([-+]?[0-9]*\\.?[0-9]+([eE][-+]?[0-9]+)?)");
+  private static final String DIGIT_REGEX = "(\\p{Digit}+)";
+  private static final String HEX_DIGITS_REGEX = "(\\p{XDigit}+)";
+  private static final String HEX_REGEX = "(0[xX]" + HEX_DIGITS_REGEX + ")";
+  private static final String PM_REGEX = "([+-]?)";
   
+  private static final String EXP_REGEX = "([eE]" + PM_REGEX + DIGIT_REGEX + ")";
+  private static final String NUM_REGEX = "(" + DIGIT_REGEX + "\\.?" + DIGIT_REGEX + "?" + EXP_REGEX + "?)";
+  
+  private static final String NUMBER_REGEX =
+      "(" + PM_REGEX + "(NaN|Infinity|Inf|" + NUM_REGEX + "|" + HEX_REGEX + "))";
+  
+  /** The Constant NUMBER_PATTERN. */
+  public static final Pattern NUMBER_PATTERN = Pattern.compile(NUMBER_REGEX);
+
   public static final Pattern INT_PARSE_PATTERN = Pattern
       .compile("(\\-|\\+)?[0-9]+");
 
@@ -189,6 +199,48 @@ public class TextUtils {
   public static final Pattern VAR_YEAR_PATTERN = Pattern
       .compile("\\$\\{year\\}");
 
+  
+  // an exponent is 'e' or 'E' followed by an optionally
+  // signed decimal integer.
+  private static final String EXP = "[eE][+-]?" + DIGIT_REGEX;
+  private static final String FP_REGEX = ("([+-]?(" + // Optional sign character
+      "NaN|" + // "NaN" string
+      "Infinity|" + // "Infinity" string
+
+      // A decimal floating-point string representing a finite positive
+      // number without a leading sign has at most five basic pieces:
+      // Digits . Digits ExponentPart FloatTypeSuffix
+      //
+      // Since this method allows integer-only strings as input
+      // in addition to strings of floating-point literals, the
+      // two sub-patterns below are simplifications of the grammar
+      // productions from section 3.10.2 of
+      // The Java™ Language Specification.
+
+      // Digits ._opt Digits_opt ExponentPart_opt FloatTypeSuffix_opt
+      "(((" + DIGIT_REGEX + "(\\.)?(" + DIGIT_REGEX + "?)(" + EXP + ")?)|" +
+
+      // . Digits ExponentPart_opt FloatTypeSuffix_opt
+      "(\\.(" + DIGIT_REGEX + ")(" + EXP + ")?)|" +
+
+      // Hexadecimal strings
+      "((" +
+      // 0[xX] HexDigits ._opt BinaryExponent FloatTypeSuffix_opt
+      "(0[xX]" + HEX_DIGITS_REGEX + "(\\.)?)|" +
+
+      // 0[xX] HexDigits_opt . HexDigits BinaryExponent FloatTypeSuffix_opt
+      "(0[xX]" + HEX_DIGITS_REGEX + "?(\\.)" + HEX_DIGITS_REGEX + ")" +
+
+      ")[pP][+-]?" + DIGIT_REGEX + "))" + "[fFdD]?)))");
+
+  public static final Pattern FP_PATTERN = Pattern.compile(FP_REGEX);
+  
+  public static final String SIMPLE_HEX_REGEX =
+      "(0[xX]" + HEX_DIGITS_REGEX + ")";
+
+  public static final Pattern SIMPLE_HEX_PATTERN = 
+      Pattern.compile(SIMPLE_HEX_REGEX);
+  
   /**
    * The constant ELLIPSIS.
    */
@@ -219,24 +271,6 @@ public class TextUtils {
   public static final String NA = "n/a";
 
   /**
-   * The constant NUMBER_FORMAT_2DP.
-   */
-  private static final String NUMBER_FORMAT_2DP = "0.00";
-
-  /** The Constant NUMBER_FORMAT_4DP. */
-  private static final String NUMBER_FORMAT_4DP = "0.0000";
-
-  /**
-   * The constant NUMBER_FORMAT_1DP.
-   */
-  private static final String NUMBER_FORMAT_1DP = "0.0";
-
-  /**
-   * The constant NUMBER_FORMAT_COMMAS.
-   */
-  private static final String NUMBER_FORMAT_COMMAS = "#,###";
-
-  /**
    * The constant OPEN_PARENTHESES.
    */
   private static final String OPEN_PARENTHESES = "(";
@@ -250,6 +284,8 @@ public class TextUtils {
    * The constant UNDERSCORE_DELIMITER.
    */
   public static final String UNDERSCORE_DELIMITER = "_";
+
+  public static final String FORMAT_DELIMITER = "{}";
 
   /**
    * The constant TRUE.
@@ -273,13 +309,13 @@ public class TextUtils {
   public static final String NAN = "NaN";
 
   /** Lookup table for characters mapping between 0 and 25. */
-  public static final char[] CAPITAL_ALPHABET_CHARS = { 'A', 'B', 'C', 'D', 'E',
+  public static final char[] CAPITAL_ALPHABET_CHARS = {'A', 'B', 'C', 'D', 'E',
       'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
-      'U', 'V', 'W', 'X', 'Y', 'Z' };
+      'U', 'V', 'W', 'X', 'Y', 'Z'};
 
   /** The Constant SENTENCE_CASE_REGEX. */
-  private final static Pattern SENTENCE_CASE_REGEX = Pattern
-      .compile("(^|[\\.\\!\\?])\\s*([a-z])");
+  private final static Pattern SENTENCE_CASE_REGEX = 
+      Pattern.compile("(^|[\\.\\!\\?])\\s*([a-z])");
 
   /** The Constant TITLE_CASE_REGEX. */
   private final static Pattern TITLE_CASE_REGEX = Pattern
@@ -897,8 +933,9 @@ public class TextUtils {
   }
 
   /**
-   * Parses an integer field as a double and then converts back to int to provide
-   * more robust handling of ints written as floating point numbers in files.
+   * Parses an integer field as a double and then converts back to int to
+   * provide more robust handling of ints written as floating point numbers in
+   * files.
    *
    * @param field the field
    * @return the int
@@ -910,13 +947,13 @@ public class TextUtils {
       return Integer.parseInt(field);
     } else {
       // Convert to double and parse it.
-      return (int)parseDouble(field); 
+      return (int) parseDouble(field);
     }
   }
-  
+
   /**
-   * Parse a string as long. If the string appears to be a double, convert
-   * to double and cast to long.
+   * Parse a string as long. If the string appears to be a double, convert to
+   * double and cast to long.
    * 
    * @param field
    * @return
@@ -927,21 +964,43 @@ public class TextUtils {
       return Long.parseLong(field);
     } else {
       // Convert to double and parse it.
-      return (long)parseDouble(field); 
+      return (long) parseDouble(field);
     }
   }
 
   /**
-   * More robust number extraction that copes with text in the field. It
-   * attempts to extract the longest run of digits (with optional period) {
-   * possible from a string and convert it to a number.
+   * More robust number extraction that copes with text in the field. If the
+   * field appears to be a number, parse that, else look for a number substring
+   * in the text and convert that to a double, failing that return NaN. This
    *
    * @param field the field
-   * @return A double
-   * @throws ParseException the parse exception
+   * @return A double         A double value or NaN if the field is either
+   *                          unparsable or NaN itself.
    */
   public static final double parseDouble(String field) {
-    return Double.parseDouble(field.replace(",", EMPTY_STRING));
+    // Remove commas
+    field = field.replace(",", EMPTY_STRING);
+
+    Matcher matcher = NUMBER_PATTERN.matcher(field);
+
+    //System.err.println(field + " " + NUMBER_PATTERN + " " + matcher.find());
+
+    // Whole field is a number so just parse it
+    if (matcher.matches()) {
+      return Double.parseDouble(field);
+    } else {
+      // Attempt to find a number in the string.
+      
+      matcher.reset();
+      
+      if (matcher.find()) {
+        return Double.parseDouble(matcher.group(1));
+      } else {
+        return Double.NaN;
+      }
+    }
+
+    //return Double.parseDouble(field.replace(",", EMPTY_STRING));
   }
 
   /**
@@ -1047,9 +1106,14 @@ public class TextUtils {
     }
   }
 
+  public static final String truncateCenter(String text) {
+    return truncateCenter(text, 50);
+  }
+
   /**
-   * Truncates the center of a string to a specified length and adds ellipses to
-   * indicate it has been truncated.
+   * Truncates the center of a string to a specified length and placing an
+   * ellipsis '...' in the middle of the string to indicate the middle portion
+   * has been truncated.
    *
    * @param text the text
    * @param length the length
@@ -1062,8 +1126,8 @@ public class TextUtils {
 
     int l = (length - 3) / 2;
 
-    return text.substring(0, l) + "..."
-        + text.substring(text.length() - l - 1, text.length());
+    return text.substring(0, l) + ELLIPSIS
+        + text.substring(text.length() - l - 1);
   }
 
   /**
@@ -1578,7 +1642,7 @@ public class TextUtils {
    */
   public static <T> String toString(List<T> items) {
     return OPEN_PARENTHESES + join(items, FORMATTED_LIST_DELIMITER)
-        + CLOSE_PARENTHESES;
+    + CLOSE_PARENTHESES;
   }
 
   /**
@@ -2658,5 +2722,44 @@ public class TextUtils {
     }
 
     return false;
+  }
+
+  /**
+   * Formats a string replacing '{}' with variables. This method uses
+   * concatenation to provide a faster format method than
+   * <code>String.format()</code>.
+   * 
+   * @param output
+   * @param vars
+   * @return
+   */
+  public static String format(String line, Object... vars) {
+    if (vars.length == 0) {
+      return line;
+    }
+
+    int n = line.length();
+
+    int i = 0;
+    int j = line.indexOf(FORMAT_DELIMITER);
+
+    int c = 0;
+
+    StringBuilder buffer = new StringBuilder();
+
+    while (j != -1) {
+      buffer.append(line.substring(i, j)).append(vars[c++]);
+
+      // Skip to next token
+      i = j + 2;
+      j = line.indexOf(FORMAT_DELIMITER, i);
+    }
+
+    // Add whatever is remaining
+    if (i < n) {
+      buffer.append(line.substring(i));
+    }
+
+    return buffer.toString();
   }
 }

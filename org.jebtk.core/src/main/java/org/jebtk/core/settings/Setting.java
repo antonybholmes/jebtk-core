@@ -26,7 +26,7 @@ import org.jebtk.core.json.Json;
 import org.jebtk.core.json.JsonObject;
 import org.jebtk.core.json.JsonRepresentation;
 import org.jebtk.core.network.UrlBuilder;
-import org.jebtk.core.network.UrlUtils;
+import org.jebtk.core.network.URLUtils;
 import org.jebtk.core.path.Path;
 import org.jebtk.core.path.StrictPath;
 import org.jebtk.core.text.TextUtils;
@@ -354,7 +354,7 @@ public class Setting extends ChangeListeners
     } else if (ColorUtils.isHtmlColor(value)) {
       return new SettingColor(path, ColorUtils.decodeHtmlColor(value),
           description, locked);
-    } else if (UrlUtils.isUrl(value)) {
+    } else if (URLUtils.isUrl(value)) {
       return new SettingUrl(path, new UrlBuilder(value), description, locked);
     } else if (value.toLowerCase().equals(TextUtils.TRUE)) {
       return new SettingBool(path, true, description, locked);
