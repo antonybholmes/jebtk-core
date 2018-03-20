@@ -18,17 +18,22 @@ package org.jebtk.core.dictionary;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.IOException;
+import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
 import org.jebtk.core.io.Io;
+import org.jebtk.core.io.PathUtils;
 import org.jebtk.core.text.TextUtils;
+import org.xml.sax.SAXException;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -38,6 +43,21 @@ import org.jebtk.core.text.TextUtils;
  *
  */
 public class DictionaryService {
+
+  private static class DictionaryServiceLoader {
+
+    /** The Constant INSTANCE. */
+    private static final DictionaryService INSTANCE = new DictionaryService();
+  }
+
+  /**
+   * Gets the single instance of SettingsService.
+   *
+   * @return single instance of SettingsService
+   */
+  public static DictionaryService getInstance() {
+    return DictionaryServiceLoader.INSTANCE;
+  }
 
   /**
    * The words.
@@ -54,41 +74,49 @@ public class DictionaryService {
    */
   private Map<String, Set<String>> synonyms = new HashMap<String, Set<String>>();
 
+  private boolean mAutoLoad = true;
+
   /**
    * The constant DEFAULT_FILE.
    */
-  public static final File DEFAULT_FILE = new File("res/dictionary.xml");
+  public static final Path DEFAULT_FILE = PathUtils.getPath("res/dictionary.xml");
 
-  /**
-   * The constant INSTANCE.
-   */
-  private static final DictionaryService INSTANCE = new DictionaryService();
 
-  /**
-   * Gets the single instance of DictionaryService.
-   *
-   * @return single instance of DictionaryService
-   */
-  public static final DictionaryService getInstance() {
-    return INSTANCE;
+  private void autoLoad() {
+    if (mAutoLoad ) {
+      // Set this here to stop recursive infinite calling
+      // of this method.
+      mAutoLoad = false;
+
+      try {
+        loadXml();
+      } catch (SAXException | IOException | ParserConfigurationException e) {
+        e.printStackTrace();
+      }
+      // autoLoadJson();
+
+    }
+  }
+
+  private void loadXml() throws ParserConfigurationException, SAXException, IOException {
+    loadXml(DEFAULT_FILE);
   }
 
   /**
    * Load xml.
    *
    * @param file the file
+   * @throws SAXException 
+   * @throws ParserConfigurationException 
+   * @throws IOException 
    */
-  public void loadXml(File file) {
-    try {
-      SAXParserFactory factory = SAXParserFactory.newInstance();
-      SAXParser saxParser = factory.newSAXParser();
+  public void loadXml(Path file) throws ParserConfigurationException, SAXException, IOException {
+    SAXParserFactory factory = SAXParserFactory.newInstance();
+    SAXParser saxParser = factory.newSAXParser();
 
-      DictionaryXmlHandler handler = new DictionaryXmlHandler(this);
+    DictionaryXmlHandler handler = new DictionaryXmlHandler(this);
 
-      saxParser.parse(file, handler);
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
+    saxParser.parse(file.toFile(), handler);
   }
 
   /**
@@ -132,6 +160,8 @@ public class DictionaryService {
    * @return true, if successful
    */
   public boolean exists(String word) {
+    autoLoad();
+    
     return words.contains(word);
   }
 
@@ -163,6 +193,8 @@ public class DictionaryService {
    * @return the definition
    */
   public String getDefinition(String word) {
+    autoLoad();
+    
     return definitions.get(word.toLowerCase());
   }
 
@@ -192,6 +224,8 @@ public class DictionaryService {
    * @return the synonyms
    */
   public Set<String> getSynonyms(String word) {
+    autoLoad();
+    
     Set<String> words = new HashSet<String>();
 
     words.add(word);

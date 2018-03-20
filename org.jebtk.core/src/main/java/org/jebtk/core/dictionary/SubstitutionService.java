@@ -16,17 +16,21 @@
 package org.jebtk.core.dictionary;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
+import java.io.IOException;
+import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
+import org.jebtk.core.io.FileUtils;
 import org.jebtk.core.io.Io;
+import org.jebtk.core.io.PathUtils;
 import org.jebtk.core.text.TextUtils;
+import org.xml.sax.SAXException;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -44,10 +48,12 @@ public class SubstitutionService {
    */
   private Map<String, String> substitutions = new HashMap<String, String>();
 
+  private boolean mAutoLoad = true;
+
   /**
    * The constant DEFAULT_FILE.
    */
-  public static final File DEFAULT_FILE = new File("res/substitutions.txt");
+  public static final Path DEFAULT_FILE = PathUtils.getPath("res/substitutions.txt");
 
   /**
    * The constant instance.
@@ -63,32 +69,47 @@ public class SubstitutionService {
     return instance;
   }
 
+  private void autoLoad() {
+    if (mAutoLoad ) {
+      // Set this here to stop recursive infinite calling
+      // of this method.
+      mAutoLoad = false;
+
+      try {
+        loadTSVFile(DEFAULT_FILE);
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+      // autoLoadJson();
+
+    }
+  }
+  
   /**
    * Load xml.
    *
    * @param file the file
+   * @throws IOException 
+   * @throws SAXException 
+   * @throws ParserConfigurationException 
    */
-  public void loadXml(File file) {
-    try {
+  public void loadXml(Path file) throws SAXException, IOException, ParserConfigurationException {
       SAXParserFactory factory = SAXParserFactory.newInstance();
       SAXParser saxParser = factory.newSAXParser();
 
       SubstitutionXmlHandler handler = new SubstitutionXmlHandler(this);
 
-      saxParser.parse(file, handler);
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
+      saxParser.parse(file.toFile(), handler);
   }
 
   /**
    * Load tsv file.
    *
    * @param file the file
+   * @throws IOException 
    */
-  public void loadTSVFile(File file) {
-    try {
-      BufferedReader reader = new BufferedReader(new FileReader(file));
+  public void loadTSVFile(Path file) throws IOException {
+      BufferedReader reader = FileUtils.newBufferedReader(file);
 
       String line;
 
@@ -106,9 +127,6 @@ public class SubstitutionService {
       } finally {
         reader.close();
       }
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
   }
 
   /**
@@ -128,6 +146,8 @@ public class SubstitutionService {
    * @return the substitute
    */
   public String getSubstitute(String word) {
+    autoLoad();
+    
     if (word == null) {
       return null;
     }
@@ -138,22 +158,4 @@ public class SubstitutionService {
 
     return substitutions.get(word);
   }
-
-  /**
-   * Returns the substitute of a given word. If the word has no substitute, the
-   * word itself will be returned.
-   * 
-   * @param word
-   * @return
-   */
-  /*
-   * public String replace(String text) { if (word == null) { return null; }
-   * 
-   * String ret = word;
-   * 
-   * for (String w : substitutions.keySet()) { ret = ret.replaceAll(w,
-   * substitutions.get(w)); }
-   * 
-   * return ret; }
-   */
 }

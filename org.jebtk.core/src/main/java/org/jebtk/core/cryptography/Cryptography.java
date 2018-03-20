@@ -70,6 +70,14 @@ public class Cryptography {
   public static String generateRandAlphaNumId64() {
     return generateRandAlphaNumId(64);
   }
+  
+  /**
+   * Generate a random 48 character string.
+   * @return
+   */
+  public static String generateRandAlphaNumId48() {
+    return generateRandAlphaNumId(48);
+  }
 
   /**
    * Generate a random alpha numeric (case sensitive) string of n characters.

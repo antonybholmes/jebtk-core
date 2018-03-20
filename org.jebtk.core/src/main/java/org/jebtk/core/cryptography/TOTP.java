@@ -37,6 +37,9 @@ public class TOTP {
   /** The Constant LAST_BYTE. */
   private static final int LAST_BYTE = 31;
 
+  /** How many digits in length should the TOTP be */
+  private static final int DEFAULT_TOTP_DIGITS = 6;
+
   /**
    * Topt256 auth.
    *
@@ -309,7 +312,7 @@ public class TOTP {
    * @return the int
    */
   public static int generateCTOTP(String key, long counter) {
-    return generateCTOTP(key, counter, 6);
+    return generateCTOTP(key, counter, DEFAULT_TOTP_DIGITS);
   }
 
   /**
