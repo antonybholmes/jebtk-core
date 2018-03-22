@@ -188,6 +188,14 @@ public class FileUtils {
     return ret;
   }
 
+  /**
+   * Find all files that end with a given suffix.
+   * 
+   * @param root
+   * @param ext
+   * @return
+   * @throws IOException
+   */
   public static List<Path> endsWith(Path root, String ext) throws IOException {
     List<Path> files = FileUtils.ls(root, false, false, true);
 
@@ -590,7 +598,7 @@ public class FileUtils {
    * @return true, if is file
    */
   public static boolean isFile(Path file) {
-    return !isDirectory(file);
+    return exists(file) & !isDirectory(file);
   }
 
   /**

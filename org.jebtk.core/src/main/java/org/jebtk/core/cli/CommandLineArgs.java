@@ -123,4 +123,12 @@ public class CommandLineArgs implements Iterable<CommandLineArg> {
 
     return commandLineOptions;
   }
+
+  public static String longArg(String name, String value) {
+    return new StringBuilder().append("--").append(name).append("=").append(value).toString();
+  }
+  
+  public static String longArg(String name) {
+    return new StringBuilder().append("--").append(name).toString();
+  }
 }
