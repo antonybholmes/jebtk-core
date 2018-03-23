@@ -343,6 +343,18 @@ public class TextUtils {
   public static boolean isNullOrEmpty(final String s) {
     return s == null || s.isEmpty();
   }
+  
+  /**
+   * If string s is null or empty, return alt else return s. This can be
+   * used as quick replacement function for cleaning parameters.
+   * 
+   * @param s
+   * @param alt
+   * @return
+   */
+  public static String isNullOrEmpty(final String s, String alt) {
+    return isNullOrEmpty(s) ? alt : s;
+  }
 
   /**
    * Returns true if the string is null, empty or 'n/a'.
@@ -2762,4 +2774,6 @@ public class TextUtils {
 
     return buffer.toString();
   }
+
+  
 }
