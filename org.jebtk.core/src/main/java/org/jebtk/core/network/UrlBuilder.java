@@ -62,7 +62,7 @@ public class UrlBuilder implements Serializable {
   /**
    * The member params.
    */
-  private List<String> mParams = new ArrayList<String>();
+  private List<Param> mParams = new ArrayList<Param>();
 
   /**
    * Instantiates a new url builder.
@@ -100,8 +100,7 @@ public class UrlBuilder implements Serializable {
    * @param parts the parts
    * @throws UnsupportedEncodingException the unsupported encoding exception
    */
-  public UrlBuilder(UrlBuilder urlBuilder, String... parts)
-      throws UnsupportedEncodingException {
+  public UrlBuilder(UrlBuilder urlBuilder, String... parts) {
     mParts.addAll(urlBuilder.mParts);
     mParams.addAll(urlBuilder.mParams);
 
@@ -117,7 +116,7 @@ public class UrlBuilder implements Serializable {
    * @return the url builder
    * @throws UnsupportedEncodingException the unsupported encoding exception
    */
-  public UrlBuilder resolve(String path) throws UnsupportedEncodingException {
+  public UrlBuilder resolve(String path) {
     return new UrlBuilder(this, path);
   }
 
@@ -128,7 +127,7 @@ public class UrlBuilder implements Serializable {
    * @return the url builder
    * @throws UnsupportedEncodingException the unsupported encoding exception
    */
-  public UrlBuilder resolve(Object path) throws UnsupportedEncodingException {
+  public UrlBuilder resolve(Object path) {
     return resolve(path.toString());
   }
 
@@ -139,7 +138,7 @@ public class UrlBuilder implements Serializable {
    * @return the url builder
    * @throws UnsupportedEncodingException the unsupported encoding exception
    */
-  public UrlBuilder resolve(int path) throws UnsupportedEncodingException {
+  public UrlBuilder resolve(int path) {
     return resolve(Integer.toString(path));
   }
 
@@ -150,7 +149,7 @@ public class UrlBuilder implements Serializable {
    * @return the url builder
    * @throws UnsupportedEncodingException the unsupported encoding exception
    */
-  public UrlBuilder resolve(double path) throws UnsupportedEncodingException {
+  public UrlBuilder resolve(double path) {
     return resolve(Double.toString(path));
   }
 
@@ -162,8 +161,7 @@ public class UrlBuilder implements Serializable {
    * @return the url builder
    * @throws UnsupportedEncodingException the unsupported encoding exception
    */
-  public UrlBuilder param(String name, double value)
-      throws UnsupportedEncodingException {
+  public UrlBuilder param(String name, double value) {
     return param(name, Double.toString(value));
   }
 
@@ -175,8 +173,7 @@ public class UrlBuilder implements Serializable {
    * @return the url builder
    * @throws UnsupportedEncodingException the unsupported encoding exception
    */
-  public UrlBuilder param(String name, int value)
-      throws UnsupportedEncodingException {
+  public UrlBuilder param(String name, int value) {
     return param(name, Integer.toString(value));
   }
 
@@ -188,8 +185,7 @@ public class UrlBuilder implements Serializable {
    * @return the url builder
    * @throws UnsupportedEncodingException the unsupported encoding exception
    */
-  public UrlBuilder param(String name, Object value)
-      throws UnsupportedEncodingException {
+  public UrlBuilder param(String name, Object value) {
     return param(name, value.toString());
   }
 
@@ -201,11 +197,14 @@ public class UrlBuilder implements Serializable {
    * @return the url builder
    * @throws UnsupportedEncodingException the unsupported encoding exception
    */
-  public UrlBuilder param(String name, String value)
-      throws UnsupportedEncodingException {
+  public UrlBuilder param(String name, String value) {
+    return param(new StaticParam(name, value));
+  }
+  
+  public UrlBuilder param(Param param) {
     UrlBuilder url = new UrlBuilder(this);
 
-    url.mParams.add(getParamString(name, value));
+    url.mParams.add(param);
 
     return url;
   }
@@ -223,7 +222,7 @@ public class UrlBuilder implements Serializable {
     UrlBuilder url = new UrlBuilder(this);
 
     for (Object value : values) {
-      url.mParams.add(getParamString(name, value));
+      url.mParams.add(new StaticParam(name, value));
     }
 
     return this;
@@ -236,9 +235,16 @@ public class UrlBuilder implements Serializable {
    * @return the string
    * @throws UnsupportedEncodingException the unsupported encoding exception
    */
-  protected static String clean(String text)
-      throws UnsupportedEncodingException {
-    return URLEncoder.encode(sanitize(text), "UTF-8");
+  protected static String clean(String text) {
+    String ret = TextUtils.EMPTY_STRING;
+    
+    try {
+      ret = URLEncoder.encode(sanitize(text), "UTF-8");
+    } catch (UnsupportedEncodingException e) {
+      e.printStackTrace();
+    }
+    
+    return ret;
   }
 
   /**
@@ -259,58 +265,6 @@ public class UrlBuilder implements Serializable {
     }
   }
 
-  /**
-   * Gets the param string.
-   *
-   * @param name the name
-   * @param value the value
-   * @return the param string
-   * @throws UnsupportedEncodingException the unsupported encoding exception
-   */
-  protected static String getParamString(String name, int value)
-      throws UnsupportedEncodingException {
-    return getParamString(name, Integer.toString(value));
-  }
-
-  /**
-   * Gets the param string.
-   *
-   * @param name the name
-   * @param value the value
-   * @return the param string
-   * @throws UnsupportedEncodingException the unsupported encoding exception
-   */
-  protected static String getParamString(String name, double value)
-      throws UnsupportedEncodingException {
-    return getParamString(name, Double.toString(value));
-  }
-
-  /**
-   * Gets the param string.
-   *
-   * @param name the name
-   * @param value the value
-   * @return the param string
-   * @throws UnsupportedEncodingException the unsupported encoding exception
-   */
-  protected static String getParamString(String name, Object value)
-      throws UnsupportedEncodingException {
-    return getParamString(name, value.toString());
-  }
-
-  /**
-   * Gets the param string.
-   *
-   * @param name the name
-   * @param value the value
-   * @return the param string
-   * @throws UnsupportedEncodingException the unsupported encoding exception
-   */
-  protected static String getParamString(String name, String value)
-      throws UnsupportedEncodingException {
-    return new StringBuilder(clean(name)).append("=").append(clean(value))
-        .toString();
-  }
 
   /*
    * (non-Javadoc)
@@ -335,7 +289,7 @@ public class UrlBuilder implements Serializable {
    * @return the url
    * @throws MalformedURLException the malformed url exception
    */
-  public URL toUrl() throws MalformedURLException {
+  public URL toURL() throws MalformedURLException {
     return new URL(toString());
   }
 

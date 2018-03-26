@@ -468,7 +468,7 @@ public class URLUtils {
    * @throws MalformedURLException the malformed URL exception
    */
   public static URLReader read(UrlBuilder url) throws MalformedURLException {
-    return read(url.toUrl());
+    return read(url.toURL());
   }
 
   /**

@@ -201,7 +201,7 @@ public class Setting extends ChangeListeners
 
     if (builder != null) {
       try {
-        url = builder.toUrl();
+        url = builder.toURL();
       } catch (MalformedURLException e) {
         e.printStackTrace();
       }
