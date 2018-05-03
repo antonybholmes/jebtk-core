@@ -21,7 +21,6 @@ import java.util.List;
 
 import org.jebtk.core.Function;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class MapStream allows values in a stream to be mapped to something else
  * on a one to one basis.

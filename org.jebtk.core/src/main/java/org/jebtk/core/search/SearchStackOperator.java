@@ -17,7 +17,6 @@ package org.jebtk.core.search;
 
 import org.jebtk.core.BooleanOperator;
 
-// TODO: Auto-generated Javadoc
 /**
  * Operators for search stack.
  *

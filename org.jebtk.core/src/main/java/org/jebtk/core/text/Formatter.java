@@ -22,7 +22,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Locale;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Formatter.
  */

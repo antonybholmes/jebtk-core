@@ -17,7 +17,6 @@ package org.jebtk.core.collections;
 
 import java.util.List;
 
-// TODO: Auto-generated Javadoc
 /**
  * Creates a simple Map of Maps where the primary and secondary maps have the
  * same key type (e.g. for mimicking a two dimensional structure).

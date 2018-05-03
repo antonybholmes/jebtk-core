@@ -18,7 +18,6 @@ package org.jebtk.core.collections;
 import java.util.ArrayList;
 import java.util.List;
 
-// TODO: Auto-generated Javadoc
 /**
  * ArrayList that auto fills with default values so that it is initialized to a
  * given size.

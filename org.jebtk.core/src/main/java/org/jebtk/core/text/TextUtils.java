@@ -35,7 +35,6 @@ import java.util.regex.Pattern;
 import org.jebtk.core.collections.CollectionUtils;
 import org.jebtk.core.io.FileUtils;
 
-// TODO: Auto-generated Javadoc
 /**
  * Functions for manipulating strings.
  * 
@@ -1294,19 +1293,33 @@ public class TextUtils {
    * @return the string
    */
   public static final String join(Collection<?> list, String delimiter) {
+    StringBuilder buffer = new StringBuilder();
+
+    join(list, delimiter, buffer);
+    
+    return buffer.toString();
+  }
+  
+  /**
+   * Concatenates a list of items into a single string where each item is
+   * separated by a delimiter.
+   * 
+   * @param list
+   * @param delimiter
+   * @param buffer
+   */
+  public static final void join(Collection<?> list, String delimiter, StringBuilder buffer) {
     if (CollectionUtils.isNullOrEmpty(list)) {
-      return EMPTY_STRING;
+      return;
     }
 
     Iterator<?> iter = list.iterator();
-
-    StringBuilder builder = new StringBuilder(toString(iter.next()));
+    
+    buffer.append(toString(iter.next()));
 
     while (iter.hasNext()) {
-      builder.append(delimiter).append(toString(iter.next()));
+      buffer.append(delimiter).append(toString(iter.next()));
     }
-
-    return builder.toString();
   }
 
   /**

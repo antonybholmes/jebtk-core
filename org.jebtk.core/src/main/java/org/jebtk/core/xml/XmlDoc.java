@@ -26,7 +26,6 @@ import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Document;
 
-// TODO: Auto-generated Javadoc
 /**
  * The class XmlDoc.
  */

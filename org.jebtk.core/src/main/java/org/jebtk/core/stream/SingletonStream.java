@@ -19,7 +19,6 @@ import java.util.List;
 
 import org.jebtk.core.collections.CollectionUtils;
 
-// TODO: Auto-generated Javadoc
 /**
  * Can be used to encapsulate a single item in a stream.
  *

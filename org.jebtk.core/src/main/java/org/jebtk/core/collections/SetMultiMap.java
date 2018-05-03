@@ -17,7 +17,6 @@ package org.jebtk.core.collections;
 
 import java.util.Set;
 
-// TODO: Auto-generated Javadoc
 /**
  * Creates a simple map of sets where the primary and secondary maps have the
  * same key type (e.g. for mimicking a two dimensional structure).

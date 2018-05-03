@@ -17,7 +17,6 @@ package org.jebtk.core.text;
 
 import java.io.IOException;
 
-// TODO: Auto-generated Javadoc
 /**
  * For classes that can output a text representation of themselves. This should
  * be used

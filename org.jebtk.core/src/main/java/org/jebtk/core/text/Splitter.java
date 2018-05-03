@@ -25,7 +25,6 @@ import org.jebtk.core.collections.IterMap;
 import org.jebtk.core.collections.MaxSizeArrayList;
 import org.jebtk.core.stream.Stream;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Splitter takes a string and splits it into substrings according to
  * a delimiter or set of delimiters.

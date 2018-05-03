@@ -17,7 +17,6 @@ package org.jebtk.core.text;
 
 import java.util.List;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Interface SplitMode.
  */

@@ -17,7 +17,6 @@ package org.jebtk.core.network;
 
 import org.jebtk.core.MessageException;
 
-// TODO: Auto-generated Javadoc
 /**
  * To be thrown when experiment search cannot connect to a server.
  *

@@ -27,7 +27,6 @@
  */
 package org.jebtk.core;
 
-// TODO: Auto-generated Javadoc
 /**
  * Describes a product version.
  * 

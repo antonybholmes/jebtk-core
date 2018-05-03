@@ -19,7 +19,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-// TODO: Auto-generated Javadoc
 /**
  * Simple stack that can be reused. This is for cases where the stack structure
  * maintains results so that it can be re-used without having to rebuild it each

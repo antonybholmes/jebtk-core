@@ -35,7 +35,6 @@ import org.jebtk.core.io.PathUtils;
 import org.jebtk.core.text.TextUtils;
 import org.xml.sax.SAXException;
 
-// TODO: Auto-generated Javadoc
 /**
  * Provides a dictionary service so strings/words can be mapped to synonyms.
  * 

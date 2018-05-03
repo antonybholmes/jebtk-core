@@ -18,7 +18,6 @@ package org.jebtk.core.collections;
 import java.util.ArrayList;
 import java.util.Collection;
 
-// TODO: Auto-generated Javadoc
 /**
  * An array list whose size has a fixed upper bound.
  *

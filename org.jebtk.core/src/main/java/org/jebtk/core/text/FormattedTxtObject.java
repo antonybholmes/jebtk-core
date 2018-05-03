@@ -15,7 +15,6 @@
  */
 package org.jebtk.core.text;
 
-// TODO: Auto-generated Javadoc
 /**
  * Provides a unique id to a class.
  * 

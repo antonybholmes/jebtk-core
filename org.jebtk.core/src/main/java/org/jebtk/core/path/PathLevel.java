@@ -17,7 +17,6 @@ package org.jebtk.core.path;
 
 import java.io.Serializable;
 
-// TODO: Auto-generated Javadoc
 /**
  * Represents the level on a path.
  * 

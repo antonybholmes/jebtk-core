@@ -15,7 +15,6 @@
  */
 package org.jebtk.core.stream;
 
-// TODO: Auto-generated Javadoc
 /**
  * Jump items (i.e skip)
  *

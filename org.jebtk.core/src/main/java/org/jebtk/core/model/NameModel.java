@@ -20,7 +20,6 @@ import java.util.List;
 
 import org.jebtk.core.event.ChangeListeners;
 
-// TODO: Auto-generated Javadoc
 /**
  * Generic model for sharing named items.
  *

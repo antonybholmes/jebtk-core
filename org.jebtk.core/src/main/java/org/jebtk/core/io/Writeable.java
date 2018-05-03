@@ -18,7 +18,6 @@ package org.jebtk.core.io;
 import java.io.IOException;
 import java.nio.file.Path;
 
-// TODO: Auto-generated Javadoc
 /**
  * The interface Writeable.
  */

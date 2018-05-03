@@ -15,7 +15,6 @@
  */
 package org.jebtk.core.tree;
 
-// TODO: Auto-generated Javadoc
 /**
  * Specialized root node for a tree. This node cannot contain data nor may its
  * name be changed.

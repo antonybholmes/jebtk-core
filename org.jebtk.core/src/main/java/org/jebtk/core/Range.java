@@ -18,7 +18,6 @@ package org.jebtk.core;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Range provides an iterable range object similar to python for
  * compactly iterating a variable over a number range instead of writing for

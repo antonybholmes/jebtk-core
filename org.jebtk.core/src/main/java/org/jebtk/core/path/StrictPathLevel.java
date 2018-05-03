@@ -15,7 +15,6 @@
  */
 package org.jebtk.core.path;
 
-// TODO: Auto-generated Javadoc
 /**
  * Represents the level on a path.
  * 

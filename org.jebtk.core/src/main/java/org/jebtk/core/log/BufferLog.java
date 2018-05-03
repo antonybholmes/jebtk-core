@@ -17,7 +17,6 @@ package org.jebtk.core.log;
 
 import org.jebtk.core.collections.CircularArray;
 
-// TODO: Auto-generated Javadoc
 /**
  * Stores a fixed number of log events.
  * 

@@ -17,7 +17,6 @@ package org.jebtk.core.text;
 
 import java.util.List;
 
-// TODO: Auto-generated Javadoc
 /**
  * Trimmer removes characters such as spaces from the beginning or end of a
  * string. This is used in conjuction with {@code Splitter} to create a

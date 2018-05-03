@@ -18,7 +18,6 @@ package org.jebtk.core.settings;
 import org.jebtk.core.path.StrictPath;
 import org.jebtk.core.text.TextUtils;
 
-// TODO: Auto-generated Javadoc
 /**
  * The class SettingsRootPath.
  */

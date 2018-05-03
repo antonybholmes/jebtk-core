@@ -27,9 +27,9 @@ import java.util.ArrayDeque;
 import org.jebtk.core.ColorUtils;
 import org.jebtk.core.Mathematics;
 import org.jebtk.core.io.FileUtils;
+import org.jebtk.core.network.UrlBuilder;
 import org.jebtk.core.text.TextUtils;
 
-// TODO: Auto-generated Javadoc
 /**
  * Parses json into an object structure.
  * 
@@ -106,6 +106,10 @@ public class JsonParser {
     } else {
       return null;
     }
+  }
+  
+  public Json parse(UrlBuilder url) throws IOException {
+    return parse(url.toURL());
   }
 
   /**

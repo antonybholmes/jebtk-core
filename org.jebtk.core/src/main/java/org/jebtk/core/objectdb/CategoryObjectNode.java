@@ -25,7 +25,6 @@ import org.jebtk.core.path.PathLevel;
 import org.jebtk.core.path.StrictPath;
 import org.jebtk.core.settings.KeyNode;
 
-// TODO: Auto-generated Javadoc
 /**
  * Category Object nodes store data in radix trees for fast searching.
  *

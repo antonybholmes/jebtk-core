@@ -17,7 +17,6 @@ package org.jebtk.core.tree;
 
 import org.jebtk.core.event.ChangeEvent;
 
-// TODO: Auto-generated Javadoc
 /**
  * The class TreeNodeEventAdapter.
  */

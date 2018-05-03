@@ -20,7 +20,6 @@ import org.jebtk.core.network.UrlBuilder;
 import org.jebtk.core.path.Path;
 import org.jebtk.core.text.TextUtils;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class SettingUrl.
  */

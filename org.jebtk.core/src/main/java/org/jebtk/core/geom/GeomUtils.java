@@ -17,7 +17,6 @@ package org.jebtk.core.geom;
 
 import java.awt.Rectangle;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class GeomUtils.
  */

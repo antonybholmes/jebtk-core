@@ -20,7 +20,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
-// TODO: Auto-generated Javadoc
 /**
  * Can be used to create a sub view of a list without creating a new list
  * instance each time. Since this is a view, the internal list cannot be edited

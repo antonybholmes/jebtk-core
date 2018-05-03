@@ -15,7 +15,6 @@
  */
 package org.jebtk.core.collections;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class HashMapCreator.
  *

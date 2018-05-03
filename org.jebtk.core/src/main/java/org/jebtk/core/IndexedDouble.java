@@ -18,7 +18,6 @@ package org.jebtk.core;
 import java.util.ArrayList;
 import java.util.List;
 
-// TODO: Auto-generated Javadoc
 /**
  * The class IndexedValueDouble.
  *

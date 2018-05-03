@@ -19,7 +19,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class TailList.
  *

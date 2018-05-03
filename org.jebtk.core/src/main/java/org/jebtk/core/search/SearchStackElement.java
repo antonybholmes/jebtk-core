@@ -24,7 +24,6 @@ import java.util.regex.Pattern;
 
 import org.jebtk.core.text.TextUtils;
 
-// TODO: Auto-generated Javadoc
 /**
  * Describes a search operation for determining if an experiment matches some
  * criteria or other.

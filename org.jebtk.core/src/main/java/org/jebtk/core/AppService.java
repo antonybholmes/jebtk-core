@@ -21,7 +21,6 @@ import java.nio.file.Path;
 import org.jebtk.core.io.FileUtils;
 import org.jebtk.core.io.PathUtils;
 
-// TODO: Auto-generated Javadoc
 /**
  * Provides global settings for an application such as the default directory to
  * save user files in. This is to allow settings etc to persist even if the

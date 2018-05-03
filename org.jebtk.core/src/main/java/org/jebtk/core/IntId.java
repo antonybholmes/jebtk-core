@@ -17,7 +17,6 @@ package org.jebtk.core;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-// TODO: Auto-generated Javadoc
 /**
  * Provides a way to automate giving unique integer ids to objects.
  * 

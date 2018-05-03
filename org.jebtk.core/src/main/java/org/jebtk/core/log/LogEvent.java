@@ -19,7 +19,6 @@ import java.util.Date;
 
 import org.jebtk.core.event.Event;
 
-// TODO: Auto-generated Javadoc
 /**
  * The class LogEvent.
  */

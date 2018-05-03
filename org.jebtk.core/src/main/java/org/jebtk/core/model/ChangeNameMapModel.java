@@ -18,7 +18,6 @@ package org.jebtk.core.model;
 import org.jebtk.core.event.ChangeEvent;
 import org.jebtk.core.event.ChangeEventProducer;
 
-// TODO: Auto-generated Javadoc
 /**
  * Generic model for sharing named items.
  *

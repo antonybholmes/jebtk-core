@@ -15,7 +15,6 @@
  */
 package org.jebtk.core.pool;
 
-// TODO: Auto-generated Javadoc
 /**
  * A pool can dynamically create objects in the pool.
  *

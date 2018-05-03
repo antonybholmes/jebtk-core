@@ -17,7 +17,6 @@ package org.jebtk.core.stream;
 
 import org.jebtk.core.Function;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class IntStream.
  */

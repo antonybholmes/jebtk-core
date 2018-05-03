@@ -26,7 +26,6 @@ import org.jebtk.core.collections.ArrayListCreator;
 import org.jebtk.core.collections.CollectionUtils;
 import org.jebtk.core.collections.DefaultHashMap;
 
-// TODO: Auto-generated Javadoc
 /**
  * Generic index object that allows one object to be associated with some form
  * of index.

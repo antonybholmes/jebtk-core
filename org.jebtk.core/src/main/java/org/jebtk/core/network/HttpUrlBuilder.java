@@ -17,7 +17,6 @@ package org.jebtk.core.network;
 
 import java.io.UnsupportedEncodingException;
 
-// TODO: Auto-generated Javadoc
 /**
  * Defaults to building a HTTP url.
  * 
@@ -36,7 +35,7 @@ public class HttpUrlBuilder extends UrlBuilder {
    *
    * @throws UnsupportedEncodingException the unsupported encoding exception
    */
-  public HttpUrlBuilder() throws UnsupportedEncodingException {
+  public HttpUrlBuilder() {
     super("http://");
   }
 }

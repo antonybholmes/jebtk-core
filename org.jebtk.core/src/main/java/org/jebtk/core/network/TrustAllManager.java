@@ -17,7 +17,6 @@ package org.jebtk.core.network;
 
 import javax.net.ssl.X509TrustManager;
 
-// TODO: Auto-generated Javadoc
 /**
  * Trust all certificates.
  * 

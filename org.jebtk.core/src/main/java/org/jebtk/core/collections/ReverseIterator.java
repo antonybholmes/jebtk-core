@@ -52,7 +52,6 @@ public class ReverseIterator<T> implements Iterator<T>, Iterable<T> {
   }
 }
 
-// TODO: Auto-generated Javadoc
 /**
  * ReverseIterator traverses a list in reverse order to negate having to sort
  * and or copy a list to reverse it.

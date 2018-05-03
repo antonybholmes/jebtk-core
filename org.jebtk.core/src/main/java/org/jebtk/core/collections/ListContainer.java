@@ -18,7 +18,6 @@ package org.jebtk.core.collections;
 import java.util.Collection;
 import java.util.List;
 
-// TODO: Auto-generated Javadoc
 /**
  * A list container is a wrapper around a list to form the basis of components
  * that require a list interface, but want to easily change list functions such

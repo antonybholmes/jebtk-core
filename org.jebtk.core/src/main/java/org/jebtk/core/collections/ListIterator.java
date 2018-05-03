@@ -19,7 +19,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-// TODO: Auto-generated Javadoc
 /**
  * Provides an iterable wrapper around a list that only allows items to be added
  * and iterated over.

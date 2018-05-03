@@ -15,7 +15,6 @@
  */
 package org.jebtk.core.stream;
 
-// TODO: Auto-generated Javadoc
 /**
  * Skip the first n items in a stream.
  *

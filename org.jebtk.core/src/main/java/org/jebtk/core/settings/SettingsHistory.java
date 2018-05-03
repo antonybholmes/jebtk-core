@@ -20,7 +20,6 @@ import java.util.List;
 
 import org.jebtk.core.Mathematics;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class SettingsHistory.
  */

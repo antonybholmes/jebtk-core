@@ -25,7 +25,6 @@ import java.util.Set;
 import org.jebtk.core.Function;
 import org.jebtk.core.collections.UniqueArrayList;
 
-// TODO: Auto-generated Javadoc
 /**
  * A stream represents a series of functional operations on a collection to
  * perform data processing.

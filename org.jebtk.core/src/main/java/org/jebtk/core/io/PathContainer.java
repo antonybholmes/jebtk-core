@@ -27,7 +27,6 @@ import java.nio.file.WatchKey;
 import java.nio.file.WatchService;
 import java.util.Iterator;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class PathContainer.
  */

@@ -23,7 +23,6 @@ import java.util.Collection;
 import org.jebtk.core.io.FileUtils;
 import org.jebtk.core.io.PathUtils;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class JsonBuilder builds json strings in a similar fashion to a general
  * purpose StringBuilder. It assumes the user can correctly form json with the

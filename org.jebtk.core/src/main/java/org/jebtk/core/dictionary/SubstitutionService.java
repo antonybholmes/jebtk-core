@@ -32,7 +32,6 @@ import org.jebtk.core.io.PathUtils;
 import org.jebtk.core.text.TextUtils;
 import org.xml.sax.SAXException;
 
-// TODO: Auto-generated Javadoc
 /**
  * Provides a substitution service so strings/words can be mapped to an
  * alternative. This is designed for cases where user data has common

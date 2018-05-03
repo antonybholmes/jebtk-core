@@ -17,7 +17,6 @@ package org.jebtk.core.text;
 
 import java.text.DecimalFormat;
 
-// TODO: Auto-generated Javadoc
 /**
  * The class IntegerNumberFormat.
  */

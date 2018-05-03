@@ -17,7 +17,6 @@ package org.jebtk.core;
 
 import java.awt.Color;
 
-// TODO: Auto-generated Javadoc
 /**
  * Represents a color.
  * 

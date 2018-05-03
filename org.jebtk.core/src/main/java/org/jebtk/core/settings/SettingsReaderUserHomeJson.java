@@ -20,7 +20,6 @@ import java.nio.file.Path;
 
 import org.jebtk.core.AppService;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class SettingsReaderUserHomeJson.
  */

@@ -22,7 +22,6 @@ import java.util.Map;
 
 import org.jebtk.core.collections.UniqueArrayList;
 
-// TODO: Auto-generated Javadoc
 /**
  * Model to store items indexed by name. Items are stored in the order they are
  * entered and are retrivable either by name or index.

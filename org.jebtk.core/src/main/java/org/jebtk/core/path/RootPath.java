@@ -15,7 +15,6 @@
  */
 package org.jebtk.core.path;
 
-// TODO: Auto-generated Javadoc
 /**
  * Represents a path that always starts from the root.
  * 

@@ -21,7 +21,6 @@ import java.util.regex.Pattern;
 import org.jebtk.core.text.RegexUtils;
 import org.jebtk.core.text.TextUtils;
 
-// TODO: Auto-generated Javadoc
 /**
  * Represents a path such as file path or tree structure.
  * 

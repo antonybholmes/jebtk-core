@@ -17,7 +17,6 @@ package org.jebtk.core;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-// TODO: Auto-generated Javadoc
 /**
  * Provides a unique id to a class (not guaranteed to persist between JVM or
  * application restarts).

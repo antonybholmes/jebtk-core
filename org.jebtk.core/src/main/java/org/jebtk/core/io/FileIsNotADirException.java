@@ -17,7 +17,6 @@ package org.jebtk.core.io;
 
 import java.io.File;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class FileIsNotADirException.
  */

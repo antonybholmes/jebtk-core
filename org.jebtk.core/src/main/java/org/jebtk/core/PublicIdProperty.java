@@ -15,7 +15,6 @@
  */
 package org.jebtk.core;
 
-// TODO: Auto-generated Javadoc
 /**
  * For objects that require a unique id.
  * 

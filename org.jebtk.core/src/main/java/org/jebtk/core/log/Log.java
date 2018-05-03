@@ -17,7 +17,6 @@ package org.jebtk.core.log;
 
 import java.text.DateFormat;
 
-// TODO: Auto-generated Javadoc
 /**
  * The class Log.
  */

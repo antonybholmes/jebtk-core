@@ -15,7 +15,6 @@
  */
 package org.jebtk.core;
 
-// TODO: Auto-generated Javadoc
 /**
  * Generic index object that allows one object to be associated with some form
  * of index.

@@ -15,7 +15,6 @@
  */
 package org.jebtk.core.collections;
 
-// TODO: Auto-generated Javadoc
 /**
  * Enforces that both keys must be of the same type.
  *

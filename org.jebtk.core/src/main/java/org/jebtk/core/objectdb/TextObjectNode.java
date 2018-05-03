@@ -25,7 +25,6 @@ import org.jebtk.core.path.PathLevel;
 import org.jebtk.core.path.StrictPath;
 import org.jebtk.core.settings.KeyNode;
 
-// TODO: Auto-generated Javadoc
 /**
  * Represents a node in a tree hierarchy. A node may contain a data object as
  * well as child nodes.

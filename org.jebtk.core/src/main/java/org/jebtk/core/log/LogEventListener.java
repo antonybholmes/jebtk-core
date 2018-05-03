@@ -17,7 +17,6 @@ package org.jebtk.core.log;
 
 import java.util.EventListener;
 
-// TODO: Auto-generated Javadoc
 /**
  * The listener interface for receiving logEvent events. The class that is
  * interested in processing a logEvent event implements this interface, and the

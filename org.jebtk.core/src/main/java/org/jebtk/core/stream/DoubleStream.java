@@ -18,7 +18,6 @@ package org.jebtk.core.stream;
 import org.jebtk.core.Function;
 import org.jebtk.core.Mathematics;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class DoubleStream is a wrapper for a generic Stream<Double> providing
  * extra numerical functions.

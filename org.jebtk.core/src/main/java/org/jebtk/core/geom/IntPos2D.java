@@ -15,7 +15,6 @@
  */
 package org.jebtk.core.geom;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class IntPos provides an immutable x y position in contrast to the
  * java.awt.Point.

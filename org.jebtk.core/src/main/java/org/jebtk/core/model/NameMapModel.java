@@ -19,7 +19,6 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.TreeMap;
 
-// TODO: Auto-generated Javadoc
 /**
  * Generic model for sharing named items.
  *

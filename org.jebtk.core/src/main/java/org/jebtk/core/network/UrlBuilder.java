@@ -22,14 +22,15 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.jebtk.core.text.TextUtils;
 
-// TODO: Auto-generated Javadoc
 /**
- * Represents a REST URL.
+ * Easily build urls from string components.
  * 
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public class UrlBuilder implements Serializable {
@@ -38,6 +39,20 @@ public class UrlBuilder implements Serializable {
    * The constant serialVersionUID.
    */
   private static final long serialVersionUID = 1L;
+
+  /**
+   * A regex for the url minus any parameters.
+   */
+  private static final Pattern HOST_REGEX =
+      Pattern.compile("((https?:\\/\\/)?[\\w-]+\\.[\\w-]+((\\.)?[\\w-]+)*(:\\d+)?)");
+
+  private static final Pattern PATH_REGEX =
+      Pattern.compile("[^\\/:]\\/([\\/\\w\\.-]+[^\\/])");
+
+  //private static final Pattern PORT_REGEX = Pattern.compile(":(\\d+)");
+
+  private static final Pattern PART_REGEX =
+      Pattern.compile("([\\w-]+)");
 
   /**
    * The constant URL_SEPARATOR.
@@ -64,6 +79,12 @@ public class UrlBuilder implements Serializable {
    */
   private List<Param> mParams = new ArrayList<Param>();
 
+  private int mPort = -1;
+
+  private String mServer;
+
+  private String mPath;
+
   /**
    * Instantiates a new url builder.
    *
@@ -79,34 +100,55 @@ public class UrlBuilder implements Serializable {
    * @param server the server
    */
   public UrlBuilder(String server) {
-    mParts.add(sanitize(server));
+    mServer = getHost(server);
+    mPath = getPath(server);
+    
+    mParts.add(mServer);
+    mParts.add(mPath);
   }
 
-  /**
-   * Instantiates a new url builder.
-   *
-   * @param server the server
-   * @param port the port
-   */
+  /*
   public UrlBuilder(String server, int port) {
-    mParts.add(new StringBuilder(sanitize(server)).append(PORT_SEPARATOR)
-        .append(port).toString());
+    StringBuilder buffer = new StringBuilder(getHost(server));
+
+    Matcher matcher = PORT_REGEX.matcher(buffer);
+
+    // If port already specified, replace it
+    if (matcher.find()) {
+      buffer.replace(matcher.start(1), matcher.end(1), Integer.toString(port));
+    } else {
+      buffer.append(PORT_SEPARATOR).append(port).toString();
+    }
+
+    mServer = buffer.toString();
+    mPort = port;
   }
+   */
 
   /**
    * Instantiates a new url builder.
    *
    * @param urlBuilder the url builder
    * @param parts the parts
-   * @throws UnsupportedEncodingException the unsupported encoding exception
    */
-  public UrlBuilder(UrlBuilder urlBuilder, String... parts) {
+  public UrlBuilder(UrlBuilder urlBuilder) {
+    mServer = urlBuilder.mServer;
+    mPath = urlBuilder.mPath;
+    mPort = urlBuilder.mPort;
     mParts.addAll(urlBuilder.mParts);
     mParams.addAll(urlBuilder.mParams);
+  }
 
-    for (String part : parts) {
-      mParts.add(clean(part));
-    }
+  public String getServer() {
+    return mServer;
+  }
+
+  public String getPath() {
+    return mPath;
+  }
+
+  public int getPort() {
+    return mPort;
   }
 
   /**
@@ -117,7 +159,11 @@ public class UrlBuilder implements Serializable {
    * @throws UnsupportedEncodingException the unsupported encoding exception
    */
   public UrlBuilder resolve(String path) {
-    return new UrlBuilder(this, path);
+    UrlBuilder ret = new UrlBuilder(this);
+
+    ret.mParts.add(clean(path));
+
+    return ret;
   }
 
   /**
@@ -200,7 +246,7 @@ public class UrlBuilder implements Serializable {
   public UrlBuilder param(String name, String value) {
     return param(new StaticParam(name, value));
   }
-  
+
   public UrlBuilder param(Param param) {
     UrlBuilder url = new UrlBuilder(this);
 
@@ -217,8 +263,7 @@ public class UrlBuilder implements Serializable {
    * @return the url builder
    * @throws UnsupportedEncodingException the unsupported encoding exception
    */
-  public UrlBuilder params(String name, Object... values)
-      throws UnsupportedEncodingException {
+  public UrlBuilder params(String name, Object... values) {
     UrlBuilder url = new UrlBuilder(this);
 
     for (Object value : values) {
@@ -228,44 +273,6 @@ public class UrlBuilder implements Serializable {
     return this;
   }
 
-  /**
-   * Clean.
-   *
-   * @param text the text
-   * @return the string
-   * @throws UnsupportedEncodingException the unsupported encoding exception
-   */
-  protected static String clean(String text) {
-    String ret = TextUtils.EMPTY_STRING;
-    
-    try {
-      ret = URLEncoder.encode(sanitize(text), "UTF-8");
-    } catch (UnsupportedEncodingException e) {
-      e.printStackTrace();
-    }
-    
-    return ret;
-  }
-
-  /**
-   * Sanitize.
-   *
-   * @param text the text
-   * @return the string
-   */
-  protected static String sanitize(String text) {
-    if (text == null) {
-      return TextUtils.EMPTY_STRING;
-    }
-
-    if (text.endsWith("/")) {
-      return text.substring(0, text.length() - 1);
-    } else {
-      return text;
-    }
-  }
-
-
   /*
    * (non-Javadoc)
    * 
@@ -273,11 +280,20 @@ public class UrlBuilder implements Serializable {
    */
   @Override
   public String toString() {
-    StringBuilder buffer = new StringBuilder(
-        TextUtils.join(mParts, URL_SEPARATOR));
+    StringBuilder buffer = new StringBuilder();
+
+    //if (mPath.length() > 0) {
+    //  buffer.append(mPath);
+    //}
+
+    //buffer.append(URL_SEPARATOR);
+
+    TextUtils.join(mParts, URL_SEPARATOR, buffer);
 
     if (mParams.size() > 0) {
-      buffer.append("?").append(TextUtils.join(mParams, PARAM_SEPARATOR));
+      buffer.append("?");
+
+      TextUtils.join(mParams, PARAM_SEPARATOR, buffer);
     }
 
     return buffer.toString();
@@ -294,13 +310,59 @@ public class UrlBuilder implements Serializable {
   }
 
   /**
-   * The main method.
+   * Clean.
    *
-   * @param args the arguments
+   * @param text the text
+   * @return the string
    * @throws UnsupportedEncodingException the unsupported encoding exception
    */
-  public static void main(String[] args) throws UnsupportedEncodingException {
-    System.err.println(URLEncoder.encode("/file/path", "UTF-8"));
+  public static String clean(String text) {
+    String ret = TextUtils.EMPTY_STRING;
+
+    Matcher matcher = PART_REGEX.matcher(text);
+
+    if (matcher.find()) {
+      ret = encode(text);
+    }
+
+    return ret;
   }
 
+  public static String encode(String text) {
+    String ret = TextUtils.EMPTY_STRING;
+
+    try {
+      ret = URLEncoder.encode(text, "UTF-8");
+    } catch (UnsupportedEncodingException e) {
+      e.printStackTrace();
+    }
+
+    return ret;
+  }
+
+  /**
+   * Sanitize.
+   *
+   * @param text the text
+   * @return the string
+   */
+  private static String getHost(String server) {
+    Matcher matcher = HOST_REGEX.matcher(server);
+
+    if (matcher.find()) {
+      return matcher.group(1); //sanitize(server);
+    } else {
+      return TextUtils.EMPTY_STRING;
+    }
+  }
+
+  private static String getPath(String server) {
+    Matcher matcher = PATH_REGEX.matcher(server);
+
+    if (matcher.find()) {
+      return matcher.group(1); //sanitize(server);
+    } else {
+      return TextUtils.EMPTY_STRING;
+    }
+  }
 }

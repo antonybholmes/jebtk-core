@@ -19,7 +19,6 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-// TODO: Auto-generated Javadoc
 /**
  * Parses a dictionary xml file. A dictionary file consists of the <dictionary>
  * tag within which are nested <word> tags within which are nested <synonym>

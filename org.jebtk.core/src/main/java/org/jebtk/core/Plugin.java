@@ -15,7 +15,6 @@
  */
 package org.jebtk.core;
 
-// TODO: Auto-generated Javadoc
 /**
  * Container for a Class object that can be sorted { and indexed.
  *

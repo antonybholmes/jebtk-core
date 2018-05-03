@@ -36,7 +36,6 @@ import org.jebtk.core.settings.SettingsService;
 import org.jebtk.core.text.TextUtils;
 import org.xml.sax.SAXException;
 
-// TODO: Auto-generated Javadoc
 /**
  * Describes a product.
  * 

@@ -19,7 +19,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-// TODO: Auto-generated Javadoc
 /**
  * Wraps an item with an associated index such as its position in a list.
  * Compliments IndexValue

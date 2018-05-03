@@ -25,7 +25,6 @@ import java.util.TreeSet;
 import org.jebtk.core.path.Path;
 import org.jebtk.core.path.StrictPath;
 
-// TODO: Auto-generated Javadoc
 /**
  * Represents a node in a radix tree. Names are stored as sequences of
  * characters which can be associated with one or more objects.

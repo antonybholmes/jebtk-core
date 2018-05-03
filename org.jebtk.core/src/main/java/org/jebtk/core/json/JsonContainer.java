@@ -15,7 +15,6 @@
  */
 package org.jebtk.core.json;
 
-// TODO: Auto-generated Javadoc
 /**
  * The base class for the json array and object which are containers of either
  * list or maps.

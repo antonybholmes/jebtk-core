@@ -18,7 +18,6 @@ package org.jebtk.core.xml;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-// TODO: Auto-generated Javadoc
 /**
  * Should be implemented by elements that can create an XML representation of
  * themselves.

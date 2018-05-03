@@ -58,7 +58,7 @@ public abstract class Param implements NameProperty {
    * @throws UnsupportedEncodingException the unsupported encoding exception
    */
   public static String getParamString(String name, String value) {
-    return new StringBuilder(UrlBuilder.clean(name)).append("=").append(UrlBuilder.clean(value))
+    return new StringBuilder(UrlBuilder.encode(name)).append("=").append(UrlBuilder.encode(value))
         .toString();
   }
 }

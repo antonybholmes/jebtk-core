@@ -41,7 +41,6 @@ import org.jebtk.core.xml.XmlRepresentation;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-// TODO: Auto-generated Javadoc
 /**
  * Represents a node in a tree hierarchy. A node may contain a data object as
  * well as child nodes.

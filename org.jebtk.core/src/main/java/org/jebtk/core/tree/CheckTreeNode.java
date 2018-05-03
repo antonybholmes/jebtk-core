@@ -18,7 +18,6 @@ package org.jebtk.core.tree;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
-// TODO: Auto-generated Javadoc
 /**
  * A Node that has a selected property.
  *

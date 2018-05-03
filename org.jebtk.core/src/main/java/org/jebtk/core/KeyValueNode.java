@@ -20,7 +20,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-// TODO: Auto-generated Javadoc
 /**
  * Represents a node in a tree hierarchy. Each node consists of a string name
  * (key) which can be coupled with an object value. Each node may have children,

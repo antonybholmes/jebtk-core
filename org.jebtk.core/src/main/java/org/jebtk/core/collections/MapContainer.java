@@ -20,7 +20,6 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-// TODO: Auto-generated Javadoc
 /**
  * A Generic map container which can be used as a wrapper around different map
  * types (e.g. hash or tree etc). It's primary function is to provide the

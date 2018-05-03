@@ -15,7 +15,6 @@
  */
 package org.jebtk.core.geom;
 
-// TODO: Auto-generated Javadoc
 /**
  * An immutable point.
  *

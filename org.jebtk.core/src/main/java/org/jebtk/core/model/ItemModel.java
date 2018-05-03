@@ -17,7 +17,6 @@ package org.jebtk.core.model;
 
 import org.jebtk.core.event.ChangeListeners;
 
-// TODO: Auto-generated Javadoc
 /**
  * Generic model for sharing a changable item of fixed type.
  *

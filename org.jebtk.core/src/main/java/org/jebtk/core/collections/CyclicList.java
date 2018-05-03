@@ -17,7 +17,6 @@ package org.jebtk.core.collections;
 
 import java.util.List;
 
-// TODO: Auto-generated Javadoc
 /**
  * Allows positive or negative indices and cycles around the list if the index
  * is outside the list boundaries. Thus for example, -1 will give you the last

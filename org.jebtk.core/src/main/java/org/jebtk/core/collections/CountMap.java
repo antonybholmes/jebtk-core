@@ -17,7 +17,6 @@ package org.jebtk.core.collections;
 
 import java.util.Collection;
 
-// TODO: Auto-generated Javadoc
 /**
  * A specialized DefaultHashMap for storing the number of times a key is added.
  *

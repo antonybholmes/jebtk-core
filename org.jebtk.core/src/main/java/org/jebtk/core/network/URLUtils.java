@@ -47,7 +47,6 @@ import org.jebtk.core.text.TextUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-// TODO: Auto-generated Javadoc
 /**
  * Provides methods for interacting with a network.
  * 

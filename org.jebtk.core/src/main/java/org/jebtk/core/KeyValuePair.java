@@ -15,7 +15,6 @@
  */
 package org.jebtk.core;
 
-// TODO: Auto-generated Javadoc
 /**
  * A simple mapping between a key and a value which can be used in place of two
  * separate variables.

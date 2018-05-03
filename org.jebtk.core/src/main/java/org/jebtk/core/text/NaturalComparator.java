@@ -17,7 +17,6 @@ package org.jebtk.core.text;
 
 import java.util.Comparator;
 
-// TODO: Auto-generated Javadoc
 /**
  * The class NaturalComparator performs a natural sort on strings so that
  * strings beginning with numbers or two strings with the same prefix and then a

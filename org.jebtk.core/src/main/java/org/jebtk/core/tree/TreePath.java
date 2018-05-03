@@ -24,7 +24,6 @@ import java.util.List;
 import org.jebtk.core.path.StrictPath;
 import org.jebtk.core.text.TextUtils;
 
-// TODO: Auto-generated Javadoc
 /**
  * Represents a path in a tree. Tree paths are defined by a chain of UIDs
  * specifying the nodes.

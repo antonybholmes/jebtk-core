@@ -22,7 +22,6 @@ import java.util.Map;
 
 import org.jebtk.core.path.Path;
 
-// TODO: Auto-generated Javadoc
 /**
  * Creates a searchable database of objects tagged by categories.
  *

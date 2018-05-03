@@ -22,7 +22,6 @@ import java.util.Map;
 
 import org.jebtk.core.path.StrictPath;
 
-// TODO: Auto-generated Javadoc
 /**
  * Category Object nodes store data in radix trees for fast searching.
  *

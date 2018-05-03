@@ -19,7 +19,6 @@ import org.w3c.dom.DOMException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-// TODO: Auto-generated Javadoc
 /**
  * Should be implemented by classes that can creat xml versions of themselves.
  * 

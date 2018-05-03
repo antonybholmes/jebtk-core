@@ -22,7 +22,6 @@ import java.util.Map;
 
 import org.jebtk.core.path.Path;
 
-// TODO: Auto-generated Javadoc
 /**
  * Stores objects by categories in a searchable radix tree.
  *

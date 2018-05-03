@@ -15,7 +15,6 @@
  */
 package org.jebtk.core.json;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class JsonChar.
  *

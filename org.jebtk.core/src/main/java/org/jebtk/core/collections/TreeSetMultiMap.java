@@ -17,7 +17,6 @@ package org.jebtk.core.collections;
 
 import static org.jebtk.core.collections.MultiMap.DEFAULT_INITIAL_CAPACITY;
 
-// TODO: Auto-generated Javadoc
 /**
  * Creates a map of lists where the each list is initialized with an default
  * value to a given size.

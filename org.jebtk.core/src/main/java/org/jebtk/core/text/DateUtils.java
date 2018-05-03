@@ -24,7 +24,6 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class DateUtils.
  */

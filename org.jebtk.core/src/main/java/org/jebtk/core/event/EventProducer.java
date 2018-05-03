@@ -18,7 +18,6 @@ package org.jebtk.core.event;
 import java.io.Serializable;
 import java.util.EventListener;
 
-// TODO: Auto-generated Javadoc
 /**
  * For classes that generate Events.
  *

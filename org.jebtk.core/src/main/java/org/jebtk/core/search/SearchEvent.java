@@ -17,7 +17,6 @@ package org.jebtk.core.search;
 
 import org.jebtk.core.event.Event;
 
-// TODO: Auto-generated Javadoc
 /**
  * For generating search events.
  *

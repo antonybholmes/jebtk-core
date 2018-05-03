@@ -20,7 +20,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
-// TODO: Auto-generated Javadoc
 /**
  * A list container that allows addition of elements and iteration, but does not
  * allow items to be removed.

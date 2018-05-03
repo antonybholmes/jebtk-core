@@ -20,7 +20,6 @@ import java.io.IOException;
 
 import org.jebtk.core.ColorUtils;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class JsonDouble.
  *

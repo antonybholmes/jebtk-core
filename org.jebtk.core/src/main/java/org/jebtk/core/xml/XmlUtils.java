@@ -29,7 +29,6 @@ import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Document;
 
-// TODO: Auto-generated Javadoc
 /**
  * XmlUtils provides wrapper functions for simplifying XML generation.
  * 

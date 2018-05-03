@@ -28,7 +28,6 @@ import org.jebtk.core.collections.CollectionUtils;
 import org.jebtk.core.collections.UniqueArrayList;
 import org.jebtk.core.text.TextUtils;
 
-// TODO: Auto-generated Javadoc
 /**
  * Represents a node in a radix tree. Names are stored as sequences of
  * characters which can be associated with one or more objects.

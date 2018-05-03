@@ -15,7 +15,6 @@
  */
 package org.jebtk.core.collections;
 
-// TODO: Auto-generated Javadoc
 /**
  * Interface for creators that auto populate lists and sets.
  *

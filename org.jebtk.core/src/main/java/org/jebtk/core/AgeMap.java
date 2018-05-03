@@ -18,7 +18,6 @@ package org.jebtk.core;
 import java.util.HashMap;
 import java.util.Map;
 
-// TODO: Auto-generated Javadoc
 /**
  * A map of fixed size that begins to excise the oldest elements once the map
  * reaches a maximum size.

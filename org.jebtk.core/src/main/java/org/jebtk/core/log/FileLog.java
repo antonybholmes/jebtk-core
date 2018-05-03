@@ -24,7 +24,6 @@ import org.apache.log4j.Logger;
 import org.jebtk.core.io.PathUtils;
 import org.jebtk.core.text.TextUtils;
 
-// TODO: Auto-generated Javadoc
 /**
  * The class FileLog.
  */

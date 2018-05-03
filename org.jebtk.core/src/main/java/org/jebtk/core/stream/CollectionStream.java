@@ -19,7 +19,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class BaseStream encapulates an initial collection with the intent of
  * apply further streams to process the list.

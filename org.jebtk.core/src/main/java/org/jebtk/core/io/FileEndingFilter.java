@@ -18,7 +18,6 @@ package org.jebtk.core.io;
 import java.io.File;
 import java.io.FileFilter;
 
-// TODO: Auto-generated Javadoc
 /**
  * The class FileEndingFilter.
  */

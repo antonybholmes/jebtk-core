@@ -15,7 +15,6 @@
  */
 package org.jebtk.core.json;
 
-// TODO: Auto-generated Javadoc
 /**
  * Should be implemented by elements that can create a JSON object
  * representation of themselves.

@@ -17,7 +17,6 @@ package org.jebtk.core.event;
 
 import java.util.EventListener;
 
-// TODO: Auto-generated Javadoc
 /**
  * For responding to change events.
  * 

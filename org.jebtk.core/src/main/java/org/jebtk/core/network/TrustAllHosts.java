@@ -18,7 +18,6 @@ package org.jebtk.core.network;
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLSession;
 
-// TODO: Auto-generated Javadoc
 /**
  * Trust all hosts without checking them.
  * 

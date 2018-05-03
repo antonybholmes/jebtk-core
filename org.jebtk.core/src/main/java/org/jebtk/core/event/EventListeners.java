@@ -21,7 +21,6 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
-// TODO: Auto-generated Javadoc
 /**
  * Provides the ability to register and unregister ModernClickEventListeners for
  * controls and provides standard functions to interface with {

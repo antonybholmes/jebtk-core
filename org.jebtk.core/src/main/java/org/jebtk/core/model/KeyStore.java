@@ -23,7 +23,6 @@ import org.jebtk.core.event.ChangeEventProducer;
 import org.jebtk.core.event.ChangeListener;
 import org.jebtk.core.event.ChangeListeners;
 
-// TODO: Auto-generated Javadoc
 /**
  * Generic model for sharing items and receiving notification when the items
  * change.

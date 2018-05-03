@@ -30,7 +30,6 @@ import java.util.Random;
 import org.jebtk.core.collections.UniqueArrayList;
 import org.jebtk.core.geom.IntPos2D;
 
-// TODO: Auto-generated Javadoc
 /**
  * Extended mathematical functions not provided by the standard Java Math
  * library.

@@ -15,7 +15,6 @@
  */
 package org.jebtk.core;
 
-// TODO: Auto-generated Javadoc
 /**
  * For components that can have a name property.
  * 

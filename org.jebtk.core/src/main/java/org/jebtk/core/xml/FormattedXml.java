@@ -17,7 +17,6 @@ package org.jebtk.core.xml;
 
 import java.io.IOException;
 
-// TODO: Auto-generated Javadoc
 /**
  * Elements that can return a xml text representation of themselves should
  * implement this.

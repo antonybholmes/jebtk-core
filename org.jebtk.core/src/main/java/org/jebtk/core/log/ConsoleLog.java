@@ -15,7 +15,6 @@
  */
 package org.jebtk.core.log;
 
-// TODO: Auto-generated Javadoc
 /**
  * Writes log messages to the console.
  * 

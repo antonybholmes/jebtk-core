@@ -25,7 +25,6 @@ import org.jebtk.core.text.Join;
 import org.jebtk.core.text.Splitter;
 import org.jebtk.core.text.TextUtils;
 
-// TODO: Auto-generated Javadoc
 /**
  * Represents a path such as file path or tree structure.
  * 

@@ -17,7 +17,6 @@ package org.jebtk.core.log;
 
 import org.jebtk.core.model.NameMapModel;
 
-// TODO: Auto-generated Javadoc
 /**
  * Allows multiple logs to be agglomerated so a message can be fire to multiple
  * logs.

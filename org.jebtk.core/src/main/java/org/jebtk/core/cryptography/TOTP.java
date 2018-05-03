@@ -20,7 +20,6 @@ import java.nio.charset.StandardCharsets;
 import org.jebtk.core.PrimitiveUtils;
 import org.jebtk.core.TimeUtils;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class TOTP.
  */

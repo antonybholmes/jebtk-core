@@ -17,7 +17,6 @@ package org.jebtk.core.collections;
 
 import java.util.Map;
 
-// TODO: Auto-generated Javadoc
 /**
  * Creates an auto populating hash map of hash maps.
  *

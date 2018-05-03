@@ -18,7 +18,6 @@ package org.jebtk.core.collections;
 import java.util.List;
 import java.util.ListIterator;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class TailListIterator.
  *

@@ -23,7 +23,6 @@ import org.jebtk.core.collections.CollectionUtils;
 import org.jebtk.core.text.Join;
 import org.jebtk.core.text.TextUtils;
 
-// TODO: Auto-generated Javadoc
 /**
  * Utility class for functions related to the system such as enhanced println.
  * 

@@ -17,7 +17,6 @@ package org.jebtk.core.geom;
 
 import java.awt.Dimension;
 
-// TODO: Auto-generated Javadoc
 /**
  * Immutable doubleeger dimension.
  * 

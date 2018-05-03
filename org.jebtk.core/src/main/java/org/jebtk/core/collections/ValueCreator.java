@@ -15,7 +15,6 @@
  */
 package org.jebtk.core.collections;
 
-// TODO: Auto-generated Javadoc
 /**
  * Returns a fixed object/value so that a structure will be auto-populated with
  * the same value. This is best used with immutable objects such as strings and

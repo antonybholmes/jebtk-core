@@ -15,7 +15,6 @@
  */
 package org.jebtk.core.collections;
 
-// TODO: Auto-generated Javadoc
 /**
  * Hashmap that automatically adds a default value if a key does not exist.
  *

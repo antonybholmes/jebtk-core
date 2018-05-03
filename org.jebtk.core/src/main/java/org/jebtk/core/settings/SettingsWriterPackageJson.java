@@ -17,7 +17,6 @@ package org.jebtk.core.settings;
 
 import java.io.IOException;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class SettingsWriterPackageJson.
  */

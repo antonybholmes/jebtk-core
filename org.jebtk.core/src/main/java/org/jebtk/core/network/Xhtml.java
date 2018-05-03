@@ -18,7 +18,6 @@ package org.jebtk.core.network;
 import org.jebtk.core.Attribute;
 import org.jebtk.core.text.TextUtils;
 
-// TODO: Auto-generated Javadoc
 /**
  * Creates XML text elements for writing XML.
  *

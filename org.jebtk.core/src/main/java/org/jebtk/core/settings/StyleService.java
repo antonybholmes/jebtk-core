@@ -15,7 +15,6 @@
  */
 package org.jebtk.core.settings;
 
-// TODO: Auto-generated Javadoc
 /**
  * The class StyleService.
  */

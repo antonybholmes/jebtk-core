@@ -34,7 +34,6 @@ import org.jebtk.core.xml.XmlRepresentation;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-// TODO: Auto-generated Javadoc
 /**
  * Describes a setting. The name must be of the form part1.part2.part3...name.
  * The period separated parts of the name are treated as being part of a

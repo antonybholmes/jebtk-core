@@ -19,7 +19,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 
-// TODO: Auto-generated Javadoc
 /**
  * Provides a fixed size circular buffer that removes the oldest element once
  * the buffer is filled. The implementation means there is no array resizing or

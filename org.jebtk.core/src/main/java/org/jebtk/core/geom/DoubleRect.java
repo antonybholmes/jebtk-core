@@ -17,7 +17,6 @@ package org.jebtk.core.geom;
 
 import java.awt.Point;
 
-// TODO: Auto-generated Javadoc
 /**
  * Immutable doubleeger rectangle.
  * 

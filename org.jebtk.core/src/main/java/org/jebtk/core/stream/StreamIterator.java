@@ -17,7 +17,6 @@ package org.jebtk.core.stream;
 
 import java.util.Iterator;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Interface StreamIterator.
  *

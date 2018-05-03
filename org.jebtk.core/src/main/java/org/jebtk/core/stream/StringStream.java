@@ -22,7 +22,6 @@ import java.util.regex.Pattern;
 import org.jebtk.core.Function;
 import org.jebtk.core.text.TextUtils;
 
-// TODO: Auto-generated Javadoc
 /**
  * Represents a stream of string objects and has associated reduce functions to
  * process strings.

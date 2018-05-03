@@ -34,7 +34,6 @@ import org.jebtk.core.io.PathUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-// TODO: Auto-generated Javadoc
 /**
  * Loads plugin class definitions from file so they can be instantiated. Plugins
  * must be in there own directory, for example annotations, within the main

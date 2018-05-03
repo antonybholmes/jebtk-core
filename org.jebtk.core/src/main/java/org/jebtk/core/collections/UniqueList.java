@@ -20,7 +20,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-// TODO: Auto-generated Javadoc
 /**
  * The class UniqueList provides a wrapper on a list to ensure items are added
  * uniquely so that the order is preserved, but only one of a given item may

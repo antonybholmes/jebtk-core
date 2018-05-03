@@ -19,7 +19,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-// TODO: Auto-generated Javadoc
 /**
  * A hashmap where the keys can be iterated over.
  *

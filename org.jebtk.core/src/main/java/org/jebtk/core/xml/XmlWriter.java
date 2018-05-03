@@ -20,7 +20,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-// TODO: Auto-generated Javadoc
 /**
  * The class XmlWriter.
  */

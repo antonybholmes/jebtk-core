@@ -17,7 +17,6 @@ package org.jebtk.core.collections;
 
 import java.util.ArrayList;
 
-// TODO: Auto-generated Javadoc
 /**
  * Immutable list for lists that should not be changed once created. The
  * benefits of a vector without the ability to modify it.

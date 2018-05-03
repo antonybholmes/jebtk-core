@@ -20,7 +20,6 @@ import java.util.List;
 
 import org.jebtk.core.collections.CollectionUtils;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class BaseStream encapulates an initial collection with the intent of
  * apply further streams to process the list.

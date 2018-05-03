@@ -15,7 +15,6 @@
  */
 package org.jebtk.core.collections;
 
-// TODO: Auto-generated Javadoc
 /**
  * Fast stack implementation for Integers. Note that at the moment, no bound
  * checks are performed for speed so it will ungraciously throw exceptions if

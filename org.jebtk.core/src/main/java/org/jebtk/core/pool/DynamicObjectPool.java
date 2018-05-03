@@ -15,7 +15,6 @@
  */
 package org.jebtk.core.pool;
 
-// TODO: Auto-generated Javadoc
 /**
  * Represents a thread safe collection of objects that can be reused.
  *

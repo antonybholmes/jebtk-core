@@ -19,7 +19,6 @@ import java.util.List;
 
 import org.jebtk.core.text.TextUtils;
 
-// TODO: Auto-generated Javadoc
 /**
  * Captures an actual argument on the command line.
  * 

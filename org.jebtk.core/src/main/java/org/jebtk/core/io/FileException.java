@@ -17,7 +17,6 @@ package org.jebtk.core.io;
 
 import org.jebtk.core.MessageException;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class FileException.
  */

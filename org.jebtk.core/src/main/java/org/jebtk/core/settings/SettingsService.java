@@ -30,7 +30,6 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
 
-// TODO: Auto-generated Javadoc
 /**
  * Settings factory for providing global settings to an application. Can load
  * settings from an XML Path or a text Path.

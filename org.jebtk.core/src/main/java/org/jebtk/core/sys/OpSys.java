@@ -15,7 +15,6 @@
  */
 package org.jebtk.core.sys;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class OpSys.
  */

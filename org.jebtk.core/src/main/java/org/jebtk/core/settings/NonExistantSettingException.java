@@ -17,7 +17,6 @@ package org.jebtk.core.settings;
 
 import org.jebtk.core.MessageException;
 
-// TODO: Auto-generated Javadoc
 /**
  * The class NonExistantSettingException.
  */

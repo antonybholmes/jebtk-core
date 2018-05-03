@@ -15,7 +15,6 @@
  */
 package org.jebtk.core.io;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Interface LineFunction.
  */

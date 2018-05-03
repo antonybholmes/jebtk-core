@@ -21,7 +21,6 @@ import java.nio.file.Path;
 
 import org.jebtk.core.Resources;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class SettingsReaderPackageJson.
  */

@@ -21,7 +21,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.Stack;
 
-// TODO: Auto-generated Javadoc
 /**
  * Represents a thread safe collection of objects that can be reused.
  *

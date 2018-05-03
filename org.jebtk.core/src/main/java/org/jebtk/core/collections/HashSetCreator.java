@@ -18,7 +18,6 @@ package org.jebtk.core.collections;
 import java.util.HashSet;
 import java.util.Set;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class HashSetCreator.
  *

@@ -21,7 +21,6 @@ import org.jebtk.core.ColorUtils;
 import org.jebtk.core.path.Path;
 import org.jebtk.core.text.TextUtils;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class SettingColor.
  */

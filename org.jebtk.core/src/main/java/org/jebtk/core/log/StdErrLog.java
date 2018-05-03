@@ -15,7 +15,6 @@
  */
 package org.jebtk.core.log;
 
-// TODO: Auto-generated Javadoc
 /**
  * Outputs log events to STDERR.
  * 

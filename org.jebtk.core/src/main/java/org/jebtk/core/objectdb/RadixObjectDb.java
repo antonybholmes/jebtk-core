@@ -19,7 +19,6 @@ import java.io.Serializable;
 
 import org.jebtk.core.text.TextUtils;
 
-// TODO: Auto-generated Javadoc
 /**
  * Creates a search radix tree of objects tagged by their name.
  *

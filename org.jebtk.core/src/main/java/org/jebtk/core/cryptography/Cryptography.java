@@ -20,7 +20,6 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.UUID;
 
-// TODO: Auto-generated Javadoc
 /**
  * The class Cryptography.
  */

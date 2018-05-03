@@ -18,7 +18,6 @@ package org.jebtk.core.geom;
 import java.awt.Point;
 import java.awt.Rectangle;
 
-// TODO: Auto-generated Javadoc
 /**
  * Immutable integer rectangle.
  * 
