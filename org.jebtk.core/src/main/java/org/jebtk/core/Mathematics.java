@@ -481,6 +481,23 @@ public class Mathematics {
 
     return l;
   }
+  
+  /**
+   * Create a filled float array with a repeated value.
+   * 
+   * @param v
+   * @param size
+   * @return
+   */
+  public static float[] floatRepeat(float v, int size) {
+    float[] l = new float[size];
+
+    for (int i = 0; i < size; ++i) {
+      l[i] = v;
+    }
+
+    return l;
+  }
 
   /**
    * Ones.
