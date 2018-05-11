@@ -19,6 +19,7 @@ import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.jebtk.core.text.TextUtils;
@@ -83,6 +84,32 @@ public class PathUtils {
     } else {
       return TextUtils.EMPTY_STRING;
     }
+  }
+  
+  public static List<String> toString(final Collection<Path> files) {
+    List<String> ret = new ArrayList<String>(files.size());
+    
+    for(Path f : files) {
+      ret.add(toString(f));
+    }
+    
+    return ret;
+  }
+  
+  /**
+   * Return just the names of a collection of files (without the full path).
+   * 
+   * @param files
+   * @return
+   */
+  public static List<String> names(final Collection<Path> files) {
+    List<String> ret = new ArrayList<String>(files.size());
+    
+    for(Path f : files) {
+      ret.add(getName(f));
+    }
+    
+    return ret;
   }
 
   /**
@@ -314,4 +341,8 @@ public class PathUtils {
   public static Path getDir(Path file) {
     return file.toAbsolutePath().getParent();
   }
+
+  
+
+  
 }

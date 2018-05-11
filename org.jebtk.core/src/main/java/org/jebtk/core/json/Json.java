@@ -172,7 +172,7 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
    * @return the json value
    */
   public Json get(String name) {
-    return null;
+    return this;
   }
 
   /**
@@ -184,17 +184,18 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
    * @return the json
    */
   public Json get(String name, boolean defaultValue) {
-    return null;
+    return this;
   }
 
   /**
-   * Returns the indexed item if this object is a JSON array.
+   * Returns the indexed item if this object is a JSON array, otherwise
+   * return the item itself.
    *
    * @param index the index
    * @return the json value
    */
   public Json get(int index) {
-    return null;
+    return this;
   }
 
   /**
@@ -261,7 +262,7 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
     if (e != null) {
       return e.getAsString();
     } else {
-      return null;
+      return TextUtils.EMPTY_STRING;
     }
   }
 

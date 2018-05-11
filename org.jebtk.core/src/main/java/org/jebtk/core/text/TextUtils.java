@@ -2704,6 +2704,23 @@ public class TextUtils {
   public static String prefix(String text, String prefix) {
     return prefix + text;
   }
+  
+  /**
+   * Prefix a value onto each of a collection of strings.
+   * 
+   * @param values
+   * @param prefix
+   * @return
+   */
+  public static List<String> prefix(final Collection<String> values, String prefix) {
+    List<String> ret = new ArrayList<String>(values.size());
+
+    for (String s : values) {
+      ret.add(prefix(s, prefix));
+    }
+    
+    return ret;
+  }
 
   /**
    * Returns the first n characters of a string.
@@ -2787,6 +2804,8 @@ public class TextUtils {
 
     return buffer.toString();
   }
+
+  
 
   
 }

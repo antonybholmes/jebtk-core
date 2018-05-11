@@ -433,6 +433,45 @@ public class FileUtils {
 
     return ret;
   }
+  
+  public static List<Path> match(Path dir,
+      boolean recursive,
+      String... patterns) throws IOException {
+    return match(dir, false, recursive, patterns);
+  }
+  
+  /**
+   * Find files matching all parameters
+   * @param dir
+   * @param includeDirs
+   * @param recursive
+   * @param patterns
+   * @return
+   * @throws IOException
+   */
+  public static List<Path> match(Path dir,
+      boolean includeDirs,
+      boolean recursive,
+      String... patterns) throws IOException {
+    List<Path> ret = new ArrayList<Path>();
+
+    for (Path path : ls(dir, includeDirs, recursive)) {
+      boolean found = true;
+      
+      for (String pattern : patterns) {
+        if (!path.toString().contains(pattern)) {
+          found = false;
+          break;
+        }
+      }
+      
+      if (found) {
+        ret.add(path);
+      }
+    }
+
+    return ret;
+  }
 
   /**
    * New buffered writer. If the file has a gz extension, the writer will

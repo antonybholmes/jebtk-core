@@ -15,6 +15,7 @@
  */
 package org.jebtk.core.text;
 
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -154,6 +155,16 @@ public class RegexUtils {
    */
   public static String replaceAll(String s, Pattern p, String rep) {
     return p.matcher(s).replaceAll(rep);
+  }
+  
+  public static List<String> replaceAll(Collection<String> strings, Pattern p, String rep) {
+    List<String> ret = new ArrayList<String>(strings.size());
+    
+    for(String s : strings) {
+      ret.add(replaceAll(s, p, rep));
+    }
+    
+    return ret;
   }
 
   public static boolean matches(String p, Collection<String> values) {
