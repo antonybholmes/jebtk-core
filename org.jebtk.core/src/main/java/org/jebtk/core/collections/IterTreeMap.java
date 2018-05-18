@@ -30,6 +30,14 @@ public class IterTreeMap<K, V> extends TreeMap<K, V> implements IterMap<K, V> {
   /** The Constant serialVersionUID. */
   private static final long serialVersionUID = 1L;
 
+  public IterTreeMap() {
+    // Do nothing
+  }
+  
+  public IterTreeMap(IterMap<K, V> map) {
+    super(map);
+  }
+
   @Override
   public K first() {
     return iterator().next();

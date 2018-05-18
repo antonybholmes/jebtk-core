@@ -15,6 +15,8 @@
  */
 package org.jebtk.core;
 
+import org.jebtk.core.event.ChangeListeners;
+
 /**
  * A simple mapping between a key and a value which can be used in place of two
  * separate variables.
@@ -23,7 +25,12 @@ package org.jebtk.core;
  * @param <V> the value type
  */
 public class KeyValuePair<K extends Comparable<? super K>, V>
-    implements Comparable<KeyValuePair<K, V>> {
+extends ChangeListeners implements Comparable<KeyValuePair<K, V>> {
+
+  /**
+   * 
+   */
+  private static final long serialVersionUID = 1L;
 
   /**
    * The member key.
@@ -64,13 +71,21 @@ public class KeyValuePair<K extends Comparable<? super K>, V>
   public V getValue() {
     return mValue;
   }
+  
+  public void setValue(V item) {
+    update(item);
+    
+    fireChanged();
+  }
 
   /**
-   * Sets the value.
+   * Update a property without triggering a change event.
    *
-   * @param value the new value
+   * @param name the name
+   * @param item the item
+   * @return 
    */
-  public void setValue(V value) {
+  private void update(V value) {
     mValue = value;
   }
 

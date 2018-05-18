@@ -176,6 +176,9 @@ public class TextUtils {
   /** The Constant STRICT_INT_PATTERN. */
   public static final Pattern STRICT_INT_PATTERN = Pattern
       .compile("^([-+]?[0-9]+([eE][-+]?[0-9]+)?)$");
+  
+  public static final Pattern STRICT_DOUBLE_PATTERN = 
+      Pattern.compile("^-?(?:0|[1-9][0-9]*)\\.?[0-9]+([e|E][+-]?[0-9]+)?$");
 
   private static final String DIGIT_REGEX = "(\\p{Digit}+)";
   private static final String HEX_DIGITS_REGEX = "(\\p{XDigit}+)";
@@ -2163,6 +2166,16 @@ public class TextUtils {
     }
 
     Matcher matcher = STRICT_INT_PATTERN.matcher(value);
+
+    return matcher.find();
+  }
+  
+  public static boolean isDouble(String value) {
+    if (value == null) {
+      return false;
+    }
+
+    Matcher matcher = STRICT_DOUBLE_PATTERN.matcher(value);
 
     return matcher.find();
   }

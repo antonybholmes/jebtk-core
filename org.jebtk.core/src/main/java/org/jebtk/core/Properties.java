@@ -20,6 +20,8 @@ import java.util.Iterator;
 
 import org.jebtk.core.collections.IterMap;
 import org.jebtk.core.collections.IterTreeMap;
+import org.jebtk.core.event.ChangeEvent;
+import org.jebtk.core.event.ChangeListener;
 import org.jebtk.core.event.ChangeListeners;
 
 /**
@@ -27,34 +29,38 @@ import org.jebtk.core.event.ChangeListeners;
  *
  * @author Antony Holmes Holmes
  */
-public class Properties extends ChangeListeners implements Iterable<String> {
+public class Properties extends ChangeListeners implements Iterable<String>, ChangeListener {
 
   /**
    * The constant serialVersionUID.
    */
   private static final long serialVersionUID = 1L;
 
+  //protected IterMap<String, Property> mPropertyMap = null;
+  
   /**
    * The member items.
    */
-  protected IterMap<String, Object> mPropertyMap = 
-      new IterTreeMap<String, Object>();
+  protected IterMap<String, Object> mPropertyMap = null;
 
-  /**
-   * Sets the property and triggers a change event for any listener.
-   *
-   * @param name the name
-   * @param item the item
-   * @return 
-   */
-  public Properties setProperty(String name, Object item) {
-    updateProperty(name, item);
+  public Properties() {
+    mPropertyMap = new IterTreeMap<String, Object>();
+  }
 
-    fireChanged();
+  public Properties(Properties parent) {
+    if (parent != null) {
+      mPropertyMap = new IterTreeMap<String, Object>(parent.mPropertyMap);
+    } else {
+      mPropertyMap = new IterTreeMap<String, Object>();
+    }
+  }
+  
+  public Properties inherits(Properties parent) {
+    mPropertyMap.putAll(parent.mPropertyMap);
     
     return this;
   }
-
+  
   /**
    * Update a property without triggering a change event.
    *
@@ -62,20 +68,18 @@ public class Properties extends ChangeListeners implements Iterable<String> {
    * @param item the item
    * @return 
    */
-  public Properties updateProperty(String name, Object item) {
-    mPropertyMap.put(name, item);
+  public Properties set(String name, Object value) {
+    update(name, value);
     
+    fireChanged();
+
     return this;
   }
 
-  /**
-   * Gets the property.
-   *
-   * @param name the name
-   * @return the property
-   */
-  public Object getProperty(String name) {
-    return mPropertyMap.get(name);
+  public Properties update(String name, Object value) {
+    mPropertyMap.put(name, value);
+
+    return this;
   }
 
   /**
@@ -84,8 +88,8 @@ public class Properties extends ChangeListeners implements Iterable<String> {
    * @param name the name
    * @return the property as int
    */
-  public int getAsInt(String name) {
-    return (int) getProperty(name);
+  public int getInt(String name) {
+    return (int) getValue(name);
   }
 
   /**
@@ -94,9 +98,9 @@ public class Properties extends ChangeListeners implements Iterable<String> {
    * @param name the name
    * @return the as bool
    */
-  public boolean getAsBool(String name) {
+  public boolean getBool(String name) {
     if (contains(name)) {
-      return (boolean) getProperty(name);
+      return (boolean) getValue(name);
     } else {
       return false;
     }
@@ -108,8 +112,8 @@ public class Properties extends ChangeListeners implements Iterable<String> {
    * @param name the name
    * @return the as color
    */
-  public Color getAsColor(String name) {
-    return (Color) getProperty(name);
+  public Color getColor(String name) {
+    return (Color) getValue(name);
   }
 
   /**
@@ -118,12 +122,20 @@ public class Properties extends ChangeListeners implements Iterable<String> {
    * @param name the name
    * @return the property as double
    */
-  public double getPropertyAsDouble(String name) {
-    return (Double) getProperty(name);
+  public double getDouble(String name) {
+    return (double) getValue(name);
+  }
+  
+  public String toString(String name) {
+    return getValue(name).toString();
   }
 
+  public Object getValue(String name) {
+    return mPropertyMap.get(name);
+  }
+  
   /**
-   * Contains.
+   * Returns true if the property exists.
    *
    * @param name the name
    * @return true, if successful
@@ -158,6 +170,11 @@ public class Properties extends ChangeListeners implements Iterable<String> {
   @Override
   public Iterator<String> iterator() {
     return mPropertyMap.iterator();
+  }
+
+  @Override
+  public void changed(ChangeEvent e) {
+    fireChanged();
   }
 
 }
