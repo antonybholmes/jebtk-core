@@ -112,7 +112,7 @@ public class AppInfo {
     mDescription = description;
 
     mVersion = version; // loadVersion();
-                        // //SettingsService.getInstance().getAsString(helpName
+                        // //SettingsService.getInstance().getString(helpName
                         // +
                         // ".version");
   }
@@ -194,6 +194,6 @@ public class AppInfo {
    * @return the app version
    */
   public AppVersion loadVersion() {
-    return new AppVersion(getSetting("version.major").getAsInt());
+    return new AppVersion(getSetting("version.major").getInt());
   }
 }

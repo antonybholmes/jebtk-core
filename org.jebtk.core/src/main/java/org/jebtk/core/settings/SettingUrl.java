@@ -49,30 +49,30 @@ public class SettingUrl extends Setting {
   /*
    * (non-Javadoc)
    * 
-   * @see org.abh.common.settings.Setting#getAsString()
+   * @see org.abh.common.settings.Setting#getString()
    */
   @Override
-  public String getAsString() {
+  public String getString() {
     return mValue.toString();
   }
 
   /*
    * (non-Javadoc)
    * 
-   * @see org.abh.common.settings.Setting#getAsFile()
+   * @see org.abh.common.settings.Setting#getFile()
    */
   @Override
-  public java.nio.file.Path getAsFile() {
-    return PathUtils.getPath(getAsString());
+  public java.nio.file.Path getFile() {
+    return PathUtils.getPath(getString());
   }
 
   /*
    * (non-Javadoc)
    * 
-   * @see org.abh.common.settings.Setting#getAsUrlBuilder()
+   * @see org.abh.common.settings.Setting#getUrlBuilder()
    */
   @Override
-  public UrlBuilder getAsUrlBuilder() {
+  public UrlBuilder getUrlBuilder() {
     return mValue;
   }
 

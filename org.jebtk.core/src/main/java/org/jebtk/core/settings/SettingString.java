@@ -55,70 +55,70 @@ public class SettingString extends Setting {
   /*
    * (non-Javadoc)
    * 
-   * @see org.abh.common.settings.Setting#getAsString()
+   * @see org.abh.common.settings.Setting#getString()
    */
   @Override
-  public String getAsString() {
+  public String getString() {
     return mValue;
   }
 
   /*
    * (non-Javadoc)
    * 
-   * @see org.abh.common.settings.Setting#getAsInt()
+   * @see org.abh.common.settings.Setting#getInt()
    */
   @Override
-  public int getAsInt() {
+  public int getInt() {
     return TextUtils.scanInt(mValue);
   }
 
   /*
    * (non-Javadoc)
    * 
-   * @see org.abh.common.settings.Setting#getAsDouble()
+   * @see org.abh.common.settings.Setting#getDouble()
    */
   @Override
-  public double getAsDouble() {
+  public double getDouble() {
     return TextUtils.scanDouble(mValue);
   }
 
   /*
    * (non-Javadoc)
    * 
-   * @see org.abh.common.settings.Setting#getAsBool()
+   * @see org.abh.common.settings.Setting#getBool()
    */
   @Override
-  public boolean getAsBool() {
+  public boolean getBool() {
     return mValue.toLowerCase().equals(TextUtils.TRUE);
   }
 
   /*
    * (non-Javadoc)
    * 
-   * @see org.abh.common.settings.Setting#getAsColor()
+   * @see org.abh.common.settings.Setting#getColor()
    */
   @Override
-  public Color getAsColor() {
+  public Color getColor() {
     return ColorUtils.decodeHtmlColor(mValue);
   }
 
   /*
    * (non-Javadoc)
    * 
-   * @see org.abh.common.settings.Setting#getAsFile()
+   * @see org.abh.common.settings.Setting#getFile()
    */
   @Override
-  public java.nio.file.Path getAsFile() {
+  public java.nio.file.Path getFile() {
     return PathUtils.getPath(mValue);
   }
 
   /*
    * (non-Javadoc)
    * 
-   * @see org.abh.common.settings.Setting#getAsUrlBuilder()
+   * @see org.abh.common.settings.Setting#getUrlBuilder()
    */
   @Override
-  public UrlBuilder getAsUrlBuilder() {
+  public UrlBuilder getUrlBuilder() {
     return new UrlBuilder(mValue);
   }
 

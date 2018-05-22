@@ -35,7 +35,7 @@ public class JsonUtils {
     List<String> ret = new ArrayList<String>();
     
     for (int i = 0; i < json.size(); ++i) {
-      ret.add(json.getAsString(i));
+      ret.add(json.getString(i));
     }
     
     return ret;

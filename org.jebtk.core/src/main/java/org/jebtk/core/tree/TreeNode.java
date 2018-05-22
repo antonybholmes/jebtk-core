@@ -1003,7 +1003,7 @@ public class TreeNode<T>
    *
    * @return the int
    */
-  public int getAsInt() {
+  public int getInt() {
     return TextUtils.scanInt(mValue.toString());
   }
 
@@ -1012,7 +1012,7 @@ public class TreeNode<T>
    *
    * @return true, if successful
    */
-  public boolean getAsBool() {
+  public boolean getBool() {
     return mValue.toString().equalsIgnoreCase(TextUtils.TRUE);
   }
 
@@ -1022,7 +1022,7 @@ public class TreeNode<T>
    * @return the double
    * @throws ParseException the parse exception
    */
-  public double getAsDouble() throws ParseException {
+  public double getDouble() throws ParseException {
     return TextUtils.parseDouble(mValue.toString());
   }
 
@@ -1031,7 +1031,7 @@ public class TreeNode<T>
    *
    * @return the as color
    */
-  public Color getAsColor() {
+  public Color getColor() {
     return ColorUtils.decodeHtmlColor(mValue.toString());
   }
 

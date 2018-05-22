@@ -128,7 +128,7 @@ public class Setting extends ChangeListeners
    *
    * @return the as string
    */
-  public String getAsString() {
+  public String getString() {
     return mPath.toString();
   }
 
@@ -138,7 +138,7 @@ public class Setting extends ChangeListeners
    *
    * @return the as int
    */
-  public int getAsInt() {
+  public int getInt() {
     return Integer.MIN_VALUE;
   }
 
@@ -148,7 +148,7 @@ public class Setting extends ChangeListeners
    *
    * @return the as double
    */
-  public double getAsDouble() {
+  public double getDouble() {
     return Integer.MIN_VALUE;
   }
 
@@ -157,7 +157,7 @@ public class Setting extends ChangeListeners
    *
    * @return the as long
    */
-  public long getAsLong() {
+  public long getLong() {
     return Long.MIN_VALUE;
   }
 
@@ -166,7 +166,7 @@ public class Setting extends ChangeListeners
    *
    * @return the as bool
    */
-  public boolean getAsBool() {
+  public boolean getBool() {
     return false;
   }
 
@@ -175,7 +175,7 @@ public class Setting extends ChangeListeners
    *
    * @return the as color
    */
-  public Color getAsColor() {
+  public Color getColor() {
     return null;
   }
 
@@ -184,7 +184,7 @@ public class Setting extends ChangeListeners
    *
    * @return the as file
    */
-  public java.nio.file.Path getAsFile() {
+  public java.nio.file.Path getFile() {
     return null;
   }
 
@@ -193,8 +193,8 @@ public class Setting extends ChangeListeners
    *
    * @return the as url
    */
-  public URL getAsUrl() {
-    UrlBuilder builder = getAsUrlBuilder();
+  public URL getUrl() {
+    UrlBuilder builder = getUrlBuilder();
 
     URL url = null;
 
@@ -214,7 +214,7 @@ public class Setting extends ChangeListeners
    *
    * @return the as url builder
    */
-  public UrlBuilder getAsUrlBuilder() {
+  public UrlBuilder getUrlBuilder() {
     return null;
   }
 
@@ -257,7 +257,7 @@ public class Setting extends ChangeListeners
 
     element.setAttribute("name", mPath.toString());
 
-    element.setAttribute("value", getAsString());
+    element.setAttribute("value", getString());
 
     // element.setAttribute("locked", Boolean.toString(mLocked));
 
@@ -662,8 +662,8 @@ public class Setting extends ChangeListeners
    * @param o the o
    */
   protected void formatJsonValue(Json o) {
-    if (getAsString() != null) {
-      o.add("value", getAsString());
+    if (getString() != null) {
+      o.add("value", getString());
     }
   }
 

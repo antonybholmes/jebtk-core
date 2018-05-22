@@ -43,10 +43,10 @@ public class JsonBoolean extends Json {
   /*
    * (non-Javadoc)
    * 
-   * @see org.abh.lib.json.JsonValue#getAsBoolean()
+   * @see org.abh.lib.json.JsonValue#getBoolean()
    */
   @Override
-  public boolean getAsBool() {
+  public boolean getBool() {
     return mValue;
   }
 

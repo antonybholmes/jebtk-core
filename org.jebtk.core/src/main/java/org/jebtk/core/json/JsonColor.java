@@ -44,20 +44,20 @@ public class JsonColor extends Json {
   /*
    * (non-Javadoc)
    * 
-   * @see org.abh.common.json.Json#getAsColor()
+   * @see org.abh.common.json.Json#getColor()
    */
   @Override
-  public Color getAsColor() {
+  public Color getColor() {
     return mValue;
   }
 
   /*
    * (non-Javadoc)
    * 
-   * @see org.abh.lib.json.JsonValue#getAsString()
+   * @see org.abh.lib.json.JsonValue#getString()
    */
   @Override
-  public String getAsString() {
+  public String getString() {
     return ColorUtils.toHtml(mValue);
   }
 
@@ -68,6 +68,6 @@ public class JsonColor extends Json {
    */
   @Override
   public void toJson(Appendable buffer) throws IOException {
-    buffer.append(getAsString());
+    buffer.append(getString());
   }
 }

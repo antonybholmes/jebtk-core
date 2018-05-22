@@ -105,7 +105,7 @@ public class BufferUtils {
      *
      * @return the list
      */
-    public List<Integer> ints() {
+    public List<Integer> getInts() {
       IntBuffer buffer = ByteBuffer.wrap(mArray).asIntBuffer();
 
       List<Integer> ret = new ArrayList<Integer>(buffer.remaining());

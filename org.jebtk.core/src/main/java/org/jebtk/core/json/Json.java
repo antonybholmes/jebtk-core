@@ -76,7 +76,7 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
    *
    * @return the as double
    */
-  public double getAsDouble() {
+  public double getDouble() {
     return Double.NaN;
   }
 
@@ -85,7 +85,7 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
    *
    * @return the as int
    */
-  public int getAsInt() {
+  public int getInt() {
     return Integer.MAX_VALUE;
   }
 
@@ -94,7 +94,7 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
    *
    * @return the as long
    */
-  public long getAsLong() {
+  public long getLong() {
     return Long.MAX_VALUE;
   }
 
@@ -107,7 +107,7 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
    *
    * @return the as string
    */
-  public String getAsString() {
+  public String getString() {
     return toString();
   }
 
@@ -116,7 +116,7 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
    *
    * @return the as color
    */
-  public Color getAsColor() {
+  public Color getColor() {
     return ColorUtils.decodeHtmlColor(toString());
   }
 
@@ -125,7 +125,7 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
    *
    * @return the as char
    */
-  public char getAsChar() {
+  public char getChar() {
     return 0;
   }
 
@@ -135,21 +135,21 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
    * @param index
    * @return
    */
-  public char getAsChar(int index) {
+  public char getChar(int index) {
     Json e = get(index);
 
     if (e != null) {
-      return e.getAsChar();
+      return e.getChar();
     } else {
       return Character.MIN_VALUE;
     }
   }
   
-  public char getAsChar(String name) {
+  public char getChar(String name) {
     Json e = get(name);
 
     if (e != null) {
-      return e.getAsChar();
+      return e.getChar();
     } else {
       return Character.MIN_VALUE;
     }
@@ -160,7 +160,7 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
    *
    * @return the as boolean
    */
-  public boolean getAsBool() {
+  public boolean getBool() {
     return false;
   }
 
@@ -224,11 +224,11 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
    * @param name the name
    * @return the as string
    */
-  public String getAsString(String name) {
+  public String getString(String name) {
     Json e = get(name);
 
     if (e != null) {
-      return e.getAsString();
+      return e.getString();
     } else {
       return null;
     }
@@ -240,11 +240,11 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
    * @param name the name
    * @return the as color
    */
-  public Color getAsColor(String name) {
+  public Color getColor(String name) {
     Json e = get(name);
 
     if (e != null) {
-      return e.getAsColor();
+      return e.getColor();
     } else {
       return null;
     }
@@ -256,11 +256,11 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
    * @param index the index
    * @return the as string
    */
-  public String getAsString(int index) {
+  public String getString(int index) {
     Json e = get(index);
 
     if (e != null) {
-      return e.getAsString();
+      return e.getString();
     } else {
       return TextUtils.EMPTY_STRING;
     }
@@ -272,11 +272,11 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
    * @param name the name
    * @return the as int
    */
-  public int getAsInt(String name) {
+  public int getInt(String name) {
     Json e = get(name);
 
     if (e != null) {
-      return e.getAsInt();
+      return e.getInt();
     } else {
       return Integer.MIN_VALUE;
     }
@@ -288,11 +288,11 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
    * @param index the index
    * @return the as int
    */
-  public int getAsInt(int index) {
+  public int getInt(int index) {
     Json e = get(index);
 
     if (e != null) {
-      return e.getAsInt();
+      return e.getInt();
     } else {
       return Integer.MIN_VALUE;
     }
@@ -305,11 +305,11 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
    * @param name the name
    * @return the as double
    */
-  public double getAsDouble(String name) {
+  public double getDouble(String name) {
     Json e = get(name);
 
     if (e != null) {
-      return e.getAsDouble();
+      return e.getDouble();
     } else {
       return Double.NaN;
     }
@@ -321,11 +321,11 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
    * @param index the index
    * @return the as double
    */
-  public double getAsDouble(int index) {
+  public double getDouble(int index) {
     Json e = get(index);
 
     if (e != null) {
-      return e.getAsDouble();
+      return e.getDouble();
     } else {
       return Double.NaN;
     }
@@ -337,11 +337,11 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
    * @param name the name
    * @return the as bool
    */
-  public boolean getAsBool(String name) {
+  public boolean getBool(String name) {
     Json e = get(name);
 
     if (e != null) {
-      return e.getAsBool();
+      return e.getBool();
     } else {
       return false;
     }
@@ -353,11 +353,11 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
    * @param index the index
    * @return the as bool
    */
-  public boolean getAsBool(int index) {
+  public boolean getBool(int index) {
     Json e = get(index);
 
     if (e != null) {
-      return e.getAsBool();
+      return e.getBool();
     } else {
       return false;
     }

@@ -15,6 +15,7 @@
  */
 package org.jebtk.core.collections;
 
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.TreeMap;
 
@@ -36,6 +37,10 @@ public class IterTreeMap<K, V> extends TreeMap<K, V> implements IterMap<K, V> {
   
   public IterTreeMap(IterMap<K, V> map) {
     super(map);
+  }
+  
+  public IterTreeMap(Comparator<K> c) {
+    super(c);
   }
 
   @Override

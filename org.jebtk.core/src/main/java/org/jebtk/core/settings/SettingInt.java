@@ -47,40 +47,40 @@ public class SettingInt extends Setting {
   /*
    * (non-Javadoc)
    * 
-   * @see org.abh.common.settings.Setting#getAsString()
+   * @see org.abh.common.settings.Setting#getString()
    */
   @Override
-  public String getAsString() {
+  public String getString() {
     return Integer.toString(mValue);
   }
 
   /*
    * (non-Javadoc)
    * 
-   * @see org.abh.common.settings.Setting#getAsInt()
+   * @see org.abh.common.settings.Setting#getInt()
    */
   @Override
-  public int getAsInt() {
+  public int getInt() {
     return mValue;
   }
 
   /*
    * (non-Javadoc)
    * 
-   * @see org.abh.common.settings.Setting#getAsDouble()
+   * @see org.abh.common.settings.Setting#getDouble()
    */
   @Override
-  public double getAsDouble() {
+  public double getDouble() {
     return mValue;
   }
 
   /*
    * (non-Javadoc)
    * 
-   * @see org.abh.common.settings.Setting#getAsLong()
+   * @see org.abh.common.settings.Setting#getLong()
    */
   @Override
-  public long getAsLong() {
+  public long getLong() {
     return mValue;
   }
 

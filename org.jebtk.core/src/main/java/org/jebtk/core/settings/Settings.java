@@ -497,8 +497,8 @@ public class Settings extends ChangeListeners
    * @param name the name
    * @return the as int
    */
-  public synchronized int getAsInt(String name) {
-    return getSetting(name).getAsInt();
+  public synchronized int getInt(String name) {
+    return getSetting(name).getInt();
   }
 
   /**
@@ -507,8 +507,8 @@ public class Settings extends ChangeListeners
    * @param name the name
    * @return the as int
    */
-  public synchronized int getAsInt(Path name) {
-    return getSetting(name).getAsInt();
+  public synchronized int getInt(Path name) {
+    return getSetting(name).getInt();
   }
 
   /**
@@ -517,8 +517,8 @@ public class Settings extends ChangeListeners
    * @param name the name
    * @return the as double
    */
-  public synchronized double getAsDouble(String name) {
-    return getSetting(name).getAsDouble();
+  public synchronized double getDouble(String name) {
+    return getSetting(name).getDouble();
   }
 
   /**
@@ -527,20 +527,20 @@ public class Settings extends ChangeListeners
    * @param name the name
    * @return the as double
    */
-  public synchronized double getAsDouble(Path name) {
-    return getSetting(name).getAsDouble();
+  public synchronized double getDouble(Path name) {
+    return getSetting(name).getDouble();
   }
 
-  public synchronized double getAsDouble(String name, double defaultValue) {
-    return getAsDouble(new StrictPath(name), defaultValue);
+  public synchronized double getDouble(String name, double defaultValue) {
+    return getDouble(new StrictPath(name), defaultValue);
   }
 
-  public synchronized double getAsDouble(Path name, double defaultValue) {
+  public synchronized double getDouble(Path name, double defaultValue) {
     if (!contains(name)) {
       set(name, defaultValue);
     }
 
-    return getSetting(name).getAsDouble();
+    return getSetting(name).getDouble();
   }
 
   /**
@@ -549,11 +549,11 @@ public class Settings extends ChangeListeners
    * @param name the name
    * @return the as bool
    */
-  public synchronized boolean getAsBool(String name) {
+  public synchronized boolean getBool(String name) {
     Setting setting = getSetting(name);
 
     if (setting != null) {
-      return setting.getAsBool();
+      return setting.getBool();
     } else {
       return false;
     }
@@ -565,11 +565,11 @@ public class Settings extends ChangeListeners
    * @param name the name
    * @return the as bool
    */
-  public synchronized boolean getAsBool(Path name) {
+  public synchronized boolean getBool(Path name) {
     Setting setting = getSetting(name);
 
     if (setting != null) {
-      return setting.getAsBool();
+      return setting.getBool();
     } else {
       return false;
     }
@@ -582,8 +582,8 @@ public class Settings extends ChangeListeners
    * @param defaultValue the default value
    * @return the as bool
    */
-  public synchronized boolean getAsBool(String name, boolean defaultValue) {
-    return getAsBool(new StrictPath(name), defaultValue);
+  public synchronized boolean getBool(String name, boolean defaultValue) {
+    return getBool(new StrictPath(name), defaultValue);
   }
 
   /**
@@ -593,12 +593,12 @@ public class Settings extends ChangeListeners
    * @param defaultValue the default value
    * @return the as bool
    */
-  public synchronized boolean getAsBool(Path name, boolean defaultValue) {
+  public synchronized boolean getBool(Path name, boolean defaultValue) {
     if (!contains(name)) {
       set(name, defaultValue);
     }
 
-    return getSetting(name).getAsBool();
+    return getSetting(name).getBool();
   }
 
   /**
@@ -607,8 +607,8 @@ public class Settings extends ChangeListeners
    * @param name the name
    * @return the as string
    */
-  public synchronized String getAsString(String name) {
-    return getAsString(new StrictPath(name));
+  public synchronized String getString(String name) {
+    return getString(new StrictPath(name));
   }
 
   /**
@@ -617,11 +617,11 @@ public class Settings extends ChangeListeners
    * @param name the name
    * @return the as string
    */
-  public synchronized String getAsString(Path name) {
+  public synchronized String getString(Path name) {
     Setting setting = getSetting(name);
 
     if (setting != null) {
-      return setting.getAsString();
+      return setting.getString();
     } else {
       return TextUtils.EMPTY_STRING;
     }
@@ -633,8 +633,8 @@ public class Settings extends ChangeListeners
    * @param name the name
    * @return the as color
    */
-  public synchronized Color getAsColor(String name) {
-    return getSetting(name).getAsColor();
+  public synchronized Color getColor(String name) {
+    return getSetting(name).getColor();
   }
 
   /**
@@ -643,8 +643,8 @@ public class Settings extends ChangeListeners
    * @param name the name
    * @return the as color
    */
-  public synchronized Color getAsColor(Path name) {
-    return getSetting(name).getAsColor();
+  public synchronized Color getColor(Path name) {
+    return getSetting(name).getColor();
   }
 
   /**
@@ -653,8 +653,8 @@ public class Settings extends ChangeListeners
    * @param name the name
    * @return the as url
    */
-  public synchronized URL getAsUrl(String name) {
-    return getSetting(name).getAsUrl();
+  public synchronized URL getUrl(String name) {
+    return getSetting(name).getUrl();
   }
 
   /**
@@ -663,8 +663,8 @@ public class Settings extends ChangeListeners
    * @param name the name
    * @return the as url
    */
-  public synchronized URL getAsUrl(Path name) {
-    return getSetting(name).getAsUrl();
+  public synchronized URL getUrl(Path name) {
+    return getSetting(name).getUrl();
   }
 
   /**
@@ -673,8 +673,8 @@ public class Settings extends ChangeListeners
    * @param name the name
    * @return the as file
    */
-  public java.nio.file.Path getAsFile(String name) {
-    return getSetting(name).getAsFile();
+  public java.nio.file.Path getFile(String name) {
+    return getSetting(name).getFile();
   }
 
   /**
@@ -683,8 +683,8 @@ public class Settings extends ChangeListeners
    * @param name the name
    * @return the as file
    */
-  public java.nio.file.Path getAsFile(Path name) {
-    return getSetting(name).getAsFile();
+  public java.nio.file.Path getFile(Path name) {
+    return getSetting(name).getFile();
   }
 
   /*
@@ -820,10 +820,10 @@ public class Settings extends ChangeListeners
     for (int i = 0; i < json.size(); ++i) {
       Json settingJson = json.get(i);
 
-      Setting setting = Setting.parse(settingJson.getAsString("name"),
-          settingJson.getAsString("value"),
-          settingJson.getAsString("description"),
-          settingJson.getAsBool("locked"));
+      Setting setting = Setting.parse(settingJson.getString("name"),
+          settingJson.getString("value"),
+          settingJson.getString("description"),
+          settingJson.getBool("locked"));
 
       update(setting, update);
     }
@@ -831,7 +831,7 @@ public class Settings extends ChangeListeners
     /*
      * for (String key : json.getKeys()) { Path path = new StrictPath(key);
      * 
-     * String value = json.getAsString(key);
+     * String value = json.getString(key);
      * 
      * setSetting(path, value); }
      */

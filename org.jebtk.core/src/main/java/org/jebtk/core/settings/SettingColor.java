@@ -50,20 +50,20 @@ public class SettingColor extends Setting {
   /*
    * (non-Javadoc)
    * 
-   * @see org.abh.common.settings.Setting#getAsString()
+   * @see org.abh.common.settings.Setting#getString()
    */
   @Override
-  public String getAsString() {
+  public String getString() {
     return ColorUtils.toHtml(mValue);
   }
 
   /*
    * (non-Javadoc)
    * 
-   * @see org.abh.common.settings.Setting#getAsColor()
+   * @see org.abh.common.settings.Setting#getColor()
    */
   @Override
-  public Color getAsColor() {
+  public Color getColor() {
     return mValue;
   }
 

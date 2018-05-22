@@ -41,30 +41,30 @@ public class JsonDouble extends Json {
   /*
    * (non-Javadoc)
    * 
-   * @see org.abh.lib.json.JsonValue#getAsDouble()
+   * @see org.abh.lib.json.JsonValue#getDouble()
    */
   @Override
-  public double getAsDouble() {
+  public double getDouble() {
     return mValue;
   }
 
   /*
    * (non-Javadoc)
    * 
-   * @see org.abh.lib.json.JsonValue#getAsInt()
+   * @see org.abh.lib.json.JsonValue#getInt()
    */
   @Override
-  public int getAsInt() {
+  public int getInt() {
     return (int) mValue;
   }
 
   /*
    * (non-Javadoc)
    * 
-   * @see org.abh.lib.json.JsonValue#getAsString()
+   * @see org.abh.lib.json.JsonValue#getString()
    */
   @Override
-  public String getAsString() {
+  public String getString() {
     return Double.toString(mValue);
   }
 
@@ -75,6 +75,6 @@ public class JsonDouble extends Json {
    */
   @Override
   public void toJson(Appendable buffer) throws IOException {
-    buffer.append(getAsString());
+    buffer.append(getString());
   }
 }

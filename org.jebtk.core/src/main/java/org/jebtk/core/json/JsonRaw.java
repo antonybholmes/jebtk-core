@@ -55,20 +55,20 @@ public class JsonRaw extends Json {
   /*
    * (non-Javadoc)
    * 
-   * @see org.abh.lib.json.JsonValue#getAsString()
+   * @see org.abh.lib.json.JsonValue#getString()
    */
   @Override
-  public String getAsString() {
+  public String getString() {
     return toString();
   }
 
   /*
    * (non-Javadoc)
    * 
-   * @see org.abh.lib.json.JsonValue#getAsChar()
+   * @see org.abh.lib.json.JsonValue#getChar()
    */
   @Override
-  public char getAsChar() {
+  public char getChar() {
     return mValue.charAt(0);
   }
 

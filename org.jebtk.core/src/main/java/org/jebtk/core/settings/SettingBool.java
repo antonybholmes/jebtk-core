@@ -48,20 +48,20 @@ public class SettingBool extends Setting {
   /*
    * (non-Javadoc)
    * 
-   * @see org.abh.common.settings.Setting#getAsString()
+   * @see org.abh.common.settings.Setting#getString()
    */
   @Override
-  public String getAsString() {
+  public String getString() {
     return Boolean.toString(mValue);
   }
 
   /*
    * (non-Javadoc)
    * 
-   * @see org.abh.common.settings.Setting#getAsBool()
+   * @see org.abh.common.settings.Setting#getBool()
    */
   @Override
-  public boolean getAsBool() {
+  public boolean getBool() {
     return mValue;
   }
 

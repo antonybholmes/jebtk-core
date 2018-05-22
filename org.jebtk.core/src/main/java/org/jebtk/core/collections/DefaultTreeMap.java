@@ -15,6 +15,8 @@
  */
 package org.jebtk.core.collections;
 
+import java.util.Comparator;
+
 /**
  * Hashmap that automatically adds a default value if a key does not exist.
  *
@@ -48,6 +50,12 @@ public class DefaultTreeMap<K, V> extends IterTreeMap<K, V> {
    * @param defaultValue the default value
    */
   public DefaultTreeMap(EntryCreator<V> defaultValue) {
+    mDefaultValue = defaultValue;
+  }
+  
+  public DefaultTreeMap(Comparator<K> c, EntryCreator<V> defaultValue) {
+    super(c);
+    
     mDefaultValue = defaultValue;
   }
 
