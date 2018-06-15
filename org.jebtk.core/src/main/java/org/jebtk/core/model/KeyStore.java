@@ -47,7 +47,7 @@ public class KeyStore<T, X> implements ChangeEventProducer {
    * @param item the item
    * @return the x
    */
-  public X put(T key, X item) {
+  public X add(T key, X item) {
     X ret = update(key, item);
 
     fireChanged();

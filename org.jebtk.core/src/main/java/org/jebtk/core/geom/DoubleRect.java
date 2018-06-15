@@ -28,12 +28,12 @@ public class DoubleRect extends DoublePos2D {
   /**
    * The member w.
    */
-  protected double mW;
+  public final double mW;
 
   /**
    * The member h.
    */
-  protected double mH;
+  public final double mH;
 
   /**
    * Instantiates a new double rect.

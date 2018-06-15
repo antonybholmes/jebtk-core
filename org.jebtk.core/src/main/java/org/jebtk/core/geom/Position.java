@@ -26,12 +26,12 @@ public class Position<T extends Number> {
   /**
    * The member x.
    */
-  protected T mX;
+  public final T mX;
 
   /**
    * The member y.
    */
-  protected T mY;
+  public final T mY;
 
   /**
    * Instantiates a new position.

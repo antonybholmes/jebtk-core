@@ -26,12 +26,12 @@ public class DoublePos2D implements Comparable<DoublePos2D> {
   /**
    * The member x.
    */
-  protected double mX;
+  public final double mX;
 
   /**
    * The member y.
    */
-  protected double mY;
+  public final double mY;
 
   /**
    * Instantiates a new point2 d double.

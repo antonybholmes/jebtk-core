@@ -94,7 +94,7 @@ public class CollectionUtils {
    * @return true, if is null or empty
    */
   public static <T> boolean isNullOrEmpty(Collection<T> c) {
-    return c == null || c.size() == 0;
+    return !isNotNullOrEmpty(c);
   }
 
   /**

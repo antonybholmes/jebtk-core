@@ -162,12 +162,21 @@ public class ColorUtils {
   }
 
   /**
-   * Gets the transparent color.
+   * Adjust the alpha on a color.
    *
    * @param color the color
    * @param alpha the alpha
    * @return the transparent color
    */
+  public static Color getColor(Color color, double alpha) {
+    if (color == null) {
+      return null;
+    }
+
+    return new Color(color.getRed(), color.getGreen(), color.getBlue(),
+        (int) (Mathematics.bound(alpha, 0, 1) * 255));
+  }
+  
   public static Color getTransparentColor(Color color, double alpha) {
     if (color == null) {
       return null;
@@ -179,6 +188,16 @@ public class ColorUtils {
 
   public static double getTrans(Color color) {
     return Mathematics.bound((255 - color.getAlpha()) / 255.0, 0, 1);
+  }
+  
+  /**
+   * Get the alpha value of a color scaled between 0 and 1.
+   * 
+   * @param color
+   * @return
+   */
+  public static double getAlpha(Color color) {
+    return color.getAlpha() / 255.0;
   }
 
   /**

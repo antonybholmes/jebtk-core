@@ -24,12 +24,12 @@ public class IntPos2D implements Comparable<IntPos2D> {
   /**
    * The member x.
    */
-  protected int mX;
+  public final int mX;
 
   /**
    * The member y.
    */
-  protected int mY;
+  public final int mY;
 
   /**
    * Instantiates a new int position.

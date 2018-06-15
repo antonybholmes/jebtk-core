@@ -353,8 +353,8 @@ public class Setting extends ChangeListeners
     } else if (ColorUtils.isHtmlColor(value)) {
       return new SettingColor(path, ColorUtils.decodeHtmlColor(value),
           description, locked);
-    } else if (URLUtils.isUrl(value)) {
-      return new SettingUrl(path, new UrlBuilder(value), description, locked);
+    //} else if (URLUtils.isUrl(value)) {
+    //  return new SettingUrl(path, new UrlBuilder(value), description, locked);
     } else if (value.toLowerCase().equals(TextUtils.TRUE)) {
       return new SettingBool(path, true, description, locked);
     } else if (value.toLowerCase().equals(TextUtils.FALSE)) {
