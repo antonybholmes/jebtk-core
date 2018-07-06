@@ -168,6 +168,43 @@ public class SysUtils {
   
   
   
+  public static void arraycopy(byte[] src, byte[] dest) {
+    arraycopy(src, dest, src.length);
+  }
+
+  public static void arraycopy(byte[] src, byte[] dest, int l) {
+    arraycopy(src, 0, dest, 0, l);
+  }
+
+  public static void arraycopy(byte[] src, int offset, byte[] dest, int l) {
+    arraycopy(src, offset, dest, 0, l);
+  }
+
+  /**
+   * Copy the src to the dest at the given offset.
+   * 
+   * @param src
+   * @param dest
+   * @param destoffset
+   * @param l
+   */
+  public static void arraycopy(byte[] src, byte[] dest, int offset, int l) {
+    arraycopy(src, 0, dest, offset, l);
+  }
+
+  public static void arraycopy(byte[] src,
+      int srcoffset,
+      byte[] dest,
+      int destoffset,
+      int l) {
+    System.arraycopy(src, 
+        srcoffset, 
+        dest, 
+        destoffset, 
+        l);
+  }
+  
+  
   
   
   

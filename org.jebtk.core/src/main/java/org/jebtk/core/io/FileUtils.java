@@ -598,7 +598,7 @@ public class FileUtils {
   }
 
   /**
-   * New output stream.
+   * New output stream for writing bytes.
    *
    * @param file the file
    * @return the output stream
