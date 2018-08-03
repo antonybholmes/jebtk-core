@@ -17,6 +17,7 @@ package org.jebtk.core;
 
 import java.awt.Color;
 import java.util.Iterator;
+import java.util.Map.Entry;
 
 import org.jebtk.core.collections.IterMap;
 import org.jebtk.core.collections.IterTreeMap;
@@ -29,7 +30,7 @@ import org.jebtk.core.event.ChangeListeners;
  *
  * @author Antony Holmes Holmes
  */
-public class Properties extends ChangeListeners implements Iterable<String>, ChangeListener {
+public class Properties extends ChangeListeners implements Iterable<Entry<String, Object>>, ChangeListener {
 
   /**
    * The constant serialVersionUID.
@@ -168,7 +169,7 @@ public class Properties extends ChangeListeners implements Iterable<String>, Cha
    * @return the iterator
    */
   @Override
-  public Iterator<String> iterator() {
+  public Iterator<Entry<String, Object>> iterator() {
     return mPropertyMap.iterator();
   }
 

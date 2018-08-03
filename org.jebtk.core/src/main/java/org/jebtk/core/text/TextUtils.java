@@ -1052,7 +1052,7 @@ public class TextUtils {
    * @return the string
    */
   public static final String removeQuotes(String text) {
-    return text.replaceAll("\\\"", "").replaceAll("'", "");
+    return text.replaceAll("\\\"", EMPTY_STRING).replaceAll("'", EMPTY_STRING);
   }
 
   /**

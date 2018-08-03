@@ -287,6 +287,72 @@ public class SysUtils {
       destoffset += destskip;
     }
   }
+  
+  //
+  // Boolean
+  //
+
+  public static void arraycopy(boolean[] src, boolean[] dest) {
+    arraycopy(src, dest, src.length);
+  }
+
+  public static void arraycopy(boolean[] src, boolean[] dest, int l) {
+    arraycopy(src, 0, dest, 0, l);
+  }
+
+  public static void arraycopy(boolean[] src, int srcoffset, boolean[] dest, int l) {
+    arraycopy(src, srcoffset, dest, 0, l);
+  }
+
+  public static void arraycopy(boolean[] src, boolean[] dest, int offset, int l) {
+    arraycopy(src, 0, dest, offset, l);
+  }
+
+  public static void arraycopy(boolean[] src,
+      int srcoffset,
+      boolean[] dest,
+      int destoffset,
+      int l) {
+
+    System.arraycopy(src, srcoffset, dest, destoffset, l);
+    // arraycopy(src, srcoffset, 1, dest, destoffset, 1, l);
+  }
+
+  public static void arraycopy(boolean[] src,
+      int srcoffset,
+      int srcskip,
+      boolean[] dest,
+      int l) {
+    arraycopy(src, srcoffset, srcskip, dest, 0, l);
+  }
+
+  public static void arraycopy(boolean[] src,
+      int srcoffset,
+      int srcskip,
+      boolean[] dest,
+      int destoffset,
+      int l) {
+    arraycopy(src, srcoffset, srcskip, dest, destoffset, 1, l);
+  }
+
+  public static void arraycopy(boolean[] src,
+      int srcoffset,
+      int srcskip,
+      boolean[] dest,
+      int destoffset,
+      int destskip,
+      int l) {
+    for (int i = 0; i < l; ++i) {
+      dest[destoffset] = src[srcoffset];
+
+      srcoffset += srcskip;
+      destoffset += destskip;
+    }
+  }
+  
+  //
+  // Int
+  //
 
   public static void arraycopy(int[] src, int[] dest) {
     arraycopy(src, dest, src.length);
@@ -422,12 +488,29 @@ public class SysUtils {
   // Object
   //
 
+  /**
+   * Copy values from an object array to another.
+   * 
+   * @param src
+   * @param dest
+   */
   public static void arraycopy(Object[] src, Object[] dest) {
     arraycopy(src, dest, src.length);
   }
 
+  /**
+   * Copy values from an object array to another.
+   * 
+   * @param src     The source array to copy from.
+   * @param dest    The destination array to copy to.
+   * @param l       How many elements to copy.
+   */
   public static void arraycopy(Object[] src, Object[] dest, int l) {
-    arraycopy(src, 0, dest, 0, l);
+    arraycopy(src, dest, 0, l);
+  }
+  
+  public static void arraycopy(Object[] src, Object[] dest, int offset, int l) {
+    arraycopy(src, 0, dest, offset, l);
   }
 
   public static void arraycopy(Object[] src,

@@ -11,7 +11,12 @@ import java.util.Set;
  * 
  * @param <T>
  */
-public abstract class IntHashMap<T> implements Map<Integer, T> {
+public abstract class IntHashMap<T> implements IterMap<Integer, T> {
+  /**
+   * 
+   */
+  private static final long serialVersionUID = 1L;
+
   public static final int FREE_KEY = 0;
 
   public static final int NO_VALUE = 0;

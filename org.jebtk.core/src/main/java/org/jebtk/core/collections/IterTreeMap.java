@@ -17,6 +17,7 @@ package org.jebtk.core.collections;
 
 import java.util.Comparator;
 import java.util.Iterator;
+import java.util.Map.Entry;
 import java.util.TreeMap;
 
 /**
@@ -44,7 +45,7 @@ public class IterTreeMap<K, V> extends TreeMap<K, V> implements IterMap<K, V> {
   }
 
   @Override
-  public K first() {
+  public Entry<K, V> first() {
     return iterator().next();
   }
 
@@ -54,8 +55,8 @@ public class IterTreeMap<K, V> extends TreeMap<K, V> implements IterMap<K, V> {
    * @see java.lang.Iterable#iterator()
    */
   @Override
-  public Iterator<K> iterator() {
-    return keySet().iterator();
+  public Iterator<Entry<K, V>> iterator() {
+    return entrySet().iterator();
   }
 
   /**

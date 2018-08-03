@@ -109,7 +109,7 @@ public class CountMap<K> extends DefaultHashMap<K, Integer> {
    * @param inc the inc
    */
   public void inc(K key, int inc) {
-    int c = (int) get(key) + inc;
+    int c = get(key) + inc;
 
     put(key, c);
 

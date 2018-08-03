@@ -18,6 +18,7 @@ package org.jebtk.core.collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Map.Entry;
 
 /**
  * A hashmap where the keys can be iterated over.
@@ -57,12 +58,12 @@ public class IterHashMap<K, V> extends HashMap<K, V> implements IterMap<K, V> {
    * @see java.lang.Iterable#iterator()
    */
   @Override
-  public Iterator<K> iterator() {
-    return keySet().iterator();
+  public Iterator<Entry<K, V>> iterator() {
+    return entrySet().iterator();
   }
 
   @Override
-  public K first() {
+  public Entry<K, V> first() {
     return iterator().next();
   }
 

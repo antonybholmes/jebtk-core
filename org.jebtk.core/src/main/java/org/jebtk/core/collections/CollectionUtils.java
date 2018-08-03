@@ -710,25 +710,62 @@ public class CollectionUtils {
 
     return subset;
   }
+  
+  public static final <V extends Comparable<? super V>> int[] subListIndexed(
+      int[] list,
+      final Collection<Indexed<Integer, V>> indices) {
+    if (isNullOrEmpty(list)) {
+      return null;
+    }
 
-  /**
-   * Returns a sublist.
-   *
-   * @param <T> the generic type
-   * @param list the list
-   * @param indices the indices
-   * @return the list
-   */
-  public static final <T> List<T> subList(T[] list,
-      final Collection<Integer> indices) {
-    List<T> subset = new ArrayList<T>();
+    int[] subset = new int[indices.size()];
 
-    for (int i : indices) {
-      subset.add(list[i]);
+    int c = 0;
+
+    for (Indexed<Integer, ?> i : indices) {
+      subset[c++] = list[i.getIndex()];
     }
 
     return subset;
   }
+  
+  public static final <V extends Comparable<? super V>> Object[] subListIndexed(
+      Object[] list,
+      final Collection<Indexed<Integer, V>> indices) {
+    if (isNullOrEmpty(list)) {
+      return null;
+    }
+
+    Object[] subset = new Object[indices.size()];
+
+    int c = 0;
+
+    for (Indexed<Integer, ?> i : indices) {
+      subset[c++] = list[i.getIndex()];
+    }
+
+    return subset;
+  }
+  
+  public static final <V extends Comparable<? super V>> String[] subListIndexed(
+      String[] list,
+      final Collection<Indexed<Integer, V>> indices) {
+    if (isNullOrEmpty(list)) {
+      return null;
+    }
+
+    String[] subset = new String[indices.size()];
+
+    int c = 0;
+
+    for (Indexed<Integer, ?> i : indices) {
+      subset[c++] = list[i.getIndex()];
+    }
+
+    return subset;
+  }
+
+
 
   /**
    * Sub list.
@@ -738,9 +775,35 @@ public class CollectionUtils {
    * @param indices the indices
    * @return the double[]
    */
-  public static final <T> double[] subList(double[] list,
+  public static final double[] subList(double[] list,
       final Collection<Integer> indices) {
     double[] subset = new double[indices.size()];
+
+    int c = 0;
+
+    for (int i : indices) {
+      subset[c++] = list[i];
+    }
+
+    return subset;
+  }
+  
+  public static final String[] subList(String[] list,
+      final Collection<Integer> indices) {
+    String[] subset = new String[indices.size()];
+
+    int c = 0;
+
+    for (int i : indices) {
+      subset[c++] = list[i];
+    }
+
+    return subset;
+  }
+  
+  public static final Object[] subList(Object[] list,
+      final Collection<Integer> indices) {
+    Object[] subset = new Object[indices.size()];
 
     int c = 0;
 
@@ -1869,6 +1932,10 @@ public class CollectionUtils {
   public static <T> Set<T> toSet(Collection<T> items) {
     if (isNullOrEmpty(items)) {
       return Collections.emptySet();
+    }
+    
+    if (items instanceof Set) {
+      return (Set<T>) items;
     }
 
     Set<T> map = new HashSet<T>();

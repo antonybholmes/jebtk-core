@@ -31,7 +31,7 @@ import org.jebtk.core.text.TextUtils;
  * @author Antony Holmes Holmes
  * @param <T> the generic type
  */
-public class SearchStackElement<T> {
+public class SearchStackElement {
 
   /**
    * Valid characters in a search.
@@ -104,11 +104,11 @@ public class SearchStackElement<T> {
   /**
    * Returns a stack representation of a text query.
    *
-   * @param <TT> the generic type
+   * @param  the generic type
    * @param q the q
    * @return the deque
    */
-  public static <TT> List<SearchStackElement<TT>> parseQuery(String q) {
+  public static List<SearchStackElement> parseQuery(String q) {
     // Deque<SearchStackElement<T>> searchStack =
     // new ArrayDeque<SearchStackElement<T>>();
 
@@ -141,7 +141,7 @@ public class SearchStackElement<T> {
     // .ignoreEmptyStrings()
     // .text(qs.toString());
 
-    List<SearchStackElement<TT>> outputQueue = new ArrayList<SearchStackElement<TT>>(
+    List<SearchStackElement> outputQueue = new ArrayList<SearchStackElement>(
         10);
 
     Deque<SearchStackOperator> opStack = new ArrayDeque<SearchStackOperator>(
@@ -209,7 +209,7 @@ public class SearchStackElement<T> {
     addTerm(buffer, outputQueue);
 
     while (opStack.size() > 0) {
-      outputQueue.add(new SearchStackElement<TT>(opStack.pop()));
+      outputQueue.add(new SearchStackElement(opStack.pop()));
     }
 
     // Reverse the list since we want to put elements on the
@@ -228,16 +228,16 @@ public class SearchStackElement<T> {
   /**
    * Adds the term.
    *
-   * @param <TT> the generic type
+   * @param  the generic type
    * @param buffer the buffer
    * @param outputQueue the output queue
    */
-  private static <TT> void addTerm(StringBuilder buffer,
-      List<SearchStackElement<TT>> outputQueue) {
+  private static void addTerm(StringBuilder buffer,
+      List<SearchStackElement> outputQueue) {
     String s = buffer.toString().toLowerCase();
 
     if (s.length() > 0) {
-      outputQueue.add(new SearchStackElement<TT>(s));
+      outputQueue.add(new SearchStackElement(s));
       buffer.setLength(0);
     }
   }
@@ -249,13 +249,13 @@ public class SearchStackElement<T> {
   /**
    * Adds the lower precedence ops.
    *
-   * @param <TT> the generic type
+   * @param  the generic type
    * @param op1 the operator
    * @param outputQueue the search stack
    * @param operatorStack the operator stack
    */
-  private static <TT> void addLowerPrecedenceOps(SearchStackOperator op1,
-      List<SearchStackElement<TT>> outputQueue,
+  private static void addLowerPrecedenceOps(SearchStackOperator op1,
+      List<SearchStackElement> outputQueue,
       Deque<SearchStackOperator> operatorStack) {
     int p1 = SearchStackOperator.precedence(op1);
 
@@ -271,8 +271,8 @@ public class SearchStackElement<T> {
         break;
       }
 
-      // We have encountered two and statements for example
-      outputQueue.add(new SearchStackElement<TT>(op2));
+      // We have encountered two 'and' statements for example
+      outputQueue.add(new SearchStackElement(op2));
 
       // remove the operator as we have dealt with it
       operatorStack.pop();
@@ -285,11 +285,11 @@ public class SearchStackElement<T> {
   /**
    * Pop expressions until a left parenthesis is encountered.
    *
-   * @param <TT> the generic type
+   * @param  the generic type
    * @param outputQueue the output queue
    * @param opStack the op stack
    */
-  private static <TT> void rightParens(List<SearchStackElement<TT>> outputQueue,
+  private static void rightParens(List<SearchStackElement> outputQueue,
       Deque<SearchStackOperator> opStack) {
     SearchStackOperator op2;
 
@@ -302,7 +302,7 @@ public class SearchStackElement<T> {
         break;
       }
 
-      outputQueue.add(new SearchStackElement<TT>(op2));
+      outputQueue.add(new SearchStackElement(op2));
     }
   }
 }

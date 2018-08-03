@@ -250,8 +250,12 @@ public class UrlBuilder implements Serializable {
   public UrlBuilder param(Param param) {
     UrlBuilder url = new UrlBuilder(this);
 
-    url.mParams.add(param);
-
+    // Don't add if param values are null
+    if (!TextUtils.isNullOrEmpty(param.getName()) &&
+        !TextUtils.isNullOrEmpty(param.getValue())) {
+      url.mParams.add(param);
+    }
+    
     return url;
   }
 

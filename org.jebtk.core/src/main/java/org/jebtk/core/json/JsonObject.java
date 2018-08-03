@@ -18,10 +18,10 @@ package org.jebtk.core.json;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
+import org.jebtk.core.collections.IterHashMap;
+import org.jebtk.core.collections.IterMap;
 import org.jebtk.core.collections.UniqueArrayList;
 import org.jebtk.core.text.TextUtils;
 
@@ -42,7 +42,7 @@ public class JsonObject extends JsonContainer {
   /**
    * The member member map.
    */
-  private Map<String, Json> mMemberMap = new HashMap<String, Json>();
+  private IterMap<String, Json> mMemberMap = new IterHashMap<String, Json>();
 
   /**
    * Instantiates a new json object.
@@ -264,5 +264,10 @@ public class JsonObject extends JsonContainer {
    */
   public static JsonObject create() {
     return new JsonObject();
+  }
+  
+  @Override
+  public String toString() {
+    return mMemberNames.toString();
   }
 }

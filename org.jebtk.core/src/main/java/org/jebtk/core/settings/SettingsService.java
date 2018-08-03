@@ -96,13 +96,17 @@ public class SettingsService extends Settings {
     // Overwrite with user defaults
     mLoaders.add(new SettingsReaderUserXml());
     mLoaders.add(new SettingsReaderUserJson());
-
+    // Ability to read settings to home directory
+    //mLoaders.add(new SettingsReaderUserHomeJson());
+    
     // mSavers.add(new PackageJsonSettingsSaver());
 
-    mSavers.add(new SettingsWriterUserHomeJson());
+    //mSavers.add(new SettingsWriterUserHomeJson());
+    
+    // Save to app directory
+    mSavers.add(new SettingsWriterUserJson());
 
-    // Ability to read settings to home directory
-    mLoaders.add(new SettingsReaderUserHomeJson());
+    
   }
 
   /**

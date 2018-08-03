@@ -13,32 +13,29 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jebtk.core.collections;
+package org.jebtk.core.settings;
 
-import java.util.HashMap;
+import java.io.IOException;
 
 /**
- * The Class OrderedHashMap.
- *
- * @param <K> the key type
- * @param <V> the value type
+ * The Class SettingsWriterPackageJson.
  */
-public class OrderedHashMap<K, V> extends OrderedMap<K, V> {
-  private static final long serialVersionUID = 1L;
+public class SettingsWriterUserJson implements SettingsWriter {
 
-  /**
-   * Instantiates a new ordered hash map.
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.abh.common.settings.SettingsWriter#save(org.abh.common.settings.
+   * Settings)
    */
-  public OrderedHashMap() {
-    this(100);
+  @Override
+  public void save(Settings settings) {
+    try {
+      settings.writeJson(SettingsReaderUserJson.USER_JSON_FILE);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+
   }
 
-  /**
-   * Instantiates a new ordered hash map.
-   *
-   * @param size the size
-   */
-  public OrderedHashMap(int size) {
-    super(new HashMap<K, V>(size));
-  }
 }

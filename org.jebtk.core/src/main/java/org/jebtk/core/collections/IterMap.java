@@ -17,6 +17,7 @@ package org.jebtk.core.collections;
 
 import java.io.Serializable;
 import java.util.Map;
+import java.util.Map.Entry;
 
 /**
  * Iter maps allow the keys to be iterated over to reduce coding.
@@ -25,12 +26,12 @@ import java.util.Map;
  * @param <K> the key type
  * @param <V> the value type
  */
-public interface IterMap<K, V> extends Map<K, V>, Iterable<K>, Serializable {
+public interface IterMap<K, V> extends Map<K, V>, Iterable<Entry<K, V>>, Serializable {
   /**
    * Returns the first key in the map. The notion of first depends on the map
    * implementation.
    * 
    * @return
    */
-  public K first();
+  public Entry<K, V> first();
 }
