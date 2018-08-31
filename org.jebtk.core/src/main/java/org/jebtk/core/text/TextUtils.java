@@ -2817,6 +2817,40 @@ public class TextUtils {
 
     return buffer.toString();
   }
+  
+  /**
+   * Create a tab indented string.
+   * 
+   * @param s
+   * @return
+   */
+  public static String tabIndent(String s) {
+    return tabIndent(s, 1);
+  }
+
+  /**
+   * Create a tab indented string.
+   * 
+   * @param s     String to indent.
+   * @param tabs  Number of tabs to indent by.
+   * 
+   * @return      String s tab indented.
+   */
+  public static String tabIndent(String s, int tabs) {
+    StringBuilder buffer = new StringBuilder();
+    
+    tabs(tabs, buffer);
+    
+    buffer.append(s);
+    
+    return buffer.toString();
+  }
+
+  public static void tabs(int tabs, StringBuilder buffer) {
+    for (int i = 0; i < tabs; ++i) {
+      buffer.append(TAB_DELIMITER);
+    }
+  }
 
   
 

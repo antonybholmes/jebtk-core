@@ -44,7 +44,7 @@ public class UrlBuilder implements Serializable {
    * A regex for the url minus any parameters.
    */
   private static final Pattern HOST_REGEX =
-      Pattern.compile("((https?:\\/\\/)?[\\w-]+\\.[\\w-]+((\\.)?[\\w-]+)*(:\\d+)?)");
+      Pattern.compile("((https?:\\/\\/)?(localhost|([\\w-]+(\\.[\\w-]+)+))(:\\d+)?)");
 
   private static final Pattern PATH_REGEX =
       Pattern.compile("[^\\/:]\\/([\\/\\w\\.-]+[^\\/])");

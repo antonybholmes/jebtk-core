@@ -23,6 +23,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Writer;
 import java.nio.channels.FileChannel;
 import java.nio.file.Path;
 import java.util.ArrayDeque;
@@ -41,6 +42,7 @@ import javax.swing.JTextArea;
 import javax.swing.table.TableModel;
 
 import org.jebtk.core.TableData;
+import org.jebtk.core.collections.ArrayUtils;
 import org.jebtk.core.collections.CollectionUtils;
 import org.jebtk.core.stream.Stream;
 import org.jebtk.core.text.Splitter;
@@ -1840,5 +1842,57 @@ public class Io {
    */
   public static boolean getHasTxtExt(File file) {
     return getFileExt(file).equals(FILE_EXT_TXT);
+  }
+  
+  
+  /**
+   * Create a tab indented string.
+   * 
+   * @param s
+   * @return
+   * @throws IOException 
+   */
+  public static void tabIndent(Writer writer, String s) throws IOException {
+    tabIndent(writer, s, 1);
+  }
+
+  /**
+   * Create a tab indented string.
+   * 
+   * @param s     String to indent.
+   * @param tabs  Number of tabs to indent by.
+   * 
+   * @return      String s tab indented.
+   * @throws IOException 
+   */
+  public static void tabIndent(Writer writer, String s, int tabs) throws IOException {
+    tabs(writer, tabs);
+    
+    writer.write(s);
+  }
+
+  public static void tabs(Writer writer, int tabs) throws IOException {
+    for (int i = 0; i < tabs; ++i) {
+      writer.write(TextUtils.TAB_DELIMITER);
+    }
+  }
+
+  public static void join(BufferedWriter writer, String... items) throws IOException {
+    join(TextUtils.TAB_DELIMITER, writer, items);
+  }
+
+  private static void join(String delimiter, BufferedWriter writer, String... items) throws IOException {
+    if (ArrayUtils.isNullOrEmpty(items)) {
+      return;
+    }
+    
+    writer.write(items[0]);
+    
+    if (items.length > 1) {
+      for (int i = 1; i < items.length; ++i) {
+        writer.write(delimiter);
+        writer.write(items[i]);
+      }
+    }
   }
 }
