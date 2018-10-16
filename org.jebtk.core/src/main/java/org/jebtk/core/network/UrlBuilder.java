@@ -173,8 +173,8 @@ public class UrlBuilder implements Serializable {
    * @return the url builder
    * @throws UnsupportedEncodingException the unsupported encoding exception
    */
-  public UrlBuilder resolve(Object path) {
-    return resolve(path.toString());
+  public UrlBuilder resolve(Object o) {
+    return resolve(o.toString());
   }
 
   /**

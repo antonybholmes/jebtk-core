@@ -43,6 +43,7 @@ import org.jebtk.core.json.Json;
 import org.jebtk.core.json.JsonArray;
 import org.jebtk.core.json.JsonRepresentation;
 import org.jebtk.core.path.Path;
+import org.jebtk.core.path.RootPath;
 import org.jebtk.core.path.StrictPath;
 import org.jebtk.core.text.TextUtils;
 import org.jebtk.core.xml.XmlRepresentation;
@@ -296,6 +297,12 @@ public class Settings extends ChangeListeners
     fireChanged();
   }
 
+  public void set(String path, String value) {
+    update(path, value);
+
+    fireChanged();
+  }
+  
   /**
    * Sets the.
    *
@@ -873,14 +880,15 @@ public class Settings extends ChangeListeners
    * Load ini settings.
    *
    * @param file the file
+   * @return 
    * @throws IOException Signals that an I/O exception has occurred.
    */
-  public void loadIniSettings(java.nio.file.Path file) throws IOException {
+  public Settings loadIniSettings(java.nio.file.Path file) throws IOException {
     BufferedReader reader = FileUtils.newBufferedReader(file);
 
     String line;
 
-    String group = null;
+    String group = "main";
 
     try {
       while ((line = reader.readLine()) != null) {
@@ -905,20 +913,20 @@ public class Settings extends ChangeListeners
           continue;
         }
 
-        if (group == null) {
-          continue;
-        }
-
         List<String> tokens = TextUtils
             .fastSplit(line, TextUtils.EQUALS_DELIMITER, 2);
 
-        Setting setting = Setting.parse(new StrictPath(group, tokens.get(0)),
-            tokens.get(1));
+        Setting setting = Setting.parse(new RootPath(group, tokens.get(0)), tokens.get(1));    //    (true, group, tokens.get(0)),
+            
+        
+        System.err.println("ini path 2 " + (new RootPath(group, tokens.get(0)).toString()) + " " + setting.getPath().toString() + " " + setting.getString() + " " + group + " " + tokens.get(0));
 
         update(setting);
       }
     } finally {
       reader.close();
     }
+    
+    return this;
   }
 }

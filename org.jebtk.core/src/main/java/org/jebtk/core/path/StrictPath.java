@@ -88,8 +88,8 @@ public class StrictPath extends Path {
    *
    * @param levels the levels
    */
-  public StrictPath(Object... levels) {
-    super(levels);
+  public StrictPath(Object level, Object... levels) {
+    super(false, level, levels);
   }
 
   /*

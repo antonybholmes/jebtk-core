@@ -16,7 +16,6 @@
 package org.jebtk.core.sys;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.file.Path;
@@ -24,6 +23,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.jebtk.core.text.Join;
 import org.jebtk.core.text.TextUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,7 +41,7 @@ public class ExternalProcess {
   /**
    * The member working directory.
    */
-  private File mWorkingDirectory;
+  private final Path mPwd;
 
   /**
    * The constant LOG.
@@ -54,8 +54,8 @@ public class ExternalProcess {
    *
    * @param workingDirectory the working directory
    */
-  public ExternalProcess(File workingDirectory) {
-    mWorkingDirectory = workingDirectory;
+  public ExternalProcess(Path pwd) {
+    mPwd = pwd;
   }
 
   /**
@@ -63,8 +63,24 @@ public class ExternalProcess {
    *
    * @param arg the arg
    */
-  public final void addArg(String arg) {
+  public final void addArg(String arg, String... args) {
     mArgs.add(arg);
+    
+    for (String a : args) {
+      mArgs.add(a);
+    }
+  }
+  
+  public void addParam(String key, String value) {
+    addArg("--" + key + "=" + value);
+  }
+  
+  public void addParam(String key, int value) {
+    addParam(key, Integer.toString(value));
+  }
+  
+  public void addParam(String key, boolean value) {
+    addParam(key, Boolean.toString(value));
   }
 
   /**
@@ -94,7 +110,7 @@ public class ExternalProcess {
   public final void run() throws IOException, InterruptedException {
     ProcessBuilder builder = new ProcessBuilder(mArgs);
 
-    builder.directory(mWorkingDirectory);
+    builder.directory(mPwd.toFile());
 
     builder.redirectErrorStream(true);
 
@@ -115,6 +131,11 @@ public class ExternalProcess {
 
     process.waitFor();
   }
+  
+  @Override
+  public String toString() {
+    return Join.onSpace().values(mArgs).toString();
+  }
 
   /**
    * Run.
@@ -124,9 +145,9 @@ public class ExternalProcess {
    * @throws InterruptedException the interrupted exception
    * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static final void run(String command, File workingDirectory)
+  public static final void run(String command, Path pwd)
       throws InterruptedException, IOException {
-    ExternalProcess process = new ExternalProcess(workingDirectory);
+    ExternalProcess process = new ExternalProcess(pwd);
 
     process.addArg(command);
 
@@ -141,9 +162,9 @@ public class ExternalProcess {
    * @throws InterruptedException the interrupted exception
    * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static final void run(List<String> commands, File workingDirectory)
+  public static final void run(List<String> commands, Path pwd)
       throws InterruptedException, IOException {
-    ExternalProcess process = new ExternalProcess(workingDirectory);
+    ExternalProcess process = new ExternalProcess(pwd);
 
     process.setArgs(commands);
 
@@ -160,10 +181,12 @@ public class ExternalProcess {
    */
   public static final void run(String[] commands, Path pwd)
       throws InterruptedException, IOException {
-    ExternalProcess process = new ExternalProcess(pwd.toFile());
+    ExternalProcess process = new ExternalProcess(pwd);
 
     process.setArgs(commands);
 
     process.run();
   }
+
+  
 }

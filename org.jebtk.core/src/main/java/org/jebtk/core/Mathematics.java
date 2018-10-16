@@ -570,6 +570,36 @@ public class Mathematics {
 
     return ret;
   }
+  
+  public static int[] seq(int start, int end) {
+    int[] ret = new int[end - start + 1];
+    
+    int i = 0;
+    
+    for (int v = start; v <= end; ++v) {
+      ret[i++] = v;
+    }
+    
+    return ret;
+  }
+
+  /**
+   * Generate a sequence of numbers with a fixed increment.
+   *
+   * @param start the start
+   * @param end the end
+   * @param increment the increment
+   * @return the list
+   */
+  public static List<Integer> seq(int start, int end, int increment) {
+    List<Integer> ret = new ArrayList<Integer>();
+
+    for (int i = start; i <= end; i += increment) {
+      ret.add(i);
+    }
+
+    return ret;
+  }
 
   /**
    * Linear interpolation of function specified by points x y to evaluate y' of
@@ -1141,6 +1171,16 @@ public class Mathematics {
 
     for (T v : values) {
       ret.add(v.doubleValue() * x);
+    }
+
+    return ret;
+  }
+  
+  public static double[] multiply(int[] values, double x) {
+    double[] ret = new double[values.length];
+
+    for (int i = 0; i < values.length; ++i) {
+      ret[i] = values[i] * x;
     }
 
     return ret;
