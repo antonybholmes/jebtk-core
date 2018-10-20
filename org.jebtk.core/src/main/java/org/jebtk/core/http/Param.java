@@ -1,18 +1,18 @@
-package org.jebtk.core.network;
+package org.jebtk.core.http;
 
 import java.io.UnsupportedEncodingException;
 
 import org.jebtk.core.NameProperty;
 
 public abstract class Param implements NameProperty {
-  
+
   public abstract String getValue();
-  
+
   @Override
   public String toString() {
     return getParamString(getName(), getValue());
   }
-  
+
   /**
    * Gets the param string.
    *
@@ -58,7 +58,7 @@ public abstract class Param implements NameProperty {
    * @throws UnsupportedEncodingException the unsupported encoding exception
    */
   public static String getParamString(String name, String value) {
-    return new StringBuilder(UrlBuilder.encode(name)).append("=").append(UrlBuilder.encode(value))
-        .toString();
+    return new StringBuilder(UrlBuilder.encode(name)).append("=")
+        .append(UrlBuilder.encode(value)).toString();
   }
 }

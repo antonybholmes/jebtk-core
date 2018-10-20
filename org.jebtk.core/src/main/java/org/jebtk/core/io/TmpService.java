@@ -20,6 +20,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.security.SecureRandom;
 
+import org.jebtk.core.text.Join;
 import org.jebtk.core.text.TextUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,12 +31,14 @@ import org.slf4j.LoggerFactory;
  * @author Antony Holmes Holmes
  *
  */
-public class TempService {
+public class TmpService {
 
+  private static final int MAX_TRIES = 100;
+  
   private static class TempServiceLoader {
 
     /** The Constant INSTANCE. */
-    private static final TempService INSTANCE = new TempService();
+    private static final TmpService INSTANCE = new TmpService();
   }
 
   /**
@@ -43,7 +46,7 @@ public class TempService {
    *
    * @return single instance of SettingsService
    */
-  public static TempService getInstance() {
+  public static TmpService getInstance() {
     return TempServiceLoader.INSTANCE;
   }
   
@@ -61,11 +64,11 @@ public class TempService {
   /**
    * The constant LOG.
    */
-  private static final Logger LOG = LoggerFactory.getLogger(TempService.class);
+  private static final Logger LOG = LoggerFactory.getLogger(TmpService.class);
 
   private Path mTmpDir;
 
-  private TempService() {
+  private TmpService() {
     mTmpDir = TMP_DIR;
   }
   
@@ -104,8 +107,8 @@ public class TempService {
    * @return the file
    * @throws IOException Signals that an I/O exception has occurred.
    */
-  public Path generateTmpFile() throws IOException {
-    return generateTmpFile("tmp");
+  public Path newTmpFile() throws IOException {
+    return newTmpFile("tmp");
   }
 
   /**
@@ -115,18 +118,26 @@ public class TempService {
    * @return the file
    * @throws IOException Signals that an I/O exception has occurred.
    */
-  public Path generateTmpFile(String ext) throws IOException {
-    createTmpDir();
-
-    return mTmpDir
-        .resolve(TextUtils.paste(generateTmpString(), ".", ext));
+  public Path newTmpFile(String ext) throws IOException {
+    return newTmpFile(TextUtils.EMPTY_STRING, ext);
   }
   
-  public Path generateTmpFile(String prefix, String ext) throws IOException {
+  public Path newTmpFile(String prefix, String ext) throws IOException {
     createTmpDir();
 
-    return mTmpDir
-        .resolve(TextUtils.paste(prefix, ".", generateTmpString(), ".", ext));
+    Path ret = null;
+    
+    Join join = Join.onPeriod().ignoreEmptyStrings();
+    
+    for (int i = 0; i < MAX_TRIES; ++i) {
+      ret = mTmpDir.resolve(join.toString(prefix, newTmpString(), ext));
+      
+      if (!FileUtils.exists(ret)) {
+        break;
+      }
+    }
+    
+    return ret;
   }
 
   /**
@@ -162,11 +173,11 @@ public class TempService {
     }
   }
   
-  private static String generateTmpString() {
-    return generateTmpString(6);
+  private static String newTmpString() {
+    return newTmpString(6);
   }
   
-  private static String generateTmpString(int l) {
+  private static String newTmpString(int l) {
       StringBuilder buffer = new StringBuilder();
       
       for (int i = 0; i < l; ++i) {

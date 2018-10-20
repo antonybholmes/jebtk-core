@@ -19,11 +19,8 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.Writer;
-import java.util.Collection;
-import java.util.List;
 
 import org.jebtk.core.collections.CollectionUtils;
-import org.jebtk.core.stream.Stream;
 
 /**
  * The Class Join.
@@ -83,6 +80,7 @@ public class Join {
    * @param values the values
    * @return the join
    */
+  /*
   public Join values(final Collection<?> values) {
     Join join = new Join(this);
 
@@ -115,6 +113,7 @@ public class Join {
 
     return join;
   }
+  */
 
   /**
    * Values.
@@ -221,6 +220,14 @@ public class Join {
   public String toString() {
     return mBuilder.toString();
   }
+  
+  public String toString(Iterable<String> values) {
+    return values(values).toString();
+  }
+  
+  public String toString(Object... values) {
+    return values(values).toString();
+  }
 
   /**
    * Write the string produced by the join to the writer and add a newline.
@@ -314,27 +321,6 @@ public class Join {
   }
 
   /**
-   * On tab.
-   *
-   * @param values the values
-   * @return the join
-   */
-  public static Join onTab(Object... values) {
-    return onTab().values(values);
-  }
-
-  /**
-   * On tab.
-   *
-   * @param <T> the generic type
-   * @param values the values
-   * @return the string
-   */
-  public static <T extends Comparable<T>> String onTab(List<T> values) {
-    return Stream.of(values).asString().join(TextUtils.TAB_DELIMITER);
-  }
-
-  /**
    * Join strings with a space.
    *
    * @return the join
@@ -360,5 +346,11 @@ public class Join {
   public static Join onDash() {
     return on(TextUtils.DASH_DELIMITER);
   }
+  
+  public static Join onPeriod() {
+    return on(TextUtils.PERIOD_DELIMITER);
+  }
+
+  
 
 }

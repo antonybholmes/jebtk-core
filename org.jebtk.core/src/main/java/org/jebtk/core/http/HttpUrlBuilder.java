@@ -13,27 +13,29 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jebtk.core.network;
+package org.jebtk.core.http;
 
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.SSLSession;
+import java.io.UnsupportedEncodingException;
 
 /**
- * Trust all hosts without checking them.
+ * Defaults to building a HTTP url.
  * 
  * @author Antony Holmes Holmes
  *
  */
-public class TrustAllHosts implements HostnameVerifier {
+public class HttpUrlBuilder extends UrlBuilder {
 
-  /*
-   * (non-Javadoc)
-   * 
-   * @see javax.net.ssl.HostnameVerifier#verify(java.lang.String,
-   * javax.net.ssl.SSLSession)
+  /**
+   * The constant serialVersionUID.
    */
-  @Override
-  public boolean verify(String hostname, SSLSession session) {
-    return true;
+  private static final long serialVersionUID = 1L;
+
+  /**
+   * Instantiates a new http url builder.
+   *
+   * @throws UnsupportedEncodingException the unsupported encoding exception
+   */
+  public HttpUrlBuilder() {
+    super("http://");
   }
 }

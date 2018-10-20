@@ -26,8 +26,9 @@ import java.util.ArrayDeque;
 
 import org.jebtk.core.ColorUtils;
 import org.jebtk.core.Mathematics;
+import org.jebtk.core.http.UrlBuilder;
 import org.jebtk.core.io.FileUtils;
-import org.jebtk.core.network.UrlBuilder;
+import org.jebtk.core.io.StreamUtils;
 import org.jebtk.core.text.TextUtils;
 
 /**
@@ -131,7 +132,7 @@ public class JsonParser {
    * @throws IOException Signals that an I/O exception has occurred.
    */
   private Json parse(URLConnection connection) throws IOException {
-    return parse(FileUtils.newBufferedInputStream(connection.getInputStream()));
+    return parse(StreamUtils.newBufferedInputStream(connection.getInputStream()));
   }
 
   /**

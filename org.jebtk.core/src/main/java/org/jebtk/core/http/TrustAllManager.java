@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jebtk.core.network;
+package org.jebtk.core.http;
 
 import javax.net.ssl.X509TrustManager;
 

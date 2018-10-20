@@ -18,8 +18,8 @@ package org.jebtk.core.settings;
 import java.awt.Color;
 
 import org.jebtk.core.ColorUtils;
+import org.jebtk.core.http.UrlBuilder;
 import org.jebtk.core.io.PathUtils;
-import org.jebtk.core.network.UrlBuilder;
 import org.jebtk.core.path.Path;
 import org.jebtk.core.text.TextUtils;
 

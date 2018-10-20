@@ -23,6 +23,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.Writer;
 import java.nio.channels.FileChannel;
 import java.nio.file.Path;
@@ -84,10 +85,6 @@ public class Io {
   public static final Path PWD = PathUtils
       .getPath(System.getProperty("user.dir"));
 
-  /**
-   * The buffer.
-   */
-  private static byte[] BUFFER = new byte[1024];
 
   /**
    * Read sequences.
@@ -1687,37 +1684,7 @@ public class Io {
     return file.getName().substring(0, file.getName().lastIndexOf("."));
   }
 
-  /**
-   * Create a zip file from a list of files. Each zip entry will be called by
-   * the file name excluding the path.
-   *
-   * @param outFile the out file
-   * @param files the files
-   * @throws IOException Signals that an I/O exception has occurred.
-   */
-  public static void createZip(Path outFile, List<Path> files)
-      throws IOException {
-    ZipOutputStream out = new ZipOutputStream(
-        FileUtils.newOutputStream(outFile));
 
-    for (Path file : files) {
-      InputStream in = FileUtils.newBufferedInputStream(file);
-
-      out.putNextEntry(new ZipEntry(PathUtils.getName(file)));
-
-      int len;
-
-      while ((len = in.read(BUFFER)) > 0) {
-        out.write(BUFFER, 0, len);
-      }
-
-      out.closeEntry();
-
-      in.close();
-    }
-
-    out.close();
-  }
 
   /**
    * Find a file matching a pattern in a dir.
@@ -1895,4 +1862,6 @@ public class Io {
       }
     }
   }
+  
+
 }

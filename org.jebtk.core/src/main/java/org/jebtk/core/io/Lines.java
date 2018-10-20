@@ -83,11 +83,11 @@ public class Lines {
   }
 
   public void lines(Reader reader) throws IOException {
-    lines(FileUtils.newBufferedReader(reader));
+    lines(StreamUtils.newBufferedReader(reader));
   }
 
   public void lines(InputStream s) throws IOException {
-    lines(FileUtils.newBufferedReader(s));
+    lines(StreamUtils.newBufferedReader(s));
   }
 
   /**

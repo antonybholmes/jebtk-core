@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jebtk.core.network;
+package org.jebtk.core.http;
 
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
@@ -43,16 +43,15 @@ public class UrlBuilder implements Serializable {
   /**
    * A regex for the url minus any parameters.
    */
-  private static final Pattern HOST_REGEX =
-      Pattern.compile("((https?:\\/\\/)?(localhost|([\\w-]+(\\.[\\w-]+)+))(:\\d+)?)");
+  private static final Pattern HOST_REGEX = Pattern
+      .compile("((https?:\\/\\/)?(localhost|([\\w-]+(\\.[\\w-]+)+))(:\\d+)?)");
 
-  private static final Pattern PATH_REGEX =
-      Pattern.compile("[^\\/:]\\/([\\/\\w\\.-]+[^\\/])");
+  private static final Pattern PATH_REGEX = Pattern
+      .compile("[^\\/:]\\/([\\/\\w\\.-]+[^\\/])");
 
-  //private static final Pattern PORT_REGEX = Pattern.compile(":(\\d+)");
+  // private static final Pattern PORT_REGEX = Pattern.compile(":(\\d+)");
 
-  private static final Pattern PART_REGEX =
-      Pattern.compile("([\\w-]+)");
+  private static final Pattern PART_REGEX = Pattern.compile("([\\w-]+)");
 
   /**
    * The constant URL_SEPARATOR.
@@ -102,27 +101,22 @@ public class UrlBuilder implements Serializable {
   public UrlBuilder(String server) {
     mServer = getHost(server);
     mPath = getPath(server);
-    
+
     mParts.add(mServer);
     mParts.add(mPath);
   }
 
   /*
-  public UrlBuilder(String server, int port) {
-    StringBuilder buffer = new StringBuilder(getHost(server));
-
-    Matcher matcher = PORT_REGEX.matcher(buffer);
-
-    // If port already specified, replace it
-    if (matcher.find()) {
-      buffer.replace(matcher.start(1), matcher.end(1), Integer.toString(port));
-    } else {
-      buffer.append(PORT_SEPARATOR).append(port).toString();
-    }
-
-    mServer = buffer.toString();
-    mPort = port;
-  }
+   * public UrlBuilder(String server, int port) { StringBuilder buffer = new
+   * StringBuilder(getHost(server));
+   * 
+   * Matcher matcher = PORT_REGEX.matcher(buffer);
+   * 
+   * // If port already specified, replace it if (matcher.find()) {
+   * buffer.replace(matcher.start(1), matcher.end(1), Integer.toString(port)); }
+   * else { buffer.append(PORT_SEPARATOR).append(port).toString(); }
+   * 
+   * mServer = buffer.toString(); mPort = port; }
    */
 
   /**
@@ -246,16 +240,27 @@ public class UrlBuilder implements Serializable {
   public UrlBuilder param(String name, String value) {
     return param(new StaticParam(name, value));
   }
+  
+  /**
+   * Add a boolean param. True is represented as "t" and false as "f".
+   * 
+   * @param name      Paramter name.
+   * @param value     Parameter value.
+   * @return          New instance of UrlBuilder with parameter added.
+   */
+  public UrlBuilder param(String name, boolean value) {
+    return param(name, value ? "t" : "f");
+  }
 
   public UrlBuilder param(Param param) {
     UrlBuilder url = new UrlBuilder(this);
 
     // Don't add if param values are null
-    if (!TextUtils.isNullOrEmpty(param.getName()) &&
-        !TextUtils.isNullOrEmpty(param.getValue())) {
+    if (!TextUtils.isNullOrEmpty(param.getName())
+        && !TextUtils.isNullOrEmpty(param.getValue())) {
       url.mParams.add(param);
     }
-    
+
     return url;
   }
 
@@ -286,11 +291,11 @@ public class UrlBuilder implements Serializable {
   public String toString() {
     StringBuilder buffer = new StringBuilder();
 
-    //if (mPath.length() > 0) {
-    //  buffer.append(mPath);
-    //}
+    // if (mPath.length() > 0) {
+    // buffer.append(mPath);
+    // }
 
-    //buffer.append(URL_SEPARATOR);
+    // buffer.append(URL_SEPARATOR);
 
     TextUtils.join(mParts, URL_SEPARATOR, buffer);
 
@@ -354,7 +359,7 @@ public class UrlBuilder implements Serializable {
     Matcher matcher = HOST_REGEX.matcher(server);
 
     if (matcher.find()) {
-      return matcher.group(1); //sanitize(server);
+      return matcher.group(1); // sanitize(server);
     } else {
       return TextUtils.EMPTY_STRING;
     }
@@ -364,7 +369,7 @@ public class UrlBuilder implements Serializable {
     Matcher matcher = PATH_REGEX.matcher(server);
 
     if (matcher.find()) {
-      return matcher.group(1); //sanitize(server);
+      return matcher.group(1); // sanitize(server);
     } else {
       return TextUtils.EMPTY_STRING;
     }

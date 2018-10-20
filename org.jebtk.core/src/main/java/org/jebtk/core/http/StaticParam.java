@@ -1,4 +1,4 @@
-package org.jebtk.core.network;
+package org.jebtk.core.http;
 
 public class StaticParam extends Param {
   private String mValue;
@@ -8,15 +8,15 @@ public class StaticParam extends Param {
     mName = name;
     mValue = value;
   }
-  
+
   public StaticParam(String name, int value) {
     this(name, Integer.toString(value));
   }
-  
+
   public StaticParam(String name, double value) {
     this(name, Double.toString(value));
   }
-  
+
   public StaticParam(String name, Object value) {
     this(name, value.toString());
   }

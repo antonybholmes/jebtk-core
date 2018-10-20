@@ -13,17 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jebtk.core.network;
+package org.jebtk.core.http;
 
-import org.jebtk.core.MessageException;
+import java.io.UnsupportedEncodingException;
 
 /**
- * To be thrown when experiment search cannot connect to a server.
- *
+ * Defaults to building a HTTP url.
+ * 
  * @author Antony Holmes Holmes
  *
  */
-public class ConnectionException extends MessageException {
+public class HttpsUrlBuilder extends UrlBuilder {
 
   /**
    * The constant serialVersionUID.
@@ -31,11 +31,11 @@ public class ConnectionException extends MessageException {
   private static final long serialVersionUID = 1L;
 
   /**
-   * Instantiates a new connection exception.
+   * Instantiates a new http url builder.
    *
-   * @param message the message
+   * @throws UnsupportedEncodingException the unsupported encoding exception
    */
-  public ConnectionException(String message) {
-    super(message);
+  public HttpsUrlBuilder() {
+    super("https://");
   }
 }

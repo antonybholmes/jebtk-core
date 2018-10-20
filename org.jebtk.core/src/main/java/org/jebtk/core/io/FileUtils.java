@@ -16,7 +16,6 @@
 package org.jebtk.core.io;
 
 import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.DataInputStream;
@@ -27,11 +26,8 @@ import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.io.RandomAccessFile;
-import java.io.Reader;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -64,8 +60,10 @@ public class FileUtils {
 
   /** The Constant LOG. */
   protected final static Logger LOG = LoggerFactory.getLogger(FileUtils.class);
-  
+
   public static final Path HOME = PathUtils.getPath(System.getProperty("user.home"));
+
+
 
   /**
    * Instantiates a new file utils.
@@ -73,6 +71,7 @@ public class FileUtils {
   private FileUtils() {
     // Do nothing
   }
+
 
 
   /**
@@ -433,13 +432,13 @@ public class FileUtils {
 
     return ret;
   }
-  
+
   public static List<Path> match(Path dir,
       boolean recursive,
       String... patterns) throws IOException {
     return match(dir, false, recursive, patterns);
   }
-  
+
   /**
    * Find files matching all parameters
    * @param dir
@@ -457,14 +456,14 @@ public class FileUtils {
 
     for (Path path : ls(dir, includeDirs, recursive)) {
       boolean found = true;
-      
+
       for (String pattern : patterns) {
         if (!path.toString().contains(pattern)) {
           found = false;
           break;
         }
       }
-      
+
       if (found) {
         ret.add(path);
       }
@@ -483,11 +482,12 @@ public class FileUtils {
    */
   public static BufferedWriter newBufferedWriter(Path file) throws IOException {
     if (PathUtils.getFileExt(file).equals("gz")) {
-      return new BufferedWriter(new OutputStreamWriter(new GZIPOutputStream(newFileOutputStream(file)), DEFAULT_CHARSET));
+      return StreamUtils.newBufferedWriter(gz(file));
     } else {
       return Files.newBufferedWriter(file, DEFAULT_CHARSET);
     }
   }
+
 
   /**
    * New buffered table writer.
@@ -523,37 +523,15 @@ public class FileUtils {
   public static BufferedReader newBufferedReader(Path file) throws IOException {
     if (PathUtils.getName(file).toLowerCase().endsWith("gz")) {
       // Cope with gzipped files
-      return newBufferedReader(newBufferedInputStream(file));
+      return StreamUtils.newBufferedReader(newBufferedInputStream(file));
     } else {
       return Files.newBufferedReader(file, DEFAULT_CHARSET);
     }
   }
 
-  /**
-   * New buffered reader.
-   *
-   * @param stream the stream
-   * @return the buffered reader
-   * @throws IOException Signals that an I/O exception has occurred.
-   */
-  public static BufferedReader newBufferedReader(InputStream stream) {
-    return new BufferedReader(newInputReader(stream));
-  }
 
-  public static BufferedReader newBufferedReader(Reader reader) {
-    return new BufferedReader(reader);
-  }
 
-  /**
-   * New input reader.
-   *
-   * @param stream the stream
-   * @return the reader
-   * @throws IOException Signals that an I/O exception has occurred.
-   */
-  public static Reader newInputReader(InputStream stream) {
-    return new InputStreamReader(stream, DEFAULT_CHARSET);
-  }
+
 
   /**
    * Creates a new buffered input stream.
@@ -564,19 +542,10 @@ public class FileUtils {
    */
   public static InputStream newBufferedInputStream(Path file)
       throws IOException {
-    return newBufferedInputStream(newInputStream(file));
+    return StreamUtils.newBufferedInputStream(newInputStream(file));
   }
 
-  /**
-   * Returns a buffered input stream.
-   *
-   * @param stream the stream
-   * @return the input stream
-   * @throws IOException Signals that an I/O exception has occurred.
-   */
-  public static InputStream newBufferedInputStream(InputStream stream) {
-    return new BufferedInputStream(stream);
-  }
+
 
   /**
    * Creates a new input stream. If the file name ends with the gz ext, The
@@ -605,8 +574,15 @@ public class FileUtils {
    * @throws IOException Signals that an I/O exception has occurred.
    */
   public static OutputStream newOutputStream(Path file) throws IOException {
-    return new BufferedOutputStream(Files.newOutputStream(file));
+    return Files.newOutputStream(file);
   }
+
+  public static OutputStream newBufferedOutputStream(Path file)
+      throws IOException {
+    return StreamUtils.newBufferedOutputStream(newOutputStream(file));
+  }
+
+
 
   /**
    * Checks if is directory.
@@ -786,7 +762,7 @@ public class FileUtils {
    * @param bytes the bytes
    * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static void write(Path path, byte[] bytes) throws IOException {
+  public static void write(byte[] bytes, Path path) throws IOException {
     FileOutputStream stream = new FileOutputStream(path.toFile());
 
     try {
@@ -795,6 +771,22 @@ public class FileUtils {
       stream.close();
     }
   }
+
+  public static void write(InputStream in, Path file) throws IOException {
+    Files.copy(in, file);
+
+    /*
+    OutputStream output = FileUtils.newOutputStream(file);
+
+    try {
+      write(input, output);
+    } finally {
+      output.close();
+    }
+     */
+  }
+
+
 
   /**
    * Returns a buffered data input stream on the file.
@@ -817,12 +809,7 @@ public class FileUtils {
    */
   public static DataOutputStream newDataOutputStream(Path file)
       throws IOException {
-    return new DataOutputStream(newOutputStream(file));
-  }
-
-  public static FileOutputStream newFileOutputStream(Path file)
-      throws IOException {
-    return new FileOutputStream(file.toFile());
+    return new DataOutputStream(newBufferedOutputStream(file));
   }
 
   /**
@@ -837,15 +824,7 @@ public class FileUtils {
     return new RandomAccessFile(file.toFile(), "r");
   }
 
-  /**
-   * Wrap an output stream into a zip stream.
-   *
-   * @param output the output
-   * @return the zip output stream
-   */
-  public static ZipOutputStream zip(OutputStream output) {
-    return new ZipOutputStream(output);
-  }
+
 
   /**
    * New buffered reader.
@@ -857,7 +836,7 @@ public class FileUtils {
    */
   public static BufferedReader newBufferedReader(ZipFile file, ZipEntry entry)
       throws IOException {
-    return newBufferedReader(newBufferedInputStream(file, entry));
+    return StreamUtils.newBufferedReader(newBufferedInputStream(file, entry));
   }
 
   /**
@@ -870,7 +849,7 @@ public class FileUtils {
    */
   public static InputStream newBufferedInputStream(ZipFile file, ZipEntry entry)
       throws IOException {
-    return newBufferedInputStream(newInputStream(file, entry));
+    return StreamUtils.newBufferedInputStream(newInputStream(file, entry));
   }
 
   /**
@@ -1091,41 +1070,48 @@ public class FileUtils {
     return rows;
   }
 
+  public static GZIPOutputStream gz(Path file) throws IOException {
+    return StreamUtils.gz(newOutputStream(file));
+  }
+
+
+  
+  /**
+   * Wrap an output stream into a zip stream.
+   *
+   * @param output the output
+   * @return the zip output stream
+   * @throws IOException 
+   */
+  public static ZipOutputStream zip(Path file) throws IOException {
+    return StreamUtils.zip(newOutputStream(file));
+  }
+
+
   /**
    * Zip some files.
    * 
    * @param out
    * @param files
+   * @throws IOException 
    */
-  public static void zip(Path out, Collection<Path> files) {
+  public static void zip(Path out, Collection<Path> files) throws IOException {
+    ZipOutputStream zos = zip(out);
 
-    byte[] buffer = new byte[1024];
+    for(Path f : files) {
 
-    try {
+      ZipEntry ze = new ZipEntry(PathUtils.getName(f));
+      zos.putNextEntry(ze);
 
-      FileOutputStream fos = newFileOutputStream(out);
-      ZipOutputStream zos = new ZipOutputStream(fos);
+      InputStream in = newBufferedInputStream(f);
 
-      for(Path f : files) {
+      StreamUtils.copy(in, zos);
 
-        ZipEntry ze = new ZipEntry(PathUtils.getName(f));
-        zos.putNextEntry(ze);
-
-        InputStream in = newInputStream(f);
-
-        int len;
-
-        while ((len = in.read(buffer)) > 0) {
-          zos.write(buffer, 0, len);
-        }
-
-        in.close();
-        zos.closeEntry();
-      }
-
-      zos.close();
-    } catch(IOException e){
-      e.printStackTrace();
+      in.close();
+      zos.closeEntry();
     }
+
+    zos.close();
+
   }
 }

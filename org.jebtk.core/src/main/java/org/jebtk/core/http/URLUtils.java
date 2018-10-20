@@ -13,13 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jebtk.core.network;
+package org.jebtk.core.http;
 
 import java.awt.Desktop;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URI;
@@ -43,6 +42,7 @@ import org.jebtk.core.Attribute;
 import org.jebtk.core.collections.CollectionUtils;
 import org.jebtk.core.io.ByteStreams;
 import org.jebtk.core.io.FileUtils;
+import org.jebtk.core.io.StreamUtils;
 import org.jebtk.core.text.TextUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -55,9 +55,8 @@ import org.slf4j.LoggerFactory;
  */
 public class URLUtils {
 
-  private static final Logger LOG = 
-      LoggerFactory.getLogger(URLUtils.class);
-  
+  private static final Logger LOG = LoggerFactory.getLogger(URLUtils.class);
+
   /** The Constant GOOD_IRI_CHAR. */
   public static final Pattern GOOD_IRI_CHAR = Pattern
       .compile("a-zA-Z0-9\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF");
@@ -100,14 +99,13 @@ public class URLUtils {
           + "\\,\\;\\?\\&\\=]|(?:\\%[a-fA-F0-9]{2})){1,64}(?:\\:(?:[a-zA-Z0-9\\$\\-\\_"
           + "\\.\\+\\!\\*\\'\\(\\)\\,\\;\\?\\&\\=]|(?:\\%[a-fA-F0-9]{2})){1,25})?\\@)?)?"
           + "(?:" + DOMAIN_NAME + ")" + "(?:\\:\\d{1,5})?)" // plus option port
-                                                            // number
+          // number
           + "(\\/(?:(?:[" + GOOD_IRI_CHAR + "\\;\\/\\?\\:\\@\\&\\=\\#\\~" // plus
-                                                                          // option
-                                                                          // query
-                                                                          // params
+          // option
+          // query
+          // params
           + "\\-\\.\\+\\!\\*\\'\\(\\)\\,\\_])|(?:\\%[a-fA-F0-9]{2}))*)?"
           + "(?:\\b|$)");
-
 
   // and finally, a word boundary or end of
   // input. This is to stop foo.sure from
@@ -169,7 +167,7 @@ public class URLUtils {
       String body) throws IOException, URISyntaxException {
     String uriStr = String.format("mailto:%s?subject=%s&body=%s",
         TextUtils.join(recipients, ","), // use semicolon ";"
-                                         // for Outlook!
+        // for Outlook!
         urlEncode(subject),
         urlEncode(body));
     Desktop.getDesktop().browse(new URI(uriStr));
@@ -260,7 +258,7 @@ public class URLUtils {
 
     String line;
 
-    BufferedReader in = FileUtils
+    BufferedReader in = StreamUtils
         .newBufferedReader(connection.getInputStream());
 
     try {
@@ -384,7 +382,7 @@ public class URLUtils {
 
       String line;
 
-      BufferedReader in = FileUtils
+      BufferedReader in = StreamUtils
           .newBufferedReader(connection.getInputStream());
 
       try {
@@ -494,26 +492,25 @@ public class URLUtils {
     }
   }
 
+  public static void downloadFile(UrlBuilder url, Path localFile)
+      throws IOException {
+    downloadFile(url.toURL(), localFile);
+  }
+
   public static void downloadFile(URL url, Path localFile) throws IOException {
-   LOG.info("Downloading {}...", url);
-    
-    OutputStream output = FileUtils.newOutputStream(localFile);
+    LOG.info("Downloading {}...", url);
 
     InputStream input = url.openStream();
 
-    try {
-      byte[] buffer = new byte[2048];
+    downloadFile(input, localFile);
 
-      int bytesRead;
+    input.close();
 
-      while ((bytesRead = input.read(buffer)) != -1) {
-        output.write(buffer, 0, bytesRead);
-      }
-    } finally {
-      input.close();
-      output.close();
-    }
-    
     LOG.info("Finished.");
+  }
+
+  public static void downloadFile(InputStream input, Path file)
+      throws IOException {
+    FileUtils.write(input, file);
   }
 }
