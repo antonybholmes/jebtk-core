@@ -40,7 +40,6 @@ import javax.net.ssl.TrustManager;
 
 import org.jebtk.core.Attribute;
 import org.jebtk.core.collections.CollectionUtils;
-import org.jebtk.core.io.ByteStreams;
 import org.jebtk.core.io.FileUtils;
 import org.jebtk.core.io.StreamUtils;
 import org.jebtk.core.text.TextUtils;
@@ -118,6 +117,10 @@ public class URLUtils {
     // Do nothing
   }
 
+  public static void launch(UrlBuilder url) throws URISyntaxException, IOException {
+    launch(url.toURL());
+  }
+  
   /**
    * Launch.
    *
@@ -432,7 +435,7 @@ public class URLUtils {
       // out = new ByteArrayOutputStream(maxSize); // Pick some appropriate size
       // }
 
-      return ByteStreams.toByteArray(in,
+      return StreamUtils.toByteArray(in,
           contentLength != -1 ? contentLength : maxSize);
 
       /*

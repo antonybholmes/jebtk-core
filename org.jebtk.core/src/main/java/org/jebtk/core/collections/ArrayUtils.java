@@ -2,6 +2,7 @@ package org.jebtk.core.collections;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -21,15 +22,25 @@ public class ArrayUtils {
     return array(start, end, 1);
   }
 
-  private static int[] array(int start, int end, int inc) {
-    int n = end - start + 1;
+  /**
+   * Create an array from start to end (inclusive if steps coincide with end
+   * otherwise first step closest to, but less than end).
+   * 
+   * @param start
+   * @param end
+   * @param inc
+   * @return
+   */
+  public static int[] array(int start, int end, int inc) {
+    int n = (end - start) / inc + 1;
 
-    n += n % inc;
+    //n += n % inc;
 
     int [] ret = new int[n];
 
     for (int i = 0; i < n; ++i) {
-      ret[i] = start++;
+      ret[i] = start;
+      start += inc;
     }
 
     return ret;
@@ -147,5 +158,23 @@ public class ArrayUtils {
    */
   public static int[] copyOf(int[] list, int start, int length) {
     return Arrays.copyOfRange(list, start, start + length);
+  }
+
+  /**
+   * Convert an int list to a primitive int array.
+   * 
+   * @param values
+   * @return
+   */
+  public static int[] toInt(Collection<Integer> values) {
+    int[] ret = new int[values.size()];
+    
+    int i = 0;
+    
+    for (int v : values) {
+      ret[i++] = v;
+    }
+
+    return ret;
   }
 }

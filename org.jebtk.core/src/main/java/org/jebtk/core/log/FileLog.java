@@ -35,11 +35,6 @@ public class FileLog implements LogEventListener {
   public static final Path DEFAULT_LOG_FILE = PathUtils.getPath("log.txt");
 
   /**
-   * The member file.
-   */
-  private Path mFile;
-
-  /**
    * Instantiates a new file log.
    */
   public FileLog() {
@@ -52,8 +47,6 @@ public class FileLog implements LogEventListener {
    * @param file the file
    */
   public FileLog(Path file) {
-    mFile = file;
-
     Logger.getRootLogger().getLoggerRepository().resetConfiguration();
 
     ConsoleAppender console = new ConsoleAppender(); // create appender

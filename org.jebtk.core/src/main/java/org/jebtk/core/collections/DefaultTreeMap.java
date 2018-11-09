@@ -35,6 +35,8 @@ public class DefaultTreeMap<K, V> extends IterTreeMap<K, V> {
    */
   private EntryCreator<V> mDefaultValue;
 
+  private boolean mAutoCreate = true;
+
   /**
    * Instantiates a new auto hash map.
    *
@@ -77,11 +79,21 @@ public class DefaultTreeMap<K, V> extends IterTreeMap<K, V> {
    * @return the value
    */
   public V getValue(K key) {
-    if (!containsKey(key)) {
+    if (mAutoCreate && !containsKey(key)) {
       put(key, mDefaultValue.newEntry());
     }
 
     return super.get(key);
+  }
+  
+  /**
+   * Set whether entries are automatically created or not. Useful for locking
+   * map so that new entries must be explicity added.
+   * 
+   * @param autoCreate
+   */
+  public void setAutoCreate(boolean autoCreate) {
+    mAutoCreate = autoCreate;
   }
 
   /**
@@ -92,7 +104,7 @@ public class DefaultTreeMap<K, V> extends IterTreeMap<K, V> {
    * @param defaultValue the default value
    * @return the map
    */
-  public static <KK, VV> IterMap<KK, VV> create(VV defaultValue) {
+  public static <KK, VV> DefaultTreeMap<KK, VV> create(VV defaultValue) {
     return create(new ValueCreator<VV>(defaultValue));
   }
 
@@ -104,7 +116,7 @@ public class DefaultTreeMap<K, V> extends IterTreeMap<K, V> {
    * @param defaultValue the default value
    * @return the map
    */
-  public static <KK, VV> IterMap<KK, VV> create(EntryCreator<VV> defaultValue) {
+  public static <KK, VV> DefaultTreeMap<KK, VV> create(EntryCreator<VV> defaultValue) {
     return new DefaultTreeMap<KK, VV>(defaultValue);
   }
 }

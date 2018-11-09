@@ -175,10 +175,10 @@ public class TextUtils {
 
   /** The Constant STRICT_INT_PATTERN. */
   public static final Pattern STRICT_INT_PATTERN = Pattern
-      .compile("^([-+]?[0-9]+([eE][-+]?[0-9]+)?)$");
+      .compile("([-+]?[0-9]+([eE][-+]?[0-9]+)?)");
   
   public static final Pattern STRICT_DOUBLE_PATTERN = 
-      Pattern.compile("^-?(?:0|[1-9][0-9]*)\\.?[0-9]+([e|E][+-]?[0-9]+)?$");
+      Pattern.compile("-?(?:0|[1-9][0-9]*)\\.?[0-9]+([e|E][+-]?[0-9]+)?");
 
   private static final String DIGIT_REGEX = "(\\p{Digit}+)";
   private static final String HEX_DIGITS_REGEX = "(\\p{XDigit}+)";
@@ -2010,7 +2010,7 @@ public class TextUtils {
    * @param objects the objects
    * @return the string
    */
-  public static String paste(Object... objects) {
+  public static String cat(Object... objects) {
     StringBuilder buffer = new StringBuilder();
 
     for (Object o : objects) {
@@ -2021,12 +2021,13 @@ public class TextUtils {
   }
 
   /**
-   * Paste.
+   * Paste a number of strings together. Shorthand method for using a 
+   * StringBuilder and to save writing long concatenations involving '+'.
    *
-   * @param strings the strings
-   * @return the string
+   * @param strings       an array of strings.
+   * @return              The strings concatenated together.
    */
-  public static String paste(String... strings) {
+  public static String cat(String... strings) {
     StringBuilder buffer = new StringBuilder();
 
     for (String s : strings) {
@@ -2167,7 +2168,7 @@ public class TextUtils {
 
     Matcher matcher = STRICT_INT_PATTERN.matcher(value);
 
-    return matcher.find();
+    return matcher.matches();
   }
   
   public static boolean isDouble(String value) {
@@ -2177,7 +2178,7 @@ public class TextUtils {
 
     Matcher matcher = STRICT_DOUBLE_PATTERN.matcher(value);
 
-    return matcher.find();
+    return matcher.matches();
   }
 
   /**
@@ -2621,22 +2622,6 @@ public class TextUtils {
   }
 
   /**
-   * Concatenate strings together.
-   *
-   * @param strings the strings
-   * @return the string
-   */
-  public static String cat(String... strings) {
-    StringBuilder buffer = new StringBuilder();
-
-    for (String s : strings) {
-      buffer.append(s);
-    }
-
-    return buffer.toString();
-  }
-
-  /**
    * Returns true if line starts with any of the matches.
    *
    * @param line the line
@@ -2851,8 +2836,4 @@ public class TextUtils {
       buffer.append(TAB_DELIMITER);
     }
   }
-
-  
-
-  
 }

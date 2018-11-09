@@ -155,9 +155,13 @@ public class UrlBuilder implements Serializable {
   public UrlBuilder resolve(String path) {
     UrlBuilder ret = new UrlBuilder(this);
 
-    ret.mParts.add(clean(path));
+    return ret._resolve(path);
+  }
+  
+  protected UrlBuilder _resolve(String path) {
+    mParts.add(clean(path));
 
-    return ret;
+    return this;
   }
 
   /**
@@ -193,6 +197,12 @@ public class UrlBuilder implements Serializable {
     return resolve(Double.toString(path));
   }
 
+  public UrlBuilder param(String param) {
+    List<String> tokens = TextUtils.fastSplit(param, TextUtils.EQUALS_DELIMITER);
+    
+    return param(tokens.get(0), tokens.get(1));
+  }
+  
   /**
    * Adds the param.
    *
@@ -217,17 +227,6 @@ public class UrlBuilder implements Serializable {
     return param(name, Integer.toString(value));
   }
 
-  /**
-   * Param.
-   *
-   * @param name the name
-   * @param value the value
-   * @return the url builder
-   * @throws UnsupportedEncodingException the unsupported encoding exception
-   */
-  public UrlBuilder param(String name, Object value) {
-    return param(name, value.toString());
-  }
 
   /**
    * Adds the param.

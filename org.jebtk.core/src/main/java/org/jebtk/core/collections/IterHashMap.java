@@ -18,7 +18,6 @@ package org.jebtk.core.collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.Map.Entry;
 
 /**
  * A hashmap where the keys can be iterated over.

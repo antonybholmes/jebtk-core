@@ -19,6 +19,7 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.Writer;
+import java.util.Map.Entry;
 
 import org.jebtk.core.collections.CollectionUtils;
 
@@ -129,7 +130,7 @@ public class Join {
     }
 
     boolean first = true;
-    boolean append = mBuilder.length() > 0;
+    boolean append = join.mBuilder.length() > 0;
 
     for (Object v : values) {
       if (mIgnoreNulls && v == null) {
@@ -164,7 +165,7 @@ public class Join {
     Join join = new Join(this);
 
     boolean first = true;
-    boolean append = mBuilder.length() > 0;
+    boolean append = join.mBuilder.length() > 0;
 
     for (Object v : values) {
       if (mIgnoreNulls && v == null) {

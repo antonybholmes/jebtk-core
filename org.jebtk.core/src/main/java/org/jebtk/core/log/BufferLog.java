@@ -27,6 +27,10 @@ public class BufferLog extends CircularArray<LogEvent>
     implements LogEventListener {
 
   /**
+   * 
+   */
+  private static final long serialVersionUID = 1L;
+  /**
    * The constant DEFAULT_SIZE.
    */
   private static final int DEFAULT_SIZE = 1000;

@@ -15,7 +15,6 @@
  */
 package org.jebtk.core.io;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.DataInputStream;
@@ -28,6 +27,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.RandomAccessFile;
+import java.nio.MappedByteBuffer;
+import java.nio.channels.FileChannel;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -542,7 +543,7 @@ public class FileUtils {
    */
   public static InputStream newBufferedInputStream(Path file)
       throws IOException {
-    return StreamUtils.newBufferedInputStream(newInputStream(file));
+    return StreamUtils.newBuffer(newInputStream(file));
   }
 
 
@@ -579,7 +580,7 @@ public class FileUtils {
 
   public static OutputStream newBufferedOutputStream(Path file)
       throws IOException {
-    return StreamUtils.newBufferedOutputStream(newOutputStream(file));
+    return StreamUtils.newBuffer(newOutputStream(file));
   }
 
 
@@ -774,16 +775,6 @@ public class FileUtils {
 
   public static void write(InputStream in, Path file) throws IOException {
     Files.copy(in, file);
-
-    /*
-    OutputStream output = FileUtils.newOutputStream(file);
-
-    try {
-      write(input, output);
-    } finally {
-      output.close();
-    }
-     */
   }
 
 
@@ -849,7 +840,7 @@ public class FileUtils {
    */
   public static InputStream newBufferedInputStream(ZipFile file, ZipEntry entry)
       throws IOException {
-    return StreamUtils.newBufferedInputStream(newInputStream(file, entry));
+    return StreamUtils.newBuffer(newInputStream(file, entry));
   }
 
   /**
@@ -1112,6 +1103,28 @@ public class FileUtils {
     }
 
     zos.close();
-
+  }
+  
+  public static MappedByteBuffer newMemMappedFile(Path file) throws IOException {
+    return newMemMappedFile(file, -1);
+  }
+  
+  public static MappedByteBuffer newMemMappedFile(Path file, long size) throws IOException {
+    RandomAccessFile reader = newRandomAccess(file);
+    
+    FileChannel fileChannel = reader.getChannel();
+    
+    if (size < 1) {
+      size = reader.length();
+    }
+    
+    //Get direct byte buffer access using channel.map() operation
+    MappedByteBuffer buffer = fileChannel.map(FileChannel.MapMode.READ_ONLY, 0, size);
+    
+    return buffer;
+  }
+  
+  public static MMapReader newMemMappedReader(Path file) throws IOException {
+    return new MMapReader(file);
   }
 }

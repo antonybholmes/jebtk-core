@@ -15,7 +15,6 @@
  */
 package org.jebtk.core.text;
 
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;

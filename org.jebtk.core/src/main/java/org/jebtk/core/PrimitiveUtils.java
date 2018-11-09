@@ -66,4 +66,25 @@ public class PrimitiveUtils {
 
     return result;
   }
+
+  public static byte[] toByteArray(int value) {
+    return new byte[] { (byte) (value >> 24), (byte) (value >> 16),
+        (byte) (value >> 8), (byte) value };
+  }
+
+  public static int toInt(byte[] b) {
+    return b[0] << 24 | b[1] << 16 | b[2] << 8 | b[3];
+  }
+
+  public static int toInt(byte b1, byte b2, byte b3, byte b4) {
+    return b1 << 24 | (b2 & 0xFF) << 16 | (b3 & 0xFF) << 8 | (b4 & 0xFF);
+  }
+
+  public static byte[] toByteArray(short value) {
+    return new byte[] { (byte) (value >> 8), (byte) value };
+  }
+
+  public static short toShort(byte[] b) {
+    return (short) (b[2] << 8 | b[3]);
+  }
 }

@@ -23,6 +23,7 @@ import java.net.URLConnection;
 import java.nio.file.Path;
 import java.text.ParseException;
 import java.util.ArrayDeque;
+import java.util.Deque;
 
 import org.jebtk.core.ColorUtils;
 import org.jebtk.core.Mathematics;
@@ -55,7 +56,7 @@ public class JsonParser {
   /**
    * The member element stack.
    */
-  private ArrayDeque<Json> mElementStack = new ArrayDeque<Json>();
+  private Deque<Json> mElementStack = new ArrayDeque<Json>();
 
   /**
    * The string mode.
@@ -77,6 +78,8 @@ public class JsonParser {
 
   /** The m unicode mode. */
   private boolean mUnicodeMode = false;
+  
+  private byte[] mByteBuffer = StreamUtils.createBuffer();
 
   /**
    * Keep track of previously read character.
@@ -132,7 +135,7 @@ public class JsonParser {
    * @throws IOException Signals that an I/O exception has occurred.
    */
   private Json parse(URLConnection connection) throws IOException {
-    return parse(StreamUtils.newBufferedInputStream(connection.getInputStream()));
+    return parse(StreamUtils.newBuffer(connection.getInputStream()));
   }
 
   /**
@@ -170,8 +173,11 @@ public class JsonParser {
     int c;
 
     try {
-      while ((c = in.read()) != -1) {
-        parse((char) c);
+      // Read blocks of data for speed
+      while ((c = in.read(mByteBuffer)) != -1) {
+        for (int i = 0; i < c; ++i) {
+          parse((char) mByteBuffer[i]);
+        }
       }
     } finally {
       in.close();
@@ -296,15 +302,6 @@ public class JsonParser {
       if (mStringMode) {
         mBuffer.append(c);
       } else {
-        // Check for empty lists otherwise an empty list will have
-        // a null inserted into it so it will have length 1 but
-        // only contain a null
-        // if (c == JSON_OBJECT_END || mPc != JSON_ARRAY_START) {
-        // addJsonValue();
-        // }
-
-        // System.err.println(mBuffer);
-
         addJsonValue();
 
         mCurrentName = null;
@@ -492,7 +489,7 @@ public class JsonParser {
 
     String s = mBuffer.toString();
 
-    if (mCurrentName != null && s.length() == 0) {
+    if (s.length() == 0) {
       // If the buffer is zero length, it means we have an zero
       // length string
       value = new JsonString(TextUtils.EMPTY_STRING);
@@ -505,7 +502,7 @@ public class JsonParser {
     } else if (ColorUtils.isHtmlColor(s)) {
       value = new JsonColor(ColorUtils.decodeHtmlColor(s));
     } else if (TextUtils.isNumber(s)) {
-      double v = Double.parseDouble(s); // Parser.toDouble(s);
+      double v = Double.parseDouble(s);
 
       if (Mathematics.isInt(v)) {
         value = new JsonInteger((int) v);
