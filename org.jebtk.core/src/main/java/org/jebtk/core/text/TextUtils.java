@@ -1620,6 +1620,8 @@ public class TextUtils {
    * @return the list
    */
   public static List<Integer> find(List<String> list, Pattern regex) {
+    
+    
     if (CollectionUtils.isNullOrEmpty(list) || regex == null) {
       return Collections.emptyList();
     }
@@ -1629,7 +1631,9 @@ public class TextUtils {
     for (int i = 0; i < list.size(); ++i) {
       Matcher matcher = regex.matcher(list.get(i));
 
-      if (matcher.find()) {
+      boolean found = matcher.find();
+      
+      if (found) {
         indices.add(i);
       }
     }

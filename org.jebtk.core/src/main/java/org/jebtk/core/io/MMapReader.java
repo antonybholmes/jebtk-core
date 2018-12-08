@@ -48,8 +48,8 @@ public class MMapReader {
     mReader.close();
   }
 
-  public MMapReader seek(int address) {
-    mBuffer.position(address);
+  public MMapReader seek(long address) {
+    mBuffer.position((int) address);
     
     return this;
   }
@@ -134,12 +134,10 @@ public class MMapReader {
   }
 
   public long getFilePointer() {
-    return seek();
+    return tell();
   }
   
-  public long seek() {
+  public long tell() {
     return mBuffer.position();
   }
-
-  
 }

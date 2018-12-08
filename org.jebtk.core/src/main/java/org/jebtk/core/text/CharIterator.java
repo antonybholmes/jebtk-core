@@ -10,22 +10,22 @@ import java.util.Iterator;
  */
 public class CharIterator implements Iterator<Character> {
 
-  private String mText;
+  private char[] mText;
   private int mC;
 
   public CharIterator(String text) {
-    mText = text;
+    mText = text.toCharArray();
     mC = 0;
   }
 
   @Override
   public boolean hasNext() {
-    return mC < mText.length();
+    return mC < mText.length;
   }
 
   @Override
   public Character next() {
-    return mText.charAt(mC++);
+    return mText[mC++];
   }
 
   @Override

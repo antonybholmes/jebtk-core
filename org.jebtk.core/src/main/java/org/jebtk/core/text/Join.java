@@ -19,7 +19,6 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.Writer;
-import java.util.Map.Entry;
 
 import org.jebtk.core.collections.CollectionUtils;
 
@@ -352,6 +351,7 @@ public class Join {
     return on(TextUtils.PERIOD_DELIMITER);
   }
 
-  
-
+  public static Join onNewLine() {
+    return on(TextUtils.NEW_LINE);
+  }
 }

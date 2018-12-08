@@ -21,12 +21,12 @@ package org.jebtk.core.cli;
  * @author Antony Holmes Holmes
  *
  */
-public class CommandLineOption {
+public class Arg {
 
   /**
    * The member short name.
    */
-  private char mShortName;
+  private String mShortName;
 
   /**
    * The member long name.
@@ -36,7 +36,7 @@ public class CommandLineOption {
   /**
    * The member has arg.
    */
-  private boolean mHasArg;
+  private boolean mHasValue;
 
   /**
    * The member description.
@@ -50,8 +50,8 @@ public class CommandLineOption {
    * @param hasArg the has arg
    * @param description the description
    */
-  public CommandLineOption(char shortName, boolean hasArg, String description) {
-    this(shortName, null, hasArg, description);
+  public Arg(char shortName, boolean hasArg, String description) {
+    this(shortName, Character.toString(shortName), hasArg, description);
   }
 
   /**
@@ -62,11 +62,11 @@ public class CommandLineOption {
    * @param hasArg the has arg
    * @param description the description
    */
-  public CommandLineOption(char shortName, String longName, boolean hasArg,
+  public Arg(char shortName, String longName, boolean hasArg,
       String description) {
-    mShortName = shortName;
+    mShortName = Character.toString(shortName);
     mLongName = longName;
-    mHasArg = hasArg;
+    mHasValue = hasArg;
     mDescription = description;
   }
 
@@ -75,7 +75,7 @@ public class CommandLineOption {
    *
    * @return the short name
    */
-  public char getShortName() {
+  public String getShortName() {
     return mShortName;
   }
 
@@ -89,12 +89,12 @@ public class CommandLineOption {
   }
 
   /**
-   * Checks for arg.
+   * Returns true if this arg requires a value.
    *
    * @return true, if successful
    */
-  public boolean hasArg() {
-    return mHasArg;
+  public boolean hasValue() {
+    return mHasValue;
   }
 
   /**

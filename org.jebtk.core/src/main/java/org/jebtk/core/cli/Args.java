@@ -16,25 +16,30 @@
 package org.jebtk.core.cli;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.jebtk.core.text.TextUtils;
 
 /**
  * The Class Options.
  */
-public class Options implements Iterable<CommandLineOption> {
+public class Args implements Iterable<Arg> {
 
   /**
    * The member options.
    */
-  private List<CommandLineOption> mOptions = new ArrayList<CommandLineOption>();
+  private Map<String, Arg> mOptionMap = 
+      new HashMap<String, Arg>();
+  
+  private List<Arg> mOptions = new ArrayList<Arg>();
 
   /**
    * Instantiates a new options.
    */
-  public Options() {
+  public Args() {
     add('h', "help");
   }
 
@@ -45,8 +50,12 @@ public class Options implements Iterable<CommandLineOption> {
    * @param longName the long name
    * @return 
    */
-  public Options add(char shortName, String longName) {
+  public Args add(char shortName, String longName) {
     return add(shortName, longName, false);
+  }
+  
+  public Args add(char shortName, boolean hasValue) {
+    return add(shortName, Character.toString(shortName), hasValue);
   }
 
   /**
@@ -54,11 +63,11 @@ public class Options implements Iterable<CommandLineOption> {
    *
    * @param shortName the short name
    * @param longName the long name
-   * @param hasArg the has arg
+   * @param hasValue the has arg
    * @return 
    */
-  public Options add(char shortName, String longName, boolean hasArg) {
-    return add(shortName, longName, hasArg, TextUtils.EMPTY_STRING);
+  public Args add(char shortName, String longName, boolean hasValue) {
+    return add(shortName, longName, hasValue, TextUtils.EMPTY_STRING);
   }
 
   /**
@@ -66,15 +75,15 @@ public class Options implements Iterable<CommandLineOption> {
    *
    * @param shortName the short name
    * @param longName the long name
-   * @param hasArg the has arg
+   * @param hasValue the has arg
    * @param description the description
    * @return 
    */
-  public Options add(char shortName,
+  public Args add(char shortName,
       String longName,
-      boolean hasArg,
+      boolean hasValue,
       String description) {
-    return addOption(new CommandLineOption(shortName, longName, hasArg, description));
+    return add(new Arg(shortName, longName, hasValue, description));
   }
 
   /**
@@ -83,8 +92,10 @@ public class Options implements Iterable<CommandLineOption> {
    * @param option the option
    * @return 
    */
-  public Options addOption(CommandLineOption option) {
+  public Args add(Arg option) {
     mOptions.add(option);
+    mOptionMap.put(option.getShortName(), option);
+    mOptionMap.put(option.getLongName(), option);
     
     return this;
   }
@@ -95,7 +106,7 @@ public class Options implements Iterable<CommandLineOption> {
    * @see java.lang.Iterable#iterator()
    */
   @Override
-  public Iterator<CommandLineOption> iterator() {
+  public Iterator<Arg> iterator() {
     return mOptions.iterator();
   }
 
@@ -104,18 +115,18 @@ public class Options implements Iterable<CommandLineOption> {
    *
    * @param options the options
    */
-  public static void printHelp(Options options) {
+  public static void printHelp(Args options) {
     System.out.println("OPTIONS");
-    for (CommandLineOption option : options) {
+    for (Arg option : options) {
       System.out.print("\t" + option.getShortName());
 
-      if (option.hasArg()) {
+      if (option.hasValue()) {
         System.out.print(" VALUE");
       }
 
       System.out.print(", --" + option.getLongName());
 
-      if (option.hasArg()) {
+      if (option.hasValue()) {
         System.out.print("=VALUE");
       }
 
@@ -127,5 +138,29 @@ public class Options implements Iterable<CommandLineOption> {
 
       System.out.println();
     }
+  }
+
+  /**
+   * Returns true if args contains an argument with the given name. The
+   * name should either the long or short variant without a '--' or '-'
+   * prefix.
+   * 
+   * @param name
+   * @return
+   */
+  public boolean contains(String name) {
+    return mOptionMap.containsKey(name);
+  }
+
+  /**
+   * Returns true the arg with the given name. The
+   * name should either the long or short variant without a '--' or '-'
+   * prefix.
+   * 
+   * @param name    The name of the argument.
+   * @return        The arg or null if it does not exist.
+   */
+  public Arg get(String arg) {
+    return mOptionMap.get(arg);
   }
 }

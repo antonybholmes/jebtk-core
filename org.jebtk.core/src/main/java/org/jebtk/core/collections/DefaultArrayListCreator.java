@@ -29,6 +29,10 @@ public class DefaultArrayListCreator<V> implements ListCreator<V> {
    */
   private EntryCreator<V> mDefaultValue;
 
+  public DefaultArrayListCreator() {
+    this(new NullCreator<V>());
+  }
+  
   /**
    * Instantiates a new default list creator.
    *

@@ -20,7 +20,7 @@ import org.jebtk.core.MessageException;
 /**
  * The Class CommandLineArgException.
  */
-public class CommandLineArgException extends MessageException {
+public class ArgException extends MessageException {
 
   /**
    * The constant serialVersionUID.
@@ -32,7 +32,7 @@ public class CommandLineArgException extends MessageException {
    *
    * @param message the message
    */
-  public CommandLineArgException(String message) {
+  public ArgException(String message) {
     super(message);
   }
 

@@ -56,7 +56,7 @@ public class RegexUtils {
    * @return the list
    */
   public static List<Pattern> compile(List<String> regexes) {
-    return compile(regexes, false);
+    return compile(regexes, true);
   }
 
   /**
@@ -67,7 +67,7 @@ public class RegexUtils {
    * @return the list
    */
   public static List<Pattern> compile(List<String> regexes,
-      boolean caseInsensitive) {
+      boolean caseSensitive) {
     if (CollectionUtils.isNullOrEmpty(regexes)) {
       return Collections.emptyList();
     }
@@ -75,10 +75,10 @@ public class RegexUtils {
     List<Pattern> ret = new ArrayList<Pattern>(regexes.size());
 
     for (String regex : regexes) {
-      if (caseInsensitive) {
-        ret.add(Pattern.compile(regex, Pattern.CASE_INSENSITIVE));
-      } else {
+      if (caseSensitive) {
         ret.add(Pattern.compile(regex));
+      } else {
+        ret.add(Pattern.compile(regex, Pattern.CASE_INSENSITIVE));
       }
     }
 
