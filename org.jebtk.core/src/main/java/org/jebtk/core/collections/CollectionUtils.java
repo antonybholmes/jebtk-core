@@ -2506,6 +2506,36 @@ public class CollectionUtils {
       ++si;
     }
   }
+  
+  public static void reverse(int[] items) {
+    reverse(items, 0, items.length);
+  }
+  
+  public static void reverse(int[] items, int start, int n) {
+    if (isNullOrEmpty(items)) {
+      return;
+    }
+
+    int n2 = n / 2;
+    int ni = start + n - 1;
+
+    int si = start;
+    int ei;
+
+    int temp;
+
+    for (int i = 0; i < n2; ++i) {
+      ei = ni - i;
+
+      temp = items[si];
+
+      items[si] = items[ei];
+
+      items[ei] = temp;
+
+      ++si;
+    }
+  }
 
   /**
    * Reverse copy.
@@ -3088,53 +3118,86 @@ public class CollectionUtils {
     return ret;
   }
 
-  public static void fill(String v, String[] array) {
+  public static void fill(String[] array, String v) {
     Arrays.fill(array, v);
   }
 
   /**
    * Set an array to have the same value in all elements.
    *
+   * @param array the array.
    * @param v the v
-   * @param array the array
    */
-  public static void fill(double v, double[] array) {
-    Arrays.fill(array, 0);
+  public static void fill(double[] array, double v) {
+    Arrays.fill(array, v);
   }
 
   /**
    * Fill.
    *
+   * @param array the array
    * @param v the v
    * @param n the n
-   * @param array the array
    */
-  public static void fill(double v, int n, double[] array) {
-    fill(v, 0, n, array);
+  public static void fill(double[] array, int n, double v) {
+    fill(array, 0, n, v);
   }
 
   /**
    * Fill an array with v starting at position s and finishing at e (exclusive).
    *
+   * @param array the array.
    * @param v the value to copy.
    * @param s the starting position.
    * @param e the ending position (exclusive).
-   * @param array the array.
    */
-  public static void fill(double v, int s, int e, double[] array) {
-    Arrays.fill(array, s, e, 0);
+  public static void fill(double[] array, int s, int e, double v) {
+    Arrays.fill(array, s, e, v);
   }
+  
+  
+  //
+  
+  public static void fill(int[] array, int v) {
+    Arrays.fill(array, v);
+  }
+
+  /**
+   * Fill.
+   *
+   * @param array the array
+   * @param v the v
+   * @param n the n
+   */
+  public static void fill(int[] array, int n, int v) {
+    fill(array, 0, n, v);
+  }
+
+  /**
+   * Fill an array with v starting at position s and finishing at e (exclusive).
+   *
+   * @param array the array.
+   * @param v the value to copy.
+   * @param s the starting position.
+   * @param e the ending position (exclusive).
+   */
+  public static void fill(int[] array, int s, int e, int v) {
+    Arrays.fill(array, s, e, v);
+  }
+  
+  
+  
   
   /**
    * Copy a value into an array, but keep the maximum between the array and
    * the value at a given position to guarantee the maximum value is kept.
    * 
+   * @param array
    * @param v
    * @param s
    * @param e
-   * @param array
    */
-  public static void fillMax(double v, int s, int e, double[] array) {
+  public static void fillMax(double[] array, double v, int s, int e) {
     for (int i = s; i < e; ++i) {
       if (v > array[i]) {
         // Record the maximum score found

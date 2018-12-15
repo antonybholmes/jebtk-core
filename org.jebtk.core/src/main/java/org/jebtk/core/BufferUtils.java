@@ -17,7 +17,6 @@ package org.jebtk.core;
 
 import java.nio.ByteBuffer;
 import java.nio.IntBuffer;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -105,13 +104,17 @@ public class BufferUtils {
      *
      * @return the list
      */
-    public List<Integer> getInts() {
+    public int[] getInts() {
       IntBuffer buffer = ByteBuffer.wrap(mArray).asIntBuffer();
 
-      List<Integer> ret = new ArrayList<Integer>(buffer.remaining());
+      //List<Integer> ret = new ArrayList<Integer>(buffer.remaining());
+      
+      int[] ret = new int[mArray.length / 4];
 
+      int i = 0;
+      
       while (buffer.hasRemaining()) {
-        ret.add(buffer.get());
+        ret[i++] = buffer.get();
       }
 
       return ret;
@@ -122,13 +125,15 @@ public class BufferUtils {
      *
      * @return the list
      */
-    public List<Character> byteChars() {
+    public char[] byteChars() {
       ByteBuffer buffer = ByteBuffer.wrap(mArray);
 
-      List<Character> ret = new ArrayList<Character>(buffer.capacity());
-
+      char[] ret = new char[mArray.length];
+      
+      int i = 0;
+      
       while (buffer.hasRemaining()) {
-        ret.add((char) buffer.get());
+        ret[i++] = (char) buffer.get();
       }
 
       return ret;

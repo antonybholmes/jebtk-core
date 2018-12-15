@@ -410,7 +410,7 @@ public class URLUtils {
     }
 
     /**
-     * Bytes.
+     * Read up to maxSize in bytes from the URL.
      *
      * @param maxSize the max size
      * @return the byte[]
@@ -515,5 +515,14 @@ public class URLUtils {
   public static void downloadFile(InputStream input, Path file)
       throws IOException {
     FileUtils.write(input, file);
+  }
+  
+  public static BufferedReader newBufferedReader(UrlBuilder url) throws IOException {
+    return newBufferedReader(url.toURL());
+  }
+  
+  public static BufferedReader newBufferedReader(URL url) throws IOException {
+    return StreamUtils
+        .newBufferedReader(url.openConnection().getInputStream());
   }
 }

@@ -220,6 +220,13 @@ public class SysUtils {
     arraycopy(src, dest, src.length);
   }
 
+  /**
+   * Copy {@code l} values from src to dest array.
+   * 
+   * @param src
+   * @param dest
+   * @param l
+   */
   public static void arraycopy(double[] src, double[] dest, int l) {
     arraycopy(src, 0, dest, 0, l);
   }

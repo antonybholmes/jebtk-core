@@ -176,7 +176,7 @@ public class TextUtils {
   /** The Constant STRICT_INT_PATTERN. */
   public static final Pattern STRICT_INT_PATTERN = Pattern
       .compile("([-+]?[0-9]+([eE][-+]?[0-9]+)?)");
-  
+
   public static final Pattern STRICT_DOUBLE_PATTERN = 
       Pattern.compile("-?(?:0|[1-9][0-9]*)\\.?[0-9]+([e|E][+-]?[0-9]+)?");
 
@@ -184,13 +184,13 @@ public class TextUtils {
   private static final String HEX_DIGITS_REGEX = "(\\p{XDigit}+)";
   private static final String HEX_REGEX = "(0[xX]" + HEX_DIGITS_REGEX + ")";
   private static final String PM_REGEX = "([+-]?)";
-  
+
   private static final String EXP_REGEX = "([eE]" + PM_REGEX + DIGIT_REGEX + ")";
   private static final String NUM_REGEX = "(" + DIGIT_REGEX + "\\.?" + DIGIT_REGEX + "?" + EXP_REGEX + "?)";
-  
+
   private static final String NUMBER_REGEX =
       "(" + PM_REGEX + "(NaN|Infinity|Inf|" + NUM_REGEX + "|" + HEX_REGEX + "))";
-  
+
   /** The Constant NUMBER_PATTERN. */
   public static final Pattern NUMBER_PATTERN = Pattern.compile(NUMBER_REGEX);
 
@@ -201,7 +201,7 @@ public class TextUtils {
   public static final Pattern VAR_YEAR_PATTERN = Pattern
       .compile("\\$\\{year\\}");
 
-  
+
   // an exponent is 'e' or 'E' followed by an optionally
   // signed decimal integer.
   private static final String EXP = "[eE][+-]?" + DIGIT_REGEX;
@@ -236,13 +236,13 @@ public class TextUtils {
       ")[pP][+-]?" + DIGIT_REGEX + "))" + "[fFdD]?)))");
 
   public static final Pattern FP_PATTERN = Pattern.compile(FP_REGEX);
-  
+
   public static final String SIMPLE_HEX_REGEX =
       "(0[xX]" + HEX_DIGITS_REGEX + ")";
 
   public static final Pattern SIMPLE_HEX_PATTERN = 
       Pattern.compile(SIMPLE_HEX_REGEX);
-  
+
   /**
    * The constant ELLIPSIS.
    */
@@ -345,7 +345,7 @@ public class TextUtils {
   public static boolean isNullOrEmpty(final String s) {
     return s == null || s.isEmpty();
   }
-  
+
   /**
    * If string s is null or empty, return alt else return s. This can be
    * used as quick replacement function for cleaning parameters.
@@ -1004,9 +1004,9 @@ public class TextUtils {
       return Double.parseDouble(field);
     } else {
       // Attempt to find a number in the string.
-      
+
       matcher.reset();
-      
+
       if (matcher.find()) {
         return Double.parseDouble(matcher.group(1));
       } else {
@@ -1299,10 +1299,10 @@ public class TextUtils {
     StringBuilder buffer = new StringBuilder();
 
     join(list, delimiter, buffer);
-    
+
     return buffer.toString();
   }
-  
+
   /**
    * Concatenates a list of items into a single string where each item is
    * separated by a delimiter.
@@ -1317,7 +1317,7 @@ public class TextUtils {
     }
 
     Iterator<?> iter = list.iterator();
-    
+
     buffer.append(toString(iter.next()));
 
     while (iter.hasNext()) {
@@ -1620,8 +1620,8 @@ public class TextUtils {
    * @return the list
    */
   public static List<Integer> find(List<String> list, Pattern regex) {
-    
-    
+
+
     if (CollectionUtils.isNullOrEmpty(list) || regex == null) {
       return Collections.emptyList();
     }
@@ -1632,7 +1632,7 @@ public class TextUtils {
       Matcher matcher = regex.matcher(list.get(i));
 
       boolean found = matcher.find();
-      
+
       if (found) {
         indices.add(i);
       }
@@ -1888,7 +1888,7 @@ public class TextUtils {
   }
 
   /**
-   * Sc split.
+   * Semi colon split
    *
    * @param line the line
    * @return the list
@@ -2174,7 +2174,7 @@ public class TextUtils {
 
     return matcher.matches();
   }
-  
+
   public static boolean isDouble(String value) {
     if (value == null) {
       return false;
@@ -2706,7 +2706,7 @@ public class TextUtils {
   public static String prefix(String text, String prefix) {
     return prefix + text;
   }
-  
+
   /**
    * Prefix a value onto each of a collection of strings.
    * 
@@ -2720,7 +2720,7 @@ public class TextUtils {
     for (String s : values) {
       ret.add(prefix(s, prefix));
     }
-    
+
     return ret;
   }
 
@@ -2806,7 +2806,7 @@ public class TextUtils {
 
     return buffer.toString();
   }
-  
+
   /**
    * Create a tab indented string.
    * 
@@ -2827,11 +2827,11 @@ public class TextUtils {
    */
   public static String tabIndent(String s, int tabs) {
     StringBuilder buffer = new StringBuilder();
-    
+
     tabs(tabs, buffer);
-    
+
     buffer.append(s);
-    
+
     return buffer.toString();
   }
 
@@ -2839,5 +2839,52 @@ public class TextUtils {
     for (int i = 0; i < tabs; ++i) {
       buffer.append(TAB_DELIMITER);
     }
+  }
+
+  /**
+   * Count occurences of string within string.
+   * 
+   * @param str
+   * @param sub
+   * @return
+   */
+  public static int countMatches(final String str, final String sub) {
+    if (isNullOrEmpty(str)) {
+      return 0;
+    }
+    
+    int count = 0;
+    int idx = 0;
+    int l = sub.length();
+    
+    while ((idx = str.indexOf(sub, idx)) != -1) {
+      ++count;
+      idx += l;
+    }
+    
+    return count;
+  }
+  
+  /**
+   * Count occurences of char in string.
+   * 
+   * @param str
+   * @param c
+   * @return
+   */
+  public static int countMatches(final String str, final char c) {
+    if (isNullOrEmpty(str)) {
+      return 0;
+    }
+    
+    int count = 0;
+    int idx = 0;
+
+    while ((idx = str.indexOf(c, idx)) != -1) {
+      ++count;
+      ++idx;
+    }
+    
+    return count;
   }
 }

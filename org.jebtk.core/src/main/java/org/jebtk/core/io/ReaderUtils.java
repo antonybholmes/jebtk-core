@@ -97,10 +97,8 @@ public class ReaderUtils {
    */
   public static void skipLines(BufferedReader reader, int lines)
       throws IOException {
-    if (lines > 0) {
-      for (int i = 0; i < lines; ++i) {
-        reader.readLine();
-      }
+    for (int i = 0; i < lines; ++i) {
+      reader.readLine();
     }
   }
 }

@@ -40,12 +40,12 @@ public class Indexed<K extends Number, V extends Comparable<? super V>>
   /**
    * The member index.
    */
-  private K mIndex;
+  public final K mIndex;
 
   /**
    * The member value.
    */
-  private V mValue;
+  public final V mValue;
 
   /**
    * Instantiates a new indexed value.
@@ -290,12 +290,8 @@ public class Indexed<K extends Number, V extends Comparable<? super V>>
     List<Indexed<Integer, Double>> ret = new ArrayList<Indexed<Integer, Double>>(
         items.length);
 
-    int c = 0;
-
-    for (double item : items) {
-      ret.add(new IndexedInt<Double>(c, item));
-
-      ++c;
+    for (int i = 0; i < items.length; ++i) {
+      ret.add(new IndexedInt<Double>(i, items[i]));
     }
 
     return ret;

@@ -8,6 +8,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.jebtk.core.Indexed;
+import org.jebtk.core.IndexedInt;
+
 
 public class ArrayUtils {
   public static final int[] EMPTY_INT_ARRAY = {};
@@ -176,5 +179,128 @@ public class ArrayUtils {
     }
 
     return ret;
+  }
+  
+  /**
+   * Return the indices of the items when sorted smallest to largest.
+   * 
+   * @param values
+   * @return
+   */
+  public static int[] argsort(double[] values) {
+    return argsort(values, false);
+  }
+  /**
+   * Returns the indices of the sorted items.
+   * 
+   * original index in the list so that 
+   * @param values
+   * @return
+   */
+  public static int[] argsort(double[] values, boolean reverse) {
+      List<Indexed<Integer, Double>> items = new ArrayList<Indexed<Integer, Double>>(
+          values.length);
+
+      for (int i = 0; i < values.length; ++i) {
+        items.add(new IndexedInt<Double>(i, values[i]));
+      }
+    
+      Collections.sort(items);
+      
+      if (reverse) {
+        Collections.reverse(items);
+      }
+      
+      int[] ret = new int[values.length];
+      
+      for (int i = 0; i < values.length; ++i) {
+        ret[i] = items.get(i).mIndex;
+      }
+      
+      return ret;
+  }
+  
+  /**
+   * Return the indices of the items when sorted smallest to largest.
+   * 
+   * @param values
+   * @return
+   */
+  public static int[] argsort(int[] values) {
+    return argsort(values, false);
+  }
+  /**
+   * Returns the indices of the sorted items.
+   * 
+   * original index in the list so that 
+   * @param values
+   * @return
+   */
+  public static int[] argsort(int[] values, boolean reverse) {
+      List<Indexed<Integer, Integer>> items = new ArrayList<Indexed<Integer, Integer>>(
+          values.length);
+
+      for (int i = 0; i < values.length; ++i) {
+        items.add(new Indexed<Integer, Integer>(i, values[i]));
+      }
+    
+      Collections.sort(items);
+      
+      if (reverse) {
+        Collections.reverse(items);
+      }
+      
+      int[] ret = new int[values.length];
+      
+      for (int i = 0; i < values.length; ++i) {
+        ret[i] = items.get(i).mIndex;
+      }
+      
+      return ret;
+  }
+  
+  
+  public static final double[] subList(double[] values,
+      final int... indices) {
+    double[] subset = new double[indices.length];
+
+    for (int i = 0; i < values.length; ++i) {
+      subset[i] = values[indices[i]];
+    }
+
+    return subset;
+  }
+  
+  public static final int[] subList(int[] values,
+      final int... indices) {
+    int[] subset = new int[indices.length];
+
+    for (int i = 0; i < values.length; ++i) {
+      subset[i] = values[indices[i]];
+    }
+
+    return subset;
+  }
+  
+  public static final String[] subList(String[] values,
+      final int... indices) {
+    String[] subset = new String[indices.length];
+
+    for (int i = 0; i < values.length; ++i) {
+      subset[i] = values[indices[i]];
+    }
+
+    return subset;
+  }
+  
+  public static final Object[] subList(Object[] values,
+      final int... indices) {
+    Object[] subset = new Object[indices.length];
+
+    for (int i = 0; i < values.length; ++i) {
+      subset[i] = values[indices[i]];
+    }
+
+    return subset;
   }
 }

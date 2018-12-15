@@ -67,7 +67,7 @@ public class Splitter {
         boolean ignoreEmptyStrings,
         int maxNumItems) {
 
-      List<String> list = new MaxSizeArrayList<String>(DEFAULT_SPLIT_SIZE,
+      List<String> ret = new MaxSizeArrayList<String>(DEFAULT_SPLIT_SIZE,
           maxNumItems);
 
       String v;
@@ -75,11 +75,11 @@ public class Splitter {
       int i = 0;
       int j = text.indexOf(mDelimiter); // First substring
 
-      while (j != -1) {
+      while (j != -1 && ret.size() < maxNumItems) {
         v = text.substring(i, j);
 
         if (!ignoreEmptyStrings || v.length() > 0) {
-          list.add(v);
+          ret.add(v);
         }
 
         i = j + 1;
@@ -92,11 +92,11 @@ public class Splitter {
         v = text.substring(i);
 
         if (!ignoreEmptyStrings || v.length() > 0) {
-          list.add(v);
+          ret.add(v);
         }
       }
 
-      return list;
+      return ret;
     }
   }
 
@@ -214,7 +214,7 @@ public class Splitter {
     public List<String> split(String text,
         boolean ignoreEmptyStrings,
         int maxNumItems) {
-      List<String> list = new MaxSizeArrayList<String>(DEFAULT_SPLIT_SIZE,
+      List<String> ret = new MaxSizeArrayList<String>(DEFAULT_SPLIT_SIZE,
           maxNumItems);
 
       String v;
@@ -224,13 +224,13 @@ public class Splitter {
 
       int n = mDelimiter.length();
 
-      while ((j = text.indexOf(mDelimiter, i)) != -1) {
+      while ((j = text.indexOf(mDelimiter, i)) != -1 && ret.size() < maxNumItems) {
         // System.err.println(text + " " + trimmed + " " + i + " " + j);
 
         v = text.substring(i, j);
 
         if (!ignoreEmptyStrings || v.length() > 0) {
-          list.add(v);
+          ret.add(v);
         }
 
         // skip past the delimiter to the next symbol
@@ -242,10 +242,10 @@ public class Splitter {
       v = text.substring(i);
 
       if (!ignoreEmptyStrings || v.length() > 0) {
-        list.add(v);
+        ret.add(v);
       }
 
-      return list;
+      return ret;
     }
 
   }
@@ -345,6 +345,10 @@ public class Splitter {
 
           if (!ignoreEmptyStrings || v.length() > 0) {
             ret.add(v);
+          }
+          
+          if (ret.size() == maxNumItems) {
+            return ret;
           }
 
           buffer.setLength(0);
@@ -453,7 +457,7 @@ public class Splitter {
    * @return the splitter
    */
   public Splitter trim(Trimmer trimmer) {
-    return new Splitter(mSplitMode, trimmer, mIgoreEmptyStrings, -1);
+    return new Splitter(mSplitMode, trimmer, mIgoreEmptyStrings, Integer.MAX_VALUE);
   }
 
   /**
@@ -468,7 +472,7 @@ public class Splitter {
       return onComma();
     } else {
       return new Splitter(new CharSplitMode(delimiter), Trimmer.NO_TRIM, false,
-          -1);
+          Integer.MAX_VALUE);
     }
   }
 
@@ -480,7 +484,7 @@ public class Splitter {
    */
   public static Splitter on(char... delimiters) {
     return new Splitter(new CharsSplitMode(delimiters), Trimmer.NO_TRIM, false,
-        -1);
+        Integer.MAX_VALUE);
   }
 
   /**
@@ -491,7 +495,7 @@ public class Splitter {
    */
   public static Splitter on(String delimiter) {
     return new Splitter(new TextSplitMode(delimiter), Trimmer.NO_TRIM, false,
-        -1);
+        Integer.MAX_VALUE);
   }
 
   /**
@@ -502,7 +506,7 @@ public class Splitter {
    */
   public static Splitter on(Pattern regex) {
     return new Splitter(new PatternSplitMode(regex), Trimmer.NO_TRIM, false,
-        -1);
+        Integer.MAX_VALUE);
   }
 
   /**
@@ -547,7 +551,7 @@ public class Splitter {
    * @return the splitter
    */
   public static Splitter onComma() {
-    return new Splitter(new CSVSplitMode(), Trimmer.NO_TRIM, false, -1);
+    return new Splitter(new CSVSplitMode(), Trimmer.NO_TRIM, false, Integer.MAX_VALUE);
   }
 
   /**
