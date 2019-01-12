@@ -21,7 +21,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * Provides a unique id to a class (not guaranteed to persist between JVM or
  * application restarts).
  * 
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public abstract class IdObject implements IdProperty, Comparable<IdObject> {

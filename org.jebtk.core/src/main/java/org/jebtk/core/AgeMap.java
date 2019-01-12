@@ -22,7 +22,7 @@ import java.util.Map;
  * A map of fixed size that begins to excise the oldest elements once the map
  * reaches a maximum size.
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  * @param <T> the generic type
  * @param <X> the generic type
  */

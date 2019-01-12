@@ -21,7 +21,7 @@ import org.jebtk.core.event.ChangeEventProducer;
 /**
  * Generic model for sharing named items.
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  * @param <T> the generic type
  */
 public class ChangeNameMapModel<T extends ChangeEventProducer>

@@ -21,7 +21,7 @@ import java.util.List;
 /**
  * List that allows continuous cycling through items.
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  * @param <T> the generic type
  */
 public class Cycle<T> {

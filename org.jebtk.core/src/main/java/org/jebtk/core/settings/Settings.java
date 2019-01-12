@@ -65,7 +65,7 @@ import org.xml.sax.helpers.DefaultHandler;
  * from the res folder in the application directory. This allows users to alter
  * settings if they need to.
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public class Settings extends ChangeListeners

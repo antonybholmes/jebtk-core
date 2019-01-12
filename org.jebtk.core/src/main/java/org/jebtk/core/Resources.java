@@ -48,7 +48,7 @@ import org.slf4j.LoggerFactory;
 /**
  * Allows data from a JAR to be loaded into memory.
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public class Resources implements Iterable<String> {

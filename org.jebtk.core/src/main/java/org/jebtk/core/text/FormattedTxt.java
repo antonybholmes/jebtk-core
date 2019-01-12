@@ -21,7 +21,7 @@ import java.io.IOException;
  * For classes that can output a text representation of themselves. This should
  * be used
  * 
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public interface FormattedTxt {

@@ -18,7 +18,7 @@ package org.jebtk.core.json;
 /**
  * The Class JsonChar.
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  */
 public class JsonChar extends JsonString {
 

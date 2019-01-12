@@ -22,7 +22,7 @@ import org.w3c.dom.Element;
 /**
  * Should be implemented by classes that can creat xml versions of themselves.
  * 
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public interface XmlStream {

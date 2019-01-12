@@ -181,6 +181,39 @@ public class ArrayUtils {
     return ret;
   }
   
+  public static int[] argsort(String[] values) {
+    return argsort(values, false);
+  }
+  /**
+   * Returns the indices of the sorted items.
+   * 
+   * original index in the list so that 
+   * @param values
+   * @return
+   */
+  public static int[] argsort(String[] values, boolean reverse) {
+      List<Indexed<Integer, String>> items = new ArrayList<Indexed<Integer, String>>(
+          values.length);
+
+      for (int i = 0; i < values.length; ++i) {
+        items.add(new IndexedInt<String>(i, values[i]));
+      }
+    
+      Collections.sort(items);
+      
+      if (reverse) {
+        Collections.reverse(items);
+      }
+      
+      int[] ret = new int[values.length];
+      
+      for (int i = 0; i < values.length; ++i) {
+        ret[i] = items.get(i).mIndex;
+      }
+      
+      return ret;
+  }
+  
   /**
    * Return the indices of the items when sorted smallest to largest.
    * 

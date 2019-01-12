@@ -23,7 +23,7 @@ import org.jebtk.core.collections.CollectionUtils;
 /**
  * Pair items together.
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  * @param <T> the generic type
  * @param <V> the value type
  */

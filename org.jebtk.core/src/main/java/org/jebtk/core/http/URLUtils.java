@@ -49,7 +49,7 @@ import org.slf4j.LoggerFactory;
 /**
  * Provides methods for interacting with a network.
  * 
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public class URLUtils {

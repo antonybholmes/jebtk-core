@@ -18,7 +18,7 @@ package org.jebtk.core;
 /**
  * Exception for failing to get network files etc.
  * 
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public class NetworkFileException extends Exception {

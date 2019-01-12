@@ -18,7 +18,7 @@ package org.jebtk.core.geom;
 /**
  * An immutable point.
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  * @param <T> the generic type
  */
 public class Position<T extends Number> {

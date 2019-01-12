@@ -22,7 +22,7 @@ import org.jebtk.core.text.TextUtils;
 /**
  * The Class JsonBoolean.
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  */
 public class JsonBoolean extends Json {
 

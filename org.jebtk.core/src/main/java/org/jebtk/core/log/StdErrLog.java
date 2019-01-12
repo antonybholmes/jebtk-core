@@ -18,7 +18,7 @@ package org.jebtk.core.log;
 /**
  * Outputs log events to STDERR.
  * 
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public class StdErrLog implements LogEventListener {

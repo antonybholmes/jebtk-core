@@ -20,7 +20,7 @@ import org.jebtk.core.event.ChangeListeners;
 /**
  * Generic model for sharing a changable item of fixed type.
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  * @param <T> the generic type
  */
 public class ItemModel<T> extends ChangeListeners {

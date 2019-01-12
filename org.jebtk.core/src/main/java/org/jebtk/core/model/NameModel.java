@@ -23,7 +23,7 @@ import org.jebtk.core.event.ChangeListeners;
 /**
  * Generic model for sharing named items.
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  * @param <T> the generic type
  */
 public abstract class NameModel<T> extends ChangeListeners

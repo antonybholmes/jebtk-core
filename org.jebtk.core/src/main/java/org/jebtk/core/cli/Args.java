@@ -118,19 +118,7 @@ public class Args implements Iterable<Arg> {
   public static void printHelp(Args options) {
     System.out.println("OPTIONS");
     for (Arg option : options) {
-      System.out.print("\t" + option.getShortName());
-
-      if (option.hasValue()) {
-        System.out.print(" VALUE");
-      }
-
-      System.out.print(", --" + option.getLongName());
-
-      if (option.hasValue()) {
-        System.out.print("=VALUE");
-      }
-
-      System.out.println();
+      System.out.println("\t" + option.toString());
 
       if (!TextUtils.isNullOrEmpty(option.getDescription())) {
         System.out.println("\t\t" + option.getDescription());

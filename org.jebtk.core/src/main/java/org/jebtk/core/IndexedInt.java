@@ -23,7 +23,7 @@ import java.util.List;
  * Wraps an item with an associated index such as its position in a list.
  * Compliments IndexValue
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  * @param <T> the generic type
  */
 public class IndexedInt<T extends Comparable<? super T>>

@@ -21,7 +21,7 @@ import java.util.Deque;
 /**
  * A Node that has a selected property.
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  * @param <T> the generic type
  */
 public class CheckTreeNode<T> extends TreeNode<T> {

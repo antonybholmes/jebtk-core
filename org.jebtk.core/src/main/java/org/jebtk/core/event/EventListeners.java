@@ -26,7 +26,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * controls and provides standard functions to interface with {
  * EventListenerList by taking care of casting etc.
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  * @param <T> the generic type
  */
 public class EventListeners<T extends EventListener> implements Iterable<T> {

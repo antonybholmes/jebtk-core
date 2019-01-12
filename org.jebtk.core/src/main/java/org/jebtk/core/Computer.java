@@ -18,7 +18,7 @@ package org.jebtk.core;
 /**
  * Similar to system properties.
  * 
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public class Computer {

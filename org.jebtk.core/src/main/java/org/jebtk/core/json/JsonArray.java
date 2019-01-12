@@ -25,7 +25,7 @@ import org.jebtk.core.text.TextUtils;
 /**
  * The Class JsonArray.
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  */
 public class JsonArray extends JsonContainer {
 

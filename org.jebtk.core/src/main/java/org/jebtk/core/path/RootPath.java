@@ -18,7 +18,7 @@ package org.jebtk.core.path;
 /**
  * Represents a path that always starts from the root.
  * 
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public class RootPath extends Path {

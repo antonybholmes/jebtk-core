@@ -21,7 +21,7 @@ import javax.net.ssl.SSLSession;
 /**
  * Trust all hosts without checking them.
  * 
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public class TrustAllHosts implements HostnameVerifier {

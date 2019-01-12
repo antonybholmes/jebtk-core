@@ -21,7 +21,7 @@ import org.jebtk.core.model.NameMapModel;
  * Allows multiple logs to be agglomerated so a message can be fire to multiple
  * logs.
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public class LogService extends NameMapModel<Log> {

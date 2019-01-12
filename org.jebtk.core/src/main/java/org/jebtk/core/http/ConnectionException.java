@@ -20,7 +20,7 @@ import org.jebtk.core.MessageException;
 /**
  * To be thrown when experiment search cannot connect to a server.
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public class ConnectionException extends MessageException {

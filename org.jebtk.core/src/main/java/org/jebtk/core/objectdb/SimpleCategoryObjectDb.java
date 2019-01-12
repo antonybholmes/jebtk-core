@@ -25,7 +25,7 @@ import org.jebtk.core.path.StrictPath;
 /**
  * Category Object nodes store data in radix trees for fast searching.
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  * @param <T> the generic type
  */
 public class SimpleCategoryObjectDb<T>

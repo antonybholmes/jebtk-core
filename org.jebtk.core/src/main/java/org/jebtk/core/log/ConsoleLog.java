@@ -18,7 +18,7 @@ package org.jebtk.core.log;
 /**
  * Writes log messages to the console.
  * 
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public class ConsoleLog implements LogEventListener {

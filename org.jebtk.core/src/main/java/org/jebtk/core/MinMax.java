@@ -18,7 +18,7 @@ package org.jebtk.core;
 /**
  * Immutable integer dimension.
  * 
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public class MinMax implements Comparable<MinMax> {

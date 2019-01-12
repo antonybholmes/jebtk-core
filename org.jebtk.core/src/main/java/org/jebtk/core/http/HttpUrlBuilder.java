@@ -20,7 +20,7 @@ import java.io.UnsupportedEncodingException;
 /**
  * Defaults to building a HTTP url.
  * 
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public class HttpUrlBuilder extends UrlBuilder {

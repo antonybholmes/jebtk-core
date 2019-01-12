@@ -24,7 +24,7 @@ import java.util.Stack;
 /**
  * Represents a thread safe collection of objects that can be reused.
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  * @param <T> the generic type
  */
 public class ObjectPool<T> {

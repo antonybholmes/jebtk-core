@@ -35,7 +35,7 @@ import org.jebtk.core.text.TextUtils;
 /**
  * Parses json into an object structure.
  * 
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public class JsonParser {

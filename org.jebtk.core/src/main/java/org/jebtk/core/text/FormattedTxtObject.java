@@ -18,7 +18,7 @@ package org.jebtk.core.text;
 /**
  * Provides a unique id to a class.
  * 
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public class FormattedTxtObject implements FormattedTxt {

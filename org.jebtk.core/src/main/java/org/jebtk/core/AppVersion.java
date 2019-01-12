@@ -30,7 +30,7 @@ package org.jebtk.core;
 /**
  * Describes a product version.
  * 
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public class AppVersion {

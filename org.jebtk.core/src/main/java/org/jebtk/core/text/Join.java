@@ -153,6 +153,39 @@ public class Join {
 
     return join;
   }
+  
+  public Join values(String... values) {
+    Join join = new Join(this);
+
+    if (CollectionUtils.isNullOrEmpty(values)) {
+      return join;
+    }
+
+    boolean first = true;
+    boolean append = join.mBuilder.length() > 0;
+
+    for (Object v : values) {
+      if (mIgnoreNulls && v == null) {
+        continue;
+      }
+
+      String s = v.toString();
+
+      if (mIgnoreEmptyStrings && TextUtils.isNullOrEmpty(s)) {
+        continue;
+      }
+
+      if (first && !append) {
+        join.mBuilder.append(s);
+      } else {
+        join.mBuilder.append(mDelimiter).append(s);
+      }
+
+      first = false;
+    }
+
+    return join;
+  }
 
   /**
    * Create a join from the values in an iterable object.
@@ -226,6 +259,10 @@ public class Join {
   }
   
   public String toString(Object... values) {
+    return values(values).toString();
+  }
+  
+  public String toString(String... values) {
     return values(values).toString();
   }
 

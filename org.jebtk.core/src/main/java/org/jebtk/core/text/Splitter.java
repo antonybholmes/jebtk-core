@@ -104,7 +104,7 @@ public class Splitter {
    * Split a string using any of the delimiters in the list to search for sub
    * strings.
    * 
-   * @author Antony Holmes Holmes
+   * @author Antony Holmes
    *
    */
   public static class CharsSplitMode implements SplitMode {

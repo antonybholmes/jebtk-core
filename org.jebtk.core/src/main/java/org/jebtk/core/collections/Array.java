@@ -22,7 +22,7 @@ import java.util.List;
  * Immutable list for lists that should not be changed once created. The
  * benefits of a vector without the ability to modify it.
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public class Array {

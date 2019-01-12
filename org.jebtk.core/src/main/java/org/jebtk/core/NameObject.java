@@ -18,7 +18,7 @@ package org.jebtk.core;
 /**
  * For components that can have a name property.
  * 
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public class NameObject implements NameProperty {

@@ -23,7 +23,7 @@ import org.jebtk.core.text.TextUtils;
 /**
  * Creates XML strings for writing XML.
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public class Xml {

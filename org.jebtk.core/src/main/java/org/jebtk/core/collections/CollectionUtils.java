@@ -41,7 +41,7 @@ import org.jebtk.core.text.TextUtils;
 /**
  * Functions for manipulating lists and sets.
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public class CollectionUtils {
@@ -2282,6 +2282,21 @@ public class CollectionUtils {
 
     return map;
   }
+  
+  public static Map<String, Set<String>> createMapSet(String[] l1, String[] l2) {
+    if (isNullOrEmpty(l1) || isNullOrEmpty(l2)) {
+      return Collections.emptyMap();
+    }
+
+    Map<String, Set<String>> map =
+        DefaultHashMap.create(new HashSetCreator<String>());
+
+    for (int i = 0; i < l1.length; ++i) {
+      map.get(l1[i]).add(l2[i]);
+    }
+
+    return map;
+  }
 
   /**
    * Sort a map's keys by their values.
@@ -3024,6 +3039,16 @@ public class CollectionUtils {
 
     for (int i = 0; i < values.size(); ++i) {
       ret.put(values.get(i), i);
+    }
+
+    return ret;
+  }
+  
+  public static Map<String, Integer> toIndexMap(String[] values) {
+    Map<String, Integer> ret = new HashMap<String, Integer>();
+
+    for (int i = 0; i < values.length; ++i) {
+      ret.put(values[i], i);
     }
 
     return ret;

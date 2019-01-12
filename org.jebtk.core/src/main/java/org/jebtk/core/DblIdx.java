@@ -19,7 +19,7 @@ package org.jebtk.core;
  * Generic index object that allows one object to be associated with some form
  * of index.
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  * @param <K> the generic type
  * @param <V> the value type
  */

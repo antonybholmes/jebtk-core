@@ -21,7 +21,7 @@ import java.io.IOException;
  * Elements that can return a xml text representation of themselves should
  * implement this.
  * 
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public interface FormattedXml {

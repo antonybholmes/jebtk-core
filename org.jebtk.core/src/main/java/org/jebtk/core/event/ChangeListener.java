@@ -20,7 +20,7 @@ import java.util.EventListener;
 /**
  * For responding to change events.
  * 
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public interface ChangeListener extends EventListener {

@@ -28,7 +28,7 @@ import org.jebtk.core.text.TextUtils;
  * Describes a search operation for determining if an experiment matches some
  * criteria or other.
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  * @param <T> the generic type
  */
 public class SearchStackElement {

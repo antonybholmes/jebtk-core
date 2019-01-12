@@ -28,7 +28,7 @@ import org.jebtk.core.text.TextUtils;
  * Represents a path in a tree. Tree paths are defined by a chain of UIDs
  * specifying the nodes.
  * 
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public class TreePath

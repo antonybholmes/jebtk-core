@@ -20,7 +20,7 @@ import java.awt.Color;
 /**
  * Generic properties object for sharing heterogenous properties.
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  */
 public class Property extends KeyValuePair<String, Object> implements NameProperty {
 

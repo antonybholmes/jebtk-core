@@ -23,7 +23,7 @@ import org.jebtk.core.ColorUtils;
 /**
  * The Class JsonDouble.
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  */
 public class JsonColor extends Json {
 

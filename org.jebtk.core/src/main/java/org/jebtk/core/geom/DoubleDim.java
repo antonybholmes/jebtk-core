@@ -20,7 +20,7 @@ import java.awt.Dimension;
 /**
  * Immutable doubleeger dimension.
  * 
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public class DoubleDim implements Comparable<DoubleDim> {

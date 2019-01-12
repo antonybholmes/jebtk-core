@@ -23,7 +23,7 @@ import java.util.Map.Entry;
  * Immutable list for lists that should not be changed once created. The
  * benefits of a vector without the ability to modify it.
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  * @param <T1> the generic type
  * @param <T2> the generic type
  */

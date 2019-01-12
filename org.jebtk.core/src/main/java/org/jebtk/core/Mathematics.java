@@ -34,7 +34,7 @@ import org.jebtk.core.geom.IntPos2D;
  * Extended mathematical functions not provided by the standard Java Math
  * library.
  * 
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public class Mathematics {

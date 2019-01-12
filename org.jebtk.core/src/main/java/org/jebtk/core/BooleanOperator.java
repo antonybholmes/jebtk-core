@@ -18,7 +18,7 @@ package org.jebtk.core;
 /**
  * Defines logical operators.
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public enum BooleanOperator {

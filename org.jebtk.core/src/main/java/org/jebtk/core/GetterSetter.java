@@ -18,7 +18,7 @@ package org.jebtk.core;
 /**
  * Interface for classes that have a get/set method combination.
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  * @param <T> the generic type
  */
 public interface GetterSetter<T> {

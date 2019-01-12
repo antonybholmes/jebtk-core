@@ -26,7 +26,7 @@ import org.jebtk.core.text.TextUtils;
 /**
  * Represents a string stored as a setting.
  * 
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public class SettingString extends Setting {

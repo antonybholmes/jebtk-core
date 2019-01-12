@@ -21,7 +21,7 @@ import java.awt.Rectangle;
 /**
  * Immutable integer rectangle.
  * 
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public class IntRect extends IntPos2D {

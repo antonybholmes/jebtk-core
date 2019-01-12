@@ -20,7 +20,7 @@ import java.awt.Dimension;
 /**
  * Immutable integer dimension.
  * 
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public class IntBlock implements Comparable<IntBlock> {

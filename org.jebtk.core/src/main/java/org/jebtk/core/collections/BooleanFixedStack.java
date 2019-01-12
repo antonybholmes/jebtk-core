@@ -20,7 +20,7 @@ package org.jebtk.core.collections;
  * checks are performed for speed so it will ungraciously throw exceptions if
  * misused.
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  */
 public class BooleanFixedStack extends AbstractStack {
 

@@ -20,7 +20,7 @@ import org.jebtk.core.BooleanOperator;
 /**
  * Operators for search stack.
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  */
 public enum SearchStackOperator {
 

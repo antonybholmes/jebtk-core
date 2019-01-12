@@ -24,7 +24,7 @@ import org.w3c.dom.Element;
 /**
  * The Class KeyNode.
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  */
 public class KeyNode extends TreeNode<String> {
 

@@ -20,7 +20,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * Provides a way to automate giving unique string ids to objects.
  * 
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public class StringId {

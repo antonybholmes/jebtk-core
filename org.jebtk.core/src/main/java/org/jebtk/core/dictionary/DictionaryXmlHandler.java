@@ -25,7 +25,7 @@ import org.xml.sax.helpers.DefaultHandler;
  * tags. The <word> and <synonym> tags must contain a name attribute to indicate
  * their values.
  * 
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public class DictionaryXmlHandler extends DefaultHandler {

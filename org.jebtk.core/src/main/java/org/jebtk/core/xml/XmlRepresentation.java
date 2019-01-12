@@ -22,7 +22,7 @@ import org.w3c.dom.Element;
  * Should be implemented by elements that can create an XML representation of
  * themselves.
  * 
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public interface XmlRepresentation {

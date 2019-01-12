@@ -18,7 +18,7 @@ package org.jebtk.core.event;
 /**
  * For classes that generate ChangeEvents.
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  */
 public interface ChangeEventProducer {
 

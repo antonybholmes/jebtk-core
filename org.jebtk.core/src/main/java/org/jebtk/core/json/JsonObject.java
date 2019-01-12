@@ -28,7 +28,7 @@ import org.jebtk.core.text.TextUtils;
 /**
  * Represents a json object containing key value pairs.
  * 
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public class JsonObject extends JsonContainer {

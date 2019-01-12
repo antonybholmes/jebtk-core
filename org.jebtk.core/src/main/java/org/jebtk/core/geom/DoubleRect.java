@@ -20,7 +20,7 @@ import java.awt.Point;
 /**
  * Immutable doubleeger rectangle.
  * 
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public class DoubleRect extends DoublePos2D {

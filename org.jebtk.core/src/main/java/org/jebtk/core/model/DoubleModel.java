@@ -20,7 +20,7 @@ import org.jebtk.core.event.ChangeListeners;
 /**
  * Generic model for sharing a changable item of fixed type.
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  */
 public class DoubleModel extends ChangeListeners {
 

@@ -25,7 +25,7 @@ import org.jebtk.core.path.Path;
 /**
  * Stores objects by categories in a searchable radix tree.
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  * @param <T> the generic type
  */
 public class CategoryObjectDb<T>

@@ -15,6 +15,7 @@
  */
 package org.jebtk.core.cli;
 
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -22,8 +23,10 @@ import java.util.List;
 import java.util.Map.Entry;
 
 import org.jebtk.core.collections.ArrayListCreator;
+import org.jebtk.core.collections.CollectionUtils;
 import org.jebtk.core.collections.DefaultHashMap;
 import org.jebtk.core.collections.IterMap;
+import org.jebtk.core.io.PathUtils;
 import org.jebtk.core.text.TextUtils;
 
 /**
@@ -39,10 +42,14 @@ public class ArgParser implements Iterable<Entry<String, List<String>>> {
 
   private List<String> mOthers = new ArrayList<String>();
 
-  private Args mOptions;
+  private Args mOptions = null;
 
   //private static final Pattern SHORT_ARG_REGEX = Pattern.compile("^-([\\w\\-]+)");
   //private static final Pattern LONG_ARG_REGEX = Pattern.compile("^--([\\w\\-]+)");
+
+  public ArgParser() {
+    this(null);
+  }
 
   public ArgParser(Args options) {
     mOptions = options;
@@ -59,6 +66,21 @@ public class ArgParser implements Iterable<Entry<String, List<String>>> {
 
   private void add(Arg arg, String value) {
     mArgMap.get(arg.getLongName()).add(value);
+
+    // Also map the short name for convenience
+    if (!arg.getShortName().equals(arg.getLongName())) {
+      mArgMap.get(arg.getShortName()).add(value);
+    }
+  }
+
+  /**
+   * Returns true if argument was matched.
+   * 
+   * @param name
+   * @return
+   */
+  public boolean contains(String name) {
+    return mArgMap.containsKey(name);
   }
 
   /**
@@ -77,13 +99,41 @@ public class ArgParser implements Iterable<Entry<String, List<String>>> {
     }
   }
 
+  public int getInt(String arg) {
+    return Integer.parseInt(getArg(arg));
+  }
+
+  public double getDouble(String arg) {
+    return Double.parseDouble(getArg(arg));
+  }
+  
+  public Path getFile(String arg) {
+    return PathUtils.getPath(arg);
+  }
+
   /**
    * Returns a list of the parsed arguments with the given name
    * @param name
    * @return
    */
   public List<String> getArgs(String name) {
-    return Collections.unmodifiableList(mArgMap.get(name));
+    if (contains(name)) {
+      return Collections.unmodifiableList(mArgMap.get(name));
+    } else {
+      // See if there is a default
+
+      if (mOptions.contains(name)) {
+        String def = mOptions.get(name).getDefaultValue();
+
+        if (def != null) {
+          return CollectionUtils.asList(mOptions.get(name).getDefaultValue());
+        } else {
+          return Collections.emptyList();
+        }
+      } else {
+        return Collections.emptyList();
+      }
+    }
   }
 
   /**
@@ -117,18 +167,27 @@ public class ArgParser implements Iterable<Entry<String, List<String>>> {
    * @throws ArgException 
    */
   public ArgParser parse(String... args) {
+    if (mOptions == null) {
+      // If no options specified, simply add them to the unprocessed others
+      for (String arg : args) {
+        mOthers.add(arg);
+      }
+      
+      return this;
+    }
+
     int index = 0;
 
     String arg;
     String value;
     boolean isLong;
     boolean isShort;
-    
+
     while (index < args.length) {
       arg = args[index++];
 
       value = null;
-      
+
       // Test the type of the argument
       isLong = arg.startsWith("--");
       isShort = !isLong && arg.length() == 2 && arg.startsWith("-");
@@ -179,13 +238,13 @@ public class ArgParser implements Iterable<Entry<String, List<String>>> {
 
     return this;
   }
-  
+
   public static Entry<String, String> parsePosixArg(String arg) {
 
     arg = arg.replaceFirst("--", TextUtils.EMPTY_STRING);
 
     int index = arg.indexOf("=");
-    
+
     if (index > 0) {
       return new org.jebtk.core.collections.Entry<String, String>(arg.substring(0, index), arg.substring(index + 1));
     } else {
@@ -200,4 +259,8 @@ public class ArgParser implements Iterable<Entry<String, List<String>>> {
   public static String longArg(String name) {
     return new StringBuilder().append("--").append(name).toString();
   }
+
+  
+
+
 }

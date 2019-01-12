@@ -19,7 +19,7 @@ package org.jebtk.core.stream;
 /**
  * Holds a reference to an existing stream.
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  * @param <T> the generic type
  */
 public class DoubleArrayStream extends Stream<Double> {

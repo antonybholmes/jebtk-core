@@ -18,7 +18,7 @@ package org.jebtk.core;
 /**
  * General purpose exception.
  * 
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public class MessageException extends Exception {

@@ -26,7 +26,7 @@ import org.jebtk.core.collections.UniqueArrayList;
  * Model to store items indexed by name. Items are stored in the order they are
  * entered and are retrivable either by name or index.
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  * @param <T> the generic type
  */
 public class NameListModel<T> extends NameModel<T> {

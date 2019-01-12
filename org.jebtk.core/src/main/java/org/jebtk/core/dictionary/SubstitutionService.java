@@ -37,7 +37,7 @@ import org.xml.sax.SAXException;
  * alternative. This is designed for cases where user data has common
  * misspellings etc.
  * 
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public class SubstitutionService {

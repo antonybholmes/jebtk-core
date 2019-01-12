@@ -18,7 +18,7 @@ package org.jebtk.core.log;
 /**
  * For classes that generate ModernClickEvents.
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  */
 public interface LogEventProducer {
 

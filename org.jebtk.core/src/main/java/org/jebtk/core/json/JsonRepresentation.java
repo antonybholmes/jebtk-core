@@ -19,7 +19,7 @@ package org.jebtk.core.json;
  * Should be implemented by elements that can create a JSON object
  * representation of themselves.
  * 
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public interface JsonRepresentation {

@@ -29,7 +29,7 @@ import org.jebtk.core.settings.KeyNode;
  * Represents a node in a tree hierarchy. A node may contain a data object as
  * well as child nodes.
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  * @param <T> the generic type
  */
 public class TextObjectNode<T> implements Iterable<TextObjectNode<T>>,

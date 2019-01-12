@@ -39,7 +39,7 @@ import org.xml.sax.SAXException;
 /**
  * Describes a product.
  * 
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public class AppInfo {

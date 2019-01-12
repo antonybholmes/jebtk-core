@@ -29,7 +29,7 @@ import java.util.Map;
  * repeating children (nodes with the same name). For a more ordered tree where
  * branch order can be inferred, try TreeNode
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  * @param <T> the generic type
  */
 public class KeyValueNode<T> implements Iterable<KeyValueNode<T>>,

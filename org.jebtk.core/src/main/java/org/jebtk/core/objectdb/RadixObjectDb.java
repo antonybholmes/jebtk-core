@@ -22,7 +22,7 @@ import org.jebtk.core.text.TextUtils;
 /**
  * Creates a search radix tree of objects tagged by their name.
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  * @param <T> the generic type
  */
 public class RadixObjectDb<T> extends RadixObjectNode<T>

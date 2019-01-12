@@ -25,7 +25,7 @@ import org.jebtk.core.path.Path;
 /**
  * Creates a searchable database of objects tagged by categories.
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  * @param <T> the generic type
  */
 public class TextObjectDb<T>

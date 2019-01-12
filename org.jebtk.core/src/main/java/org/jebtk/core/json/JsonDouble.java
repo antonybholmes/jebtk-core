@@ -20,7 +20,7 @@ import java.io.IOException;
 /**
  * The Class JsonDouble.
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  */
 public class JsonDouble extends Json {
 

@@ -18,7 +18,7 @@ package org.jebtk.core;
 /**
  * Container for a Class object that can be sorted { and indexed.
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public class Plugin implements Comparable<Plugin> {

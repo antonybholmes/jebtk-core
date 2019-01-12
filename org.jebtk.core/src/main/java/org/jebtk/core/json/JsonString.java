@@ -22,7 +22,7 @@ import org.jebtk.core.text.TextUtils;
 /**
  * The Class JsonString.
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  */
 public class JsonString extends JsonRaw {
   // private static final Pattern REGEX_DOUBLE_SLASH =

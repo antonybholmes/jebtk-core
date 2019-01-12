@@ -20,7 +20,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * Provides a way to automate giving unique integer ids to objects.
  * 
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public class IntId {

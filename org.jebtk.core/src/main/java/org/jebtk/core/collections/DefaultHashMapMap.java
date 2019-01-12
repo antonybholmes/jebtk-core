@@ -20,7 +20,7 @@ import java.util.Map;
 /**
  * Creates an auto populating hash map of hash maps.
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  * @param <K1> the generic type
  * @param <K2> the generic type
  * @param <V> the value type

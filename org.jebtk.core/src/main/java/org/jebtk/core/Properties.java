@@ -28,7 +28,7 @@ import org.jebtk.core.event.ChangeListeners;
 /**
  * Generic properties object for sharing heterogenous properties.
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  */
 public class Properties extends ChangeListeners implements Iterable<Entry<String, Object>>, ChangeListener {
 

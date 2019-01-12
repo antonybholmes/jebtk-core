@@ -31,7 +31,7 @@ import org.jebtk.core.text.TextUtils;
 /**
  * Provides a dictionary service so strings/words can be mapped to synonyms.
  * 
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public class KeywordsService implements Iterable<String>, Serializable {

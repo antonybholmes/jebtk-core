@@ -20,7 +20,7 @@ import org.jebtk.core.collections.CircularArray;
 /**
  * Stores a fixed number of log events.
  * 
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public class BufferLog extends CircularArray<LogEvent>

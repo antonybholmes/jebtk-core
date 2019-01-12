@@ -50,7 +50,7 @@ import org.slf4j.LoggerFactory;
 /**
  * Functions for IO and file operations.
  * 
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public class Io {
@@ -631,7 +631,7 @@ public class Io {
    * @return the list
    * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static final List<String> loadCSVList(Path file, boolean skipHeader)
+  public static final String[] loadCSVList(Path file, boolean skipHeader)
       throws IOException {
     LOG.info("Load list from {}, {}...", file, skipHeader);
 
@@ -656,7 +656,7 @@ public class Io {
       reader.close();
     }
 
-    return rows;
+    return (String[]) rows.toArray();
   }
 
   /**
@@ -1753,7 +1753,7 @@ public class Io {
    * @return the column
    * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static List<String> getColumn(Path file, boolean skipHeader)
+  public static String[] getColumn(Path file, boolean skipHeader)
       throws IOException {
     return getColumn(file, skipHeader, 0);
   }
@@ -1767,7 +1767,7 @@ public class Io {
    * @return the column
    * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static List<String> getColumn(Path file,
+  public static String[] getColumn(Path file,
       boolean skipHeader,
       int column) throws IOException {
     BufferedReader reader = FileUtils.newBufferedReader(file);
@@ -1793,8 +1793,7 @@ public class Io {
       reader.close();
     }
 
-    return ret;
-
+    return (String[]) ret.toArray();
   }
 
   /**

@@ -26,7 +26,7 @@ import org.jebtk.core.text.TextUtils;
  * Represents a stream of string objects and has associated reduce functions to
  * process strings.
  * 
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public class StringStream extends ContainerStream<String> {

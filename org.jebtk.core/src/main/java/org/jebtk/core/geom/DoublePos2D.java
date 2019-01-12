@@ -18,7 +18,7 @@ package org.jebtk.core.geom;
 /**
  * An immutable integer point.
  * 
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public class DoublePos2D implements Comparable<DoublePos2D> {

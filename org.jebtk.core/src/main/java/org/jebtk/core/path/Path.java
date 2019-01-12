@@ -28,7 +28,7 @@ import org.jebtk.core.text.TextUtils;
 /**
  * Represents a path such as file path or tree structure.
  * 
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public class Path implements Iterable<String>, Serializable, Comparable<Path> {

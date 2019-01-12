@@ -32,7 +32,7 @@ import org.jebtk.core.text.TextUtils;
 /**
  * Generic JSON object.
  * 
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public abstract class Json implements Iterable<Json>, PrettyJson {

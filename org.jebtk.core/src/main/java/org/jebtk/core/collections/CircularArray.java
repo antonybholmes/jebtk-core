@@ -24,7 +24,7 @@ import java.util.Collections;
  * the buffer is filled. The implementation means there is no array resizing or
  * copying.
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  * @param <T> the generic type
  */
 public class CircularArray<T> extends ArrayList<T> {

@@ -20,7 +20,7 @@ import java.awt.Color;
 /**
  * Represents a color.
  * 
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public class ColorValue {

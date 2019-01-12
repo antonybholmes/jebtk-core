@@ -41,7 +41,7 @@ import org.slf4j.LoggerFactory;
  * in the same package hierarchy as they were designed. The plugin loader will
  * scan the directories and build the packages from this.
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public class PluginService implements Iterable<Plugin> {

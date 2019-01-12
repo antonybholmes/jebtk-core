@@ -20,7 +20,7 @@ import org.jebtk.core.event.ChangeEvent;
 /**
  * For classes that generate ModernClickEvents.
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  */
 public interface TreeNodeEventProducer {
 

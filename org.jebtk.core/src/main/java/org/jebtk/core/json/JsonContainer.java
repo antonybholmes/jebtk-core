@@ -19,7 +19,7 @@ package org.jebtk.core.json;
  * The base class for the json array and object which are containers of either
  * list or maps.
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  */
 public abstract class JsonContainer extends Json {
 

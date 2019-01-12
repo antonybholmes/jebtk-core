@@ -21,7 +21,7 @@ import java.util.List;
 /**
  * The class IndexedValueDouble.
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  * @param <T> the generic type
  */
 public class IndexedDouble<T extends Comparable<? super T>>

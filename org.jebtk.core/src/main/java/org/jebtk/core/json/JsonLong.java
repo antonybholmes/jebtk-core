@@ -20,7 +20,7 @@ import java.io.IOException;
 /**
  * The Class JsonInteger.
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  */
 public class JsonLong extends Json {
 

@@ -19,7 +19,7 @@ package org.jebtk.core.tree;
  * Specialized root node for a tree. This node cannot contain data nor may its
  * name be changed.
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  * @param <T> the generic type
  */
 public class TreeRootNode<T> extends TreeNode<T> {

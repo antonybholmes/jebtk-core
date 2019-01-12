@@ -32,13 +32,15 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.jebtk.core.collections.ArrayUtils;
 import org.jebtk.core.collections.CollectionUtils;
 import org.jebtk.core.io.FileUtils;
+import org.jebtk.core.sys.SysUtils;
 
 /**
  * Functions for manipulating strings.
  * 
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public class TextUtils {
@@ -1544,11 +1546,39 @@ public class TextUtils {
    * @return the int
    */
   public static int findFirst(List<String> list, String... s) {
-    List<String> ls = toLowerCase(s);
+    String[] ls = toLowerCase(s);
 
     for (int i = 0; i < list.size(); ++i) {
       for (String l : ls) {
         if (list.get(i).toLowerCase().contains(l)) {
+          return i;
+        }
+      }
+    }
+
+    return -1;
+  }
+  
+  public static int findFirst(String[] list, String... s) {
+    String[] ls = toLowerCase(s);
+
+    for (int i = 0; i < list.length; ++i) {
+      for (String l : ls) {
+        if (list[i].toLowerCase().contains(l)) {
+          return i;
+        }
+      }
+    }
+
+    return -1;
+  }
+  
+  public static int findFirst(String[] list, Collection<String> s) {
+    List<String> ls = toLowerCase(s);
+
+    for (int i = 0; i < list.length; ++i) {
+      for (String l : ls) {
+        if (list[i].toLowerCase().contains(l)) {
           return i;
         }
       }
@@ -1620,8 +1650,6 @@ public class TextUtils {
    * @return the list
    */
   public static List<Integer> find(List<String> list, Pattern regex) {
-
-
     if (CollectionUtils.isNullOrEmpty(list) || regex == null) {
       return Collections.emptyList();
     }
@@ -1630,6 +1658,26 @@ public class TextUtils {
 
     for (int i = 0; i < list.size(); ++i) {
       Matcher matcher = regex.matcher(list.get(i));
+
+      boolean found = matcher.find();
+
+      if (found) {
+        indices.add(i);
+      }
+    }
+
+    return indices;
+  }
+  
+  public static List<Integer> find(String[] list, Pattern regex) {
+    if (CollectionUtils.isNullOrEmpty(list) || regex == null) {
+      return Collections.emptyList();
+    }
+
+    List<Integer> indices = new ArrayList<Integer>(list.length);
+
+    for (int i = 0; i < list.length; ++i) {
+      Matcher matcher = regex.matcher(list[i]);
 
       boolean found = matcher.find();
 
@@ -1727,6 +1775,20 @@ public class TextUtils {
    * @return the int
    */
   public static int maxLength(Collection<String> items) {
+    if (CollectionUtils.isNullOrEmpty(items)) {
+      return -1;
+    }
+
+    int max = -1;
+
+    for (String s : items) {
+      max = Math.max(max, s.length());
+    }
+
+    return max;
+  }
+  
+  public static int maxLength(String... items) {
     if (CollectionUtils.isNullOrEmpty(items)) {
       return -1;
     }
@@ -1873,6 +1935,10 @@ public class TextUtils {
    * @return the string
    */
   public static String tabJoin(List<String> tokens) {
+    return join(tokens, TAB_DELIMITER);
+  }
+  
+  public static String tabJoin(String... tokens) {
     return join(tokens, TAB_DELIMITER);
   }
 
@@ -2123,19 +2189,21 @@ public class TextUtils {
    * @param items the items
    * @return the list
    */
-  public static List<String> toLowerCase(String[] items) {
+  public static String[] toLowerCase(String[] items) {
     if (CollectionUtils.isNullOrEmpty(items)) {
-      return Collections.emptyList();
+      return ArrayUtils.EMPTY_STRING_ARRAY;
     }
 
-    List<String> ret = new ArrayList<String>(items.length);
+    String[] ret = new String[items.length];
 
-    for (String id : items) {
-      ret.add(id.toLowerCase());
+    for (int i = 0; i < items.length; ++i) {
+      ret[i] = items[i].toLowerCase();
     }
 
     return ret;
   }
+  
+  
 
   /**
    * Returns true if text appears to be a number.
@@ -2424,7 +2492,7 @@ public class TextUtils {
    * @return the list
    * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static List<String> firstColAsList(Path file, boolean skipHeader)
+  public static String[] firstColAsList(Path file, boolean skipHeader)
       throws IOException {
     return colAsList(file, skipHeader, 0);
   }
@@ -2438,7 +2506,7 @@ public class TextUtils {
    * @return the list
    * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static List<String> colAsList(Path file, boolean skipHeader, int col)
+  public static String[] colAsList(Path file, boolean skipHeader, int col)
       throws IOException {
     // LOG.info("Load list from {}, {}...", file, skipHeader);
 
@@ -2463,7 +2531,7 @@ public class TextUtils {
       reader.close();
     }
 
-    return rows;
+    return (String[]) rows.toArray();
   }
 
   /**
@@ -2886,5 +2954,29 @@ public class TextUtils {
     }
     
     return count;
+  }
+  
+  /**
+   * Pad a list of strings.
+   * 
+   * @param items
+   * @param v
+   * @param size
+   * @return
+   */
+  public static <T> String[] pad(String[] items, String v, int size) {
+    if (ArrayUtils.isNullOrEmpty(items)) {
+      return ArrayUtils.EMPTY_STRING_ARRAY;
+    }
+
+    String[] ret = new String[size];
+
+    SysUtils.arraycopy(items, ret);
+    
+    for (int i = items.length; i < size; ++i) {
+      ret[i] = v;
+    }
+
+    return ret;
   }
 }

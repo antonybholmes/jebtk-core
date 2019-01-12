@@ -24,7 +24,7 @@ import java.util.List;
  * maintains results so that it can be re-used without having to rebuild it each
  * time.
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  * @param <T> the generic type
  */
 public class PseudoStack<T> extends AbstractStack implements Serializable {

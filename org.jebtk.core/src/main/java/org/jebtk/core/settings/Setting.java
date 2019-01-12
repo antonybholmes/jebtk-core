@@ -38,7 +38,7 @@ import org.w3c.dom.Element;
  * The period separated parts of the name are treated as being part of a
  * hierarchy.
  * 
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public class Setting extends ChangeListeners

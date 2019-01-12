@@ -20,7 +20,7 @@ import javax.net.ssl.X509TrustManager;
 /**
  * Trust all certificates.
  * 
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public class TrustAllManager implements X509TrustManager {

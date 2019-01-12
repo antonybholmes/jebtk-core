@@ -23,7 +23,7 @@ import java.util.List;
  * Holds a list of nodes as they appear in a tree and represents the nodes in a
  * path.
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  * @param <T> the generic type
  */
 public class TreeNodeChain<T> implements Iterable<TreeNode<T>> {

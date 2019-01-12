@@ -22,7 +22,7 @@ import org.jebtk.core.collections.CollectionUtils;
 /**
  * Can be used to encapsulate a single item in a stream.
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  * @param <T> the generic type
  */
 public class SingletonStream<T> extends Stream<T> {

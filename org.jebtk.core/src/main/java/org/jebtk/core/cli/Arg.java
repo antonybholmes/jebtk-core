@@ -18,7 +18,7 @@ package org.jebtk.core.cli;
 /**
  * Specifies an expected argument on the command line.
  * 
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public class Arg {
@@ -42,6 +42,10 @@ public class Arg {
    * The member description.
    */
   private String mDescription;
+
+  private String mS;
+
+  private String mDefaultValue;
 
   /**
    * Instantiates a new command line option.
@@ -67,6 +71,16 @@ public class Arg {
     mShortName = Character.toString(shortName);
     mLongName = longName;
     mHasValue = hasArg;
+    mDescription = description;
+  }
+  
+  public Arg(char shortName, String longName, boolean hasArg,
+      String defaultValue,
+      String description) {
+    mShortName = Character.toString(shortName);
+    mLongName = longName;
+    mHasValue = hasArg;
+    mDefaultValue = defaultValue;
     mDescription = description;
   }
 
@@ -96,6 +110,10 @@ public class Arg {
   public boolean hasValue() {
     return mHasValue;
   }
+  
+  public String getDefaultValue() {
+    return mDefaultValue;
+  }
 
   /**
    * Gets the description.
@@ -105,4 +123,26 @@ public class Arg {
   public String getDescription() {
     return mDescription;
   }
+
+  @Override
+  public String toString() {
+    if (mS == null) {
+      StringBuilder buffer = new StringBuilder(getShortName());
+
+      if (hasValue()) {
+        buffer.append(" VALUE");
+      }
+
+      buffer.append(", --" + getLongName());
+
+      if (hasValue()) {
+        buffer.append("=VALUE");
+      }
+      
+      mS = buffer.toString();
+    }
+
+    return mS;
+  }
+
 }

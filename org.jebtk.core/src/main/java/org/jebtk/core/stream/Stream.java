@@ -29,7 +29,7 @@ import org.jebtk.core.collections.UniqueArrayList;
  * A stream represents a series of functional operations on a collection to
  * perform data processing.
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  * @param <T> the generic type
  */
 public abstract class Stream<T> implements StreamIterator<T>, Iterable<T> {
@@ -557,6 +557,10 @@ public abstract class Stream<T> implements StreamIterator<T>, Iterable<T> {
   }
 
   public static StringStream asString(Collection<String> values) {
+    return of(values).asString();
+  }
+  
+  public static StringStream asString(String... values) {
     return of(values).asString();
   }
 

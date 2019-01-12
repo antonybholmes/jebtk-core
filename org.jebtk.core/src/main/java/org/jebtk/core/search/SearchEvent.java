@@ -20,7 +20,7 @@ import org.jebtk.core.event.Event;
 /**
  * For generating search events.
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  */
 public class SearchEvent extends Event {
 

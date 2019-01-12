@@ -26,7 +26,7 @@ import org.jebtk.core.text.TextUtils;
 /**
  * Represents an XML document.
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public class XmlDocument extends XmlElement {

@@ -18,7 +18,7 @@ package org.jebtk.core;
 /**
  * Specify an inclusive number limit.
  * 
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public class Limits {

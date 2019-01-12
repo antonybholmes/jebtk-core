@@ -18,7 +18,7 @@ package org.jebtk.core;
 /**
  * For objects that require a unique id.
  * 
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public interface PublicIdProperty {

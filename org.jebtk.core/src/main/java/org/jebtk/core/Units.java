@@ -18,7 +18,7 @@ package org.jebtk.core;
 /**
  * Some common units.
  * 
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public class Units {

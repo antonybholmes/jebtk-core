@@ -30,7 +30,7 @@ import org.jebtk.core.event.ChangeListeners;
  * Generic model for sharing items and receiving notification when the items
  * change.
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  * @param <T> the generic type
  */
 public class SetModel<T extends Comparable<? super T>> extends HashSet<T>

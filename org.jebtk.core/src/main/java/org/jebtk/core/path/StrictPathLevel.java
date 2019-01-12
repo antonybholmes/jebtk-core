@@ -18,7 +18,7 @@ package org.jebtk.core.path;
 /**
  * Represents the level on a path.
  * 
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public class StrictPathLevel extends PathLevel {

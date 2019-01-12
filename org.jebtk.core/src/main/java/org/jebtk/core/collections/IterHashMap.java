@@ -22,7 +22,7 @@ import java.util.Map;
 /**
  * A hashmap where the keys can be iterated over.
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  * @param <K> the key type
  * @param <V> the value type
  */

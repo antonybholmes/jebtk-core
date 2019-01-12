@@ -38,7 +38,7 @@ import org.xml.sax.SAXException;
 /**
  * Provides a dictionary service so strings/words can be mapped to synonyms.
  * 
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public class DictionaryService {

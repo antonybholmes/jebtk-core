@@ -21,7 +21,7 @@ import org.jebtk.core.text.TextUtils;
 /**
  * Creates XML text elements for writing XML.
  *
- * @author Antony Holmes Holmes
+ * @author Antony Holmes
  *
  */
 public class Xhtml {
