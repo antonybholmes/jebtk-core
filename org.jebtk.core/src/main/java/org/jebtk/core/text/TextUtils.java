@@ -1677,16 +1677,16 @@ public class TextUtils {
     List<Integer> indices = new ArrayList<Integer>(list.length);
 
     for (int i = 0; i < list.length; ++i) {
-      Matcher matcher = regex.matcher(list[i]);
-
-      boolean found = matcher.find();
-
-      if (found) {
+      if (find(list[i], regex)) {
         indices.add(i);
       }
     }
 
     return indices;
+  }
+  
+  public static boolean find(String s, Pattern regex) {
+     return regex.matcher(s).find();
   }
 
   /**
@@ -2602,6 +2602,10 @@ public class TextUtils {
    * @return the string
    */
   public static String replaceVariables(String s) {
+    if (isNullOrEmpty(s)) {
+      return EMPTY_STRING;
+    }
+    
     if (VAR_YEAR_PATTERN.matcher(s).find()) {
       s = VAR_YEAR_PATTERN.matcher(s).replaceAll(DateUtils.year());
     }

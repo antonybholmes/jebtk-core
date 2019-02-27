@@ -35,6 +35,8 @@ package org.jebtk.core;
  */
 public class AppVersion {
 
+  public static final AppVersion DEFAULT_VERSION = new AppVersion(1);
+
   /**
    * The member version.
    */

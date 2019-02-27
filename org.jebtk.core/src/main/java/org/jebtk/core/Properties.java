@@ -42,22 +42,26 @@ public class Properties extends ChangeListeners implements Iterable<Entry<String
   /**
    * The member items.
    */
-  protected IterMap<String, Object> mPropertyMap = null;
+  protected IterMap<String, Object> mPropertyMap = new IterTreeMap<String, Object>();
 
   public Properties() {
-    mPropertyMap = new IterTreeMap<String, Object>();
+    // Do nothing
   }
 
   public Properties(Properties parent) {
-    if (parent != null) {
-      mPropertyMap = new IterTreeMap<String, Object>(parent.mPropertyMap);
-    } else {
-      mPropertyMap = new IterTreeMap<String, Object>();
-    }
+    set(parent);
   }
   
-  public Properties inherits(Properties parent) {
-    mPropertyMap.putAll(parent.mPropertyMap);
+  public Properties set(Properties properties) {
+    update(properties);
+    
+    fireChanged();
+    
+    return this;
+  }
+  
+  public Properties update(Properties properties) {
+    mPropertyMap.putAll(properties.mPropertyMap);
     
     return this;
   }
