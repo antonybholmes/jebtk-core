@@ -526,5 +526,18 @@ public class ColorUtils {
 
     return ret;
   }
+  
+  public static Color[] alpha(Color[] colors, final double alpha) {
+    Color[] ret = new Color[colors.length];
+
+    CollectionUtils.apply(colors, ret, new Function<Color, Color>() {
+      @Override
+      public Color apply(Color color) {
+        return getColor(color, alpha);
+      }
+    });
+
+    return ret;
+  }
 
 }
