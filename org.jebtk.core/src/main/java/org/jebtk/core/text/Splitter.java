@@ -544,6 +544,10 @@ public class Splitter {
   public static Splitter onSC() {
     return on(TextUtils.SEMI_COLON_DELIMITER);
   }
+  
+  public static Splitter onColon() {
+    return on(TextUtils.COLON_DELIMITER);
+  }
 
   /**
    * On comma.
