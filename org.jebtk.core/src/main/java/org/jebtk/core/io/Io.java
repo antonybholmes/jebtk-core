@@ -1322,6 +1322,16 @@ public class Io {
     // || line.startsWith(Text.NEWLINE);
     return TextUtils.isNullOrEmpty(line) || line.startsWith(TextUtils.NEW_LINE);
   }
+  
+  /**
+   * Returns true if line is not null and has length > 0.
+   * 
+   * @param line
+   * @return
+   */
+  public static final boolean isLine(String line) {
+    return !TextUtils.isNullOrEmpty(line) && line.length() > 0;
+  }
 
   /**
    * Adds a file extension to a file name. This method will check to ensure it
