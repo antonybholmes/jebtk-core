@@ -27,7 +27,7 @@ import java.util.Deque;
 
 import org.jebtk.core.ColorUtils;
 import org.jebtk.core.Mathematics;
-import org.jebtk.core.http.UrlBuilder;
+import org.jebtk.core.http.URLPath;
 import org.jebtk.core.io.FileUtils;
 import org.jebtk.core.io.StreamUtils;
 import org.jebtk.core.text.TextUtils;
@@ -78,7 +78,7 @@ public class JsonParser {
 
   /** The m unicode mode. */
   private boolean mUnicodeMode = false;
-  
+
   private byte[] mByteBuffer = StreamUtils.createBuffer();
 
   /**
@@ -111,9 +111,9 @@ public class JsonParser {
       return null;
     }
   }
-  
-  public Json parse(UrlBuilder url) throws IOException {
-    return parse(url.toURL());
+
+  public Json parse(URLPath url) throws IOException {
+    return parse(url.openConnection());
   }
 
   /**

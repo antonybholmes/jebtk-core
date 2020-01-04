@@ -81,39 +81,26 @@ public class Join {
    * @return the join
    */
   /*
-  public Join values(final Collection<?> values) {
-    Join join = new Join(this);
-
-    if (CollectionUtils.isNullOrEmpty(values)) {
-      return join;
-    }
-
-    boolean first = true;
-    boolean append = join.mBuilder.length() > 0;
-
-    for (Object v : values) {
-      if (v == null && mIgnoreNulls) {
-        continue;
-      }
-
-      String s = v.toString();
-
-      if (TextUtils.isNullOrEmpty(s) && mIgnoreEmptyStrings) {
-        continue;
-      }
-
-      if (first && !append) {
-        join.mBuilder.append(s);
-      } else {
-        join.mBuilder.append(mDelimiter).append(s);
-      }
-
-      first = false;
-    }
-
-    return join;
-  }
-  */
+   * public Join values(final Collection<?> values) { Join join = new
+   * Join(this);
+   * 
+   * if (CollectionUtils.isNullOrEmpty(values)) { return join; }
+   * 
+   * boolean first = true; boolean append = join.mBuilder.length() > 0;
+   * 
+   * for (Object v : values) { if (v == null && mIgnoreNulls) { continue; }
+   * 
+   * String s = v.toString();
+   * 
+   * if (TextUtils.isNullOrEmpty(s) && mIgnoreEmptyStrings) { continue; }
+   * 
+   * if (first && !append) { join.mBuilder.append(s); } else {
+   * join.mBuilder.append(mDelimiter).append(s); }
+   * 
+   * first = false; }
+   * 
+   * return join; }
+   */
 
   /**
    * Values.
@@ -153,7 +140,7 @@ public class Join {
 
     return join;
   }
-  
+
   public Join values(String... values) {
     Join join = new Join(this);
 
@@ -253,15 +240,15 @@ public class Join {
   public String toString() {
     return mBuilder.toString();
   }
-  
+
   public String toString(Iterable<String> values) {
     return values(values).toString();
   }
-  
+
   public String toString(Object... values) {
     return values(values).toString();
   }
-  
+
   public String toString(String... values) {
     return values(values).toString();
   }
@@ -383,7 +370,7 @@ public class Join {
   public static Join onDash() {
     return on(TextUtils.DASH_DELIMITER);
   }
-  
+
   public static Join onPeriod() {
     return on(TextUtils.PERIOD_DELIMITER);
   }

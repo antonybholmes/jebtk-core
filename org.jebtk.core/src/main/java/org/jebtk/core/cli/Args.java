@@ -31,9 +31,8 @@ public class Args implements Iterable<Arg> {
   /**
    * The member options.
    */
-  private Map<String, Arg> mOptionMap = 
-      new HashMap<String, Arg>();
-  
+  private Map<String, Arg> mOptionMap = new HashMap<String, Arg>();
+
   private List<Arg> mOptions = new ArrayList<Arg>();
 
   /**
@@ -48,12 +47,12 @@ public class Args implements Iterable<Arg> {
    *
    * @param shortName the short name
    * @param longName the long name
-   * @return 
+   * @return
    */
   public Args add(char shortName, String longName) {
     return add(shortName, longName, false);
   }
-  
+
   public Args add(char shortName, boolean hasValue) {
     return add(shortName, Character.toString(shortName), hasValue);
   }
@@ -64,7 +63,7 @@ public class Args implements Iterable<Arg> {
    * @param shortName the short name
    * @param longName the long name
    * @param hasValue the has arg
-   * @return 
+   * @return
    */
   public Args add(char shortName, String longName, boolean hasValue) {
     return add(shortName, longName, hasValue, TextUtils.EMPTY_STRING);
@@ -77,7 +76,7 @@ public class Args implements Iterable<Arg> {
    * @param longName the long name
    * @param hasValue the has arg
    * @param description the description
-   * @return 
+   * @return
    */
   public Args add(char shortName,
       String longName,
@@ -90,13 +89,13 @@ public class Args implements Iterable<Arg> {
    * Adds the option.
    *
    * @param option the option
-   * @return 
+   * @return
    */
   public Args add(Arg option) {
     mOptions.add(option);
     mOptionMap.put(option.getShortName(), option);
     mOptionMap.put(option.getLongName(), option);
-    
+
     return this;
   }
 
@@ -129,9 +128,8 @@ public class Args implements Iterable<Arg> {
   }
 
   /**
-   * Returns true if args contains an argument with the given name. The
-   * name should either the long or short variant without a '--' or '-'
-   * prefix.
+   * Returns true if args contains an argument with the given name. The name
+   * should either the long or short variant without a '--' or '-' prefix.
    * 
    * @param name
    * @return
@@ -141,12 +139,11 @@ public class Args implements Iterable<Arg> {
   }
 
   /**
-   * Returns true the arg with the given name. The
-   * name should either the long or short variant without a '--' or '-'
-   * prefix.
+   * Returns true the arg with the given name. The name should either the long
+   * or short variant without a '--' or '-' prefix.
    * 
-   * @param name    The name of the argument.
-   * @return        The arg or null if it does not exist.
+   * @param name The name of the argument.
+   * @return The arg or null if it does not exist.
    */
   public Arg get(String arg) {
     return mOptionMap.get(arg);

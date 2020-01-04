@@ -73,10 +73,9 @@ public class Arg {
     mHasValue = hasArg;
     mDescription = description;
   }
-  
+
   public Arg(char shortName, String longName, boolean hasArg,
-      String defaultValue,
-      String description) {
+      String defaultValue, String description) {
     mShortName = Character.toString(shortName);
     mLongName = longName;
     mHasValue = hasArg;
@@ -110,7 +109,7 @@ public class Arg {
   public boolean hasValue() {
     return mHasValue;
   }
-  
+
   public String getDefaultValue() {
     return mDefaultValue;
   }
@@ -138,7 +137,7 @@ public class Arg {
       if (hasValue()) {
         buffer.append("=VALUE");
       }
-      
+
       mS = buffer.toString();
     }
 

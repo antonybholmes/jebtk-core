@@ -24,60 +24,61 @@ import org.jebtk.core.collections.CollectionUtils;
 
 public class StreamUtils {
   private static final int BUFFER_SIZE = 8192;
-  
+
   private StreamUtils() {
     // Do nothing
   }
-  
+
   /**
    * Create a new buffer for IO operations.
    * 
-   * @return    A new buffer.
+   * @return A new buffer.
    */
   public static byte[] createBuffer() {
     return createBuffer(BUFFER_SIZE);
   }
-  
+
   public static byte[] createBuffer(int size) {
     return new byte[size];
   }
-  
+
   /**
    * Copy the bytes from one stream to another.
    * 
-   * @param input     An input stream.
-   * @param output    An output stream.
-   * @return          The number of bytes copied.
+   * @param input An input stream.
+   * @param output An output stream.
+   * @return The number of bytes copied.
    * 
    * @throws IOException
    */
-  public static int copy(InputStream input, OutputStream output) throws IOException {
+  public static int copy(InputStream input, OutputStream output)
+      throws IOException {
     return copy(input, output, BUFFER_SIZE);
   }
-  
-  public static int copy(InputStream input, OutputStream output, int size) throws IOException {
+
+  public static int copy(InputStream input, OutputStream output, int size)
+      throws IOException {
     byte[] buffer = createBuffer(size);
 
     int c;
     int ret = 0;
 
     while ((c = input.read(buffer)) > 0) {
-       output.write(buffer, 0, c);
-       ret += c;
+      output.write(buffer, 0, c);
+      ret += c;
     }
-    
+
     return ret;
   }
-  
-  
+
   public static BufferedWriter newBufferedWriter(OutputStream stream) {
     return new BufferedWriter(newWriter(stream));
   }
-  
+
   public static Writer newWriter(OutputStream stream) {
     return new OutputStreamWriter(stream, StandardCharsets.UTF_8);
   }
-  
+
   /**
    * New input reader.
    *
@@ -88,7 +89,7 @@ public class StreamUtils {
   public static Reader newReader(InputStream stream) {
     return new InputStreamReader(stream, StandardCharsets.UTF_8);
   }
-  
+
   /**
    * New buffered reader.
    *
@@ -103,8 +104,7 @@ public class StreamUtils {
   public static BufferedReader newBufferedReader(Reader reader) {
     return new BufferedReader(reader);
   }
-  
-  
+
   /**
    * Returns a buffered input stream.
    *
@@ -115,7 +115,7 @@ public class StreamUtils {
   public static InputStream newBuffer(InputStream stream) {
     return new BufferedInputStream(stream);
   }
-  
+
   /**
    * Returns a buffered input stream.
    *
@@ -126,11 +126,10 @@ public class StreamUtils {
   public static OutputStream newBuffer(OutputStream stream) {
     return new BufferedOutputStream(stream);
   }
-  
+
   public static GZIPOutputStream gz(OutputStream output) throws IOException {
     return new GZIPOutputStream(newBuffer(output));
   }
-  
 
   /**
    * Convert an output stream into one supporting zip output.
@@ -141,7 +140,7 @@ public class StreamUtils {
   public static ZipOutputStream zip(OutputStream output) {
     return new ZipOutputStream(newBuffer(output));
   }
-  
+
   /**
    * Copies all bytes from the readable channel to the writable channel. Does
    * not close or flush either channel.
@@ -155,9 +154,10 @@ public class StreamUtils {
       throws IOException {
     return copy(from, to, BUFFER_SIZE);
   }
-  
-  public static long copy(ReadableByteChannel from, WritableByteChannel to, int size)
-      throws IOException {
+
+  public static long copy(ReadableByteChannel from,
+      WritableByteChannel to,
+      int size) throws IOException {
     ByteBuffer buf = ByteBuffer.allocate(size);
 
     long total = 0;
@@ -208,7 +208,7 @@ public class StreamUtils {
     } finally {
       out.close();
     }
-    
+
     if (ret == null) {
       ret = CollectionUtils.EMPTY_BYTE_ARRAY;
     }
@@ -248,7 +248,7 @@ public class StreamUtils {
     } finally {
       out.close();
     }
-    
+
     if (ret == null) {
       ret = CollectionUtils.EMPTY_BYTE_ARRAY;
     }

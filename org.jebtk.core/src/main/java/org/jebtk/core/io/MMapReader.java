@@ -7,10 +7,9 @@ import java.nio.channels.FileChannel;
 import java.nio.file.Path;
 
 /**
- * Wrapper class to make Memory mapped file appear more like a regular
- * random access file. This is to allow it to be used as more a drop in
- * replacement for RandomAccessFile without needing to change method names
- * etc.
+ * Wrapper class to make Memory mapped file appear more like a regular random
+ * access file. This is to allow it to be used as more a drop in replacement for
+ * RandomAccessFile without needing to change method names etc.
  * 
  * @author antony
  *
@@ -23,20 +22,20 @@ public class MMapReader {
   public MMapReader(Path file) throws IOException {
     this(file, -1);
   }
-  
+
   public MMapReader(Path file, long size) throws IOException {
     mReader = FileUtils.newRandomAccess(file);
-    
+
     mFileChannel = mReader.getChannel();
-    
+
     if (size < 1) {
       size = mReader.length();
     }
-    
-    //Get direct byte buffer access using channel.map() operation
+
+    // Get direct byte buffer access using channel.map() operation
     mBuffer = mFileChannel.map(FileChannel.MapMode.READ_ONLY, 0, size);
   }
-  
+
   /**
    * Close the file handles for the reader. Note that as a memory mapped file
    * the resources may not be fully released until garbage collection.
@@ -50,7 +49,7 @@ public class MMapReader {
 
   public MMapReader seek(long address) {
     mBuffer.position((int) address);
-    
+
     return this;
   }
 
@@ -62,7 +61,7 @@ public class MMapReader {
   public int readInt() {
     return mBuffer.getInt();
   }
-  
+
   /**
    * Read 1 byte as an int.
    * 
@@ -71,7 +70,7 @@ public class MMapReader {
   public int read() {
     return mBuffer.get();
   }
-  
+
   /**
    * Read 1 byte.
    * 
@@ -89,7 +88,7 @@ public class MMapReader {
   public double readDouble() {
     return mBuffer.getDouble();
   }
-  
+
   /**
    * Read an 8 byte long.
    * 
@@ -98,7 +97,7 @@ public class MMapReader {
   public long readLong() {
     return mBuffer.getLong();
   }
-  
+
   public short readShort() {
     return mBuffer.getShort();
   }
@@ -111,7 +110,7 @@ public class MMapReader {
   public void read(byte[] dst) {
     mBuffer.get(dst);
   }
-  
+
   /**
    * Read bytes into an array.
    * 
@@ -126,17 +125,17 @@ public class MMapReader {
   public MMapReader skipBytes(int skip) {
     return skip(skip);
   }
-  
+
   public MMapReader skip(int skip) {
     mBuffer.position(mBuffer.position() + skip);
-    
+
     return this;
   }
 
   public long getFilePointer() {
     return tell();
   }
-  
+
   public long tell() {
     return mBuffer.position();
   }

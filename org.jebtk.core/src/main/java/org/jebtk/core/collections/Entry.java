@@ -1,7 +1,7 @@
 package org.jebtk.core.collections;
 
 public class Entry<K, V> implements java.util.Map.Entry<K, V> {
-  
+
   private K mK;
   private V mV;
 
@@ -9,7 +9,7 @@ public class Entry<K, V> implements java.util.Map.Entry<K, V> {
     mK = k;
     mV = v;
   }
-  
+
   @Override
   public K getKey() {
     return mK;

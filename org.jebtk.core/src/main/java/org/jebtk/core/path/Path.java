@@ -135,16 +135,16 @@ public class Path implements Iterable<String>, Serializable, Comparable<Path> {
    * @param level the level
    * @param levels the levels
    */
-  //public Path(Object level, Object... levels) {
-  //  this(false, level, levels);
-  //}
+  // public Path(Object level, Object... levels) {
+  // this(false, level, levels);
+  // }
 
   public Path(boolean isRoot) {
     if (isRoot) {
       mPrefix = PATH_DELIMITER;
     }
   }
-  
+
   /**
    * Instantiates a new path.
    *
@@ -154,7 +154,7 @@ public class Path implements Iterable<String>, Serializable, Comparable<Path> {
    */
   public Path(boolean isRoot, Object level, Object... levels) {
     this(isRoot);
-    
+
     parse(level);
 
     for (Object l : levels) {

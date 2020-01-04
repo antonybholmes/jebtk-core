@@ -34,7 +34,7 @@ import org.slf4j.LoggerFactory;
 public class TmpService {
 
   private static final int MAX_TRIES = 100;
-  
+
   private static class TempServiceLoader {
 
     /** The Constant INSTANCE. */
@@ -49,13 +49,11 @@ public class TmpService {
   public static TmpService getInstance() {
     return TempServiceLoader.INSTANCE;
   }
-  
+
   private static final SecureRandom RANDOM = new SecureRandom();
-  
-  private static final String RND_TMP_LETTERS = 
-      "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-  
-  
+
+  private static final String RND_TMP_LETTERS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
   /**
    * The constant TEMP_DIRECTORY.
    */
@@ -71,12 +69,11 @@ public class TmpService {
   private TmpService() {
     mTmpDir = TMP_DIR;
   }
-  
 
   public Path getTmpDir() {
     return mTmpDir;
   }
-  
+
   /**
    * Creates a temp directory if it does not exist.
    *
@@ -121,22 +118,22 @@ public class TmpService {
   public Path newTmpFile(String ext) throws IOException {
     return newTmpFile(TextUtils.EMPTY_STRING, ext);
   }
-  
+
   public Path newTmpFile(String prefix, String ext) throws IOException {
     createTmpDir();
 
     Path ret = null;
-    
+
     Join join = Join.onPeriod().ignoreEmptyStrings();
-    
+
     for (int i = 0; i < MAX_TRIES; ++i) {
       ret = mTmpDir.resolve(join.toString(prefix, newTmpString(), ext));
-      
+
       if (!FileUtils.exists(ret)) {
         break;
       }
     }
-    
+
     return ret;
   }
 
@@ -172,19 +169,20 @@ public class TmpService {
       e.printStackTrace();
     }
   }
-  
+
   private static String newTmpString() {
     return newTmpString(6);
   }
-  
+
   private static String newTmpString(int l) {
-      StringBuilder buffer = new StringBuilder();
-      
-      for (int i = 0; i < l; ++i) {
-        buffer.append(RND_TMP_LETTERS.charAt(RANDOM.nextInt(RND_TMP_LETTERS.length())));
-      }
-      
-      return buffer.toString();
+    StringBuilder buffer = new StringBuilder();
+
+    for (int i = 0; i < l; ++i) {
+      buffer.append(
+          RND_TMP_LETTERS.charAt(RANDOM.nextInt(RND_TMP_LETTERS.length())));
+    }
+
+    return buffer.toString();
   }
 
 }

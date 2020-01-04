@@ -224,7 +224,8 @@ public class Splitter {
 
       int n = mDelimiter.length();
 
-      while ((j = text.indexOf(mDelimiter, i)) != -1 && ret.size() < maxNumItems) {
+      while ((j = text.indexOf(mDelimiter, i)) != -1
+          && ret.size() < maxNumItems) {
         // System.err.println(text + " " + trimmed + " " + i + " " + j);
 
         v = text.substring(i, j);
@@ -346,7 +347,7 @@ public class Splitter {
           if (!ignoreEmptyStrings || v.length() > 0) {
             ret.add(v);
           }
-          
+
           if (ret.size() == maxNumItems) {
             return ret;
           }
@@ -457,7 +458,8 @@ public class Splitter {
    * @return the splitter
    */
   public Splitter trim(Trimmer trimmer) {
-    return new Splitter(mSplitMode, trimmer, mIgoreEmptyStrings, Integer.MAX_VALUE);
+    return new Splitter(mSplitMode, trimmer, mIgoreEmptyStrings,
+        Integer.MAX_VALUE);
   }
 
   /**
@@ -544,7 +546,7 @@ public class Splitter {
   public static Splitter onSC() {
     return on(TextUtils.SEMI_COLON_DELIMITER);
   }
-  
+
   public static Splitter onColon() {
     return on(TextUtils.COLON_DELIMITER);
   }
@@ -555,7 +557,8 @@ public class Splitter {
    * @return the splitter
    */
   public static Splitter onComma() {
-    return new Splitter(new CSVSplitMode(), Trimmer.NO_TRIM, false, Integer.MAX_VALUE);
+    return new Splitter(new CSVSplitMode(), Trimmer.NO_TRIM, false,
+        Integer.MAX_VALUE);
   }
 
   /**

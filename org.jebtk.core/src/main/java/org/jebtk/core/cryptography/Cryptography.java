@@ -69,9 +69,10 @@ public class Cryptography {
   public static String generateRandAlphaNumId64() {
     return generateRandAlphaNumId(64);
   }
-  
+
   /**
    * Generate a random 48 character string.
+   * 
    * @return
    */
   public static String generateRandAlphaNumId48() {

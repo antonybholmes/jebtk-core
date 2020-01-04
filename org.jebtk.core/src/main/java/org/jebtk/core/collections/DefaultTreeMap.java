@@ -54,10 +54,10 @@ public class DefaultTreeMap<K, V> extends IterTreeMap<K, V> {
   public DefaultTreeMap(EntryCreator<V> defaultValue) {
     mDefaultValue = defaultValue;
   }
-  
+
   public DefaultTreeMap(Comparator<K> c, EntryCreator<V> defaultValue) {
     super(c);
-    
+
     mDefaultValue = defaultValue;
   }
 
@@ -85,7 +85,7 @@ public class DefaultTreeMap<K, V> extends IterTreeMap<K, V> {
 
     return super.get(key);
   }
-  
+
   /**
    * Set whether entries are automatically created or not. Useful for locking
    * map so that new entries must be explicity added.
@@ -116,7 +116,8 @@ public class DefaultTreeMap<K, V> extends IterTreeMap<K, V> {
    * @param defaultValue the default value
    * @return the map
    */
-  public static <KK, VV> DefaultTreeMap<KK, VV> create(EntryCreator<VV> defaultValue) {
+  public static <KK, VV> DefaultTreeMap<KK, VV> create(
+      EntryCreator<VV> defaultValue) {
     return new DefaultTreeMap<KK, VV>(defaultValue);
   }
 }

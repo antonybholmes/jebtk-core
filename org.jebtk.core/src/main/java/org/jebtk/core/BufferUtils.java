@@ -107,12 +107,12 @@ public class BufferUtils {
     public int[] getInts() {
       IntBuffer buffer = ByteBuffer.wrap(mArray).asIntBuffer();
 
-      //List<Integer> ret = new ArrayList<Integer>(buffer.remaining());
-      
+      // List<Integer> ret = new ArrayList<Integer>(buffer.remaining());
+
       int[] ret = new int[mArray.length / 4];
 
       int i = 0;
-      
+
       while (buffer.hasRemaining()) {
         ret[i++] = buffer.get();
       }
@@ -129,9 +129,9 @@ public class BufferUtils {
       ByteBuffer buffer = ByteBuffer.wrap(mArray);
 
       char[] ret = new char[mArray.length];
-      
+
       int i = 0;
-      
+
       while (buffer.hasRemaining()) {
         ret[i++] = (char) buffer.get();
       }

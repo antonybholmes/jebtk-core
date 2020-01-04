@@ -15,7 +15,6 @@
  */
 package org.jebtk.core.collections;
 
-
 /**
  * Creates a map of lists where the each list is initialized with an default
  * value to a given size.

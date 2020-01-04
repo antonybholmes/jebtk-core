@@ -430,7 +430,7 @@ public class Resources implements Iterable<String> {
 
     try {
       Font f = Font.createFont(Font.TRUETYPE_FONT, is);
-      
+
       System.err.println(f);
       System.err.println(f.getAttributes());
 

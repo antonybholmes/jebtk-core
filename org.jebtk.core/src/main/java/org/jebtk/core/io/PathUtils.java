@@ -85,17 +85,17 @@ public class PathUtils {
       return TextUtils.EMPTY_STRING;
     }
   }
-  
+
   public static List<String> toString(final Collection<Path> files) {
     List<String> ret = new ArrayList<String>(files.size());
-    
-    for(Path f : files) {
+
+    for (Path f : files) {
       ret.add(toString(f));
     }
-    
+
     return ret;
   }
-  
+
   /**
    * Return just the names of a collection of files (without the full path).
    * 
@@ -104,11 +104,11 @@ public class PathUtils {
    */
   public static List<String> names(final Collection<Path> files) {
     List<String> ret = new ArrayList<String>(files.size());
-    
-    for(Path f : files) {
+
+    for (Path f : files) {
       ret.add(getName(f));
     }
-    
+
     return ret;
   }
 
@@ -342,7 +342,4 @@ public class PathUtils {
     return file.toAbsolutePath().getParent();
   }
 
-  
-
-  
 }

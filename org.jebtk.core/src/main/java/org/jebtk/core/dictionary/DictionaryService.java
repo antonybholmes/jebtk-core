@@ -78,11 +78,11 @@ public class DictionaryService {
   /**
    * The constant DEFAULT_FILE.
    */
-  public static final Path DEFAULT_FILE = PathUtils.getPath("res/dictionary.xml");
-
+  public static final Path DEFAULT_FILE = PathUtils
+      .getPath("res/dictionary.xml");
 
   private void autoLoad() {
-    if (mAutoLoad ) {
+    if (mAutoLoad) {
       // Set this here to stop recursive infinite calling
       // of this method.
       mAutoLoad = false;
@@ -97,7 +97,8 @@ public class DictionaryService {
     }
   }
 
-  private void loadXml() throws ParserConfigurationException, SAXException, IOException {
+  private void loadXml()
+      throws ParserConfigurationException, SAXException, IOException {
     loadXml(DEFAULT_FILE);
   }
 
@@ -105,11 +106,12 @@ public class DictionaryService {
    * Load xml.
    *
    * @param file the file
-   * @throws SAXException 
-   * @throws ParserConfigurationException 
-   * @throws IOException 
+   * @throws SAXException
+   * @throws ParserConfigurationException
+   * @throws IOException
    */
-  public void loadXml(Path file) throws ParserConfigurationException, SAXException, IOException {
+  public void loadXml(Path file)
+      throws ParserConfigurationException, SAXException, IOException {
     SAXParserFactory factory = SAXParserFactory.newInstance();
     SAXParser saxParser = factory.newSAXParser();
 
@@ -160,7 +162,7 @@ public class DictionaryService {
    */
   public boolean exists(String word) {
     autoLoad();
-    
+
     return words.contains(word);
   }
 
@@ -193,7 +195,7 @@ public class DictionaryService {
    */
   public String getDefinition(String word) {
     autoLoad();
-    
+
     return definitions.get(word.toLowerCase());
   }
 
@@ -224,7 +226,7 @@ public class DictionaryService {
    */
   public Set<String> getSynonyms(String word) {
     autoLoad();
-    
+
     Set<String> words = new HashSet<String>();
 
     words.add(word);

@@ -62,9 +62,8 @@ public class FileUtils {
   /** The Constant LOG. */
   protected final static Logger LOG = LoggerFactory.getLogger(FileUtils.class);
 
-  public static final Path HOME = PathUtils.getPath(System.getProperty("user.home"));
-
-
+  public static final Path HOME = PathUtils
+      .getPath(System.getProperty("user.home"));
 
   /**
    * Instantiates a new file utils.
@@ -72,8 +71,6 @@ public class FileUtils {
   private FileUtils() {
     // Do nothing
   }
-
-
 
   /**
    * Ls.
@@ -168,8 +165,8 @@ public class FileUtils {
   /**
    * Find all files with a given file extension.
    * 
-   * @param root    The root directory to search.
-   * @param ext     The file extension to search for.
+   * @param root The root directory to search.
+   * @param ext The file extension to search for.
    * @return
    * @throws IOException
    */
@@ -442,6 +439,7 @@ public class FileUtils {
 
   /**
    * Find files matching all parameters
+   * 
    * @param dir
    * @param includeDirs
    * @param recursive
@@ -489,7 +487,6 @@ public class FileUtils {
     }
   }
 
-
   /**
    * New buffered table writer.
    *
@@ -530,10 +527,6 @@ public class FileUtils {
     }
   }
 
-
-
-
-
   /**
    * Creates a new buffered input stream.
    *
@@ -545,8 +538,6 @@ public class FileUtils {
       throws IOException {
     return StreamUtils.newBuffer(newInputStream(file));
   }
-
-
 
   /**
    * Creates a new input stream. If the file name ends with the gz ext, The
@@ -582,8 +573,6 @@ public class FileUtils {
       throws IOException {
     return StreamUtils.newBuffer(newOutputStream(file));
   }
-
-
 
   /**
    * Checks if is directory.
@@ -777,8 +766,6 @@ public class FileUtils {
     Files.copy(in, file);
   }
 
-
-
   /**
    * Returns a buffered data input stream on the file.
    *
@@ -814,8 +801,6 @@ public class FileUtils {
       throws FileNotFoundException {
     return new RandomAccessFile(file.toFile(), "r");
   }
-
-
 
   /**
    * New buffered reader.
@@ -1065,31 +1050,28 @@ public class FileUtils {
     return StreamUtils.gz(newOutputStream(file));
   }
 
-
-  
   /**
    * Wrap an output stream into a zip stream.
    *
    * @param output the output
    * @return the zip output stream
-   * @throws IOException 
+   * @throws IOException
    */
   public static ZipOutputStream zip(Path file) throws IOException {
     return StreamUtils.zip(newOutputStream(file));
   }
-
 
   /**
    * Zip some files.
    * 
    * @param out
    * @param files
-   * @throws IOException 
+   * @throws IOException
    */
   public static void zip(Path out, Collection<Path> files) throws IOException {
     ZipOutputStream zos = zip(out);
 
-    for(Path f : files) {
+    for (Path f : files) {
 
       ZipEntry ze = new ZipEntry(PathUtils.getName(f));
       zos.putNextEntry(ze);
@@ -1104,26 +1086,29 @@ public class FileUtils {
 
     zos.close();
   }
-  
-  public static MappedByteBuffer newMemMappedFile(Path file) throws IOException {
+
+  public static MappedByteBuffer newMemMappedFile(Path file)
+      throws IOException {
     return newMemMappedFile(file, -1);
   }
-  
-  public static MappedByteBuffer newMemMappedFile(Path file, long size) throws IOException {
+
+  public static MappedByteBuffer newMemMappedFile(Path file, long size)
+      throws IOException {
     RandomAccessFile reader = newRandomAccess(file);
-    
+
     FileChannel fileChannel = reader.getChannel();
-    
+
     if (size < 1) {
       size = reader.length();
     }
-    
-    //Get direct byte buffer access using channel.map() operation
-    MappedByteBuffer buffer = fileChannel.map(FileChannel.MapMode.READ_ONLY, 0, size);
-    
+
+    // Get direct byte buffer access using channel.map() operation
+    MappedByteBuffer buffer = fileChannel
+        .map(FileChannel.MapMode.READ_ONLY, 0, size);
+
     return buffer;
   }
-  
+
   public static MMapReader newMemMappedReader(Path file) throws IOException {
     return new MMapReader(file);
   }

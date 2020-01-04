@@ -19,8 +19,8 @@ import java.awt.Color;
 import java.util.Iterator;
 import java.util.Map.Entry;
 
+import org.jebtk.core.collections.IterHashMap;
 import org.jebtk.core.collections.IterMap;
-import org.jebtk.core.collections.IterTreeMap;
 import org.jebtk.core.event.ChangeEvent;
 import org.jebtk.core.event.ChangeListener;
 import org.jebtk.core.event.ChangeListeners;
@@ -30,19 +30,22 @@ import org.jebtk.core.event.ChangeListeners;
  *
  * @author Antony Holmes
  */
-public class Properties extends ChangeListeners implements Iterable<Entry<String, Object>>, ChangeListener {
+public class Properties extends ChangeListeners
+    implements Iterable<Entry<String, Object>>, ChangeListener {
 
   /**
    * The constant serialVersionUID.
    */
   private static final long serialVersionUID = 1L;
 
-  //protected IterMap<String, Property> mPropertyMap = null;
-  
+  // protected IterMap<String, Property> mPropertyMap = null;
+
   /**
    * The member items.
    */
-  protected IterMap<String, Object> mPropertyMap = new IterTreeMap<String, Object>();
+  // protected IterMap<String, Object> mPropertyMap = new IterTreeMap<String,
+  // Object>();
+  protected IterMap<String, Object> mPropertyMap = new IterHashMap<String, Object>();
 
   public Properties() {
     // Do nothing
@@ -51,31 +54,31 @@ public class Properties extends ChangeListeners implements Iterable<Entry<String
   public Properties(Properties parent) {
     set(parent);
   }
-  
+
   public Properties set(Properties properties) {
     update(properties);
-    
+
     fireChanged();
-    
+
     return this;
   }
-  
+
   public Properties update(Properties properties) {
     mPropertyMap.putAll(properties.mPropertyMap);
-    
+
     return this;
   }
-  
+
   /**
    * Update a property without triggering a change event.
    *
    * @param name the name
    * @param item the item
-   * @return 
+   * @return
    */
   public Properties set(String name, Object value) {
     update(name, value);
-    
+
     fireChanged();
 
     return this;
@@ -118,7 +121,11 @@ public class Properties extends ChangeListeners implements Iterable<Entry<String
    * @return the as color
    */
   public Color getColor(String name) {
-    return (Color) getValue(name);
+    return getColor(name, ColorUtils.TRANS_COLOR);
+  }
+
+  public Color getColor(String name, Color color) {
+    return (Color) getValue(name, color);
   }
 
   /**
@@ -130,15 +137,23 @@ public class Properties extends ChangeListeners implements Iterable<Entry<String
   public double getDouble(String name) {
     return (double) getValue(name);
   }
-  
+
   public String toString(String name) {
     return getValue(name).toString();
   }
 
   public Object getValue(String name) {
+    return getValue(name, null);
+  }
+
+  public Object getValue(String name, Object defaultValue) {
+    if (!mPropertyMap.containsKey(name)) {
+      mPropertyMap.put(name, defaultValue);
+    }
+
     return mPropertyMap.get(name);
   }
-  
+
   /**
    * Returns true if the property exists.
    *

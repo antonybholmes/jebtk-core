@@ -22,13 +22,13 @@ package org.jebtk.core.io;
  * 3rd party libraries.
  */
 public class ByteStream {
-  
+
   /** The m D. */
   private byte[] mD;
 
   /** Pointer into array */
   private int mP = 0;
-  
+
   /**
    * Instantiates a new byte stream.
    *
@@ -37,7 +37,7 @@ public class ByteStream {
   public ByteStream(byte[] d) {
     mD = d;
   }
-  
+
   /**
    * Read short.
    *
@@ -47,10 +47,10 @@ public class ByteStream {
     if (mP > mD.length - 3) {
       return -1;
     }
-    
+
     return (mD[mP] << 8) | (mD[mP++] & 0xFF);
   }
-  
+
   /**
    * Read an unsigned 24 bit integer.
    *
@@ -60,10 +60,10 @@ public class ByteStream {
     if (mP > mD.length - 4) {
       return -1;
     }
-    
+
     return (mD[mP] << 16) | (mD[mP++] << 8) | (mD[mP++] & 0xFF);
   }
-  
+
   /**
    * Read a 32bit int.
    *
@@ -73,10 +73,11 @@ public class ByteStream {
     if (mP > mD.length - 5) {
       return -1;
     }
-    
-    return (mD[mP++] << 24) | (mD[mP++] << 16) | (mD[mP++] << 8) | (mD[mP++] & 0xFF);
+
+    return (mD[mP++] << 24) | (mD[mP++] << 16) | (mD[mP++] << 8)
+        | (mD[mP++] & 0xFF);
   }
-  
+
   /**
    * Read a 32 bit int. Equivalent to {@code readInt32()}.
    *
@@ -85,7 +86,7 @@ public class ByteStream {
   public int readInt() {
     return readInt32();
   }
-  
+
   /**
    * Read a one byte unsigned int.
    *
@@ -95,11 +96,11 @@ public class ByteStream {
     if (mP > mD.length - 2) {
       return -1;
     }
-    
+
     // Promote to int as unsigned byte
     return mD[mP++] & 0xFF;
   }
-  
+
   public char readChar() {
     return (char) read();
   }

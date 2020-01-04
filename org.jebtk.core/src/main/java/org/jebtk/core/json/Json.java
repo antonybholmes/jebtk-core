@@ -144,7 +144,7 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
       return Character.MIN_VALUE;
     }
   }
-  
+
   public char getChar(String name) {
     Json e = get(name);
 
@@ -188,8 +188,8 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
   }
 
   /**
-   * Returns the indexed item if this object is a JSON array, otherwise
-   * return the item itself.
+   * Returns the indexed item if this object is a JSON array, otherwise return
+   * the item itself.
    *
    * @param index the index
    * @return the json value

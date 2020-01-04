@@ -26,7 +26,7 @@ import org.jebtk.core.io.PathUtils;
  * save user files in. This is to allow settings etc to persist even if the
  * application changes.
  */
-public class AppService implements NameProperty {
+public class AppService implements NameGetter {
 
   /**
    * The Class AppServiceLoader.
@@ -52,16 +52,14 @@ public class AppService implements NameProperty {
 
   /** Returns the shared module directory */
   public static final Path MOD_HOME = RES_HOME.resolve("modules");
-  
-  
+
   public static final Path RES_DIR = PathUtils.getPath("res");
 
-  /** 
-   * Returns the module directory for an app. This is specific to the
-   * app's location
+  /**
+   * Returns the module directory for an app. This is specific to the app's
+   * location
    */
   public static final Path MOD_DIR = RES_DIR.resolve("modules");
-  
 
   /** The m directory. */
   private Path mDirectory;
@@ -96,9 +94,9 @@ public class AppService implements NameProperty {
     } catch (IOException e) {
       e.printStackTrace();
     }
-    
+
     mModDir = MOD_HOME.resolve(mName);
-    
+
     mInstModDir = MOD_DIR.resolve(mName);
   }
 
@@ -120,11 +118,11 @@ public class AppService implements NameProperty {
   public Path getAppDir() {
     return mDirectory;
   }
-  
+
   public Path getModDir() {
     return mModDir;
   }
-  
+
   public Path getInstanceModDir() {
     return mInstModDir;
   }

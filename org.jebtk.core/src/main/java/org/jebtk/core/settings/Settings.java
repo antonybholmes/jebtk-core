@@ -302,7 +302,7 @@ public class Settings extends ChangeListeners
 
     fireChanged();
   }
-  
+
   /**
    * Sets the.
    *
@@ -880,7 +880,7 @@ public class Settings extends ChangeListeners
    * Load ini settings.
    *
    * @param file the file
-   * @return 
+   * @return
    * @throws IOException Signals that an I/O exception has occurred.
    */
   public Settings loadIniSettings(java.nio.file.Path file) throws IOException {
@@ -916,17 +916,20 @@ public class Settings extends ChangeListeners
         List<String> tokens = TextUtils
             .fastSplit(line, TextUtils.EQUALS_DELIMITER, 2);
 
-        Setting setting = Setting.parse(new RootPath(group, tokens.get(0)), tokens.get(1));    //    (true, group, tokens.get(0)),
-            
-        
-        System.err.println("ini path 2 " + (new RootPath(group, tokens.get(0)).toString()) + " " + setting.getPath().toString() + " " + setting.getString() + " " + group + " " + tokens.get(0));
+        Setting setting = Setting.parse(new RootPath(group, tokens.get(0)),
+            tokens.get(1)); // (true, group, tokens.get(0)),
+
+        System.err.println(
+            "ini path 2 " + (new RootPath(group, tokens.get(0)).toString())
+                + " " + setting.getPath().toString() + " " + setting.getString()
+                + " " + group + " " + tokens.get(0));
 
         update(setting);
       }
     } finally {
       reader.close();
     }
-    
+
     return this;
   }
 }

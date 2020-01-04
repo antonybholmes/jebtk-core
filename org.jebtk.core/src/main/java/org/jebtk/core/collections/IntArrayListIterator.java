@@ -24,7 +24,7 @@ import java.util.Iterator;
  * @param <T> the generic type
  */
 public class IntArrayListIterator implements Iterator<Integer> {
-  
+
   private int[] mList;
   private int mPc;
 
@@ -32,7 +32,7 @@ public class IntArrayListIterator implements Iterator<Integer> {
     mList = list;
     mPc = 0;
   }
-  
+
   @Override
   public boolean hasNext() {
     return mPc < mList.length;

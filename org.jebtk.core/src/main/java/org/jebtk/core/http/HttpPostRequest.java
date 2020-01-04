@@ -9,8 +9,8 @@ public class HttpPostRequest extends HttpRequest {
   public HttpPostRequest(HttpURLConnection connection) {
     super(connection);
   }
-  
+
   public HttpMultiPartContent multipart() {
-    return new HttpMultiPartContent(mConnection); 
+    return new HttpMultiPartContent(mConnection);
   }
 }

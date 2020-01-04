@@ -44,25 +44,25 @@ public class HttpMultiPartContent extends HttpContent {
 
   public HttpMultiPartContent(HttpURLConnection connection) {
     super(connection);
-    
+
     mBoundary = "****" + Long.toString(System.currentTimeMillis()) + "****";
-    
+
     mMultipartBlock = TWO_HYPHENS + mBoundary + Http.CRLF;
     mMultipartEnd = TWO_HYPHENS + mBoundary + TWO_HYPHENS + Http.CRLF;
-    
+
     connection.setRequestProperty("Content-Type",
         "multipart/form-data; boundary=" + mBoundary);
   }
 
   public HttpMultiPartContent addParam(String name, String value) {
     mParamMap.put(name, value);
-    
+
     return this;
   }
 
   public HttpMultiPartContent addFile(String name, Path file) {
     mFileMap.put(name, file);
-    
+
     return this;
   }
 

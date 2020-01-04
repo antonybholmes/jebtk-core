@@ -22,7 +22,8 @@ import java.awt.Color;
  *
  * @author Antony Holmes
  */
-public class Property extends KeyValuePair<String, Object> implements NameProperty {
+public class Property extends KeyValuePair<String, Object>
+    implements NameGetter {
 
   /**
    * The constant serialVersionUID.
@@ -32,7 +33,7 @@ public class Property extends KeyValuePair<String, Object> implements NameProper
   public Property(String name, Object item) {
     super(name, item);
   }
-  
+
   @Override
   public String getName() {
     return getKey();
@@ -81,15 +82,15 @@ public class Property extends KeyValuePair<String, Object> implements NameProper
   public static double getDouble(Property p) {
     return (Double) p.getValue();
   }
-  
+
   public static int getInt(Property p) {
     return (Integer) p.getValue();
   }
-  
+
   public static boolean getBool(Property p) {
     return (Boolean) p.getValue();
   }
-  
+
   public static Color getColor(Property p) {
     return (Color) p.getValue();
   }

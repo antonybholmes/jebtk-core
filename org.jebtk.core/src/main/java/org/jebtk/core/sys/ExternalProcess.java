@@ -65,20 +65,20 @@ public class ExternalProcess {
    */
   public final void addArg(String arg, String... args) {
     mArgs.add(arg);
-    
+
     for (String a : args) {
       mArgs.add(a);
     }
   }
-  
+
   public void addParam(String key, String value) {
     addArg("--" + key + "=" + value);
   }
-  
+
   public void addParam(String key, int value) {
     addParam(key, Integer.toString(value));
   }
-  
+
   public void addParam(String key, boolean value) {
     addParam(key, Boolean.toString(value));
   }
@@ -131,7 +131,7 @@ public class ExternalProcess {
 
     process.waitFor();
   }
-  
+
   @Override
   public String toString() {
     return Join.onSpace().values(mArgs).toString();
@@ -188,5 +188,4 @@ public class ExternalProcess {
     process.run();
   }
 
-  
 }

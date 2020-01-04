@@ -44,7 +44,8 @@ public class CyclicList<T> extends ListContainer<T> {
    */
   @Override
   public T get(int index) {
-    //System.err.println("cyclic " + index + " " + size() + " " + CollectionUtils.cyclicIndex(index, size()));
+    // System.err.println("cyclic " + index + " " + size() + " " +
+    // CollectionUtils.cyclicIndex(index, size()));
 
     return super.get(CollectionUtils.cyclicIndex(index, size()));
   }

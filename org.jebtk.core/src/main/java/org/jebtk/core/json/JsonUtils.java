@@ -24,7 +24,7 @@ public class JsonUtils {
   public static String asArray(String json) {
     return "[" + json + "]";
   }
-  
+
   /**
    * Convert a json array to a list of strings.
    * 
@@ -33,11 +33,11 @@ public class JsonUtils {
    */
   public static List<String> toStringList(Json json) {
     List<String> ret = new ArrayList<String>();
-    
+
     for (int i = 0; i < json.size(); ++i) {
       ret.add(json.getString(i));
     }
-    
+
     return ret;
   }
 }

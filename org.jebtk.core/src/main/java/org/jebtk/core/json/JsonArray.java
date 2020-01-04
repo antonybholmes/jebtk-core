@@ -84,7 +84,7 @@ public class JsonArray extends JsonContainer {
 
     return mElements.get(index);
   }
-  
+
   @Override
   public Json get(String name) {
     return get(0).get(name);

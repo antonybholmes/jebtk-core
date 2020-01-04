@@ -559,7 +559,7 @@ public abstract class Stream<T> implements StreamIterator<T>, Iterable<T> {
   public static StringStream asString(Collection<String> values) {
     return of(values).asString();
   }
-  
+
   public static StringStream asString(String... values) {
     return of(values).asString();
   }

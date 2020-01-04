@@ -13,29 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jebtk.core.http;
-
-import java.io.UnsupportedEncodingException;
+package org.jebtk.core;
 
 /**
- * Defaults to building a HTTP url.
+ * For components that can have a name property.
  * 
  * @author Antony Holmes
  *
  */
-public class HttpsUrlBuilder extends UrlBuilder {
-
-  /**
-   * The constant serialVersionUID.
-   */
-  private static final long serialVersionUID = 1L;
-
-  /**
-   * Instantiates a new http url builder.
-   *
-   * @throws UnsupportedEncodingException the unsupported encoding exception
-   */
-  public HttpsUrlBuilder() {
-    super("https://");
-  }
+public interface Nameable extends NameGetter {
+  public void setName(String name);
 }

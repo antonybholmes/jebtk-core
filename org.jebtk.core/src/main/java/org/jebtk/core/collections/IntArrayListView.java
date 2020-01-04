@@ -117,7 +117,7 @@ public class IntArrayListView implements List<Integer> {
 
   @Override
   public void add(int index, Integer element) {
- // Do nothing
+    // Do nothing
   }
 
   @Override
@@ -128,13 +128,13 @@ public class IntArrayListView implements List<Integer> {
   @Override
   public int indexOf(Object o) {
     int s = (int) o;
-    
+
     for (int i = 0; i < mList.length; ++i) {
       if (mList[i] == s) {
         return i;
       }
     }
-    
+
     return -1;
   }
 
@@ -157,5 +157,5 @@ public class IntArrayListView implements List<Integer> {
   public List<Integer> subList(int fromIndex, int toIndex) {
     return new IntArrayListView(Arrays.copyOfRange(mList, fromIndex, toIndex));
   }
-  
+
 }

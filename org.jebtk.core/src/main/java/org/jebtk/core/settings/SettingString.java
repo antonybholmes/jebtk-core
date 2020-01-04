@@ -18,7 +18,7 @@ package org.jebtk.core.settings;
 import java.awt.Color;
 
 import org.jebtk.core.ColorUtils;
-import org.jebtk.core.http.UrlBuilder;
+import org.jebtk.core.http.URLPath;
 import org.jebtk.core.io.PathUtils;
 import org.jebtk.core.path.Path;
 import org.jebtk.core.text.TextUtils;
@@ -118,8 +118,8 @@ public class SettingString extends Setting {
    * @see org.abh.common.settings.Setting#getUrlBuilder()
    */
   @Override
-  public UrlBuilder getUrlBuilder() {
-    return new UrlBuilder(mValue);
+  public URLPath getUrlBuilder() {
+    return URLPath.fromUrl(mValue);
   }
 
   /*

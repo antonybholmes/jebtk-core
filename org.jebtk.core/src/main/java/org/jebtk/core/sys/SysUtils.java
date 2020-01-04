@@ -122,7 +122,7 @@ public class SysUtils {
   public static Out err() {
     return new Out(System.err);
   }
-  
+
   /**
    * Copy one array to another. Is is assumed the dest array can contain the src
    * array.
@@ -162,12 +162,6 @@ public class SysUtils {
     System.arraycopy(src, srcoffset, dest, destoffset, l);
   }
 
-
-  
-  
-  
-  
-  
   public static void arraycopy(byte[] src, byte[] dest) {
     arraycopy(src, dest, src.length);
   }
@@ -197,17 +191,8 @@ public class SysUtils {
       byte[] dest,
       int destoffset,
       int l) {
-    System.arraycopy(src, 
-        srcoffset, 
-        dest, 
-        destoffset, 
-        l);
+    System.arraycopy(src, srcoffset, dest, destoffset, l);
   }
-  
-  
-  
-  
-  
 
   /**
    * Copy one array to another. Is is assumed the dest array can contain the src
@@ -294,7 +279,7 @@ public class SysUtils {
       destoffset += destskip;
     }
   }
-  
+
   //
   // Boolean
   //
@@ -307,11 +292,17 @@ public class SysUtils {
     arraycopy(src, 0, dest, 0, l);
   }
 
-  public static void arraycopy(boolean[] src, int srcoffset, boolean[] dest, int l) {
+  public static void arraycopy(boolean[] src,
+      int srcoffset,
+      boolean[] dest,
+      int l) {
     arraycopy(src, srcoffset, dest, 0, l);
   }
 
-  public static void arraycopy(boolean[] src, boolean[] dest, int offset, int l) {
+  public static void arraycopy(boolean[] src,
+      boolean[] dest,
+      int offset,
+      int l) {
     arraycopy(src, 0, dest, offset, l);
   }
 
@@ -356,7 +347,7 @@ public class SysUtils {
       destoffset += destskip;
     }
   }
-  
+
   //
   // Int
   //
@@ -508,14 +499,14 @@ public class SysUtils {
   /**
    * Copy values from an object array to another.
    * 
-   * @param src     The source array to copy from.
-   * @param dest    The destination array to copy to.
-   * @param l       How many elements to copy.
+   * @param src The source array to copy from.
+   * @param dest The destination array to copy to.
+   * @param l How many elements to copy.
    */
   public static void arraycopy(Object[] src, Object[] dest, int l) {
     arraycopy(src, dest, 0, l);
   }
-  
+
   public static void arraycopy(Object[] src, Object[] dest, int offset, int l) {
     arraycopy(src, 0, dest, offset, l);
   }
@@ -526,7 +517,7 @@ public class SysUtils {
       int l) {
     arraycopy(src, srcoffset, dest, 0, l);
   }
-  
+
   public static void arraycopy(Object[] src, int offset, Object[] dest) {
     arraycopy(src, offset, dest, dest.length);
   }

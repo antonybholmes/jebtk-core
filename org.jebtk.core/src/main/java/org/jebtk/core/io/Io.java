@@ -81,7 +81,6 @@ public class Io {
   public static final Path PWD = PathUtils
       .getPath(System.getProperty("user.dir"));
 
-
   /**
    * Read sequences.
    *
@@ -1322,7 +1321,7 @@ public class Io {
     // || line.startsWith(Text.NEWLINE);
     return TextUtils.isNullOrEmpty(line) || line.startsWith(TextUtils.NEW_LINE);
   }
-  
+
   /**
    * Returns true if line is not null and has length > 0.
    * 
@@ -1690,8 +1689,6 @@ public class Io {
     return file.getName().substring(0, file.getName().lastIndexOf("."));
   }
 
-
-
   /**
    * Find a file matching a pattern in a dir.
    *
@@ -1777,9 +1774,8 @@ public class Io {
    * @return the column
    * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static String[] getColumn(Path file,
-      boolean skipHeader,
-      int column) throws IOException {
+  public static String[] getColumn(Path file, boolean skipHeader, int column)
+      throws IOException {
     BufferedReader reader = FileUtils.newBufferedReader(file);
 
     List<String> ret = new ArrayList<String>();
@@ -1815,14 +1811,13 @@ public class Io {
   public static boolean getHasTxtExt(File file) {
     return getFileExt(file).equals(FILE_EXT_TXT);
   }
-  
-  
+
   /**
    * Create a tab indented string.
    * 
    * @param s
    * @return
-   * @throws IOException 
+   * @throws IOException
    */
   public static void tabIndent(Writer writer, String s) throws IOException {
     tabIndent(writer, s, 1);
@@ -1831,15 +1826,16 @@ public class Io {
   /**
    * Create a tab indented string.
    * 
-   * @param s     String to indent.
-   * @param tabs  Number of tabs to indent by.
+   * @param s String to indent.
+   * @param tabs Number of tabs to indent by.
    * 
-   * @return      String s tab indented.
-   * @throws IOException 
+   * @return String s tab indented.
+   * @throws IOException
    */
-  public static void tabIndent(Writer writer, String s, int tabs) throws IOException {
+  public static void tabIndent(Writer writer, String s, int tabs)
+      throws IOException {
     tabs(writer, tabs);
-    
+
     writer.write(s);
   }
 
@@ -1849,17 +1845,20 @@ public class Io {
     }
   }
 
-  public static void join(BufferedWriter writer, String... items) throws IOException {
+  public static void join(BufferedWriter writer, String... items)
+      throws IOException {
     join(TextUtils.TAB_DELIMITER, writer, items);
   }
 
-  private static void join(String delimiter, BufferedWriter writer, String... items) throws IOException {
+  private static void join(String delimiter,
+      BufferedWriter writer,
+      String... items) throws IOException {
     if (ArrayUtils.isNullOrEmpty(items)) {
       return;
     }
-    
+
     writer.write(items[0]);
-    
+
     if (items.length > 1) {
       for (int i = 1; i < items.length; ++i) {
         writer.write(delimiter);
@@ -1867,6 +1866,5 @@ public class Io {
       }
     }
   }
-  
 
 }

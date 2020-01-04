@@ -88,7 +88,7 @@ public class DoubleList implements List<Double> {
   @Override
   public void clear() {
     // TODO Auto-generated method stub
-    
+
   }
 
   @Override
@@ -106,7 +106,7 @@ public class DoubleList implements List<Double> {
   @Override
   public void add(int index, Double element) {
     // TODO Auto-generated method stub
-    
+
   }
 
   @Override

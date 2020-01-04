@@ -24,11 +24,11 @@ import org.jebtk.core.collections.CollectionUtils;
 import org.jebtk.core.text.TextUtils;
 
 public abstract class SearchQuery<T> {
-  
+
   public Collection<T> search(String search) {
     return search(SearchStackElement.parseQuery(search));
   }
-  
+
   public Collection<T> search(List<SearchStackElement> search) {
 
     // SearchStackElement e = null;
@@ -42,11 +42,11 @@ public abstract class SearchQuery<T> {
       switch (e.mOp) {
       case MATCH:
         // First get a list of keywords matching the search
-        
+
         boolean exactMatch = quoted(e.mText);
-        
+
         String keyword;
-        
+
         if (exactMatch) {
           keyword = TextUtils.unquote(e.mText);
         } else {
@@ -58,7 +58,7 @@ public abstract class SearchQuery<T> {
         if (negated) {
           keyword = removeNegation(keyword);
         }
-        
+
         // Get all samples matched to those keywords for the tag.
         tempStack.push(match(keyword, exactMatch, negated));
 
@@ -80,8 +80,9 @@ public abstract class SearchQuery<T> {
     return results;
   }
 
-  public abstract Collection<T> match(String s, 
-      boolean exactMatch, boolean include);
+  public abstract Collection<T> match(String s,
+      boolean exactMatch,
+      boolean include);
 
   /**
    * Performs an intersection of two sets of samples. If either of the results
@@ -101,7 +102,7 @@ public abstract class SearchQuery<T> {
   public Collection<T> or(Collection<T> r1, Collection<T> r2) {
     return CollectionUtils.union(r1, r2);
   }
-  
+
   /**
    * Returns true if the string is in quotations.
    *
@@ -122,7 +123,6 @@ public abstract class SearchQuery<T> {
   private static boolean negated(String keyword) {
     return keyword.charAt(0) == '-';
   }
-  
 
   private static String removeNegation(String keyword) {
     return keyword.substring(1);

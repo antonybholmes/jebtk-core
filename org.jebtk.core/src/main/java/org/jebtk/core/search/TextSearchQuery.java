@@ -20,9 +20,7 @@ public class TextSearchQuery extends SearchQuery<String> {
   }
 
   @Override
-  public Collection<String> match(String s,
-      boolean exact,
-      boolean include) {
+  public Collection<String> match(String s, boolean exact, boolean include) {
     String ls;
 
     if (mCaseSens) {

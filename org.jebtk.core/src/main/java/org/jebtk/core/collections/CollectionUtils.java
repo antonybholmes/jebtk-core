@@ -710,7 +710,7 @@ public class CollectionUtils {
 
     return subset;
   }
-  
+
   public static final <V extends Comparable<? super V>> int[] subListIndexed(
       int[] list,
       final Collection<Indexed<Integer, V>> indices) {
@@ -728,7 +728,7 @@ public class CollectionUtils {
 
     return subset;
   }
-  
+
   public static final <V extends Comparable<? super V>> Object[] subListIndexed(
       Object[] list,
       final Collection<Indexed<Integer, V>> indices) {
@@ -746,7 +746,7 @@ public class CollectionUtils {
 
     return subset;
   }
-  
+
   public static final <V extends Comparable<? super V>> String[] subListIndexed(
       String[] list,
       final Collection<Indexed<Integer, V>> indices) {
@@ -764,8 +764,6 @@ public class CollectionUtils {
 
     return subset;
   }
-
-
 
   /**
    * Sub list.
@@ -787,7 +785,7 @@ public class CollectionUtils {
 
     return subset;
   }
-  
+
   public static final String[] subList(String[] list,
       final Collection<Integer> indices) {
     String[] subset = new String[indices.size()];
@@ -800,7 +798,7 @@ public class CollectionUtils {
 
     return subset;
   }
-  
+
   public static final Object[] subList(Object[] list,
       final Collection<Integer> indices) {
     Object[] subset = new Object[indices.size()];
@@ -1933,7 +1931,7 @@ public class CollectionUtils {
     if (isNullOrEmpty(items)) {
       return Collections.emptySet();
     }
-    
+
     if (items instanceof Set) {
       return (Set<T>) items;
     }
@@ -2282,14 +2280,15 @@ public class CollectionUtils {
 
     return map;
   }
-  
-  public static Map<String, Set<String>> createMapSet(String[] l1, String[] l2) {
+
+  public static Map<String, Set<String>> createMapSet(String[] l1,
+      String[] l2) {
     if (isNullOrEmpty(l1) || isNullOrEmpty(l2)) {
       return Collections.emptyMap();
     }
 
-    Map<String, Set<String>> map =
-        DefaultHashMap.create(new HashSetCreator<String>());
+    Map<String, Set<String>> map = DefaultHashMap
+        .create(new HashSetCreator<String>());
 
     for (int i = 0; i < l1.length; ++i) {
       map.get(l1[i]).add(l2[i]);
@@ -2521,11 +2520,11 @@ public class CollectionUtils {
       ++si;
     }
   }
-  
+
   public static void reverse(int[] items) {
     reverse(items, 0, items.length);
   }
-  
+
   public static void reverse(int[] items, int start, int n) {
     if (isNullOrEmpty(items)) {
       return;
@@ -3043,7 +3042,7 @@ public class CollectionUtils {
 
     return ret;
   }
-  
+
   public static Map<String, Integer> toIndexMap(String[] values) {
     Map<String, Integer> ret = new HashMap<String, Integer>();
 
@@ -3179,10 +3178,9 @@ public class CollectionUtils {
   public static void fill(double[] array, int s, int e, double v) {
     Arrays.fill(array, s, e, v);
   }
-  
-  
+
   //
-  
+
   public static void fill(int[] array, int v) {
     Arrays.fill(array, v);
   }
@@ -3209,13 +3207,10 @@ public class CollectionUtils {
   public static void fill(int[] array, int s, int e, int v) {
     Arrays.fill(array, s, e, v);
   }
-  
-  
-  
-  
+
   /**
-   * Copy a value into an array, but keep the maximum between the array and
-   * the value at a given position to guarantee the maximum value is kept.
+   * Copy a value into an array, but keep the maximum between the array and the
+   * value at a given position to guarantee the maximum value is kept.
    * 
    * @param array
    * @param v
@@ -3416,29 +3411,28 @@ public class CollectionUtils {
   }
 
   /**
-   * Finds the index of the next position in the array with a value different
-   * to a given value. This can be used to find runs of the same value in an
-   * array. Returns the last index of the array if all the array values are
-   * the same.
+   * Finds the index of the next position in the array with a value different to
+   * a given value. This can be used to find runs of the same value in an array.
+   * Returns the last index of the array if all the array values are the same.
    * 
-   * @param values    The array to search
-   * @param f         The current value.
-   * @param i         The starting index.
+   * @param values The array to search
+   * @param f The current value.
+   * @param i The starting index.
    * @return
    */
   public static int nextDiffValIdx(final double[] values, double f, int start) {
     int ret = values.length - 1;
-    
+
     for (int i = start; i < values.length; ++i) {
       if (values[i] != f) {
         ret = i;
         break;
       }
     }
-    
+
     return ret;
   }
-  
+
   /**
    * Finds the next zero entry in an array.
    * 
@@ -3448,14 +3442,14 @@ public class CollectionUtils {
    */
   public static int nextZero(final double[] values, int start) {
     int ret = values.length - 1;
-    
+
     for (int i = start; i < values.length; ++i) {
       if (values[i] == 0) {
         ret = i;
         break;
       }
     }
-    
+
     return ret;
   }
 

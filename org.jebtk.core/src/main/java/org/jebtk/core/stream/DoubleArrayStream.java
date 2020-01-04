@@ -15,7 +15,6 @@
  */
 package org.jebtk.core.stream;
 
-
 /**
  * Holds a reference to an existing stream.
  *

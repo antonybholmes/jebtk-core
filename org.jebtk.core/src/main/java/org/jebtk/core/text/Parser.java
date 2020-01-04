@@ -113,8 +113,9 @@ public class Parser {
   }
 
   /**
-   * Parses an integer field as a double and then converts back to int to provide
-   * more robust handling of ints written as floating point numbers in files.
+   * Parses an integer field as a double and then converts back to int to
+   * provide more robust handling of ints written as floating point numbers in
+   * files.
    *
    * @param field the field
    * @return the int

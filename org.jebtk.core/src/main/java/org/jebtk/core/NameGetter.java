@@ -21,7 +21,7 @@ package org.jebtk.core;
  * @author Antony Holmes
  *
  */
-public interface NameProperty {
+public interface NameGetter {
 
   /**
    * Gets the name.
@@ -29,6 +29,4 @@ public interface NameProperty {
    * @return the name
    */
   public String getName();
-
-  // public void setName(String name);
 }

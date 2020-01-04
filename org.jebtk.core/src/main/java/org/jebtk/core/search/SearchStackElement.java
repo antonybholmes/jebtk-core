@@ -104,7 +104,7 @@ public class SearchStackElement {
   /**
    * Returns a stack representation of a text query.
    *
-   * @param  the generic type
+   * @param the generic type
    * @param q the q
    * @return the deque
    */
@@ -228,7 +228,7 @@ public class SearchStackElement {
   /**
    * Adds the term.
    *
-   * @param  the generic type
+   * @param the generic type
    * @param buffer the buffer
    * @param outputQueue the output queue
    */
@@ -249,7 +249,7 @@ public class SearchStackElement {
   /**
    * Adds the lower precedence ops.
    *
-   * @param  the generic type
+   * @param the generic type
    * @param op1 the operator
    * @param outputQueue the search stack
    * @param operatorStack the operator stack
@@ -285,7 +285,7 @@ public class SearchStackElement {
   /**
    * Pop expressions until a left parenthesis is encountered.
    *
-   * @param  the generic type
+   * @param the generic type
    * @param outputQueue the output queue
    * @param opStack the op stack
    */

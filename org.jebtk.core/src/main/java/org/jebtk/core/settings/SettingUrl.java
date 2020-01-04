@@ -15,7 +15,7 @@
  */
 package org.jebtk.core.settings;
 
-import org.jebtk.core.http.UrlBuilder;
+import org.jebtk.core.http.URLPath;
 import org.jebtk.core.io.PathUtils;
 import org.jebtk.core.path.Path;
 import org.jebtk.core.text.TextUtils;
@@ -29,7 +29,7 @@ public class SettingUrl extends Setting {
   private static final long serialVersionUID = 1L;
 
   /** The m value. */
-  private UrlBuilder mValue;
+  private URLPath mValue;
 
   /**
    * Instantiates a new setting url.
@@ -39,7 +39,7 @@ public class SettingUrl extends Setting {
    * @param description the description
    * @param locked the locked
    */
-  public SettingUrl(Path path, UrlBuilder value, String description,
+  public SettingUrl(Path path, URLPath value, String description,
       boolean locked) {
     super(path, description, locked);
 
@@ -72,7 +72,7 @@ public class SettingUrl extends Setting {
    * @see org.abh.common.settings.Setting#getUrlBuilder()
    */
   @Override
-  public UrlBuilder getUrlBuilder() {
+  public URLPath getUrlBuilder() {
     return mValue;
   }
 

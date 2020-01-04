@@ -44,8 +44,10 @@ public class ArgParser implements Iterable<Entry<String, List<String>>> {
 
   private Args mOptions = null;
 
-  //private static final Pattern SHORT_ARG_REGEX = Pattern.compile("^-([\\w\\-]+)");
-  //private static final Pattern LONG_ARG_REGEX = Pattern.compile("^--([\\w\\-]+)");
+  // private static final Pattern SHORT_ARG_REGEX =
+  // Pattern.compile("^-([\\w\\-]+)");
+  // private static final Pattern LONG_ARG_REGEX =
+  // Pattern.compile("^--([\\w\\-]+)");
 
   public ArgParser() {
     this(null);
@@ -106,13 +108,14 @@ public class ArgParser implements Iterable<Entry<String, List<String>>> {
   public double getDouble(String arg) {
     return Double.parseDouble(getArg(arg));
   }
-  
+
   public Path getFile(String arg) {
     return PathUtils.getPath(arg);
   }
 
   /**
    * Returns a list of the parsed arguments with the given name
+   * 
    * @param name
    * @return
    */
@@ -164,7 +167,7 @@ public class ArgParser implements Iterable<Entry<String, List<String>>> {
    * @param options the options
    * @param args the args
    * @return the command line args
-   * @throws ArgException 
+   * @throws ArgException
    */
   public ArgParser parse(String... args) {
     if (mOptions == null) {
@@ -172,7 +175,7 @@ public class ArgParser implements Iterable<Entry<String, List<String>>> {
       for (String arg : args) {
         mOthers.add(arg);
       }
-      
+
       return this;
     }
 
@@ -192,7 +195,8 @@ public class ArgParser implements Iterable<Entry<String, List<String>>> {
       isLong = arg.startsWith("--");
       isShort = !isLong && arg.length() == 2 && arg.startsWith("-");
 
-      //System.err.println("is long " + isLong + " " + isShort + " " + arg + " " + Arrays.toString(args));
+      // System.err.println("is long " + isLong + " " + isShort + " " + arg + "
+      // " + Arrays.toString(args));
 
       //
       if (!isShort && !isLong) {
@@ -246,21 +250,21 @@ public class ArgParser implements Iterable<Entry<String, List<String>>> {
     int index = arg.indexOf("=");
 
     if (index > 0) {
-      return new org.jebtk.core.collections.Entry<String, String>(arg.substring(0, index), arg.substring(index + 1));
+      return new org.jebtk.core.collections.Entry<String, String>(
+          arg.substring(0, index), arg.substring(index + 1));
     } else {
-      return new org.jebtk.core.collections.Entry<String, String>(arg, TextUtils.EMPTY_STRING);
+      return new org.jebtk.core.collections.Entry<String, String>(arg,
+          TextUtils.EMPTY_STRING);
     }
   }
 
   public static String longArg(String name, String value) {
-    return new StringBuilder().append("--").append(name).append("=").append(value).toString();
+    return new StringBuilder().append("--").append(name).append("=")
+        .append(value).toString();
   }
 
   public static String longArg(String name) {
     return new StringBuilder().append("--").append(name).toString();
   }
-
-  
-
 
 }

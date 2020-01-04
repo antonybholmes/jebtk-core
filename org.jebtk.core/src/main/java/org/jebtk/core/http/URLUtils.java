@@ -117,10 +117,11 @@ public class URLUtils {
     // Do nothing
   }
 
-  public static void launch(UrlBuilder url) throws URISyntaxException, IOException {
+  public static void launch(URLPath url)
+      throws URISyntaxException, IOException {
     launch(url.toURL());
   }
-  
+
   /**
    * Launch.
    *
@@ -329,16 +330,6 @@ public class URLUtils {
     HttpsURLConnection.setDefaultHostnameVerifier(new TrustAllHosts());
   }
 
-  /**
-   * Builds the.
-   *
-   * @param server the server
-   * @return the url builder
-   */
-  public static UrlBuilder build(String server) {
-    return new UrlBuilder(server);
-  }
-
   //
   // Parse Urls
   //
@@ -467,7 +458,7 @@ public class URLUtils {
    * @return the URL reader
    * @throws MalformedURLException the malformed URL exception
    */
-  public static URLReader read(UrlBuilder url) throws MalformedURLException {
+  public static URLReader read(URLPath url) throws MalformedURLException {
     return read(url.toURL());
   }
 
@@ -495,7 +486,7 @@ public class URLUtils {
     }
   }
 
-  public static void downloadFile(UrlBuilder url, Path localFile)
+  public static void downloadFile(URLPath url, Path localFile)
       throws IOException {
     downloadFile(url.toURL(), localFile);
   }
@@ -516,13 +507,13 @@ public class URLUtils {
       throws IOException {
     FileUtils.write(input, file);
   }
-  
-  public static BufferedReader newBufferedReader(UrlBuilder url) throws IOException {
+
+  public static BufferedReader newBufferedReader(URLPath url)
+      throws IOException {
     return newBufferedReader(url.toURL());
   }
-  
+
   public static BufferedReader newBufferedReader(URL url) throws IOException {
-    return StreamUtils
-        .newBufferedReader(url.openConnection().getInputStream());
+    return StreamUtils.newBufferedReader(url.openConnection().getInputStream());
   }
 }

@@ -35,11 +35,11 @@ public class IterTreeMap<K, V> extends TreeMap<K, V> implements IterMap<K, V> {
   public IterTreeMap() {
     // Do nothing
   }
-  
+
   public IterTreeMap(IterMap<K, V> map) {
     super(map);
   }
-  
+
   public IterTreeMap(Comparator<K> c) {
     super(c);
   }

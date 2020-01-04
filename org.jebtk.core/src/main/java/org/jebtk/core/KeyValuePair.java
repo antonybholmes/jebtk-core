@@ -25,7 +25,7 @@ import org.jebtk.core.event.ChangeListeners;
  * @param <V> the value type
  */
 public class KeyValuePair<K extends Comparable<? super K>, V>
-extends ChangeListeners implements Comparable<KeyValuePair<K, V>> {
+    extends ChangeListeners implements Comparable<KeyValuePair<K, V>> {
 
   /**
    * 
@@ -71,10 +71,10 @@ extends ChangeListeners implements Comparable<KeyValuePair<K, V>> {
   public V getValue() {
     return mValue;
   }
-  
+
   public void setValue(V item) {
     update(item);
-    
+
     fireChanged();
   }
 
@@ -83,7 +83,7 @@ extends ChangeListeners implements Comparable<KeyValuePair<K, V>> {
    *
    * @param name the name
    * @param item the item
-   * @return 
+   * @return
    */
   private void update(V value) {
     mValue = value;

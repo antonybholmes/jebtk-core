@@ -481,7 +481,7 @@ public class Mathematics {
 
     return l;
   }
-  
+
   /**
    * Create a filled float array with a repeated value.
    * 
@@ -570,16 +570,16 @@ public class Mathematics {
 
     return ret;
   }
-  
+
   public static int[] seq(int start, int end) {
     int[] ret = new int[end - start + 1];
-    
+
     int i = 0;
-    
+
     for (int v = start; v <= end; ++v) {
       ret[i++] = v;
     }
-    
+
     return ret;
   }
 
@@ -769,8 +769,6 @@ public class Mathematics {
 
     return ret;
   }
-  
-
 
   /**
    * Returns v bounded between min and max inclusive.
@@ -1175,7 +1173,7 @@ public class Mathematics {
 
     return ret;
   }
-  
+
   public static double[] multiply(int[] values, double x) {
     double[] ret = new double[values.length];
 

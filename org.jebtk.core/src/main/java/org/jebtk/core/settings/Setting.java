@@ -22,7 +22,7 @@ import java.net.URL;
 import org.jebtk.core.ColorUtils;
 import org.jebtk.core.Mathematics;
 import org.jebtk.core.event.ChangeListeners;
-import org.jebtk.core.http.UrlBuilder;
+import org.jebtk.core.http.URLPath;
 import org.jebtk.core.json.Json;
 import org.jebtk.core.json.JsonObject;
 import org.jebtk.core.json.JsonRepresentation;
@@ -193,7 +193,7 @@ public class Setting extends ChangeListeners
    * @return the as url
    */
   public URL getUrl() {
-    UrlBuilder builder = getUrlBuilder();
+    URLPath builder = getUrlBuilder();
 
     URL url = null;
 
@@ -213,7 +213,7 @@ public class Setting extends ChangeListeners
    *
    * @return the as url builder
    */
-  public UrlBuilder getUrlBuilder() {
+  public URLPath getUrlBuilder() {
     return null;
   }
 
@@ -352,8 +352,9 @@ public class Setting extends ChangeListeners
     } else if (ColorUtils.isHtmlColor(value)) {
       return new SettingColor(path, ColorUtils.decodeHtmlColor(value),
           description, locked);
-    //} else if (URLUtils.isUrl(value)) {
-    //  return new SettingUrl(path, new UrlBuilder(value), description, locked);
+      // } else if (URLUtils.isUrl(value)) {
+      // return new SettingUrl(path, UrlBuilder.fromUrl(value), description,
+      // locked);
     } else if (value.toLowerCase().equals(TextUtils.TRUE)) {
       return new SettingBool(path, true, description, locked);
     } else if (value.toLowerCase().equals(TextUtils.FALSE)) {

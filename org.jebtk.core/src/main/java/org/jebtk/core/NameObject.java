@@ -21,7 +21,7 @@ package org.jebtk.core;
  * @author Antony Holmes
  *
  */
-public class NameObject implements NameProperty {
+public class NameObject implements NameGetter {
 
   /** The m name. */
   private String mName;

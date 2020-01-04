@@ -9,29 +9,29 @@ public abstract class HttpContent {
 
   private HttpURLConnection mConnection;
 
-
   public HttpContent(HttpURLConnection connection) {
     mConnection = connection;
   }
-  
+
   /**
    * Should modify connection as necessary and write to connection.
    * 
    * @param connection
-   * @return 
+   * @return
    * @throws IOException
    */
   public HttpResponse execute() throws IOException {
-    DataOutputStream out = new DataOutputStream(new BufferedOutputStream(mConnection.getOutputStream()));
-    
+    DataOutputStream out = new DataOutputStream(
+        new BufferedOutputStream(mConnection.getOutputStream()));
+
     try {
       execute(out);
     } finally {
       out.close();
     }
-    
+
     return new HttpResponse(mConnection);
   }
-  
+
   protected abstract void execute(DataOutputStream out) throws IOException;
 }

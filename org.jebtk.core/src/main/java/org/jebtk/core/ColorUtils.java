@@ -176,7 +176,7 @@ public class ColorUtils {
     return new Color(color.getRed(), color.getGreen(), color.getBlue(),
         (int) (Mathematics.bound(alpha, 0, 1) * 255));
   }
-  
+
   public static Color getTransparentColor(Color color, double alpha) {
     if (color == null) {
       return null;
@@ -189,7 +189,7 @@ public class ColorUtils {
   public static double getTrans(Color color) {
     return Mathematics.bound((255 - color.getAlpha()) / 255.0, 0, 1);
   }
-  
+
   /**
    * Get the alpha value of a color scaled between 0 and 1.
    * 
@@ -526,7 +526,7 @@ public class ColorUtils {
 
     return ret;
   }
-  
+
   public static Color[] alpha(Color[] colors, final double alpha) {
     Color[] ret = new Color[colors.length];
 

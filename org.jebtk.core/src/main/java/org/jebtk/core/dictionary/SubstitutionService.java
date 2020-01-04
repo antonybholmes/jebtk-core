@@ -52,7 +52,8 @@ public class SubstitutionService {
   /**
    * The constant DEFAULT_FILE.
    */
-  public static final Path DEFAULT_FILE = PathUtils.getPath("res/substitutions.txt");
+  public static final Path DEFAULT_FILE = PathUtils
+      .getPath("res/substitutions.txt");
 
   /**
    * The constant instance.
@@ -69,7 +70,7 @@ public class SubstitutionService {
   }
 
   private void autoLoad() {
-    if (mAutoLoad ) {
+    if (mAutoLoad) {
       // Set this here to stop recursive infinite calling
       // of this method.
       mAutoLoad = false;
@@ -83,49 +84,50 @@ public class SubstitutionService {
 
     }
   }
-  
+
   /**
    * Load xml.
    *
    * @param file the file
-   * @throws IOException 
-   * @throws SAXException 
-   * @throws ParserConfigurationException 
+   * @throws IOException
+   * @throws SAXException
+   * @throws ParserConfigurationException
    */
-  public void loadXml(Path file) throws SAXException, IOException, ParserConfigurationException {
-      SAXParserFactory factory = SAXParserFactory.newInstance();
-      SAXParser saxParser = factory.newSAXParser();
+  public void loadXml(Path file)
+      throws SAXException, IOException, ParserConfigurationException {
+    SAXParserFactory factory = SAXParserFactory.newInstance();
+    SAXParser saxParser = factory.newSAXParser();
 
-      SubstitutionXmlHandler handler = new SubstitutionXmlHandler(this);
+    SubstitutionXmlHandler handler = new SubstitutionXmlHandler(this);
 
-      saxParser.parse(file.toFile(), handler);
+    saxParser.parse(file.toFile(), handler);
   }
 
   /**
    * Load tsv file.
    *
    * @param file the file
-   * @throws IOException 
+   * @throws IOException
    */
   public void loadTSVFile(Path file) throws IOException {
-      BufferedReader reader = FileUtils.newBufferedReader(file);
+    BufferedReader reader = FileUtils.newBufferedReader(file);
 
-      String line;
+    String line;
 
-      try {
-        while ((line = reader.readLine()) != null) {
-          if (Io.isEmptyLine(line)) {
-            continue;
-          }
-
-          List<String> tokens = TextUtils.fastSplit(line,
-              TextUtils.TAB_DELIMITER);
-
-          addSubstitution(tokens.get(0), tokens.get(1));
+    try {
+      while ((line = reader.readLine()) != null) {
+        if (Io.isEmptyLine(line)) {
+          continue;
         }
-      } finally {
-        reader.close();
+
+        List<String> tokens = TextUtils.fastSplit(line,
+            TextUtils.TAB_DELIMITER);
+
+        addSubstitution(tokens.get(0), tokens.get(1));
       }
+    } finally {
+      reader.close();
+    }
   }
 
   /**
@@ -146,7 +148,7 @@ public class SubstitutionService {
    */
   public String getSubstitute(String word) {
     autoLoad();
-    
+
     if (word == null) {
       return null;
     }
