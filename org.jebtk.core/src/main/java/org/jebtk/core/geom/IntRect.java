@@ -32,13 +32,17 @@ public class IntRect extends IntPos2D {
   /**
    * The member w.
    */
-  public final int mW;
+  public final int w;
 
   /**
    * The member h.
    */
-  public final int mH;
+  public final int h;
 
+  public IntRect(int x, int y, int w) {
+    this(x, y, w, w);
+  }
+  
   /**
    * Instantiates a new int rect.
    *
@@ -50,8 +54,8 @@ public class IntRect extends IntPos2D {
   public IntRect(int x, int y, int w, int h) {
     super(x, y);
 
-    mW = w;
-    mH = h;
+    this.w = w;
+    this.h = h;
   }
 
   /**
@@ -60,7 +64,7 @@ public class IntRect extends IntPos2D {
    * @return the w
    */
   public int getW() {
-    return mW;
+    return w;
   }
 
   /**
@@ -69,7 +73,7 @@ public class IntRect extends IntPos2D {
    * @return the h
    */
   public int getH() {
-    return mH;
+    return h;
   }
 
   /*
@@ -79,7 +83,7 @@ public class IntRect extends IntPos2D {
    */
   @Override
   public String toString() {
-    return "[" + mX + " " + mY + " " + mW + " " + mH + "]";
+    return "[" + x + " " + y + " " + w + " " + h + "]";
   }
 
   /**
@@ -145,8 +149,8 @@ public class IntRect extends IntPos2D {
    * @return true, if successful
    */
   public boolean contains(int x, int y, int padding) {
-    return x >= mX - padding && x <= mX + mW + padding && y >= mY - padding
-        && y <= mY + mH + padding;
+    return x >= x - padding && x <= x + w + padding && y >= y - padding
+        && y <= y + h + padding;
   }
 
   /**

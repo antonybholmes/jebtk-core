@@ -24,12 +24,12 @@ public class IntPos2D implements Comparable<IntPos2D> {
   /**
    * The member x.
    */
-  public final int mX;
+  public final int x;
 
   /**
    * The member y.
    */
-  public final int mY;
+  public final int y;
 
   /**
    * Instantiates a new int position.
@@ -38,8 +38,8 @@ public class IntPos2D implements Comparable<IntPos2D> {
    * @param y the y
    */
   public IntPos2D(int x, int y) {
-    mX = x;
-    mY = y;
+    this.x = x;
+    this.y = y;
   }
 
   /**
@@ -48,7 +48,7 @@ public class IntPos2D implements Comparable<IntPos2D> {
    * @return the x
    */
   public int getX() {
-    return mX;
+    return x;
   }
 
   /**
@@ -57,7 +57,7 @@ public class IntPos2D implements Comparable<IntPos2D> {
    * @return the y
    */
   public int getY() {
-    return mY;
+    return y;
   }
 
   /*
@@ -67,7 +67,7 @@ public class IntPos2D implements Comparable<IntPos2D> {
    */
   @Override
   public String toString() {
-    return "[" + mX + ", " + mY + "]";
+    return "[" + x + ", " + y + "]";
   }
 
   /*
@@ -91,14 +91,14 @@ public class IntPos2D implements Comparable<IntPos2D> {
    */
   @Override
   public int compareTo(IntPos2D p) {
-    if (mX > p.mX) {
-      if (mY > p.mY) {
+    if (x > p.x) {
+      if (y > p.y) {
         return 1;
       } else {
         return -1;
       }
-    } else if (mX < p.mX) {
-      if (mY > p.mY) {
+    } else if (x < p.x) {
+      if (y > p.y) {
         return 1;
       } else {
         return -1;
@@ -106,9 +106,9 @@ public class IntPos2D implements Comparable<IntPos2D> {
     } else {
       // Same x so just consider vertical position
 
-      if (mY > p.mY) {
+      if (y > p.y) {
         return 1;
-      } else if (mY < p.mY) {
+      } else if (y < p.y) {
         return -1;
       } else {
         return 0;
