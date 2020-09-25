@@ -90,7 +90,7 @@ public class URLPath implements Serializable {
   protected final List<String> mParts = new ArrayList<String>();
 
   /**
-   * The member params.
+   * The member props.
    */
   private final List<Param> mParams = new ArrayList<Param>();
 
@@ -325,10 +325,10 @@ public class URLPath implements Serializable {
     return url;
   }
 
-  public URLPath params(Collection<Param> params) {
+  public URLPath props(Collection<Param> props) {
     URLPath url = new URLPath(this);
 
-    url.mParams.addAll(params);
+    url.mParams.addAll(props);
 
     return url;
   }
@@ -385,7 +385,7 @@ public class URLPath implements Serializable {
    * @return the url builder
    * @throws UnsupportedEncodingException the unsupported encoding exception
    */
-  public URLPath params(String name, Object... values) {
+  public URLPath props(String name, Object... values) {
     URLPath url = new URLPath(this);
 
     for (Object value : values) {
@@ -622,14 +622,14 @@ public class URLPath implements Serializable {
       p1 = p2 + 1;
     }
 
-    // params
+    // props
 
     // Index of param start
     p1 = p3 + 1;
 
-    List<Param> params = new ArrayList<Param>();
+    List<Param> props = new ArrayList<Param>();
 
-    // If p1 is not at the end of the string, parse url params
+    // If p1 is not at the end of the string, parse url props
     while (p1 < n) {
       p2 = url.indexOf("=", p1);
       p3 = url.indexOf("&", p1);
@@ -640,7 +640,7 @@ public class URLPath implements Serializable {
         p3 = n;
       }
 
-      params.add(
+      props.add(
           new StaticParam(url.substring(p1, p2), url.substring(p2 + 1, p3)));
 
       p1 = p3 + 1;
@@ -665,7 +665,7 @@ public class URLPath implements Serializable {
     //
     // //System.out.println("parts " + parts);
     //
-    // List<Param> params = Collections.emptyList();
+    // List<Param> props = Collections.emptyList();
     //
     // matcher = QUERY_REGEX.matcher(url);
     //
@@ -673,11 +673,11 @@ public class URLPath implements Serializable {
     // for (String param : TextUtils.fastSplit(matcher.group(1), "&")) {
     // List<String> tokens = TextUtils.fastSplit(param, "=");
     //
-    // params.add(new StaticParam(tokens.get(0), tokens.get(1)));
+    // props.add(new StaticParam(tokens.get(0), tokens.get(1)));
     // }
     // }
     //
-    // return new UrlBuilder(scheme, host, port, parts, params);
+    // return new UrlBuilder(scheme, host, port, parts, props);
     //
     //
     //
@@ -727,7 +727,7 @@ public class URLPath implements Serializable {
     //
     // //System.out.println("parts " + parts);
     //
-    // List<Param> params = Collections.emptyList();
+    // List<Param> props = Collections.emptyList();
     //
     // matcher = QUERY_REGEX.matcher(url);
     //
@@ -735,13 +735,13 @@ public class URLPath implements Serializable {
     // for (String param : TextUtils.fastSplit(matcher.group(1), "&")) {
     // List<String> tokens = TextUtils.fastSplit(param, "=");
     //
-    // params.add(new StaticParam(tokens.get(0), tokens.get(1)));
+    // props.add(new StaticParam(tokens.get(0), tokens.get(1)));
     // }
     // }
 
-    // System.err.println(new UrlBuilder(scheme, host, port, parts, params));
+    // System.err.println(new UrlBuilder(scheme, host, port, parts, props));
 
     return new URLPath().scheme(scheme).host(host).port(port).paths(paths)
-        .params(params);
+        .props(props);
   }
 }

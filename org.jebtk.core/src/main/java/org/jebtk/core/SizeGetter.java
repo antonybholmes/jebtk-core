@@ -13,28 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jebtk.core.collections;
-
-import java.io.Serializable;
-import java.util.Map;
-import java.util.Map.Entry;
+package org.jebtk.core;
 
 /**
- * Iter maps allow the keys to be iterated over to reduce coding.
+ * For components that can have a name property.
  * 
+ * @author Antony Holmes
  *
- * @param <K> the key type
- * @param <V> the value type
  */
-public interface IterMap<K, V>
-    extends Map<K, V>, Iterable<Entry<K, V>>, Serializable {
-  /**
-   * Returns the first key in the map. The notion of first depends on the map
-   * implementation.
-   * 
-   * @return
-   */
-  public Entry<K, V> first();
+public interface SizeGetter {
 
-  
+  /**
+   * Gets the name.
+   *
+   * @return the name
+   */
+  public int size();
 }

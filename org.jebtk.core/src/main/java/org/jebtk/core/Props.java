@@ -30,7 +30,7 @@ import org.jebtk.core.event.ChangeListeners;
  *
  * @author Antony Holmes
  */
-public class Properties extends ChangeListeners
+public class Props extends ChangeListeners
     implements Iterable<Entry<String, Object>>, ChangeListener {
 
   /**
@@ -47,15 +47,15 @@ public class Properties extends ChangeListeners
   // Object>();
   protected IterMap<String, Object> mPropertyMap = new IterHashMap<String, Object>();
 
-  public Properties() {
+  public Props() {
     // Do nothing
   }
 
-  public Properties(Properties parent) {
+  public Props(Props parent) {
     set(parent);
   }
 
-  public Properties set(Properties properties) {
+  public Props set(Props properties) {
     update(properties);
 
     fireChanged();
@@ -63,7 +63,7 @@ public class Properties extends ChangeListeners
     return this;
   }
 
-  public Properties update(Properties properties) {
+  public Props update(Props properties) {
     mPropertyMap.putAll(properties.mPropertyMap);
 
     return this;
@@ -76,7 +76,7 @@ public class Properties extends ChangeListeners
    * @param item the item
    * @return
    */
-  public Properties set(String name, Object value) {
+  public Props set(String name, Object value) {
     update(name, value);
 
     fireChanged();
@@ -84,7 +84,7 @@ public class Properties extends ChangeListeners
     return this;
   }
 
-  public Properties update(String name, Object value) {
+  public Props update(String name, Object value) {
     mPropertyMap.put(name, value);
 
     return this;
@@ -97,7 +97,7 @@ public class Properties extends ChangeListeners
    * @return the property as int
    */
   public int getInt(String name) {
-    return (int) getValue(name);
+    return (int) get(name);
   }
 
   /**
@@ -108,7 +108,7 @@ public class Properties extends ChangeListeners
    */
   public boolean getBool(String name) {
     if (contains(name)) {
-      return (boolean) getValue(name);
+      return (boolean) get(name);
     } else {
       return false;
     }
@@ -125,7 +125,7 @@ public class Properties extends ChangeListeners
   }
 
   public Color getColor(String name, Color color) {
-    return (Color) getValue(name, color);
+    return (Color) get(name, color);
   }
 
   /**
@@ -135,23 +135,34 @@ public class Properties extends ChangeListeners
    * @return the property as double
    */
   public double getDouble(String name) {
-    return (double) getValue(name);
+    return (double) get(name);
   }
 
   public String toString(String name) {
-    return getValue(name).toString();
+    return get(name).toString();
   }
 
-  public Object getValue(String name) {
-    return getValue(name, null);
+  public Object get(String name) {
+    return mPropertyMap.get(name);
   }
 
-  public Object getValue(String name, Object defaultValue) {
+  /**
+   * Return a property, creating a default if the property does not exist.
+   * 
+   * @param name
+   * @param defaultValue
+   * @return
+   */
+  public Object get(String name, Object defaultValue) {
     if (!mPropertyMap.containsKey(name)) {
       mPropertyMap.put(name, defaultValue);
     }
 
     return mPropertyMap.get(name);
+  }
+  
+  public int getInt(String name, int defaultValue) {
+    return (int) get(name, defaultValue);
   }
 
   /**
@@ -196,5 +207,7 @@ public class Properties extends ChangeListeners
   public void changed(ChangeEvent e) {
     fireChanged();
   }
+
+  
 
 }
