@@ -99,6 +99,7 @@ public class Props extends ChangeListeners
   public int getInt(String name) {
     return (int) get(name);
   }
+<<<<<<< HEAD:org.jebtk.core/src/main/java/org/jebtk/core/Props.java
   
   public int getInt(String name, int defaultValue) {
 	   if (mPropertyMap.containsKey(name)) {
@@ -113,6 +114,8 @@ public class Props extends ChangeListeners
 		   return defaultValue;
 	   }
 	 }
+=======
+>>>>>>> 84225c25234307291e66d40bfc862d8df020d329:org.jebtk.core/src/main/java/org/jebtk/core/Props.java
 
   /**
    * Gets the as bool.
@@ -157,15 +160,32 @@ public class Props extends ChangeListeners
   }
 
   public Object get(String name) {
+<<<<<<< HEAD:org.jebtk.core/src/main/java/org/jebtk/core/Props.java
     return get(name, null);
   }
 
+=======
+    return mPropertyMap.get(name);
+  }
+
+  /**
+   * Return a property, creating a default if the property does not exist.
+   * 
+   * @param name
+   * @param defaultValue
+   * @return
+   */
+>>>>>>> 84225c25234307291e66d40bfc862d8df020d329:org.jebtk.core/src/main/java/org/jebtk/core/Props.java
   public Object get(String name, Object defaultValue) {
     if (!mPropertyMap.containsKey(name)) {
       mPropertyMap.put(name, defaultValue);
     }
 
     return mPropertyMap.get(name);
+  }
+  
+  public int getInt(String name, int defaultValue) {
+    return (int) get(name, defaultValue);
   }
 
   /**
@@ -210,5 +230,7 @@ public class Props extends ChangeListeners
   public void changed(ChangeEvent e) {
     fireChanged();
   }
+
+  
 
 }

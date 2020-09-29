@@ -22,7 +22,7 @@ import java.awt.Color;
  *
  * @author Antony Holmes
  */
-public class Property extends KeyValuePair<String, Object>
+public class Prop extends KeyValuePair<String, Object>
     implements NameGetter {
 
   /**
@@ -30,7 +30,7 @@ public class Property extends KeyValuePair<String, Object>
    */
   private static final long serialVersionUID = 1L;
 
-  public Property(String name, Object item) {
+  public Prop(String name, Object item) {
     super(name, item);
   }
 
@@ -79,19 +79,19 @@ public class Property extends KeyValuePair<String, Object>
     return getDouble(this);
   }
 
-  public static double getDouble(Property p) {
+  public static double getDouble(Prop p) {
     return (Double) p.getValue();
   }
 
-  public static int getInt(Property p) {
+  public static int getInt(Prop p) {
     return (Integer) p.getValue();
   }
 
-  public static boolean getBool(Property p) {
+  public static boolean getBool(Prop p) {
     return (Boolean) p.getValue();
   }
 
-  public static Color getColor(Property p) {
+  public static Color getColor(Prop p) {
     return (Color) p.getValue();
   }
 }

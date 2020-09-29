@@ -31,12 +31,12 @@ public class IntDim implements Comparable<IntDim> {
   /**
    * The member w.
    */
-  public final int mW;
+  public final int w;
 
   /**
    * The member h.
    */
-  public final int mH;
+  public final int h;
 
   /**
    * Instantiates a new int dim.
@@ -45,8 +45,8 @@ public class IntDim implements Comparable<IntDim> {
    * @param h the h
    */
   public IntDim(int w, int h) {
-    mW = w;
-    mH = h;
+    this.w = w;
+    this.h = h;
   }
 
   /**
@@ -64,7 +64,7 @@ public class IntDim implements Comparable<IntDim> {
    * @return the w
    */
   public int getW() {
-    return mW;
+    return w;
   }
 
   /**
@@ -73,7 +73,7 @@ public class IntDim implements Comparable<IntDim> {
    * @return the h
    */
   public int getH() {
-    return mH;
+    return h;
   }
 
   /*
@@ -83,7 +83,7 @@ public class IntDim implements Comparable<IntDim> {
    */
   @Override
   public String toString() {
-    return mW + " " + mH;
+    return w + " " + h;
   }
 
   /**
@@ -117,14 +117,14 @@ public class IntDim implements Comparable<IntDim> {
    */
   @Override
   public int compareTo(IntDim d) {
-    if (mW > d.mW) {
-      if (mH > d.mH) {
+    if (w > d.w) {
+      if (h > d.h) {
         return 1;
       } else {
         return -1;
       }
-    } else if (mW < d.mW) {
-      if (mH > d.mH) {
+    } else if (w < d.w) {
+      if (h > d.h) {
         return 1;
       } else {
         return -1;
@@ -132,9 +132,9 @@ public class IntDim implements Comparable<IntDim> {
     } else {
       // Same width so just consider height
 
-      if (mH > d.mH) {
+      if (h > d.h) {
         return 1;
-      } else if (mH < d.mH) {
+      } else if (h < d.h) {
         return -1;
       } else {
         return 0;
