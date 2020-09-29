@@ -139,7 +139,7 @@ public class TextObjectNode<T> implements Iterable<TextObjectNode<T>>,
   }
 
   /**
-   * Traverse a properties tree using a path expression to find a particular
+   * Traverse a Props tree using a path expression to find a particular
    * property. Returns null if the property is not found.
    *
    * @param path the path

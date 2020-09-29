@@ -18,7 +18,7 @@ package org.jebtk.core;
 import java.awt.Color;
 
 /**
- * Generic properties object for sharing heterogenous properties.
+ * Generic Props object for sharing heterogenous properties.
  *
  * @author Antony Holmes
  */

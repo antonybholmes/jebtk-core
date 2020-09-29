@@ -2540,7 +2540,7 @@ public class TextUtils {
       reader.close();
     }
 
-    return (String[]) rows.toArray();
+    return rows.toArray(new String[rows.size()]);
   }
 
   /**
