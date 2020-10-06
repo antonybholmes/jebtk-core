@@ -55,7 +55,7 @@ public class DefaultArrayList<T> extends ArrayList<T> {
   /**
    * Instantiates a new auto hash map.
    *
-   * @param size the size
+   * @param size         the size
    * @param defaultValue the default value
    */
   public DefaultArrayList(int size, T defaultValue) {
@@ -65,7 +65,7 @@ public class DefaultArrayList<T> extends ArrayList<T> {
   /**
    * Instantiates a new default list.
    *
-   * @param size the size
+   * @param size         the size
    * @param defaultValue the default value
    */
   public DefaultArrayList(int size, EntryCreator<T> defaultValue) {
@@ -113,7 +113,7 @@ public class DefaultArrayList<T> extends ArrayList<T> {
   /**
    * Creates the.
    *
-   * @param <T1> the generic type
+   * @param <T1>         the generic type
    * @param defaultValue the default value
    * @return the list
    */
@@ -124,8 +124,8 @@ public class DefaultArrayList<T> extends ArrayList<T> {
   /**
    * Creates the.
    *
-   * @param <T1> the generic type
-   * @param size the size
+   * @param <T1>         the generic type
+   * @param size         the size
    * @param defaultValue the default value
    * @return the list
    */
@@ -136,7 +136,7 @@ public class DefaultArrayList<T> extends ArrayList<T> {
   /**
    * Creates a new {@code DefaultArrayList}.
    *
-   * @param <T1> the generic type
+   * @param <T1>         the generic type
    * @param defaultValue the default value
    * @return the list
    */
@@ -147,8 +147,8 @@ public class DefaultArrayList<T> extends ArrayList<T> {
   /**
    * Creates a new {@code DefaultArrayList}.
    *
-   * @param <T1> the generic type
-   * @param size the size
+   * @param <T1>         the generic type
+   * @param size         the size
    * @param defaultValue the default value
    * @return the list
    */

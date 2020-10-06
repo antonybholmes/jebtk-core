@@ -83,7 +83,7 @@ public class TableData<T> implements Iterable<List<T>> {
   /**
    * Adds the column.
    *
-   * @param name the name
+   * @param name   the name
    * @param column the column
    */
   public final void addColumn(String name, List<T> column) {
@@ -105,7 +105,7 @@ public class TableData<T> implements Iterable<List<T>> {
    * Adds the row.
    *
    * @param name the name
-   * @param row the row
+   * @param row  the row
    */
   public final void addRow(String name, List<T> row) {
     if (data.get(0).size() != row.size()) {
@@ -159,8 +159,8 @@ public class TableData<T> implements Iterable<List<T>> {
 
     for (List<T> row : data) {
       /*
-       * try { columnValues.add(Double.parseDouble(row.get(column).toString()));
-       * } catch (NumberFormatException e) { columnValues.add((double) -1); }
+       * try { columnValues.add(Double.parseDouble(row.get(column).toString())); }
+       * catch (NumberFormatException e) { columnValues.add((double) -1); }
        */
 
       columnValues.add(Double.parseDouble(row.get(column).toString()));
@@ -180,8 +180,8 @@ public class TableData<T> implements Iterable<List<T>> {
 
     for (List<T> row : data) {
       /*
-       * try { columnValues.add(Integer.parseInt(row.get(column).toString())); }
-       * catch (NumberFormatException e) { columnValues.add(-1); }
+       * try { columnValues.add(Integer.parseInt(row.get(column).toString())); } catch
+       * (NumberFormatException e) { columnValues.add(-1); }
        */
 
       columnValues.add(Integer.parseInt(row.get(column).toString()));
@@ -238,9 +238,9 @@ public class TableData<T> implements Iterable<List<T>> {
   /**
    * Sets the.
    *
-   * @param row the row
+   * @param row    the row
    * @param column the column
-   * @param value the value
+   * @param value  the value
    */
   public void set(int row, int column, T value) {
     data.get(row).set(column, value);
@@ -249,13 +249,12 @@ public class TableData<T> implements Iterable<List<T>> {
   /**
    * Table to map.
    *
-   * @param <T> the generic type
-   * @param table the table
+   * @param <T>       the generic type
+   * @param table     the table
    * @param keyColumn the key column
    * @return the map
    */
-  public static final <T> Map<T, List<T>> tableToMap(TableData<T> table,
-      int keyColumn) {
+  public static final <T> Map<T, List<T>> tableToMap(TableData<T> table, int keyColumn) {
     Map<T, List<T>> map = new HashMap<T, List<T>>();
 
     for (List<T> row : table.data) {

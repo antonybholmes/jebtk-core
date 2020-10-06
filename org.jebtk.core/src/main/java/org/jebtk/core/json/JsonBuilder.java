@@ -79,8 +79,8 @@ public class JsonBuilder implements CharSequence {
   private StringBuilder mBuffer = null;
 
   /**
-   * Keep track of how many items deep we are in an array or object so that we
-   * can decide whether to print a comma or not.
+   * Keep track of how many items deep we are in an array or object so that we can
+   * decide whether to print a comma or not.
    */
   private int mC = 0;
 
@@ -334,7 +334,7 @@ public class JsonBuilder implements CharSequence {
    * Adds the.
    *
    * @param name the name
-   * @param s the s
+   * @param s    the s
    * @return the json builder
    */
   public JsonBuilder add(String name, String s) {
@@ -360,7 +360,7 @@ public class JsonBuilder implements CharSequence {
    * Adds the.
    *
    * @param name the name
-   * @param v the v
+   * @param v    the v
    * @return the json builder
    */
   public JsonBuilder add(String name, int v) {
@@ -374,7 +374,7 @@ public class JsonBuilder implements CharSequence {
    * Adds the.
    *
    * @param name the name
-   * @param v the v
+   * @param v    the v
    * @return the json builder
    */
   public JsonBuilder add(String name, double v) {
@@ -388,7 +388,7 @@ public class JsonBuilder implements CharSequence {
    * Adds the.
    *
    * @param name the name
-   * @param v the v
+   * @param v    the v
    * @return the json builder
    */
   public JsonBuilder add(String name, float v) {
@@ -403,7 +403,7 @@ public class JsonBuilder implements CharSequence {
    * Add a named long value.
    *
    * @param name the name
-   * @param v the v
+   * @param v    the v
    * @return the json builder
    */
   public JsonBuilder add(String name, long v) {
@@ -418,7 +418,7 @@ public class JsonBuilder implements CharSequence {
    * Adds the.
    *
    * @param name the name
-   * @param v the v
+   * @param v    the v
    * @return the json builder
    */
   public JsonBuilder add(String name, boolean v) {
@@ -433,7 +433,7 @@ public class JsonBuilder implements CharSequence {
    * Create an object key consisting of an array of values. Values are converted
    * to strings using {@code toString()}.
    *
-   * @param name the name
+   * @param name   the name
    * @param values the values
    * @return the json builder
    */
@@ -527,7 +527,7 @@ public class JsonBuilder implements CharSequence {
   /**
    * Insert a named array of integers into an JSON object.
    *
-   * @param name The name of the array.
+   * @param name   The name of the array.
    * @param values A collection of integers to write.
    * @return the json builder
    */
@@ -544,8 +544,8 @@ public class JsonBuilder implements CharSequence {
   }
 
   /**
-   * Reopen an array or object to add new elements. Should only be called
-   * directly after {@code endArray()} or {@code endObject()}.
+   * Reopen an array or object to add new elements. Should only be called directly
+   * after {@code endArray()} or {@code endObject()}.
    */
   public void reopen() {
     // Remove the last character which should either be ']' or '}'.
@@ -629,7 +629,7 @@ public class JsonBuilder implements CharSequence {
   /**
    * Add quotations around a JSON variable name or value.
    *
-   * @param text the text
+   * @param text   the text
    * @param buffer the buffer
    */
   public static final void quote(String text, StringBuilder buffer) {
@@ -639,12 +639,11 @@ public class JsonBuilder implements CharSequence {
   /**
    * Quote.
    *
-   * @param text the text
+   * @param text   the text
    * @param buffer the buffer
    * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static final void quote(String text, Appendable buffer)
-      throws IOException {
+  public static final void quote(String text, Appendable buffer) throws IOException {
     buffer.append(JSON_QUOTATION).append(text).append(JSON_QUOTATION);
   }
 }

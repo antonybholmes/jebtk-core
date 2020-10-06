@@ -121,7 +121,7 @@ public class Mathematics {
   /**
    * Return the log of a number in a given base.
    *
-   * @param x the x
+   * @param x    the x
    * @param base the base
    * @return the double
    */
@@ -150,7 +150,7 @@ public class Mathematics {
    * Inverse log.
    *
    * @param base the base
-   * @param x the x
+   * @param x    the x
    * @return the double
    */
   public static final double inverseLog(int base, double x) {
@@ -257,7 +257,7 @@ public class Mathematics {
    * Max.
    *
    * @param values the values
-   * @param start the start
+   * @param start  the start
    * @return the double
    */
   public static final double max(double[] values, int start) {
@@ -268,7 +268,7 @@ public class Mathematics {
    * Max.
    *
    * @param values the values
-   * @param start the start
+   * @param start  the start
    * @param length the length
    * @return the double
    */
@@ -312,8 +312,7 @@ public class Mathematics {
       return x * (x + 1) / 2;
     } else {
       // Log version of gauss sumation
-      return (int) (Math
-          .round(Math.exp(Math.log(x) + Math.log(x + 1) - Math.log(2))));
+      return (int) (Math.round(Math.exp(Math.log(x) + Math.log(x + 1) - Math.log(2))));
     }
   }
 
@@ -350,7 +349,7 @@ public class Mathematics {
   /**
    * Create a double array of a repeating value.
    *
-   * @param v the repeated value.
+   * @param v    the repeated value.
    * @param size the number of elements in the array.
    * @return the list
    */
@@ -367,7 +366,7 @@ public class Mathematics {
   /**
    * Int repeat.
    *
-   * @param v the v
+   * @param v    the v
    * @param size the size
    * @return the list
    */
@@ -404,7 +403,7 @@ public class Mathematics {
   /**
    * Repeat int array.
    *
-   * @param v the v
+   * @param v    the v
    * @param size the size
    * @return the int[]
    */
@@ -431,7 +430,7 @@ public class Mathematics {
   /**
    * Repeat byte array.
    *
-   * @param v the v
+   * @param v    the v
    * @param size the size
    * @return the byte[]
    */
@@ -468,7 +467,7 @@ public class Mathematics {
   /**
    * Create a prefilled double array of a single value.
    *
-   * @param v the v
+   * @param v    the v
    * @param size the size
    * @return the double[]
    */
@@ -502,7 +501,7 @@ public class Mathematics {
   /**
    * Ones.
    *
-   * @param rows the rows
+   * @param rows    the rows
    * @param columns the columns
    * @return the double[][]
    */
@@ -514,7 +513,7 @@ public class Mathematics {
   /**
    * Zeros.
    *
-   * @param rows the rows
+   * @param rows    the rows
    * @param columns the columns
    * @return the double[][]
    */
@@ -525,8 +524,8 @@ public class Mathematics {
   /**
    * Create a prefilled double array of a single value.
    *
-   * @param v the v
-   * @param rows the rows
+   * @param v       the v
+   * @param rows    the rows
    * @param columns the columns
    * @return the double[][]
    */
@@ -546,7 +545,7 @@ public class Mathematics {
    * Generate a sequence of numbers.
    *
    * @param start the start
-   * @param end the end
+   * @param end   the end
    * @return the list
    */
   public static List<Integer> sequence(int start, int end) {
@@ -556,8 +555,8 @@ public class Mathematics {
   /**
    * Generate a sequence of numbers with a fixed increment.
    *
-   * @param start the start
-   * @param end the end
+   * @param start     the start
+   * @param end       the end
    * @param increment the increment
    * @return the list
    */
@@ -586,8 +585,8 @@ public class Mathematics {
   /**
    * Generate a sequence of numbers with a fixed increment.
    *
-   * @param start the start
-   * @param end the end
+   * @param start     the start
+   * @param end       the end
    * @param increment the increment
    * @return the list
    */
@@ -605,14 +604,12 @@ public class Mathematics {
    * Linear interpolation of function specified by points x y to evaluate y' of
    * values.
    *
-   * @param x the x
-   * @param y the y
+   * @param x      the x
+   * @param y      the y
    * @param values the values
    * @return the list
    */
-  public static List<Double> linearInterpolation(List<Double> x,
-      List<Double> y,
-      List<Double> values) {
+  public static List<Double> linearInterpolation(List<Double> x, List<Double> y, List<Double> values) {
 
     System.err.println("interpolating");
 
@@ -637,8 +634,8 @@ public class Mathematics {
       found = false;
 
       /*
-       * // Modified binary search to find points to // interpolate between.
-       * Assumes values are // ordered smallest to largest.
+       * // Modified binary search to find points to // interpolate between. Assumes
+       * values are // ordered smallest to largest.
        * 
        * mins = 0; // skip last element maxs = indexed.size() - 2;
        * 
@@ -646,8 +643,8 @@ public class Mathematics {
        * 
        * //System.err.println("khsdfhsd " + mids);
        * 
-       * if (indexed.get(mids).value <= v && indexed.get(mids + 1).value > v) {
-       * // found the correct bin
+       * if (indexed.get(mids).value <= v && indexed.get(mids + 1).value > v) { //
+       * found the correct bin
        * 
        * yd = indexed.get(mids + 1).index - indexed.get(mids).index;
        * 
@@ -660,27 +657,24 @@ public class Mathematics {
        * 
        * found = true;
        * 
-       * break; } else if (indexed.get(mids).value == indexed.get(mids +
-       * 1).value) { // In regions where there are multiple bins with the same
-       * // value, keep skipping forward one until we find a bin // boundary.
-       * This portion of the algorithm is searching // linearly, but for the
-       * most part, if the values are // reasonably unique, the algorithm will
-       * perform in N(log 2) ++mins; } else if (indexed.get(mids).value > v) {
-       * maxs = mids - 1; } else if (indexed.get(mids).value < v) { mins = mids
-       * + 1; } else { break; } }
+       * break; } else if (indexed.get(mids).value == indexed.get(mids + 1).value) {
+       * // In regions where there are multiple bins with the same // value, keep
+       * skipping forward one until we find a bin // boundary. This portion of the
+       * algorithm is searching // linearly, but for the most part, if the values are
+       * // reasonably unique, the algorithm will perform in N(log 2) ++mins; } else
+       * if (indexed.get(mids).value > v) { maxs = mids - 1; } else if
+       * (indexed.get(mids).value < v) { mins = mids + 1; } else { break; } }
        */
 
       for (int j = 0; j < indexed.size() - 1; ++j) {
         // find where this v lies between
 
-        if (indexed.get(j).getValue() <= v
-            && indexed.get(j + 1).getValue() > v) {
+        if (indexed.get(j).getValue() <= v && indexed.get(j + 1).getValue() > v) {
           // interpolate
 
           yd = indexed.get(j + 1).getIndex() - indexed.get(j).getIndex();
 
-          xd = (v - indexed.get(j).getValue())
-              / (indexed.get(j + 1).getValue() - indexed.get(j).getValue());
+          xd = (v - indexed.get(j).getValue()) / (indexed.get(j + 1).getValue() - indexed.get(j).getValue());
 
           vi = indexed.get(j).getIndex() + yd * xd;
 
@@ -705,14 +699,12 @@ public class Mathematics {
   /**
    * Linear interpolation.
    *
-   * @param x the x
-   * @param y the y
+   * @param x      the x
+   * @param y      the y
    * @param values the values
    * @return the double[]
    */
-  public static double[] linearInterpolation(List<Double> x,
-      List<Double> y,
-      double[] values) {
+  public static double[] linearInterpolation(List<Double> x, List<Double> y, double[] values) {
 
     int n = values.length;
 
@@ -741,14 +733,12 @@ public class Mathematics {
       for (int j = 0; j < indexed.size() - 1; ++j) {
         // find where this v lies between
 
-        if (indexed.get(j).getValue() <= v
-            && indexed.get(j + 1).getValue() > v) {
+        if (indexed.get(j).getValue() <= v && indexed.get(j + 1).getValue() > v) {
           // interpolate
 
           yd = indexed.get(j + 1).getIndex() - indexed.get(j).getIndex();
 
-          xd = (v - indexed.get(j).getValue())
-              / (indexed.get(j + 1).getValue() - indexed.get(j).getValue());
+          xd = (v - indexed.get(j).getValue()) / (indexed.get(j + 1).getValue() - indexed.get(j).getValue());
 
           vi = indexed.get(j).getIndex() + yd * xd;
 
@@ -773,7 +763,7 @@ public class Mathematics {
   /**
    * Returns v bounded between min and max inclusive.
    *
-   * @param v the v
+   * @param v   the v
    * @param min the min
    * @param max the max
    * @return the int
@@ -786,7 +776,7 @@ public class Mathematics {
    * Bounds v and guarantees it lie between a number range. Chiefly for use for
    * ensuring that p-values etc do not exceed 1 or become less than zero.
    *
-   * @param v the v
+   * @param v   the v
    * @param min the min
    * @param max the max
    * @return the double
@@ -798,7 +788,7 @@ public class Mathematics {
   /**
    * Bound.
    *
-   * @param v the v
+   * @param v   the v
    * @param min the min
    * @param max the max
    * @return the float
@@ -810,7 +800,7 @@ public class Mathematics {
   /**
    * Will return v or min if v is less min.
    *
-   * @param v the v
+   * @param v   the v
    * @param min the min
    * @return the double
    */
@@ -915,7 +905,7 @@ public class Mathematics {
   /**
    * Copy a value into all elements of an array.
    *
-   * @param value the value
+   * @param value  the value
    * @param values the values
    */
   public static void copyValue(double value, double[] values) {
@@ -925,9 +915,9 @@ public class Mathematics {
   /**
    * Copy a value into all elements of an array.
    *
-   * @param value the value
+   * @param value  the value
    * @param values the values
-   * @param n copy up to n values
+   * @param n      copy up to n values
    */
   public static void copyValue(double value, double[] values, int n) {
     for (int i = 0; i < n; ++i) {
@@ -938,7 +928,7 @@ public class Mathematics {
   /**
    * Copy value.
    *
-   * @param value the value
+   * @param value  the value
    * @param values the values
    */
   public static void copyValue(int value, int[] values) {
@@ -948,9 +938,9 @@ public class Mathematics {
   /**
    * Copy value.
    *
-   * @param value the value
+   * @param value  the value
    * @param values the values
-   * @param n the n
+   * @param n      the n
    */
   public static void copyValue(int value, int[] values, int n) {
     copyValue(value, values, n, 0);
@@ -959,9 +949,9 @@ public class Mathematics {
   /**
    * Copy a value into an int array n times from a given offset.
    *
-   * @param value the value
+   * @param value  the value
    * @param values the values
-   * @param n the n
+   * @param n      the n
    * @param offset the offset
    */
   public static void copyValue(int value, int[] values, int n, int offset) {
@@ -973,7 +963,7 @@ public class Mathematics {
   /**
    * Copy value.
    *
-   * @param value the value
+   * @param value  the value
    * @param values the values
    */
   public static void copyValue(int value, byte[] values) {
@@ -983,9 +973,9 @@ public class Mathematics {
   /**
    * Copy a value into an byte array n times from a given offset.
    *
-   * @param value the value
+   * @param value  the value
    * @param values the values
-   * @param n the n
+   * @param n      the n
    * @param offset the offset
    */
   public static void copyValue(int value, byte[] values, int n, int offset) {
@@ -997,9 +987,9 @@ public class Mathematics {
   /**
    * Copy value.
    *
-   * @param value the value
+   * @param value  the value
    * @param values the values
-   * @param n the n
+   * @param n      the n
    */
   public static void copyValue(int value, byte[] values, int n) {
     copyValue(value, values, n, 0);
@@ -1030,7 +1020,7 @@ public class Mathematics {
    * Return the indices where values exceed a threshold.
    *
    * @param values the values
-   * @param min the min
+   * @param min    the min
    * @return the list
    */
   public static List<Integer> gtIndices(double[] values, double min) {
@@ -1095,29 +1085,26 @@ public class Mathematics {
   /**
    * Round a value to n places.
    *
-   * @param value the value
+   * @param value  the value
    * @param places the places
    * @return the double
    */
   public static double round(double value, int places) {
-    return new BigDecimal(value).setScale(places, RoundingMode.HALF_UP)
-        .doubleValue();
+    return new BigDecimal(value).setScale(places, RoundingMode.HALF_UP).doubleValue();
   }
 
   /**
    * Set the precision of a number.
    * 
-   * @param x A numner.
+   * @param x  A numner.
    * @param dp The number of decimal places to truncate the number to.
    * @return
    */
   public static double dp(double x, int dp) {
     if (x > 0) {
-      return new BigDecimal(x).setScale(dp, BigDecimal.ROUND_FLOOR)
-          .doubleValue();
+      return new BigDecimal(x).setScale(dp, BigDecimal.ROUND_FLOOR).doubleValue();
     } else {
-      return new BigDecimal(x).setScale(dp, BigDecimal.ROUND_CEILING)
-          .doubleValue();
+      return new BigDecimal(x).setScale(dp, BigDecimal.ROUND_CEILING).doubleValue();
     }
   }
 
@@ -1125,7 +1112,7 @@ public class Mathematics {
    * Returns the distance between two integers.
    *
    * @param start the start
-   * @param end the end
+   * @param end   the end
    * @return the length
    */
   public static int getLength(int start, int end) {
@@ -1151,20 +1138,18 @@ public class Mathematics {
    * @return the euclidian D
    */
   public static double getEuclidianD(Point p1, IntPos2D p2) {
-    return Math
-        .sqrt(Math.pow(p1.x - p2.getX(), 2) + Math.pow(p1.y - p2.getY(), 2));
+    return Math.sqrt(Math.pow(p1.x - p2.getX(), 2) + Math.pow(p1.y - p2.getY(), 2));
   }
 
   /**
    * Return a list of numbers multiplied by a factor.
    *
-   * @param <T> the generic type
+   * @param <T>    the generic type
    * @param values the values
-   * @param x the x
+   * @param x      the x
    * @return the list
    */
-  public static <T extends Number> List<Double> multiply(List<T> values,
-      double x) {
+  public static <T extends Number> List<Double> multiply(List<T> values, double x) {
     List<Double> ret = new ArrayList<Double>(values.size());
 
     for (T v : values) {
@@ -1299,8 +1284,8 @@ public class Mathematics {
   /**
    * Rand subset with replacement.
    *
-   * @param <T> the generic type
-   * @param l the l
+   * @param <T>  the generic type
+   * @param l    the l
    * @param size the size
    * @return the list
    */
@@ -1319,8 +1304,8 @@ public class Mathematics {
   /**
    * Rand subset with replacement.
    *
-   * @param <T> the generic type
-   * @param l the l
+   * @param <T>  the generic type
+   * @param l    the l
    * @param size the size
    * @return the double[]
    */
@@ -1340,8 +1325,8 @@ public class Mathematics {
    * Generate a random sequence of integers between 0 and max - 1 up to a given
    * size.
    *
-   * @param <T> the generic type
-   * @param max the max
+   * @param <T>  the generic type
+   * @param max  the max
    * @param size the size
    * @return the list
    */
@@ -1372,8 +1357,8 @@ public class Mathematics {
   /**
    * Rand subset without replacement.
    *
-   * @param <T> the generic type
-   * @param l the l
+   * @param <T>  the generic type
+   * @param l    the l
    * @param size the size
    * @return the list
    */
@@ -1403,7 +1388,7 @@ public class Mathematics {
    * Subtract.
    *
    * @param values the values
-   * @param x the x
+   * @param x      the x
    * @return the list
    */
   public static List<Integer> subtract(List<Integer> values, int x) {
@@ -1562,8 +1547,7 @@ public class Mathematics {
   }
 
   /**
-   * Compare two integers and return -1 if v1 < v2, 1 if v1 > v2, or 0
-   * otherwise.
+   * Compare two integers and return -1 if v1 < v2, 1 if v1 > v2, or 0 otherwise.
    * 
    * @param v1
    * @param v2

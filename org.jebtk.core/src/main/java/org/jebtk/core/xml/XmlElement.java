@@ -76,7 +76,7 @@ public class XmlElement implements Iterable<XmlElement>, FormattedXml {
   /**
    * Sets the attribute.
    *
-   * @param name the name
+   * @param name  the name
    * @param value the value
    */
   public void setAttribute(String name, String value) {
@@ -86,7 +86,7 @@ public class XmlElement implements Iterable<XmlElement>, FormattedXml {
   /**
    * Sets the attribute.
    *
-   * @param name the name
+   * @param name  the name
    * @param value the value
    */
   public final void setAttribute(String name, int value) {
@@ -96,7 +96,7 @@ public class XmlElement implements Iterable<XmlElement>, FormattedXml {
   /**
    * Sets the attribute.
    *
-   * @param name the name
+   * @param name  the name
    * @param value the value
    */
   public final void setAttribute(String name, double value) {

@@ -37,7 +37,7 @@ public class TailListIterator<T> implements ListIterator<T> {
   /**
    * Instantiates a new tail list iterator.
    *
-   * @param list the list
+   * @param list  the list
    * @param start the start
    */
   TailListIterator(List<T> list, int start) {

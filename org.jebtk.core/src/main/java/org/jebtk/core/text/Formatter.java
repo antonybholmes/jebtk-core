@@ -74,7 +74,7 @@ public class Formatter {
     /**
      * Format.
      *
-     * @param <T> the generic type
+     * @param <T>    the generic type
      * @param values the values
      * @return the list
      */
@@ -87,8 +87,7 @@ public class Formatter {
   public static class LocaleDpFormatter implements NumberFormatter {
 
     /** The m nf. */
-    public static NumberFormat mNf = NumberFormat
-        .getInstance(Locale.getDefault());
+    public static NumberFormat mNf = NumberFormat.getInstance(Locale.getDefault());
 
     public LocaleDpFormatter() {
       this(3);

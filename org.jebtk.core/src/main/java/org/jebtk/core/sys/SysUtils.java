@@ -154,11 +154,7 @@ public class SysUtils {
     arraycopy(src, 0, dest, offset, l);
   }
 
-  public static void arraycopy(char[] src,
-      int srcoffset,
-      char[] dest,
-      int destoffset,
-      int l) {
+  public static void arraycopy(char[] src, int srcoffset, char[] dest, int destoffset, int l) {
     System.arraycopy(src, srcoffset, dest, destoffset, l);
   }
 
@@ -186,11 +182,7 @@ public class SysUtils {
     arraycopy(src, 0, dest, offset, l);
   }
 
-  public static void arraycopy(byte[] src,
-      int srcoffset,
-      byte[] dest,
-      int destoffset,
-      int l) {
+  public static void arraycopy(byte[] src, int srcoffset, byte[] dest, int destoffset, int l) {
     System.arraycopy(src, srcoffset, dest, destoffset, l);
   }
 
@@ -232,45 +224,23 @@ public class SysUtils {
     arraycopy(src, 0, dest, offset, l);
   }
 
-  public static void arraycopy(double[] src,
-      int srcoffset,
-      double[] dest,
-      int destoffset,
-      int l) {
+  public static void arraycopy(double[] src, int srcoffset, double[] dest, int destoffset, int l) {
     System.arraycopy(src, srcoffset, dest, destoffset, l);
   }
 
-  public static void arraycopy(double[] src,
-      int offset,
-      int skip,
-      double[] dest,
-      int l) {
+  public static void arraycopy(double[] src, int offset, int skip, double[] dest, int l) {
     arraycopy(src, offset, skip, dest, 0, l);
   }
 
-  public static void arraycopy(double[] src,
-      int srcoffset,
-      int srcskip,
-      double[] dest,
-      int destoffset,
-      int l) {
+  public static void arraycopy(double[] src, int srcoffset, int srcskip, double[] dest, int destoffset, int l) {
     arraycopy(src, srcoffset, srcskip, dest, destoffset, 1, l);
   }
 
-  public static void arraycopy(double[] src,
-      double[] dest,
-      int destoffset,
-      int destskip,
-      int l) {
+  public static void arraycopy(double[] src, double[] dest, int destoffset, int destskip, int l) {
     arraycopy(src, 0, 1, dest, destoffset, destskip, l);
   }
 
-  public static void arraycopy(double[] src,
-      int srcoffset,
-      int srcskip,
-      double[] dest,
-      int destoffset,
-      int destskip,
+  public static void arraycopy(double[] src, int srcoffset, int srcskip, double[] dest, int destoffset, int destskip,
       int l) {
     for (int i = 0; i < l; ++i) {
       dest[destoffset] = src[srcoffset];
@@ -292,53 +262,29 @@ public class SysUtils {
     arraycopy(src, 0, dest, 0, l);
   }
 
-  public static void arraycopy(boolean[] src,
-      int srcoffset,
-      boolean[] dest,
-      int l) {
+  public static void arraycopy(boolean[] src, int srcoffset, boolean[] dest, int l) {
     arraycopy(src, srcoffset, dest, 0, l);
   }
 
-  public static void arraycopy(boolean[] src,
-      boolean[] dest,
-      int offset,
-      int l) {
+  public static void arraycopy(boolean[] src, boolean[] dest, int offset, int l) {
     arraycopy(src, 0, dest, offset, l);
   }
 
-  public static void arraycopy(boolean[] src,
-      int srcoffset,
-      boolean[] dest,
-      int destoffset,
-      int l) {
+  public static void arraycopy(boolean[] src, int srcoffset, boolean[] dest, int destoffset, int l) {
 
     System.arraycopy(src, srcoffset, dest, destoffset, l);
     // arraycopy(src, srcoffset, 1, dest, destoffset, 1, l);
   }
 
-  public static void arraycopy(boolean[] src,
-      int srcoffset,
-      int srcskip,
-      boolean[] dest,
-      int l) {
+  public static void arraycopy(boolean[] src, int srcoffset, int srcskip, boolean[] dest, int l) {
     arraycopy(src, srcoffset, srcskip, dest, 0, l);
   }
 
-  public static void arraycopy(boolean[] src,
-      int srcoffset,
-      int srcskip,
-      boolean[] dest,
-      int destoffset,
-      int l) {
+  public static void arraycopy(boolean[] src, int srcoffset, int srcskip, boolean[] dest, int destoffset, int l) {
     arraycopy(src, srcoffset, srcskip, dest, destoffset, 1, l);
   }
 
-  public static void arraycopy(boolean[] src,
-      int srcoffset,
-      int srcskip,
-      boolean[] dest,
-      int destoffset,
-      int destskip,
+  public static void arraycopy(boolean[] src, int srcoffset, int srcskip, boolean[] dest, int destoffset, int destskip,
       int l) {
     for (int i = 0; i < l; ++i) {
       dest[destoffset] = src[srcoffset];
@@ -368,40 +314,21 @@ public class SysUtils {
     arraycopy(src, 0, dest, offset, l);
   }
 
-  public static void arraycopy(int[] src,
-      int srcoffset,
-      int[] dest,
-      int destoffset,
-      int l) {
+  public static void arraycopy(int[] src, int srcoffset, int[] dest, int destoffset, int l) {
 
     System.arraycopy(src, srcoffset, dest, destoffset, l);
     // arraycopy(src, srcoffset, 1, dest, destoffset, 1, l);
   }
 
-  public static void arraycopy(int[] src,
-      int srcoffset,
-      int srcskip,
-      int[] dest,
-      int l) {
+  public static void arraycopy(int[] src, int srcoffset, int srcskip, int[] dest, int l) {
     arraycopy(src, srcoffset, srcskip, dest, 0, l);
   }
 
-  public static void arraycopy(int[] src,
-      int srcoffset,
-      int srcskip,
-      int[] dest,
-      int destoffset,
-      int l) {
+  public static void arraycopy(int[] src, int srcoffset, int srcskip, int[] dest, int destoffset, int l) {
     arraycopy(src, srcoffset, srcskip, dest, destoffset, 1, l);
   }
 
-  public static void arraycopy(int[] src,
-      int srcoffset,
-      int srcskip,
-      int[] dest,
-      int destoffset,
-      int destskip,
-      int l) {
+  public static void arraycopy(int[] src, int srcoffset, int srcskip, int[] dest, int destoffset, int destskip, int l) {
     for (int i = 0; i < l; ++i) {
       dest[destoffset] = src[srcoffset];
 
@@ -426,53 +353,32 @@ public class SysUtils {
     arraycopy(src, srcoffset, dest, 0, l);
   }
 
-  public static void arraycopy(long[] src,
-      int srcoffset,
-      long[] dest,
-      int destoffset,
-      int l) {
+  public static void arraycopy(long[] src, int srcoffset, long[] dest, int destoffset, int l) {
     System.arraycopy(src, srcoffset, dest, destoffset, l);
   }
 
-  public static void arraycopy(long[] src,
-      int srcoffset,
-      int srcskip,
-      long[] dest) {
+  public static void arraycopy(long[] src, int srcoffset, int srcskip, long[] dest) {
     arraycopy(src, srcoffset, srcskip, dest, src.length);
   }
 
   /**
    * Copy src array to dest array.
    * 
-   * @param src The source array.
+   * @param src       The source array.
    * @param srcoffset Source offset to begin copying.
-   * @param srcskip How many elements to skip at a time.
-   * @param dest Destination array.
-   * @param l How many elements to copy.
+   * @param srcskip   How many elements to skip at a time.
+   * @param dest      Destination array.
+   * @param l         How many elements to copy.
    */
-  public static void arraycopy(long[] src,
-      int srcoffset,
-      int srcskip,
-      long[] dest,
-      int l) {
+  public static void arraycopy(long[] src, int srcoffset, int srcskip, long[] dest, int l) {
     arraycopy(src, srcoffset, srcskip, dest, 0, l);
   }
 
-  public static void arraycopy(long[] src,
-      int srcoffset,
-      int srcskip,
-      long[] dest,
-      int destoffset,
-      int l) {
+  public static void arraycopy(long[] src, int srcoffset, int srcskip, long[] dest, int destoffset, int l) {
     arraycopy(src, srcoffset, srcskip, dest, destoffset, 1, l);
   }
 
-  public static void arraycopy(long[] src,
-      int srcoffset,
-      int srcskip,
-      long[] dest,
-      int destoffset,
-      int destskip,
+  public static void arraycopy(long[] src, int srcoffset, int srcskip, long[] dest, int destoffset, int destskip,
       int l) {
     for (int i = 0; i < l; ++i) {
       dest[destoffset] = src[srcoffset];
@@ -499,9 +405,9 @@ public class SysUtils {
   /**
    * Copy values from an object array to another.
    * 
-   * @param src The source array to copy from.
+   * @param src  The source array to copy from.
    * @param dest The destination array to copy to.
-   * @param l How many elements to copy.
+   * @param l    How many elements to copy.
    */
   public static void arraycopy(Object[] src, Object[] dest, int l) {
     arraycopy(src, dest, 0, l);
@@ -511,10 +417,7 @@ public class SysUtils {
     arraycopy(src, 0, dest, offset, l);
   }
 
-  public static void arraycopy(Object[] src,
-      int srcoffset,
-      Object[] dest,
-      int l) {
+  public static void arraycopy(Object[] src, int srcoffset, Object[] dest, int l) {
     arraycopy(src, srcoffset, dest, 0, l);
   }
 
@@ -522,30 +425,16 @@ public class SysUtils {
     arraycopy(src, offset, dest, dest.length);
   }
 
-  public static void arraycopy(Object[] src,
-      int srcoffset,
-      Object[] dest,
-      int destoffset,
-      int l) {
+  public static void arraycopy(Object[] src, int srcoffset, Object[] dest, int destoffset, int l) {
     System.arraycopy(src, srcoffset, dest, destoffset, l);
     // arraycopy(src, srcoffset, 1, dest, destoffset, 1, l);
   }
 
-  public static void arraycopy(Object[] src,
-      int srcoffset,
-      int srcskip,
-      Object[] dest,
-      int destoffset,
-      int l) {
+  public static void arraycopy(Object[] src, int srcoffset, int srcskip, Object[] dest, int destoffset, int l) {
     arraycopy(src, srcoffset, srcskip, dest, destoffset, 1, l);
   }
 
-  public static void arraycopy(Object[] src,
-      int srcoffset,
-      int srcskip,
-      Object[] dest,
-      int destoffset,
-      int destskip,
+  public static void arraycopy(Object[] src, int srcoffset, int srcskip, Object[] dest, int destoffset, int destskip,
       int l) {
     for (int i = 0; i < l; ++i) {
       dest[destoffset] = src[srcoffset];

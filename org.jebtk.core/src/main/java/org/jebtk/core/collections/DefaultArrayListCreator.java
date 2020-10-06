@@ -36,7 +36,7 @@ public class DefaultArrayListCreator<V> implements ListCreator<V> {
   /**
    * Instantiates a new default list creator.
    *
-   * @param listSize the list size
+   * @param listSize     the list size
    * @param defaultValue the default value
    */
   public DefaultArrayListCreator(V defaultValue) {
@@ -46,7 +46,7 @@ public class DefaultArrayListCreator<V> implements ListCreator<V> {
   /**
    * Instantiates a new default list creator.
    *
-   * @param listSize the list size
+   * @param listSize     the list size
    * @param defaultValue the default value
    */
   public DefaultArrayListCreator(EntryCreator<V> defaultValue) {

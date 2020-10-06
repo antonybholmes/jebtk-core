@@ -48,8 +48,8 @@ public class BufferUtils {
     }
 
     /**
-     * Buffer a collection of integers into a byte array buffer using 4 bytes
-     * per integer.
+     * Buffer a collection of integers into a byte array buffer using 4 bytes per
+     * integer.
      *
      * @param values the values
      * @return the byte buffer
@@ -99,8 +99,8 @@ public class BufferUtils {
     }
 
     /**
-     * Interprets a byte array as integers (4 bytes per int) and creates a list
-     * of integers.
+     * Interprets a byte array as integers (4 bytes per int) and creates a list of
+     * integers.
      *
      * @return the list
      */

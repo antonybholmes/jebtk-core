@@ -128,8 +128,7 @@ public class Xml {
    * @return the string
    */
   public static final String closedTag(String text) {
-    return new StringBuilder(openTag()).append(text).append(closedTag())
-        .toString();
+    return new StringBuilder(openTag()).append(text).append(closedTag()).toString();
   }
 
   /**
@@ -145,13 +144,12 @@ public class Xml {
   /**
    * Attribute.
    *
-   * @param name the name
+   * @param name  the name
    * @param value the value
    * @return the string
    */
   public static final String attribute(String name, String value) {
-    return new StringBuilder(" ").append(name).append("=\"").append(value)
-        .append("\"").toString();
+    return new StringBuilder(" ").append(name).append("=\"").append(value).append("\"").toString();
   }
 
   /**

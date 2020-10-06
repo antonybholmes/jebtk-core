@@ -37,8 +37,7 @@ public class ArgParser implements Iterable<Entry<String, List<String>>> {
   /**
    * The member args.
    */
-  private IterMap<String, List<String>> mArgMap = DefaultHashMap
-      .create(new ArrayListCreator<String>());
+  private IterMap<String, List<String>> mArgMap = DefaultHashMap.create(new ArrayListCreator<String>());
 
   private List<String> mOthers = new ArrayList<String>();
 
@@ -160,12 +159,12 @@ public class ArgParser implements Iterable<Entry<String, List<String>>> {
 
   /**
    * Parses a set of arguments and extracts values. If an arg is not properly
-   * specified, it will be ignored, for example '--arg=' with a missing value
-   * will not be available as an argument. This is to negate needing to throw
+   * specified, it will be ignored, for example '--arg=' with a missing value will
+   * not be available as an argument. This is to negate needing to throw
    * exceptions, but requires diligence on the user.
    *
    * @param options the options
-   * @param args the args
+   * @param args    the args
    * @return the command line args
    * @throws ArgException
    */
@@ -250,17 +249,14 @@ public class ArgParser implements Iterable<Entry<String, List<String>>> {
     int index = arg.indexOf("=");
 
     if (index > 0) {
-      return new org.jebtk.core.collections.Entry<String, String>(
-          arg.substring(0, index), arg.substring(index + 1));
+      return new org.jebtk.core.collections.Entry<String, String>(arg.substring(0, index), arg.substring(index + 1));
     } else {
-      return new org.jebtk.core.collections.Entry<String, String>(arg,
-          TextUtils.EMPTY_STRING);
+      return new org.jebtk.core.collections.Entry<String, String>(arg, TextUtils.EMPTY_STRING);
     }
   }
 
   public static String longArg(String name, String value) {
-    return new StringBuilder().append("--").append(name).append("=")
-        .append(value).toString();
+    return new StringBuilder().append("--").append(name).append("=").append(value).toString();
   }
 
   public static String longArg(String name) {

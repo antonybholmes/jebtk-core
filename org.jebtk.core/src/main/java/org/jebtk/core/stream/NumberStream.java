@@ -20,16 +20,14 @@ package org.jebtk.core.stream;
  *
  * @param <T> the generic type
  */
-public abstract class NumberStream<T extends Number>
-    extends ContainerStream<T> {
+public abstract class NumberStream<T extends Number> extends ContainerStream<T> {
 
   /**
    * The Class MeanFunction.
    *
    * @param <T> the generic type
    */
-  private static class MeanFunction<T extends Number>
-      implements ReduceFunction<T, Double> {
+  private static class MeanFunction<T extends Number> implements ReduceFunction<T, Double> {
 
     /*
      * (non-Javadoc)

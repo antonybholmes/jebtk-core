@@ -34,8 +34,7 @@ public class ColorUtils {
   public static final String HTML_COLOR_WHITE = "#ffffff";
 
   /** The Constant COLOR_PATTERN. */
-  public static final Pattern COLOR_PATTERN = Pattern
-      .compile("#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})");
+  public static final Pattern COLOR_PATTERN = Pattern.compile("#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})");
 
   /** Constant representing a transparent color */
   public static final Color TRANS_COLOR = new Color(0, 0, 0, 0);
@@ -173,8 +172,7 @@ public class ColorUtils {
       return null;
     }
 
-    return new Color(color.getRed(), color.getGreen(), color.getBlue(),
-        (int) (Mathematics.bound(alpha, 0, 1) * 255));
+    return new Color(color.getRed(), color.getGreen(), color.getBlue(), (int) (Mathematics.bound(alpha, 0, 1) * 255));
   }
 
   public static Color getTransparentColor(Color color, double alpha) {
@@ -358,13 +356,12 @@ public class ColorUtils {
   public static void main(String[] args) {
     Color color = ColorUtils.decodeHtmlColor("#2c5aa0");
 
-    System.err.println(
-        color.getRed() + " " + color.getBlue() + " " + color.getGreen());
+    System.err.println(color.getRed() + " " + color.getBlue() + " " + color.getGreen());
   }
 
   /**
-   * Return a grayscale color where 1 = 100% gray (i.e black) and 0 = 0% gray
-   * i.e. white.
+   * Return a grayscale color where 1 = 100% gray (i.e black) and 0 = 0% gray i.e.
+   * white.
    *
    * @param d the d
    * @return the gray scale
@@ -379,12 +376,11 @@ public class ColorUtils {
    * Lighten.
    *
    * @param color the color
-   * @param d the d
+   * @param d     the d
    * @return the color
    */
   public static Color lighten(Color color, double d) {
-    float[] v = Color
-        .RGBtoHSB(color.getRed(), color.getGreen(), color.getBlue(), null);
+    float[] v = Color.RGBtoHSB(color.getRed(), color.getGreen(), color.getBlue(), null);
 
     // Adjust the saturation
     v[2] = (float) Mathematics.bound(d, 0, 1); // (float)Mathematics.bound((1 -
@@ -400,12 +396,11 @@ public class ColorUtils {
    * Saturation.
    *
    * @param color the color
-   * @param d the d
+   * @param d     the d
    * @return the color
    */
   public static Color saturation(Color color, double d) {
-    float[] v = Color
-        .RGBtoHSB(color.getRed(), color.getGreen(), color.getBlue(), null);
+    float[] v = Color.RGBtoHSB(color.getRed(), color.getGreen(), color.getBlue(), null);
 
     // Adjust the saturation
     v[1] = (float) Mathematics.bound(v[1] + ((1 - v[1]) * (1 + d)), 0, 1); // (float)Math.min(1,
@@ -478,8 +473,8 @@ public class ColorUtils {
    * @return the color
    */
   public static Color makeColor(float r, float g, float b, float a) {
-    return new Color(Mathematics.bound(r, 0, 1), Mathematics.bound(g, 0, 1),
-        Mathematics.bound(b, 0, 1), Mathematics.bound(a, 0, 1));
+    return new Color(Mathematics.bound(r, 0, 1), Mathematics.bound(g, 0, 1), Mathematics.bound(b, 0, 1),
+        Mathematics.bound(a, 0, 1));
   }
 
   /**
@@ -501,16 +496,13 @@ public class ColorUtils {
   /**
    * Create a gradient color.
    *
-   * @param y1 the y 1
-   * @param y2 the y 2
+   * @param y1     the y 1
+   * @param y2     the y 2
    * @param color1 the color 1
    * @param color2 the color 2
    * @return the v gradient
    */
-  public static GradientPaint getVGradient(int y1,
-      int y2,
-      Color color1,
-      Color color2) {
+  public static GradientPaint getVGradient(int y1, int y2, Color color1, Color color2) {
     return new GradientPaint(0, y1, color1, 0, y2, color2, false);
   }
 

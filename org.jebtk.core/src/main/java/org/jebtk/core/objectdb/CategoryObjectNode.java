@@ -31,8 +31,8 @@ import org.jebtk.core.settings.KeyNode;
  * @author Antony Holmes
  * @param <T> the generic type
  */
-public class CategoryObjectNode<T> implements Iterable<CategoryObjectNode<T>>,
-    Comparable<CategoryObjectNode<T>>, Serializable {
+public class CategoryObjectNode<T>
+    implements Iterable<CategoryObjectNode<T>>, Comparable<CategoryObjectNode<T>>, Serializable {
 
   /**
    * The constant serialVersionUID.
@@ -131,8 +131,8 @@ public class CategoryObjectNode<T> implements Iterable<CategoryObjectNode<T>>,
   }
 
   /**
-   * Traverse a Props tree using a path expression to find a particular
-   * property. Returns null if the property is not found.
+   * Traverse a Props tree using a path expression to find a particular property.
+   * Returns null if the property is not found.
    *
    * @param path the path
    * @return the child by path

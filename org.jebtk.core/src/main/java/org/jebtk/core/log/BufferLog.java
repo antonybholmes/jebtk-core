@@ -23,8 +23,7 @@ import org.jebtk.core.collections.CircularArray;
  * @author Antony Holmes
  *
  */
-public class BufferLog extends CircularArray<LogEvent>
-    implements LogEventListener {
+public class BufferLog extends CircularArray<LogEvent> implements LogEventListener {
 
   /**
    * 

@@ -34,8 +34,8 @@ public class UniqueList<T> extends ListContainer<T> {
 
   /**
    * Instantiates a new unique array list. A unique array list is an array list
-   * that preserves the order of items as they are added, but discards
-   * subsequent duplicates.
+   * that preserves the order of items as they are added, but discards subsequent
+   * duplicates.
    */
   public UniqueList(List<T> list) {
     super(list);

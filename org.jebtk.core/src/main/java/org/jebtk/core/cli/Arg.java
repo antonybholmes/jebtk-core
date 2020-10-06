@@ -50,8 +50,8 @@ public class Arg {
   /**
    * Instantiates a new command line option.
    *
-   * @param shortName the short name
-   * @param hasArg the has arg
+   * @param shortName   the short name
+   * @param hasArg      the has arg
    * @param description the description
    */
   public Arg(char shortName, boolean hasArg, String description) {
@@ -61,21 +61,19 @@ public class Arg {
   /**
    * Instantiates a new command line option.
    *
-   * @param shortName the short name
-   * @param longName the long name
-   * @param hasArg the has arg
+   * @param shortName   the short name
+   * @param longName    the long name
+   * @param hasArg      the has arg
    * @param description the description
    */
-  public Arg(char shortName, String longName, boolean hasArg,
-      String description) {
+  public Arg(char shortName, String longName, boolean hasArg, String description) {
     mShortName = Character.toString(shortName);
     mLongName = longName;
     mHasValue = hasArg;
     mDescription = description;
   }
 
-  public Arg(char shortName, String longName, boolean hasArg,
-      String defaultValue, String description) {
+  public Arg(char shortName, String longName, boolean hasArg, String defaultValue, String description) {
     mShortName = Character.toString(shortName);
     mLongName = longName;
     mHasValue = hasArg;

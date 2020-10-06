@@ -38,9 +38,9 @@ public class StrictPathLevel extends PathLevel {
   }
 
   /**
-   * Return the path level in a standardized way. Path elements consist only of
-   * of letters, numbers dashes and underscores. All other characters are
-   * considered illegal and stripped out. Brackets are converted to underscores.
+   * Return the path level in a standardized way. Path elements consist only of of
+   * letters, numbers dashes and underscores. All other characters are considered
+   * illegal and stripped out. Brackets are converted to underscores.
    *
    * @param level the level
    * @return the string

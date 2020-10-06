@@ -43,7 +43,7 @@ public class KeyStore<T, X> implements ChangeEventProducer {
   /**
    * Adds the.
    *
-   * @param key the key
+   * @param key  the key
    * @param item the item
    * @return the x
    */
@@ -58,7 +58,7 @@ public class KeyStore<T, X> implements ChangeEventProducer {
   /**
    * Update.
    *
-   * @param key the key
+   * @param key  the key
    * @param item the item
    * @return the x
    */
@@ -105,8 +105,7 @@ public class KeyStore<T, X> implements ChangeEventProducer {
   /*
    * (non-Javadoc)
    * 
-   * @see
-   * org.abh.lib.event.ChangeEventProducer#removeChangeListener(org.abh.lib.
+   * @see org.abh.lib.event.ChangeEventProducer#removeChangeListener(org.abh.lib.
    * event. ChangeListener)
    */
   @Override

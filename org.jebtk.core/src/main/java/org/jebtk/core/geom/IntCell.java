@@ -20,7 +20,7 @@ package org.jebtk.core.geom;
  */
 public class IntCell implements Comparable<IntCell> {
   public static final IntCell ZERO = new IntCell(0, 0);
-  
+
   /**
    * The member row.
    */

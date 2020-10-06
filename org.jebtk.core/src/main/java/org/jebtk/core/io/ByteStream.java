@@ -74,8 +74,7 @@ public class ByteStream {
       return -1;
     }
 
-    return (mD[mP++] << 24) | (mD[mP++] << 16) | (mD[mP++] << 8)
-        | (mD[mP++] & 0xFF);
+    return (mD[mP++] << 24) | (mD[mP++] << 16) | (mD[mP++] << 8) | (mD[mP++] & 0xFF);
   }
 
   /**

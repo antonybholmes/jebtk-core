@@ -16,7 +16,7 @@ public abstract class Param implements NameGetter {
   /**
    * Gets the param string.
    *
-   * @param name the name
+   * @param name  the name
    * @param value the value
    * @return the param string
    * @throws UnsupportedEncodingException the unsupported encoding exception
@@ -28,7 +28,7 @@ public abstract class Param implements NameGetter {
   /**
    * Gets the param string.
    *
-   * @param name the name
+   * @param name  the name
    * @param value the value
    * @return the param string
    * @throws UnsupportedEncodingException the unsupported encoding exception
@@ -40,7 +40,7 @@ public abstract class Param implements NameGetter {
   /**
    * Gets the param string.
    *
-   * @param name the name
+   * @param name  the name
    * @param value the value
    * @return the param string
    * @throws UnsupportedEncodingException the unsupported encoding exception
@@ -52,13 +52,12 @@ public abstract class Param implements NameGetter {
   /**
    * Gets the param string.
    *
-   * @param name the name
+   * @param name  the name
    * @param value the value
    * @return the param string
    * @throws UnsupportedEncodingException the unsupported encoding exception
    */
   public static String getParamString(String name, String value) {
-    return new StringBuilder(URLPath.encode(name)).append("=")
-        .append(URLPath.encode(value)).toString();
+    return new StringBuilder(URLPath.encode(name)).append("=").append(URLPath.encode(value)).toString();
   }
 }

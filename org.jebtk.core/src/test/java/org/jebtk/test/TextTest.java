@@ -27,14 +27,13 @@ public class TextTest {
     System.err.println(TextUtils.titleCase("title case"));
     assertEquals("Title case", TextUtils.titleCase("title case"), "Title Case");
   }
-  
+
   @Test
   public void formatTest() {
     System.err.println(TextUtils.format("insert {} {}", "test", 42));
     assertEquals("Format case", TextUtils.format("insert {}", "test"), "insert test");
   }
-  
-  
+
   @Test
   public void parseTest() {
     System.err.println("blocl " + TextUtils.parseDouble("200 %"));

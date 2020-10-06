@@ -30,8 +30,7 @@ import org.jebtk.core.event.ChangeListeners;
  * @param <T> the generic type
  * @param <X> the generic type
  */
-public class MapModel<T extends Comparable<? super T>, X> extends HashMap<T, X>
-    implements ChangeEventProducer {
+public class MapModel<T extends Comparable<? super T>, X> extends HashMap<T, X> implements ChangeEventProducer {
 
   /**
    * The constant serialVersionUID.
@@ -46,7 +45,7 @@ public class MapModel<T extends Comparable<? super T>, X> extends HashMap<T, X>
   /**
    * Adds the.
    *
-   * @param key the key
+   * @param key  the key
    * @param item the item
    * @return the x
    */
@@ -61,7 +60,7 @@ public class MapModel<T extends Comparable<? super T>, X> extends HashMap<T, X>
   /**
    * Update.
    *
-   * @param key the key
+   * @param key  the key
    * @param item the item
    * @return the x
    */
@@ -105,8 +104,7 @@ public class MapModel<T extends Comparable<? super T>, X> extends HashMap<T, X>
   /*
    * (non-Javadoc)
    * 
-   * @see
-   * org.abh.lib.event.ChangeEventProducer#removeChangeListener(org.abh.lib.
+   * @see org.abh.lib.event.ChangeEventProducer#removeChangeListener(org.abh.lib.
    * event. ChangeListener)
    */
   @Override

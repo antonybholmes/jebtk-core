@@ -80,8 +80,7 @@ public class DirFile extends File {
    * @return the list
    * @throws FileIsNotADirException the file is not A dir exception
    */
-  public static List<DirFile> convert(File[] files)
-      throws FileIsNotADirException {
+  public static List<DirFile> convert(File[] files) throws FileIsNotADirException {
     List<DirFile> ret = new ArrayList<DirFile>(files.length);
 
     for (File file : files) {

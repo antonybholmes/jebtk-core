@@ -30,14 +30,14 @@ public class ArgTest {
     options.add('b', true);
     options.add('g', "genome", true);
 
-    String[] args = {"--region-file=test", "-b", "ha"};
+    String[] args = { "--region-file=test", "-b", "ha" };
 
     ArgParser parser = new ArgParser(options).parse(args);
 
     Path regionsFile = PathUtils.getPath(parser.getArg("region-file"));
     Path bam = PathUtils.getPath(parser.getArg("b"));
-    String genome  = parser.getArg("genome");
+    String genome = parser.getArg("genome");
 
-    System.err.println("args " + regionsFile + " "+ bam);
+    System.err.println("args " + regionsFile + " " + bam);
   }
 }

@@ -33,10 +33,10 @@ public class SettingInt extends Setting {
   /**
    * Instantiates a new setting int.
    *
-   * @param path the path
-   * @param value the value
+   * @param path        the path
+   * @param value       the value
    * @param description the description
-   * @param locked the locked
+   * @param locked      the locked
    */
   public SettingInt(Path path, int value, String description, boolean locked) {
     super(path, description, locked);
@@ -91,8 +91,8 @@ public class SettingInt extends Setting {
    */
   @Override
   public String toString() {
-    return new StringBuilder("int_setting:").append(mPath.toString())
-        .append(TextUtils.EQUALS_DELIMITER).append(mValue).toString();
+    return new StringBuilder("int_setting:").append(mPath.toString()).append(TextUtils.EQUALS_DELIMITER).append(mValue)
+        .toString();
   }
 
   /*

@@ -32,8 +32,8 @@ import org.jebtk.core.stream.Stream;
 public class Splitter {
 
   /**
-   * The default size of the list of splits. This is to reduce resizing
-   * operations on the list in most cases.
+   * The default size of the list of splits. This is to reduce resizing operations
+   * on the list in most cases.
    */
   private static final int DEFAULT_SPLIT_SIZE = 32;
 
@@ -63,12 +63,9 @@ public class Splitter {
      * org.abh.common.text.Trimmer, boolean, int)
      */
     @Override
-    public List<String> split(final String text,
-        boolean ignoreEmptyStrings,
-        int maxNumItems) {
+    public List<String> split(final String text, boolean ignoreEmptyStrings, int maxNumItems) {
 
-      List<String> ret = new MaxSizeArrayList<String>(DEFAULT_SPLIT_SIZE,
-          maxNumItems);
+      List<String> ret = new MaxSizeArrayList<String>(DEFAULT_SPLIT_SIZE, maxNumItems);
 
       String v;
 
@@ -128,14 +125,11 @@ public class Splitter {
      * org.abh.common.text.Trimmer, boolean, int)
      */
     @Override
-    public List<String> split(final String text,
-        boolean ignoreEmptyStrings,
-        int maxNumItems) {
+    public List<String> split(final String text, boolean ignoreEmptyStrings, int maxNumItems) {
 
       char[] trimmed = text.toCharArray();
 
-      List<String> list = new MaxSizeArrayList<String>(DEFAULT_SPLIT_SIZE,
-          maxNumItems);
+      List<String> list = new MaxSizeArrayList<String>(DEFAULT_SPLIT_SIZE, maxNumItems);
 
       String v;
 
@@ -211,11 +205,8 @@ public class Splitter {
      * org.abh.common.text.Trimmer, boolean, int)
      */
     @Override
-    public List<String> split(String text,
-        boolean ignoreEmptyStrings,
-        int maxNumItems) {
-      List<String> ret = new MaxSizeArrayList<String>(DEFAULT_SPLIT_SIZE,
-          maxNumItems);
+    public List<String> split(String text, boolean ignoreEmptyStrings, int maxNumItems) {
+      List<String> ret = new MaxSizeArrayList<String>(DEFAULT_SPLIT_SIZE, maxNumItems);
 
       String v;
 
@@ -224,8 +215,7 @@ public class Splitter {
 
       int n = mDelimiter.length();
 
-      while ((j = text.indexOf(mDelimiter, i)) != -1
-          && ret.size() < maxNumItems) {
+      while ((j = text.indexOf(mDelimiter, i)) != -1 && ret.size() < maxNumItems) {
         // System.err.println(text + " " + trimmed + " " + i + " " + j);
 
         v = text.substring(i, j);
@@ -275,12 +265,9 @@ public class Splitter {
      * org.abh.common.text.Trimmer, boolean, int)
      */
     @Override
-    public List<String> split(final String text,
-        boolean ignoreEmptyStrings,
-        int maxNumItems) {
+    public List<String> split(final String text, boolean ignoreEmptyStrings, int maxNumItems) {
 
-      List<String> list = new MaxSizeArrayList<String>(DEFAULT_SPLIT_SIZE,
-          maxNumItems);
+      List<String> list = new MaxSizeArrayList<String>(DEFAULT_SPLIT_SIZE, maxNumItems);
 
       String v;
 
@@ -324,9 +311,7 @@ public class Splitter {
      * org.abh.common.text.Trimmer, boolean, int)
      */
     @Override
-    public List<String> split(String text,
-        boolean ignoreEmptyStrings,
-        int maxNumItems) {
+    public List<String> split(String text, boolean ignoreEmptyStrings, int maxNumItems) {
 
       List<String> ret = new ArrayList<String>();
 
@@ -385,13 +370,12 @@ public class Splitter {
   /**
    * Instantiates a new splitter.
    *
-   * @param splitMode the split mode
-   * @param trimmer the trimmer
+   * @param splitMode          the split mode
+   * @param trimmer            the trimmer
    * @param ignoreEmptyStrings the ignore empty strings
-   * @param maxNumItems the maxNumItems
+   * @param maxNumItems        the maxNumItems
    */
-  public Splitter(SplitMode splitMode, Trimmer trimmer,
-      boolean ignoreEmptyStrings, int maxNumItems) {
+  public Splitter(SplitMode splitMode, Trimmer trimmer, boolean ignoreEmptyStrings, int maxNumItems) {
     mSplitMode = splitMode;
     mTrimmer = trimmer;
     mIgoreEmptyStrings = ignoreEmptyStrings;
@@ -399,8 +383,7 @@ public class Splitter {
   }
 
   /**
-   * Splits some text into multiple sub strings, based on a delimiter or
-   * pattern.
+   * Splits some text into multiple sub strings, based on a delimiter or pattern.
    *
    * @param text the text
    * @return the list
@@ -458,8 +441,7 @@ public class Splitter {
    * @return the splitter
    */
   public Splitter trim(Trimmer trimmer) {
-    return new Splitter(mSplitMode, trimmer, mIgoreEmptyStrings,
-        Integer.MAX_VALUE);
+    return new Splitter(mSplitMode, trimmer, mIgoreEmptyStrings, Integer.MAX_VALUE);
   }
 
   /**
@@ -473,8 +455,7 @@ public class Splitter {
       // Commas are treated as csv which get special handling.
       return onComma();
     } else {
-      return new Splitter(new CharSplitMode(delimiter), Trimmer.NO_TRIM, false,
-          Integer.MAX_VALUE);
+      return new Splitter(new CharSplitMode(delimiter), Trimmer.NO_TRIM, false, Integer.MAX_VALUE);
     }
   }
 
@@ -485,8 +466,7 @@ public class Splitter {
    * @return the splitter
    */
   public static Splitter on(char... delimiters) {
-    return new Splitter(new CharsSplitMode(delimiters), Trimmer.NO_TRIM, false,
-        Integer.MAX_VALUE);
+    return new Splitter(new CharsSplitMode(delimiters), Trimmer.NO_TRIM, false, Integer.MAX_VALUE);
   }
 
   /**
@@ -496,8 +476,7 @@ public class Splitter {
    * @return the splitter
    */
   public static Splitter on(String delimiter) {
-    return new Splitter(new TextSplitMode(delimiter), Trimmer.NO_TRIM, false,
-        Integer.MAX_VALUE);
+    return new Splitter(new TextSplitMode(delimiter), Trimmer.NO_TRIM, false, Integer.MAX_VALUE);
   }
 
   /**
@@ -507,8 +486,7 @@ public class Splitter {
    * @return the splitter
    */
   public static Splitter on(Pattern regex) {
-    return new Splitter(new PatternSplitMode(regex), Trimmer.NO_TRIM, false,
-        Integer.MAX_VALUE);
+    return new Splitter(new PatternSplitMode(regex), Trimmer.NO_TRIM, false, Integer.MAX_VALUE);
   }
 
   /**
@@ -557,21 +535,19 @@ public class Splitter {
    * @return the splitter
    */
   public static Splitter onComma() {
-    return new Splitter(new CSVSplitMode(), Trimmer.NO_TRIM, false,
-        Integer.MAX_VALUE);
+    return new Splitter(new CSVSplitMode(), Trimmer.NO_TRIM, false, Integer.MAX_VALUE);
   }
 
   /**
    * Assumes each string in values is of the form key<delimiter>value and splits
-   * each string and adds the key value pairs to a map. Suitable only if keys
-   * are unique.
+   * each string and adds the key value pairs to a map. Suitable only if keys are
+   * unique.
    *
-   * @param values the values
+   * @param values    the values
    * @param delimiter the delimiter
    * @return the map
    */
-  public static IterMap<String, String> toMap(List<String> values,
-      char delimiter) {
+  public static IterMap<String, String> toMap(List<String> values, char delimiter) {
     IterMap<String, String> ret = new IterHashMap<String, String>();
 
     for (String value : values) {

@@ -33,13 +33,12 @@ public class SettingLong extends Setting {
   /**
    * Instantiates a new setting long.
    *
-   * @param path the path
-   * @param value the value
+   * @param path        the path
+   * @param value       the value
    * @param description the description
-   * @param locked the locked
+   * @param locked      the locked
    */
-  public SettingLong(Path path, long value, String description,
-      boolean locked) {
+  public SettingLong(Path path, long value, String description, boolean locked) {
     super(path, description, locked);
 
     mValue = value;
@@ -92,8 +91,8 @@ public class SettingLong extends Setting {
    */
   @Override
   public String toString() {
-    return new StringBuilder("long_setting:").append(mPath.toString())
-        .append(TextUtils.EQUALS_DELIMITER).append(mValue).toString();
+    return new StringBuilder("long_setting:").append(mPath.toString()).append(TextUtils.EQUALS_DELIMITER).append(mValue)
+        .toString();
   }
 
   /*

@@ -48,7 +48,7 @@ public class Event extends EventObject implements IdProperty {
   /**
    * Instantiates a new event.
    *
-   * @param source the source
+   * @param source  the source
    * @param message the message
    */
   public Event(Object source, String message) {

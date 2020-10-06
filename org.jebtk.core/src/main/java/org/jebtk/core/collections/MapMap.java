@@ -22,7 +22,7 @@ import java.util.Map;
  *
  * @param <K1> the generic type
  * @param <K2> the generic type
- * @param <V> the value type
+ * @param <V>  the value type
  */
 public interface MapMap<K1, K2, V> extends IterMap<K1, IterMap<K2, V>> {
 
@@ -41,8 +41,8 @@ public interface MapMap<K1, K2, V> extends IterMap<K1, IterMap<K2, V>> {
   /**
    * Put.
    *
-   * @param key1 the key1
-   * @param key2 the key2
+   * @param key1  the key1
+   * @param key2  the key2
    * @param value the value
    * @return the map
    */

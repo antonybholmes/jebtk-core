@@ -27,11 +27,9 @@ public class HttpMultiPartContent extends HttpContent {
 
   private static final String MIME_TEXT = "text/plain";
 
-  private static final String TEXT_CONTENT = "Content-Type: " + MIME_TEXT
-      + Http.CRLF;
+  private static final String TEXT_CONTENT = "Content-Type: " + MIME_TEXT + Http.CRLF;
 
-  private static final String BINARY_TRANSFER = "Content-Transfer-Encoding: binary"
-      + Http.CRLF;
+  private static final String BINARY_TRANSFER = "Content-Transfer-Encoding: binary" + Http.CRLF;
 
   private IterMap<String, String> mParamMap = new IterHashMap<String, String>();
   private IterMap<String, Path> mFileMap = new IterHashMap<String, Path>();
@@ -50,8 +48,7 @@ public class HttpMultiPartContent extends HttpContent {
     mMultipartBlock = TWO_HYPHENS + mBoundary + Http.CRLF;
     mMultipartEnd = TWO_HYPHENS + mBoundary + TWO_HYPHENS + Http.CRLF;
 
-    connection.setRequestProperty("Content-Type",
-        "multipart/form-data; boundary=" + mBoundary);
+    connection.setRequestProperty("Content-Type", "multipart/form-data; boundary=" + mBoundary);
   }
 
   public HttpMultiPartContent addParam(String name, String value) {
@@ -89,8 +86,7 @@ public class HttpMultiPartContent extends HttpContent {
     }
   }
 
-  private void writeFile(String name, Path file, DataOutputStream out)
-      throws IOException {
+  private void writeFile(String name, Path file, DataOutputStream out) throws IOException {
     out.writeBytes(mMultipartBlock);
     out.writeBytes("Content-Disposition: form-data; name=\"");
     out.writeBytes(name);
@@ -125,8 +121,7 @@ public class HttpMultiPartContent extends HttpContent {
     }
   }
 
-  private void writeParam(String key, String value, DataOutputStream out)
-      throws IOException {
+  private void writeParam(String key, String value, DataOutputStream out) throws IOException {
     out.writeBytes(mMultipartBlock);
     out.writeBytes("Content-Disposition: form-data; name=\"");
     out.writeBytes(key);

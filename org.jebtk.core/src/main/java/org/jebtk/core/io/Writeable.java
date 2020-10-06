@@ -24,8 +24,8 @@ import java.nio.file.Path;
 public interface Writeable {
 
   /**
-   * Writes the contents for file to the string builder so multiple exporters
-   * can be amalgamated.
+   * Writes the contents for file to the string builder so multiple exporters can
+   * be amalgamated.
    *
    * @param buffer the buffer
    */

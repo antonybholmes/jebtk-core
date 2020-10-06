@@ -79,16 +79,13 @@ public class Trimmer {
   /**
    * Trims a string and applies the splitter on the trimmed string.
    *
-   * @param splitMode the split mode
-   * @param text the text
+   * @param splitMode          the split mode
+   * @param text               the text
    * @param ignoreEmptyStrings the ignore empty strings
-   * @param maxNumItems the max num items
+   * @param maxNumItems        the max num items
    * @return the list
    */
-  public List<String> trim(SplitMode splitMode,
-      final String text,
-      boolean ignoreEmptyStrings,
-      int maxNumItems) {
+  public List<String> trim(SplitMode splitMode, final String text, boolean ignoreEmptyStrings, int maxNumItems) {
     return splitMode.split(trim(text), ignoreEmptyStrings, maxNumItems);
   }
 

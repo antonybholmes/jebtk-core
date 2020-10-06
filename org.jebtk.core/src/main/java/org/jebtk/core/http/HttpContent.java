@@ -21,8 +21,7 @@ public abstract class HttpContent {
    * @throws IOException
    */
   public HttpResponse execute() throws IOException {
-    DataOutputStream out = new DataOutputStream(
-        new BufferedOutputStream(mConnection.getOutputStream()));
+    DataOutputStream out = new DataOutputStream(new BufferedOutputStream(mConnection.getOutputStream()));
 
     try {
       execute(out);

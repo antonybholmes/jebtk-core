@@ -57,54 +57,47 @@ public class URLUtils {
   private static final Logger LOG = LoggerFactory.getLogger(URLUtils.class);
 
   /** The Constant GOOD_IRI_CHAR. */
-  public static final Pattern GOOD_IRI_CHAR = Pattern
-      .compile("a-zA-Z0-9\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF");
+  public static final Pattern GOOD_IRI_CHAR = Pattern.compile("a-zA-Z0-9\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF");
 
   /** The Constant IP_ADDRESS. */
-  public static final Pattern IP_ADDRESS = Pattern.compile(
-      "((25[0-5]|2[0-4][0-9]|[0-1][0-9]{2}|[1-9][0-9]|[1-9])\\.(25[0-5]|2[0-4]"
+  public static final Pattern IP_ADDRESS = Pattern
+      .compile("((25[0-5]|2[0-4][0-9]|[0-1][0-9]{2}|[1-9][0-9]|[1-9])\\.(25[0-5]|2[0-4]"
           + "[0-9]|[0-1][0-9]{2}|[1-9][0-9]|[1-9]|0)\\.(25[0-5]|2[0-4][0-9]|[0-1]"
-          + "[0-9]{2}|[1-9][0-9]|[1-9]|0)\\.(25[0-5]|2[0-4][0-9]|[0-1][0-9]{2}"
-          + "|[1-9][0-9]|[0-9]))");
+          + "[0-9]{2}|[1-9][0-9]|[1-9]|0)\\.(25[0-5]|2[0-4][0-9]|[0-1][0-9]{2}" + "|[1-9][0-9]|[0-9]))");
 
   /**
    * RFC 1035 Section 2.3.4 limits the labels to a maximum 63 octets.
    */
-  private static final Pattern IRI = Pattern.compile("[" + GOOD_IRI_CHAR + "](["
-      + GOOD_IRI_CHAR + "\\-]{0,61}[" + GOOD_IRI_CHAR + "]){0,1}");
+  private static final Pattern IRI = Pattern
+      .compile("[" + GOOD_IRI_CHAR + "]([" + GOOD_IRI_CHAR + "\\-]{0,61}[" + GOOD_IRI_CHAR + "]){0,1}");
 
   /** The Constant GOOD_GTLD_CHAR. */
-  private static final Pattern GOOD_GTLD_CHAR = Pattern
-      .compile("a-zA-Z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF");
+  private static final Pattern GOOD_GTLD_CHAR = Pattern.compile("a-zA-Z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF");
 
   /** The Constant GTLD. */
-  private static final Pattern GTLD = Pattern
-      .compile("[" + GOOD_GTLD_CHAR + "]{2,63}");
+  private static final Pattern GTLD = Pattern.compile("[" + GOOD_GTLD_CHAR + "]{2,63}");
 
   /** The Constant HOST_NAME. */
-  private static final Pattern HOST_NAME = Pattern
-      .compile("(" + IRI + "\\.)+" + GTLD);
+  private static final Pattern HOST_NAME = Pattern.compile("(" + IRI + "\\.)+" + GTLD);
 
   /** The Constant DOMAIN_NAME. */
-  public static final Pattern DOMAIN_NAME = Pattern
-      .compile("(" + HOST_NAME + "|" + IP_ADDRESS + ")");
+  public static final Pattern DOMAIN_NAME = Pattern.compile("(" + HOST_NAME + "|" + IP_ADDRESS + ")");
 
   /**
    * Regular expression pattern to match most part of RFC 3987 Internationalized
    * URLs, aka IRIs. Commonly used Unicode characters are added.
    */
-  public static final Pattern WEB_URL_PATTERN = Pattern.compile(
-      "((?:(http|https|Http|Https|rtsp|Rtsp):\\/\\/(?:(?:[a-zA-Z0-9\\$\\-\\_\\.\\+\\!\\*\\'\\(\\)"
+  public static final Pattern WEB_URL_PATTERN = Pattern
+      .compile("((?:(http|https|Http|Https|rtsp|Rtsp):\\/\\/(?:(?:[a-zA-Z0-9\\$\\-\\_\\.\\+\\!\\*\\'\\(\\)"
           + "\\,\\;\\?\\&\\=]|(?:\\%[a-fA-F0-9]{2})){1,64}(?:\\:(?:[a-zA-Z0-9\\$\\-\\_"
-          + "\\.\\+\\!\\*\\'\\(\\)\\,\\;\\?\\&\\=]|(?:\\%[a-fA-F0-9]{2})){1,25})?\\@)?)?"
-          + "(?:" + DOMAIN_NAME + ")" + "(?:\\:\\d{1,5})?)" // plus option port
+          + "\\.\\+\\!\\*\\'\\(\\)\\,\\;\\?\\&\\=]|(?:\\%[a-fA-F0-9]{2})){1,25})?\\@)?)?" + "(?:" + DOMAIN_NAME + ")"
+          + "(?:\\:\\d{1,5})?)" // plus option port
           // number
           + "(\\/(?:(?:[" + GOOD_IRI_CHAR + "\\;\\/\\?\\:\\@\\&\\=\\#\\~" // plus
           // option
           // query
           // props
-          + "\\-\\.\\+\\!\\*\\'\\(\\)\\,\\_])|(?:\\%[a-fA-F0-9]{2}))*)?"
-          + "(?:\\b|$)");
+          + "\\-\\.\\+\\!\\*\\'\\(\\)\\,\\_])|(?:\\%[a-fA-F0-9]{2}))*)?" + "(?:\\b|$)");
 
   // and finally, a word boundary or end of
   // input. This is to stop foo.sure from
@@ -117,8 +110,7 @@ public class URLUtils {
     // Do nothing
   }
 
-  public static void launch(URLPath url)
-      throws URISyntaxException, IOException {
+  public static void launch(URLPath url) throws URISyntaxException, IOException {
     launch(url.toURL());
   }
 
@@ -127,7 +119,7 @@ public class URLUtils {
    *
    * @param url the url
    * @throws URISyntaxException the URI syntax exception
-   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws IOException        Signals that an I/O exception has occurred.
    */
   public static void launch(URL url) throws URISyntaxException, IOException {
     launch(url.toURI());
@@ -147,13 +139,12 @@ public class URLUtils {
    * Mailto.
    *
    * @param recipient the recipient
-   * @param subject the subject
-   * @param body the body
-   * @throws IOException Signals that an I/O exception has occurred.
+   * @param subject   the subject
+   * @param body      the body
+   * @throws IOException        Signals that an I/O exception has occurred.
    * @throws URISyntaxException the URI syntax exception
    */
-  public static void mailto(String recipient, String subject, String body)
-      throws IOException, URISyntaxException {
+  public static void mailto(String recipient, String subject, String body) throws IOException, URISyntaxException {
     mailto(CollectionUtils.asList(recipient), subject, body);
   }
 
@@ -161,19 +152,16 @@ public class URLUtils {
    * Mailto.
    *
    * @param recipients the recipients
-   * @param subject the subject
-   * @param body the body
-   * @throws IOException Signals that an I/O exception has occurred.
+   * @param subject    the subject
+   * @param body       the body
+   * @throws IOException        Signals that an I/O exception has occurred.
    * @throws URISyntaxException the URI syntax exception
    */
-  public static void mailto(List<String> recipients,
-      String subject,
-      String body) throws IOException, URISyntaxException {
-    String uriStr = String.format("mailto:%s?subject=%s&body=%s",
-        TextUtils.join(recipients, ","), // use semicolon ";"
+  public static void mailto(List<String> recipients, String subject, String body)
+      throws IOException, URISyntaxException {
+    String uriStr = String.format("mailto:%s?subject=%s&body=%s", TextUtils.join(recipients, ","), // use semicolon ";"
         // for Outlook!
-        urlEncode(subject),
-        urlEncode(body));
+        urlEncode(subject), urlEncode(body));
     Desktop.getDesktop().browse(new URI(uriStr));
   }
 
@@ -181,11 +169,10 @@ public class URLUtils {
    * Mailto.
    *
    * @param recipient the recipient
-   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws IOException        Signals that an I/O exception has occurred.
    * @throws URISyntaxException the URI syntax exception
    */
-  public static void mailto(String recipient)
-      throws IOException, URISyntaxException {
+  public static void mailto(String recipient) throws IOException, URISyntaxException {
     Desktop.getDesktop().browse(new URI("mailto", recipient, null));
   }
 
@@ -194,24 +181,22 @@ public class URLUtils {
    *
    * @param str the str
    * @return the url
-   * @throws MalformedURLException the malformed url exception
+   * @throws MalformedURLException        the malformed url exception
    * @throws UnsupportedEncodingException the unsupported encoding exception
    */
-  public static final URL urlEncode(String str)
-      throws MalformedURLException, UnsupportedEncodingException {
+  public static final URL urlEncode(String str) throws MalformedURLException, UnsupportedEncodingException {
     return new URL(URLEncoder.encode(str, "UTF-8").replace("+", "%20"));
   }
 
   /**
    * Constructs a URL with parameters in a standardized way.
    *
-   * @param baseUrl the base url
+   * @param baseUrl    the base url
    * @param parameters the parameters
    * @return the url
    * @throws MalformedURLException the malformed url exception
    */
-  public static final URL parameterizedUrl(String baseUrl,
-      List<Attribute> parameters) throws MalformedURLException {
+  public static final URL parameterizedUrl(String baseUrl, List<Attribute> parameters) throws MalformedURLException {
     StringBuilder buffer = new StringBuilder();
 
     if (CollectionUtils.isNullOrEmpty(parameters)) {
@@ -219,21 +204,19 @@ public class URLUtils {
     }
 
     buffer.append(baseUrl).append("?");
-    buffer.append(parameters.get(0).getName()).append("=")
-        .append(parameters.get(0).getValue());
+    buffer.append(parameters.get(0).getName()).append("=").append(parameters.get(0).getValue());
 
     for (int i = 1; i < parameters.size(); ++i) {
-      buffer.append("&").append(parameters.get(i).getName()).append("=")
-          .append(parameters.get(i).getValue());
+      buffer.append("&").append(parameters.get(i).getName()).append("=").append(parameters.get(i).getValue());
     }
 
     return new URL(buffer.toString());
   }
 
   /**
-   * Read the contents of an URL and cache it. Newlines are removed so this
-   * method is best for returning XML, JSON etc where it may be subsequently
-   * reparsed and newlines do not matter.
+   * Read the contents of an URL and cache it. Newlines are removed so this method
+   * is best for returning XML, JSON etc where it may be subsequently reparsed and
+   * newlines do not matter.
    *
    * @param url the url
    * @return the string
@@ -262,8 +245,7 @@ public class URLUtils {
 
     String line;
 
-    BufferedReader in = StreamUtils
-        .newBufferedReader(connection.getInputStream());
+    BufferedReader in = StreamUtils.newBufferedReader(connection.getInputStream());
 
     try {
       while ((line = in.readLine()) != null) {
@@ -295,10 +277,8 @@ public class URLUtils {
       for (Certificate cert : certs) {
         System.out.println("Cert Type : " + cert.getType());
         System.out.println("Cert Hash Code : " + cert.hashCode());
-        System.out.println("Cert Public Key Algorithm : "
-            + cert.getPublicKey().getAlgorithm());
-        System.out.println(
-            "Cert Public Key Format : " + cert.getPublicKey().getFormat());
+        System.out.println("Cert Public Key Algorithm : " + cert.getPublicKey().getAlgorithm());
+        System.out.println("Cert Public Key Format : " + cert.getPublicKey().getFormat());
         System.out.println("\n");
       }
 
@@ -315,10 +295,9 @@ public class URLUtils {
    * complaining.
    *
    * @throws NoSuchAlgorithmException the no such algorithm exception
-   * @throws KeyManagementException the key management exception
+   * @throws KeyManagementException   the key management exception
    */
-  public static void disableSLLChecks()
-      throws NoSuchAlgorithmException, KeyManagementException {
+  public static void disableSLLChecks() throws NoSuchAlgorithmException, KeyManagementException {
     TrustManager[] trustAllCerts = new TrustManager[] { new TrustAllManager() };
 
     // Install the all-trusting trust manager
@@ -376,8 +355,7 @@ public class URLUtils {
 
       String line;
 
-      BufferedReader in = StreamUtils
-          .newBufferedReader(connection.getInputStream());
+      BufferedReader in = StreamUtils.newBufferedReader(connection.getInputStream());
 
       try {
         while ((line = in.readLine()) != null) {
@@ -426,8 +404,7 @@ public class URLUtils {
       // out = new ByteArrayOutputStream(maxSize); // Pick some appropriate size
       // }
 
-      return StreamUtils.toByteArray(in,
-          contentLength != -1 ? contentLength : maxSize);
+      return StreamUtils.toByteArray(in, contentLength != -1 ? contentLength : maxSize);
 
       /*
        * try { ByteStreams.copy(in, out);
@@ -442,9 +419,8 @@ public class URLUtils {
        * 
        * 
        * 
-       * try { while ((b = in.read()) != -1) { out.write(b); } } finally {
-       * in.close(); out.close(); // No effect, but good to do anyway to keep
-       * the metaphor alive }
+       * try { while ((b = in.read()) != -1) { out.write(b); } } finally { in.close();
+       * out.close(); // No effect, but good to do anyway to keep the metaphor alive }
        * 
        * return out.toByteArray();
        */
@@ -486,8 +462,7 @@ public class URLUtils {
     }
   }
 
-  public static void downloadFile(URLPath url, Path localFile)
-      throws IOException {
+  public static void downloadFile(URLPath url, Path localFile) throws IOException {
     downloadFile(url.toURL(), localFile);
   }
 
@@ -503,13 +478,11 @@ public class URLUtils {
     LOG.info("Finished.");
   }
 
-  public static void downloadFile(InputStream input, Path file)
-      throws IOException {
+  public static void downloadFile(InputStream input, Path file) throws IOException {
     FileUtils.write(input, file);
   }
 
-  public static BufferedReader newBufferedReader(URLPath url)
-      throws IOException {
+  public static BufferedReader newBufferedReader(URLPath url) throws IOException {
     return newBufferedReader(url.toURL());
   }
 

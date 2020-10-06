@@ -24,8 +24,7 @@ import java.util.List;
  * @param <K> the key type
  * @param <V> the value type
  */
-public abstract class ListMultiMap<K, V>
-    extends DefaultMultiMap<K, V, List<V>> {
+public abstract class ListMultiMap<K, V> extends DefaultMultiMap<K, V, List<V>> {
 
   /** The Constant serialVersionUID. */
   private static final long serialVersionUID = 1L;
@@ -34,10 +33,9 @@ public abstract class ListMultiMap<K, V>
    * Instantiates a new list multi map.
    *
    * @param initialCapacity the initial capacity
-   * @param defaultValue the default value
+   * @param defaultValue    the default value
    */
-  public ListMultiMap(int initialCapacity,
-      CollectionCreator<V, List<V>> defaultValue) {
+  public ListMultiMap(int initialCapacity, CollectionCreator<V, List<V>> defaultValue) {
     super(initialCapacity, defaultValue);
   }
 

@@ -55,8 +55,8 @@ public class SubList<E> implements List<E> {
     /**
      * Instantiates a new sub list iterator.
      *
-     * @param list the list
-     * @param start the start
+     * @param list   the list
+     * @param start  the start
      * @param length the length
      */
     public SubListIterator(List<T> list, int start, int length) {
@@ -126,8 +126,8 @@ public class SubList<E> implements List<E> {
     /**
      * Instantiates a new sub list list iterator.
      *
-     * @param list the list
-     * @param start the start
+     * @param list   the list
+     * @param start  the start
      * @param length the length
      */
     public SubListListIterator(List<T> list, int start, int length) {
@@ -254,8 +254,8 @@ public class SubList<E> implements List<E> {
   /**
    * Instantiates a new sub list view.
    *
-   * @param list the list
-   * @param start the start
+   * @param list   the list
+   * @param start  the start
    * @param length the length
    */
   public SubList(List<E> list, int start, int length) {

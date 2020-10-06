@@ -23,8 +23,7 @@ package org.jebtk.core.collections;
 public interface Reversible<T> {
 
   /**
-   * Should provide an iterator that goes in reverse order over a data
-   * structure.
+   * Should provide an iterator that goes in reverse order over a data structure.
    *
    * @return the iterable
    */

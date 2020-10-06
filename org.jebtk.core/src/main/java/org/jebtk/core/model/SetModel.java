@@ -33,8 +33,7 @@ import org.jebtk.core.event.ChangeListeners;
  * @author Antony Holmes
  * @param <T> the generic type
  */
-public class SetModel<T extends Comparable<? super T>> extends HashSet<T>
-    implements ChangeEventProducer {
+public class SetModel<T extends Comparable<? super T>> extends HashSet<T> implements ChangeEventProducer {
 
   /**
    * The constant serialVersionUID.
@@ -153,8 +152,7 @@ public class SetModel<T extends Comparable<? super T>> extends HashSet<T>
   /*
    * (non-Javadoc)
    * 
-   * @see
-   * org.abh.lib.event.ChangeEventProducer#removeChangeListener(org.abh.lib.
+   * @see org.abh.lib.event.ChangeEventProducer#removeChangeListener(org.abh.lib.
    * event. ChangeListener)
    */
   @Override

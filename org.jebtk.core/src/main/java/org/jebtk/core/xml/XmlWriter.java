@@ -98,7 +98,7 @@ public class XmlWriter {
   /**
    * Adds the parameter.
    *
-   * @param name the name
+   * @param name  the name
    * @param value the value
    * @throws IOException Signals that an I/O exception has occurred.
    */
@@ -128,12 +128,11 @@ public class XmlWriter {
   /**
    * Write tagged text.
    *
-   * @param tag the tag
+   * @param tag  the tag
    * @param text the text
    * @throws IOException Signals that an I/O exception has occurred.
    */
-  public final void writeTaggedText(String tag, String text)
-      throws IOException {
+  public final void writeTaggedText(String tag, String text) throws IOException {
     writeTag(tag);
     write(text);
     writeEndTag(tag);

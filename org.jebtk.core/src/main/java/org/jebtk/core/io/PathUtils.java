@@ -129,8 +129,8 @@ public class PathUtils {
   }
 
   /**
-   * Gets the name of a file excluding the parent path and the file extension
-   * (the last period up until the end of the file name).
+   * Gets the name of a file excluding the parent path and the file extension (the
+   * last period up until the end of the file name).
    *
    * @param file the file
    * @return the name no ext
@@ -161,7 +161,7 @@ public class PathUtils {
    * Returns the name of the file removing everything after a break.
    *
    * @param file the file
-   * @param s the s
+   * @param s    the s
    * @return the string
    */
   public static String namePrefix(final Path file, String s) {
@@ -181,12 +181,11 @@ public class PathUtils {
    * does not create duplicate endings such as .txt.txt, but it will allow
    * .csv.txt for example.
    *
-   * @param file the file
+   * @param file      the file
    * @param extension the extension
    * @return the file
    */
-  public static final Path addExtension(final Path file,
-      final String extension) {
+  public static final Path addExtension(final Path file, final String extension) {
     String s = toString(file);
 
     if (!s.toLowerCase().endsWith("." + extension)) {
@@ -200,7 +199,7 @@ public class PathUtils {
    * Gets the path.
    *
    * @param first the first
-   * @param rest the rest
+   * @param rest  the rest
    * @return the path
    */
   public static Path getPath(String first, String... rest) {

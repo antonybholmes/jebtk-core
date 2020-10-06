@@ -56,7 +56,7 @@ public class ArrayUtils {
    * Convert an array to a list.
    * 
    * @param items An array.
-   * @param n How many items to copy from the array.
+   * @param n     How many items to copy from the array.
    * @return
    */
   public static <T> List<T> toList(T[] items, int n) {
@@ -193,8 +193,7 @@ public class ArrayUtils {
    * @return
    */
   public static int[] argsort(String[] values, boolean reverse) {
-    List<Indexed<Integer, String>> items = new ArrayList<Indexed<Integer, String>>(
-        values.length);
+    List<Indexed<Integer, String>> items = new ArrayList<Indexed<Integer, String>>(values.length);
 
     for (int i = 0; i < values.length; ++i) {
       items.add(new IndexedInt<String>(i, values[i]));
@@ -234,8 +233,7 @@ public class ArrayUtils {
    * @return
    */
   public static int[] argsort(double[] values, boolean reverse) {
-    List<Indexed<Integer, Double>> items = new ArrayList<Indexed<Integer, Double>>(
-        values.length);
+    List<Indexed<Integer, Double>> items = new ArrayList<Indexed<Integer, Double>>(values.length);
 
     for (int i = 0; i < values.length; ++i) {
       items.add(new IndexedInt<Double>(i, values[i]));
@@ -275,8 +273,7 @@ public class ArrayUtils {
    * @return
    */
   public static int[] argsort(int[] values, boolean reverse) {
-    List<Indexed<Integer, Integer>> items = new ArrayList<Indexed<Integer, Integer>>(
-        values.length);
+    List<Indexed<Integer, Integer>> items = new ArrayList<Indexed<Integer, Integer>>(values.length);
 
     for (int i = 0; i < values.length; ++i) {
       items.add(new Indexed<Integer, Integer>(i, values[i]));

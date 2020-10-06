@@ -28,8 +28,7 @@ import org.jebtk.core.path.Path;
  * @author Antony Holmes
  * @param <T> the generic type
  */
-public class TextObjectDb<T>
-    implements Iterable<TextObjectNode<T>>, Serializable {
+public class TextObjectDb<T> implements Iterable<TextObjectNode<T>>, Serializable {
 
   /**
    * The constant serialVersionUID.

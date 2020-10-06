@@ -10,8 +10,7 @@ public class SearchTest {
   public void ParseTest() {
     System.err.println("ParseTest");
 
-    List<SearchStackElement> test = SearchStackElement
-        .parseQuery("cheese AND (toast OR cake)");
+    List<SearchStackElement> test = SearchStackElement.parseQuery("cheese AND (toast OR cake)");
 
     for (SearchStackElement e : test) {
       System.err.println("search: " + e.mOp + " " + e.mText);

@@ -31,8 +31,7 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class EventListeners<T extends EventListener> implements Iterable<T> {
 
-  private Set<T> mListeners = Collections
-      .newSetFromMap(new ConcurrentHashMap<T, Boolean>());
+  private Set<T> mListeners = Collections.newSetFromMap(new ConcurrentHashMap<T, Boolean>());
 
   /**
    * Instantiates a new event listeners.

@@ -37,8 +37,8 @@ public class MMapReader {
   }
 
   /**
-   * Close the file handles for the reader. Note that as a memory mapped file
-   * the resources may not be fully released until garbage collection.
+   * Close the file handles for the reader. Note that as a memory mapped file the
+   * resources may not be fully released until garbage collection.
    * 
    * @throws IOException
    */

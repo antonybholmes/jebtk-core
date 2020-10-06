@@ -48,10 +48,8 @@ import org.w3c.dom.Element;
  * @author Antony Holmes
  * @param <T> the generic type
  */
-public class TreeNode<T>
-    implements IdProperty, Iterable<TreeNode<T>>, Reversible<TreeNode<T>>,
-    Comparable<TreeNode<T>>, Cloneable, TreeNodeEventProducer,
-    XmlRepresentation, JsonRepresentation, Serializable, TreeNodeEventListener {
+public class TreeNode<T> implements IdProperty, Iterable<TreeNode<T>>, Reversible<TreeNode<T>>, Comparable<TreeNode<T>>,
+    Cloneable, TreeNodeEventProducer, XmlRepresentation, JsonRepresentation, Serializable, TreeNodeEventListener {
 
   /**
    * The constant serialVersionUID.
@@ -144,8 +142,8 @@ public class TreeNode<T>
   /*
    * private class ChildEvents implements TreeNodeEventListener {
    * 
-   * @Override public void nodeChanged(ChangeEvent e) {
-   * countCumulativeChildren(); }
+   * @Override public void nodeChanged(ChangeEvent e) { countCumulativeChildren();
+   * }
    * 
    * @Override public void nodeUpdated(ChangeEvent e) { // Do nothing } }
    */
@@ -163,7 +161,7 @@ public class TreeNode<T>
   /**
    * Creates a node with a given name and associated data.
    *
-   * @param name the name
+   * @param name  the name
    * @param value the value
    */
   public TreeNode(String name, T value) {
@@ -268,7 +266,7 @@ public class TreeNode<T>
   /**
    * Adds the child before.
    *
-   * @param ref the ref
+   * @param ref  the ref
    * @param node the node
    */
   public void addChildBefore(TreeNode<T> ref, TreeNode<T> node) {
@@ -278,7 +276,7 @@ public class TreeNode<T>
   /**
    * Adds the child before.
    *
-   * @param i the i
+   * @param i    the i
    * @param node the node
    */
   public void addChildBefore(int i, TreeNode<T> node) {
@@ -383,8 +381,8 @@ public class TreeNode<T>
   }
 
   /**
-   * Returns the total number of children under this parent (i.e all children
-   * and children of children etc).
+   * Returns the total number of children under this parent (i.e all children and
+   * children of children etc).
    *
    * @return the cumulative child count
    */
@@ -503,12 +501,12 @@ public class TreeNode<T>
 
   /**
    * Sets whether the node should be displayed collapsed or not and controls
-   * whether a node changed event should be fire. This is used by batch methods
-   * to do bulk expand operations on multiple nodes without fireing node events
-   * for each change.
+   * whether a node changed event should be fire. This is used by batch methods to
+   * do bulk expand operations on multiple nodes without fireing node events for
+   * each change.
    *
    * @param isExpanded the is expanded
-   * @param recursive the recursive
+   * @param recursive  the recursive
    */
   public void setExpanded(boolean isExpanded, boolean recursive) {
     updateExpanded(isExpanded, recursive);
@@ -529,7 +527,7 @@ public class TreeNode<T>
    * Update expanded.
    *
    * @param isExpanded the is expanded
-   * @param recursive the recursive
+   * @param recursive  the recursive
    */
   public void updateExpanded(boolean isExpanded, boolean recursive) {
     updateExpanded(this, isExpanded, recursive);
@@ -538,14 +536,12 @@ public class TreeNode<T>
   /**
    * Update expanded.
    *
-   * @param <X> the generic type
-   * @param root the root
+   * @param <X>        the generic type
+   * @param root       the root
    * @param isExpanded the is expanded
-   * @param recursive the recursive
+   * @param recursive  the recursive
    */
-  public static <X> void updateExpanded(TreeNode<X> root,
-      boolean isExpanded,
-      boolean recursive) {
+  public static <X> void updateExpanded(TreeNode<X> root, boolean isExpanded, boolean recursive) {
     Deque<TreeNode<X>> stack = new ArrayDeque<TreeNode<X>>();
 
     stack.push(root);
@@ -578,7 +574,7 @@ public class TreeNode<T>
    * Sets the children are expanded.
    *
    * @param isExpanded the is expanded
-   * @param recursive the recursive
+   * @param recursive  the recursive
    */
   public void setChildrenAreExpanded(boolean isExpanded, boolean recursive) {
     updateChildrenAreExpanded(isExpanded, recursive);
@@ -600,7 +596,7 @@ public class TreeNode<T>
    * Update children are expanded.
    *
    * @param isExpanded the is expanded
-   * @param recursive the recursive
+   * @param recursive  the recursive
    */
   public void updateChildrenAreExpanded(boolean isExpanded, boolean recursive) {
     for (TreeNode<T> child : mChildren) {
@@ -639,8 +635,8 @@ public class TreeNode<T>
 
   /**
    * Allow a node to inherit the children of another node. This will result in
-   * nodes sharing child nodes. Use close to create copies of children so that
-   * the node can be updated independently.
+   * nodes sharing child nodes. Use close to create copies of children so that the
+   * node can be updated independently.
    *
    * @param node the node
    */
@@ -728,9 +724,9 @@ public class TreeNode<T>
   }
 
   /**
-   * Search a tree using a path of ids. Since node names are not guaranteed to
-   * be unique, this method may not find the correct branch if you allow
-   * multiple nodes with the same name.
+   * Search a tree using a path of ids. Since node names are not guaranteed to be
+   * unique, this method may not find the correct branch if you allow multiple
+   * nodes with the same name.
    * 
    *
    * @param path the path
@@ -833,8 +829,8 @@ public class TreeNode<T>
   }
 
   /**
-   * Search the tree for a node whose name equals the search text. Returns null
-   * if node not found.
+   * Search the tree for a node whose name equals the search text. Returns null if
+   * node not found.
    *
    * @param search the search
    * @return the tree node
@@ -909,11 +905,10 @@ public class TreeNode<T>
   }
 
   /**
-   * Translates a tree path into a path. This can make it easier to see a path
-   * by name rather than ids to make it more human readable. Since trees may
-   * contain multiple nodes with the same name, paths using node names are not
-   * guaranteed to be unique, therefore it is advisable to use TreePath to
-   * search a tree.
+   * Translates a tree path into a path. This can make it easier to see a path by
+   * name rather than ids to make it more human readable. Since trees may contain
+   * multiple nodes with the same name, paths using node names are not guaranteed
+   * to be unique, therefore it is advisable to use TreePath to search a tree.
    * 
    * @param treePath a TreePath
    * @return a path representation of a TreePath
@@ -1155,8 +1150,7 @@ public class TreeNode<T>
   /*
    * (non-Javadoc)
    * 
-   * @see
-   * org.abh.lib.tree.TreeNodeEventProducer#addTreeNodeListener(org.abh.lib.
+   * @see org.abh.lib.tree.TreeNodeEventProducer#addTreeNodeListener(org.abh.lib.
    * tree. TreeNodeEventListener)
    */
   @Override
@@ -1186,8 +1180,7 @@ public class TreeNode<T>
   /*
    * (non-Javadoc)
    * 
-   * @see
-   * org.abh.lib.tree.TreeNodeEventProducer#fireTreeNodeChanged(org.abh.lib.
+   * @see org.abh.lib.tree.TreeNodeEventProducer#fireTreeNodeChanged(org.abh.lib.
    * event. ChangeEvent)
    */
   @Override
@@ -1205,8 +1198,7 @@ public class TreeNode<T>
   /*
    * (non-Javadoc)
    * 
-   * @see
-   * org.abh.lib.tree.TreeNodeEventProducer#fireTreeNodeUpdated(org.abh.lib.
+   * @see org.abh.lib.tree.TreeNodeEventProducer#fireTreeNodeUpdated(org.abh.lib.
    * event. ChangeEvent)
    */
   @Override

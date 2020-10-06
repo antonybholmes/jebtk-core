@@ -32,8 +32,7 @@ import org.jebtk.core.path.StrictPath;
  * @author Antony Holmes
  * @param <T> the generic type
  */
-public class PathObjectNode<T>
-    implements Comparable<PathObjectNode<T>>, Serializable {
+public class PathObjectNode<T> implements Comparable<PathObjectNode<T>>, Serializable {
 
   /**
    * The constant serialVersionUID.
@@ -64,7 +63,7 @@ public class PathObjectNode<T>
    * Instantiates a new path object node.
    *
    * @param prefix the prefix
-   * @param level the level
+   * @param level  the level
    */
   public PathObjectNode(Path prefix, String level) {
     mPrefix = prefix;
@@ -121,8 +120,7 @@ public class PathObjectNode<T>
   }
 
   /**
-   * Returns a child node and auto creates the child if it does not already
-   * exist.
+   * Returns a child node and auto creates the child if it does not already exist.
    *
    * @param level the level
    * @return the path object node
@@ -145,7 +143,7 @@ public class PathObjectNode<T>
    * Parse a string into prefixs and build a sub tree under the current node to
    * represent that string.
    *
-   * @param path the path
+   * @param path   the path
    * @param object the object
    */
   public void addObject(StrictPath path, T object) {

@@ -159,8 +159,7 @@ public class Resources implements Iterable<String> {
    * @return the res gzip input stream
    * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static InputStream getResGzipInputStream(String name)
-      throws IOException {
+  public static InputStream getResGzipInputStream(String name) throws IOException {
     return new GZIPInputStream(getResInputStream(name));
   }
 
@@ -193,12 +192,10 @@ public class Resources implements Iterable<String> {
    * @return the res gzip reader
    * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static BufferedReader getResGzipReader(String name)
-      throws IOException {
+  public static BufferedReader getResGzipReader(String name) throws IOException {
     System.err.println("Load GZIP from " + name);
 
-    return new BufferedReader(
-        new InputStreamReader(getResGzipInputStream(name)));
+    return new BufferedReader(new InputStreamReader(getResGzipInputStream(name)));
   }
 
   /**
@@ -282,7 +279,7 @@ public class Resources implements Iterable<String> {
   /**
    * Auto load.
    *
-   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws IOException        Signals that an I/O exception has occurred.
    * @throws URISyntaxException the URI syntax exception
    */
   private synchronized void autoLoad() throws IOException, URISyntaxException {
@@ -298,11 +295,10 @@ public class Resources implements Iterable<String> {
   /**
    * Cache resource files.
    *
-   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws IOException        Signals that an I/O exception has occurred.
    * @throws URISyntaxException the URI syntax exception
    */
-  private synchronized void cacheResourceFiles()
-      throws IOException, URISyntaxException {
+  private synchronized void cacheResourceFiles() throws IOException, URISyntaxException {
     LOG.info("Finding resource files...");
 
     List<File> files = new ArrayList<File>();
@@ -364,10 +360,9 @@ public class Resources implements Iterable<String> {
    *
    * @param file the file
    * @throws MalformedURLException the malformed url exception
-   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws IOException           Signals that an I/O exception has occurred.
    */
-  private void cacheResourceFiles(File file)
-      throws MalformedURLException, IOException {
+  private void cacheResourceFiles(File file) throws MalformedURLException, IOException {
     LOG.info("Finding resource files in {}...", file);
 
     if (file.isDirectory()) {
@@ -418,10 +413,9 @@ public class Resources implements Iterable<String> {
    *
    * @param font the font
    * @throws FontFormatException the font format exception
-   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws IOException         Signals that an I/O exception has occurred.
    */
-  public void registerFont(String font)
-      throws FontFormatException, IOException {
+  public void registerFont(String font) throws FontFormatException, IOException {
     String resource = FONT_RES + font;
 
     LOG.info("Loading font {}...", resource);
@@ -434,8 +428,7 @@ public class Resources implements Iterable<String> {
       System.err.println(f);
       System.err.println(f.getAttributes());
 
-      GraphicsEnvironment ge = GraphicsEnvironment
-          .getLocalGraphicsEnvironment();
+      GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 
       ge.registerFont(f);
     } finally {
@@ -462,13 +455,12 @@ public class Resources implements Iterable<String> {
   /**
    * Reads a resource as a string list.
    *
-   * @param res the res
+   * @param res       the res
    * @param hasHeader the has header
    * @return the list from res
    * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static List<String> getListFromRes(String res, boolean hasHeader)
-      throws IOException {
+  public static List<String> getListFromRes(String res, boolean hasHeader) throws IOException {
     BufferedReader reader = getResGzipReader(res);
 
     List<String> ret = new ArrayList<String>();

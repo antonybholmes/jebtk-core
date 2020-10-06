@@ -22,8 +22,7 @@ import java.awt.Color;
  *
  * @author Antony Holmes
  */
-public class Prop extends KeyValuePair<String, Object>
-    implements NameGetter {
+public class Prop extends KeyValuePair<String, Object> implements NameGetter {
 
   /**
    * The constant serialVersionUID.

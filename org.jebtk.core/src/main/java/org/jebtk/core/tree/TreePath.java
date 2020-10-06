@@ -31,8 +31,7 @@ import org.jebtk.core.text.TextUtils;
  * @author Antony Holmes
  *
  */
-public class TreePath
-    implements Iterable<Integer>, Serializable, Comparable<TreePath> {
+public class TreePath implements Iterable<Integer>, Serializable, Comparable<TreePath> {
 
   /**
    * The constant serialVersionUID.
@@ -59,15 +58,14 @@ public class TreePath
   /**
    * Instantiates a new tree path.
    *
-   * @param <T> the generic type
+   * @param <T>  the generic type
    * @param path the path
    * @throws ParseException the parse exception
    */
   public <T> TreePath(String path) throws ParseException {
     // System.err.println("parse path " + path);
 
-    List<String> t = TextUtils.fastSplit(path.toString(),
-        StrictPath.PATH_DELIMITER);
+    List<String> t = TextUtils.fastSplit(path.toString(), StrictPath.PATH_DELIMITER);
 
     for (String token : t) {
       add(token);
@@ -88,7 +86,7 @@ public class TreePath
   /**
    * Instantiates a new tree path.
    *
-   * @param <T> the generic type
+   * @param <T>  the generic type
    * @param node the node
    */
   public <T> TreePath(TreeNode<T> node) {
@@ -98,7 +96,7 @@ public class TreePath
   /**
    * Adds the.
    *
-   * @param <T> the generic type
+   * @param <T>  the generic type
    * @param node the node
    * @return the tree path
    */

@@ -149,7 +149,7 @@ public class URLPath implements Serializable {
    * Instantiates a new url builder.
    *
    * @param urlBuilder the url builder
-   * @param parts the parts
+   * @param parts      the parts
    */
   protected URLPath(URLPath urlBuilder) {
     mScheme = urlBuilder.mScheme;
@@ -224,7 +224,7 @@ public class URLPath implements Serializable {
 
     return ret;
   }
-  
+
   public URLPath join(Object path) {
     return join(path.toString());
   }
@@ -260,8 +260,7 @@ public class URLPath implements Serializable {
   }
 
   public URLPath param(String param) {
-    List<String> tokens = TextUtils.fastSplit(param,
-        TextUtils.EQUALS_DELIMITER);
+    List<String> tokens = TextUtils.fastSplit(param, TextUtils.EQUALS_DELIMITER);
 
     return param(tokens.get(0), tokens.get(1));
   }
@@ -269,7 +268,7 @@ public class URLPath implements Serializable {
   /**
    * Adds the param.
    *
-   * @param name the name
+   * @param name  the name
    * @param value the value
    * @return the url builder
    * @throws UnsupportedEncodingException the unsupported encoding exception
@@ -281,7 +280,7 @@ public class URLPath implements Serializable {
   /**
    * Adds the param.
    *
-   * @param name the name
+   * @param name  the name
    * @param value the value
    * @return the url builder
    * @throws UnsupportedEncodingException the unsupported encoding exception
@@ -293,7 +292,7 @@ public class URLPath implements Serializable {
   /**
    * Adds the param.
    *
-   * @param name the name
+   * @param name  the name
    * @param value the value
    * @return the url builder
    * @throws UnsupportedEncodingException the unsupported encoding exception
@@ -305,7 +304,7 @@ public class URLPath implements Serializable {
   /**
    * Add a boolean param. True is represented as "t" and false as "f".
    * 
-   * @param name Paramter name.
+   * @param name  Paramter name.
    * @param value Parameter value.
    * @return New instance of UrlBuilder with parameter added.
    */
@@ -317,8 +316,7 @@ public class URLPath implements Serializable {
     URLPath url = new URLPath(this);
 
     // Don't add if param values are null
-    if (!TextUtils.isNullOrEmpty(param.getName())
-        && !TextUtils.isNullOrEmpty(param.getValue())) {
+    if (!TextUtils.isNullOrEmpty(param.getName()) && !TextUtils.isNullOrEmpty(param.getValue())) {
       url.mParams.add(param);
     }
 
@@ -344,9 +342,9 @@ public class URLPath implements Serializable {
   }
 
   /**
-   * Adds an api header request via http authorization basic header. The key
-   * will be written as the user in the user:password string with an empy
-   * password so to parse, split on colon and take the first token.
+   * Adds an api header request via http authorization basic header. The key will
+   * be written as the user in the user:password string with an empy password so
+   * to parse, split on colon and take the first token.
    * 
    * @param key
    * @return
@@ -359,8 +357,7 @@ public class URLPath implements Serializable {
     String authString = user + ":" + password;
     System.out.println("auth string: " + authString);
 
-    String basicAuth = Base64.getEncoder().encodeToString(
-        (user + ":" + password).getBytes(StandardCharsets.UTF_8));
+    String basicAuth = Base64.getEncoder().encodeToString((user + ":" + password).getBytes(StandardCharsets.UTF_8));
 
     return header("Authorization", "Basic " + basicAuth);
   }
@@ -380,7 +377,7 @@ public class URLPath implements Serializable {
   /**
    * Add multiple parameters with the same name.
    *
-   * @param name the name
+   * @param name   the name
    * @param values the values
    * @return the url builder
    * @throws UnsupportedEncodingException the unsupported encoding exception
@@ -397,8 +394,8 @@ public class URLPath implements Serializable {
 
   /**
    * Returns a string representation of a valid url for pasting into a brower or
-   * other tool. This differs from toString() in that toString() will also
-   * output header parameters so the url will be invalid.
+   * other tool. This differs from toString() in that toString() will also output
+   * header parameters so the url will be invalid.
    * 
    * @return
    */
@@ -640,8 +637,7 @@ public class URLPath implements Serializable {
         p3 = n;
       }
 
-      props.add(
-          new StaticParam(url.substring(p1, p2), url.substring(p2 + 1, p3)));
+      props.add(new StaticParam(url.substring(p1, p2), url.substring(p2 + 1, p3)));
 
       p1 = p3 + 1;
     }
@@ -741,7 +737,6 @@ public class URLPath implements Serializable {
 
     // System.err.println(new UrlBuilder(scheme, host, port, parts, props));
 
-    return new URLPath().scheme(scheme).host(host).port(port).paths(paths)
-        .props(props);
+    return new URLPath().scheme(scheme).host(host).port(port).paths(paths).props(props);
   }
 }

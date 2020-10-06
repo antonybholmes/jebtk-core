@@ -23,8 +23,7 @@ import org.jebtk.core.event.EventProducer;
  * @author Antony Holmes
  *
  */
-public class LogEventListeners extends EventProducer<LogEventListener>
-    implements LogEventProducer {
+public class LogEventListeners extends EventProducer<LogEventListener> implements LogEventProducer {
 
   /**
    * The constant serialVersionUID.
@@ -54,8 +53,7 @@ public class LogEventListeners extends EventProducer<LogEventListener>
   /*
    * (non-Javadoc)
    * 
-   * @see
-   * org.abh.lib.log.LogEventProducer#fireLogEvent(org.abh.lib.log.LogEvent)
+   * @see org.abh.lib.log.LogEventProducer#fireLogEvent(org.abh.lib.log.LogEvent)
    */
   public void fireLogEvent(LogEvent e) {
     for (LogEventListener l : mListeners) {

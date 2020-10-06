@@ -49,7 +49,7 @@ public class Range implements Iterable<Integer> {
   /**
    * Instantiates a new range.
    *
-   * @param start the start
+   * @param start  the start
    * @param length the length
    */
   public Range(int start, int end, int skip) {
@@ -62,8 +62,8 @@ public class Range implements Iterable<Integer> {
   /*
    * @Override public boolean hasNext() { return mStart < mLength; }
    * 
-   * @Override public Integer next() { if (hasNext()) { return mStart++; } else
-   * { throw new NoSuchElementException("Range ended"); } }
+   * @Override public Integer next() { if (hasNext()) { return mStart++; } else {
+   * throw new NoSuchElementException("Range ended"); } }
    * 
    * @Override public void remove() { throw new
    * UnsupportedOperationException("Cannot remove values from a Range"); }
@@ -97,8 +97,7 @@ public class Range implements Iterable<Integer> {
 
       @Override
       public void remove() {
-        throw new UnsupportedOperationException(
-            "Cannot remove values from a Range");
+        throw new UnsupportedOperationException("Cannot remove values from a Range");
       }
     };
   }
@@ -117,7 +116,7 @@ public class Range implements Iterable<Integer> {
    * Creates a new Range.
    *
    * @param length The max value (exclusive) of the range, thus 5 will generate
-   *          0,1,2,3,4.
+   *               0,1,2,3,4.
    * @return A range object.
    */
   public static Range create(int length) {
@@ -127,7 +126,7 @@ public class Range implements Iterable<Integer> {
   /**
    * Creates the.
    *
-   * @param start the start
+   * @param start  the start
    * @param length the length
    * @return the range
    */

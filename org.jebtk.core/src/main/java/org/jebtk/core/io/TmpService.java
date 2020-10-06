@@ -158,8 +158,7 @@ public class TmpService {
 
     try {
       for (Path file : FileUtils.ls(mTmpDir)) {
-        if (name != null && !name.equals("")
-            && !PathUtils.getName(file).contains(name)) {
+        if (name != null && !name.equals("") && !PathUtils.getName(file).contains(name)) {
           continue;
         }
 
@@ -178,8 +177,7 @@ public class TmpService {
     StringBuilder buffer = new StringBuilder();
 
     for (int i = 0; i < l; ++i) {
-      buffer.append(
-          RND_TMP_LETTERS.charAt(RANDOM.nextInt(RND_TMP_LETTERS.length())));
+      buffer.append(RND_TMP_LETTERS.charAt(RANDOM.nextInt(RND_TMP_LETTERS.length())));
     }
 
     return buffer.toString();

@@ -24,8 +24,7 @@ import java.util.Collections;
  * @author Antony Holmes
  * @param <T> the generic type
  */
-public class SortableImmutableList<T extends Comparable<? super T>>
-    extends ImmutableList<T> {
+public class SortableImmutableList<T extends Comparable<? super T>> extends ImmutableList<T> {
 
   /**
    * The constant serialVersionUID.

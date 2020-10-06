@@ -25,8 +25,7 @@ import org.jebtk.core.text.TextUtils;
  * @author Antony Holmes
  * @param <T> the generic type
  */
-public class RadixObjectDb<T> extends RadixObjectNode<T>
-    implements Serializable {
+public class RadixObjectDb<T> extends RadixObjectNode<T> implements Serializable {
 
   /**
    * The constant serialVersionUID.

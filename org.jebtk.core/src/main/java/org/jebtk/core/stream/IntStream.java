@@ -127,8 +127,7 @@ public class IntStream extends NumberStream<Integer> {
   /**
    * The Class MultiplyDoubleFunction.
    */
-  private static class MultiplyDoubleFunction
-      implements Function<Integer, Double> {
+  private static class MultiplyDoubleFunction implements Function<Integer, Double> {
 
     /** The m V. */
     private double mV;

@@ -131,8 +131,8 @@ public class DoubleCountMap<K> extends DefaultHashMap<K, Double> {
    * Decrement the key by a given amount.
    *
    * @param key the key
-   * @param dec Should be a positive doubleeger indicating how much to reduce
-   *          the count of the key by
+   * @param dec Should be a positive doubleeger indicating how much to reduce the
+   *            count of the key by
    */
   public void dec(K key, double dec) {
     inc(key, -dec);
@@ -162,7 +162,7 @@ public class DoubleCountMap<K> extends DefaultHashMap<K, Double> {
   /**
    * Creates the.
    *
-   * @param <K1> the generic type
+   * @param <K1>         the generic type
    * @param defaultValue the default value
    * @return the count map
    */

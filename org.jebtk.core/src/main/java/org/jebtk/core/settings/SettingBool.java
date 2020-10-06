@@ -33,13 +33,12 @@ public class SettingBool extends Setting {
   /**
    * Instantiates a new setting bool.
    *
-   * @param path the path
-   * @param value the value
+   * @param path        the path
+   * @param value       the value
    * @param description the description
-   * @param locked the locked
+   * @param locked      the locked
    */
-  public SettingBool(Path path, boolean value, String description,
-      boolean locked) {
+  public SettingBool(Path path, boolean value, String description, boolean locked) {
     super(path, description, locked);
 
     mValue = value;
@@ -72,8 +71,8 @@ public class SettingBool extends Setting {
    */
   @Override
   public String toString() {
-    return new StringBuilder("bool_setting:").append(mPath.toString())
-        .append(TextUtils.EQUALS_DELIMITER).append(mValue).toString();
+    return new StringBuilder("bool_setting:").append(mPath.toString()).append(TextUtils.EQUALS_DELIMITER).append(mValue)
+        .toString();
   }
 
   /*

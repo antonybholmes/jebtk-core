@@ -35,7 +35,7 @@ public class FileRename {
   /**
    * Instantiates a new file rename.
    *
-   * @param original the original
+   * @param original  the original
    * @param regulated the regulated
    */
   public FileRename(Path original, Path regulated) {

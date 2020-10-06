@@ -32,7 +32,7 @@ public class SkipStream<T> extends ContainerStream<T> {
    * Instantiates a new filter stream.
    *
    * @param stream the stream
-   * @param n the n
+   * @param n      the n
    */
   public SkipStream(Stream<T> stream, int n) {
     super(stream);

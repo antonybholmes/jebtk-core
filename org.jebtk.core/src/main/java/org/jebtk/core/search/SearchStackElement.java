@@ -36,8 +36,7 @@ public class SearchStackElement {
   /**
    * Valid characters in a search.
    */
-  private static final Pattern Q_REGEX = Pattern
-      .compile("[a-zA-Z0-9\\-\\_\\(\\)\\\" ]+");
+  private static final Pattern Q_REGEX = Pattern.compile("[a-zA-Z0-9\\-\\_\\(\\)\\\" ]+");
 
   // private static final Pattern MULT_AND_REGEX =
   // Pattern.compile("AND( AND)+");
@@ -105,7 +104,7 @@ public class SearchStackElement {
    * Returns a stack representation of a text query.
    *
    * @param the generic type
-   * @param q the q
+   * @param q   the q
    * @return the deque
    */
   public static List<SearchStackElement> parseQuery(String q) {
@@ -141,11 +140,9 @@ public class SearchStackElement {
     // .ignoreEmptyStrings()
     // .text(qs.toString());
 
-    List<SearchStackElement> outputQueue = new ArrayList<SearchStackElement>(
-        10);
+    List<SearchStackElement> outputQueue = new ArrayList<SearchStackElement>(10);
 
-    Deque<SearchStackOperator> opStack = new ArrayDeque<SearchStackOperator>(
-        10);
+    Deque<SearchStackOperator> opStack = new ArrayDeque<SearchStackOperator>(10);
 
     StringBuilder buffer = new StringBuilder(qs.length());
 
@@ -174,9 +171,7 @@ public class SearchStackElement {
           // We must encounter a 'D' before checking if the buffer
           // contains AND
           if (buffer.toString().equals("AND")) {
-            addLowerPrecedenceOps(SearchStackOperator.AND,
-                outputQueue,
-                opStack);
+            addLowerPrecedenceOps(SearchStackOperator.AND, outputQueue, opStack);
             buffer.setLength(0);
           }
         } else if (c == 'R') {
@@ -196,13 +191,12 @@ public class SearchStackElement {
      * // Convert to reverse polish
      * 
      * for (String term : terms) { if (term.equals("AND")) {
-     * addLowerPrecedenceOps(SearchStackOperator.AND, outputQueue, opStack); }
-     * else if (term.equals("OR")) {
-     * addLowerPrecedenceOps(SearchStackOperator.OR, outputQueue, opStack); }
-     * else if (term.equals("(")) {
-     * opStack.push(SearchStackOperator.LEFT_PAREN); } else if
-     * (term.equals(")")) { rightParens(outputQueue, opStack); } else {
-     * outputQueue.add(new SearchStackElement<T>(term.toLowerCase())); } }
+     * addLowerPrecedenceOps(SearchStackOperator.AND, outputQueue, opStack); } else
+     * if (term.equals("OR")) { addLowerPrecedenceOps(SearchStackOperator.OR,
+     * outputQueue, opStack); } else if (term.equals("(")) {
+     * opStack.push(SearchStackOperator.LEFT_PAREN); } else if (term.equals(")")) {
+     * rightParens(outputQueue, opStack); } else { outputQueue.add(new
+     * SearchStackElement<T>(term.toLowerCase())); } }
      */
 
     // add any remaining operators onto the queue
@@ -228,12 +222,11 @@ public class SearchStackElement {
   /**
    * Adds the term.
    *
-   * @param the generic type
-   * @param buffer the buffer
+   * @param the         generic type
+   * @param buffer      the buffer
    * @param outputQueue the output queue
    */
-  private static void addTerm(StringBuilder buffer,
-      List<SearchStackElement> outputQueue) {
+  private static void addTerm(StringBuilder buffer, List<SearchStackElement> outputQueue) {
     String s = buffer.toString().toLowerCase();
 
     if (s.length() > 0) {
@@ -249,13 +242,12 @@ public class SearchStackElement {
   /**
    * Adds the lower precedence ops.
    *
-   * @param the generic type
-   * @param op1 the operator
-   * @param outputQueue the search stack
+   * @param the           generic type
+   * @param op1           the operator
+   * @param outputQueue   the search stack
    * @param operatorStack the operator stack
    */
-  private static void addLowerPrecedenceOps(SearchStackOperator op1,
-      List<SearchStackElement> outputQueue,
+  private static void addLowerPrecedenceOps(SearchStackOperator op1, List<SearchStackElement> outputQueue,
       Deque<SearchStackOperator> operatorStack) {
     int p1 = SearchStackOperator.precedence(op1);
 
@@ -285,12 +277,11 @@ public class SearchStackElement {
   /**
    * Pop expressions until a left parenthesis is encountered.
    *
-   * @param the generic type
+   * @param the         generic type
    * @param outputQueue the output queue
-   * @param opStack the op stack
+   * @param opStack     the op stack
    */
-  private static void rightParens(List<SearchStackElement> outputQueue,
-      Deque<SearchStackOperator> opStack) {
+  private static void rightParens(List<SearchStackElement> outputQueue, Deque<SearchStackOperator> opStack) {
     SearchStackOperator op2;
 
     // deal with existing operatorStack

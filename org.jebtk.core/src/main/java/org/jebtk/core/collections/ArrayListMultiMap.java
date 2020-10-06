@@ -15,6 +15,8 @@
  */
 package org.jebtk.core.collections;
 
+import static org.jebtk.core.collections.MultiMap.DEFAULT_INITIAL_CAPACITY;
+
 /**
  * Creates a map of lists where the each list is initialized with an default
  * value to a given size.
@@ -51,8 +53,8 @@ public class ArrayListMultiMap<K, V> extends ListMultiMap<K, V> {
   /**
    * Creates the.
    *
-   * @param <VV> the generic type
-   * @param <KK> the generic type
+   * @param <VV>            the generic type
+   * @param <KK>            the generic type
    * @param initialCapacity the initial capacity
    * @return the list multi map
    */

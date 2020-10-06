@@ -56,8 +56,8 @@ public class SimpleHashMapMap<K, V> extends DefaultHashMapMap<K, K, V> {
   /**
    * Creates the.
    *
-   * @param <KK> the generic type
-   * @param <VV> the generic type
+   * @param <KK>            the generic type
+   * @param <VV>            the generic type
    * @param initialCapacity the initial capacity
    * @return the multi map
    */

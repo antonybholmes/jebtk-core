@@ -243,8 +243,7 @@ public abstract class IntHashMap<T> implements IterMap<Integer, T> {
         slot = (phiMix(k) & mMask) << 1; // calculate the starting slot for the
                                          // current key
 
-        if (last <= pos ? last >= slot || slot > pos
-            : last >= slot && slot > pos) {
+        if (last <= pos ? last >= slot || slot > pos : last >= slot && slot > pos) {
           break;
         }
 
@@ -367,8 +366,7 @@ public abstract class IntHashMap<T> implements IterMap<Integer, T> {
    * Note that this function will return 1 when the argument is 0.
    *
    * @param x a long integer smaller than or equal to 2<sup>62</sup>.
-   * @return the least power of two greater than or equal to the specified
-   *         value.
+   * @return the least power of two greater than or equal to the specified value.
    */
   public static int nextPowerOfTwo(int x) {
     if (x == 0) {
@@ -389,17 +387,16 @@ public abstract class IntHashMap<T> implements IterMap<Integer, T> {
    * larger than or equal to <code>Math.ceil( expected / f )</code>.
    *
    * @param expected the expected number of elements in a hash table.
-   * @param f the load factor.
+   * @param f        the load factor.
    * @return the minimum possible size for a backing array.
    * @throws IllegalArgumentException if the necessary size is larger than
-   *           2<sup>30</sup>.
+   *                                  2<sup>30</sup>.
    */
   public static int arraySize(final int expected, final double f) {
     final int s = Math.max(2, nextPowerOfTwo((int) Math.ceil(expected / f)));
 
     if (s > (1 << 30)) {
-      throw new IllegalArgumentException("Too large (" + expected
-          + " expected elements with load factor " + f + ")");
+      throw new IllegalArgumentException("Too large (" + expected + " expected elements with load factor " + f + ")");
     }
 
     return s;

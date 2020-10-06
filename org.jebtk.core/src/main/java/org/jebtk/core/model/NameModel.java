@@ -26,8 +26,7 @@ import org.jebtk.core.event.ChangeListeners;
  * @author Antony Holmes
  * @param <T> the generic type
  */
-public abstract class NameModel<T> extends ChangeListeners
-    implements Iterable<String> {
+public abstract class NameModel<T> extends ChangeListeners implements Iterable<String> {
 
   /**
    * The constant serialVersionUID.
@@ -90,8 +89,8 @@ public abstract class NameModel<T> extends ChangeListeners
   public abstract int size();
 
   /**
-   * Returns the items in the model as a list. This list is a copy of items in
-   * the model so altering the list will not alter the model.
+   * Returns the items in the model as a list. This list is a copy of items in the
+   * model so altering the list will not alter the model.
    *
    * @return the list
    */

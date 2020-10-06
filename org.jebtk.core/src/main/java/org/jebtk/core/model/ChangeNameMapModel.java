@@ -24,8 +24,8 @@ import org.jebtk.core.event.ChangeEventProducer;
  * @author Antony Holmes
  * @param <T> the generic type
  */
-public class ChangeNameMapModel<T extends ChangeEventProducer>
-    extends NameMapModel<T> implements org.jebtk.core.event.ChangeListener {
+public class ChangeNameMapModel<T extends ChangeEventProducer> extends NameMapModel<T>
+    implements org.jebtk.core.event.ChangeListener {
 
   /**
    * The constant serialVersionUID.
@@ -47,8 +47,7 @@ public class ChangeNameMapModel<T extends ChangeEventProducer>
   /*
    * (non-Javadoc)
    * 
-   * @see
-   * org.abh.lib.event.ChangeListener#changed(org.abh.lib.event.ChangeEvent)
+   * @see org.abh.lib.event.ChangeListener#changed(org.abh.lib.event.ChangeEvent)
    */
   @Override
   public void changed(ChangeEvent e) {

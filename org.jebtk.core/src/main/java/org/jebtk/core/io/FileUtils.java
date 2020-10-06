@@ -62,8 +62,7 @@ public class FileUtils {
   /** The Constant LOG. */
   protected final static Logger LOG = LoggerFactory.getLogger(FileUtils.class);
 
-  public static final Path HOME = PathUtils
-      .getPath(System.getProperty("user.home"));
+  public static final Path HOME = PathUtils.getPath(System.getProperty("user.home"));
 
   /**
    * Instantiates a new file utils.
@@ -86,45 +85,40 @@ public class FileUtils {
   /**
    * Ls.
    *
-   * @param root the root
+   * @param root        the root
    * @param includeDirs the include dirs
    * @return the list
    * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static List<Path> ls(Path root, boolean includeDirs)
-      throws IOException {
+  public static List<Path> ls(Path root, boolean includeDirs) throws IOException {
     return ls(root, includeDirs, false);
   }
 
   /**
    * Ls.
    *
-   * @param root Path to iterate over.
-   * @param includeDirs Whether to include directories.
+   * @param root          Path to iterate over.
+   * @param includeDirs   Whether to include directories.
    * @param includeHidden Whether to include hidden files.
    * @return the list
    * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static List<Path> ls(Path root,
-      boolean includeDirs,
-      boolean includeHidden) throws IOException {
+  public static List<Path> ls(Path root, boolean includeDirs, boolean includeHidden) throws IOException {
     return ls(root, includeDirs, includeHidden, false);
   }
 
   /**
    * List all files in a directory.
    *
-   * @param root the root
-   * @param includeDirs the include dirs
+   * @param root          the root
+   * @param includeDirs   the include dirs
    * @param includeHidden the include hidden
-   * @param recursive the recursive
+   * @param recursive     the recursive
    * @return the list
    * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static List<Path> ls(Path root,
-      boolean includeDirs,
-      boolean includeHidden,
-      boolean recursive) throws IOException {
+  public static List<Path> ls(Path root, boolean includeDirs, boolean includeHidden, boolean recursive)
+      throws IOException {
     if (isFile(root)) {
       return Collections.emptyList();
     }
@@ -166,7 +160,7 @@ public class FileUtils {
    * Find all files with a given file extension.
    * 
    * @param root The root directory to search.
-   * @param ext The file extension to search for.
+   * @param ext  The file extension to search for.
    * @return
    * @throws IOException
    */
@@ -220,28 +214,25 @@ public class FileUtils {
   /**
    * Lsdir.
    *
-   * @param root the root
+   * @param root          the root
    * @param includeHidden the include hidden
    * @return the list
    * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static List<Path> lsdir(Path root, boolean includeHidden)
-      throws IOException {
+  public static List<Path> lsdir(Path root, boolean includeHidden) throws IOException {
     return lsdir(root, includeHidden, false);
   }
 
   /**
    * List just the directories in a directory.
    *
-   * @param root the root
+   * @param root          the root
    * @param includeHidden the include hidden
-   * @param recursive the recursive
+   * @param recursive     the recursive
    * @return the list
    * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static List<Path> lsdir(Path root,
-      boolean includeHidden,
-      boolean recursive) throws IOException {
+  public static List<Path> lsdir(Path root, boolean includeHidden, boolean recursive) throws IOException {
     List<Path> ret = new ArrayList<Path>();
 
     Deque<Path> dirStack = new ArrayDeque<Path>();
@@ -272,7 +263,7 @@ public class FileUtils {
   /**
    * Ls.
    *
-   * @param dir the dir
+   * @param dir    the dir
    * @param filter the filter
    * @return the list
    * @throws IOException Signals that an I/O exception has occurred.
@@ -293,7 +284,7 @@ public class FileUtils {
    * Finds the first file matching a pattern in a directory and returns it, or
    * null otherwise. This method is non-recursive.
    *
-   * @param dir the dir
+   * @param dir     the dir
    * @param pattern the pattern
    * @return the path
    * @throws IOException Signals that an I/O exception has occurred.
@@ -311,31 +302,27 @@ public class FileUtils {
   /**
    * Find the first file whose name ends with a given suffix.
    *
-   * @param dir The starting directory.
+   * @param dir       The starting directory.
    * @param recursive Whether to search recursively.
-   * @param pattern The pattern to look for.
+   * @param pattern   The pattern to look for.
    * @return The first file found or null if search is empty.
    * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static Path endsWith(Path dir, boolean recursive, String pattern)
-      throws IOException {
+  public static Path endsWith(Path dir, boolean recursive, String pattern) throws IOException {
     return endsWith(dir, false, false, pattern);
   }
 
   /**
    * Find the first file whose name ends with a given suffix.
    *
-   * @param dir The starting directory.
+   * @param dir         The starting directory.
    * @param includeDirs Whether to include directory names in search.
-   * @param recursive Whether to search recursively.
-   * @param pattern The pattern to look for.
+   * @param recursive   Whether to search recursively.
+   * @param pattern     The pattern to look for.
    * @return The first file found or null if search is empty.
    * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static Path endsWith(Path dir,
-      boolean includeDirs,
-      boolean recursive,
-      String pattern) throws IOException {
+  public static Path endsWith(Path dir, boolean includeDirs, boolean recursive, String pattern) throws IOException {
     for (Path path : ls(dir, includeDirs, false, recursive)) {
       if (path.toString().endsWith(pattern)) {
         return path;
@@ -348,45 +335,40 @@ public class FileUtils {
   /**
    * Find all.
    *
-   * @param dir the dir
+   * @param dir      the dir
    * @param patterns the patterns
    * @return the list
    * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static List<Path> findAll(Path dir, String... patterns)
-      throws IOException {
+  public static List<Path> findAll(Path dir, String... patterns) throws IOException {
     return findAll(dir, false, patterns);
   }
 
   /**
    * Find all.
    *
-   * @param dir the dir
+   * @param dir       the dir
    * @param recursive the recursive
-   * @param patterns the patterns
+   * @param patterns  the patterns
    * @return the list
    * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static List<Path> findAll(Path dir,
-      boolean recursive,
-      String... patterns) throws IOException {
+  public static List<Path> findAll(Path dir, boolean recursive, String... patterns) throws IOException {
     return findAll(dir, false, recursive, patterns);
   }
 
   /**
    * Find all.
    *
-   * @param dir the dir
+   * @param dir         the dir
    * @param includeDirs the include dirs
-   * @param recursive the recursive
-   * @param patterns the patterns
+   * @param recursive   the recursive
+   * @param patterns    the patterns
    * @return the list
    * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static List<Path> findAll(Path dir,
-      boolean includeDirs,
-      boolean recursive,
-      String... patterns) throws IOException {
+  public static List<Path> findAll(Path dir, boolean includeDirs, boolean recursive, String... patterns)
+      throws IOException {
     List<Path> ret = new ArrayList<Path>();
 
     for (Path path : ls(dir, includeDirs, recursive)) {
@@ -404,13 +386,12 @@ public class FileUtils {
   /**
    * Find file matches that match all the patterns.
    *
-   * @param dir the dir
+   * @param dir      the dir
    * @param patterns the patterns
    * @return the list
    * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static List<Path> findMatch(Path dir, String... patterns)
-      throws IOException {
+  public static List<Path> findMatch(Path dir, String... patterns) throws IOException {
     List<Path> ret = new ArrayList<Path>();
 
     for (Path path : Files.newDirectoryStream(dir)) {
@@ -431,9 +412,7 @@ public class FileUtils {
     return ret;
   }
 
-  public static List<Path> match(Path dir,
-      boolean recursive,
-      String... patterns) throws IOException {
+  public static List<Path> match(Path dir, boolean recursive, String... patterns) throws IOException {
     return match(dir, false, recursive, patterns);
   }
 
@@ -447,10 +426,8 @@ public class FileUtils {
    * @return
    * @throws IOException
    */
-  public static List<Path> match(Path dir,
-      boolean includeDirs,
-      boolean recursive,
-      String... patterns) throws IOException {
+  public static List<Path> match(Path dir, boolean includeDirs, boolean recursive, String... patterns)
+      throws IOException {
     List<Path> ret = new ArrayList<Path>();
 
     for (Path path : ls(dir, includeDirs, recursive)) {
@@ -494,8 +471,7 @@ public class FileUtils {
    * @return the buffered table writer
    * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static BufferedTableWriter newBufferedTableWriter(Path file)
-      throws IOException {
+  public static BufferedTableWriter newBufferedTableWriter(Path file) throws IOException {
     return new BufferedTableWriter(newFileWriter(file));
   }
 
@@ -534,14 +510,13 @@ public class FileUtils {
    * @return the input stream
    * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static InputStream newBufferedInputStream(Path file)
-      throws IOException {
+  public static InputStream newBufferedInputStream(Path file) throws IOException {
     return StreamUtils.newBuffer(newInputStream(file));
   }
 
   /**
-   * Creates a new input stream. If the file name ends with the gz ext, The
-   * stream will be automatically wrapped into a GZInputStream.
+   * Creates a new input stream. If the file name ends with the gz ext, The stream
+   * will be automatically wrapped into a GZInputStream.
    *
    * @param file the file
    * @return the input stream
@@ -569,8 +544,7 @@ public class FileUtils {
     return Files.newOutputStream(file);
   }
 
-  public static OutputStream newBufferedOutputStream(Path file)
-      throws IOException {
+  public static OutputStream newBufferedOutputStream(Path file) throws IOException {
     return StreamUtils.newBuffer(newOutputStream(file));
   }
 
@@ -623,7 +597,7 @@ public class FileUtils {
    * Copy.
    *
    * @param source the source
-   * @param dest the dest
+   * @param dest   the dest
    * @return true, if successful
    * @throws IOException Signals that an I/O exception has occurred.
    */
@@ -637,7 +611,7 @@ public class FileUtils {
    * Mv.
    *
    * @param source the source
-   * @param dest the dest
+   * @param dest   the dest
    * @throws IOException Signals that an I/O exception has occurred.
    */
   public static void mv(Path source, Path dest) throws IOException {
@@ -645,8 +619,8 @@ public class FileUtils {
   }
 
   /**
-   * Makes a new directory if it does not exist. The default behavior is to
-   * create all non-existant parent directories if they do not exist.
+   * Makes a new directory if it does not exist. The default behavior is to create
+   * all non-existant parent directories if they do not exist.
    *
    * @param dir the dir
    * @return true, if successful
@@ -748,7 +722,7 @@ public class FileUtils {
   /**
    * Write.
    *
-   * @param path the path
+   * @param path  the path
    * @param bytes the bytes
    * @throws IOException Signals that an I/O exception has occurred.
    */
@@ -773,8 +747,7 @@ public class FileUtils {
    * @return the data input stream
    * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static DataInputStream newDataInputStream(Path file)
-      throws IOException {
+  public static DataInputStream newDataInputStream(Path file) throws IOException {
     return new DataInputStream(newBufferedInputStream(file));
   }
 
@@ -785,8 +758,7 @@ public class FileUtils {
    * @return the data output stream
    * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static DataOutputStream newDataOutputStream(Path file)
-      throws IOException {
+  public static DataOutputStream newDataOutputStream(Path file) throws IOException {
     return new DataOutputStream(newBufferedOutputStream(file));
   }
 
@@ -797,47 +769,43 @@ public class FileUtils {
    * @return the random access file
    * @throws FileNotFoundException the file not found exception
    */
-  public static RandomAccessFile newRandomAccess(Path file)
-      throws FileNotFoundException {
+  public static RandomAccessFile newRandomAccess(Path file) throws FileNotFoundException {
     return new RandomAccessFile(file.toFile(), "r");
   }
 
   /**
    * New buffered reader.
    *
-   * @param file the file
+   * @param file  the file
    * @param entry the entry
    * @return the buffered reader
    * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static BufferedReader newBufferedReader(ZipFile file, ZipEntry entry)
-      throws IOException {
+  public static BufferedReader newBufferedReader(ZipFile file, ZipEntry entry) throws IOException {
     return StreamUtils.newBufferedReader(newBufferedInputStream(file, entry));
   }
 
   /**
    * New buffered input stream.
    *
-   * @param file the file
+   * @param file  the file
    * @param entry the entry
    * @return the input stream
    * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static InputStream newBufferedInputStream(ZipFile file, ZipEntry entry)
-      throws IOException {
+  public static InputStream newBufferedInputStream(ZipFile file, ZipEntry entry) throws IOException {
     return StreamUtils.newBuffer(newInputStream(file, entry));
   }
 
   /**
    * New input stream.
    *
-   * @param file the file
+   * @param file  the file
    * @param entry the entry
    * @return the input stream
    * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static InputStream newInputStream(ZipFile file, ZipEntry entry)
-      throws IOException {
+  public static InputStream newInputStream(ZipFile file, ZipEntry entry) throws IOException {
     return file.getInputStream(entry);
   }
 
@@ -847,7 +815,7 @@ public class FileUtils {
    * @param file the file
    * @return the zip file
    * @throws ZipException the zip exception
-   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws IOException  Signals that an I/O exception has occurred.
    */
   public static ZipFile newZipFile(Path file) throws ZipException, IOException {
     return new ZipFile(file.toFile());
@@ -857,7 +825,7 @@ public class FileUtils {
    * Tokenize.
    *
    * @param file the file
-   * @param tf the tf
+   * @param tf   the tf
    * @throws IOException Signals that an I/O exception has occurred.
    */
   public static void tokenize(Path file, TokenFunction tf) throws IOException {
@@ -867,13 +835,12 @@ public class FileUtils {
   /**
    * Tokenize.
    *
-   * @param file the file
+   * @param file       the file
    * @param skipHeader the skip header
-   * @param tf the tf
+   * @param tf         the tf
    * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static void tokenize(Path file, boolean skipHeader, TokenFunction tf)
-      throws IOException {
+  public static void tokenize(Path file, boolean skipHeader, TokenFunction tf) throws IOException {
     BufferedReader reader = FileUtils.newBufferedReader(file);
 
     try {
@@ -887,11 +854,10 @@ public class FileUtils {
    * Tokenize.
    *
    * @param reader the reader
-   * @param tf the tf
+   * @param tf     the tf
    * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static void tokenize(BufferedReader reader, TokenFunction tf)
-      throws IOException {
+  public static void tokenize(BufferedReader reader, TokenFunction tf) throws IOException {
     tokenize(reader, false, tf);
   }
 
@@ -899,14 +865,12 @@ public class FileUtils {
    * Run through reader tokenizing each line for processing. Reader is closed
    * after function has been applied.
    *
-   * @param reader the reader
+   * @param reader     the reader
    * @param skipHeader the skip header
-   * @param tf the tf
+   * @param tf         the tf
    * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static void tokenize(BufferedReader reader,
-      boolean skipHeader,
-      TokenFunction tf) throws IOException {
+  public static void tokenize(BufferedReader reader, boolean skipHeader, TokenFunction tf) throws IOException {
     // try {
     // Skip header
     if (skipHeader) {
@@ -931,7 +895,7 @@ public class FileUtils {
    * Lines.
    *
    * @param file the file
-   * @param lf the lf
+   * @param lf   the lf
    * @throws IOException Signals that an I/O exception has occurred.
    */
   public static void lines(Path file, LineFunction lf) throws IOException {
@@ -941,13 +905,12 @@ public class FileUtils {
   /**
    * Lines.
    *
-   * @param file the file
+   * @param file       the file
    * @param skipHeader the skip header
-   * @param lf the lf
+   * @param lf         the lf
    * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static void lines(Path file, boolean skipHeader, LineFunction lf)
-      throws IOException {
+  public static void lines(Path file, boolean skipHeader, LineFunction lf) throws IOException {
     BufferedReader reader = FileUtils.newBufferedReader(file);
 
     try {
@@ -961,11 +924,10 @@ public class FileUtils {
    * Lines.
    *
    * @param reader the reader
-   * @param lf the lf
+   * @param lf     the lf
    * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static void lines(BufferedReader reader, LineFunction lf)
-      throws IOException {
+  public static void lines(BufferedReader reader, LineFunction lf) throws IOException {
     lines(reader, false, lf);
   }
 
@@ -973,14 +935,12 @@ public class FileUtils {
    * Run through reader tokenizing each line for processing. Reader is closed
    * after function has been applied.
    *
-   * @param reader the reader
+   * @param reader     the reader
    * @param skipHeader the skip header
-   * @param lf the lf
+   * @param lf         the lf
    * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static void lines(BufferedReader reader,
-      boolean skipHeader,
-      LineFunction lf) throws IOException {
+  public static void lines(BufferedReader reader, boolean skipHeader, LineFunction lf) throws IOException {
     // try {
     // Skip header
     if (skipHeader) {
@@ -1013,13 +973,12 @@ public class FileUtils {
   /**
    * Read lines.
    *
-   * @param file the file
+   * @param file       the file
    * @param skipHeader the skip header
    * @return the list
    * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static final List<String> readLines(Path file, boolean skipHeader)
-      throws IOException {
+  public static final List<String> readLines(Path file, boolean skipHeader) throws IOException {
     LOG.info("Load list from {}, {}...", file, skipHeader);
 
     BufferedReader reader = newBufferedReader(file);
@@ -1087,13 +1046,11 @@ public class FileUtils {
     zos.close();
   }
 
-  public static MappedByteBuffer newMemMappedFile(Path file)
-      throws IOException {
+  public static MappedByteBuffer newMemMappedFile(Path file) throws IOException {
     return newMemMappedFile(file, -1);
   }
 
-  public static MappedByteBuffer newMemMappedFile(Path file, long size)
-      throws IOException {
+  public static MappedByteBuffer newMemMappedFile(Path file, long size) throws IOException {
     RandomAccessFile reader = newRandomAccess(file);
 
     FileChannel fileChannel = reader.getChannel();
@@ -1103,8 +1060,7 @@ public class FileUtils {
     }
 
     // Get direct byte buffer access using channel.map() operation
-    MappedByteBuffer buffer = fileChannel
-        .map(FileChannel.MapMode.READ_ONLY, 0, size);
+    MappedByteBuffer buffer = fileChannel.map(FileChannel.MapMode.READ_ONLY, 0, size);
 
     return buffer;
   }

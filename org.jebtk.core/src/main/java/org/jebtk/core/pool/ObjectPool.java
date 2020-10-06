@@ -57,7 +57,7 @@ public class ObjectPool<T> {
   /**
    * Instantiates a new object pool.
    *
-   * @param name the name
+   * @param name    the name
    * @param maxSize the max size
    */
   public ObjectPool(String name, int maxSize) {
@@ -108,8 +108,8 @@ public class ObjectPool<T> {
   }
 
   /**
-   * Check an object in to the store. The object must have been checked out
-   * before it can be checked in.
+   * Check an object in to the store. The object must have been checked out before
+   * it can be checked in.
    *
    * @param object the object
    */

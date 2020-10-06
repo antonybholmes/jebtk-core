@@ -46,7 +46,7 @@ public class Args implements Iterable<Arg> {
    * Adds the.
    *
    * @param shortName the short name
-   * @param longName the long name
+   * @param longName  the long name
    * @return
    */
   public Args add(char shortName, String longName) {
@@ -61,8 +61,8 @@ public class Args implements Iterable<Arg> {
    * Adds the.
    *
    * @param shortName the short name
-   * @param longName the long name
-   * @param hasValue the has arg
+   * @param longName  the long name
+   * @param hasValue  the has arg
    * @return
    */
   public Args add(char shortName, String longName, boolean hasValue) {
@@ -72,16 +72,13 @@ public class Args implements Iterable<Arg> {
   /**
    * Adds the option.
    *
-   * @param shortName the short name
-   * @param longName the long name
-   * @param hasValue the has arg
+   * @param shortName   the short name
+   * @param longName    the long name
+   * @param hasValue    the has arg
    * @param description the description
    * @return
    */
-  public Args add(char shortName,
-      String longName,
-      boolean hasValue,
-      String description) {
+  public Args add(char shortName, String longName, boolean hasValue, String description) {
     return add(new Arg(shortName, longName, hasValue, description));
   }
 
@@ -139,8 +136,8 @@ public class Args implements Iterable<Arg> {
   }
 
   /**
-   * Returns true the arg with the given name. The name should either the long
-   * or short variant without a '--' or '-' prefix.
+   * Returns true the arg with the given name. The name should either the long or
+   * short variant without a '--' or '-' prefix.
    * 
    * @param name The name of the argument.
    * @return The arg or null if it does not exist.

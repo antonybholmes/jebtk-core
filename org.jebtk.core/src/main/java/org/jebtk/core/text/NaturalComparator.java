@@ -88,19 +88,16 @@ public class NaturalComparator<T> implements Comparator<T> {
   }
 
   /**
-   * Length of string is passed in for improved efficiency (only need to
-   * calculate it once) .
+   * Length of string is passed in for improved efficiency (only need to calculate
+   * it once) .
    *
-   * @param s the char string
+   * @param s       the char string
    * @param slength the slength
-   * @param marker the marker
-   * @param buffer buffer
+   * @param marker  the marker
+   * @param buffer  buffer
    * @return *
    */
-  private static final int getChunk(char[] s,
-      int slength,
-      int marker,
-      char[] buffer) {
+  private static final int getChunk(char[] s, int slength, int marker, char[] buffer) {
 
     // buffer counter
     int cp = 0;
@@ -175,8 +172,8 @@ public class NaturalComparator<T> implements Comparator<T> {
   /**
    * Filter any characters we do not want to include.
    * 
-   * @param c The character to append.
-   * @param cp Index in buffer to add next character at.
+   * @param c      The character to append.
+   * @param cp     Index in buffer to add next character at.
    * @param buffer Buffer to append characters to.
    * @return
    */

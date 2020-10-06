@@ -41,7 +41,7 @@ public class TailList<T> extends ReadOnlyListContainer<T> {
   /**
    * Instantiates a new tail list.
    *
-   * @param list the list
+   * @param list  the list
    * @param start the start
    */
   public TailList(List<T> list, int start) {

@@ -61,25 +61,19 @@ public class KeyXmlHandler extends DefaultHandler {
    * @see org.xml.sax.helpers.DefaultHandler#startElement(java.lang.String,
    * java.lang.String, java.lang.String, org.xml.sax.Attributes)
    */
-  public void startElement(String uri,
-      String localName,
-      String qName,
-      Attributes attributes) throws SAXException {
+  public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
 
     if (qName.equals("keys")) {
-      mUnique = attributes.getValue("unique") == null
-          && attributes.getValue("unique").equals(TextUtils.TRUE);
+      mUnique = attributes.getValue("unique") == null && attributes.getValue("unique").equals(TextUtils.TRUE);
     } else if (qName.equals("key")) {
-      TreeNode<String> key = mStack.peek()
-          .getChild(attributes.getValue("name"));
+      TreeNode<String> key = mStack.peek().getChild(attributes.getValue("name"));
 
       if (mUnique && key != null) {
         key.setValue(attributes.getValue("value"));
       } else {
         // Only create a new node if the unique mode is false or
         // we cannot find an existing node
-        key = new KeyNode(attributes.getValue("name"),
-            attributes.getValue("value"));
+        key = new KeyNode(attributes.getValue("name"), attributes.getValue("value"));
 
         mStack.peek().addChild(key);
       }
@@ -109,8 +103,7 @@ public class KeyXmlHandler extends DefaultHandler {
    * @see org.xml.sax.helpers.DefaultHandler#endElement(java.lang.String,
    * java.lang.String, java.lang.String)
    */
-  public void endElement(String uri, String localName, String qName)
-      throws SAXException {
+  public void endElement(String uri, String localName, String qName) throws SAXException {
 
     if (qName.equals("key")) {
       mStack.pop();

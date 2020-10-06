@@ -23,8 +23,7 @@ package org.jebtk.core.event;
  * @author Antony Holmes
  *
  */
-public class ChangeListeners extends EventProducer<ChangeListener>
-    implements ChangeEventProducer {
+public class ChangeListeners extends EventProducer<ChangeListener> implements ChangeEventProducer {
 
   /**
    * The constant serialVersionUID.
@@ -45,8 +44,7 @@ public class ChangeListeners extends EventProducer<ChangeListener>
   /*
    * (non-Javadoc)
    * 
-   * @see
-   * org.abh.lib.event.ChangeEventProducer#removeChangeListener(org.abh.lib.
+   * @see org.abh.lib.event.ChangeEventProducer#removeChangeListener(org.abh.lib.
    * event. ChangeListener)
    */
   public synchronized void removeChangeListener(ChangeListener l) {

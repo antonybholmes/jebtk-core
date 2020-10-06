@@ -30,8 +30,7 @@ import org.xml.sax.SAXException;
 public class SettingsReaderPackageXml implements SettingsReader {
 
   /** The Constant DEFAULT_XML_FILE. */
-  public static final Path DEFAULT_XML_FILE = Resources.RES_DIR
-      .resolve("default.settings.xml");
+  public static final Path DEFAULT_XML_FILE = Resources.RES_DIR.resolve("default.settings.xml");
 
   /*
    * (non-Javadoc)

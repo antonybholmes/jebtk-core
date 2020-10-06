@@ -39,7 +39,7 @@ public class DblIdx implements Comparable<DblIdx> {
    * Instantiates a new indexed value.
    *
    * @param index the index
-   * @param item the item
+   * @param item  the item
    */
   public DblIdx(int index, double item) {
     mValue = item;

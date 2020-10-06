@@ -60,14 +60,12 @@ public class PluginService implements Iterable<Plugin> {
   }
 
   /** The Constant LOG. */
-  private static final Logger LOG = LoggerFactory
-      .getLogger(PluginService.class);
+  private static final Logger LOG = LoggerFactory.getLogger(PluginService.class);
 
   /**
    * Default directory where to find plugins.
    */
-  public static final Path DEFAULT_PLUGIN_DIRECTORY = PathUtils.getPath("res",
-      "plugins");
+  public static final Path DEFAULT_PLUGIN_DIRECTORY = PathUtils.getPath("res", "plugins");
 
   public static final String DEFAULT_GROUP = "default";
   /**
@@ -75,8 +73,7 @@ public class PluginService implements Iterable<Plugin> {
    */
   // private List<Plugin> mPlugins = new UniqueArrayList<Plugin>();
 
-  private Map<String, List<Plugin>> mPluginMap = DefaultHashMap
-      .create(new UniqueArrayListCreator<Plugin>());
+  private Map<String, List<Plugin>> mPluginMap = DefaultHashMap.create(new UniqueArrayListCreator<Plugin>());
 
   /**
    * Instantiates a new plugin service.
@@ -142,8 +139,7 @@ public class PluginService implements Iterable<Plugin> {
    * @throws ClassNotFoundException the class not found exception
    * @throws IOException
    */
-  public final void scanDirectory(String filename)
-      throws ClassNotFoundException, IOException {
+  public final void scanDirectory(String filename) throws ClassNotFoundException, IOException {
     scan(PathUtils.getPath(filename));
   }
 
@@ -154,8 +150,7 @@ public class PluginService implements Iterable<Plugin> {
    * @throws ClassNotFoundException the class not found exception
    * @throws IOException
    */
-  public final void scan(Path pluginDir)
-      throws ClassNotFoundException, IOException {
+  public final void scan(Path pluginDir) throws ClassNotFoundException, IOException {
     if (!FileUtils.exists(pluginDir)) {
       return;
     }
@@ -195,9 +190,7 @@ public class PluginService implements Iterable<Plugin> {
 
         String currentPackage = packageNameStack.pop();
 
-        LOG.info("Scanning {} [{}] for plugins.",
-            currentDirectory.toAbsolutePath(),
-            currentPackage);
+        LOG.info("Scanning {} [{}] for plugins.", currentDirectory.toAbsolutePath(), currentPackage);
 
         for (Path file : files) {
           if (!FileUtils.isDirectory(file)) {
@@ -210,8 +203,7 @@ public class PluginService implements Iterable<Plugin> {
 
           dirStack.push(file);
 
-          packageNameStack
-              .push(currentPackage + file.getFileName().toString() + ".");
+          packageNameStack.push(currentPackage + file.getFileName().toString() + ".");
         }
 
         for (Path file : files) {
@@ -223,8 +215,7 @@ public class PluginService implements Iterable<Plugin> {
             continue;
           }
 
-          String plugin = currentPackage
-              + file.getFileName().toString().replaceFirst("\\.class$", "");
+          String plugin = currentPackage + file.getFileName().toString().replaceFirst("\\.class$", "");
 
           LOG.info("Loading plugin {}.", plugin);
 
@@ -233,8 +224,7 @@ public class PluginService implements Iterable<Plugin> {
           // System.err.println(pluginClass.getSimpleName() + " "
           // +pluginClass.getCanonicalName() + " " + pluginClass.getName());
 
-          addPlugin(dir.getFileName().toString().toLowerCase(),
-              new Plugin(pluginClass));
+          addPlugin(dir.getFileName().toString().toLowerCase(), new Plugin(pluginClass));
         }
 
         visited.add(currentDirectory);

@@ -68,8 +68,7 @@ import org.xml.sax.helpers.DefaultHandler;
  * @author Antony Holmes
  *
  */
-public class Settings extends ChangeListeners
-    implements Iterable<Path>, XmlRepresentation, JsonRepresentation {
+public class Settings extends ChangeListeners implements Iterable<Path>, XmlRepresentation, JsonRepresentation {
 
   /** The Constant serialVersionUID. */
   private static final long serialVersionUID = 1L;
@@ -118,10 +117,7 @@ public class Settings extends ChangeListeners
      * java.lang.String, java.lang.String, org.xml.sax.Attributes)
      */
     @Override
-    public void startElement(String uri,
-        String localName,
-        String qName,
-        Attributes attributes) throws SAXException {
+    public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
 
       if (qName.equals("setting")) {
         Path path = mCurrentPaths.peek().append(attributes.getValue("name"));
@@ -142,8 +138,7 @@ public class Settings extends ChangeListeners
           description = TextUtils.EMPTY_STRING;
         }
 
-        boolean locked = attributes.getValue("locked") != null
-            && TextUtils.parseBool(attributes.getValue("locked"));
+        boolean locked = attributes.getValue("locked") != null && TextUtils.parseBool(attributes.getValue("locked"));
 
         Setting setting = Setting.parse(path, value, description, locked);
 
@@ -180,7 +175,7 @@ public class Settings extends ChangeListeners
   /**
    * Update.
    *
-   * @param path the path
+   * @param path  the path
    * @param color the color
    */
   public void update(String path, Color color) {
@@ -190,7 +185,7 @@ public class Settings extends ChangeListeners
   /**
    * Sets the setting.
    *
-   * @param path the path
+   * @param path  the path
    * @param value the value
    */
   public void update(String path, boolean value) {
@@ -200,7 +195,7 @@ public class Settings extends ChangeListeners
   /**
    * Update.
    *
-   * @param path the path
+   * @param path  the path
    * @param value the value
    */
   public void update(Path path, boolean value) {
@@ -210,7 +205,7 @@ public class Settings extends ChangeListeners
   /**
    * Set a user setting. Triggers writing of setting to res/user.settings.xml.
    *
-   * @param path the path
+   * @param path  the path
    * @param value the value
    */
   public void update(String path, String value) {
@@ -220,7 +215,7 @@ public class Settings extends ChangeListeners
   /**
    * Sets the setting.
    *
-   * @param path the path
+   * @param path  the path
    * @param value the value
    */
   public void update(String path, int value) {
@@ -230,7 +225,7 @@ public class Settings extends ChangeListeners
   /**
    * Update.
    *
-   * @param path the path
+   * @param path  the path
    * @param value the value
    */
   public void update(String path, long value) {
@@ -244,7 +239,7 @@ public class Settings extends ChangeListeners
   /**
    * Sets the.
    *
-   * @param path the path
+   * @param path  the path
    * @param value the value
    */
   public void set(String path, double value) {
@@ -256,7 +251,7 @@ public class Settings extends ChangeListeners
   /**
    * Sets the setting.
    *
-   * @param path the path
+   * @param path  the path
    * @param value the value
    */
   public void update(Path path, String value) {
@@ -266,7 +261,7 @@ public class Settings extends ChangeListeners
   /**
    * Sets the setting.
    *
-   * @param path the path
+   * @param path  the path
    * @param value the value
    */
   public void update(String path, double value) {
@@ -276,7 +271,7 @@ public class Settings extends ChangeListeners
   /**
    * Sets the.
    *
-   * @param path the path
+   * @param path  the path
    * @param value the value
    */
   public void set(String path, boolean value) {
@@ -288,7 +283,7 @@ public class Settings extends ChangeListeners
   /**
    * Sets the.
    *
-   * @param path the path
+   * @param path  the path
    * @param value the value
    */
   public void set(Path path, boolean value) {
@@ -306,7 +301,7 @@ public class Settings extends ChangeListeners
   /**
    * Sets the.
    *
-   * @param path the path
+   * @param path  the path
    * @param value the value
    */
   public void set(Path path, String value) {
@@ -585,7 +580,7 @@ public class Settings extends ChangeListeners
   /**
    * Returns a setting, creating it with the default value it if does not exist.
    *
-   * @param name the name
+   * @param name         the name
    * @param defaultValue the default value
    * @return the as bool
    */
@@ -596,7 +591,7 @@ public class Settings extends ChangeListeners
   /**
    * Gets the as bool.
    *
-   * @param name the name
+   * @param name         the name
    * @param defaultValue the default value
    * @return the as bool
    */
@@ -711,14 +706,13 @@ public class Settings extends ChangeListeners
    *
    * @param libName the lib name
    * @return true, if successful
-   * @throws SAXException the SAX exception
-   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws SAXException                 the SAX exception
+   * @throws IOException                  Signals that an I/O exception has
+   *                                      occurred.
    * @throws ParserConfigurationException the parser configuration exception
    */
-  public boolean loadLibSettings(String libName)
-      throws SAXException, IOException, ParserConfigurationException {
-    String Path = new StringBuilder(libName.toLowerCase())
-        .append(".settings.xml").toString();
+  public boolean loadLibSettings(String libName) throws SAXException, IOException, ParserConfigurationException {
+    String Path = new StringBuilder(libName.toLowerCase()).append(".settings.xml").toString();
 
     LOG.info("Attempting to load settings from {}...", Path);
 
@@ -734,10 +728,11 @@ public class Settings extends ChangeListeners
   /**
    * Load xml.
    *
-   * @param file the file
+   * @param file   the file
    * @param update the update
-   * @throws SAXException the SAX exception
-   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws SAXException                 the SAX exception
+   * @throws IOException                  Signals that an I/O exception has
+   *                                      occurred.
    * @throws ParserConfigurationException the parser configuration exception
    */
   public void loadXml(java.nio.file.Path file, boolean update)
@@ -760,11 +755,12 @@ public class Settings extends ChangeListeners
   /**
    * Load xml.
    *
-   * @param is the is
+   * @param is     the is
    * @param update the update
    * @return true, if successful
-   * @throws SAXException the SAX exception
-   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws SAXException                 the SAX exception
+   * @throws IOException                  Signals that an I/O exception has
+   *                                      occurred.
    * @throws ParserConfigurationException the parser configuration exception
    */
   protected synchronized boolean loadXml(InputStream is, boolean update)
@@ -786,13 +782,12 @@ public class Settings extends ChangeListeners
   /**
    * Load json.
    *
-   * @param file the file
+   * @param file   the file
    * @param update the update
    * @throws FileNotFoundException the file not found exception
-   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws IOException           Signals that an I/O exception has occurred.
    */
-  public void loadJson(java.nio.file.Path file, boolean update)
-      throws FileNotFoundException, IOException {
+  public void loadJson(java.nio.file.Path file, boolean update) throws FileNotFoundException, IOException {
     if (file == null || !FileUtils.exists(file)) {
       return;
     }
@@ -811,13 +806,12 @@ public class Settings extends ChangeListeners
   /**
    * Load xml.
    *
-   * @param is the is
+   * @param is     the is
    * @param update the update
    * @return true, if successful
    * @throws IOException Signals that an I/O exception has occurred.
    */
-  protected synchronized boolean loadJson(InputStream is, boolean update)
-      throws IOException {
+  protected synchronized boolean loadJson(InputStream is, boolean update) throws IOException {
     if (is == null) {
       return false;
     }
@@ -827,10 +821,8 @@ public class Settings extends ChangeListeners
     for (int i = 0; i < json.size(); ++i) {
       Json settingJson = json.get(i);
 
-      Setting setting = Setting.parse(settingJson.getString("name"),
-          settingJson.getString("value"),
-          settingJson.getString("description"),
-          settingJson.getBool("locked"));
+      Setting setting = Setting.parse(settingJson.getString("name"), settingJson.getString("value"),
+          settingJson.getString("description"), settingJson.getBool("locked"));
 
       update(setting, update);
     }
@@ -850,8 +842,9 @@ public class Settings extends ChangeListeners
    * Write xml.
    *
    * @param file the file
-   * @throws IOException Signals that an I/O exception has occurred.
-   * @throws TransformerException the transformer exception
+   * @throws IOException                  Signals that an I/O exception has
+   *                                      occurred.
+   * @throws TransformerException         the transformer exception
    * @throws ParserConfigurationException the parser configuration exception
    */
   public final void writeXml(java.nio.file.Path file)
@@ -913,16 +906,13 @@ public class Settings extends ChangeListeners
           continue;
         }
 
-        List<String> tokens = TextUtils
-            .fastSplit(line, TextUtils.EQUALS_DELIMITER, 2);
+        List<String> tokens = TextUtils.fastSplit(line, TextUtils.EQUALS_DELIMITER, 2);
 
-        Setting setting = Setting.parse(new RootPath(group, tokens.get(0)),
-            tokens.get(1)); // (true, group, tokens.get(0)),
+        Setting setting = Setting.parse(new RootPath(group, tokens.get(0)), tokens.get(1)); // (true, group,
+                                                                                            // tokens.get(0)),
 
-        System.err.println(
-            "ini path 2 " + (new RootPath(group, tokens.get(0)).toString())
-                + " " + setting.getPath().toString() + " " + setting.getString()
-                + " " + group + " " + tokens.get(0));
+        System.err.println("ini path 2 " + (new RootPath(group, tokens.get(0)).toString()) + " "
+            + setting.getPath().toString() + " " + setting.getString() + " " + group + " " + tokens.get(0));
 
         update(setting);
       }

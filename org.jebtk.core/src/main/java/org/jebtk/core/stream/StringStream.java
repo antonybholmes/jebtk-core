@@ -111,7 +111,7 @@ public class StringStream extends ContainerStream<String> {
     /**
      * Instantiates a new find filter.
      *
-     * @param text the text
+     * @param text          the text
      * @param caseSensitive the case sensitive
      */
     public FindFilter(String text, boolean caseSensitive) {
@@ -170,8 +170,7 @@ public class StringStream extends ContainerStream<String> {
   /**
    * The Class FindIndicesFunction.
    */
-  private static class FindIndicesFunction
-      implements ReduceFunction<String, List<Integer>> {
+  private static class FindIndicesFunction implements ReduceFunction<String, List<Integer>> {
 
     /** The m text. */
     private String mText;
@@ -182,7 +181,7 @@ public class StringStream extends ContainerStream<String> {
     /**
      * Instantiates a new find indices function.
      *
-     * @param text the text
+     * @param text          the text
      * @param caseSensitive the case sensitive
      */
     public FindIndicesFunction(String text, boolean caseSensitive) {
@@ -235,8 +234,7 @@ public class StringStream extends ContainerStream<String> {
   /**
    * The Class FindIndicesByRegexFunction.
    */
-  private static class FindIndicesByRegexFunction
-      implements ReduceFunction<String, List<Integer>> {
+  private static class FindIndicesByRegexFunction implements ReduceFunction<String, List<Integer>> {
 
     /** The m regex. */
     private Pattern mRegex;
@@ -292,9 +290,9 @@ public class StringStream extends ContainerStream<String> {
     /**
      * Instantiates a new round function.
      *
-     * @param v the v
+     * @param v     the v
      * @param start the start
-     * @param n the n
+     * @param n     the n
      */
     public AppendFunction(String v, int start, int n) {
       mV = v;
@@ -378,7 +376,7 @@ public class StringStream extends ContainerStream<String> {
   /**
    * Find.
    *
-   * @param text the text
+   * @param text          the text
    * @param caseSensitive the case sensitive
    * @return the string stream
    */
@@ -409,7 +407,7 @@ public class StringStream extends ContainerStream<String> {
   /**
    * Find the indices of items in the stream matching a string.
    *
-   * @param text the text
+   * @param text          the text
    * @param caseSensitive the case sensitive
    * @return the list
    */
@@ -451,9 +449,9 @@ public class StringStream extends ContainerStream<String> {
   /**
    * Append.
    *
-   * @param v the v
+   * @param v     the v
    * @param start the start
-   * @param n the n
+   * @param n     the n
    * @return the string stream
    */
   public StringStream append(String v, int start, int n) {

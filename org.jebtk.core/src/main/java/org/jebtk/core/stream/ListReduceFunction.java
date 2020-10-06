@@ -26,8 +26,7 @@ import java.util.List;
  * @param <T> the generic type
  * @param <V> the value type
  */
-public abstract class ListReduceFunction<T, V>
-    implements ReduceFunction<T, List<V>> {
+public abstract class ListReduceFunction<T, V> implements ReduceFunction<T, List<V>> {
 
   @Override
   public List<V> apply(Stream<T> stream) {

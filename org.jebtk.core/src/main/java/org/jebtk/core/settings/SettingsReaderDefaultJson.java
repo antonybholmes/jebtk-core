@@ -26,8 +26,7 @@ import org.jebtk.core.io.PathUtils;
 public class SettingsReaderDefaultJson implements SettingsReader {
 
   /** The Constant JSON_FILE. */
-  public static final Path JSON_FILE = PathUtils
-      .getPath("res/default.settings.json");
+  public static final Path JSON_FILE = PathUtils.getPath("res/default.settings.json");
 
   /*
    * (non-Javadoc)

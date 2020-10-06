@@ -38,7 +38,7 @@ public class Hmac {
   /**
    * Calculate SHA 256 HMAC.
    *
-   * @param key the key
+   * @param key     the key
    * @param message the message
    * @return the string
    */
@@ -49,7 +49,7 @@ public class Hmac {
   /**
    * Computes RFC 2104-compliant HMAC signature.
    *
-   * @param key The signing key.
+   * @param key     The signing key.
    * @param message The data to be signed.
    * @return The Base64-encoded RFC 2104-compliant HMAC signature.
    */
@@ -69,7 +69,7 @@ public class Hmac {
   /**
    * Calculate SHA 256 HMAC.
    *
-   * @param key the key
+   * @param key     the key
    * @param message the message
    * @return the string
    */
@@ -89,7 +89,7 @@ public class Hmac {
   /**
    * Hmac SHA 256.
    *
-   * @param key the key
+   * @param key     the key
    * @param message the message
    * @return the byte[]
    */
@@ -100,19 +100,18 @@ public class Hmac {
   /**
    * Returns a 32 byte (256 bit) base.
    *
-   * @param key the key
+   * @param key     the key
    * @param message the message
    * @return the byte[]
    */
   public static byte[] hmacSHA256(String key, String message) {
-    return hmacSHA256(key.getBytes(StandardCharsets.UTF_8),
-        message.getBytes(StandardCharsets.UTF_8));
+    return hmacSHA256(key.getBytes(StandardCharsets.UTF_8), message.getBytes(StandardCharsets.UTF_8));
   }
 
   /**
    * Hmac SHA 256.
    *
-   * @param key the key
+   * @param key     the key
    * @param message the message
    * @return the byte[]
    */
@@ -123,7 +122,7 @@ public class Hmac {
   /**
    * Hmac SHA 256.
    *
-   * @param key the key
+   * @param key     the key
    * @param message the message
    * @return the byte[]
    */
@@ -132,10 +131,10 @@ public class Hmac {
   }
 
   /**
-   * Computes the keyed-hash message authentication code (HMAC) for the given
-   * key and message. Returns null if the cryptography fails.
+   * Computes the keyed-hash message authentication code (HMAC) for the given key
+   * and message. Returns null if the cryptography fails.
    *
-   * @param key the key
+   * @param key     the key
    * @param message the message
    * @return the byte[]
    */

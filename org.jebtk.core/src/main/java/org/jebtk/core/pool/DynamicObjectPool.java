@@ -36,7 +36,7 @@ public class DynamicObjectPool<T> extends ObjectPool<T> {
   /**
    * Instantiates a new dynamic object pool.
    *
-   * @param name the name
+   * @param name    the name
    * @param creator the creator
    * @param maxSize the max size
    */
@@ -49,7 +49,7 @@ public class DynamicObjectPool<T> extends ObjectPool<T> {
   /**
    * Instantiates a new dynamic object pool.
    *
-   * @param name the name
+   * @param name    the name
    * @param creator the creator
    */
   public DynamicObjectPool(String name, ObjectCreator<T> creator) {

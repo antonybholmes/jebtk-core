@@ -42,8 +42,7 @@ public class TrustAllManager implements X509TrustManager {
    * X509Certificate[], java.lang.String)
    */
   @Override
-  public void checkClientTrusted(java.security.cert.X509Certificate[] certs,
-      String authType) {
+  public void checkClientTrusted(java.security.cert.X509Certificate[] certs, String authType) {
   }
 
   /*
@@ -53,7 +52,6 @@ public class TrustAllManager implements X509TrustManager {
    * X509Certificate[], java.lang.String)
    */
   @Override
-  public void checkServerTrusted(java.security.cert.X509Certificate[] certs,
-      String authType) {
+  public void checkServerTrusted(java.security.cert.X509Certificate[] certs, String authType) {
   }
 }

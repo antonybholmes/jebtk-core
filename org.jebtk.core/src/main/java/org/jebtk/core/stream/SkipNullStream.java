@@ -26,7 +26,7 @@ public class SkipNullStream<T> extends ContainerStream<T> {
    * Instantiates a new filter stream.
    *
    * @param stream the stream
-   * @param n the n
+   * @param n      the n
    */
   public SkipNullStream(Stream<T> stream) {
     super(stream);

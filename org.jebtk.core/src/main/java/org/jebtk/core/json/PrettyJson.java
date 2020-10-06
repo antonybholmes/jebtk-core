@@ -26,7 +26,7 @@ public interface PrettyJson {
    * Formatted json.
    *
    * @param buffer the buffer
-   * @param level the level
+   * @param level  the level
    * @throws IOException Signals that an I/O exception has occurred.
    */
   public void prettyJson(Appendable buffer, int level) throws IOException;

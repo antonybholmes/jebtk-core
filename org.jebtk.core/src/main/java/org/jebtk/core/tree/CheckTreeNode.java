@@ -35,7 +35,7 @@ public class CheckTreeNode<T> extends TreeNode<T> {
   /**
    * Instantiates a new check tree node.
    *
-   * @param name the name
+   * @param name  the name
    * @param value the value
    */
   public CheckTreeNode(String name, T value) {
@@ -54,7 +54,7 @@ public class CheckTreeNode<T> extends TreeNode<T> {
   /**
    * Instantiates a new check tree node.
    *
-   * @param name the name
+   * @param name     the name
    * @param selected the selected
    */
   public CheckTreeNode(String name, boolean selected) {
@@ -64,8 +64,8 @@ public class CheckTreeNode<T> extends TreeNode<T> {
   /**
    * Instantiates a new check tree node.
    *
-   * @param name the name
-   * @param value the value
+   * @param name     the name
+   * @param value    the value
    * @param selected the selected
    */
   public CheckTreeNode(String name, T value, boolean selected) {
@@ -85,8 +85,8 @@ public class CheckTreeNode<T> extends TreeNode<T> {
 
   /**
    * Updates the node to be selected and by default all of its children. Use
-   * {@code setSelected(selected, updateChildren)} to control whether the
-   * children are updated.
+   * {@code setSelected(selected, updateChildren)} to control whether the children
+   * are updated.
    *
    * @param checked the new checked
    */
@@ -97,7 +97,7 @@ public class CheckTreeNode<T> extends TreeNode<T> {
   /**
    * Sets the checked.
    *
-   * @param checked the checked
+   * @param checked   the checked
    * @param recursive the recursive
    */
   public void setChecked(boolean checked, boolean recursive) {
@@ -118,7 +118,7 @@ public class CheckTreeNode<T> extends TreeNode<T> {
   /**
    * Update checked.
    *
-   * @param checked the checked
+   * @param checked   the checked
    * @param recursive the recursive
    */
   public void updateChecked(boolean checked, boolean recursive) {

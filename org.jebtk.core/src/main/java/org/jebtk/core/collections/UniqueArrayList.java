@@ -16,7 +16,6 @@
 package org.jebtk.core.collections;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
@@ -29,8 +28,8 @@ public class UniqueArrayList<T> extends UniqueList<T> {
 
   /**
    * Instantiates a new unique array list. A unique array list is an array list
-   * that preserves the order of items as they are added, but discards
-   * subsequent duplicates.
+   * that preserves the order of items as they are added, but discards subsequent
+   * duplicates.
    */
   public UniqueArrayList() {
     super(new ArrayList<T>());

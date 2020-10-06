@@ -41,8 +41,7 @@ import org.w3c.dom.Element;
  * @author Antony Holmes
  *
  */
-public class Setting extends ChangeListeners
-    implements Comparable<Setting>, XmlRepresentation, JsonRepresentation {
+public class Setting extends ChangeListeners implements Comparable<Setting>, XmlRepresentation, JsonRepresentation {
 
   /**
    * The constant serialVersionUID.
@@ -65,7 +64,7 @@ public class Setting extends ChangeListeners
   /**
    * Instantiates a new setting.
    *
-   * @param path the path
+   * @param path   the path
    * @param locked the locked
    */
   public Setting(String path, boolean locked) {
@@ -75,7 +74,7 @@ public class Setting extends ChangeListeners
   /**
    * Instantiates a new setting.
    *
-   * @param path the path
+   * @param path   the path
    * @param locked the locked
    */
   public Setting(Path path, boolean locked) {
@@ -85,9 +84,9 @@ public class Setting extends ChangeListeners
   /**
    * Instantiates a new setting.
    *
-   * @param path the path
+   * @param path        the path
    * @param description the description
-   * @param locked the locked
+   * @param locked      the locked
    */
   public Setting(String path, String description, boolean locked) {
     this(new StrictPath(path), description, locked);
@@ -96,9 +95,9 @@ public class Setting extends ChangeListeners
   /**
    * Instantiates a new setting.
    *
-   * @param path the path
+   * @param path        the path
    * @param description the description
-   * @param locked the locked
+   * @param locked      the locked
    */
   public Setting(Path path, String description, boolean locked) {
 
@@ -304,23 +303,20 @@ public class Setting extends ChangeListeners
   /**
    * Parses the.
    *
-   * @param path the path
-   * @param value the value
+   * @param path        the path
+   * @param value       the value
    * @param description the description
-   * @param locked the locked
+   * @param locked      the locked
    * @return the setting
    */
-  public static Setting parse(String path,
-      String value,
-      String description,
-      boolean locked) {
+  public static Setting parse(String path, String value, String description, boolean locked) {
     return parse(new StrictPath(path), value, description, locked);
   }
 
   /**
    * Parses the.
    *
-   * @param path the path
+   * @param path  the path
    * @param value the value
    * @return the setting
    */
@@ -331,16 +327,13 @@ public class Setting extends ChangeListeners
   /**
    * Parses the.
    *
-   * @param path the path
-   * @param value the value
+   * @param path        the path
+   * @param value       the value
    * @param description the description
-   * @param locked the locked
+   * @param locked      the locked
    * @return the setting
    */
-  public static Setting parse(Path path,
-      String value,
-      String description,
-      boolean locked) {
+  public static Setting parse(Path path, String value, String description, boolean locked) {
     if (TextUtils.isNumber(value)) {
       double v = Double.parseDouble(value); // Parser.toDouble(s);
 
@@ -350,8 +343,7 @@ public class Setting extends ChangeListeners
         return new SettingDouble(path, v, description, locked);
       }
     } else if (ColorUtils.isHtmlColor(value)) {
-      return new SettingColor(path, ColorUtils.decodeHtmlColor(value),
-          description, locked);
+      return new SettingColor(path, ColorUtils.decodeHtmlColor(value), description, locked);
       // } else if (URLUtils.isUrl(value)) {
       // return new SettingUrl(path, UrlBuilder.fromUrl(value), description,
       // locked);
@@ -367,7 +359,7 @@ public class Setting extends ChangeListeners
   /**
    * Parses the.
    *
-   * @param path the path
+   * @param path  the path
    * @param value the value
    * @return the setting
    */
@@ -378,7 +370,7 @@ public class Setting extends ChangeListeners
   /**
    * Parses the.
    *
-   * @param path the path
+   * @param path  the path
    * @param value the value
    * @return the setting
    */
@@ -389,39 +381,33 @@ public class Setting extends ChangeListeners
   /**
    * Parses the.
    *
-   * @param path the path
-   * @param value the value
+   * @param path        the path
+   * @param value       the value
    * @param description the description
-   * @param locked the locked
+   * @param locked      the locked
    * @return the setting
    */
-  public static Setting parse(String path,
-      double value,
-      String description,
-      boolean locked) {
+  public static Setting parse(String path, double value, String description, boolean locked) {
     return parse(new StrictPath(path), value, description, locked);
   }
 
   /**
    * Parses the.
    *
-   * @param path the path
-   * @param value the value
+   * @param path        the path
+   * @param value       the value
    * @param description the description
-   * @param locked the locked
+   * @param locked      the locked
    * @return the setting
    */
-  public static Setting parse(Path path,
-      double value,
-      String description,
-      boolean locked) {
+  public static Setting parse(Path path, double value, String description, boolean locked) {
     return new SettingDouble(path, value, description, locked);
   }
 
   /**
    * Parses the.
    *
-   * @param path the path
+   * @param path  the path
    * @param value the value
    * @return the setting
    */
@@ -432,7 +418,7 @@ public class Setting extends ChangeListeners
   /**
    * Parses the.
    *
-   * @param path the path
+   * @param path  the path
    * @param value the value
    * @return the setting
    */
@@ -443,39 +429,33 @@ public class Setting extends ChangeListeners
   /**
    * Parses the.
    *
-   * @param path the path
-   * @param value the value
+   * @param path        the path
+   * @param value       the value
    * @param description the description
-   * @param locked the locked
+   * @param locked      the locked
    * @return the setting
    */
-  public static Setting parse(String path,
-      int value,
-      String description,
-      boolean locked) {
+  public static Setting parse(String path, int value, String description, boolean locked) {
     return parse(new StrictPath(path), value, description, locked);
   }
 
   /**
    * Parses the.
    *
-   * @param path the path
-   * @param value the value
+   * @param path        the path
+   * @param value       the value
    * @param description the description
-   * @param locked the locked
+   * @param locked      the locked
    * @return the setting
    */
-  public static Setting parse(Path path,
-      int value,
-      String description,
-      boolean locked) {
+  public static Setting parse(Path path, int value, String description, boolean locked) {
     return new SettingInt(path, value, description, locked);
   }
 
   /**
    * Parses the.
    *
-   * @param path the path
+   * @param path  the path
    * @param value the value
    * @return the setting
    */
@@ -486,7 +466,7 @@ public class Setting extends ChangeListeners
   /**
    * Parses the.
    *
-   * @param path the path
+   * @param path  the path
    * @param value the value
    * @return the setting
    */
@@ -497,39 +477,33 @@ public class Setting extends ChangeListeners
   /**
    * Parses the.
    *
-   * @param path the path
-   * @param value the value
+   * @param path        the path
+   * @param value       the value
    * @param description the description
-   * @param locked the locked
+   * @param locked      the locked
    * @return the setting
    */
-  public static Setting parse(String path,
-      long value,
-      String description,
-      boolean locked) {
+  public static Setting parse(String path, long value, String description, boolean locked) {
     return parse(new StrictPath(path), value, description, locked);
   }
 
   /**
    * Parses the.
    *
-   * @param path the path
-   * @param value the value
+   * @param path        the path
+   * @param value       the value
    * @param description the description
-   * @param locked the locked
+   * @param locked      the locked
    * @return the setting
    */
-  public static Setting parse(Path path,
-      long value,
-      String description,
-      boolean locked) {
+  public static Setting parse(Path path, long value, String description, boolean locked) {
     return new SettingLong(path, value, description, locked);
   }
 
   /**
    * Parses the.
    *
-   * @param path the path
+   * @param path  the path
    * @param value the value
    * @return the setting
    */
@@ -540,7 +514,7 @@ public class Setting extends ChangeListeners
   /**
    * Parses the.
    *
-   * @param path the path
+   * @param path  the path
    * @param value the value
    * @return the setting
    */
@@ -551,39 +525,33 @@ public class Setting extends ChangeListeners
   /**
    * Parses the.
    *
-   * @param path the path
-   * @param value the value
+   * @param path        the path
+   * @param value       the value
    * @param description the description
-   * @param locked the locked
+   * @param locked      the locked
    * @return the setting
    */
-  public static Setting parse(String path,
-      Color value,
-      String description,
-      boolean locked) {
+  public static Setting parse(String path, Color value, String description, boolean locked) {
     return parse(new StrictPath(path), value, description, locked);
   }
 
   /**
    * Parses the.
    *
-   * @param path the path
-   * @param value the value
+   * @param path        the path
+   * @param value       the value
    * @param description the description
-   * @param locked the locked
+   * @param locked      the locked
    * @return the setting
    */
-  public static Setting parse(Path path,
-      Color value,
-      String description,
-      boolean locked) {
+  public static Setting parse(Path path, Color value, String description, boolean locked) {
     return new SettingColor(path, value, description, locked);
   }
 
   /**
    * Parses the.
    *
-   * @param path the path
+   * @param path  the path
    * @param value the value
    * @return the setting
    */
@@ -594,7 +562,7 @@ public class Setting extends ChangeListeners
   /**
    * Parses the.
    *
-   * @param path the path
+   * @param path  the path
    * @param value the value
    * @return the setting
    */
@@ -605,32 +573,26 @@ public class Setting extends ChangeListeners
   /**
    * Parses the.
    *
-   * @param path the path
-   * @param value the value
+   * @param path        the path
+   * @param value       the value
    * @param description the description
-   * @param locked the locked
+   * @param locked      the locked
    * @return the setting
    */
-  public static Setting parse(String path,
-      boolean value,
-      String description,
-      boolean locked) {
+  public static Setting parse(String path, boolean value, String description, boolean locked) {
     return parse(new StrictPath(path), value, description, locked);
   }
 
   /**
    * Parses the.
    *
-   * @param path the path
-   * @param value the value
+   * @param path        the path
+   * @param value       the value
    * @param description the description
-   * @param locked the locked
+   * @param locked      the locked
    * @return the setting
    */
-  public static Setting parse(Path path,
-      boolean value,
-      String description,
-      boolean locked) {
+  public static Setting parse(Path path, boolean value, String description, boolean locked) {
     return new SettingBool(path, value, description, locked);
   }
 

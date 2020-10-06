@@ -71,20 +71,18 @@ public class XmlUtils {
   /**
    * Writes an xml document to file, and also pretty prints the output.
    *
-   * @param doc the doc.
+   * @param doc  the doc.
    * @param file the file.
    * @throws TransformerException the transformer exception.
    */
-  public static void writeXml(Document doc, Path file)
-      throws TransformerException {
+  public static void writeXml(Document doc, Path file) throws TransformerException {
     // TODO Auto-generated method stub
 
     TransformerFactory transformerFactory = TransformerFactory.newInstance();
     Transformer transformer = transformerFactory.newTransformer();
     transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
     transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-    transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount",
-        "2");
+    transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
 
     DOMSource source = new DOMSource(doc);
     StreamResult result = new StreamResult(file.toFile());

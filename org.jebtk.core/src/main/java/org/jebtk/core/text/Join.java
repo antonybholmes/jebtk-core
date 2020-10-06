@@ -51,12 +51,11 @@ public class Join {
   /**
    * Instantiates a new join.
    *
-   * @param delimiter the delimiter
+   * @param delimiter          the delimiter
    * @param ignoreEmptyStrings the ignore empty strings
-   * @param ignoreNulls the ignore nulls
+   * @param ignoreNulls        the ignore nulls
    */
-  public Join(String delimiter, boolean ignoreEmptyStrings,
-      boolean ignoreNulls) {
+  public Join(String delimiter, boolean ignoreEmptyStrings, boolean ignoreNulls) {
     mDelimiter = delimiter;
     mIgnoreEmptyStrings = ignoreEmptyStrings;
     mIgnoreNulls = ignoreNulls;
@@ -81,8 +80,7 @@ public class Join {
    * @return the join
    */
   /*
-   * public Join values(final Collection<?> values) { Join join = new
-   * Join(this);
+   * public Join values(final Collection<?> values) { Join join = new Join(this);
    * 
    * if (CollectionUtils.isNullOrEmpty(values)) { return join; }
    * 

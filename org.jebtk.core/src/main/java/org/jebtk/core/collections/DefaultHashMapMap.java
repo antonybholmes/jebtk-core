@@ -23,10 +23,9 @@ import java.util.Map;
  * @author Antony Holmes
  * @param <K1> the generic type
  * @param <K2> the generic type
- * @param <V> the value type
+ * @param <V>  the value type
  */
-public class DefaultHashMapMap<K1, K2, V>
-    extends DefaultHashMap<K1, IterMap<K2, V>> implements MapMap<K1, K2, V> {
+public class DefaultHashMapMap<K1, K2, V> extends DefaultHashMap<K1, IterMap<K2, V>> implements MapMap<K1, K2, V> {
 
   /** The Constant serialVersionUID. */
   private static final long serialVersionUID = 1L;
@@ -50,7 +49,7 @@ public class DefaultHashMapMap<K1, K2, V>
   /**
    * Instantiates a new default map map.
    *
-   * @param capacity1 the capacity1
+   * @param capacity1  the capacity1
    * @param mapCreator Create a map
    */
   public DefaultHashMapMap(int capacity1, IterMapCreator<K2, V> mapCreator) {
@@ -70,7 +69,7 @@ public class DefaultHashMapMap<K1, K2, V>
    * Instantiates a new hash map map.
    *
    * @param initialCapacity the initial capacity
-   * @param defaultValue the default value
+   * @param defaultValue    the default value
    */
   public DefaultHashMapMap(int initialCapacity, V defaultValue) {
     this(initialCapacity, initialCapacity, defaultValue);
@@ -79,8 +78,8 @@ public class DefaultHashMapMap<K1, K2, V>
   /**
    * Instantiates a new default map map.
    *
-   * @param capacity1 the capacity1
-   * @param capacity2 the capacity2
+   * @param capacity1    the capacity1
+   * @param capacity2    the capacity2
    * @param defaultValue the default value
    */
   public DefaultHashMapMap(int capacity1, int capacity2, V defaultValue) {
@@ -90,12 +89,11 @@ public class DefaultHashMapMap<K1, K2, V>
   /**
    * Instantiates a new default hash map map.
    *
-   * @param capacity1 the capacity 1
-   * @param capacity2 the capacity 2
+   * @param capacity1    the capacity 1
+   * @param capacity2    the capacity 2
    * @param defaultValue the default value
    */
-  public DefaultHashMapMap(int capacity1, int capacity2,
-      EntryCreator<V> defaultValue) {
+  public DefaultHashMapMap(int capacity1, int capacity2, EntryCreator<V> defaultValue) {
     this(capacity1, new DefaultHashMapCreator<K2, V>(capacity2, defaultValue));
   }
 
@@ -137,66 +135,59 @@ public class DefaultHashMapMap<K1, K2, V>
   /**
    * Creates the.
    *
-   * @param <KK1> the generic type
-   * @param <KK2> the generic type
-   * @param <VV> the generic type
+   * @param <KK1>     the generic type
+   * @param <KK2>     the generic type
+   * @param <VV>      the generic type
    * @param capacity1 the capacity 1
    * @param capacity2 the capacity 2
    * @return the map map
    */
-  public static <KK1, KK2, VV> MapMap<KK1, KK2, VV> create(int capacity1,
-      int capacity2) {
-    return new DefaultHashMapMap<KK1, KK2, VV>(capacity1,
-        new HashMapCreator<KK2, VV>(capacity2));
+  public static <KK1, KK2, VV> MapMap<KK1, KK2, VV> create(int capacity1, int capacity2) {
+    return new DefaultHashMapMap<KK1, KK2, VV>(capacity1, new HashMapCreator<KK2, VV>(capacity2));
   }
 
   /**
    * Creates the.
    *
-   * @param <KK1> the generic type
-   * @param <KK2> the generic type
-   * @param <VV> the generic type
-   * @param capacity1 the capacity 1
-   * @param capacity2 the capacity 2
+   * @param <KK1>        the generic type
+   * @param <KK2>        the generic type
+   * @param <VV>         the generic type
+   * @param capacity1    the capacity 1
+   * @param capacity2    the capacity 2
    * @param defaultValue the default value
    * @return the map map
    */
-  public static <KK1, KK2, VV> MapMap<KK1, KK2, VV> create(int capacity1,
-      int capacity2,
-      VV defaultValue) {
+  public static <KK1, KK2, VV> MapMap<KK1, KK2, VV> create(int capacity1, int capacity2, VV defaultValue) {
     return create(capacity1, capacity2, new ValueCreator<VV>(defaultValue));
   }
 
   /**
    * Creates the.
    *
-   * @param <KK1> the generic type
-   * @param <KK2> the generic type
-   * @param <VV> the generic type
-   * @param capacity1 the capacity 1
-   * @param capacity2 the capacity 2
+   * @param <KK1>        the generic type
+   * @param <KK2>        the generic type
+   * @param <VV>         the generic type
+   * @param capacity1    the capacity 1
+   * @param capacity2    the capacity 2
    * @param defaultValue the default value
    * @return the map map
    */
-  public static <KK1, KK2, VV> MapMap<KK1, KK2, VV> create(int capacity1,
-      int capacity2,
+  public static <KK1, KK2, VV> MapMap<KK1, KK2, VV> create(int capacity1, int capacity2,
       EntryCreator<VV> defaultValue) {
-    return create(capacity1,
-        new DefaultHashMapCreator<KK2, VV>(capacity2, defaultValue));
+    return create(capacity1, new DefaultHashMapCreator<KK2, VV>(capacity2, defaultValue));
   }
 
   /**
    * Creates the.
    *
-   * @param <KK1> the generic type
-   * @param <KK2> the generic type
-   * @param <VV> the generic type
-   * @param capacity1 the capacity 1
+   * @param <KK1>        the generic type
+   * @param <KK2>        the generic type
+   * @param <VV>         the generic type
+   * @param capacity1    the capacity 1
    * @param defaultValue the default value
    * @return the multi map
    */
-  public static <KK1, KK2, VV> MapMap<KK1, KK2, VV> create(int capacity1,
-      IterMapCreator<KK2, VV> defaultValue) {
+  public static <KK1, KK2, VV> MapMap<KK1, KK2, VV> create(int capacity1, IterMapCreator<KK2, VV> defaultValue) {
     return new DefaultHashMapMap<KK1, KK2, VV>(capacity1, defaultValue);
   }
 }

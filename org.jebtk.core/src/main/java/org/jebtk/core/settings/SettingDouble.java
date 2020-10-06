@@ -33,13 +33,12 @@ public class SettingDouble extends Setting {
   /**
    * Instantiates a new setting double.
    *
-   * @param path the path
-   * @param value the value
+   * @param path        the path
+   * @param value       the value
    * @param description the description
-   * @param locked the locked
+   * @param locked      the locked
    */
-  public SettingDouble(Path path, double value, String description,
-      boolean locked) {
+  public SettingDouble(Path path, double value, String description, boolean locked) {
     super(path, description, locked);
 
     mValue = value;
@@ -92,8 +91,8 @@ public class SettingDouble extends Setting {
    */
   @Override
   public String toString() {
-    return new StringBuilder("double_setting:").append(mPath.toString())
-        .append(TextUtils.EQUALS_DELIMITER).append(mValue).toString();
+    return new StringBuilder("double_setting:").append(mPath.toString()).append(TextUtils.EQUALS_DELIMITER)
+        .append(mValue).toString();
   }
 
   /*

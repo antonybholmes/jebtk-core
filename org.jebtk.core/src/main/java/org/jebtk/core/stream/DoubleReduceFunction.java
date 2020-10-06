@@ -20,7 +20,6 @@ package org.jebtk.core.stream;
  *
  * @param <T> the generic type
  */
-public interface DoubleReduceFunction<T>
-    extends NumberReduceFunction<T, Double> {
+public interface DoubleReduceFunction<T> extends NumberReduceFunction<T, Double> {
   // Do nothing
 }

@@ -24,8 +24,7 @@ import org.jebtk.core.event.EventProducer;
  * @author Antony Holmes
  *
  */
-public class TreeNodeEventListeners extends EventProducer<TreeNodeEventListener>
-    implements TreeNodeEventProducer {
+public class TreeNodeEventListeners extends EventProducer<TreeNodeEventListener> implements TreeNodeEventProducer {
 
   /**
    * The constant serialVersionUID.
@@ -35,8 +34,7 @@ public class TreeNodeEventListeners extends EventProducer<TreeNodeEventListener>
   /*
    * (non-Javadoc)
    * 
-   * @see
-   * org.abh.lib.tree.TreeNodeEventProducer#addTreeNodeListener(org.abh.lib.
+   * @see org.abh.lib.tree.TreeNodeEventProducer#addTreeNodeListener(org.abh.lib.
    * tree. TreeNodeEventListener)
    */
   public void addTreeNodeListener(TreeNodeEventListener l) {
@@ -57,8 +55,7 @@ public class TreeNodeEventListeners extends EventProducer<TreeNodeEventListener>
   /*
    * (non-Javadoc)
    * 
-   * @see
-   * org.abh.lib.tree.TreeNodeEventProducer#fireTreeNodeChanged(org.abh.lib.
+   * @see org.abh.lib.tree.TreeNodeEventProducer#fireTreeNodeChanged(org.abh.lib.
    * event. ChangeEvent)
    */
   public void fireTreeNodeChanged(ChangeEvent e) {
@@ -70,8 +67,7 @@ public class TreeNodeEventListeners extends EventProducer<TreeNodeEventListener>
   /*
    * (non-Javadoc)
    * 
-   * @see
-   * org.abh.lib.tree.TreeNodeEventProducer#fireTreeNodeUpdated(org.abh.lib.
+   * @see org.abh.lib.tree.TreeNodeEventProducer#fireTreeNodeUpdated(org.abh.lib.
    * event. ChangeEvent)
    */
   public void fireTreeNodeUpdated(ChangeEvent e) {

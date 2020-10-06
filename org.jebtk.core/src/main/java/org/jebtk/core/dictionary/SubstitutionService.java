@@ -52,8 +52,7 @@ public class SubstitutionService {
   /**
    * The constant DEFAULT_FILE.
    */
-  public static final Path DEFAULT_FILE = PathUtils
-      .getPath("res/substitutions.txt");
+  public static final Path DEFAULT_FILE = PathUtils.getPath("res/substitutions.txt");
 
   /**
    * The constant instance.
@@ -93,8 +92,7 @@ public class SubstitutionService {
    * @throws SAXException
    * @throws ParserConfigurationException
    */
-  public void loadXml(Path file)
-      throws SAXException, IOException, ParserConfigurationException {
+  public void loadXml(Path file) throws SAXException, IOException, ParserConfigurationException {
     SAXParserFactory factory = SAXParserFactory.newInstance();
     SAXParser saxParser = factory.newSAXParser();
 
@@ -120,8 +118,7 @@ public class SubstitutionService {
           continue;
         }
 
-        List<String> tokens = TextUtils.fastSplit(line,
-            TextUtils.TAB_DELIMITER);
+        List<String> tokens = TextUtils.fastSplit(line, TextUtils.TAB_DELIMITER);
 
         addSubstitution(tokens.get(0), tokens.get(1));
       }
@@ -133,7 +130,7 @@ public class SubstitutionService {
   /**
    * Adds the substitution.
    *
-   * @param word the word
+   * @param word      the word
    * @param subsitute the subsitute
    */
   public void addSubstitution(String word, String subsitute) {

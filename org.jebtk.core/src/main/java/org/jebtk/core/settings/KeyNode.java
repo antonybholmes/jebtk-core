@@ -50,7 +50,7 @@ public class KeyNode extends TreeNode<String> {
   /**
    * Instantiates a new key node.
    *
-   * @param name the name
+   * @param name  the name
    * @param value the value
    */
   public KeyNode(String name, String value) {

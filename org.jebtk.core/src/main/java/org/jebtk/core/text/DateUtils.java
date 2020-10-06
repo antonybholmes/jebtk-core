@@ -73,7 +73,7 @@ public class DateUtils {
   /**
    * Format.
    *
-   * @param dates the dates
+   * @param dates  the dates
    * @param format the format
    * @return the list
    */
@@ -115,8 +115,7 @@ public class DateUtils {
    * @return the date
    * @throws ParseException the parse exception
    */
-  public static final Date parseRevFormattedDate(String date)
-      throws ParseException {
+  public static final Date parseRevFormattedDate(String date) throws ParseException {
     return new SimpleDateFormat("yyyy-mm-dd").parse(date);
   }
 
@@ -126,7 +125,6 @@ public class DateUtils {
    * @return the string
    */
   public static String year() {
-    return new SimpleDateFormat(YYYY_FORMAT)
-        .format(Calendar.getInstance().getTime());
+    return new SimpleDateFormat(YYYY_FORMAT).format(Calendar.getInstance().getTime());
   }
 }

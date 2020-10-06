@@ -32,8 +32,7 @@ import java.util.Map;
  * @author Antony Holmes
  * @param <T> the generic type
  */
-public class KeyValueNode<T> implements Iterable<KeyValueNode<T>>,
-    Comparable<KeyValueNode<T>>, Serializable {
+public class KeyValueNode<T> implements Iterable<KeyValueNode<T>>, Comparable<KeyValueNode<T>>, Serializable {
 
   /**
    * The constant serialVersionUID.
@@ -67,7 +66,7 @@ public class KeyValueNode<T> implements Iterable<KeyValueNode<T>>,
   /**
    * Instantiates a new key value node.
    *
-   * @param name the name
+   * @param name  the name
    * @param value the value
    */
   public KeyValueNode(String name, T value) {

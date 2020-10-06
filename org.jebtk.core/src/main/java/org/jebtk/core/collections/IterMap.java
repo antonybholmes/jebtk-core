@@ -26,8 +26,7 @@ import java.util.Map.Entry;
  * @param <K> the key type
  * @param <V> the value type
  */
-public interface IterMap<K, V>
-    extends Map<K, V>, Iterable<Entry<K, V>>, Serializable {
+public interface IterMap<K, V> extends Map<K, V>, Iterable<Entry<K, V>>, Serializable {
   /**
    * Returns the first key in the map. The notion of first depends on the map
    * implementation.
@@ -36,5 +35,4 @@ public interface IterMap<K, V>
    */
   public Entry<K, V> first();
 
-  
 }

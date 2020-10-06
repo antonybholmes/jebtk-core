@@ -87,8 +87,8 @@ public class DefaultTreeMap<K, V> extends IterTreeMap<K, V> {
   }
 
   /**
-   * Set whether entries are automatically created or not. Useful for locking
-   * map so that new entries must be explicity added.
+   * Set whether entries are automatically created or not. Useful for locking map
+   * so that new entries must be explicity added.
    * 
    * @param autoCreate
    */
@@ -99,8 +99,8 @@ public class DefaultTreeMap<K, V> extends IterTreeMap<K, V> {
   /**
    * Creates a new Default Tree Map.
    *
-   * @param <KK> the generic type
-   * @param <VV> the generic type
+   * @param <KK>         the generic type
+   * @param <VV>         the generic type
    * @param defaultValue the default value
    * @return the map
    */
@@ -111,13 +111,12 @@ public class DefaultTreeMap<K, V> extends IterTreeMap<K, V> {
   /**
    * Creates the.
    *
-   * @param <KK> the generic type
-   * @param <VV> the generic type
+   * @param <KK>         the generic type
+   * @param <VV>         the generic type
    * @param defaultValue the default value
    * @return the map
    */
-  public static <KK, VV> DefaultTreeMap<KK, VV> create(
-      EntryCreator<VV> defaultValue) {
+  public static <KK, VV> DefaultTreeMap<KK, VV> create(EntryCreator<VV> defaultValue) {
     return new DefaultTreeMap<KK, VV>(defaultValue);
   }
 }

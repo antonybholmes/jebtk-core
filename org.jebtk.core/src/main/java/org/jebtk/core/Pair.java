@@ -55,13 +55,12 @@ public class Pair<T, V> {
    *
    * @param <T> the generic type
    * @param <V> the value type
-   * @param l1 the l1
-   * @param l2 the l2
+   * @param l1  the l1
+   * @param l2  the l2
    * @return the list
    */
   public static <T, V> List<Pair<T, V>> pair(List<T> l1, List<V> l2) {
-    if (CollectionUtils.isNullOrEmpty(l1) || CollectionUtils.isNullOrEmpty(l2)
-        || l1.size() != l2.size()) {
+    if (CollectionUtils.isNullOrEmpty(l1) || CollectionUtils.isNullOrEmpty(l2) || l1.size() != l2.size()) {
       return null;
     }
 

@@ -33,8 +33,8 @@ public class Cryptography {
   /**
    * The constant HEX_ARRAY.
    */
-  private static final char[] HEX_ARRAY = { '0', '1', '2', '3', '4', '5', '6',
-      '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f' };
+  private static final char[] HEX_ARRAY = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e',
+      'f' };
 
   /**
    * Instantiates a new cryptography.
@@ -103,7 +103,7 @@ public class Cryptography {
    * Return a SHA-512 bit hash of a salted phrase as 128 char string.
    *
    * @param password the password
-   * @param salt the salt
+   * @param salt     the salt
    * @return the SH a512 hash
    */
   public static String getSHA512Hash(String password, String salt) {
@@ -114,7 +114,7 @@ public class Cryptography {
    * Gets the SH a512 hash.
    *
    * @param password the password
-   * @param salt the salt
+   * @param salt     the salt
    * @return the SH a512 hash
    */
   public static String getSHA512Hash(String password, long salt) {
@@ -139,7 +139,7 @@ public class Cryptography {
    * Gets the SH a256 hash.
    *
    * @param password the password
-   * @param salt the salt
+   * @param salt     the salt
    * @return the SH a256 hash
    */
   public static String getSHA256Hash(String password, String salt) {
@@ -150,7 +150,7 @@ public class Cryptography {
    * Gets the SH a256 hash.
    *
    * @param password the password
-   * @param salt the salt
+   * @param salt     the salt
    * @return the SH a256 hash
    */
   public static String getSHA256Hash(String password, long salt) {
@@ -158,8 +158,8 @@ public class Cryptography {
   }
 
   /**
-   * Returns a SHA-512 bit hash of a phrase as hex string after truncation to
-   * 256 bits.
+   * Returns a SHA-512 bit hash of a phrase as hex string after truncation to 256
+   * bits.
    *
    * @param phrase the phrase
    * @return the SH a256 hash
@@ -176,7 +176,7 @@ public class Cryptography {
    * Hash sh a512.
    *
    * @param phrase the phrase
-   * @param buf the buf
+   * @param buf    the buf
    */
   public static void hashSHA512(String phrase, byte buf[]) {
     hashSHA512(phrase, buf, buf.length);
@@ -186,8 +186,8 @@ public class Cryptography {
    * Hash sh a512.
    *
    * @param phrase the phrase
-   * @param buf the buf
-   * @param len the len
+   * @param buf    the buf
+   * @param len    the len
    */
   public static void hashSHA512(String phrase, byte buf[], int len) {
     try {
@@ -228,8 +228,8 @@ public class Cryptography {
   }
 
   /**
-   * Convert byte data to a string using hex notation. Each byte is represented
-   * by 2 characters representing a hex number between 0-256.
+   * Convert byte data to a string using hex notation. Each byte is represented by
+   * 2 characters representing a hex number between 0-256.
    *
    * @param buf the buf
    * @return the string

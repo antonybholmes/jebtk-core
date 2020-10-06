@@ -45,19 +45,17 @@ public class StreamUtils {
   /**
    * Copy the bytes from one stream to another.
    * 
-   * @param input An input stream.
+   * @param input  An input stream.
    * @param output An output stream.
    * @return The number of bytes copied.
    * 
    * @throws IOException
    */
-  public static int copy(InputStream input, OutputStream output)
-      throws IOException {
+  public static int copy(InputStream input, OutputStream output) throws IOException {
     return copy(input, output, BUFFER_SIZE);
   }
 
-  public static int copy(InputStream input, OutputStream output, int size)
-      throws IOException {
+  public static int copy(InputStream input, OutputStream output, int size) throws IOException {
     byte[] buffer = createBuffer(size);
 
     int c;
@@ -142,22 +140,19 @@ public class StreamUtils {
   }
 
   /**
-   * Copies all bytes from the readable channel to the writable channel. Does
-   * not close or flush either channel.
+   * Copies all bytes from the readable channel to the writable channel. Does not
+   * close or flush either channel.
    *
    * @param from the readable channel to read from
-   * @param to the writable channel to write to
+   * @param to   the writable channel to write to
    * @return the number of bytes copied
    * @throws IOException if an I/O error occurs
    */
-  public static long copy(ReadableByteChannel from, WritableByteChannel to)
-      throws IOException {
+  public static long copy(ReadableByteChannel from, WritableByteChannel to) throws IOException {
     return copy(from, to, BUFFER_SIZE);
   }
 
-  public static long copy(ReadableByteChannel from,
-      WritableByteChannel to,
-      int size) throws IOException {
+  public static long copy(ReadableByteChannel from, WritableByteChannel to, int size) throws IOException {
     ByteBuffer buf = ByteBuffer.allocate(size);
 
     long total = 0;
@@ -190,13 +185,12 @@ public class StreamUtils {
   /**
    * To byte array.
    *
-   * @param in the in
+   * @param in   the in
    * @param size the buf size
    * @return the byte[]
    * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static byte[] toByteArray(InputStream in, int size)
-      throws IOException {
+  public static byte[] toByteArray(InputStream in, int size) throws IOException {
     ByteArrayOutputStream out = new ByteArrayOutputStream(size);
 
     byte[] ret = null;
@@ -230,13 +224,12 @@ public class StreamUtils {
   /**
    * To byte array.
    *
-   * @param in the in
+   * @param in   the in
    * @param size the buf size
    * @return the byte[]
    * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static byte[] toByteArray(ReadableByteChannel in, int size)
-      throws IOException {
+  public static byte[] toByteArray(ReadableByteChannel in, int size) throws IOException {
     ByteArrayOutputStream out = new ByteArrayOutputStream(size);
 
     byte[] ret = null;

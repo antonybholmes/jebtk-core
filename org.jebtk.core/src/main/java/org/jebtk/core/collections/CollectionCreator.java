@@ -23,7 +23,6 @@ import java.util.Collection;
  * @param <V> the value type
  * @param <T> the generic type
  */
-public interface CollectionCreator<V, T extends Collection<V>>
-    extends EntryCreator<T> {
+public interface CollectionCreator<V, T extends Collection<V>> extends EntryCreator<T> {
 
 }

@@ -35,13 +35,12 @@ public class SettingColor extends Setting {
   /**
    * Instantiates a new setting color.
    *
-   * @param path the path
-   * @param value the value
+   * @param path        the path
+   * @param value       the value
    * @param description the description
-   * @param locked the locked
+   * @param locked      the locked
    */
-  public SettingColor(Path path, Color value, String description,
-      boolean locked) {
+  public SettingColor(Path path, Color value, String description, boolean locked) {
     super(path, description, locked);
 
     mValue = value;
@@ -74,8 +73,7 @@ public class SettingColor extends Setting {
    */
   @Override
   public String toString() {
-    return new StringBuilder("color_setting:")
-        .append(TextUtils.EQUALS_DELIMITER).append(mPath.toString())
+    return new StringBuilder("color_setting:").append(TextUtils.EQUALS_DELIMITER).append(mPath.toString())
         .append(TextUtils.EQUALS_DELIMITER).append(mValue).toString();
   }
 }

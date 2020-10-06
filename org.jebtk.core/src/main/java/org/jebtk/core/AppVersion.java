@@ -79,8 +79,8 @@ public class AppVersion {
   /**
    * Instantiates a new application version.
    *
-   * @param major the major
-   * @param minor the minor
+   * @param major    the major
+   * @param minor    the minor
    * @param revision the revision
    */
   public AppVersion(int major, int minor, int revision) {

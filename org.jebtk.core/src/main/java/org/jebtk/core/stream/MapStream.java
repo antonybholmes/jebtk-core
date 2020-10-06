@@ -40,7 +40,7 @@ public class MapStream<T, V> extends Stream<V> {
    * Instantiates a new map stream.
    *
    * @param stream the stream
-   * @param f the f
+   * @param f      the f
    */
   public MapStream(Stream<T> stream, Function<T, V> f) {
     mStream = stream;
@@ -72,18 +72,17 @@ public class MapStream<T, V> extends Stream<V> {
   //
 
   /**
-   * Apply a function to a collection and return a list of the function outputs
-   * of the same size as the input collection. This is a functional way of
-   * running a for loop over a list.
+   * Apply a function to a collection and return a list of the function outputs of
+   * the same size as the input collection. This is a functional way of running a
+   * for loop over a list.
    *
-   * @param <VV> the generic type
-   * @param <TT> the generic type
+   * @param <VV>   the generic type
+   * @param <TT>   the generic type
    * @param values the values
-   * @param f the f
+   * @param f      the f
    * @return the list
    */
-  public static <VV, TT> List<TT> lapply(Collection<VV> values,
-      Function<VV, TT> f) {
+  public static <VV, TT> List<TT> lapply(Collection<VV> values, Function<VV, TT> f) {
     List<TT> ret = new ArrayList<TT>(values.size());
 
     for (VV v : values) {

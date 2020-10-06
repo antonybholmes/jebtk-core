@@ -42,7 +42,7 @@ public class IntRect extends IntPos2D {
   public IntRect(int x, int y, int w) {
     this(x, y, w, w);
   }
-  
+
   /**
    * Instantiates a new int rect.
    *
@@ -99,7 +99,7 @@ public class IntRect extends IntPos2D {
   /**
    * Contains.
    *
-   * @param p the p
+   * @param p       the p
    * @param padding the padding
    * @return true, if successful
    */
@@ -120,7 +120,7 @@ public class IntRect extends IntPos2D {
   /**
    * Contains.
    *
-   * @param p the p
+   * @param p       the p
    * @param padding the padding
    * @return true, if successful
    */
@@ -143,14 +143,13 @@ public class IntRect extends IntPos2D {
    * Returns true if the point x y is contained within the rectangle plus a
    * padding allowance.
    *
-   * @param x the x
-   * @param y the y
+   * @param x       the x
+   * @param y       the y
    * @param padding the padding
    * @return true, if successful
    */
   public boolean contains(int x, int y, int padding) {
-    return x >= x - padding && x <= x + w + padding && y >= y - padding
-        && y <= y + h + padding;
+    return x >= x - padding && x <= x + w + padding && y >= y - padding && y <= y + h + padding;
   }
 
   /**

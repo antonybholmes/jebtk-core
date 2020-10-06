@@ -132,7 +132,7 @@ public class CountMap<K> extends DefaultHashMap<K, Integer> {
    *
    * @param key the key
    * @param dec Should be a positive integer indicating how much to reduce the
-   *          count of the key by
+   *            count of the key by
    */
   public void dec(K key, int dec) {
     inc(key, -dec);
@@ -162,7 +162,7 @@ public class CountMap<K> extends DefaultHashMap<K, Integer> {
   /**
    * Creates the.
    *
-   * @param <K1> the generic type
+   * @param <K1>         the generic type
    * @param defaultValue the default value
    * @return the count map
    */

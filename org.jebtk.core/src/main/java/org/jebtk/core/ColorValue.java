@@ -55,9 +55,9 @@ public class ColorValue {
   /**
    * Instantiates a new color value.
    *
-   * @param red the red
+   * @param red   the red
    * @param green the green
-   * @param blue the blue
+   * @param blue  the blue
    */
   public ColorValue(int red, int green, int blue) {
     this(red, green, blue, 255);
@@ -66,9 +66,9 @@ public class ColorValue {
   /**
    * Instantiates a new color value.
    *
-   * @param red the red
+   * @param red   the red
    * @param green the green
-   * @param blue the blue
+   * @param blue  the blue
    * @param alpha the alpha
    */
   public ColorValue(int red, int green, int blue, int alpha) {
@@ -103,8 +103,7 @@ public class ColorValue {
    * @return the color value
    */
   public static ColorValue convert(Color color) {
-    return new ColorValue(color.getRed(), color.getGreen(), color.getBlue(),
-        color.getAlpha());
+    return new ColorValue(color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha());
   }
 
   /**

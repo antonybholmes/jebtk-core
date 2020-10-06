@@ -55,10 +55,7 @@ public class KeywordsXmlHandler extends DefaultHandler {
    * @see org.xml.sax.helpers.DefaultHandler#startElement(java.lang.String,
    * java.lang.String, java.lang.String, org.xml.sax.Attributes)
    */
-  public void startElement(String uri,
-      String localName,
-      String qName,
-      Attributes attributes) throws SAXException {
+  public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
 
     if (qName.equals("word")) {
       wordMode = true;

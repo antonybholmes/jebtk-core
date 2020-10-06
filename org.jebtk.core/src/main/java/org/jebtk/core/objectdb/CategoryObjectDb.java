@@ -28,8 +28,7 @@ import org.jebtk.core.path.Path;
  * @author Antony Holmes
  * @param <T> the generic type
  */
-public class CategoryObjectDb<T>
-    implements Iterable<CategoryObjectNode<T>>, Serializable {
+public class CategoryObjectDb<T> implements Iterable<CategoryObjectNode<T>>, Serializable {
 
   /**
    * The constant serialVersionUID.

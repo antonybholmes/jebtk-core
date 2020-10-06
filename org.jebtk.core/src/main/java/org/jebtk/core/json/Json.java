@@ -99,9 +99,8 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
   }
 
   /**
-   * Returns the String value of this object. This should be used in preference
-   * to toString() which will return the json formatted representation of the
-   * object.
+   * Returns the String value of this object. This should be used in preference to
+   * toString() which will return the json formatted representation of the object.
    * 
    * This method will return null if the object is not of type JsonString
    *
@@ -176,10 +175,10 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
   }
 
   /**
-   * Returns the object by name, creating a JsonBoolean with the default value
-   * if it does not exist.
+   * Returns the object by name, creating a JsonBoolean with the default value if
+   * it does not exist.
    *
-   * @param name the name
+   * @param name         the name
    * @param defaultValue the default value
    * @return the json
    */
@@ -188,8 +187,8 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
   }
 
   /**
-   * Returns the indexed item if this object is a JSON array, otherwise return
-   * the item itself.
+   * Returns the indexed item if this object is a JSON array, otherwise return the
+   * item itself.
    *
    * @param index the index
    * @return the json value
@@ -375,7 +374,7 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
   /**
    * Adds a JSON member.
    *
-   * @param name the name
+   * @param name  the name
    * @param value the value
    * @return the json value
    */
@@ -386,7 +385,7 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
   /**
    * Adds the.
    *
-   * @param name the name
+   * @param name  the name
    * @param value the value
    * @return the json value
    */
@@ -398,7 +397,7 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
    * If a generic object is added to a json object, it will be interpreted as a
    * string using toString() and its value added as json string.
    *
-   * @param name the name
+   * @param name  the name
    * @param value the value
    * @return the json
    */
@@ -409,7 +408,7 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
   /**
    * Adds the.
    *
-   * @param name the name
+   * @param name  the name
    * @param value the value
    * @return the json
    */
@@ -420,7 +419,7 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
   /**
    * Adds the.
    *
-   * @param name the name
+   * @param name  the name
    * @param value the value
    * @return the json value
    */
@@ -431,7 +430,7 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
   /**
    * Adds the.
    *
-   * @param name the name
+   * @param name  the name
    * @param value the value
    * @return the json value
    */
@@ -442,7 +441,7 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
   /**
    * Adds the.
    *
-   * @param name the name
+   * @param name  the name
    * @param value the value
    * @return the json
    */
@@ -453,7 +452,7 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
   /**
    * Adds the.
    *
-   * @param name the name
+   * @param name  the name
    * @param value the value
    * @return the json value
    */
@@ -629,8 +628,7 @@ public abstract class Json implements Iterable<Json>, PrettyJson {
   /*
    * (non-Javadoc)
    * 
-   * @see
-   * org.abh.common.json.FormattedJsonRepresentation#formattedJson(java.lang.
+   * @see org.abh.common.json.FormattedJsonRepresentation#formattedJson(java.lang.
    * Appendable, int)
    */
   @Override

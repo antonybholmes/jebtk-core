@@ -242,8 +242,7 @@ public class JsonParser {
       mUnicodeBuffer.append(c);
 
       if (mUnicodeBuffer.length() == 4) {
-        mBuffer.append(new String(Character
-            .toChars(Integer.parseInt(mUnicodeBuffer.toString(), 16))));
+        mBuffer.append(new String(Character.toChars(Integer.parseInt(mUnicodeBuffer.toString(), 16))));
 
         mUnicodeBuffer.setLength(0);
 

@@ -46,7 +46,6 @@ public class FilePatternFilter implements FileFilter {
    */
   public boolean accept(File f) {
     // files should not begin with a period as this indicates hidden files
-    return !f.isDirectory() && !f.getName().startsWith(".")
-        && f.getName().matches(pattern);
+    return !f.isDirectory() && !f.getName().startsWith(".") && f.getName().matches(pattern);
   }
 }

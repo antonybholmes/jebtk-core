@@ -91,7 +91,7 @@ public class DoubleRect extends DoublePos2D {
   /**
    * Contains.
    *
-   * @param p the p
+   * @param p       the p
    * @param padding the padding
    * @return true, if successful
    */
@@ -114,13 +114,12 @@ public class DoubleRect extends DoublePos2D {
    * Returns true if the podouble x y is contained within the rectangle plus a
    * padding allowance.
    *
-   * @param x the x
-   * @param y the y
+   * @param x       the x
+   * @param y       the y
    * @param padding the padding
    * @return true, if successful
    */
   public boolean contains(double x, double y, double padding) {
-    return x >= mX - padding && x <= mX + mW + padding && y >= mY - padding
-        && y <= mY + mH + padding;
+    return x >= mX - padding && x <= mX + mW + padding && y >= mY - padding && y <= mY + mH + padding;
   }
 }

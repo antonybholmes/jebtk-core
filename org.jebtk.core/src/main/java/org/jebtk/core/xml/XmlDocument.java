@@ -52,7 +52,7 @@ public class XmlDocument extends XmlElement {
   /**
    * Write the document to the file in a nicely formatted, tab indented fashion.
    *
-   * @param doc the doc
+   * @param doc  the doc
    * @param file the file
    * @throws IOException Signals that an I/O exception has occurred.
    */
@@ -63,7 +63,7 @@ public class XmlDocument extends XmlElement {
   /**
    * Write xml.
    *
-   * @param doc the doc
+   * @param doc  the doc
    * @param file the file
    * @throws IOException Signals that an I/O exception has occurred.
    */

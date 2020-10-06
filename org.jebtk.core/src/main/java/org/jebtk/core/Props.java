@@ -30,8 +30,7 @@ import org.jebtk.core.event.ChangeListeners;
  *
  * @author Antony Holmes
  */
-public class Props extends ChangeListeners
-    implements Iterable<Entry<String, Object>>, ChangeListener {
+public class Props extends ChangeListeners implements Iterable<Entry<String, Object>>, ChangeListener {
 
   /**
    * The constant serialVersionUID.
@@ -146,7 +145,6 @@ public class Props extends ChangeListeners
     return get(name, null);
   }
 
-
   public Object get(String name, Object defaultValue) {
     if (!mPropertyMap.containsKey(name)) {
       mPropertyMap.put(name, defaultValue);
@@ -154,7 +152,7 @@ public class Props extends ChangeListeners
 
     return mPropertyMap.get(name);
   }
-  
+
   public int getInt(String name, int defaultValue) {
     return (int) get(name, defaultValue);
   }
@@ -201,7 +199,5 @@ public class Props extends ChangeListeners
   public void changed(ChangeEvent e) {
     fireChanged();
   }
-
-  
 
 }

@@ -46,7 +46,7 @@ public class SearchEvent extends Event {
   /**
    * Instantiates a new search event.
    *
-   * @param source the source
+   * @param source  the source
    * @param message the message
    */
   public SearchEvent(Object source, String message) {

@@ -33,10 +33,9 @@ public abstract class SetMultiMap<K, V> extends DefaultMultiMap<K, V, Set<V>> {
    * Instantiates a new sets the multi map.
    *
    * @param initialCapacity the initial capacity
-   * @param defaultValue the default value
+   * @param defaultValue    the default value
    */
-  public SetMultiMap(int initialCapacity,
-      CollectionCreator<V, Set<V>> defaultValue) {
+  public SetMultiMap(int initialCapacity, CollectionCreator<V, Set<V>> defaultValue) {
     super(initialCapacity, defaultValue);
   }
 

@@ -78,8 +78,7 @@ public class DictionaryService {
   /**
    * The constant DEFAULT_FILE.
    */
-  public static final Path DEFAULT_FILE = PathUtils
-      .getPath("res/dictionary.xml");
+  public static final Path DEFAULT_FILE = PathUtils.getPath("res/dictionary.xml");
 
   private void autoLoad() {
     if (mAutoLoad) {
@@ -97,8 +96,7 @@ public class DictionaryService {
     }
   }
 
-  private void loadXml()
-      throws ParserConfigurationException, SAXException, IOException {
+  private void loadXml() throws ParserConfigurationException, SAXException, IOException {
     loadXml(DEFAULT_FILE);
   }
 
@@ -110,8 +108,7 @@ public class DictionaryService {
    * @throws ParserConfigurationException
    * @throws IOException
    */
-  public void loadXml(Path file)
-      throws ParserConfigurationException, SAXException, IOException {
+  public void loadXml(Path file) throws ParserConfigurationException, SAXException, IOException {
     SAXParserFactory factory = SAXParserFactory.newInstance();
     SAXParser saxParser = factory.newSAXParser();
 
@@ -137,8 +134,7 @@ public class DictionaryService {
             continue;
           }
 
-          List<String> tokens = TextUtils.fastSplit(line,
-              TextUtils.TAB_DELIMITER);
+          List<String> tokens = TextUtils.fastSplit(line, TextUtils.TAB_DELIMITER);
 
           addWord(tokens.get(0), tokens.get(1));
 
@@ -178,7 +174,7 @@ public class DictionaryService {
   /**
    * Adds the word.
    *
-   * @param word the word
+   * @param word       the word
    * @param definition the definition
    */
   public void addWord(String word, String definition) {
@@ -202,7 +198,7 @@ public class DictionaryService {
   /**
    * Adds the synonym.
    *
-   * @param word the word
+   * @param word    the word
    * @param synonym the synonym
    */
   public void addSynonym(String word, String synonym) {
@@ -218,8 +214,8 @@ public class DictionaryService {
   }
 
   /**
-   * Returns the synonyms of a given word. The list will always contain the
-   * search word.
+   * Returns the synonyms of a given word. The list will always contain the search
+   * word.
    *
    * @param word the word
    * @return the synonyms

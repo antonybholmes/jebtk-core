@@ -28,8 +28,7 @@ import org.jebtk.core.path.StrictPath;
  * @author Antony Holmes
  * @param <T> the generic type
  */
-public class SimpleCategoryObjectDb<T>
-    implements Iterable<StrictPath>, Serializable {
+public class SimpleCategoryObjectDb<T> implements Iterable<StrictPath>, Serializable {
 
   /**
    * The constant serialVersionUID.

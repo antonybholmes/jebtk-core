@@ -57,8 +57,8 @@ public class DefaultTreeMapCreator<K, V> implements IterMapCreator<K, V> {
   /**
    * Creates a new Default Tree Map.
    *
-   * @param <KK> the generic type
-   * @param <VV> the generic type
+   * @param <KK>         the generic type
+   * @param <VV>         the generic type
    * @param defaultValue the default value
    * @return the map
    */
@@ -69,13 +69,12 @@ public class DefaultTreeMapCreator<K, V> implements IterMapCreator<K, V> {
   /**
    * Creates the.
    *
-   * @param <KK> the generic type
-   * @param <VV> the generic type
+   * @param <KK>         the generic type
+   * @param <VV>         the generic type
    * @param defaultValue the default value
    * @return the map
    */
-  public static <KK, VV> IterMapCreator<KK, VV> create(
-      EntryCreator<VV> defaultValue) {
+  public static <KK, VV> IterMapCreator<KK, VV> create(EntryCreator<VV> defaultValue) {
     return new DefaultTreeMapCreator<KK, VV>(defaultValue);
   }
 }

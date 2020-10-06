@@ -159,8 +159,7 @@ public class ListModel<T> extends ArrayList<T> implements ChangeEventProducer {
   /*
    * (non-Javadoc)
    * 
-   * @see
-   * org.abh.lib.event.ChangeEventProducer#removeChangeListener(org.abh.lib.
+   * @see org.abh.lib.event.ChangeEventProducer#removeChangeListener(org.abh.lib.
    * event. ChangeListener)
    */
   @Override

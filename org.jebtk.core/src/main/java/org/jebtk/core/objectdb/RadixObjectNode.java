@@ -22,7 +22,6 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import org.jebtk.core.collections.CollectionUtils;
@@ -36,8 +35,7 @@ import org.jebtk.core.text.TextUtils;
  * @author Antony Holmes
  * @param <T> the generic type
  */
-public class RadixObjectNode<T>
-    implements Comparable<RadixObjectNode<T>>, Serializable, Iterable<T> {
+public class RadixObjectNode<T> implements Comparable<RadixObjectNode<T>>, Serializable, Iterable<T> {
 
   /**
    * The constant serialVersionUID.
@@ -72,7 +70,7 @@ public class RadixObjectNode<T>
   /**
    * Instantiates a new radix object node.
    *
-   * @param c the c
+   * @param c      the c
    * @param prefix the prefix
    */
   public RadixObjectNode(char c, String prefix) {
@@ -117,8 +115,7 @@ public class RadixObjectNode<T>
     return getChild(this, prefix);
   }
 
-  public static <TT> RadixObjectNode<TT> getChild(RadixObjectNode<TT> root,
-      String prefix) {
+  public static <TT> RadixObjectNode<TT> getChild(RadixObjectNode<TT> root, String prefix) {
     RadixObjectNode<TT> ret = root;
 
     char[] chars = standardize(prefix).toCharArray();
@@ -157,8 +154,7 @@ public class RadixObjectNode<T>
     return getWords(this, prefix);
   }
 
-  public static <TT> Set<String> getWords(RadixObjectNode<TT> root,
-      String prefix) {
+  public static <TT> Set<String> getWords(RadixObjectNode<TT> root, String prefix) {
     RadixObjectNode<TT> ret = getChild(root, prefix);
 
     return Collections.unmodifiableSet(ret.mWords);
@@ -174,12 +170,11 @@ public class RadixObjectNode<T>
   }
 
   /**
-   * Returns a child node and auto creates the child if it does not already
-   * exist.
+   * Returns a child node and auto creates the child if it does not already exist.
    *
-   * @param c the c
+   * @param c      the c
    * @param prefix the prefix
-   * @param word the word
+   * @param word   the word
    * @return the radix object node
    */
   private RadixObjectNode<T> createChild(char c, String prefix, String word) {
@@ -203,7 +198,7 @@ public class RadixObjectNode<T>
    * Parse a string into prefixs and build a sub tree under the current node to
    * represent that string.
    *
-   * @param word the word
+   * @param word   the word
    * @param object the object
    */
   public void addObject(String word, T object) {
@@ -301,8 +296,7 @@ public class RadixObjectNode<T>
   }
 
   /**
-   * Ensure characters are consistent for searching purposes i.e case
-   * insensitive.
+   * Ensure characters are consistent for searching purposes i.e case insensitive.
    *
    * @param name the name
    * @return the char

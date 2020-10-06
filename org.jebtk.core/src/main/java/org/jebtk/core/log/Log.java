@@ -30,8 +30,7 @@ public class Log extends LogEventListeners implements LogEventListener {
   /**
    * The constant DATE_FORMAT.
    */
-  public static final DateFormat DATE_FORMAT = DateFormat
-      .getDateTimeInstance(DateFormat.SHORT, DateFormat.MEDIUM);
+  public static final DateFormat DATE_FORMAT = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.MEDIUM);
 
   /**
    * The member name.

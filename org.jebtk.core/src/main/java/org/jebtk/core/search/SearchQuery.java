@@ -80,9 +80,7 @@ public abstract class SearchQuery<T> {
     return results;
   }
 
-  public abstract Collection<T> match(String s,
-      boolean exactMatch,
-      boolean include);
+  public abstract Collection<T> match(String s, boolean exactMatch, boolean include);
 
   /**
    * Performs an intersection of two sets of samples. If either of the results

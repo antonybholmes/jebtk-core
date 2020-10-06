@@ -122,7 +122,7 @@ public class Xhtml {
   /**
    * Attribute.
    *
-   * @param name the name
+   * @param name  the name
    * @param value the value
    * @return the string
    */

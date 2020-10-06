@@ -32,8 +32,8 @@ import java.util.Collection;
  * @param <V> the value type
  * @param <T> the generic type
  */
-public abstract class DefaultMultiMap<K, V, T extends Collection<V>>
-    extends DefaultHashMap<K, T> implements MultiMap<K, V, T> {
+public abstract class DefaultMultiMap<K, V, T extends Collection<V>> extends DefaultHashMap<K, T>
+    implements MultiMap<K, V, T> {
 
   /** The Constant serialVersionUID. */
   private static final long serialVersionUID = 1L;
@@ -51,10 +51,9 @@ public abstract class DefaultMultiMap<K, V, T extends Collection<V>>
    * Instantiates a new abstract multi map.
    *
    * @param initialCapacity the initial capacity
-   * @param defaultValue the default value
+   * @param defaultValue    the default value
    */
-  public DefaultMultiMap(int initialCapacity,
-      CollectionCreator<V, T> defaultValue) {
+  public DefaultMultiMap(int initialCapacity, CollectionCreator<V, T> defaultValue) {
     super(initialCapacity, defaultValue);
   }
 

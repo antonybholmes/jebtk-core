@@ -35,12 +35,10 @@ public class RegexUtils {
   public static final Pattern UNDERSCORES_PATTERN = Pattern.compile("_+");
 
   /** The Constant LEADING_UNDERSCORES_PATTERN. */
-  public static final Pattern LEADING_UNDERSCORES_PATTERN = Pattern
-      .compile("^_+");
+  public static final Pattern LEADING_UNDERSCORES_PATTERN = Pattern.compile("^_+");
 
   /** The Constant TRAILING_UNDERSCORES_PATTERN. */
-  public static final Pattern TRAILING_UNDERSCORES_PATTERN = Pattern
-      .compile("_+$");
+  public static final Pattern TRAILING_UNDERSCORES_PATTERN = Pattern.compile("_+$");
 
   /**
    * Instantiates a new regex utils.
@@ -62,12 +60,11 @@ public class RegexUtils {
   /**
    * Compile.
    *
-   * @param regexes the regexes
+   * @param regexes         the regexes
    * @param caseInsensitive the case insensitive
    * @return the list
    */
-  public static List<Pattern> compile(List<String> regexes,
-      boolean caseSensitive) {
+  public static List<Pattern> compile(List<String> regexes, boolean caseSensitive) {
     if (CollectionUtils.isNullOrEmpty(regexes)) {
       return Collections.emptyList();
     }
@@ -98,7 +95,7 @@ public class RegexUtils {
   /**
    * Convert a string regex into a compiled pattern.
    *
-   * @param regex the regex
+   * @param regex           the regex
    * @param caseInsensitive the case insensitive
    * @return the pattern
    */
@@ -124,7 +121,7 @@ public class RegexUtils {
    * Creates a pattern from a regex assuming all special characters should be
    * interpreted as literals and not regular expressions marks.
    *
-   * @param regex the regex
+   * @param regex           the regex
    * @param caseInsensitive the case insensitive
    * @return the pattern
    */
@@ -147,8 +144,8 @@ public class RegexUtils {
   /**
    * Replace all occurrences of a pattern in a string with a replacement.
    * 
-   * @param s A string to search for a pattern.
-   * @param p A pattern to match on.
+   * @param s   A string to search for a pattern.
+   * @param p   A pattern to match on.
    * @param rep The replacement.
    * @return The string s with characters replaced.
    */
@@ -156,9 +153,7 @@ public class RegexUtils {
     return p.matcher(s).replaceAll(rep);
   }
 
-  public static List<String> replaceAll(Collection<String> strings,
-      Pattern p,
-      String rep) {
+  public static List<String> replaceAll(Collection<String> strings, Pattern p, String rep) {
     List<String> ret = new ArrayList<String>(strings.size());
 
     for (String s : strings) {
