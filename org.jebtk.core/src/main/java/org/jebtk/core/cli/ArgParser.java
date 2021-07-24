@@ -55,6 +55,10 @@ public class ArgParser implements Iterable<Entry<String, List<String>>> {
   public ArgParser(Args options) {
     mOptions = options;
   }
+  
+  private void add(String arg) {
+    add(new Arg(arg));
+  }
 
   /**
    * Adds the arg.
@@ -63,6 +67,10 @@ public class ArgParser implements Iterable<Entry<String, List<String>>> {
    */
   private void add(Arg arg) {
     mArgMap.get(arg.getLongName());
+    
+    if (!arg.getShortName().equals(arg.getLongName())) {
+      mArgMap.get(arg.getShortName());
+    }
   }
 
   private void add(Arg arg, String value) {
@@ -119,6 +127,8 @@ public class ArgParser implements Iterable<Entry<String, List<String>>> {
    * @return
    */
   public List<String> getArgs(String name) {
+    name = Arg.parseArgName(name);
+    
     if (contains(name)) {
       return Collections.unmodifiableList(mArgMap.get(name));
     } else {
@@ -172,7 +182,8 @@ public class ArgParser implements Iterable<Entry<String, List<String>>> {
     if (mOptions == null) {
       // If no options specified, simply add them to the unprocessed others
       for (String arg : args) {
-        mOthers.add(arg);
+        //mOthers.add(Arg.parseArgName(arg));
+        add(arg);
       }
 
       return this;
@@ -181,42 +192,50 @@ public class ArgParser implements Iterable<Entry<String, List<String>>> {
     int index = 0;
 
     String arg;
+    String name;
     String value;
     boolean isLong;
-    boolean isShort;
+    //boolean isShort;
 
     while (index < args.length) {
       arg = args[index++];
-
+      
+      if (!arg.startsWith("-")) {
+        mOthers.add(arg);
+        continue;
+      }
+      
+      isLong = arg.startsWith("--");
+      
+      
+      name = Arg.parseArgName(arg);
+      
       value = null;
 
       // Test the type of the argument
-      isLong = arg.startsWith("--");
-      isShort = !isLong && arg.length() == 2 && arg.startsWith("-");
+      //isLong = arg.startsWith("--");
+      //isShort = !isLong && arg.length() == 2 && arg.startsWith("-");
 
       // System.err.println("is long " + isLong + " " + isShort + " " + arg + "
       // " + Arrays.toString(args));
 
       //
-      if (!isShort && !isLong) {
-        mOthers.add(arg);
-        continue;
-      }
+     
 
       if (isLong) {
         int delim = arg.indexOf("=");
 
         if (delim > 0) {
           value = arg.substring(delim + 1);
-          arg = arg.substring(2, delim);
+          //arg = arg.substring(2, delim);
         } else {
-          arg = arg.substring(2);
+          //arg = arg.substring(2);
         }
       } else {
-        arg = arg.substring(1, 2);
+        //arg = arg.substring(1, 2);
       }
 
-      Arg option = mOptions.get(arg);
+      Arg option = mOptions.get(name);
 
       if (option != null) {
         if (isLong) {
@@ -241,17 +260,19 @@ public class ArgParser implements Iterable<Entry<String, List<String>>> {
 
     return this;
   }
+  
+  
 
   public static Entry<String, String> parsePosixArg(String arg) {
 
-    arg = arg.replaceFirst("--", TextUtils.EMPTY_STRING);
+    String name = Arg.parseArgName(arg);
 
     int index = arg.indexOf("=");
 
     if (index > 0) {
-      return new org.jebtk.core.collections.Entry<String, String>(arg.substring(0, index), arg.substring(index + 1));
+      return new org.jebtk.core.collections.Entry<String, String>(name, arg.substring(index + 1));
     } else {
-      return new org.jebtk.core.collections.Entry<String, String>(arg, TextUtils.EMPTY_STRING);
+      return new org.jebtk.core.collections.Entry<String, String>(name, TextUtils.EMPTY_STRING);
     }
   }
 

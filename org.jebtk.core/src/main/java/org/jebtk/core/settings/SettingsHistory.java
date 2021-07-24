@@ -18,21 +18,20 @@ package org.jebtk.core.settings;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.jebtk.core.Mathematics;
+import org.jebtk.core.event.ChangeListeners;
 
 /**
  * The Class SettingsHistory.
  */
-public class SettingsHistory {
+public class SettingsHistory extends ChangeListeners {
+
+  /**
+   * 
+   */
+  private static final long serialVersionUID = 1L;
 
   /** The m settings. */
   private List<Setting> mSettings = new ArrayList<Setting>(2);
-
-  /** The m index. */
-  private int mIndex = 0;
-
-  /** The m size. */
-  private int mSize = 0;
 
   /**
    * Adds the.
@@ -45,27 +44,16 @@ public class SettingsHistory {
       // If the setting is not updated, we assume it is a default,
       // internal setting, in which case, it should appear first in the
       // list.
-      clear();
+      mSettings.clear();
     }
-
-    if (mSettings.size() == 2) {
-      mSettings.set(1, setting);
-    } else {
+    
+    if (mSettings.size() < 2) {
       mSettings.add(setting);
+    } else {
+      mSettings.set(1, setting);
     }
-
-    mSize = mSettings.size();
-
-    mIndex = mSize - 1;
-  }
-
-  /**
-   * Clear.
-   */
-  public void clear() {
-    mSettings.clear();
-
-    mIndex = -1;
+    
+    fireChanged();
   }
 
   /**
@@ -74,7 +62,7 @@ public class SettingsHistory {
    * @return the int
    */
   public int size() {
-    return mSize;
+    return mSettings.size();
   }
 
   /**
@@ -82,18 +70,10 @@ public class SettingsHistory {
    *
    * @return the setting
    */
-  public Setting first() {
-    return get(0);
+  public Setting getDefaultSetting() {
+    return mSettings.get(0);
   }
 
-  /**
-   * Current.
-   *
-   * @return the setting
-   */
-  public Setting current() {
-    return get(mIndex);
-  }
 
   /**
    * Gets the.
@@ -101,20 +81,17 @@ public class SettingsHistory {
    * @param index the index
    * @return the setting
    */
-  private Setting get(int index) {
-    if (Mathematics.inBound(index, 0, mSize)) {
-      return mSettings.get(index);
-    } else {
-      return null;
-    }
+  public Setting current() {
+    return mSettings.get(mSettings.size() - 1);
   }
 
   /**
    * Changes the setting to its default value.
    */
   public void resetToDefault() {
-    if (mSettings.size() == 2) {
-      mSettings.set(1, first());
+    if (mSettings.size() > 1) {
+      mSettings.subList(1, mSettings.size()).clear();
+      fireChanged();
     }
   }
 }

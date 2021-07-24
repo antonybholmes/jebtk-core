@@ -15,6 +15,8 @@
  */
 package org.jebtk.core.cli;
 
+import org.jebtk.core.text.TextUtils;
+
 /**
  * Specifies an expected argument on the command line.
  * 
@@ -47,6 +49,18 @@ public class Arg {
 
   private String mDefaultValue;
 
+  public Arg(String name) {
+    this(name.charAt(0), name);
+  }
+  
+  public Arg(char shortName) {
+    this(shortName, false);
+  }
+  
+  public Arg(char shortName, boolean hasArg) {
+    this(shortName, Character.toString(shortName), hasArg, TextUtils.EMPTY_STRING);
+  }
+  
   /**
    * Instantiates a new command line option.
    *
@@ -57,6 +71,14 @@ public class Arg {
   public Arg(char shortName, boolean hasArg, String description) {
     this(shortName, Character.toString(shortName), hasArg, description);
   }
+  
+  public Arg(char shortName, String longName) {
+    this(shortName, longName, false);
+  }
+  
+  public Arg(char shortName, String longName, boolean hasArg) {
+    this(shortName, longName, hasArg, TextUtils.EMPTY_STRING, TextUtils.EMPTY_STRING);
+  }
 
   /**
    * Instantiates a new command line option.
@@ -66,16 +88,13 @@ public class Arg {
    * @param hasArg      the has arg
    * @param description the description
    */
-  public Arg(char shortName, String longName, boolean hasArg, String description) {
-    mShortName = Character.toString(shortName);
-    mLongName = longName;
-    mHasValue = hasArg;
-    mDescription = description;
+  public Arg(char shortName, String longName, boolean hasArg, String defaultValue) {
+    this(shortName, longName, hasArg, defaultValue, TextUtils.EMPTY_STRING);
   }
 
   public Arg(char shortName, String longName, boolean hasArg, String defaultValue, String description) {
     mShortName = Character.toString(shortName);
-    mLongName = longName;
+    mLongName = parseArgName(longName);
     mHasValue = hasArg;
     mDefaultValue = defaultValue;
     mDescription = description;
@@ -142,4 +161,8 @@ public class Arg {
     return mS;
   }
 
+  
+  public static String parseArgName(String arg) {
+    return arg.replaceFirst("^\\-+", TextUtils.EMPTY_STRING).replaceFirst("=.+", TextUtils.EMPTY_STRING);
+  }
 }

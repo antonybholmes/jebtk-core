@@ -1723,7 +1723,7 @@ public class Io {
   public static String[] getColumn(Path file, boolean skipHeader, int column) throws IOException {
     BufferedReader reader = FileUtils.newBufferedReader(file);
 
-    List<String> ret = new ArrayList<String>();
+    List<String> strings = new ArrayList<String>();
 
     String line;
     List<String> tokens;
@@ -1738,13 +1738,16 @@ public class Io {
       while ((line = reader.readLine()) != null) {
         tokens = split.text(line);
 
-        ret.add(tokens.get(column));
+        strings.add(tokens.get(column));
       }
     } finally {
       reader.close();
     }
+    
+    String[] ret = new String[strings.size()]; 
+    ret = strings.toArray(ret); 
 
-    return (String[]) ret.toArray();
+    return ret;
   }
 
   /**

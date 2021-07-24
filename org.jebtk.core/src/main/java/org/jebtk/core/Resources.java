@@ -193,8 +193,6 @@ public class Resources implements Iterable<String> {
    * @throws IOException Signals that an I/O exception has occurred.
    */
   public static BufferedReader getResGzipReader(String name) throws IOException {
-    System.err.println("Load GZIP from " + name);
-
     return new BufferedReader(new InputStreamReader(getResGzipInputStream(name)));
   }
 
@@ -261,8 +259,6 @@ public class Resources implements Iterable<String> {
    * @throws IOException Signals that an I/O exception has occurred.
    */
   public static BufferedReader getGzipReader(Path file) throws IOException {
-    System.err.println("Load GZIP from " + file);
-
     return new BufferedReader(new InputStreamReader(getGzipInputStream(file)));
   }
 

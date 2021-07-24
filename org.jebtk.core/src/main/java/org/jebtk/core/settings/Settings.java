@@ -439,10 +439,10 @@ public class Settings extends ChangeListeners implements Iterable<Path>, XmlRepr
    * @return the setting
    */
   public synchronized Setting getSetting(Path path) {
-    SettingsHistory settings = getSettings(path);
+    SettingsHistory history = getSettings(path);
 
-    if (settings.size() > 0) {
-      return settings.current();
+    if (history.size() > 0) {
+      return history.current();
     } else {
       LOG.error("Please ensure setting {} exists.", path);
 
